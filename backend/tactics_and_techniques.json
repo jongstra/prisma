@@ -1,0 +1,4018 @@
+{
+  "tactics": [
+    {
+      "name": "Reconnaissance",
+      "external_id": "TA0043",
+      "techniques": [
+        {
+          "name": "Active Scanning",
+          "external_id": "T1595",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Scanning IP Blocks",
+              "external_id": "T1595.001",
+              "visibility": false
+            },
+            {
+              "name": "Wordlist Scanning",
+              "external_id": "T1595.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Gather Victim Host Information",
+          "external_id": "T1592",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Client Configurations",
+              "external_id": "T1592.004",
+              "visibility": false
+            },
+            {
+              "name": "Firmware",
+              "external_id": "T1592.003",
+              "visibility": false
+            },
+            {
+              "name": "Hardware",
+              "external_id": "T1592.001",
+              "visibility": false
+            },
+            {
+              "name": "Software",
+              "external_id": "T1592.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Gather Victim Identity Information",
+          "external_id": "T1589",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Credentials",
+              "external_id": "T1589.001",
+              "visibility": false
+            },
+            {
+              "name": "Email Addresses",
+              "external_id": "T1589.002",
+              "visibility": false
+            },
+            {
+              "name": "Employee Names",
+              "external_id": "T1589.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Gather Victim Network Information",
+          "external_id": "T1590",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Domain Properties",
+              "external_id": "T1590.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Gather Victim Org Information",
+          "external_id": "T1591",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Determine Physical Locations",
+              "external_id": "T1591.001",
+              "visibility": false
+            },
+            {
+              "name": "Identify Roles",
+              "external_id": "T1591.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Phishing for Information",
+          "external_id": "T1598",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Spearphishing Service",
+              "external_id": "T1598.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Search Closed Sources",
+          "external_id": "T1597",
+          "visibility": false
+        },
+        {
+          "name": "Search Open Technical Databases",
+          "external_id": "T1596",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "CDNs",
+              "external_id": "T1596.004",
+              "visibility": false
+            },
+            {
+              "name": "Scan Databases",
+              "external_id": "T1596.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Search Open Websites/Domains",
+          "external_id": "T1593",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Social Media",
+              "external_id": "T1593.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Search Victim-Owned Websites",
+          "external_id": "T1594",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Resource Development",
+      "external_id": "TA0042",
+      "techniques": [
+        {
+          "name": "Acquire Access",
+          "external_id": "T1650",
+          "visibility": false
+        },
+        {
+          "name": "Acquire Infrastructure",
+          "external_id": "T1583",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Botnet",
+              "external_id": "T1583.005",
+              "visibility": false
+            },
+            {
+              "name": "DNS Server",
+              "external_id": "T1583.002",
+              "visibility": false
+            },
+            {
+              "name": "Domains",
+              "external_id": "T1583.001",
+              "visibility": false
+            },
+            {
+              "name": "Malvertising",
+              "external_id": "T1583.008",
+              "visibility": false
+            },
+            {
+              "name": "Server",
+              "external_id": "T1583.004",
+              "visibility": false
+            },
+            {
+              "name": "Serverless",
+              "external_id": "T1583.007",
+              "visibility": false
+            },
+            {
+              "name": "Virtual Private Server",
+              "external_id": "T1583.003",
+              "visibility": false
+            },
+            {
+              "name": "Web Services",
+              "external_id": "T1583.006",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Compromise Accounts",
+          "external_id": "T1586",
+          "visibility": false
+        },
+        {
+          "name": "Compromise Infrastructure",
+          "external_id": "T1584",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Botnet",
+              "external_id": "T1584.005",
+              "visibility": false
+            },
+            {
+              "name": "DNS Server",
+              "external_id": "T1584.002",
+              "visibility": false
+            },
+            {
+              "name": "Domains",
+              "external_id": "T1584.001",
+              "visibility": false
+            },
+            {
+              "name": "Server",
+              "external_id": "T1584.004",
+              "visibility": false
+            },
+            {
+              "name": "Serverless",
+              "external_id": "T1584.007",
+              "visibility": false
+            },
+            {
+              "name": "Web Services",
+              "external_id": "T1584.006",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Develop Capabilities",
+          "external_id": "T1587",
+          "visibility": false
+        },
+        {
+          "name": "Establish Accounts",
+          "external_id": "T1585",
+          "visibility": false
+        },
+        {
+          "name": "Obtain Capabilities",
+          "external_id": "T1588",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Code Signing Certificates",
+              "external_id": "T1588.003",
+              "visibility": false
+            },
+            {
+              "name": "Exploits",
+              "external_id": "T1588.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Stage Capabilities",
+          "external_id": "T1608",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Install Digital Certificate",
+              "external_id": "T1608.003",
+              "visibility": false
+            },
+            {
+              "name": "Link Target",
+              "external_id": "T1608.005",
+              "visibility": false
+            },
+            {
+              "name": "SEO Poisoning",
+              "external_id": "T1608.006",
+              "visibility": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Initial Access",
+      "external_id": "TA0001",
+      "techniques": [
+        {
+          "name": "Content Injection",
+          "external_id": "T1659",
+          "visibility": false
+        },
+        {
+          "name": "Drive-by Compromise",
+          "external_id": "T1189",
+          "visibility": false
+        },
+        {
+          "name": "Exploit Public-Facing Application",
+          "external_id": "T1190",
+          "visibility": false
+        },
+        {
+          "name": "External Remote Services",
+          "external_id": "T1133",
+          "visibility": false
+        },
+        {
+          "name": "Hardware Additions",
+          "external_id": "T1200",
+          "visibility": false
+        },
+        {
+          "name": "Phishing",
+          "external_id": "T1566",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Spearphishing Voice",
+              "external_id": "T1566.004",
+              "visibility": false
+            },
+            {
+              "name": "Spearphishing via Service",
+              "external_id": "T1566.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Replication Through Removable Media",
+          "external_id": "T1091",
+          "visibility": false
+        },
+        {
+          "name": "Spearphishing Attachment",
+          "external_id": "T1193",
+          "visibility": false
+        },
+        {
+          "name": "Spearphishing Link",
+          "external_id": "T1192",
+          "visibility": false
+        },
+        {
+          "name": "Spearphishing via Service",
+          "external_id": "T1194",
+          "visibility": false
+        },
+        {
+          "name": "Supply Chain Compromise",
+          "external_id": "T1195",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Compromise Software Supply Chain",
+              "external_id": "T1195.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Trusted Relationship",
+          "external_id": "T1199",
+          "visibility": false
+        },
+        {
+          "name": "Valid Accounts",
+          "external_id": "T1078",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Cloud Accounts",
+              "external_id": "T1078.004",
+              "visibility": false
+            },
+            {
+              "name": "Domain Accounts",
+              "external_id": "T1078.002",
+              "visibility": false
+            },
+            {
+              "name": "Local Accounts",
+              "external_id": "T1078.003",
+              "visibility": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Execution",
+      "external_id": "TA0002",
+      "techniques": [
+        {
+          "name": "AppleScript",
+          "external_id": "T1155",
+          "visibility": false
+        },
+        {
+          "name": "CMSTP",
+          "external_id": "T1191",
+          "visibility": false
+        },
+        {
+          "name": "Cloud Administration Command",
+          "external_id": "T1651",
+          "visibility": false
+        },
+        {
+          "name": "Command and Scripting Interpreter",
+          "external_id": "T1059",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Network Device CLI",
+              "external_id": "T1059.008",
+              "visibility": false
+            },
+            {
+              "name": "PowerShell",
+              "external_id": "T1059.001",
+              "visibility": false
+            },
+            {
+              "name": "Python",
+              "external_id": "T1059.006",
+              "visibility": false
+            },
+            {
+              "name": "Unix Shell",
+              "external_id": "T1059.004",
+              "visibility": false
+            },
+            {
+              "name": "Visual Basic",
+              "external_id": "T1059.005",
+              "visibility": false
+            },
+            {
+              "name": "Windows Command Shell",
+              "external_id": "T1059.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Compiled HTML File",
+          "external_id": "T1223",
+          "visibility": false
+        },
+        {
+          "name": "Component Object Model and Distributed COM",
+          "external_id": "T1175",
+          "visibility": false
+        },
+        {
+          "name": "Container Administration Command",
+          "external_id": "T1609",
+          "visibility": false
+        },
+        {
+          "name": "Control Panel Items",
+          "external_id": "T1196",
+          "visibility": false
+        },
+        {
+          "name": "Deploy Container",
+          "external_id": "T1610",
+          "visibility": false
+        },
+        {
+          "name": "Dynamic Data Exchange",
+          "external_id": "T1173",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation for Client Execution",
+          "external_id": "T1203",
+          "visibility": false
+        },
+        {
+          "name": "Graphical User Interface",
+          "external_id": "T1061",
+          "visibility": false
+        },
+        {
+          "name": "InstallUtil",
+          "external_id": "T1118",
+          "visibility": false
+        },
+        {
+          "name": "Inter-Process Communication",
+          "external_id": "T1559",
+          "visibility": false
+        },
+        {
+          "name": "LSASS Driver",
+          "external_id": "T1177",
+          "visibility": false
+        },
+        {
+          "name": "Launchctl",
+          "external_id": "T1152",
+          "visibility": false
+        },
+        {
+          "name": "Local Job Scheduling",
+          "external_id": "T1168",
+          "visibility": false
+        },
+        {
+          "name": "Mshta",
+          "external_id": "T1170",
+          "visibility": false
+        },
+        {
+          "name": "Native API",
+          "external_id": "T1106",
+          "visibility": false
+        },
+        {
+          "name": "PowerShell",
+          "external_id": "T1086",
+          "visibility": false
+        },
+        {
+          "name": "Regsvcs/Regasm",
+          "external_id": "T1121",
+          "visibility": false
+        },
+        {
+          "name": "Regsvr32",
+          "external_id": "T1117",
+          "visibility": false
+        },
+        {
+          "name": "Rundll32",
+          "external_id": "T1085",
+          "visibility": false
+        },
+        {
+          "name": "Scheduled Task/Job",
+          "external_id": "T1053",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "At",
+              "external_id": "T1053.002",
+              "visibility": false
+            },
+            {
+              "name": "At (Linux)",
+              "external_id": "T1053.001",
+              "visibility": false
+            },
+            {
+              "name": "Launchd",
+              "external_id": "T1053.004",
+              "visibility": false
+            },
+            {
+              "name": "Systemd Timers",
+              "external_id": "T1053.006",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Scripting",
+          "external_id": "T1064",
+          "visibility": false
+        },
+        {
+          "name": "Serverless Execution",
+          "external_id": "T1648",
+          "visibility": false
+        },
+        {
+          "name": "Service Execution",
+          "external_id": "T1035",
+          "visibility": false
+        },
+        {
+          "name": "Shared Modules",
+          "external_id": "T1129",
+          "visibility": false
+        },
+        {
+          "name": "Software Deployment Tools",
+          "external_id": "T1072",
+          "visibility": false
+        },
+        {
+          "name": "Source",
+          "external_id": "T1153",
+          "visibility": false
+        },
+        {
+          "name": "Space after Filename",
+          "external_id": "T1151",
+          "visibility": false
+        },
+        {
+          "name": "System Services",
+          "external_id": "T1569",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Service Execution",
+              "external_id": "T1569.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Trap",
+          "external_id": "T1154",
+          "visibility": false
+        },
+        {
+          "name": "User Execution",
+          "external_id": "T1204",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Malicious Image",
+              "external_id": "T1204.003",
+              "visibility": false
+            },
+            {
+              "name": "Malicious Link",
+              "external_id": "T1204.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Windows Management Instrumentation",
+          "external_id": "T1047",
+          "visibility": false
+        },
+        {
+          "name": "Windows Remote Management",
+          "external_id": "T1028",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Persistence",
+      "external_id": "TA0003",
+      "techniques": [
+        {
+          "name": "Accessibility Features",
+          "external_id": "T1015",
+          "visibility": false
+        },
+        {
+          "name": "Account Manipulation",
+          "external_id": "T1098",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Additional Email Delegate Permissions",
+              "external_id": "T1098.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "AppCert DLLs",
+          "external_id": "T1182",
+          "visibility": false
+        },
+        {
+          "name": "AppInit DLLs",
+          "external_id": "T1103",
+          "visibility": false
+        },
+        {
+          "name": "Application Shimming",
+          "external_id": "T1138",
+          "visibility": false
+        },
+        {
+          "name": "Authentication Package",
+          "external_id": "T1131",
+          "visibility": false
+        },
+        {
+          "name": "BITS Jobs",
+          "external_id": "T1197",
+          "visibility": false
+        },
+        {
+          "name": "Boot or Logon Autostart Execution",
+          "external_id": "T1547",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Active Setup",
+              "external_id": "T1547.014",
+              "visibility": false
+            },
+            {
+              "name": "Authentication Package",
+              "external_id": "T1547.002",
+              "visibility": false
+            },
+            {
+              "name": "Kernel Modules and Extensions",
+              "external_id": "T1547.006",
+              "visibility": false
+            },
+            {
+              "name": "LSASS Driver",
+              "external_id": "T1547.008",
+              "visibility": false
+            },
+            {
+              "name": "Login Items",
+              "external_id": "T1547.015",
+              "visibility": false
+            },
+            {
+              "name": "Plist Modification",
+              "external_id": "T1547.011",
+              "visibility": false
+            },
+            {
+              "name": "Port Monitors",
+              "external_id": "T1547.010",
+              "visibility": false
+            },
+            {
+              "name": "Print Processors",
+              "external_id": "T1547.012",
+              "visibility": false
+            },
+            {
+              "name": "Re-opened Applications",
+              "external_id": "T1547.007",
+              "visibility": false
+            },
+            {
+              "name": "Registry Run Keys / Startup Folder",
+              "external_id": "T1547.001",
+              "visibility": false
+            },
+            {
+              "name": "Security Support Provider",
+              "external_id": "T1547.005",
+              "visibility": false
+            },
+            {
+              "name": "Shortcut Modification",
+              "external_id": "T1547.009",
+              "visibility": false
+            },
+            {
+              "name": "Time Providers",
+              "external_id": "T1547.003",
+              "visibility": false
+            },
+            {
+              "name": "Winlogon Helper DLL",
+              "external_id": "T1547.004",
+              "visibility": false
+            },
+            {
+              "name": "XDG Autostart Entries",
+              "external_id": "T1547.013",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Boot or Logon Initialization Scripts",
+          "external_id": "T1037",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Login Hook",
+              "external_id": "T1037.002",
+              "visibility": false
+            },
+            {
+              "name": "Logon Script (Windows)",
+              "external_id": "T1037.001",
+              "visibility": false
+            },
+            {
+              "name": "Network Logon Script",
+              "external_id": "T1037.003",
+              "visibility": false
+            },
+            {
+              "name": "RC Scripts",
+              "external_id": "T1037.004",
+              "visibility": false
+            },
+            {
+              "name": "Startup Items",
+              "external_id": "T1037.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Bootkit",
+          "external_id": "T1067",
+          "visibility": false
+        },
+        {
+          "name": "Browser Extensions",
+          "external_id": "T1176",
+          "visibility": false
+        },
+        {
+          "name": "Change Default File Association",
+          "external_id": "T1042",
+          "visibility": false
+        },
+        {
+          "name": "Component Firmware",
+          "external_id": "T1109",
+          "visibility": false
+        },
+        {
+          "name": "Component Object Model Hijacking",
+          "external_id": "T1122",
+          "visibility": false
+        },
+        {
+          "name": "Compromise Host Software Binary",
+          "external_id": "T1554",
+          "visibility": false
+        },
+        {
+          "name": "Create Account",
+          "external_id": "T1136",
+          "visibility": false
+        },
+        {
+          "name": "Create or Modify System Process",
+          "external_id": "T1543",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Container Service",
+              "external_id": "T1543.005",
+              "visibility": false
+            },
+            {
+              "name": "Launch Agent",
+              "external_id": "T1543.001",
+              "visibility": false
+            },
+            {
+              "name": "Launch Daemon",
+              "external_id": "T1543.004",
+              "visibility": false
+            },
+            {
+              "name": "Systemd Service",
+              "external_id": "T1543.002",
+              "visibility": false
+            },
+            {
+              "name": "Windows Service",
+              "external_id": "T1543.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "DLL Search Order Hijacking",
+          "external_id": "T1038",
+          "visibility": false
+        },
+        {
+          "name": "Dylib Hijacking",
+          "external_id": "T1157",
+          "visibility": false
+        },
+        {
+          "name": "Emond",
+          "external_id": "T1519",
+          "visibility": false
+        },
+        {
+          "name": "Event Triggered Execution",
+          "external_id": "T1546",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "AppInit DLLs",
+              "external_id": "T1546.010",
+              "visibility": false
+            },
+            {
+              "name": "Component Object Model Hijacking",
+              "external_id": "T1546.015",
+              "visibility": false
+            },
+            {
+              "name": "Installer Packages",
+              "external_id": "T1546.016",
+              "visibility": false
+            },
+            {
+              "name": "Netsh Helper DLL",
+              "external_id": "T1546.007",
+              "visibility": false
+            },
+            {
+              "name": "Screensaver",
+              "external_id": "T1546.002",
+              "visibility": false
+            },
+            {
+              "name": "Unix Shell Configuration Modification",
+              "external_id": "T1546.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "External Remote Services",
+          "external_id": "T1133",
+          "visibility": false
+        },
+        {
+          "name": "File System Permissions Weakness",
+          "external_id": "T1044",
+          "visibility": false
+        },
+        {
+          "name": "Hidden Files and Directories",
+          "external_id": "T1158",
+          "visibility": false
+        },
+        {
+          "name": "Hijack Execution Flow",
+          "external_id": "T1574",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "COR_PROFILER",
+              "external_id": "T1574.012",
+              "visibility": false
+            },
+            {
+              "name": "DLL Side-Loading",
+              "external_id": "T1574.002",
+              "visibility": false
+            },
+            {
+              "name": "Dylib Hijacking",
+              "external_id": "T1574.004",
+              "visibility": false
+            },
+            {
+              "name": "Path Interception by Unquoted Path",
+              "external_id": "T1574.009",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Hooking",
+          "external_id": "T1179",
+          "visibility": false
+        },
+        {
+          "name": "Hypervisor",
+          "external_id": "T1062",
+          "visibility": false
+        },
+        {
+          "name": "Image File Execution Options Injection",
+          "external_id": "T1183",
+          "visibility": false
+        },
+        {
+          "name": "Implant Internal Image",
+          "external_id": "T1525",
+          "visibility": false
+        },
+        {
+          "name": "Kernel Modules and Extensions",
+          "external_id": "T1215",
+          "visibility": false
+        },
+        {
+          "name": "LC_LOAD_DYLIB Addition",
+          "external_id": "T1161",
+          "visibility": false
+        },
+        {
+          "name": "LSASS Driver",
+          "external_id": "T1177",
+          "visibility": false
+        },
+        {
+          "name": "Launch Agent",
+          "external_id": "T1159",
+          "visibility": false
+        },
+        {
+          "name": "Launch Daemon",
+          "external_id": "T1160",
+          "visibility": false
+        },
+        {
+          "name": "Launchctl",
+          "external_id": "T1152",
+          "visibility": false
+        },
+        {
+          "name": "Local Job Scheduling",
+          "external_id": "T1168",
+          "visibility": false
+        },
+        {
+          "name": "Login Item",
+          "external_id": "T1162",
+          "visibility": false
+        },
+        {
+          "name": "Malicious Shell Modification",
+          "external_id": "T1156",
+          "visibility": false
+        },
+        {
+          "name": "Modify Authentication Process",
+          "external_id": "T1556",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Network Device Authentication",
+              "external_id": "T1556.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Modify Existing Service",
+          "external_id": "T1031",
+          "visibility": false
+        },
+        {
+          "name": "Netsh Helper DLL",
+          "external_id": "T1128",
+          "visibility": false
+        },
+        {
+          "name": "New Service",
+          "external_id": "T1050",
+          "visibility": false
+        },
+        {
+          "name": "Office Application Startup",
+          "external_id": "T1137",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Add-ins",
+              "external_id": "T1137.006",
+              "visibility": false
+            },
+            {
+              "name": "Office Template Macros",
+              "external_id": "T1137.001",
+              "visibility": false
+            },
+            {
+              "name": "Office Test",
+              "external_id": "T1137.002",
+              "visibility": false
+            },
+            {
+              "name": "Outlook Forms",
+              "external_id": "T1137.003",
+              "visibility": false
+            },
+            {
+              "name": "Outlook Home Page",
+              "external_id": "T1137.004",
+              "visibility": false
+            },
+            {
+              "name": "Outlook Rules",
+              "external_id": "T1137.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Path Interception",
+          "external_id": "T1034",
+          "visibility": false
+        },
+        {
+          "name": "Plist Modification",
+          "external_id": "T1150",
+          "visibility": false
+        },
+        {
+          "name": "Port Monitors",
+          "external_id": "T1013",
+          "visibility": false
+        },
+        {
+          "name": "Power Settings",
+          "external_id": "T1653",
+          "visibility": false
+        },
+        {
+          "name": "PowerShell Profile",
+          "external_id": "T1504",
+          "visibility": false
+        },
+        {
+          "name": "Pre-OS Boot",
+          "external_id": "T1542",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "ROMMONkit",
+              "external_id": "T1542.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Rc.common",
+          "external_id": "T1163",
+          "visibility": false
+        },
+        {
+          "name": "Re-opened Applications",
+          "external_id": "T1164",
+          "visibility": false
+        },
+        {
+          "name": "Redundant Access",
+          "external_id": "T1108",
+          "visibility": false
+        },
+        {
+          "name": "Registry Run Keys / Startup Folder",
+          "external_id": "T1060",
+          "visibility": false
+        },
+        {
+          "name": "SIP and Trust Provider Hijacking",
+          "external_id": "T1198",
+          "visibility": false
+        },
+        {
+          "name": "Scheduled Task/Job",
+          "external_id": "T1053",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "At",
+              "external_id": "T1053.002",
+              "visibility": false
+            },
+            {
+              "name": "At (Linux)",
+              "external_id": "T1053.001",
+              "visibility": false
+            },
+            {
+              "name": "Launchd",
+              "external_id": "T1053.004",
+              "visibility": false
+            },
+            {
+              "name": "Systemd Timers",
+              "external_id": "T1053.006",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Screensaver",
+          "external_id": "T1180",
+          "visibility": false
+        },
+        {
+          "name": "Security Support Provider",
+          "external_id": "T1101",
+          "visibility": false
+        },
+        {
+          "name": "Server Software Component",
+          "external_id": "T1505",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "SQL Stored Procedures",
+              "external_id": "T1505.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Service Registry Permissions Weakness",
+          "external_id": "T1058",
+          "visibility": false
+        },
+        {
+          "name": "Setuid and Setgid",
+          "external_id": "T1166",
+          "visibility": false
+        },
+        {
+          "name": "Shortcut Modification",
+          "external_id": "T1023",
+          "visibility": false
+        },
+        {
+          "name": "Startup Items",
+          "external_id": "T1165",
+          "visibility": false
+        },
+        {
+          "name": "System Firmware",
+          "external_id": "T1019",
+          "visibility": false
+        },
+        {
+          "name": "Systemd Service",
+          "external_id": "T1501",
+          "visibility": false
+        },
+        {
+          "name": "Time Providers",
+          "external_id": "T1209",
+          "visibility": false
+        },
+        {
+          "name": "Traffic Signaling",
+          "external_id": "T1205",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Port Knocking",
+              "external_id": "T1205.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Trap",
+          "external_id": "T1154",
+          "visibility": false
+        },
+        {
+          "name": "Valid Accounts",
+          "external_id": "T1078",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Cloud Accounts",
+              "external_id": "T1078.004",
+              "visibility": false
+            },
+            {
+              "name": "Domain Accounts",
+              "external_id": "T1078.002",
+              "visibility": false
+            },
+            {
+              "name": "Local Accounts",
+              "external_id": "T1078.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Web Shell",
+          "external_id": "T1100",
+          "visibility": false
+        },
+        {
+          "name": "Windows Management Instrumentation Event Subscription",
+          "external_id": "T1084",
+          "visibility": false
+        },
+        {
+          "name": "Winlogon Helper DLL",
+          "external_id": "T1004",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Privilege Escalation",
+      "external_id": "TA0004",
+      "techniques": [
+        {
+          "name": "Abuse Elevation Control Mechanism",
+          "external_id": "T1548",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Elevated Execution with Prompt",
+              "external_id": "T1548.004",
+              "visibility": false
+            },
+            {
+              "name": "Setuid and Setgid",
+              "external_id": "T1548.001",
+              "visibility": false
+            },
+            {
+              "name": "TCC Manipulation",
+              "external_id": "T1548.006",
+              "visibility": false
+            },
+            {
+              "name": "Temporary Elevated Cloud Access",
+              "external_id": "T1548.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Access Token Manipulation",
+          "external_id": "T1134",
+          "visibility": false
+        },
+        {
+          "name": "Accessibility Features",
+          "external_id": "T1015",
+          "visibility": false
+        },
+        {
+          "name": "Account Manipulation",
+          "external_id": "T1098",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Additional Email Delegate Permissions",
+              "external_id": "T1098.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "AppCert DLLs",
+          "external_id": "T1182",
+          "visibility": false
+        },
+        {
+          "name": "AppInit DLLs",
+          "external_id": "T1103",
+          "visibility": false
+        },
+        {
+          "name": "Application Shimming",
+          "external_id": "T1138",
+          "visibility": false
+        },
+        {
+          "name": "Boot or Logon Autostart Execution",
+          "external_id": "T1547",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Active Setup",
+              "external_id": "T1547.014",
+              "visibility": false
+            },
+            {
+              "name": "Authentication Package",
+              "external_id": "T1547.002",
+              "visibility": false
+            },
+            {
+              "name": "Kernel Modules and Extensions",
+              "external_id": "T1547.006",
+              "visibility": false
+            },
+            {
+              "name": "LSASS Driver",
+              "external_id": "T1547.008",
+              "visibility": false
+            },
+            {
+              "name": "Login Items",
+              "external_id": "T1547.015",
+              "visibility": false
+            },
+            {
+              "name": "Plist Modification",
+              "external_id": "T1547.011",
+              "visibility": false
+            },
+            {
+              "name": "Port Monitors",
+              "external_id": "T1547.010",
+              "visibility": false
+            },
+            {
+              "name": "Print Processors",
+              "external_id": "T1547.012",
+              "visibility": false
+            },
+            {
+              "name": "Re-opened Applications",
+              "external_id": "T1547.007",
+              "visibility": false
+            },
+            {
+              "name": "Registry Run Keys / Startup Folder",
+              "external_id": "T1547.001",
+              "visibility": false
+            },
+            {
+              "name": "Security Support Provider",
+              "external_id": "T1547.005",
+              "visibility": false
+            },
+            {
+              "name": "Shortcut Modification",
+              "external_id": "T1547.009",
+              "visibility": false
+            },
+            {
+              "name": "Time Providers",
+              "external_id": "T1547.003",
+              "visibility": false
+            },
+            {
+              "name": "Winlogon Helper DLL",
+              "external_id": "T1547.004",
+              "visibility": false
+            },
+            {
+              "name": "XDG Autostart Entries",
+              "external_id": "T1547.013",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Boot or Logon Initialization Scripts",
+          "external_id": "T1037",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Login Hook",
+              "external_id": "T1037.002",
+              "visibility": false
+            },
+            {
+              "name": "Logon Script (Windows)",
+              "external_id": "T1037.001",
+              "visibility": false
+            },
+            {
+              "name": "Network Logon Script",
+              "external_id": "T1037.003",
+              "visibility": false
+            },
+            {
+              "name": "RC Scripts",
+              "external_id": "T1037.004",
+              "visibility": false
+            },
+            {
+              "name": "Startup Items",
+              "external_id": "T1037.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Bypass User Account Control",
+          "external_id": "T1088",
+          "visibility": false
+        },
+        {
+          "name": "Create or Modify System Process",
+          "external_id": "T1543",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Container Service",
+              "external_id": "T1543.005",
+              "visibility": false
+            },
+            {
+              "name": "Launch Agent",
+              "external_id": "T1543.001",
+              "visibility": false
+            },
+            {
+              "name": "Launch Daemon",
+              "external_id": "T1543.004",
+              "visibility": false
+            },
+            {
+              "name": "Systemd Service",
+              "external_id": "T1543.002",
+              "visibility": false
+            },
+            {
+              "name": "Windows Service",
+              "external_id": "T1543.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "DLL Search Order Hijacking",
+          "external_id": "T1038",
+          "visibility": false
+        },
+        {
+          "name": "Domain or Tenant Policy Modification",
+          "external_id": "T1484",
+          "visibility": false
+        },
+        {
+          "name": "Dylib Hijacking",
+          "external_id": "T1157",
+          "visibility": false
+        },
+        {
+          "name": "Elevated Execution with Prompt",
+          "external_id": "T1514",
+          "visibility": false
+        },
+        {
+          "name": "Emond",
+          "external_id": "T1519",
+          "visibility": false
+        },
+        {
+          "name": "Escape to Host",
+          "external_id": "T1611",
+          "visibility": false
+        },
+        {
+          "name": "Event Triggered Execution",
+          "external_id": "T1546",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "AppInit DLLs",
+              "external_id": "T1546.010",
+              "visibility": false
+            },
+            {
+              "name": "Component Object Model Hijacking",
+              "external_id": "T1546.015",
+              "visibility": false
+            },
+            {
+              "name": "Installer Packages",
+              "external_id": "T1546.016",
+              "visibility": false
+            },
+            {
+              "name": "Netsh Helper DLL",
+              "external_id": "T1546.007",
+              "visibility": false
+            },
+            {
+              "name": "Screensaver",
+              "external_id": "T1546.002",
+              "visibility": false
+            },
+            {
+              "name": "Unix Shell Configuration Modification",
+              "external_id": "T1546.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Exploitation for Privilege Escalation",
+          "external_id": "T1068",
+          "visibility": false
+        },
+        {
+          "name": "Extra Window Memory Injection",
+          "external_id": "T1181",
+          "visibility": false
+        },
+        {
+          "name": "File System Permissions Weakness",
+          "external_id": "T1044",
+          "visibility": false
+        },
+        {
+          "name": "Hijack Execution Flow",
+          "external_id": "T1574",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "COR_PROFILER",
+              "external_id": "T1574.012",
+              "visibility": false
+            },
+            {
+              "name": "DLL Side-Loading",
+              "external_id": "T1574.002",
+              "visibility": false
+            },
+            {
+              "name": "Dylib Hijacking",
+              "external_id": "T1574.004",
+              "visibility": false
+            },
+            {
+              "name": "Path Interception by Unquoted Path",
+              "external_id": "T1574.009",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Hooking",
+          "external_id": "T1179",
+          "visibility": false
+        },
+        {
+          "name": "Image File Execution Options Injection",
+          "external_id": "T1183",
+          "visibility": false
+        },
+        {
+          "name": "Launch Daemon",
+          "external_id": "T1160",
+          "visibility": false
+        },
+        {
+          "name": "New Service",
+          "external_id": "T1050",
+          "visibility": false
+        },
+        {
+          "name": "Parent PID Spoofing",
+          "external_id": "T1502",
+          "visibility": false
+        },
+        {
+          "name": "Path Interception",
+          "external_id": "T1034",
+          "visibility": false
+        },
+        {
+          "name": "Plist Modification",
+          "external_id": "T1150",
+          "visibility": false
+        },
+        {
+          "name": "Port Monitors",
+          "external_id": "T1013",
+          "visibility": false
+        },
+        {
+          "name": "PowerShell Profile",
+          "external_id": "T1504",
+          "visibility": false
+        },
+        {
+          "name": "Process Injection",
+          "external_id": "T1055",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Asynchronous Procedure Call",
+              "external_id": "T1055.004",
+              "visibility": false
+            },
+            {
+              "name": "Dynamic-link Library Injection",
+              "external_id": "T1055.001",
+              "visibility": false
+            },
+            {
+              "name": "ListPlanting",
+              "external_id": "T1055.015",
+              "visibility": false
+            },
+            {
+              "name": "Portable Executable Injection",
+              "external_id": "T1055.002",
+              "visibility": false
+            },
+            {
+              "name": "Proc Memory",
+              "external_id": "T1055.009",
+              "visibility": false
+            },
+            {
+              "name": "Process Doppelg\u00e4nging",
+              "external_id": "T1055.013",
+              "visibility": false
+            },
+            {
+              "name": "Process Hollowing",
+              "external_id": "T1055.012",
+              "visibility": false
+            },
+            {
+              "name": "Ptrace System Calls",
+              "external_id": "T1055.008",
+              "visibility": false
+            },
+            {
+              "name": "Thread Local Storage",
+              "external_id": "T1055.005",
+              "visibility": false
+            },
+            {
+              "name": "VDSO Hijacking",
+              "external_id": "T1055.014",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "SID-History Injection",
+          "external_id": "T1178",
+          "visibility": false
+        },
+        {
+          "name": "Scheduled Task/Job",
+          "external_id": "T1053",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "At",
+              "external_id": "T1053.002",
+              "visibility": false
+            },
+            {
+              "name": "At (Linux)",
+              "external_id": "T1053.001",
+              "visibility": false
+            },
+            {
+              "name": "Launchd",
+              "external_id": "T1053.004",
+              "visibility": false
+            },
+            {
+              "name": "Systemd Timers",
+              "external_id": "T1053.006",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Service Registry Permissions Weakness",
+          "external_id": "T1058",
+          "visibility": false
+        },
+        {
+          "name": "Setuid and Setgid",
+          "external_id": "T1166",
+          "visibility": false
+        },
+        {
+          "name": "Startup Items",
+          "external_id": "T1165",
+          "visibility": false
+        },
+        {
+          "name": "Sudo",
+          "external_id": "T1169",
+          "visibility": false
+        },
+        {
+          "name": "Sudo Caching",
+          "external_id": "T1206",
+          "visibility": false
+        },
+        {
+          "name": "Valid Accounts",
+          "external_id": "T1078",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Cloud Accounts",
+              "external_id": "T1078.004",
+              "visibility": false
+            },
+            {
+              "name": "Domain Accounts",
+              "external_id": "T1078.002",
+              "visibility": false
+            },
+            {
+              "name": "Local Accounts",
+              "external_id": "T1078.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Web Shell",
+          "external_id": "T1100",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Defense Evasion",
+      "external_id": "TA0005",
+      "techniques": [
+        {
+          "name": "Abuse Elevation Control Mechanism",
+          "external_id": "T1548",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Elevated Execution with Prompt",
+              "external_id": "T1548.004",
+              "visibility": false
+            },
+            {
+              "name": "Setuid and Setgid",
+              "external_id": "T1548.001",
+              "visibility": false
+            },
+            {
+              "name": "TCC Manipulation",
+              "external_id": "T1548.006",
+              "visibility": false
+            },
+            {
+              "name": "Temporary Elevated Cloud Access",
+              "external_id": "T1548.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Access Token Manipulation",
+          "external_id": "T1134",
+          "visibility": false
+        },
+        {
+          "name": "Application Access Token",
+          "external_id": "T1527",
+          "visibility": false
+        },
+        {
+          "name": "BITS Jobs",
+          "external_id": "T1197",
+          "visibility": false
+        },
+        {
+          "name": "Binary Padding",
+          "external_id": "T1009",
+          "visibility": false
+        },
+        {
+          "name": "Build Image on Host",
+          "external_id": "T1612",
+          "visibility": false
+        },
+        {
+          "name": "Bypass User Account Control",
+          "external_id": "T1088",
+          "visibility": false
+        },
+        {
+          "name": "CMSTP",
+          "external_id": "T1191",
+          "visibility": false
+        },
+        {
+          "name": "Clear Command History",
+          "external_id": "T1146",
+          "visibility": false
+        },
+        {
+          "name": "Code Signing",
+          "external_id": "T1116",
+          "visibility": false
+        },
+        {
+          "name": "Compile After Delivery",
+          "external_id": "T1500",
+          "visibility": false
+        },
+        {
+          "name": "Compiled HTML File",
+          "external_id": "T1223",
+          "visibility": false
+        },
+        {
+          "name": "Component Firmware",
+          "external_id": "T1109",
+          "visibility": false
+        },
+        {
+          "name": "Component Object Model Hijacking",
+          "external_id": "T1122",
+          "visibility": false
+        },
+        {
+          "name": "Control Panel Items",
+          "external_id": "T1196",
+          "visibility": false
+        },
+        {
+          "name": "DLL Search Order Hijacking",
+          "external_id": "T1038",
+          "visibility": false
+        },
+        {
+          "name": "DLL Side-Loading",
+          "external_id": "T1073",
+          "visibility": false
+        },
+        {
+          "name": "Debugger Evasion",
+          "external_id": "T1622",
+          "visibility": false
+        },
+        {
+          "name": "Deobfuscate/Decode Files or Information",
+          "external_id": "T1140",
+          "visibility": false
+        },
+        {
+          "name": "Deploy Container",
+          "external_id": "T1610",
+          "visibility": false
+        },
+        {
+          "name": "Direct Volume Access",
+          "external_id": "T1006",
+          "visibility": false
+        },
+        {
+          "name": "Disabling Security Tools",
+          "external_id": "T1089",
+          "visibility": false
+        },
+        {
+          "name": "Domain or Tenant Policy Modification",
+          "external_id": "T1484",
+          "visibility": false
+        },
+        {
+          "name": "Execution Guardrails",
+          "external_id": "T1480",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Environmental Keying",
+              "external_id": "T1480.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Exploitation for Defense Evasion",
+          "external_id": "T1211",
+          "visibility": false
+        },
+        {
+          "name": "Extra Window Memory Injection",
+          "external_id": "T1181",
+          "visibility": false
+        },
+        {
+          "name": "File Deletion",
+          "external_id": "T1107",
+          "visibility": false
+        },
+        {
+          "name": "File and Directory Permissions Modification",
+          "external_id": "T1222",
+          "visibility": false
+        },
+        {
+          "name": "Gatekeeper Bypass",
+          "external_id": "T1144",
+          "visibility": false
+        },
+        {
+          "name": "HISTCONTROL",
+          "external_id": "T1148",
+          "visibility": false
+        },
+        {
+          "name": "Hidden Files and Directories",
+          "external_id": "T1158",
+          "visibility": false
+        },
+        {
+          "name": "Hidden Users",
+          "external_id": "T1147",
+          "visibility": false
+        },
+        {
+          "name": "Hidden Window",
+          "external_id": "T1143",
+          "visibility": false
+        },
+        {
+          "name": "Hide Artifacts",
+          "external_id": "T1564",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Hidden File System",
+              "external_id": "T1564.005",
+              "visibility": false
+            },
+            {
+              "name": "Hidden Files and Directories",
+              "external_id": "T1564.001",
+              "visibility": false
+            },
+            {
+              "name": "Hidden Users",
+              "external_id": "T1564.002",
+              "visibility": false
+            },
+            {
+              "name": "Hidden Window",
+              "external_id": "T1564.003",
+              "visibility": false
+            },
+            {
+              "name": "Ignore Process Interrupts",
+              "external_id": "T1564.011",
+              "visibility": false
+            },
+            {
+              "name": "NTFS File Attributes",
+              "external_id": "T1564.004",
+              "visibility": false
+            },
+            {
+              "name": "Process Argument Spoofing",
+              "external_id": "T1564.010",
+              "visibility": false
+            },
+            {
+              "name": "Resource Forking",
+              "external_id": "T1564.009",
+              "visibility": false
+            },
+            {
+              "name": "Run Virtual Instance",
+              "external_id": "T1564.006",
+              "visibility": false
+            },
+            {
+              "name": "VBA Stomping",
+              "external_id": "T1564.007",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Hijack Execution Flow",
+          "external_id": "T1574",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "COR_PROFILER",
+              "external_id": "T1574.012",
+              "visibility": false
+            },
+            {
+              "name": "DLL Side-Loading",
+              "external_id": "T1574.002",
+              "visibility": false
+            },
+            {
+              "name": "Dylib Hijacking",
+              "external_id": "T1574.004",
+              "visibility": false
+            },
+            {
+              "name": "Path Interception by Unquoted Path",
+              "external_id": "T1574.009",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Image File Execution Options Injection",
+          "external_id": "T1183",
+          "visibility": false
+        },
+        {
+          "name": "Impair Defenses",
+          "external_id": "T1562",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Disable Windows Event Logging",
+              "external_id": "T1562.002",
+              "visibility": false
+            },
+            {
+              "name": "Disable or Modify Cloud Firewall",
+              "external_id": "T1562.007",
+              "visibility": false
+            },
+            {
+              "name": "Disable or Modify Cloud Logs",
+              "external_id": "T1562.008",
+              "visibility": false
+            },
+            {
+              "name": "Disable or Modify Linux Audit System",
+              "external_id": "T1562.012",
+              "visibility": false
+            },
+            {
+              "name": "Disable or Modify System Firewall",
+              "external_id": "T1562.004",
+              "visibility": false
+            },
+            {
+              "name": "Disable or Modify Tools",
+              "external_id": "T1562.001",
+              "visibility": false
+            },
+            {
+              "name": "Downgrade Attack",
+              "external_id": "T1562.010",
+              "visibility": false
+            },
+            {
+              "name": "Impair Command History Logging",
+              "external_id": "T1562.003",
+              "visibility": false
+            },
+            {
+              "name": "Indicator Blocking",
+              "external_id": "T1562.006",
+              "visibility": false
+            },
+            {
+              "name": "Spoof Security Alerting",
+              "external_id": "T1562.011",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Impersonation",
+          "external_id": "T1656",
+          "visibility": false
+        },
+        {
+          "name": "Indicator Blocking",
+          "external_id": "T1054",
+          "visibility": false
+        },
+        {
+          "name": "Indicator Removal",
+          "external_id": "T1070",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Clear Persistence",
+              "external_id": "T1070.009",
+              "visibility": false
+            },
+            {
+              "name": "File Deletion",
+              "external_id": "T1070.004",
+              "visibility": false
+            },
+            {
+              "name": "Network Share Connection Removal",
+              "external_id": "T1070.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Indicator Removal from Tools",
+          "external_id": "T1066",
+          "visibility": false
+        },
+        {
+          "name": "Indirect Command Execution",
+          "external_id": "T1202",
+          "visibility": false
+        },
+        {
+          "name": "Install Root Certificate",
+          "external_id": "T1130",
+          "visibility": false
+        },
+        {
+          "name": "InstallUtil",
+          "external_id": "T1118",
+          "visibility": false
+        },
+        {
+          "name": "LC_MAIN Hijacking",
+          "external_id": "T1149",
+          "visibility": false
+        },
+        {
+          "name": "Launchctl",
+          "external_id": "T1152",
+          "visibility": false
+        },
+        {
+          "name": "Masquerading",
+          "external_id": "T1036",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Invalid Code Signature",
+              "external_id": "T1036.001",
+              "visibility": false
+            },
+            {
+              "name": "Masquerade Task or Service",
+              "external_id": "T1036.004",
+              "visibility": false
+            },
+            {
+              "name": "Rename System Utilities",
+              "external_id": "T1036.003",
+              "visibility": false
+            },
+            {
+              "name": "Right-to-Left Override",
+              "external_id": "T1036.002",
+              "visibility": false
+            },
+            {
+              "name": "Space after Filename",
+              "external_id": "T1036.006",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Modify Authentication Process",
+          "external_id": "T1556",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Network Device Authentication",
+              "external_id": "T1556.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Modify Cloud Compute Infrastructure",
+          "external_id": "T1578",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Create Cloud Instance",
+              "external_id": "T1578.002",
+              "visibility": false
+            },
+            {
+              "name": "Create Snapshot",
+              "external_id": "T1578.001",
+              "visibility": false
+            },
+            {
+              "name": "Delete Cloud Instance",
+              "external_id": "T1578.003",
+              "visibility": false
+            },
+            {
+              "name": "Modify Cloud Compute Configurations",
+              "external_id": "T1578.005",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Modify Registry",
+          "external_id": "T1112",
+          "visibility": false
+        },
+        {
+          "name": "Modify System Image",
+          "external_id": "T1601",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Downgrade System Image",
+              "external_id": "T1601.002",
+              "visibility": false
+            },
+            {
+              "name": "Patch System Image",
+              "external_id": "T1601.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Mshta",
+          "external_id": "T1170",
+          "visibility": false
+        },
+        {
+          "name": "NTFS File Attributes",
+          "external_id": "T1096",
+          "visibility": false
+        },
+        {
+          "name": "Network Boundary Bridging",
+          "external_id": "T1599",
+          "visibility": false
+        },
+        {
+          "name": "Network Share Connection Removal",
+          "external_id": "T1126",
+          "visibility": false
+        },
+        {
+          "name": "Obfuscated Files or Information",
+          "external_id": "T1027",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Command Obfuscation",
+              "external_id": "T1027.010",
+              "visibility": false
+            },
+            {
+              "name": "Compile After Delivery",
+              "external_id": "T1027.004",
+              "visibility": false
+            },
+            {
+              "name": "Dynamic API Resolution",
+              "external_id": "T1027.007",
+              "visibility": false
+            },
+            {
+              "name": "HTML Smuggling",
+              "external_id": "T1027.006",
+              "visibility": false
+            },
+            {
+              "name": "Software Packing",
+              "external_id": "T1027.002",
+              "visibility": false
+            },
+            {
+              "name": "Steganography",
+              "external_id": "T1027.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Parent PID Spoofing",
+          "external_id": "T1502",
+          "visibility": false
+        },
+        {
+          "name": "Plist File Modification",
+          "external_id": "T1647",
+          "visibility": false
+        },
+        {
+          "name": "Plist Modification",
+          "external_id": "T1150",
+          "visibility": false
+        },
+        {
+          "name": "Pre-OS Boot",
+          "external_id": "T1542",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "ROMMONkit",
+              "external_id": "T1542.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Process Doppelg\u00e4nging",
+          "external_id": "T1186",
+          "visibility": false
+        },
+        {
+          "name": "Process Hollowing",
+          "external_id": "T1093",
+          "visibility": false
+        },
+        {
+          "name": "Process Injection",
+          "external_id": "T1055",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Asynchronous Procedure Call",
+              "external_id": "T1055.004",
+              "visibility": false
+            },
+            {
+              "name": "Dynamic-link Library Injection",
+              "external_id": "T1055.001",
+              "visibility": false
+            },
+            {
+              "name": "ListPlanting",
+              "external_id": "T1055.015",
+              "visibility": false
+            },
+            {
+              "name": "Portable Executable Injection",
+              "external_id": "T1055.002",
+              "visibility": false
+            },
+            {
+              "name": "Proc Memory",
+              "external_id": "T1055.009",
+              "visibility": false
+            },
+            {
+              "name": "Process Doppelg\u00e4nging",
+              "external_id": "T1055.013",
+              "visibility": false
+            },
+            {
+              "name": "Process Hollowing",
+              "external_id": "T1055.012",
+              "visibility": false
+            },
+            {
+              "name": "Ptrace System Calls",
+              "external_id": "T1055.008",
+              "visibility": false
+            },
+            {
+              "name": "Thread Local Storage",
+              "external_id": "T1055.005",
+              "visibility": false
+            },
+            {
+              "name": "VDSO Hijacking",
+              "external_id": "T1055.014",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Redundant Access",
+          "external_id": "T1108",
+          "visibility": false
+        },
+        {
+          "name": "Reflective Code Loading",
+          "external_id": "T1620",
+          "visibility": false
+        },
+        {
+          "name": "Regsvcs/Regasm",
+          "external_id": "T1121",
+          "visibility": false
+        },
+        {
+          "name": "Regsvr32",
+          "external_id": "T1117",
+          "visibility": false
+        },
+        {
+          "name": "Revert Cloud Instance",
+          "external_id": "T1536",
+          "visibility": false
+        },
+        {
+          "name": "Rogue Domain Controller",
+          "external_id": "T1207",
+          "visibility": false
+        },
+        {
+          "name": "Rootkit",
+          "external_id": "T1014",
+          "visibility": false
+        },
+        {
+          "name": "Rundll32",
+          "external_id": "T1085",
+          "visibility": false
+        },
+        {
+          "name": "SIP and Trust Provider Hijacking",
+          "external_id": "T1198",
+          "visibility": false
+        },
+        {
+          "name": "Scripting",
+          "external_id": "T1064",
+          "visibility": false
+        },
+        {
+          "name": "Software Packing",
+          "external_id": "T1045",
+          "visibility": false
+        },
+        {
+          "name": "Space after Filename",
+          "external_id": "T1151",
+          "visibility": false
+        },
+        {
+          "name": "Subvert Trust Controls",
+          "external_id": "T1553",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Install Root Certificate",
+              "external_id": "T1553.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "System Binary Proxy Execution",
+          "external_id": "T1218",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "CMSTP",
+              "external_id": "T1218.003",
+              "visibility": false
+            },
+            {
+              "name": "Compiled HTML File",
+              "external_id": "T1218.001",
+              "visibility": false
+            },
+            {
+              "name": "Control Panel",
+              "external_id": "T1218.002",
+              "visibility": false
+            },
+            {
+              "name": "Electron Applications",
+              "external_id": "T1218.015",
+              "visibility": false
+            },
+            {
+              "name": "MMC",
+              "external_id": "T1218.014",
+              "visibility": false
+            },
+            {
+              "name": "Mshta",
+              "external_id": "T1218.005",
+              "visibility": false
+            },
+            {
+              "name": "Odbcconf",
+              "external_id": "T1218.008",
+              "visibility": false
+            },
+            {
+              "name": "Regsvcs/Regasm",
+              "external_id": "T1218.009",
+              "visibility": false
+            },
+            {
+              "name": "Regsvr32",
+              "external_id": "T1218.010",
+              "visibility": false
+            },
+            {
+              "name": "Verclsid",
+              "external_id": "T1218.012",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "System Script Proxy Execution",
+          "external_id": "T1216",
+          "visibility": false
+        },
+        {
+          "name": "Template Injection",
+          "external_id": "T1221",
+          "visibility": false
+        },
+        {
+          "name": "Timestomp",
+          "external_id": "T1099",
+          "visibility": false
+        },
+        {
+          "name": "Traffic Signaling",
+          "external_id": "T1205",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Port Knocking",
+              "external_id": "T1205.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Trusted Developer Utilities Proxy Execution",
+          "external_id": "T1127",
+          "visibility": false
+        },
+        {
+          "name": "Unused/Unsupported Cloud Regions",
+          "external_id": "T1535",
+          "visibility": false
+        },
+        {
+          "name": "Use Alternate Authentication Material",
+          "external_id": "T1550",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Application Access Token",
+              "external_id": "T1550.001",
+              "visibility": false
+            },
+            {
+              "name": "Pass the Hash",
+              "external_id": "T1550.002",
+              "visibility": false
+            },
+            {
+              "name": "Pass the Ticket",
+              "external_id": "T1550.003",
+              "visibility": false
+            },
+            {
+              "name": "Web Session Cookie",
+              "external_id": "T1550.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Valid Accounts",
+          "external_id": "T1078",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Cloud Accounts",
+              "external_id": "T1078.004",
+              "visibility": false
+            },
+            {
+              "name": "Domain Accounts",
+              "external_id": "T1078.002",
+              "visibility": false
+            },
+            {
+              "name": "Local Accounts",
+              "external_id": "T1078.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Virtualization/Sandbox Evasion",
+          "external_id": "T1497",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "User Activity Based Checks",
+              "external_id": "T1497.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Weaken Encryption",
+          "external_id": "T1600",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Disable Crypto Hardware",
+              "external_id": "T1600.002",
+              "visibility": false
+            },
+            {
+              "name": "Reduce Key Space",
+              "external_id": "T1600.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Web Session Cookie",
+          "external_id": "T1506",
+          "visibility": false
+        },
+        {
+          "name": "XSL Script Processing",
+          "external_id": "T1220",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Credential Access",
+      "external_id": "TA0006",
+      "techniques": [
+        {
+          "name": "Adversary-in-the-Middle",
+          "external_id": "T1557",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "ARP Cache Poisoning",
+              "external_id": "T1557.002",
+              "visibility": false
+            },
+            {
+              "name": "DHCP Spoofing",
+              "external_id": "T1557.003",
+              "visibility": false
+            },
+            {
+              "name": "LLMNR/NBT-NS Poisoning and SMB Relay",
+              "external_id": "T1557.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Bash History",
+          "external_id": "T1139",
+          "visibility": false
+        },
+        {
+          "name": "Brute Force",
+          "external_id": "T1110",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Credential Stuffing",
+              "external_id": "T1110.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Cloud Instance Metadata API",
+          "external_id": "T1522",
+          "visibility": false
+        },
+        {
+          "name": "Credentials from Password Stores",
+          "external_id": "T1555",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Cloud Secrets Management Stores",
+              "external_id": "T1555.006",
+              "visibility": false
+            },
+            {
+              "name": "Credentials from Web Browsers",
+              "external_id": "T1555.003",
+              "visibility": false
+            },
+            {
+              "name": "Windows Credential Manager",
+              "external_id": "T1555.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Credentials from Web Browsers",
+          "external_id": "T1503",
+          "visibility": false
+        },
+        {
+          "name": "Credentials in Files",
+          "external_id": "T1081",
+          "visibility": false
+        },
+        {
+          "name": "Credentials in Registry",
+          "external_id": "T1214",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation for Credential Access",
+          "external_id": "T1212",
+          "visibility": false
+        },
+        {
+          "name": "Forced Authentication",
+          "external_id": "T1187",
+          "visibility": false
+        },
+        {
+          "name": "Forge Web Credentials",
+          "external_id": "T1606",
+          "visibility": false
+        },
+        {
+          "name": "Hooking",
+          "external_id": "T1179",
+          "visibility": false
+        },
+        {
+          "name": "Input Capture",
+          "external_id": "T1056",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Credential API Hooking",
+              "external_id": "T1056.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Input Prompt",
+          "external_id": "T1141",
+          "visibility": false
+        },
+        {
+          "name": "Kerberoasting",
+          "external_id": "T1208",
+          "visibility": false
+        },
+        {
+          "name": "Keychain",
+          "external_id": "T1142",
+          "visibility": false
+        },
+        {
+          "name": "LLMNR/NBT-NS Poisoning and Relay",
+          "external_id": "T1171",
+          "visibility": false
+        },
+        {
+          "name": "Modify Authentication Process",
+          "external_id": "T1556",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Network Device Authentication",
+              "external_id": "T1556.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Multi-Factor Authentication Interception",
+          "external_id": "T1111",
+          "visibility": false
+        },
+        {
+          "name": "Multi-Factor Authentication Request Generation",
+          "external_id": "T1621",
+          "visibility": false
+        },
+        {
+          "name": "Network Sniffing",
+          "external_id": "T1040",
+          "visibility": false
+        },
+        {
+          "name": "OS Credential Dumping",
+          "external_id": "T1003",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "/etc/passwd and /etc/shadow",
+              "external_id": "T1003.008",
+              "visibility": false
+            },
+            {
+              "name": "Cached Domain Credentials",
+              "external_id": "T1003.005",
+              "visibility": false
+            },
+            {
+              "name": "DCSync",
+              "external_id": "T1003.006",
+              "visibility": false
+            },
+            {
+              "name": "LSA Secrets",
+              "external_id": "T1003.004",
+              "visibility": false
+            },
+            {
+              "name": "LSASS Memory",
+              "external_id": "T1003.001",
+              "visibility": false
+            },
+            {
+              "name": "NTDS",
+              "external_id": "T1003.003",
+              "visibility": false
+            },
+            {
+              "name": "Proc Filesystem",
+              "external_id": "T1003.007",
+              "visibility": false
+            },
+            {
+              "name": "Security Account Manager",
+              "external_id": "T1003.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Password Filter DLL",
+          "external_id": "T1174",
+          "visibility": false
+        },
+        {
+          "name": "Private Keys",
+          "external_id": "T1145",
+          "visibility": false
+        },
+        {
+          "name": "Securityd Memory",
+          "external_id": "T1167",
+          "visibility": false
+        },
+        {
+          "name": "Steal Application Access Token",
+          "external_id": "T1528",
+          "visibility": false
+        },
+        {
+          "name": "Steal Web Session Cookie",
+          "external_id": "T1539",
+          "visibility": false
+        },
+        {
+          "name": "Steal or Forge Authentication Certificates",
+          "external_id": "T1649",
+          "visibility": false
+        },
+        {
+          "name": "Steal or Forge Kerberos Tickets",
+          "external_id": "T1558",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Golden Ticket",
+              "external_id": "T1558.001",
+              "visibility": false
+            },
+            {
+              "name": "Kerberoasting",
+              "external_id": "T1558.003",
+              "visibility": false
+            },
+            {
+              "name": "Silver Ticket",
+              "external_id": "T1558.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Unsecured Credentials",
+          "external_id": "T1552",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Bash History",
+              "external_id": "T1552.003",
+              "visibility": false
+            },
+            {
+              "name": "Chat Messages",
+              "external_id": "T1552.008",
+              "visibility": false
+            },
+            {
+              "name": "Container API",
+              "external_id": "T1552.007",
+              "visibility": false
+            },
+            {
+              "name": "Credentials In Files",
+              "external_id": "T1552.001",
+              "visibility": false
+            },
+            {
+              "name": "Group Policy Preferences",
+              "external_id": "T1552.006",
+              "visibility": false
+            },
+            {
+              "name": "Private Keys",
+              "external_id": "T1552.004",
+              "visibility": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Discovery",
+      "external_id": "TA0007",
+      "techniques": [
+        {
+          "name": "Account Discovery",
+          "external_id": "T1087",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Cloud Account",
+              "external_id": "T1087.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Application Window Discovery",
+          "external_id": "T1010",
+          "visibility": false
+        },
+        {
+          "name": "Browser Information Discovery",
+          "external_id": "T1217",
+          "visibility": false
+        },
+        {
+          "name": "Cloud Infrastructure Discovery",
+          "external_id": "T1580",
+          "visibility": false
+        },
+        {
+          "name": "Cloud Service Dashboard",
+          "external_id": "T1538",
+          "visibility": false
+        },
+        {
+          "name": "Cloud Service Discovery",
+          "external_id": "T1526",
+          "visibility": false
+        },
+        {
+          "name": "Cloud Storage Object Discovery",
+          "external_id": "T1619",
+          "visibility": false
+        },
+        {
+          "name": "Container and Resource Discovery",
+          "external_id": "T1613",
+          "visibility": false
+        },
+        {
+          "name": "Debugger Evasion",
+          "external_id": "T1622",
+          "visibility": false
+        },
+        {
+          "name": "Device Driver Discovery",
+          "external_id": "T1652",
+          "visibility": false
+        },
+        {
+          "name": "Domain Trust Discovery",
+          "external_id": "T1482",
+          "visibility": false
+        },
+        {
+          "name": "File and Directory Discovery",
+          "external_id": "T1083",
+          "visibility": false
+        },
+        {
+          "name": "Group Policy Discovery",
+          "external_id": "T1615",
+          "visibility": false
+        },
+        {
+          "name": "Log Enumeration",
+          "external_id": "T1654",
+          "visibility": false
+        },
+        {
+          "name": "Network Service Discovery",
+          "external_id": "T1046",
+          "visibility": false
+        },
+        {
+          "name": "Network Share Discovery",
+          "external_id": "T1135",
+          "visibility": false
+        },
+        {
+          "name": "Network Sniffing",
+          "external_id": "T1040",
+          "visibility": false
+        },
+        {
+          "name": "Password Policy Discovery",
+          "external_id": "T1201",
+          "visibility": false
+        },
+        {
+          "name": "Peripheral Device Discovery",
+          "external_id": "T1120",
+          "visibility": false
+        },
+        {
+          "name": "Permission Groups Discovery",
+          "external_id": "T1069",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Cloud Groups",
+              "external_id": "T1069.003",
+              "visibility": false
+            },
+            {
+              "name": "Domain Groups",
+              "external_id": "T1069.002",
+              "visibility": false
+            },
+            {
+              "name": "Local Groups",
+              "external_id": "T1069.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Process Discovery",
+          "external_id": "T1057",
+          "visibility": false
+        },
+        {
+          "name": "Query Registry",
+          "external_id": "T1012",
+          "visibility": false
+        },
+        {
+          "name": "Remote System Discovery",
+          "external_id": "T1018",
+          "visibility": false
+        },
+        {
+          "name": "Security Software Discovery",
+          "external_id": "T1063",
+          "visibility": false
+        },
+        {
+          "name": "Software Discovery",
+          "external_id": "T1518",
+          "visibility": false
+        },
+        {
+          "name": "System Information Discovery",
+          "external_id": "T1082",
+          "visibility": false
+        },
+        {
+          "name": "System Location Discovery",
+          "external_id": "T1614",
+          "visibility": false
+        },
+        {
+          "name": "System Network Configuration Discovery",
+          "external_id": "T1016",
+          "visibility": false
+        },
+        {
+          "name": "System Network Connections Discovery",
+          "external_id": "T1049",
+          "visibility": false
+        },
+        {
+          "name": "System Owner/User Discovery",
+          "external_id": "T1033",
+          "visibility": false
+        },
+        {
+          "name": "System Service Discovery",
+          "external_id": "T1007",
+          "visibility": false
+        },
+        {
+          "name": "System Time Discovery",
+          "external_id": "T1124",
+          "visibility": false
+        },
+        {
+          "name": "Virtualization/Sandbox Evasion",
+          "external_id": "T1497",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "User Activity Based Checks",
+              "external_id": "T1497.002",
+              "visibility": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lateral Movement",
+      "external_id": "TA0008",
+      "techniques": [
+        {
+          "name": "Application Access Token",
+          "external_id": "T1527",
+          "visibility": false
+        },
+        {
+          "name": "Application Deployment Software",
+          "external_id": "T1017",
+          "visibility": false
+        },
+        {
+          "name": "Component Object Model and Distributed COM",
+          "external_id": "T1175",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation of Remote Services",
+          "external_id": "T1210",
+          "visibility": false
+        },
+        {
+          "name": "Internal Spearphishing",
+          "external_id": "T1534",
+          "visibility": false
+        },
+        {
+          "name": "Lateral Tool Transfer",
+          "external_id": "T1570",
+          "visibility": false
+        },
+        {
+          "name": "Pass the Hash",
+          "external_id": "T1075",
+          "visibility": false
+        },
+        {
+          "name": "Pass the Ticket",
+          "external_id": "T1097",
+          "visibility": false
+        },
+        {
+          "name": "Remote Desktop Protocol",
+          "external_id": "T1076",
+          "visibility": false
+        },
+        {
+          "name": "Remote Service Session Hijacking",
+          "external_id": "T1563",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "RDP Hijacking",
+              "external_id": "T1563.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Remote Services",
+          "external_id": "T1021",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Cloud Services",
+              "external_id": "T1021.007",
+              "visibility": false
+            },
+            {
+              "name": "Distributed Component Object Model",
+              "external_id": "T1021.003",
+              "visibility": false
+            },
+            {
+              "name": "Remote Desktop Protocol",
+              "external_id": "T1021.001",
+              "visibility": false
+            },
+            {
+              "name": "Windows Remote Management",
+              "external_id": "T1021.006",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Replication Through Removable Media",
+          "external_id": "T1091",
+          "visibility": false
+        },
+        {
+          "name": "SSH Hijacking",
+          "external_id": "T1184",
+          "visibility": false
+        },
+        {
+          "name": "Shared Webroot",
+          "external_id": "T1051",
+          "visibility": false
+        },
+        {
+          "name": "Software Deployment Tools",
+          "external_id": "T1072",
+          "visibility": false
+        },
+        {
+          "name": "Taint Shared Content",
+          "external_id": "T1080",
+          "visibility": false
+        },
+        {
+          "name": "Use Alternate Authentication Material",
+          "external_id": "T1550",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Application Access Token",
+              "external_id": "T1550.001",
+              "visibility": false
+            },
+            {
+              "name": "Pass the Hash",
+              "external_id": "T1550.002",
+              "visibility": false
+            },
+            {
+              "name": "Pass the Ticket",
+              "external_id": "T1550.003",
+              "visibility": false
+            },
+            {
+              "name": "Web Session Cookie",
+              "external_id": "T1550.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Web Session Cookie",
+          "external_id": "T1506",
+          "visibility": false
+        },
+        {
+          "name": "Windows Admin Shares",
+          "external_id": "T1077",
+          "visibility": false
+        },
+        {
+          "name": "Windows Remote Management",
+          "external_id": "T1028",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Collection",
+      "external_id": "TA0009",
+      "techniques": [
+        {
+          "name": "Adversary-in-the-Middle",
+          "external_id": "T1557",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "ARP Cache Poisoning",
+              "external_id": "T1557.002",
+              "visibility": false
+            },
+            {
+              "name": "DHCP Spoofing",
+              "external_id": "T1557.003",
+              "visibility": false
+            },
+            {
+              "name": "LLMNR/NBT-NS Poisoning and SMB Relay",
+              "external_id": "T1557.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Archive Collected Data",
+          "external_id": "T1560",
+          "visibility": false
+        },
+        {
+          "name": "Audio Capture",
+          "external_id": "T1123",
+          "visibility": false
+        },
+        {
+          "name": "Automated Collection",
+          "external_id": "T1119",
+          "visibility": false
+        },
+        {
+          "name": "Browser Session Hijacking",
+          "external_id": "T1185",
+          "visibility": false
+        },
+        {
+          "name": "Clipboard Data",
+          "external_id": "T1115",
+          "visibility": false
+        },
+        {
+          "name": "Data Staged",
+          "external_id": "T1074",
+          "visibility": false
+        },
+        {
+          "name": "Data from Cloud Storage",
+          "external_id": "T1530",
+          "visibility": false
+        },
+        {
+          "name": "Data from Configuration Repository",
+          "external_id": "T1602",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Network Device Configuration Dump",
+              "external_id": "T1602.002",
+              "visibility": false
+            },
+            {
+              "name": "SNMP (MIB Dump)",
+              "external_id": "T1602.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Data from Information Repositories",
+          "external_id": "T1213",
+          "visibility": false
+        },
+        {
+          "name": "Data from Local System",
+          "external_id": "T1005",
+          "visibility": false
+        },
+        {
+          "name": "Data from Network Shared Drive",
+          "external_id": "T1039",
+          "visibility": false
+        },
+        {
+          "name": "Data from Removable Media",
+          "external_id": "T1025",
+          "visibility": false
+        },
+        {
+          "name": "Email Collection",
+          "external_id": "T1114",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Email Forwarding Rule",
+              "external_id": "T1114.003",
+              "visibility": false
+            },
+            {
+              "name": "Local Email Collection",
+              "external_id": "T1114.001",
+              "visibility": false
+            },
+            {
+              "name": "Remote Email Collection",
+              "external_id": "T1114.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Input Capture",
+          "external_id": "T1056",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Credential API Hooking",
+              "external_id": "T1056.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Screen Capture",
+          "external_id": "T1113",
+          "visibility": false
+        },
+        {
+          "name": "Video Capture",
+          "external_id": "T1125",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Command and Control",
+      "external_id": "TA0011",
+      "techniques": [
+        {
+          "name": "Application Layer Protocol",
+          "external_id": "T1071",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "File Transfer Protocols",
+              "external_id": "T1071.002",
+              "visibility": false
+            },
+            {
+              "name": "Mail Protocols",
+              "external_id": "T1071.003",
+              "visibility": false
+            },
+            {
+              "name": "Web Protocols",
+              "external_id": "T1071.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Commonly Used Port",
+          "external_id": "T1043",
+          "visibility": false
+        },
+        {
+          "name": "Communication Through Removable Media",
+          "external_id": "T1092",
+          "visibility": false
+        },
+        {
+          "name": "Content Injection",
+          "external_id": "T1659",
+          "visibility": false
+        },
+        {
+          "name": "Custom Command and Control Protocol",
+          "external_id": "T1094",
+          "visibility": false
+        },
+        {
+          "name": "Custom Cryptographic Protocol",
+          "external_id": "T1024",
+          "visibility": false
+        },
+        {
+          "name": "Data Encoding",
+          "external_id": "T1132",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Non-Standard Encoding",
+              "external_id": "T1132.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Data Obfuscation",
+          "external_id": "T1001",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Junk Data",
+              "external_id": "T1001.001",
+              "visibility": false
+            },
+            {
+              "name": "Protocol Impersonation",
+              "external_id": "T1001.003",
+              "visibility": false
+            },
+            {
+              "name": "Steganography",
+              "external_id": "T1001.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Domain Fronting",
+          "external_id": "T1172",
+          "visibility": false
+        },
+        {
+          "name": "Domain Generation Algorithms",
+          "external_id": "T1483",
+          "visibility": false
+        },
+        {
+          "name": "Dynamic Resolution",
+          "external_id": "T1568",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "DNS Calculation",
+              "external_id": "T1568.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Encrypted Channel",
+          "external_id": "T1573",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Asymmetric Cryptography",
+              "external_id": "T1573.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Fallback Channels",
+          "external_id": "T1008",
+          "visibility": false
+        },
+        {
+          "name": "Hide Infrastructure",
+          "external_id": "T1665",
+          "visibility": false
+        },
+        {
+          "name": "Ingress Tool Transfer",
+          "external_id": "T1105",
+          "visibility": false
+        },
+        {
+          "name": "Multi-Stage Channels",
+          "external_id": "T1104",
+          "visibility": false
+        },
+        {
+          "name": "Multi-hop Proxy",
+          "external_id": "T1188",
+          "visibility": false
+        },
+        {
+          "name": "Multiband Communication",
+          "external_id": "T1026",
+          "visibility": false
+        },
+        {
+          "name": "Multilayer Encryption",
+          "external_id": "T1079",
+          "visibility": false
+        },
+        {
+          "name": "Non-Application Layer Protocol",
+          "external_id": "T1095",
+          "visibility": false
+        },
+        {
+          "name": "Non-Standard Port",
+          "external_id": "T1571",
+          "visibility": false
+        },
+        {
+          "name": "Protocol Tunneling",
+          "external_id": "T1572",
+          "visibility": false
+        },
+        {
+          "name": "Proxy",
+          "external_id": "T1090",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Domain Fronting",
+              "external_id": "T1090.004",
+              "visibility": false
+            },
+            {
+              "name": "Internal Proxy",
+              "external_id": "T1090.001",
+              "visibility": false
+            },
+            {
+              "name": "Multi-hop Proxy",
+              "external_id": "T1090.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Remote Access Software",
+          "external_id": "T1219",
+          "visibility": false
+        },
+        {
+          "name": "Standard Cryptographic Protocol",
+          "external_id": "T1032",
+          "visibility": false
+        },
+        {
+          "name": "Traffic Signaling",
+          "external_id": "T1205",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Port Knocking",
+              "external_id": "T1205.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Uncommonly Used Port",
+          "external_id": "T1065",
+          "visibility": false
+        },
+        {
+          "name": "Web Service",
+          "external_id": "T1102",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Bidirectional Communication",
+              "external_id": "T1102.002",
+              "visibility": false
+            },
+            {
+              "name": "Dead Drop Resolver",
+              "external_id": "T1102.001",
+              "visibility": false
+            },
+            {
+              "name": "One-Way Communication",
+              "external_id": "T1102.003",
+              "visibility": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Exfiltration",
+      "external_id": "TA0010",
+      "techniques": [
+        {
+          "name": "Automated Exfiltration",
+          "external_id": "T1020",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Traffic Duplication",
+              "external_id": "T1020.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Data Compressed",
+          "external_id": "T1002",
+          "visibility": false
+        },
+        {
+          "name": "Data Encrypted",
+          "external_id": "T1022",
+          "visibility": false
+        },
+        {
+          "name": "Data Transfer Size Limits",
+          "external_id": "T1030",
+          "visibility": false
+        },
+        {
+          "name": "Exfiltration Over Alternative Protocol",
+          "external_id": "T1048",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Exfiltration Over Unencrypted Non-C2 Protocol",
+              "external_id": "T1048.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Exfiltration Over C2 Channel",
+          "external_id": "T1041",
+          "visibility": false
+        },
+        {
+          "name": "Exfiltration Over Other Network Medium",
+          "external_id": "T1011",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Exfiltration Over Bluetooth",
+              "external_id": "T1011.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Exfiltration Over Physical Medium",
+          "external_id": "T1052",
+          "visibility": false
+        },
+        {
+          "name": "Exfiltration Over Web Service",
+          "external_id": "T1567",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Exfiltration Over Webhook",
+              "external_id": "T1567.004",
+              "visibility": false
+            },
+            {
+              "name": "Exfiltration to Cloud Storage",
+              "external_id": "T1567.002",
+              "visibility": false
+            },
+            {
+              "name": "Exfiltration to Code Repository",
+              "external_id": "T1567.001",
+              "visibility": false
+            },
+            {
+              "name": "Exfiltration to Text Storage Sites",
+              "external_id": "T1567.003",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Scheduled Transfer",
+          "external_id": "T1029",
+          "visibility": false
+        },
+        {
+          "name": "Transfer Data to Cloud Account",
+          "external_id": "T1537",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Impact",
+      "external_id": "TA0040",
+      "techniques": [
+        {
+          "name": "Account Access Removal",
+          "external_id": "T1531",
+          "visibility": false
+        },
+        {
+          "name": "Data Destruction",
+          "external_id": "T1485",
+          "visibility": false
+        },
+        {
+          "name": "Data Encrypted for Impact",
+          "external_id": "T1486",
+          "visibility": false
+        },
+        {
+          "name": "Data Manipulation",
+          "external_id": "T1565",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Transmitted Data Manipulation",
+              "external_id": "T1565.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Defacement",
+          "external_id": "T1491",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Internal Defacement",
+              "external_id": "T1491.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Disk Content Wipe",
+          "external_id": "T1488",
+          "visibility": false
+        },
+        {
+          "name": "Disk Structure Wipe",
+          "external_id": "T1487",
+          "visibility": false
+        },
+        {
+          "name": "Disk Wipe",
+          "external_id": "T1561",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Disk Content Wipe",
+              "external_id": "T1561.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Endpoint Denial of Service",
+          "external_id": "T1499",
+          "visibility": false
+        },
+        {
+          "name": "Financial Theft",
+          "external_id": "T1657",
+          "visibility": false
+        },
+        {
+          "name": "Firmware Corruption",
+          "external_id": "T1495",
+          "visibility": false
+        },
+        {
+          "name": "Inhibit System Recovery",
+          "external_id": "T1490",
+          "visibility": false
+        },
+        {
+          "name": "Network Denial of Service",
+          "external_id": "T1498",
+          "visibility": false
+        },
+        {
+          "name": "Resource Hijacking",
+          "external_id": "T1496",
+          "visibility": false
+        },
+        {
+          "name": "Runtime Data Manipulation",
+          "external_id": "T1494",
+          "visibility": false
+        },
+        {
+          "name": "Service Stop",
+          "external_id": "T1489",
+          "visibility": false
+        },
+        {
+          "name": "Stored Data Manipulation",
+          "external_id": "T1492",
+          "visibility": false
+        },
+        {
+          "name": "System Shutdown/Reboot",
+          "external_id": "T1529",
+          "visibility": false
+        },
+        {
+          "name": "Transmitted Data Manipulation",
+          "external_id": "T1493",
+          "visibility": false
+        }
+      ]
+    }
+  ]
+}

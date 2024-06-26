@@ -1,0 +1,4 @@
+Flask
+flask-cors
+mitreattack-python
+notebook

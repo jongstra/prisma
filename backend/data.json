@@ -1,0 +1,34 @@
+{
+  "tactics": [
+    {
+      "name": "Reconaissance",
+      "techniques": [
+        {"name": "Active Scanning", "visibility": true},
+        {"name": "Gather Victim Host Information", "visibility": false},
+        {"name": "Gather Victim Identity Information", "visibility": false}
+      ]
+    },
+    {
+      "name": "Resource Development",
+      "techniques": [
+        {"name": "Acquire Access", "visibility": true},
+        {"name": "Acquire Infrastructure", "visibility": false}
+      ]
+    },
+    {
+      "name": "Initial Access",
+      "techniques": [
+        {"name": "Content Injection", "visibility": false},
+        {"name": "Drive-by Compromise", "visibility": true}
+      ]
+    },
+    {
+      "name": "Execution",
+      "techniques": [
+        {"name": "Cloud Administration Command", "visibility": true},
+        {"name": "Command and Scripting Interpreter", "visibility": false},
+        {"name": "Container Administration Command", "visibility": true}
+      ]
+    }
+  ]
+}
