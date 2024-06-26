@@ -15,3 +15,4 @@ TODO:
 
 Notes:
 - "backend": "cd ../backend && FLASK_APP=app.py flask run",
+- "backend": "cd ../backend && python3 app.py",

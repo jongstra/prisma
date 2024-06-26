@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "backend": "cd ../backend && python3 app.py",
+    "backend": "cd ../backend && zsh -c 'source venv/bin/activate && python3 app.py'",
     "serve": "vite",
     "dev": "concurrently \"npm run serve\" \"npm run backend\"",
     "build": "run-p type-check \"build-only {@}\" --",
