@@ -31,5 +31,7 @@ coverage
 *.tsbuildinfo
 
 
-# Python virtual environment folder
+# Python stuff
 /backend/venv/
+__pycache__/
+.ipynb_checkpoints/
