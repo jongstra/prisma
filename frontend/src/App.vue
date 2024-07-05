@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  import { onMounted } from 'vue';
+  import { tacticsStore } from '@/stores/tactics';
+  const store = tacticsStore();
+  onMounted(() => {store.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
 </script>
 
 <!-- App.vue gebruikt router routes zoals gedefinieerd in ./router/index.ts -->

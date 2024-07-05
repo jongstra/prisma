@@ -14,7 +14,7 @@
 
 <template>
   <div class="insights">
-    <div class="insight" v-for="stat in store.tacticStats" :key="stat.name">
+    <div class="insight" v-for="stat in store.tacticStats(store.domain)" :key="stat.name">
       <div>{{ stat.name }}</div>
       <div>Total Techniques: {{ stat.totalTechniques }}</div>
       <div>Visible Techniques: {{ stat.visibleTechniques }}</div>

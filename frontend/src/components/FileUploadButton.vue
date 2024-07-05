@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { tacticsStore } from '@/stores/tactics';
 const input = ref<HTMLInputElement>()
+
 
 const uploadFile = async () => {
   const file = input.value?.files?.[0]
@@ -15,7 +17,13 @@ const uploadFile = async () => {
   }
 
   try {
-    console.log("JSON file succesfully uploaded!")
+    const fileContent = await file.text() // Reading file content asynchronously
+    const jsonData = JSON.parse(fileContent) // Parsing JSON content
+
+    const store = tacticsStore() // Accessing the Pinia store
+    store.processDettectJson(jsonData) // Updating the store with JSON data
+
+    console.log("JSON file successfully uploaded and store updated!")
   } catch (error) {
     console.log("Error")
     console.error(error)

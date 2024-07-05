@@ -1,5 +1,5 @@
 {
-  "tactics": [
+  "enterprise_tactics": [
     {
       "name": "Reconnaissance",
       "external_id": "TA0043",
@@ -4010,6 +4010,1612 @@
         {
           "name": "Transmitted Data Manipulation",
           "external_id": "T1493",
+          "visibility": false
+        }
+      ]
+    }
+  ],
+  "ics_tactics": [
+    {
+      "name": "Initial Access",
+      "external_id": "TA0108",
+      "techniques": [
+        {
+          "name": "Data Historian Compromise",
+          "external_id": "T0810",
+          "visibility": false
+        },
+        {
+          "name": "Drive-by Compromise",
+          "external_id": "T0817",
+          "visibility": false
+        },
+        {
+          "name": "Engineering Workstation Compromise",
+          "external_id": "T0818",
+          "visibility": false
+        },
+        {
+          "name": "Exploit Public-Facing Application",
+          "external_id": "T0819",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation of Remote Services",
+          "external_id": "T0866",
+          "visibility": false
+        },
+        {
+          "name": "External Remote Services",
+          "external_id": "T0822",
+          "visibility": false
+        },
+        {
+          "name": "Internet Accessible Device",
+          "external_id": "T0883",
+          "visibility": false
+        },
+        {
+          "name": "Remote Services",
+          "external_id": "T0886",
+          "visibility": false
+        },
+        {
+          "name": "Replication Through Removable Media",
+          "external_id": "T0847",
+          "visibility": false
+        },
+        {
+          "name": "Rogue Master",
+          "external_id": "T0848",
+          "visibility": false
+        },
+        {
+          "name": "Spearphishing Attachment",
+          "external_id": "T0865",
+          "visibility": false
+        },
+        {
+          "name": "Supply Chain Compromise",
+          "external_id": "T0862",
+          "visibility": false
+        },
+        {
+          "name": "Transient Cyber Asset",
+          "external_id": "T0864",
+          "visibility": false
+        },
+        {
+          "name": "Wireless Compromise",
+          "external_id": "T0860",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Execution",
+      "external_id": "TA0104",
+      "techniques": [
+        {
+          "name": "Autorun Image",
+          "external_id": "T0895",
+          "visibility": false
+        },
+        {
+          "name": "Change Operating Mode",
+          "external_id": "T0858",
+          "visibility": false
+        },
+        {
+          "name": "Change Program State",
+          "external_id": "T0875",
+          "visibility": false
+        },
+        {
+          "name": "Command-Line Interface",
+          "external_id": "T0807",
+          "visibility": false
+        },
+        {
+          "name": "Execution through API",
+          "external_id": "T0871",
+          "visibility": false
+        },
+        {
+          "name": "Graphical User Interface",
+          "external_id": "T0823",
+          "visibility": false
+        },
+        {
+          "name": "Hooking",
+          "external_id": "T0874",
+          "visibility": false
+        },
+        {
+          "name": "Modify Controller Tasking",
+          "external_id": "T0821",
+          "visibility": false
+        },
+        {
+          "name": "Native API",
+          "external_id": "T0834",
+          "visibility": false
+        },
+        {
+          "name": "Program Organization Units",
+          "external_id": "T0844",
+          "visibility": false
+        },
+        {
+          "name": "Scripting",
+          "external_id": "T0853",
+          "visibility": false
+        },
+        {
+          "name": "User Execution",
+          "external_id": "T0863",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Persistence",
+      "external_id": "TA0110",
+      "techniques": [
+        {
+          "name": "Hardcoded Credentials",
+          "external_id": "T0891",
+          "visibility": false
+        },
+        {
+          "name": "Modify Program",
+          "external_id": "T0889",
+          "visibility": false
+        },
+        {
+          "name": "Module Firmware",
+          "external_id": "T0839",
+          "visibility": false
+        },
+        {
+          "name": "Project File Infection",
+          "external_id": "T0873",
+          "visibility": false
+        },
+        {
+          "name": "System Firmware",
+          "external_id": "T0857",
+          "visibility": false
+        },
+        {
+          "name": "Valid Accounts",
+          "external_id": "T0859",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Privilege Escalation",
+      "external_id": "TA0111",
+      "techniques": [
+        {
+          "name": "Exploitation for Privilege Escalation",
+          "external_id": "T0890",
+          "visibility": false
+        },
+        {
+          "name": "Hooking",
+          "external_id": "T0874",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Evasion",
+      "external_id": "TA0103",
+      "techniques": [
+        {
+          "name": "Change Operating Mode",
+          "external_id": "T0858",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation for Evasion",
+          "external_id": "T0820",
+          "visibility": false
+        },
+        {
+          "name": "Indicator Removal on Host",
+          "external_id": "T0872",
+          "visibility": false
+        },
+        {
+          "name": "Masquerading",
+          "external_id": "T0849",
+          "visibility": false
+        },
+        {
+          "name": "Rootkit",
+          "external_id": "T0851",
+          "visibility": false
+        },
+        {
+          "name": "Spoof Reporting Message",
+          "external_id": "T0856",
+          "visibility": false
+        },
+        {
+          "name": "System Binary Proxy Execution",
+          "external_id": "T0894",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Discovery",
+      "external_id": "TA0102",
+      "techniques": [
+        {
+          "name": "Control Device Identification",
+          "external_id": "T0808",
+          "visibility": false
+        },
+        {
+          "name": "I/O Module Discovery",
+          "external_id": "T0824",
+          "visibility": false
+        },
+        {
+          "name": "Network Connection Enumeration",
+          "external_id": "T0840",
+          "visibility": false
+        },
+        {
+          "name": "Network Service Scanning",
+          "external_id": "T0841",
+          "visibility": false
+        },
+        {
+          "name": "Network Sniffing",
+          "external_id": "T0842",
+          "visibility": false
+        },
+        {
+          "name": "Remote System Discovery",
+          "external_id": "T0846",
+          "visibility": false
+        },
+        {
+          "name": "Remote System Information Discovery",
+          "external_id": "T0888",
+          "visibility": false
+        },
+        {
+          "name": "Serial Connection Enumeration",
+          "external_id": "T0854",
+          "visibility": false
+        },
+        {
+          "name": "Wireless Sniffing",
+          "external_id": "T0887",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Lateral Movement",
+      "external_id": "TA0109",
+      "techniques": [
+        {
+          "name": "Default Credentials",
+          "external_id": "T0812",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation of Remote Services",
+          "external_id": "T0866",
+          "visibility": false
+        },
+        {
+          "name": "Hardcoded Credentials",
+          "external_id": "T0891",
+          "visibility": false
+        },
+        {
+          "name": "Lateral Tool Transfer",
+          "external_id": "T0867",
+          "visibility": false
+        },
+        {
+          "name": "Program Download",
+          "external_id": "T0843",
+          "visibility": false
+        },
+        {
+          "name": "Program Organization Units",
+          "external_id": "T0844",
+          "visibility": false
+        },
+        {
+          "name": "Remote Services",
+          "external_id": "T0886",
+          "visibility": false
+        },
+        {
+          "name": "Valid Accounts",
+          "external_id": "T0859",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Collection",
+      "external_id": "TA0100",
+      "techniques": [
+        {
+          "name": "Adversary-in-the-Middle",
+          "external_id": "T0830",
+          "visibility": false
+        },
+        {
+          "name": "Automated Collection",
+          "external_id": "T0802",
+          "visibility": false
+        },
+        {
+          "name": "Data from Information Repositories",
+          "external_id": "T0811",
+          "visibility": false
+        },
+        {
+          "name": "Data from Local System",
+          "external_id": "T0893",
+          "visibility": false
+        },
+        {
+          "name": "Detect Operating Mode",
+          "external_id": "T0868",
+          "visibility": false
+        },
+        {
+          "name": "Detect Program State",
+          "external_id": "T0870",
+          "visibility": false
+        },
+        {
+          "name": "I/O Image",
+          "external_id": "T0877",
+          "visibility": false
+        },
+        {
+          "name": "Location Identification",
+          "external_id": "T0825",
+          "visibility": false
+        },
+        {
+          "name": "Monitor Process State",
+          "external_id": "T0801",
+          "visibility": false
+        },
+        {
+          "name": "Point & Tag Identification",
+          "external_id": "T0861",
+          "visibility": false
+        },
+        {
+          "name": "Program Upload",
+          "external_id": "T0845",
+          "visibility": false
+        },
+        {
+          "name": "Role Identification",
+          "external_id": "T0850",
+          "visibility": false
+        },
+        {
+          "name": "Screen Capture",
+          "external_id": "T0852",
+          "visibility": false
+        },
+        {
+          "name": "Wireless Sniffing",
+          "external_id": "T0887",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Command and Control",
+      "external_id": "TA0101",
+      "techniques": [
+        {
+          "name": "Commonly Used Port",
+          "external_id": "T0885",
+          "visibility": false
+        },
+        {
+          "name": "Connection Proxy",
+          "external_id": "T0884",
+          "visibility": false
+        },
+        {
+          "name": "Standard Application Layer Protocol",
+          "external_id": "T0869",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Inhibit Response Function",
+      "external_id": "TA0107",
+      "techniques": [
+        {
+          "name": "Activate Firmware Update Mode",
+          "external_id": "T0800",
+          "visibility": false
+        },
+        {
+          "name": "Alarm Suppression",
+          "external_id": "T0878",
+          "visibility": false
+        },
+        {
+          "name": "Block Command Message",
+          "external_id": "T0803",
+          "visibility": false
+        },
+        {
+          "name": "Block Reporting Message",
+          "external_id": "T0804",
+          "visibility": false
+        },
+        {
+          "name": "Block Serial COM",
+          "external_id": "T0805",
+          "visibility": false
+        },
+        {
+          "name": "Change Credential",
+          "external_id": "T0892",
+          "visibility": false
+        },
+        {
+          "name": "Data Destruction",
+          "external_id": "T0809",
+          "visibility": false
+        },
+        {
+          "name": "Denial of Service",
+          "external_id": "T0814",
+          "visibility": false
+        },
+        {
+          "name": "Device Restart/Shutdown",
+          "external_id": "T0816",
+          "visibility": false
+        },
+        {
+          "name": "Manipulate I/O Image",
+          "external_id": "T0835",
+          "visibility": false
+        },
+        {
+          "name": "Modify Alarm Settings",
+          "external_id": "T0838",
+          "visibility": false
+        },
+        {
+          "name": "Modify Control Logic",
+          "external_id": "T0833",
+          "visibility": false
+        },
+        {
+          "name": "Rootkit",
+          "external_id": "T0851",
+          "visibility": false
+        },
+        {
+          "name": "Service Stop",
+          "external_id": "T0881",
+          "visibility": false
+        },
+        {
+          "name": "System Firmware",
+          "external_id": "T0857",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Impair Process Control",
+      "external_id": "TA0106",
+      "techniques": [
+        {
+          "name": "Brute Force I/O",
+          "external_id": "T0806",
+          "visibility": false
+        },
+        {
+          "name": "Change Program State",
+          "external_id": "T0875",
+          "visibility": false
+        },
+        {
+          "name": "Modify Control Logic",
+          "external_id": "T0833",
+          "visibility": false
+        },
+        {
+          "name": "Modify Parameter",
+          "external_id": "T0836",
+          "visibility": false
+        },
+        {
+          "name": "Module Firmware",
+          "external_id": "T0839",
+          "visibility": false
+        },
+        {
+          "name": "Spoof Reporting Message",
+          "external_id": "T0856",
+          "visibility": false
+        },
+        {
+          "name": "Unauthorized Command Message",
+          "external_id": "T0855",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Impact",
+      "external_id": "TA0105",
+      "techniques": [
+        {
+          "name": "Damage to Property",
+          "external_id": "T0879",
+          "visibility": false
+        },
+        {
+          "name": "Denial of Control",
+          "external_id": "T0813",
+          "visibility": false
+        },
+        {
+          "name": "Denial of View",
+          "external_id": "T0815",
+          "visibility": false
+        },
+        {
+          "name": "Loss of Availability",
+          "external_id": "T0826",
+          "visibility": false
+        },
+        {
+          "name": "Loss of Control",
+          "external_id": "T0827",
+          "visibility": false
+        },
+        {
+          "name": "Loss of Productivity and Revenue",
+          "external_id": "T0828",
+          "visibility": false
+        },
+        {
+          "name": "Loss of Protection",
+          "external_id": "T0837",
+          "visibility": false
+        },
+        {
+          "name": "Loss of Safety",
+          "external_id": "T0880",
+          "visibility": false
+        },
+        {
+          "name": "Loss of View",
+          "external_id": "T0829",
+          "visibility": false
+        },
+        {
+          "name": "Manipulation of Control",
+          "external_id": "T0831",
+          "visibility": false
+        },
+        {
+          "name": "Manipulation of View",
+          "external_id": "T0832",
+          "visibility": false
+        },
+        {
+          "name": "Theft of Operational Information",
+          "external_id": "T0882",
+          "visibility": false
+        }
+      ]
+    }
+  ],
+  "mobile_tactics": [
+    {
+      "name": "Initial Access",
+      "external_id": "TA0027",
+      "techniques": [
+        {
+          "name": "Application Versioning",
+          "external_id": "T1661",
+          "visibility": false
+        },
+        {
+          "name": "Deliver Malicious App via Authorized App Store",
+          "external_id": "T1475",
+          "visibility": false
+        },
+        {
+          "name": "Deliver Malicious App via Other Means",
+          "external_id": "T1476",
+          "visibility": false
+        },
+        {
+          "name": "Drive-By Compromise",
+          "external_id": "T1456",
+          "visibility": false
+        },
+        {
+          "name": "Exploit via Radio Interfaces",
+          "external_id": "T1477",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation for Initial Access",
+          "external_id": "T1664",
+          "visibility": false
+        },
+        {
+          "name": "Install Insecure or Malicious Configuration",
+          "external_id": "T1478",
+          "visibility": false
+        },
+        {
+          "name": "Lockscreen Bypass",
+          "external_id": "T1461",
+          "visibility": false
+        },
+        {
+          "name": "Masquerade as Legitimate Application",
+          "external_id": "T1444",
+          "visibility": false
+        },
+        {
+          "name": "Phishing",
+          "external_id": "T1660",
+          "visibility": false
+        },
+        {
+          "name": "Replication Through Removable Media",
+          "external_id": "T1458",
+          "visibility": false
+        },
+        {
+          "name": "Supply Chain Compromise",
+          "external_id": "T1474",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Compromise Hardware Supply Chain",
+              "external_id": "T1474.002",
+              "visibility": false
+            },
+            {
+              "name": "Compromise Software Dependencies and Development Tools",
+              "external_id": "T1474.001",
+              "visibility": false
+            },
+            {
+              "name": "Compromise Software Supply Chain",
+              "external_id": "T1474.003",
+              "visibility": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Execution",
+      "external_id": "TA0041",
+      "techniques": [
+        {
+          "name": "Broadcast Receivers",
+          "external_id": "T1402",
+          "visibility": false
+        },
+        {
+          "name": "Command and Scripting Interpreter",
+          "external_id": "T1623",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Unix Shell",
+              "external_id": "T1623.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Command-Line Interface",
+          "external_id": "T1605",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation for Client Execution",
+          "external_id": "T1658",
+          "visibility": false
+        },
+        {
+          "name": "Native API",
+          "external_id": "T1575",
+          "visibility": false
+        },
+        {
+          "name": "Scheduled Task/Job",
+          "external_id": "T1603",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Persistence",
+      "external_id": "TA0028",
+      "techniques": [
+        {
+          "name": "Boot or Logon Initialization Scripts",
+          "external_id": "T1398",
+          "visibility": false
+        },
+        {
+          "name": "Broadcast Receivers",
+          "external_id": "T1402",
+          "visibility": false
+        },
+        {
+          "name": "Code Injection",
+          "external_id": "T1540",
+          "visibility": false
+        },
+        {
+          "name": "Compromise Application Executable",
+          "external_id": "T1577",
+          "visibility": false
+        },
+        {
+          "name": "Compromise Client Software Binary",
+          "external_id": "T1645",
+          "visibility": false
+        },
+        {
+          "name": "Event Triggered Execution",
+          "external_id": "T1624",
+          "visibility": false
+        },
+        {
+          "name": "Foreground Persistence",
+          "external_id": "T1541",
+          "visibility": false
+        },
+        {
+          "name": "Hijack Execution Flow",
+          "external_id": "T1625",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "System Runtime API Hijacking",
+              "external_id": "T1625.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Modify Cached Executable Code",
+          "external_id": "T1403",
+          "visibility": false
+        },
+        {
+          "name": "Modify System Partition",
+          "external_id": "T1400",
+          "visibility": false
+        },
+        {
+          "name": "Modify Trusted Execution Environment",
+          "external_id": "T1399",
+          "visibility": false
+        },
+        {
+          "name": "Scheduled Task/Job",
+          "external_id": "T1603",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Privilege Escalation",
+      "external_id": "TA0029",
+      "techniques": [
+        {
+          "name": "Abuse Elevation Control Mechanism",
+          "external_id": "T1626",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Device Administrator Permissions",
+              "external_id": "T1626.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Code Injection",
+          "external_id": "T1540",
+          "visibility": false
+        },
+        {
+          "name": "Device Administrator Permissions",
+          "external_id": "T1401",
+          "visibility": false
+        },
+        {
+          "name": "Exploit TEE Vulnerability",
+          "external_id": "T1405",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation for Privilege Escalation",
+          "external_id": "T1404",
+          "visibility": false
+        },
+        {
+          "name": "Process Injection",
+          "external_id": "T1631",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Defense Evasion",
+      "external_id": "TA0030",
+      "techniques": [
+        {
+          "name": "Abuse Accessibility Features",
+          "external_id": "T1453",
+          "visibility": false
+        },
+        {
+          "name": "Application Versioning",
+          "external_id": "T1661",
+          "visibility": false
+        },
+        {
+          "name": "Code Injection",
+          "external_id": "T1540",
+          "visibility": false
+        },
+        {
+          "name": "Delete Device Data",
+          "external_id": "T1447",
+          "visibility": false
+        },
+        {
+          "name": "Device Lockout",
+          "external_id": "T1446",
+          "visibility": false
+        },
+        {
+          "name": "Disguise Root/Jailbreak Indicators",
+          "external_id": "T1408",
+          "visibility": false
+        },
+        {
+          "name": "Download New Code at Runtime",
+          "external_id": "T1407",
+          "visibility": false
+        },
+        {
+          "name": "Evade Analysis Environment",
+          "external_id": "T1523",
+          "visibility": false
+        },
+        {
+          "name": "Execution Guardrails",
+          "external_id": "T1627",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Geofencing",
+              "external_id": "T1627.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Foreground Persistence",
+          "external_id": "T1541",
+          "visibility": false
+        },
+        {
+          "name": "Geofencing",
+          "external_id": "T1581",
+          "visibility": false
+        },
+        {
+          "name": "Hide Artifacts",
+          "external_id": "T1628",
+          "visibility": false
+        },
+        {
+          "name": "Hooking",
+          "external_id": "T1617",
+          "visibility": false
+        },
+        {
+          "name": "Impair Defenses",
+          "external_id": "T1629",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Device Lockout",
+              "external_id": "T1629.002",
+              "visibility": false
+            },
+            {
+              "name": "Disable or Modify Tools",
+              "external_id": "T1629.003",
+              "visibility": false
+            },
+            {
+              "name": "Prevent Application Removal",
+              "external_id": "T1629.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Indicator Removal on Host",
+          "external_id": "T1630",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Disguise Root/Jailbreak Indicators",
+              "external_id": "T1630.003",
+              "visibility": false
+            },
+            {
+              "name": "File Deletion",
+              "external_id": "T1630.002",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Input Injection",
+          "external_id": "T1516",
+          "visibility": false
+        },
+        {
+          "name": "Install Insecure or Malicious Configuration",
+          "external_id": "T1478",
+          "visibility": false
+        },
+        {
+          "name": "Masquerade as Legitimate Application",
+          "external_id": "T1444",
+          "visibility": false
+        },
+        {
+          "name": "Masquerading",
+          "external_id": "T1655",
+          "visibility": false
+        },
+        {
+          "name": "Modify System Partition",
+          "external_id": "T1400",
+          "visibility": false
+        },
+        {
+          "name": "Modify Trusted Execution Environment",
+          "external_id": "T1399",
+          "visibility": false
+        },
+        {
+          "name": "Native API",
+          "external_id": "T1575",
+          "visibility": false
+        },
+        {
+          "name": "Obfuscated Files or Information",
+          "external_id": "T1406",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Steganography",
+              "external_id": "T1406.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Process Injection",
+          "external_id": "T1631",
+          "visibility": false
+        },
+        {
+          "name": "Proxy Through Victim",
+          "external_id": "T1604",
+          "visibility": false
+        },
+        {
+          "name": "Subvert Trust Controls",
+          "external_id": "T1632",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Code Signing Policy Modification",
+              "external_id": "T1632.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Suppress Application Icon",
+          "external_id": "T1508",
+          "visibility": false
+        },
+        {
+          "name": "Uninstall Malicious Application",
+          "external_id": "T1576",
+          "visibility": false
+        },
+        {
+          "name": "User Evasion",
+          "external_id": "T1618",
+          "visibility": false
+        },
+        {
+          "name": "Virtualization/Sandbox Evasion",
+          "external_id": "T1633",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "System Checks",
+              "external_id": "T1633.001",
+              "visibility": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Credential Access",
+      "external_id": "TA0031",
+      "techniques": [
+        {
+          "name": "Abuse Accessibility Features",
+          "external_id": "T1453",
+          "visibility": false
+        },
+        {
+          "name": "Access Notifications",
+          "external_id": "T1517",
+          "visibility": false
+        },
+        {
+          "name": "Access Sensitive Data in Device Logs",
+          "external_id": "T1413",
+          "visibility": false
+        },
+        {
+          "name": "Capture SMS Messages",
+          "external_id": "T1412",
+          "visibility": false
+        },
+        {
+          "name": "Clipboard Data",
+          "external_id": "T1414",
+          "visibility": false
+        },
+        {
+          "name": "Credentials from Password Store",
+          "external_id": "T1634",
+          "visibility": false
+        },
+        {
+          "name": "Exploit TEE Vulnerability",
+          "external_id": "T1405",
+          "visibility": false
+        },
+        {
+          "name": "Input Capture",
+          "external_id": "T1417",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Keylogging",
+              "external_id": "T1417.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Input Prompt",
+          "external_id": "T1411",
+          "visibility": false
+        },
+        {
+          "name": "Keychain",
+          "external_id": "T1579",
+          "visibility": false
+        },
+        {
+          "name": "Network Traffic Capture or Redirection",
+          "external_id": "T1410",
+          "visibility": false
+        },
+        {
+          "name": "Steal Application Access Token",
+          "external_id": "T1635",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "URI Hijacking",
+              "external_id": "T1635.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "URI Hijacking",
+          "external_id": "T1416",
+          "visibility": false
+        },
+        {
+          "name": "URL Scheme Hijacking",
+          "external_id": "T1415",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Discovery",
+      "external_id": "TA0032",
+      "techniques": [
+        {
+          "name": "Device Type Discovery",
+          "external_id": "T1419",
+          "visibility": false
+        },
+        {
+          "name": "Evade Analysis Environment",
+          "external_id": "T1523",
+          "visibility": false
+        },
+        {
+          "name": "File and Directory Discovery",
+          "external_id": "T1420",
+          "visibility": false
+        },
+        {
+          "name": "Location Tracking",
+          "external_id": "T1430",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Remote Device Management Services",
+              "external_id": "T1430.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Network Service Scanning",
+          "external_id": "T1423",
+          "visibility": false
+        },
+        {
+          "name": "Process Discovery",
+          "external_id": "T1424",
+          "visibility": false
+        },
+        {
+          "name": "Software Discovery",
+          "external_id": "T1418",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Security Software Discovery",
+              "external_id": "T1418.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "System Information Discovery",
+          "external_id": "T1426",
+          "visibility": false
+        },
+        {
+          "name": "System Network Configuration Discovery",
+          "external_id": "T1422",
+          "visibility": false
+        },
+        {
+          "name": "System Network Connections Discovery",
+          "external_id": "T1421",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Lateral Movement",
+      "external_id": "TA0033",
+      "techniques": [
+        {
+          "name": "Attack PC via USB Connection",
+          "external_id": "T1427",
+          "visibility": false
+        },
+        {
+          "name": "Exploitation of Remote Services",
+          "external_id": "T1428",
+          "visibility": false
+        },
+        {
+          "name": "Replication Through Removable Media",
+          "external_id": "T1458",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Collection",
+      "external_id": "TA0035",
+      "techniques": [
+        {
+          "name": "Abuse Accessibility Features",
+          "external_id": "T1453",
+          "visibility": false
+        },
+        {
+          "name": "Access Calendar Entries",
+          "external_id": "T1435",
+          "visibility": false
+        },
+        {
+          "name": "Access Call Log",
+          "external_id": "T1433",
+          "visibility": false
+        },
+        {
+          "name": "Access Contact List",
+          "external_id": "T1432",
+          "visibility": false
+        },
+        {
+          "name": "Access Notifications",
+          "external_id": "T1517",
+          "visibility": false
+        },
+        {
+          "name": "Access Sensitive Data in Device Logs",
+          "external_id": "T1413",
+          "visibility": false
+        },
+        {
+          "name": "Adversary-in-the-Middle",
+          "external_id": "T1638",
+          "visibility": false
+        },
+        {
+          "name": "Archive Collected Data",
+          "external_id": "T1532",
+          "visibility": false
+        },
+        {
+          "name": "Audio Capture",
+          "external_id": "T1429",
+          "visibility": false
+        },
+        {
+          "name": "Call Control",
+          "external_id": "T1616",
+          "visibility": false
+        },
+        {
+          "name": "Capture SMS Messages",
+          "external_id": "T1412",
+          "visibility": false
+        },
+        {
+          "name": "Clipboard Data",
+          "external_id": "T1414",
+          "visibility": false
+        },
+        {
+          "name": "Data from Local System",
+          "external_id": "T1533",
+          "visibility": false
+        },
+        {
+          "name": "Input Capture",
+          "external_id": "T1417",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Keylogging",
+              "external_id": "T1417.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Location Tracking",
+          "external_id": "T1430",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Remote Device Management Services",
+              "external_id": "T1430.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Malicious SMS Message",
+          "external_id": "T1454",
+          "visibility": false
+        },
+        {
+          "name": "Network Information Discovery",
+          "external_id": "T1507",
+          "visibility": false
+        },
+        {
+          "name": "Network Traffic Capture or Redirection",
+          "external_id": "T1410",
+          "visibility": false
+        },
+        {
+          "name": "Protected User Data",
+          "external_id": "T1636",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Calendar Entries",
+              "external_id": "T1636.001",
+              "visibility": false
+            },
+            {
+              "name": "Call Log",
+              "external_id": "T1636.002",
+              "visibility": false
+            },
+            {
+              "name": "Contact List",
+              "external_id": "T1636.003",
+              "visibility": false
+            },
+            {
+              "name": "SMS Messages",
+              "external_id": "T1636.004",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Screen Capture",
+          "external_id": "T1513",
+          "visibility": false
+        },
+        {
+          "name": "Stored Application Data",
+          "external_id": "T1409",
+          "visibility": false
+        },
+        {
+          "name": "Video Capture",
+          "external_id": "T1512",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Command and Control",
+      "external_id": "TA0037",
+      "techniques": [
+        {
+          "name": "Application Layer Protocol",
+          "external_id": "T1437",
+          "visibility": false
+        },
+        {
+          "name": "Call Control",
+          "external_id": "T1616",
+          "visibility": false
+        },
+        {
+          "name": "Commonly Used Port",
+          "external_id": "T1436",
+          "visibility": false
+        },
+        {
+          "name": "Domain Generation Algorithms",
+          "external_id": "T1520",
+          "visibility": false
+        },
+        {
+          "name": "Dynamic Resolution",
+          "external_id": "T1637",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "Domain Generation Algorithms",
+              "external_id": "T1637.001",
+              "visibility": false
+            }
+          ]
+        },
+        {
+          "name": "Encrypted Channel",
+          "external_id": "T1521",
+          "visibility": false
+        },
+        {
+          "name": "Exfiltration Over Other Network Medium",
+          "external_id": "T1438",
+          "visibility": false
+        },
+        {
+          "name": "Ingress Tool Transfer",
+          "external_id": "T1544",
+          "visibility": false
+        },
+        {
+          "name": "Non-Standard Port",
+          "external_id": "T1509",
+          "visibility": false
+        },
+        {
+          "name": "Out of Band Data",
+          "external_id": "T1644",
+          "visibility": false
+        },
+        {
+          "name": "Remote Access Software",
+          "external_id": "T1663",
+          "visibility": false
+        },
+        {
+          "name": "Web Service",
+          "external_id": "T1481",
+          "visibility": false,
+          "sub_techniques": [
+            {
+              "name": "One-Way Communication",
+              "external_id": "T1481.003",
+              "visibility": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Exfiltration",
+      "external_id": "TA0036",
+      "techniques": [
+        {
+          "name": "Commonly Used Port",
+          "external_id": "T1436",
+          "visibility": false
+        },
+        {
+          "name": "Exfiltration Over Alternative Protocol",
+          "external_id": "T1639",
+          "visibility": false
+        },
+        {
+          "name": "Exfiltration Over C2 Channel",
+          "external_id": "T1646",
+          "visibility": false
+        }
+      ]
+    },
+    {
+      "name": "Impact",
+      "external_id": "TA0034",
+      "techniques": [
+        {
+          "name": "Abuse Accessibility Features",
+          "external_id": "T1453",
+          "visibility": false
+        },
+        {
+          "name": "Account Access Removal",
+          "external_id": "T1640",
+          "visibility": false
+        },
+        {
+          "name": "Call Control",
+          "external_id": "T1616",
+          "visibility": false
+        },
+        {
+          "name": "Carrier Billing Fraud",
+          "external_id": "T1448",
+          "visibility": false
+        },
+        {
+          "name": "Clipboard Modification",
+          "external_id": "T1510",
+          "visibility": false
+        },
+        {
+          "name": "Data Destruction",
+          "external_id": "T1662",
+          "visibility": false
+        },
+        {
+          "name": "Data Encrypted for Impact",
+          "external_id": "T1471",
+          "visibility": false
+        },
+        {
+          "name": "Data Manipulation",
+          "external_id": "T1641",
+          "visibility": false
+        },
+        {
+          "name": "Delete Device Data",
+          "external_id": "T1447",
+          "visibility": false
+        },
+        {
+          "name": "Device Lockout",
+          "external_id": "T1446",
+          "visibility": false
+        },
+        {
+          "name": "Endpoint Denial of Service",
+          "external_id": "T1642",
+          "visibility": false
+        },
+        {
+          "name": "Generate Fraudulent Advertising Revenue",
+          "external_id": "T1472",
+          "visibility": false
+        },
+        {
+          "name": "Generate Traffic from Victim",
+          "external_id": "T1643",
+          "visibility": false
+        },
+        {
+          "name": "Input Injection",
+          "external_id": "T1516",
+          "visibility": false
+        },
+        {
+          "name": "Manipulate App Store Rankings or Ratings",
+          "external_id": "T1452",
+          "visibility": false
+        },
+        {
+          "name": "Modify System Partition",
+          "external_id": "T1400",
+          "visibility": false
+        },
+        {
+          "name": "Network Denial of Service",
+          "external_id": "T1464",
+          "visibility": false
+        },
+        {
+          "name": "SMS Control",
+          "external_id": "T1582",
           "visibility": false
         }
       ]

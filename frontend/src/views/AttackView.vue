@@ -2,10 +2,7 @@
   import ButtonColumn from '../components/ButtonColumn.vue';
   import FileUploadButton from '@/components/FileUploadButton.vue';
   import { tacticsStore } from '@/stores/tactics';
-  import { onMounted } from 'vue';
   const store = tacticsStore();
-  onMounted(() => {store.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
-
 </script>
 
 
@@ -19,11 +16,26 @@
     <div class="statistic"><p>Initial Access visibility: {{ store.tacticStats.find(stat => stat.name === 'Initial Access')?.visibilityPercentage.toFixed(2)|| 0 }}%</p></div>
     <div class="statistic"><p>Execution visibility: {{ store.tacticStats.find(stat => stat.name === 'Execution')?.visibilityPercentage.toFixed(2)|| 0 }}%</p></div>
   </div> -->
-
+  
   <div class="attack-matrix">
-      <div v-for="tactic in store.tactics" class="button-columns">
+
+      <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise_tactics" class="button-columns">
         <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
-    </div>
+      </div>
+
+      <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile_tactics" class="button-columns">
+        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+      </div>
+
+      <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics_tactics" class="button-columns">
+        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+      </div>
+
+      <div v-else>
+        <br>
+        <p>Please upload DETT&CT File (JSON).</p>
+      </div>
+
   </div>
 </template>
 

@@ -8,8 +8,8 @@
   <div class="button-column">
     
     <!-- Tactic -->
-    <div class="button-column-title-div">
-      <p class="button-column-title"> {{ tactic.name }} </p>
+    <div class="button-column-tactic-name-div">
+      <p class="button-column-tactic-name"> {{ tactic.name }} </p>
     </div>
 
     <!-- Technique count statistic -->
@@ -35,15 +35,15 @@
     flex-direction: column; */
   }
 
-.button-column-title-div, .button-column-stats-div {
+.button-column-tactic-name-div, .button-column-stats-div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.button-column-title {
+.button-column-tactic-name {
   align-content: flex-end;
-  height: 34px;
+  height: 40px;
   width: 110px;
   margin-bottom: 5px;
   text-align: center;
@@ -53,7 +53,7 @@
 
 .button-column-stats {
   font-size: 12px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 </style>
