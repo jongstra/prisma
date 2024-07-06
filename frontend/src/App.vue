@@ -7,14 +7,21 @@
 
 <!-- App.vue gebruikt router routes zoals gedefinieerd in ./router/index.ts -->
 <template>
-  <div id="app">
+  <div id='app'>
 
-    <div class="navigation">
-      <RouterLink class='nav' to="/">ATT&CK</RouterLink>
-      <RouterLink class='nav' to="/insights">Insights</RouterLink>
-      <RouterLink class='nav' to="/unified-kill-chain">Unified Kill Chain</RouterLink>
-      <RouterLink class='nav' to="/magma">MaGMa</RouterLink>
+    <div class='navigation'>
+      <RouterLink class='nav' to='/'>ATT&CK</RouterLink>
+      <RouterLink class='nav' to='/insights'>Insights</RouterLink>
+      <RouterLink class='nav' to='/unified-kill-chain'>Unified Kill Chain</RouterLink>
+      <RouterLink class='nav' to='/magma'>MaGMa</RouterLink>
     </div>
+
+    <div class='domain-switcher'>
+      <button :class="{'dom': true, 'selected': store.domain === 'enterprise-attack'}" @click="store.setDomain('enterprise-attack')">Enterprise</button>
+      <button :class="{'dom': true, 'selected': store.domain === 'mobile-attack'}" @click="store.setDomain('mobile-attack')">Mobile</button>
+      <button :class="{'dom': true, 'selected': store.domain === 'ics-attack'}" @click="store.setDomain('ics-attack')">ICS</button>
+    </div>
+    <br>
 
     <main>
       <div class="content">
@@ -36,7 +43,7 @@
   padding: 2% 2rem;
 }
 
-.navigation {
+.navigation, .domain-switcher {
   display: flex;
   justify-content: space-around;
   background-color: #eeeeee;
@@ -46,7 +53,7 @@
   max-width: 800px;
 }
 
-.nav {
+.nav, .dom {
   flex-grow: 1;
   text-align: center;
   background-color: #cccccc;
@@ -58,5 +65,9 @@
   border-radius: 5px;
 }
 
+.selected {
+  background-color: blue;
+  color: white;
+}
 
 </style>

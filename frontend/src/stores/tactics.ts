@@ -24,7 +24,7 @@ interface TacticStats {
 export const tacticsStore = defineStore('tactics', {
 
   state: () => ({
-    domain: null,
+    domain: 'none',
     enterprise_tactics: [],
     mobile_tactics: [],
     ics_tactics: [],
@@ -48,7 +48,7 @@ export const tacticsStore = defineStore('tactics', {
         default:
           return [];
       }
-
+      
       return tactics.map(tactic => {
         const totalTechniques = tactic.techniques.length;
         const visibleTechniques = tactic.techniques.filter(technique => technique.visibility).length;
@@ -63,24 +63,9 @@ export const tacticsStore = defineStore('tactics', {
     }
   },
 
-  // getters: {
-  //   // Deze functie domein afhankelijk maken.
-  //   tacticStats: (state) => {
-  //     return state.tactics.map(tactic => {
-  //       const totalTechniques = tactic.techniques.length;
-  //       const visibleTechniques = tactic.techniques.filter(technique => technique.visibility).length;
-  //       const visibilityPercentage = (visibleTechniques / totalTechniques) * 100;
-  //       return {
-  //         name: tactic.name,
-  //         totalTechniques,
-  //         visibleTechniques,
-  //         visibilityPercentage
-  //       };
-  //     });
-  //   }
-  // },
 
   actions: {
+    
     async fetchTactics() {
       try {
         const response = await axios.get('http://localhost:5001/api/data');
@@ -94,19 +79,17 @@ export const tacticsStore = defineStore('tactics', {
 
     async processDettectJson(data: string) {
       console.log('Processing DETT&CT json file.');
-      console.log(data);
-
-      console.log(data.domain)
       this.domain = data.domain;
-    }
+
+      // TODO: finish processing of technique selection.
+      console.log(data);
+      console.log(data.domain)
+    },
+
+    setDomain(newDomain: string) {
+      this.domain = newDomain;
+    },
 
   }
 
 });
-
-
-// // Call fetchTactics when the store is initialized
-// const store = tacticsStore();
-// onMounted(() => {
-//   store.fetchTactics();
-// });;

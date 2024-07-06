@@ -33,7 +33,7 @@
 
       <div v-else>
         <br>
-        <p>Please upload DETT&CT File (JSON).</p>
+        <p>Please upload a DETT&CT File using the button above.</p>
       </div>
 
   </div>
@@ -66,7 +66,6 @@ h2 {
   margin: 4px;
   border-radius: 5px;
 }
-
 
 .attack-matrix {
   display: flex;
