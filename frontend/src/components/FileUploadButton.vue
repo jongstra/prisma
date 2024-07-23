@@ -49,7 +49,7 @@ const onFileChange = () => {
       style="display: none;"
     >
     <label for="fileInput" class="file-button">
-      Upload DETT&CT File (JSON)
+      Upload DeTT&CT File (JSON)
     </label>
   </div>
 </template>
