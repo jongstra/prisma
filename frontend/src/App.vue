@@ -10,11 +10,11 @@
   <div id='app'>
 
     <div class='navigation'>
-      <RouterLink class='nav' to='/'>ATT&CK</RouterLink>
-      <RouterLink class='nav' to='/insights'>Insights</RouterLink>
-      <RouterLink class='nav' to='/unified-kill-chain'>Unified Kill Chain</RouterLink>
-      <RouterLink class='nav' to='/magma'>MaGMa</RouterLink>
-    </div>
+    <RouterLink class='nav' to='/' exact-active-class='selected'>ATT&CK</RouterLink>
+    <RouterLink class='nav' to='/insights' exact-active-class='selected'>Insights</RouterLink>
+    <RouterLink class='nav' to='/unified-kill-chain' exact-active-class='selected'>Unified Kill Chain</RouterLink>
+    <RouterLink class='nav' to='/magma' exact-active-class='selected'>MaGMa</RouterLink>
+  </div>
 
     <div class='domain-switcher'>
       <button :class="{'dom': true, 'selected': store.domain === 'enterprise-attack'}" @click="store.setDomain('enterprise-attack')">Enterprise</button>
