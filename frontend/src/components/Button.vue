@@ -1,4 +1,8 @@
 <script setup lang="ts">
+
+  import { tacticsStore } from '@/stores/tactics';
+  const store = tacticsStore()
+
   // defineProps(['technique']);
   const props = defineProps(['technique']);
 
@@ -12,6 +16,10 @@
     }
   };
   
+  const toggleVisibility = () => {
+    store.toggleTechniqueVisiblity(props.technique);
+  }
+
 </script>
 
 
@@ -19,6 +27,7 @@
 
 <template>
   <button 
+    @click=toggleVisibility()
     :style="{ backgroundColor: technique.visibility ? 'red' : '' }"
     :title="getHoverText()"
   >

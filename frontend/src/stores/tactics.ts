@@ -16,6 +16,7 @@ interface Technique {
   visibility: boolean;
   available_datasources: Array<string>;
   sub_techniques: Array<SubTechnique>;
+  show_on_page: boolean;
 }
 
 interface Tactic {
@@ -33,16 +34,16 @@ interface TacticStats {
 export const tacticsStore = defineStore('tactics', {
 
   state: () => ({
-    domain: 'none',
-    enterprise_tactics: {},
-    mobile_tactics: {},
-    ics_tactics: {},
+    domain: 'enterprise-attack',  // Alternative initial value: 'none'.
+    enterprise_tactics: [] as Tactic[],
+    mobile_tactics: [] as Tactic[],
+    ics_tactics: [] as Tactic[],
   }),
 
 
   getters: {
-    tacticStats: (state) => (domain) => {
-      let tactics;
+    tacticStats: (state) => (domain: string) => {
+      let tactics: Array<Tactic>;
 
       switch(domain) {
         case 'enterprise-attack':
@@ -58,7 +59,9 @@ export const tacticsStore = defineStore('tactics', {
           return [];
       }
       
-      return tactics.map(tactic => {
+      console.log(tactics);
+
+      return tactics.map( (tactic: Tactic) => {
         const totalTechniques = tactic.techniques.length;
         const visibleTechniques = tactic.techniques.filter(technique => technique.visibility).length;
         const visibilityPercentage = (visibleTechniques / totalTechniques) * 100;
@@ -86,10 +89,9 @@ export const tacticsStore = defineStore('tactics', {
       }
     },
 
-    async processDettectJson(data: string) {
+    async processDettectJson(data: any) {
       console.log('Processing DeTT&CT json file.');
       this.domain = data.domain;
-
 
       // Get tactics data of the current domain from the store.
       let tactics;
@@ -129,7 +131,6 @@ export const tacticsStore = defineStore('tactics', {
           let technique_update_data = techniques_dict[technique.external_id];
           if(typeof technique_update_data !== "undefined") {
             if (technique_update_data.available_datasources !== '-') {
-              console.log(technique_update_data.available_datasources);
               technique.available_datasources = technique_update_data.available_datasources;
               // technique.available_datasources = technique_update_data.available_datasources.split(',');  // String splitting could be turned off for a speed improvement, if we do not end up using the 'available data sources' individually in further processing.
             }
@@ -138,7 +139,6 @@ export const tacticsStore = defineStore('tactics', {
           
           // Update all sub-techniques. 
           if (typeof technique.sub_techniques !== "undefined") {
-            // console.log(technique);
             technique.sub_techniques.forEach( (sub_technique: Array) => {
               let sub_technique_update_data = techniques_dict[sub_technique.external_id];
               if(typeof sub_technique_update_data !== "undefined") {
@@ -158,6 +158,10 @@ export const tacticsStore = defineStore('tactics', {
 
     setDomain(newDomain: string) {
       this.domain = newDomain;
+    },
+
+    toggleTechniqueVisiblity(technique: Technique | SubTechnique) {
+      technique.visibility = !technique.visibility;
     },
 
   }
