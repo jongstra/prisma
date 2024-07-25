@@ -25,9 +25,9 @@
 
 // Info over hover https://bootstrap-vue.org/docs/directives/hover
 
+<!-- @click=toggleVisibility() -->
 <template>
-  <button 
-    @click=toggleVisibility()
+  <button
     :style="{ backgroundColor: technique.visibility ? 'red' : '' }"
     :title="getHoverText()"
   >

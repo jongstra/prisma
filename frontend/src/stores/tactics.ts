@@ -59,7 +59,7 @@ export const tacticsStore = defineStore('tactics', {
           return [];
       }
       
-      console.log(tactics);
+      // console.log(tactics);
 
       return tactics.map( (tactic: Tactic) => {
         const totalTechniques = tactic.techniques.length;
@@ -160,9 +160,9 @@ export const tacticsStore = defineStore('tactics', {
       this.domain = newDomain;
     },
 
-    toggleTechniqueVisiblity(technique: Technique | SubTechnique) {
-      technique.visibility = !technique.visibility;
-    },
+    // toggleTechniqueVisiblity(technique: Technique | SubTechnique) {
+    //   technique.visibility = !technique.visibility;
+    // },
 
   }
 
