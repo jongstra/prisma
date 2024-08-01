@@ -14,7 +14,13 @@
 
     <!-- Technique count statistic -->
     <div class="button-column-stats-div">
-      <p class="button-column-stats"> {{ tactic.techniques.length }} techniques </p>
+      <p class="button-column-stats1"> {{ tactic.techniques.length }} techniques </p>
+      
+      <!-- Compute the tactic-visiblity solely based on the amount of visible techniques. -->
+      <!-- <p class="button-column-stats2"> {{ Math.round(tactic.techniques.filter(technique => technique.visibility).length / tactic.techniques.length * 100) }}% visibility </p> -->
+      
+      <!-- Compute the tactic-visibility based on the technique alpha value (which is a weighted value based on the visibility of the technique AND its sub techniques). -->
+      <p class="button-column-stats2">{{ Math.round(tactic.techniques.reduce((sum, technique) => sum + (technique.visibility ? technique.alpha : 0), 0) / tactic.techniques.length * 100) }}% visibility</p>
     </div>
 
     <!-- Techniques column -->
@@ -51,9 +57,15 @@
   font-weight: bold;
 }
 
-.button-column-stats {
+.button-column-stats1 {
   font-size: 12px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
+
+.button-column-stats2 {
+  font-size: 9px;
+  margin-bottom: 3px;
+}
+
 
 </style>

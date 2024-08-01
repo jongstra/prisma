@@ -25,10 +25,11 @@
 
 // Info over hover https://bootstrap-vue.org/docs/directives/hover
 
-<!-- @click=toggleVisibility() -->
 <template>
-  <button
-    :style="{ backgroundColor: technique.visibility ? 'red' : '' }"
+  <!-- <button v-if=technique.show_on_page @click=toggleVisibility() -->
+  <!-- :style="{backgroundColor: technique.visibility ? 'red' : '' }" -->
+  <button v-if=technique.show_on_page
+    :style="{ backgroundColor: technique.visibility ? `rgba(255, 0, 0, ${technique.alpha})` : '' }"
     :title="getHoverText()"
   >
     <!-- <span class="buttontext">{{ technique.name }} <br> {{ technique.external_id }}</span> -->

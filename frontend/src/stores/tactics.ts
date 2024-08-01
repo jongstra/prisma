@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { onMounted } from 'vue';
 import axios from 'axios';
 
 // Define interfaces
@@ -8,15 +7,19 @@ interface SubTechnique {
   external_id: string;
   visibility: boolean;
   available_datasources: Array<string>;
+  show_on_page: boolean;
 }
 
 interface Technique {
-  technique: string;
+  name: string;
   external_id: string;
+  platforms: Array<string>;
+  data_components: Array<string>;
   visibility: boolean;
+  alpha: number;
   available_datasources: Array<string>;
-  sub_techniques: Array<SubTechnique>;
   show_on_page: boolean;
+  sub_techniques: Array<SubTechnique>;
 }
 
 interface Tactic {
@@ -31,13 +34,53 @@ interface TacticStats {
   visibilityPercentage: number;
 }
 
+
+// async function fetchApiData(endpoint: string, target: any) {
+//   try {
+//     const response = await axios.get(`http://localhost:5001/${endpoint}`);
+//     this.enterprise_tactics = response.data.enterprise_tactics;
+//     this.mobile_tactics = response.data.mobile_tactics;
+//     this.ics_tactics = response.data.ics_tactics;
+//   } catch (error) {
+//     console.error('Failed to fetch tactics:', error);
+//   }
+// }
+
+// Helper functions
+// function applyDefaults(technique: Technique): Technique {
+//   return {
+//     ...technique,
+//     visibility: technique.show_on_page !== undefined ? technique.visibility : false,
+//     available_datasources: technique.available_datasources
+//     show_on_page: technique.show_on_page !== undefined ? technique.show_on_page : true
+//   };
+// }
+
+// function applyDefaultsToTactics(tactics: Technique[]): Technique[] {
+//   return tactics.map(applyDefaults);
+// }
+
+
 export const tacticsStore = defineStore('tactics', {
 
   state: () => ({
     domain: 'enterprise-attack',  // Alternative initial value: 'none'.
+
     enterprise_tactics: [] as Tactic[],
+    enterprise_platforms: [],
+    enterprise_data_sources: [],
+    enterprise_data_components: [],
+
     mobile_tactics: [] as Tactic[],
+    mobile_platforms: [],
+    mobile_data_sources: [],
+    mobile_data_components: [],
+
     ics_tactics: [] as Tactic[],
+    ics_platforms: [],
+    ics_data_sources: [],
+    ics_data_components: [],
+
   }),
 
 
@@ -58,8 +101,6 @@ export const tacticsStore = defineStore('tactics', {
         default:
           return [];
       }
-      
-      // console.log(tactics);
 
       return tactics.map( (tactic: Tactic) => {
         const totalTechniques = tactic.techniques.length;
@@ -80,7 +121,7 @@ export const tacticsStore = defineStore('tactics', {
     
     async fetchTactics() {
       try {
-        const response = await axios.get('http://localhost:5001/api/data');
+        const response = await axios.get('http://localhost:5001/api/tactics');
         this.enterprise_tactics = response.data.enterprise_tactics;
         this.mobile_tactics = response.data.mobile_tactics;
         this.ics_tactics = response.data.ics_tactics;
@@ -89,6 +130,39 @@ export const tacticsStore = defineStore('tactics', {
       }
     },
 
+    async fetchMetaData() {
+      try {
+        const response = await axios.get('http://localhost:5001/api/platforms');
+        this.enterprise_platforms = response.data.enterprise_tactics;
+        this.mobile_platforms = response.data.mobile_tactics;
+        this.ics_platforms = response.data.ics_tactics;
+      } catch (error) {
+        console.error('Failed to fetch platforms:', error);
+      }
+
+      try {
+        const response = await axios.get('http://localhost:5001/api/data_sources');
+        this.enterprise_data_sources = response.data.enterprise_tactics;
+        this.mobile_data_sources = response.data.mobile_tactics;
+        this.ics_data_sources = response.data.ics_tactics;
+      } catch (error) {
+        console.error('Failed to fetch data_sources:', error);
+      }
+
+      try {
+        const response = await axios.get('http://localhost:5001/api/data_components');
+        this.enterprise_data_components = response.data.enterprise_tactics;
+        this.mobile_data_components = response.data.mobile_tactics;
+        this.ics_data_components = response.data.ics_tactics;
+      } catch (error) {
+        console.error('Failed to fetch data_components:', error);
+      }
+
+    },
+
+
+    // TODO: this function may require optimization in the future.
+    // Possible option: process file using Python, and re-fill Pinia store using API.
     async processDettectJson(data: any) {
       console.log('Processing DeTT&CT json file.');
       this.domain = data.domain;
@@ -109,8 +183,9 @@ export const tacticsStore = defineStore('tactics', {
           return [];
       }
 
-      // Process each technique from the user-uploaded DeTT&CT json; create a lookup dict per (sub)technique.
-      let techniques_dict = {};
+      // Create a lookup dictionary with (sub)technique IDs as keys, using the user-uploaded DeTT&CT json.
+      // In this DeTT&CT json file, all techniques and sub-techniques are presented in a flattened list.
+      let techniques_dict = {};  // Note! This dict will contain techniques AND subtechniques.
       data.techniques.forEach( (technique: object) => {
         techniques_dict[technique.techniqueID] = {
           available_datasources: technique.metadata[1].value,
@@ -131,24 +206,28 @@ export const tacticsStore = defineStore('tactics', {
           let technique_update_data = techniques_dict[technique.external_id];
           if(typeof technique_update_data !== "undefined") {
             if (technique_update_data.available_datasources !== '-') {
-              technique.available_datasources = technique_update_data.available_datasources;
-              // technique.available_datasources = technique_update_data.available_datasources.split(',');  // String splitting could be turned off for a speed improvement, if we do not end up using the 'available data sources' individually in further processing.
+              // technique.available_datasources = technique_update_data.available_datasources;
+              technique.available_datasources = technique_update_data.available_datasources.split(',');  // String splitting could be turned off for a speed improvement, if we do not end up using the 'available data sources' individually in further processing.
             }
             technique.visibility = technique_update_data.has_available_datasources;
+            technique.alpha = 1;
           }
           
           // Update all sub-techniques. 
           if (typeof technique.sub_techniques !== "undefined") {
+            let total_subtechniques_visibility = 0;
             technique.sub_techniques.forEach( (sub_technique: Array) => {
               let sub_technique_update_data = techniques_dict[sub_technique.external_id];
               if(typeof sub_technique_update_data !== "undefined") {
                 if (sub_technique_update_data.available_datasources !== '-') {
-                  sub_technique.available_datasources = sub_technique_update_data.available_datasources;
-                  // sub_technique.available_datasources = sub_technique_update_data.available_datasources.split(',');  // String splitting could be turned off for a speed improvement, if we do not end up using the 'available data sources' individually in further processing.
+                  total_subtechniques_visibility += 1;
+                  // sub_technique.available_datasources = sub_technique_update_data.available_datasources;
+                  sub_technique.available_datasources = sub_technique_update_data.available_datasources.split(',');  // String splitting could be turned off for a speed improvement, if we do not end up using the 'available data sources' individually in further processing.
                 }
                 sub_technique.visibility = sub_technique_update_data.has_available_datasources;
               }
             });
+            technique.alpha = (total_subtechniques_visibility+1) / (technique.sub_techniques.length+1);
           }
 
         });
@@ -159,6 +238,36 @@ export const tacticsStore = defineStore('tactics', {
     setDomain(newDomain: string) {
       this.domain = newDomain;
     },
+
+
+    // // CODE HIERONDER WERKEND MAKEN (prototype van aanpassen van de show_on_page variabele).
+    // // DAARNA DOORWERKEN AAN TechniqueFilter.vue.
+    // applyTechniqueFilter() {
+
+    //   // Get tactics data of the current domain from the store.
+    //   let tactics;
+    //   switch(this.domain) {
+    //     case 'enterprise-attack':
+    //       tactics = this.enterprise_tactics;
+    //       break;
+    //     case 'mobile-attack':
+    //       tactics = this.mobile_tactics;
+    //       break;
+    //     case 'ics-attack':
+    //       tactics = this.ics_tactics;
+    //       break;
+    //   }
+      
+    //   tactics.forEach( (tactic: Tactic) => {
+    //     // console.log('test');
+    //     // console.log(tactic);
+    //     tactic.forEach( (technique: Technique) => {
+    //       technique.show_on_page = false;
+    //       // technique.show_on_page = technique.name == "Active Scanning" ? true : false;
+    //     });
+    //   });
+
+    // },
 
     // toggleTechniqueVisiblity(technique: Technique | SubTechnique) {
     //   technique.visibility = !technique.visibility;
