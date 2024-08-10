@@ -1,14 +1,11 @@
 <script setup lang="ts">
   import ButtonColumn from '../components/ButtonColumn.vue';
-  import FileUploadButton from '@/components/FileUploadButton.vue';
   import { tacticsStore } from '@/stores/tactics';
   const store = tacticsStore();
 </script>
 
 
 <template>
-
-  <FileUploadButton></FileUploadButton>
 
   <!-- <div class="attack-statistics">
     <div class="statistic"><p>Reconaissance visibility: {{ store.tacticStats[0]["visibilityPercentage"] }}%</p></div>
@@ -19,15 +16,15 @@
   
   <div class="attack-matrix">
 
-      <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise_tactics" class="button-columns">
+      <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
         <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
 
-      <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile_tactics" class="button-columns">
+      <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile.tactics" class="button-columns">
         <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
 
-      <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics_tactics" class="button-columns">
+      <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
         <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
 

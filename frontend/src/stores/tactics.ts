@@ -27,6 +27,13 @@ interface Tactic {
   techniques: Technique[];
 }
 
+interface Domain {
+  tactics: Tactic[];
+  platforms: Array<string>;
+  data_sources: Array<string>;
+  data_components: Array<string>;
+}
+
 interface TacticStats {
   name: string;
   totalTechniques: number;
@@ -34,17 +41,6 @@ interface TacticStats {
   visibilityPercentage: number;
 }
 
-
-// async function fetchApiData(endpoint: string, target: any) {
-//   try {
-//     const response = await axios.get(`http://localhost:5001/${endpoint}`);
-//     this.enterprise_tactics = response.data.enterprise_tactics;
-//     this.mobile_tactics = response.data.mobile_tactics;
-//     this.ics_tactics = response.data.ics_tactics;
-//   } catch (error) {
-//     console.error('Failed to fetch tactics:', error);
-//   }
-// }
 
 // Helper functions
 // function applyDefaults(technique: Technique): Technique {
@@ -62,25 +58,11 @@ interface TacticStats {
 
 
 export const tacticsStore = defineStore('tactics', {
-
   state: () => ({
     domain: 'enterprise-attack',  // Alternative initial value: 'none'.
-
-    enterprise_tactics: [] as Tactic[],
-    enterprise_platforms: [],
-    enterprise_data_sources: [],
-    enterprise_data_components: [],
-
-    mobile_tactics: [] as Tactic[],
-    mobile_platforms: [],
-    mobile_data_sources: [],
-    mobile_data_components: [],
-
-    ics_tactics: [] as Tactic[],
-    ics_platforms: [],
-    ics_data_sources: [],
-    ics_data_components: [],
-
+    enterprise: [] as Domain[],
+    ics: [] as Domain[],
+    mobile: [] as Domain[],
   }),
 
 
@@ -90,13 +72,13 @@ export const tacticsStore = defineStore('tactics', {
 
       switch(domain) {
         case 'enterprise-attack':
-          tactics = state.enterprise_tactics;
+          tactics = state.enterprise.tactics;
           break;
         case 'mobile-attack':
-          tactics = state.mobile_tactics;
+          tactics = state.mobile.tactics;
           break;
         case 'ics-attack':
-          tactics = state.ics_tactics;
+          tactics = state.ics.tactics;
           break;
         default:
           return [];
@@ -118,46 +100,16 @@ export const tacticsStore = defineStore('tactics', {
 
 
   actions: {
-    
+
     async fetchTactics() {
       try {
         const response = await axios.get('http://localhost:5001/api/tactics');
-        this.enterprise_tactics = response.data.enterprise_tactics;
-        this.mobile_tactics = response.data.mobile_tactics;
-        this.ics_tactics = response.data.ics_tactics;
+        this.enterprise = response.data.enterprise;
+        this.mobile = response.data.mobile;
+        this.ics = response.data.ics;
       } catch (error) {
         console.error('Failed to fetch tactics:', error);
       }
-    },
-
-    async fetchMetaData() {
-      try {
-        const response = await axios.get('http://localhost:5001/api/platforms');
-        this.enterprise_platforms = response.data.enterprise_tactics;
-        this.mobile_platforms = response.data.mobile_tactics;
-        this.ics_platforms = response.data.ics_tactics;
-      } catch (error) {
-        console.error('Failed to fetch platforms:', error);
-      }
-
-      try {
-        const response = await axios.get('http://localhost:5001/api/data_sources');
-        this.enterprise_data_sources = response.data.enterprise_tactics;
-        this.mobile_data_sources = response.data.mobile_tactics;
-        this.ics_data_sources = response.data.ics_tactics;
-      } catch (error) {
-        console.error('Failed to fetch data_sources:', error);
-      }
-
-      try {
-        const response = await axios.get('http://localhost:5001/api/data_components');
-        this.enterprise_data_components = response.data.enterprise_tactics;
-        this.mobile_data_components = response.data.mobile_tactics;
-        this.ics_data_components = response.data.ics_tactics;
-      } catch (error) {
-        console.error('Failed to fetch data_components:', error);
-      }
-
     },
 
 
@@ -171,13 +123,13 @@ export const tacticsStore = defineStore('tactics', {
       let tactics;
       switch(data.domain) {
         case 'enterprise-attack':
-          tactics = this.enterprise_tactics;
+          tactics = this.enterprise.tactics;
           break;
         case 'mobile-attack':
-          tactics = this.mobile_tactics;
+          tactics = this.mobile.tactics;
           break;
         case 'ics-attack':
-          tactics = this.ics_tactics;
+          tactics = this.ics.tactics;
           break;
         default:
           return [];

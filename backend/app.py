@@ -8,10 +8,9 @@ from test import test
 app = Flask(__name__)
 CORS(app)  # This should enable CORS for all routes.
 
-@app.route('/api/data')
-def get_data():
-    # data = {'message': 'Hello from Flask!'}
-    with open('tactics_and_techniques.json') as f:
+@app.route('/api/tactics')
+def get_tactics():
+    with open('tactics_and_techniques_by_domain.json') as f:
         data = json.load(f)
     return jsonify(data)
 
