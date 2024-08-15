@@ -5,21 +5,23 @@ import axios from 'axios';
 interface SubTechnique {
   technique: string;
   external_id: string;
-  visibility: boolean;
-  available_datasources: Array<string>;
-  show_on_page: boolean;
+  platforms: string[];
+  data_sources: string[];
+  data_components: string[];
+  available_datasources: string[];
+  visibility?: boolean;
 }
 
 interface Technique {
   name: string;
   external_id: string;
-  platforms: Array<string>;
-  data_components: Array<string>;
-  visibility: boolean;
-  alpha: number;
-  available_datasources: Array<string>;
-  show_on_page: boolean;
-  sub_techniques: Array<SubTechnique>;
+  platforms: string[];
+  data_sources: string[];
+  data_components: string[];
+  available_datasources: string[];
+  visibility?: boolean;
+  alpha?: number;
+  sub_techniques?: SubTechnique[];
 }
 
 interface Tactic {
@@ -27,11 +29,21 @@ interface Tactic {
   techniques: Technique[];
 }
 
+interface Attribute {
+  name: string;
+  active: boolean;
+}
+
+interface Attributes {
+  name: string;
+  attributes: Attribute[];
+}
+
 interface Domain {
   tactics: Tactic[];
-  platforms: Array<string>;
-  data_sources: Array<string>;
-  data_components: Array<string>;
+  platforms: Attributes;
+  data_sources: Attributes;
+  data_components: Attributes;
 }
 
 interface TacticStats {
@@ -41,20 +53,6 @@ interface TacticStats {
   visibilityPercentage: number;
 }
 
-
-// Helper functions
-// function applyDefaults(technique: Technique): Technique {
-//   return {
-//     ...technique,
-//     visibility: technique.show_on_page !== undefined ? technique.visibility : false,
-//     available_datasources: technique.available_datasources
-//     show_on_page: technique.show_on_page !== undefined ? technique.show_on_page : true
-//   };
-// }
-
-// function applyDefaultsToTactics(tactics: Technique[]): Technique[] {
-//   return tactics.map(applyDefaults);
-// }
 
 
 export const tacticsStore = defineStore('tactics', {
@@ -67,21 +65,70 @@ export const tacticsStore = defineStore('tactics', {
 
 
   getters: {
-    tacticStats: (state) => (domain: string) => {
-      let tactics: Array<Tactic>;
 
-      switch(domain) {
+    // activePlatforms: (state) => {
+    //   let data;
+    //   if (state.domain == 'enterprise-attack') {
+    //     data = state.enterprise;
+    //   }
+    //   else if (state.domain == 'mobile-attack') {
+    //     data = state.mobile;
+    //   }
+    //   else if (state.domain == 'ics-attack') {
+    //     data = state.ics;
+    //   }
+    //   else data = {};
+
+    //   const active_platforms = data.platforms
+    //     .filter(item => item.active) // Filter the array to include only active items
+    //     .map(item => item.name);
+  
+    //   return active_platforms;
+    // },
+
+    // Generalized getter function (attribute_type examples: platform/data_sources/data_components)
+    activeAttributes: (state) => (attribute_type: string) => {
+      // Determine the correct data source based on the domain
+      let data;
+      switch (state.domain) {
         case 'enterprise-attack':
-          tactics = state.enterprise.tactics;
+          data = state.enterprise[attribute_type];
           break;
         case 'mobile-attack':
-          tactics = state.mobile.tactics;
+          data = state.mobile[attribute_type];
           break;
         case 'ics-attack':
-          tactics = state.ics.tactics;
+          data = state.ics[attribute_type];
           break;
         default:
-          return [];
+          data = {}; // Default to an empty object if domain doesn't match
+      }
+
+      // Check if the attributeType exists in the data
+      if (!data) {
+        return []; // Return an empty array if attributeType is not found in the data
+      }
+
+      // Filter and map the active items based on the attributeType
+      const active_attributes = data
+        .filter(item => item.active) // Filter the array to include only active items
+        .map(item => item.name);
+
+      return active_attributes;
+    },
+
+
+    tacticStats: (state) => (domain: string) => {
+
+      let tactics: Tactic[];
+      if (domain == 'enterprise-attack') {
+        tactics = state.enterprise.tactics;
+      } else if (domain == 'mobile-attack') {
+        tactics = state.mobile.tactics;
+      } else if (domain == 'ics-attack') {
+        tactics = state.ics.tactics;
+      } else {
+        return [];
       }
 
       return tactics.map( (tactic: Tactic) => {
@@ -120,19 +167,15 @@ export const tacticsStore = defineStore('tactics', {
       this.domain = data.domain;
 
       // Get tactics data of the current domain from the store.
-      let tactics;
-      switch(data.domain) {
-        case 'enterprise-attack':
-          tactics = this.enterprise.tactics;
-          break;
-        case 'mobile-attack':
-          tactics = this.mobile.tactics;
-          break;
-        case 'ics-attack':
-          tactics = this.ics.tactics;
-          break;
-        default:
-          return [];
+      let tactics: Tactic[];
+      if (data.domain == 'enterprise-attack') {
+        tactics = this.enterprise.tactics;
+      } else if (data.domain == 'mobile-attack') {
+        tactics = this.mobile.tactics;
+      } else if (data.domain == 'ics-attack') {
+        tactics = this.ics.tactics;
+      } else {
+        return [];
       }
 
       // Create a lookup dictionary with (sub)technique IDs as keys, using the user-uploaded DeTT&CT json.
@@ -190,40 +233,6 @@ export const tacticsStore = defineStore('tactics', {
     setDomain(newDomain: string) {
       this.domain = newDomain;
     },
-
-
-    // // CODE HIERONDER WERKEND MAKEN (prototype van aanpassen van de show_on_page variabele).
-    // // DAARNA DOORWERKEN AAN TechniqueFilter.vue.
-    // applyTechniqueFilter() {
-
-    //   // Get tactics data of the current domain from the store.
-    //   let tactics;
-    //   switch(this.domain) {
-    //     case 'enterprise-attack':
-    //       tactics = this.enterprise_tactics;
-    //       break;
-    //     case 'mobile-attack':
-    //       tactics = this.mobile_tactics;
-    //       break;
-    //     case 'ics-attack':
-    //       tactics = this.ics_tactics;
-    //       break;
-    //   }
-      
-    //   tactics.forEach( (tactic: Tactic) => {
-    //     // console.log('test');
-    //     // console.log(tactic);
-    //     tactic.forEach( (technique: Technique) => {
-    //       technique.show_on_page = false;
-    //       // technique.show_on_page = technique.name == "Active Scanning" ? true : false;
-    //     });
-    //   });
-
-    // },
-
-    // toggleTechniqueVisiblity(technique: Technique | SubTechnique) {
-    //   technique.visibility = !technique.visibility;
-    // },
 
   }
 

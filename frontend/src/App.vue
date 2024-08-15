@@ -5,7 +5,6 @@
   import TechniqueFilter from '@/components/TechniqueFilter.vue';
   const store = tacticsStore();
   onMounted(() => {store.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
-  // onMounted(() => {store.fetchMetaData();}); // Fetch metadata from Python backend for Pinia store.
 </script>
 
 <!-- App.vue gebruikt router routes zoals gedefinieerd in ./router/index.ts -->
@@ -26,14 +25,22 @@
   </div>
   <br>
 
-  <div class='controls'>
-    <div class='upload-button'>
+  <div class='upload-button'>
       <FileUploadButton/>
     </div>
+  <br>
+
+  <div class='controls'>
 
     <div class='filter'>
-      <TechniqueFilter/>
+      <TechniqueFilter attribute_type="platforms"/>
     </div>
+    <!-- <div class='filter'>
+      <TechniqueFilter attribute_type="data_sources"/>
+    </div>
+    <div class='filter'>
+      <TechniqueFilter attribute_type="data_components"/>
+    </div> -->
   </div>
 
 

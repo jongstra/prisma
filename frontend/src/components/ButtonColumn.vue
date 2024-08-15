@@ -35,9 +35,9 @@
 <style scoped>
   .button-column {
     display: grid;
-    /* grid-template-columns: minmax(160px,1fr); */
-    /* gap: 1px; */
-    /* display: flex;
+    /* grid-template-columns: minmax(160px,1fr);
+    gap: 1px;
+    display: flex;
     flex-direction: column; */
   }
 
