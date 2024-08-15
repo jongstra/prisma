@@ -1,52 +1,68 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue';
-  import { tacticsStore } from '@/stores/tactics';
-  const store = tacticsStore()
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { tacticsStore } from '@/stores/tactics';
 
-  // Define props
-  const props = defineProps({
-    attribute_type: {
-      type: String,
-      required: true,
-    },
-  });
+// Define props
+const props = defineProps({
+  attribute_type: {
+    type: String,
+    required: true,
+  },
+});
 
-  // Local state
-  const isCollapsed = ref(true);
+// Local state
+const isCollapsed = ref(true);
+const store = tacticsStore();
+const containerRef = ref<HTMLElement | null>(null);
 
-  // Toggle collapse functionality
-  function toggleCollapse() {
-    isCollapsed.value = !isCollapsed.value;
+// Toggle collapse functionality
+function toggleCollapse() {
+  isCollapsed.value = !isCollapsed.value;
+}
+
+// Capitalize the first letter of a string
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Toggle selection functionality
+function toggleAttribute(attribute: any) {
+  attribute.active = !attribute.active;
+}
+
+// Compute attributes based on the current domain and attribute type
+const attributes = computed(() => {
+  switch (store.domain) {
+    case 'enterprise-attack':
+      return store.enterprise[props.attribute_type];
+    case 'mobile-attack':
+      return store.mobile[props.attribute_type];
+    case 'ics-attack':
+      return store.ics[props.attribute_type];
+    default:
+      return [];
   }
+});
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+// Click outside to collapse
+function handleClickOutside(event: MouseEvent) {
+  if (containerRef.value && !containerRef.value.contains(event.target as Node)) {
+    isCollapsed.value = true;
   }
+}
 
-  // Toggle selection functionality
-  function toggleAttribute(attribute) {
-    attribute.active = !attribute.active;
-  }
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
 
-  // Compute attributes based on the current domain and attribute type
-  const attributes = computed(() => {
-    switch (store.domain) {
-      case 'enterprise-attack':
-        return store.enterprise[props.attribute_type];
-      case 'mobile-attack':
-        return store.mobile[props.attribute_type];
-      case 'ics-attack':
-        return store.ics[props.attribute_type];
-      default:
-        return [];
-    }
-  });
-
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
 </script>
 
 
 <template>
-  <div class="collapsible-container">
+  <div class="collapsible-container" ref="containerRef">
     <!-- Collapsible search bar -->
     <div class="collapsible-header" @click="toggleCollapse">
       <span class="collapsible-title">{{ capitalizeFirstLetter(props.attribute_type) }} Filter</span>
@@ -70,7 +86,6 @@
 
 
 <style scoped>
-
   .collapsible-container {
     position: relative; /* Allows the child element to be positioned absolutely within it */
   }
@@ -108,5 +123,4 @@
   .collapsible-content label {
     display: block;
   }
-
 </style>
