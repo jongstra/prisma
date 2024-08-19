@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { onMounted } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
-  import FileUploadButton from '@/components/FileUploadButton.vue';
+  import FileUploadButtonJson from '@/components/FileUploadButtonJson.vue';
   import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
   import TechniqueFilter from '@/components/TechniqueFilter.vue';
   const store = tacticsStore();
@@ -27,7 +27,7 @@
   <br>
 
   <div class='upload-button'>
-      <!-- <FileUploadButton/> -->
+      <!-- <FileUploadButtonJson/> -->
       <FileUploadButtonYaml/>
     </div>
   <br>

@@ -188,6 +188,7 @@ export const tacticsStore = defineStore('tactics', {
 
               if (sub_technique.data_components.some(component => active_data_components.includes(component))){
                 sub_technique.visibility = true;
+                sub_technique.alpha = 1;
                 total_sub_techniques_visibility += 1;
               }
 
@@ -263,6 +264,7 @@ export const tacticsStore = defineStore('tactics', {
                   sub_technique.available_datasources = sub_technique_update_data.available_datasources.split(',');  // String splitting could be turned off for a speed improvement, if we do not end up using the 'available data sources' individually in further processing.
                 }
                 sub_technique.visibility = sub_technique_update_data.has_available_datasources;
+                sub_technique.alpha = 1;
               }
             });
             technique.alpha = (total_subtechniques_visibility+1) / (technique.sub_techniques.length+1);
