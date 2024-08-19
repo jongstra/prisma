@@ -28,8 +28,21 @@
     return platforms.some(platform => store.activeAttributes('platforms').includes(platform));
   });
 
+  // // Computed property to determine if the button should be shown.
+  // const showButton = computed(() => {
+  //   const data_sources = props.technique?.data_sources || [];
+  //   // Use the generalized activeAttributes getter with 'data_sources' as the attribute type
+  //   return data_sources.some(data_sources => store.activeAttributes('data_sources').includes(data_sources));
+  // });
 
-  // TODO: create checkboxes to activate/deactivate the platform/data_sources/data_components filters.
+    // // Computed property to determine if the button should be shown.
+  // const showButton = computed(() => {
+  //   const data_components = props.technique?.data_components || [];
+  //   // Use the generalized activeAttributes getter with 'data_components' as the attribute type
+  //   return data_components.some(data_components => store.activeAttributes('data_components').includes(data_components));
+  // });
+
+
 
   // // Computed property to determine if the button should be shown.
   // const showButton = computed(() => {
@@ -54,6 +67,9 @@
   //   return isPlatformActive || isDataSourceActive || isDataComponentActive;
   // });
   
+  
+  // TODO: create checkboxes to activate/deactivate the platform/data_sources/data_components filters.
+
 
 </script>
 

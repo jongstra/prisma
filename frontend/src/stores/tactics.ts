@@ -66,26 +66,6 @@ export const tacticsStore = defineStore('tactics', {
 
   getters: {
 
-    // activePlatforms: (state) => {
-    //   let data;
-    //   if (state.domain == 'enterprise-attack') {
-    //     data = state.enterprise;
-    //   }
-    //   else if (state.domain == 'mobile-attack') {
-    //     data = state.mobile;
-    //   }
-    //   else if (state.domain == 'ics-attack') {
-    //     data = state.ics;
-    //   }
-    //   else data = {};
-
-    //   const active_platforms = data.platforms
-    //     .filter(item => item.active) // Filter the array to include only active items
-    //     .map(item => item.name);
-  
-    //   return active_platforms;
-    // },
-
     // Generalized getter function (attribute_type examples: platform/data_sources/data_components)
     activeAttributes: (state) => (attribute_type: string) => {
       // Determine the correct data source based on the domain
@@ -159,6 +139,69 @@ export const tacticsStore = defineStore('tactics', {
       }
     },
 
+    
+    setDomain(newDomain: string) {
+      this.domain = newDomain;
+    },
+    
+
+    processDettectYaml(data: any) {
+
+      // Switch to relevant domain.
+      this.domain = data.domain;
+
+      // Get the names of all DeTT&CT data sources that are administerd in the YAML file.
+      let dettect_data_sources_names = data.data_sources.map(
+        (data_source) => data_source.data_source_name
+      );
+
+      // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
+      let active_data_components = dettect_data_sources_names;
+
+      // Access tactics data of the current domain from the store.
+      let tactics: Tactic[];
+      if (data.domain == 'enterprise-attack') {
+        tactics = this.enterprise.tactics;
+      } else if (data.domain == 'mobile-attack') {
+        tactics = this.mobile.tactics;
+      } else if (data.domain == 'ics-attack') {
+        tactics = this.ics.tactics;
+      } else {
+        return [];
+      }
+
+      // Loop over all tactics/techniques/subtechniques in the Pinia store to update their visibility and alpha.
+      tactics.forEach( (tactic: object) => {
+
+        // Update all techniques.
+        tactic.techniques.forEach( (technique: object) => {
+
+          if (technique.data_components.some(component => active_data_components.includes(component))){
+            technique.visibility = true;
+            technique.alpha = 1;
+          }
+
+          // Update all sub-techniques, as well as the alpha values of their parent techniques. 
+          if (typeof technique.sub_techniques !== "undefined") {
+            let total_sub_techniques_visibility = 0;
+            technique.sub_techniques.forEach( (sub_technique: Array) => {
+
+              if (sub_technique.data_components.some(component => active_data_components.includes(component))){
+                sub_technique.visibility = true;
+                total_sub_techniques_visibility += 1;
+              }
+
+            });
+            technique.alpha = (total_sub_techniques_visibility+1) / (technique.sub_techniques.length+1);
+          }
+
+        })
+
+      })
+    },
+
+
+
 
     // TODO: this function may require optimization in the future.
     // Possible option: process file using Python, and re-fill Pinia store using API.
@@ -230,10 +273,5 @@ export const tacticsStore = defineStore('tactics', {
       });
     },
 
-    setDomain(newDomain: string) {
-      this.domain = newDomain;
-    },
-
   }
-
 });

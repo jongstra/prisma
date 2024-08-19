@@ -2,6 +2,7 @@
   import { onMounted } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
   import FileUploadButton from '@/components/FileUploadButton.vue';
+  import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
   import TechniqueFilter from '@/components/TechniqueFilter.vue';
   const store = tacticsStore();
   onMounted(() => {store.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
@@ -26,7 +27,8 @@
   <br>
 
   <div class='upload-button'>
-      <FileUploadButton/>
+      <!-- <FileUploadButton/> -->
+      <FileUploadButtonYaml/>
     </div>
   <br>
 
@@ -37,8 +39,8 @@
     </div>
     <!-- <div class='filter'>
       <TechniqueFilter attribute_type="data_sources"/>
-    </div>
-    <div class='filter'>
+    </div> -->
+    <!-- <div class='filter'>
       <TechniqueFilter attribute_type="data_components"/>
     </div> -->
   </div>
@@ -75,6 +77,7 @@
 }
 
 .nav, .dom {
+  cursor: pointer;
   flex-grow: 1;
   text-align: center;
   background-color: #cccccc;
