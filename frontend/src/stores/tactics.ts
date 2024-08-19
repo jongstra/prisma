@@ -150,14 +150,6 @@ export const tacticsStore = defineStore('tactics', {
       // Switch to relevant domain.
       this.domain = data.domain;
 
-      // Get the names of all DeTT&CT data sources that are administerd in the YAML file.
-      let dettect_data_sources_names = data.data_sources.map(
-        (data_source) => data_source.data_source_name
-      );
-
-      // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
-      let active_data_components = dettect_data_sources_names;
-
       // Access tactics data of the current domain from the store.
       let tactics: Tactic[];
       if (data.domain == 'enterprise-attack') {
@@ -169,6 +161,14 @@ export const tacticsStore = defineStore('tactics', {
       } else {
         return [];
       }
+
+      // Get the names of all DeTT&CT data sources that are administerd in the YAML file.
+      let dettect_data_sources_names = data.data_sources.map(
+        (data_source) => data_source.data_source_name
+      );
+
+      // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
+      let active_data_components = dettect_data_sources_names;
 
       // Loop over all tactics/techniques/subtechniques in the Pinia store to update their visibility and alpha.
       tactics.forEach( (tactic: object) => {
