@@ -61,6 +61,7 @@ export const tacticsStore = defineStore('tactics', {
     enterprise: [] as Domain[],
     ics: [] as Domain[],
     mobile: [] as Domain[],
+    searchQuery: '' as string,
   }),
 
 
@@ -142,6 +143,10 @@ export const tacticsStore = defineStore('tactics', {
     
     setDomain(newDomain: string) {
       this.domain = newDomain;
+    },
+
+    setSearchQuery(query: string) {
+      this.searchQuery = query;
     },
     
 

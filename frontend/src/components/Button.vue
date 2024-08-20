@@ -26,8 +26,19 @@
   // Computed property to determine if the button should be shown.
   const showButton = computed(() => {
     const platforms = props.technique?.platforms || [];
-    // Use the generalized activeAttributes getter with 'platforms' as the attribute type
-    return platforms.some(platform => store.activeAttributes('platforms').includes(platform));
+
+    // Filter techniques based on the selected platforms in the Platforms filter.
+    // Also filter techniques based on the searchQuery string in the search bar (if not empty).
+    if (
+          (platforms.some(platform => store.activeAttributes('platforms').includes(platform))) && 
+          (!store.searchQuery || props.technique.name.toLowerCase().includes(store.searchQuery.toLowerCase()))
+       ) {
+      return true;
+    }
+    else {
+      return false;
+    }
+    
   });
 
   // // Computed property to determine if the button should be shown.

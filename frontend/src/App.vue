@@ -4,6 +4,7 @@
   import FileUploadButtonJson from '@/components/FileUploadButtonJson.vue';
   import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
   import TechniqueFilter from '@/components/TechniqueFilter.vue';
+  import SearchBar from './components/SearchBar.vue';
   const store = tacticsStore();
   onMounted(() => {store.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
 </script>
@@ -43,6 +44,11 @@
     <!-- <div class='filter'>
       <TechniqueFilter attribute_type="data_components"/>
     </div> -->
+
+    <div class='search'>
+      <SearchBar/>
+    </div>
+
   </div>
 
 
