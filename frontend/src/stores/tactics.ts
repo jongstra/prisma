@@ -176,6 +176,7 @@ export const tacticsStore = defineStore('tactics', {
         // Update all techniques.
         tactic.techniques.forEach( (technique: object) => {
 
+          // OPTION: dont use 'some', but compute a coverage statistic that can be added to the technique (also add to subtechnique!)
           if (technique.data_components.some(component => active_data_components.includes(component))){
             technique.visibility = true;
             technique.alpha = 1;
@@ -204,8 +205,7 @@ export const tacticsStore = defineStore('tactics', {
 
 
 
-    // TODO: this function may require optimization in the future.
-    // Possible option: process file using Python, and re-fill Pinia store using API.
+    // TODO: this function may require optimization in the future. -> Using/processing YAML file is faster replacement.
     async processDettectJson(data: any) {
       console.log('Processing DeTT&CT json file.');
       this.domain = data.domain;
