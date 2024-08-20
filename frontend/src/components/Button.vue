@@ -8,12 +8,15 @@
   const props = defineProps(['technique']);
 
   const getHoverText = () => {
+    const groups_string = props.technique.groups.join(', ');
+
     if (!props.technique.sub_techniques) {
-      return  `Technique ID: ${props.technique.external_id}\n\nNo Subtechniques`;
+      return  `Technique ID: ${props.technique.external_id}\n\nNo Subtechniques\n\nGroups: ${groups_string}`;
     } else {
       // Concatenate names and external IDs of subtechniques.
       const subtechniques_string = props.technique.sub_techniques.map(sub => `- ${sub.name} (${sub.external_id})`).join('\n');
-      return `Technique ID: ${props.technique.external_id}\n\nSubtechniques:\n${subtechniques_string}`
+      
+      return `Technique ID: ${props.technique.external_id}\n\nSubtechniques:\n${subtechniques_string}\n\nGroups: ${groups_string}`
     }
   };
 
