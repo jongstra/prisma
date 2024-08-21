@@ -142,7 +142,7 @@ button {
   margin-top: 0px;
   margin-bottom: 0px;
   background-color: rgb(246, 246, 246);
-  border: 1px solid rgb(42, 42, 42);
+  border: 1.5px solid rgb(42, 42, 42);
 }
 
 .buttontext {
