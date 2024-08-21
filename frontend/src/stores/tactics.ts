@@ -6,6 +6,8 @@ interface SubTechnique {
   technique: string;
   external_id: string;
   platforms: string[];
+  groups: string[];
+  occurrence: number;
   data_sources: string[];
   data_components: string[];
   available_datasources: string[];
@@ -16,6 +18,8 @@ interface Technique {
   name: string;
   external_id: string;
   platforms: string[];
+  groups: string[];
+  occurrence: number;
   data_sources: string[];
   data_components: string[];
   available_datasources: string[];
@@ -194,7 +198,6 @@ export const tacticsStore = defineStore('tactics', {
 
               if (sub_technique.data_components.some(component => active_data_components.includes(component))){
                 sub_technique.visibility = true;
-                sub_technique.alpha = 1;
                 total_sub_techniques_visibility += 1;
               }
 
