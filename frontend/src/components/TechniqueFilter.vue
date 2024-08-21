@@ -89,23 +89,21 @@ onBeforeUnmount(() => {
 <style scoped>
 .collapsible-container {
   position: relative;
-  margin: 20px;
+  margin: 18px;
 }
 
 .collapsible-header {
   cursor: pointer;
-
 }
 
 .collapsible-title {
-  padding: 10px;
+  padding: 8px;
   font-size: 16px;
   border: 2px solid #555;
   border-radius: 5px;
   width: 300px;
   background-color: #ffeba1;
   color: #666666;
-  cursor: pointer;
 }
 
 .collapsible-content {

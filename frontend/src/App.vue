@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue';
+  import { onMounted, onBeforeUnmount } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
   import FileUploadButtonJson from '@/components/FileUploadButtonJson.vue';
   import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
@@ -7,6 +7,21 @@
   import SearchBar from './components/SearchBar.vue';
   const store = tacticsStore();
   onMounted(() => {store.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
+
+  // Ask user for confirmation when leaving/refreshing the page.
+  const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+    const confirmationMessage = 'Are you sure you want to reload/leave? Changes you made will not be saved.';
+    event.preventDefault(); 
+    event.returnValue = confirmationMessage; 
+    return confirmationMessage;
+  };
+  onMounted(() => {
+    window.addEventListener('beforeunload', handleBeforeUnload);
+  });
+  onBeforeUnmount(() => {
+    window.removeEventListener('beforeunload', handleBeforeUnload);
+  });
+
 </script>
 
 <!-- App.vue gebruikt router routes zoals gedefinieerd in ./router/index.ts -->
@@ -67,7 +82,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding: 2% 2rem;
+  padding: 1.5% 2rem;
 }
 
 .navigation, .domain-switcher {
