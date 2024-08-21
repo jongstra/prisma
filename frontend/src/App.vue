@@ -86,7 +86,7 @@
   background-color: #cccccc;
   margin-top: 10px;
   margin-bottom: 5px;
-  border: 3px solid black;
+  border: 2px solid black;
   border-radius: 5px;
   max-width: 800px;
 }
@@ -99,7 +99,7 @@
   color: #000000;
   font-size: 18px;
   font-weight: bold;
-  border: 3px solid black;
+  border: 2px solid black;
   margin: 2px;
   border-radius: 5px;
 }

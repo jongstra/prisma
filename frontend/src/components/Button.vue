@@ -19,6 +19,45 @@
     }
   };
 
+  // function getBackgroundColor(visibility_ratio: number): string {
+  //   if (visibility_ratio <= 0.01) {
+  //     return ''
+  //   } else if (visibility_ratio <= 0.25) {
+  //     return '#E1BEE7';
+  //   } else if (visibility_ratio <= 0.5) {
+  //     return '#CE93D8';
+  //   } else if (visibility_ratio <= 0.75) {
+  //     return '#AB47BC';
+  //   } else if (visibility_ratio <= 0.99) {
+  //     return '#7B1FA2'
+  //   } else {
+  //     return '#4A148C'
+  //   }
+  // }
+
+  function getButtonStyles(visibility_ratio: number): { backgroundColor: string, color: string } {
+    let backgroundColor = '';
+    let color = 'black'; // Default text color
+
+    if (visibility_ratio <= 0.01) {
+      backgroundColor = '';
+    } else if (visibility_ratio <= 0.25) {
+      backgroundColor = '#E1BEE7';
+    } else if (visibility_ratio <= 0.5) {
+      backgroundColor = '#CE93D8';
+    } else if (visibility_ratio <= 0.75) {
+      backgroundColor = '#AB47BC';
+    } else if (visibility_ratio <= 0.99) {
+      backgroundColor = '#7B1FA2';
+      color = 'white'; // White text color for high visibility ratios
+    } else {
+      backgroundColor = '#4A148C';
+      color = 'white'; // White text color for highest visibility ratio
+    }
+
+    return { backgroundColor, color };
+  }
+
   const toggleVisibility = () => {
     store.toggleTechniqueVisiblity(props.technique);
   }
@@ -88,9 +127,9 @@
 
 
 
-<template>
+ <template>
   <button v-if="showButton"
-    :style="{ backgroundColor: technique.visibility ? `rgba(255, 0, 0, ${technique.visibility_ratio})` : '' }"
+    :style="getButtonStyles(technique.visibility_ratio)"
     :title="getHoverText()"
   >
     <span class="buttontext">{{ technique.name }}</span>
@@ -102,7 +141,8 @@
 button {
   margin-top: 0px;
   margin-bottom: 0px;
-  background-color: rgb(215, 240, 242);
+  background-color: rgb(246, 246, 246);
+  border: 1px solid rgb(42, 42, 42);
 }
 
 .buttontext {
