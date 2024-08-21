@@ -18,13 +18,13 @@ watch(searchQuery, (newValue) => {
 
 <style scoped>
 .search-bar {
-  margin: 20px;
+  margin: 8px;
 }
 input[type="text"] {
   padding: 10px;
   font-size: 16px;
-  border: 2px solid #ccc;
+  border: 2px solid #555;
   border-radius: 5px;
-  width: 300px;
+  width: 200px;
 }
 </style>

@@ -25,13 +25,11 @@
     <button :class="{'dom': true, 'selected': store.domain === 'mobile-attack'}" @click="store.setDomain('mobile-attack')">Mobile</button>
     <button :class="{'dom': true, 'selected': store.domain === 'ics-attack'}" @click="store.setDomain('ics-attack')">ICS</button>
   </div>
-  <br>
 
   <div class='upload-button'>
       <!-- <FileUploadButtonJson/> -->
       <FileUploadButtonYaml/>
-    </div>
-  <br>
+  </div>
 
   <div class='controls'>
 
@@ -72,11 +70,22 @@
   padding: 2% 2rem;
 }
 
-.navigation, .domain-switcher, .controls {
+.navigation, .domain-switcher {
   display: flex;
   justify-content: space-around;
   background-color: #eeeeee;
   margin-bottom: 10px;
+  border: 3px solid black;
+  border-radius: 5px;
+  max-width: 800px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  background-color: #cccccc;
+  margin-top: 10px;
+  margin-bottom: 5px;
   border: 3px solid black;
   border-radius: 5px;
   max-width: 800px;

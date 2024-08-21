@@ -85,42 +85,51 @@ onBeforeUnmount(() => {
 </template>
 
 
+
 <style scoped>
-  .collapsible-container {
-    position: relative; /* Allows the child element to be positioned absolutely within it */
-  }
+.collapsible-container {
+  position: relative;
+  margin: 20px;
+}
 
-  .collapsible-header {
-    cursor: pointer;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    display: inline-block; /* Keeps the header size to content */
-  }
+.collapsible-header {
+  cursor: pointer;
 
-  .collapsible-content {
-    position: absolute; /* Positions the content relative to the container */
-    top: 100%; /* Position the content directly below the header */
-    left: 0;
-    width: 100%; /* Ensures the content is the same width as the container */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Ensures the content is above other elements */
-  }
+}
 
-  .collapsible-content ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+.collapsible-title {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #555;
+  border-radius: 5px;
+  width: 300px;
+  background-color: #ffeba1;
+  color: #666666;
+  cursor: pointer;
+}
 
-  .collapsible-content li {
-    padding: 5px;
-  }
+.collapsible-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
 
-  .collapsible-content label {
-    display: block;
-  }
+.collapsible-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.collapsible-content li {
+  padding: 5px;
+}
+
+.collapsible-content label {
+  display: block;
+}
 </style>
