@@ -24,7 +24,7 @@ interface Technique {
   data_components: string[];
   available_datasources: string[];
   visibility?: boolean;
-  alpha?: number;
+  visibility_ratio?: number;
   sub_techniques?: SubTechnique[];
 }
 
@@ -188,21 +188,21 @@ export const tacticsStore = defineStore('tactics', {
           // OPTION: dont use 'some', but compute a coverage statistic that can be added to the technique (also add to subtechnique!)
           if (technique.data_components.some(component => active_data_components.includes(component))){
             technique.visibility = true;
-            technique.alpha = 1;
+            technique.visibility_ratio = 1;
           }
 
           // Update all sub-techniques, as well as the alpha values of their parent techniques. 
           if (typeof technique.sub_techniques !== "undefined") {
-            let total_sub_techniques_visibility = 0;
+            let total_sub_techniques_visible = 0;
             technique.sub_techniques.forEach( (sub_technique: Array) => {
 
               if (sub_technique.data_components.some(component => active_data_components.includes(component))){
                 sub_technique.visibility = true;
-                total_sub_techniques_visibility += 1;
+                total_sub_techniques_visible += 1;
               }
 
             });
-            technique.alpha = (total_sub_techniques_visibility+1) / (technique.sub_techniques.length+1);
+            technique.visibility_ratio = (total_sub_techniques_visible+1) / (technique.sub_techniques.length+1);
           }
 
         })

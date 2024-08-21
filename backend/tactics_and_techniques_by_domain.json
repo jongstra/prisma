@@ -23,7 +23,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Scanning IP Blocks",
@@ -42,7 +42,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Wordlist Scanning",
@@ -62,7 +62,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -81,7 +81,7 @@
               "Response Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Client Configurations",
@@ -100,7 +100,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Firmware",
@@ -113,7 +113,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Hardware",
@@ -130,7 +130,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Software",
@@ -151,7 +151,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -177,7 +177,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Credentials",
@@ -199,7 +199,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Email Addresses",
@@ -228,7 +228,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Employee Names",
@@ -246,7 +246,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -263,7 +263,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Domain Properties",
@@ -278,7 +278,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -296,7 +296,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Determine Physical Locations",
@@ -311,7 +311,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Identify Roles",
@@ -328,7 +328,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -354,7 +354,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Spearphishing Service",
@@ -376,7 +376,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -393,7 +393,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Search Open Technical Databases",
@@ -406,7 +406,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "CDNs",
@@ -419,7 +419,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Scan Databases",
@@ -434,7 +434,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -451,7 +451,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Social Media",
@@ -468,7 +468,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -492,7 +492,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -511,7 +511,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Acquire Infrastructure",
@@ -535,7 +535,7 @@
               "Domain Registration"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Botnet",
@@ -548,7 +548,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "DNS Server",
@@ -564,7 +564,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Domains",
@@ -613,7 +613,7 @@
                   "Active DNS"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Malvertising",
@@ -632,7 +632,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Server",
@@ -657,7 +657,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Serverless",
@@ -674,7 +674,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Virtual Private Server",
@@ -699,7 +699,7 @@
                   "Response Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Web Services",
@@ -735,7 +735,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -756,7 +756,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Compromise Infrastructure",
@@ -778,7 +778,7 @@
               "Response Metadata"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Botnet",
@@ -794,7 +794,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "DNS Server",
@@ -814,7 +814,7 @@
                   "Passive DNS"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Domains",
@@ -842,7 +842,7 @@
                   "Active DNS"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Server",
@@ -869,7 +869,7 @@
                   "Response Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Serverless",
@@ -886,7 +886,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Web Services",
@@ -906,7 +906,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -930,7 +930,7 @@
               "Response Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Establish Accounts",
@@ -952,7 +952,7 @@
               "Social Media"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Obtain Capabilities",
@@ -974,7 +974,7 @@
               "Malware Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Code Signing Certificates",
@@ -998,7 +998,7 @@
                   "Malware Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Exploits",
@@ -1013,7 +1013,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -1034,7 +1034,7 @@
               "Response Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Install Digital Certificate",
@@ -1051,7 +1051,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Link Target",
@@ -1071,7 +1071,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "SEO Poisoning",
@@ -1090,7 +1090,7 @@
                   "Response Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -1123,7 +1123,7 @@
               "File Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Drive-by Compromise",
@@ -1179,7 +1179,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exploit Public-Facing Application",
@@ -1235,7 +1235,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "External Remote Services",
@@ -1284,7 +1284,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hardware Additions",
@@ -1309,7 +1309,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Phishing",
@@ -1339,7 +1339,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Spearphishing Voice",
@@ -1363,7 +1363,7 @@
                   "Application Log Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Spearphishing via Service",
@@ -1397,7 +1397,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -1429,7 +1429,7 @@
               "File Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Supply Chain Compromise",
@@ -1450,7 +1450,7 @@
               "File Metadata"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Compromise Software Supply Chain",
@@ -1478,7 +1478,7 @@
                   "File Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -1516,7 +1516,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Valid Accounts",
@@ -1581,7 +1581,7 @@
               "Logon Session Metadata"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Cloud Accounts",
@@ -1613,7 +1613,7 @@
                   "Logon Session Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Domain Accounts",
@@ -1650,7 +1650,7 @@
                   "Logon Session Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Local Accounts",
@@ -1684,7 +1684,7 @@
                   "User Account Authentication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -1715,7 +1715,7 @@
               "Script Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Command and Scripting Interpreter",
@@ -1761,7 +1761,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Network Device CLI",
@@ -1778,7 +1778,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "PowerShell",
@@ -1873,7 +1873,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Python",
@@ -1909,7 +1909,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Unix Shell",
@@ -1934,7 +1934,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Visual Basic",
@@ -2003,7 +2003,7 @@
                   "Script Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Windows Command Shell",
@@ -2085,7 +2085,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -2108,7 +2108,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Deploy Container",
@@ -2133,7 +2133,7 @@
               "Pod Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exploitation for Client Execution",
@@ -2192,7 +2192,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Inter-Process Communication",
@@ -2216,7 +2216,7 @@
               "Process Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Native API",
@@ -2253,7 +2253,7 @@
               "Module Load"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Scheduled Task/Job",
@@ -2284,7 +2284,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "At",
@@ -2315,7 +2315,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Systemd Timers",
@@ -2338,7 +2338,7 @@
                   "Scheduled Job Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -2361,7 +2361,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Shared Modules",
@@ -2382,7 +2382,7 @@
               "Module Load"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Software Deployment Tools",
@@ -2410,7 +2410,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Services",
@@ -2439,7 +2439,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Service Execution",
@@ -2475,7 +2475,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -2518,7 +2518,7 @@
               "Container Start"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Malicious Image",
@@ -2548,7 +2548,7 @@
                   "Instance Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Malicious Link",
@@ -2611,7 +2611,7 @@
                   "Network Connection Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -2669,7 +2669,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -2722,7 +2722,7 @@
               "User Account Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Additional Email Delegate Permissions",
@@ -2749,7 +2749,7 @@
                   "User Account Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -2780,7 +2780,7 @@
               "Service Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Boot or Logon Autostart Execution",
@@ -2815,7 +2815,7 @@
               "Driver Load"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Active Setup",
@@ -2837,7 +2837,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Authentication Package",
@@ -2858,7 +2858,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Kernel Modules and Extensions",
@@ -2883,7 +2883,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "LSASS Driver",
@@ -2905,7 +2905,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Login Items",
@@ -2925,7 +2925,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Port Monitors",
@@ -2948,7 +2948,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Print Processors",
@@ -2975,7 +2975,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Re-opened Applications",
@@ -2994,7 +2994,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Registry Run Keys / Startup Folder",
@@ -3069,7 +3069,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Security Support Provider",
@@ -3090,7 +3090,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Shortcut Modification",
@@ -3115,7 +3115,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Time Providers",
@@ -3138,7 +3138,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Winlogon Helper DLL",
@@ -3165,7 +3165,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "XDG Autostart Entries",
@@ -3187,7 +3187,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -3221,7 +3221,7 @@
               "Active Directory Object Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Login Hook",
@@ -3243,7 +3243,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Logon Script (Windows)",
@@ -3267,7 +3267,7 @@
                   "Windows Registry Key Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Network Logon Script",
@@ -3291,7 +3291,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "RC Scripts",
@@ -3317,7 +3317,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Startup Items",
@@ -3339,7 +3339,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -3370,7 +3370,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Compromise Host Software Binary",
@@ -3395,7 +3395,7 @@
               "File Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Create Account",
@@ -3429,7 +3429,7 @@
               "User Account Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Create or Modify System Process",
@@ -3465,7 +3465,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Container Service",
@@ -3484,7 +3484,7 @@
                   "Container Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Launch Agent",
@@ -3507,7 +3507,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Launch Daemon",
@@ -3532,7 +3532,7 @@
                   "Service Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Systemd Service",
@@ -3561,7 +3561,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Windows Service",
@@ -3615,7 +3615,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -3653,7 +3653,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "AppInit DLLs",
@@ -3679,7 +3679,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Component Object Model Hijacking",
@@ -3704,7 +3704,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Installer Packages",
@@ -3727,7 +3727,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Netsh Helper DLL",
@@ -3750,7 +3750,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Screensaver",
@@ -3774,7 +3774,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Unix Shell Configuration Modification",
@@ -3797,7 +3797,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -3848,7 +3848,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hijack Execution Flow",
@@ -3880,7 +3880,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "COR_PROFILER",
@@ -3905,7 +3905,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "DLL Side-Loading",
@@ -3951,7 +3951,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Dylib Hijacking",
@@ -3971,7 +3971,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Path Interception by Unquoted Path",
@@ -3991,7 +3991,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4013,7 +4013,7 @@
               "Image Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Modify Authentication Process",
@@ -4060,7 +4060,7 @@
               "Windows Registry Key Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Network Device Authentication",
@@ -4077,7 +4077,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4112,7 +4112,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Add-ins",
@@ -4140,7 +4140,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Office Template Macros",
@@ -4168,7 +4168,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Office Test",
@@ -4198,7 +4198,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Outlook Forms",
@@ -4220,7 +4220,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Outlook Home Page",
@@ -4244,7 +4244,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Outlook Rules",
@@ -4266,7 +4266,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4290,7 +4290,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Pre-OS Boot",
@@ -4320,7 +4320,7 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "ROMMONkit",
@@ -4337,7 +4337,7 @@
                   "Firmware Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4370,7 +4370,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "At",
@@ -4401,7 +4401,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Systemd Timers",
@@ -4424,7 +4424,7 @@
                   "Scheduled Job Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4454,7 +4454,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "SQL Stored Procedures",
@@ -4474,7 +4474,7 @@
                   "Application Log Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4500,7 +4500,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Port Knocking",
@@ -4523,7 +4523,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4590,7 +4590,7 @@
               "Logon Session Metadata"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Cloud Accounts",
@@ -4622,7 +4622,7 @@
                   "Logon Session Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Domain Accounts",
@@ -4659,7 +4659,7 @@
                   "Logon Session Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Local Accounts",
@@ -4693,7 +4693,7 @@
                   "User Account Authentication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -4735,7 +4735,7 @@
               "Windows Registry Key Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Elevated Execution with Prompt",
@@ -4753,7 +4753,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Setuid and Setgid",
@@ -4774,7 +4774,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "TCC Manipulation",
@@ -4795,7 +4795,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Temporary Elevated Cloud Access",
@@ -4815,7 +4815,7 @@
                   "User Account Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4846,7 +4846,7 @@
               "Active Directory Object Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Account Manipulation",
@@ -4893,7 +4893,7 @@
               "User Account Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Additional Email Delegate Permissions",
@@ -4920,7 +4920,7 @@
                   "User Account Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -4957,7 +4957,7 @@
               "Driver Load"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Active Setup",
@@ -4979,7 +4979,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Authentication Package",
@@ -5000,7 +5000,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Kernel Modules and Extensions",
@@ -5025,7 +5025,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "LSASS Driver",
@@ -5047,7 +5047,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Login Items",
@@ -5067,7 +5067,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Port Monitors",
@@ -5090,7 +5090,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Print Processors",
@@ -5117,7 +5117,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Re-opened Applications",
@@ -5136,7 +5136,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Registry Run Keys / Startup Folder",
@@ -5211,7 +5211,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Security Support Provider",
@@ -5232,7 +5232,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Shortcut Modification",
@@ -5257,7 +5257,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Time Providers",
@@ -5280,7 +5280,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Winlogon Helper DLL",
@@ -5307,7 +5307,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "XDG Autostart Entries",
@@ -5329,7 +5329,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -5363,7 +5363,7 @@
               "Active Directory Object Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Login Hook",
@@ -5385,7 +5385,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Logon Script (Windows)",
@@ -5409,7 +5409,7 @@
                   "Windows Registry Key Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Network Logon Script",
@@ -5433,7 +5433,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "RC Scripts",
@@ -5459,7 +5459,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Startup Items",
@@ -5481,7 +5481,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -5519,7 +5519,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Container Service",
@@ -5538,7 +5538,7 @@
                   "Container Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Launch Agent",
@@ -5561,7 +5561,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Launch Daemon",
@@ -5586,7 +5586,7 @@
                   "Service Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Systemd Service",
@@ -5615,7 +5615,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Windows Service",
@@ -5669,7 +5669,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -5696,7 +5696,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Escape to Host",
@@ -5724,7 +5724,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Event Triggered Execution",
@@ -5760,7 +5760,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "AppInit DLLs",
@@ -5786,7 +5786,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Component Object Model Hijacking",
@@ -5811,7 +5811,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Installer Packages",
@@ -5834,7 +5834,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Netsh Helper DLL",
@@ -5857,7 +5857,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Screensaver",
@@ -5881,7 +5881,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Unix Shell Configuration Modification",
@@ -5904,7 +5904,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -5947,7 +5947,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hijack Execution Flow",
@@ -5979,7 +5979,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "COR_PROFILER",
@@ -6004,7 +6004,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "DLL Side-Loading",
@@ -6050,7 +6050,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Dylib Hijacking",
@@ -6070,7 +6070,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Path Interception by Unquoted Path",
@@ -6090,7 +6090,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -6132,7 +6132,7 @@
               "Module Load"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Asynchronous Procedure Call",
@@ -6153,7 +6153,7 @@
                   "Process Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Dynamic-link Library Injection",
@@ -6185,7 +6185,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "ListPlanting",
@@ -6203,7 +6203,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Portable Executable Injection",
@@ -6225,7 +6225,7 @@
                   "Process Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Proc Memory",
@@ -6242,7 +6242,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Process Doppelg\u00e4nging",
@@ -6263,7 +6263,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Process Hollowing",
@@ -6290,7 +6290,7 @@
                   "Process Access"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Ptrace System Calls",
@@ -6309,7 +6309,7 @@
                   "Process Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Thread Local Storage",
@@ -6328,7 +6328,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "VDSO Hijacking",
@@ -6347,7 +6347,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -6380,7 +6380,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "At",
@@ -6411,7 +6411,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Systemd Timers",
@@ -6434,7 +6434,7 @@
                   "Scheduled Job Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -6501,7 +6501,7 @@
               "Logon Session Metadata"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Cloud Accounts",
@@ -6533,7 +6533,7 @@
                   "Logon Session Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Domain Accounts",
@@ -6570,7 +6570,7 @@
                   "Logon Session Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Local Accounts",
@@ -6604,7 +6604,7 @@
                   "User Account Authentication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -6646,7 +6646,7 @@
               "Windows Registry Key Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Elevated Execution with Prompt",
@@ -6664,7 +6664,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Setuid and Setgid",
@@ -6685,7 +6685,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "TCC Manipulation",
@@ -6706,7 +6706,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Temporary Elevated Cloud Access",
@@ -6726,7 +6726,7 @@
                   "User Account Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -6757,7 +6757,7 @@
               "Active Directory Object Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "BITS Jobs",
@@ -6786,7 +6786,7 @@
               "Service Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Build Image on Host",
@@ -6807,7 +6807,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Debugger Evasion",
@@ -6833,7 +6833,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Deobfuscate/Decode Files or Information",
@@ -6888,7 +6888,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Deploy Container",
@@ -6913,7 +6913,7 @@
               "Pod Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Direct Volume Access",
@@ -6937,7 +6937,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Domain or Tenant Policy Modification",
@@ -6962,7 +6962,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Execution Guardrails",
@@ -6983,7 +6983,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Environmental Keying",
@@ -7007,7 +7007,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -7034,7 +7034,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "File and Directory Permissions Modification",
@@ -7059,7 +7059,7 @@
               "File Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hide Artifacts",
@@ -7099,7 +7099,7 @@
               "File Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Hidden File System",
@@ -7125,7 +7125,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Hidden Files and Directories",
@@ -7160,7 +7160,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Hidden Users",
@@ -7191,7 +7191,7 @@
                   "User Account Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Hidden Window",
@@ -7231,7 +7231,7 @@
                   "Script Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Ignore Process Interrupts",
@@ -7252,7 +7252,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "NTFS File Attributes",
@@ -7277,7 +7277,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Process Argument Spoofing",
@@ -7294,7 +7294,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Resource Forking",
@@ -7316,7 +7316,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Run Virtual Instance",
@@ -7345,7 +7345,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "VBA Stomping",
@@ -7366,7 +7366,7 @@
                   "Script Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -7400,7 +7400,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "COR_PROFILER",
@@ -7425,7 +7425,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "DLL Side-Loading",
@@ -7471,7 +7471,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Dylib Hijacking",
@@ -7491,7 +7491,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Path Interception by Unquoted Path",
@@ -7511,7 +7511,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -7565,7 +7565,7 @@
               "Firewall Disable"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Disable Windows Event Logging",
@@ -7598,7 +7598,7 @@
                   "Application Log Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Disable or Modify Cloud Firewall",
@@ -7616,7 +7616,7 @@
                   "Firewall Rule Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Disable or Modify Cloud Logs",
@@ -7642,7 +7642,7 @@
                   "Cloud Service Disable"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Disable or Modify Linux Audit System",
@@ -7665,7 +7665,7 @@
                   "Process Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Disable or Modify System Firewall",
@@ -7702,7 +7702,7 @@
                   "Firewall Disable"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Disable or Modify Tools",
@@ -7757,7 +7757,7 @@
                   "Driver Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Downgrade Attack",
@@ -7779,7 +7779,7 @@
                   "Process Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Impair Command History Logging",
@@ -7803,7 +7803,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Indicator Blocking",
@@ -7831,7 +7831,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Spoof Security Alerting",
@@ -7852,7 +7852,7 @@
                   "Host Status"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -7880,7 +7880,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Indicator Removal",
@@ -7928,7 +7928,7 @@
               "Windows Registry Key Deletion"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Clear Persistence",
@@ -7959,7 +7959,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "File Deletion",
@@ -8020,7 +8020,7 @@
                   "File Deletion"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Network Share Connection Removal",
@@ -8045,7 +8045,7 @@
                   "User Account Authentication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -8068,7 +8068,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Masquerading",
@@ -8119,7 +8119,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Invalid Code Signature",
@@ -8140,7 +8140,7 @@
                   "File Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Masquerade Task or Service",
@@ -8186,7 +8186,7 @@
                   "Scheduled Job Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Rename System Utilities",
@@ -8215,7 +8215,7 @@
                   "File Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Right-to-Left Override",
@@ -8240,7 +8240,7 @@
                   "File Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Space after Filename",
@@ -8258,7 +8258,7 @@
                   "File Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -8307,7 +8307,7 @@
               "Windows Registry Key Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Network Device Authentication",
@@ -8324,7 +8324,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -8360,7 +8360,7 @@
               "Instance Deletion"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Create Cloud Instance",
@@ -8381,7 +8381,7 @@
                   "Instance Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Create Snapshot",
@@ -8399,7 +8399,7 @@
                   "Snapshot Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Delete Cloud Instance",
@@ -8419,7 +8419,7 @@
                   "Instance Deletion"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Modify Cloud Compute Configurations",
@@ -8436,7 +8436,7 @@
                   "Cloud Service Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -8486,7 +8486,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Modify System Image",
@@ -8503,7 +8503,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Downgrade System Image",
@@ -8520,7 +8520,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Patch System Image",
@@ -8537,7 +8537,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -8557,7 +8557,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Obfuscated Files or Information",
@@ -8609,7 +8609,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Command Obfuscation",
@@ -8658,7 +8658,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Compile After Delivery",
@@ -8686,7 +8686,7 @@
                   "File Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Dynamic API Resolution",
@@ -8709,7 +8709,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "HTML Smuggling",
@@ -8730,7 +8730,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Software Packing",
@@ -8772,7 +8772,7 @@
                   "File Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Steganography",
@@ -8801,7 +8801,7 @@
                   "File Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -8824,7 +8824,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Pre-OS Boot",
@@ -8854,7 +8854,7 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "ROMMONkit",
@@ -8871,7 +8871,7 @@
                   "Firmware Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -8913,7 +8913,7 @@
               "Module Load"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Asynchronous Procedure Call",
@@ -8934,7 +8934,7 @@
                   "Process Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Dynamic-link Library Injection",
@@ -8966,7 +8966,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "ListPlanting",
@@ -8984,7 +8984,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Portable Executable Injection",
@@ -9006,7 +9006,7 @@
                   "Process Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Proc Memory",
@@ -9023,7 +9023,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Process Doppelg\u00e4nging",
@@ -9044,7 +9044,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Process Hollowing",
@@ -9071,7 +9071,7 @@
                   "Process Access"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Ptrace System Calls",
@@ -9090,7 +9090,7 @@
                   "Process Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Thread Local Storage",
@@ -9109,7 +9109,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "VDSO Hijacking",
@@ -9128,7 +9128,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -9155,7 +9155,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Rogue Domain Controller",
@@ -9177,7 +9177,7 @@
               "Active Directory Object Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Rootkit",
@@ -9206,7 +9206,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Subvert Trust Controls",
@@ -9237,7 +9237,7 @@
               "Windows Registry Key Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Install Root Certificate",
@@ -9261,7 +9261,7 @@
                   "Windows Registry Key Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -9295,7 +9295,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "CMSTP",
@@ -9319,7 +9319,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Compiled HTML File",
@@ -9346,7 +9346,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Control Panel",
@@ -9374,7 +9374,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Electron Applications",
@@ -9395,7 +9395,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "MMC",
@@ -9416,7 +9416,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Mshta",
@@ -9456,7 +9456,7 @@
                   "Network Connection Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Odbcconf",
@@ -9479,7 +9479,7 @@
                   "Module Load"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Regsvcs/Regasm",
@@ -9498,7 +9498,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Regsvr32",
@@ -9533,7 +9533,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Verclsid",
@@ -9552,7 +9552,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -9575,7 +9575,7 @@
               "Script Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Template Injection",
@@ -9604,7 +9604,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Traffic Signaling",
@@ -9628,7 +9628,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Port Knocking",
@@ -9651,7 +9651,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -9672,7 +9672,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Unused/Unsupported Cloud Regions",
@@ -9690,7 +9690,7 @@
               "Instance Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Use Alternate Authentication Material",
@@ -9722,7 +9722,7 @@
               "User Account Authentication"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Application Access Token",
@@ -9747,7 +9747,7 @@
                   "Web Credential Usage"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Pass the Hash",
@@ -9778,7 +9778,7 @@
                   "User Account Authentication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Pass the Ticket",
@@ -9803,7 +9803,7 @@
                   "Active Directory Credential Request"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Web Session Cookie",
@@ -9827,7 +9827,7 @@
                   "Web Credential Usage"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -9894,7 +9894,7 @@
               "Logon Session Metadata"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Cloud Accounts",
@@ -9926,7 +9926,7 @@
                   "Logon Session Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Domain Accounts",
@@ -9963,7 +9963,7 @@
                   "Logon Session Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Local Accounts",
@@ -9997,7 +9997,7 @@
                   "User Account Authentication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -10023,7 +10023,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "User Activity Based Checks",
@@ -10048,7 +10048,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -10067,7 +10067,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Disable Crypto Hardware",
@@ -10084,7 +10084,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Reduce Key Space",
@@ -10101,7 +10101,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -10126,7 +10126,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -10161,7 +10161,7 @@
               "Service Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "ARP Cache Poisoning",
@@ -10184,7 +10184,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "DHCP Spoofing",
@@ -10206,7 +10206,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "LLMNR/NBT-NS Poisoning and SMB Relay",
@@ -10231,7 +10231,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -10276,7 +10276,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Credential Stuffing",
@@ -10306,7 +10306,7 @@
                   "User Account Authentication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -10349,7 +10349,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Cloud Secrets Management Stores",
@@ -10366,7 +10366,7 @@
                   "Cloud Service Enumeration"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Credentials from Web Browsers",
@@ -10412,7 +10412,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Windows Credential Manager",
@@ -10439,7 +10439,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -10465,7 +10465,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Forced Authentication",
@@ -10490,7 +10490,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Forge Web Credentials",
@@ -10517,7 +10517,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Input Capture",
@@ -10547,7 +10547,7 @@
               "Driver Load"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Credential API Hooking",
@@ -10567,7 +10567,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -10616,7 +10616,7 @@
               "Windows Registry Key Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Network Device Authentication",
@@ -10633,7 +10633,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -10662,7 +10662,7 @@
               "Windows Registry Key Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Multi-Factor Authentication Request Generation",
@@ -10695,7 +10695,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Network Sniffing",
@@ -10724,7 +10724,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "OS Credential Dumping",
@@ -10767,7 +10767,7 @@
               "Active Directory Object Access"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "/etc/passwd and /etc/shadow",
@@ -10786,7 +10786,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Cached Domain Credentials",
@@ -10809,7 +10809,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "DCSync",
@@ -10834,7 +10834,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "LSA Secrets",
@@ -10863,7 +10863,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "LSASS Memory",
@@ -10926,7 +10926,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "NTDS",
@@ -10962,7 +10962,7 @@
                   "File Access"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Proc Filesystem",
@@ -10981,7 +10981,7 @@
                   "File Access"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Security Account Manager",
@@ -11014,7 +11014,7 @@
                   "File Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -11042,7 +11042,7 @@
               "User Account Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Steal Web Session Cookie",
@@ -11072,7 +11072,7 @@
               "File Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Steal or Forge Authentication Certificates",
@@ -11105,7 +11105,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Steal or Forge Kerberos Tickets",
@@ -11130,7 +11130,7 @@
               "File Access"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Golden Ticket",
@@ -11151,7 +11151,7 @@
                   "Logon Session Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Kerberoasting",
@@ -11172,7 +11172,7 @@
                   "Active Directory Credential Request"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Silver Ticket",
@@ -11189,7 +11189,7 @@
                   "Logon Session Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -11227,7 +11227,7 @@
               "User Account Authentication"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Bash History",
@@ -11247,7 +11247,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Chat Messages",
@@ -11268,7 +11268,7 @@
                   "Application Log Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Container API",
@@ -11287,7 +11287,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Credentials In Files",
@@ -11324,7 +11324,7 @@
                   "File Access"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Group Policy Preferences",
@@ -11346,7 +11346,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Private Keys",
@@ -11373,7 +11373,7 @@
                   "File Access"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -11412,7 +11412,7 @@
               "File Access"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Cloud Account",
@@ -11436,7 +11436,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -11463,7 +11463,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Browser Information Discovery",
@@ -11491,7 +11491,7 @@
               "File Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Cloud Infrastructure Discovery",
@@ -11516,7 +11516,7 @@
               "Snapshot Enumeration"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Cloud Service Dashboard",
@@ -11541,7 +11541,7 @@
               "User Account Authentication"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Cloud Service Discovery",
@@ -11562,7 +11562,7 @@
               "Cloud Service Enumeration"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Cloud Storage Object Discovery",
@@ -11580,7 +11580,7 @@
               "Cloud Storage Enumeration"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Container and Resource Discovery",
@@ -11601,7 +11601,7 @@
               "Container Enumeration"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Debugger Evasion",
@@ -11627,7 +11627,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Device Driver Discovery",
@@ -11651,7 +11651,7 @@
               "Windows Registry Key Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Domain Trust Discovery",
@@ -11682,7 +11682,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "File and Directory Discovery",
@@ -11748,7 +11748,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Group Policy Discovery",
@@ -11775,7 +11775,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Log Enumeration",
@@ -11802,7 +11802,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Network Service Discovery",
@@ -11852,7 +11852,7 @@
               "Cloud Service Enumeration"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Network Share Discovery",
@@ -11888,7 +11888,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Network Sniffing",
@@ -11917,7 +11917,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Password Policy Discovery",
@@ -11946,7 +11946,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Peripheral Device Discovery",
@@ -11977,7 +11977,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Permission Groups Discovery",
@@ -12015,7 +12015,7 @@
               "Group Enumeration"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Cloud Groups",
@@ -12045,7 +12045,7 @@
                   "Group Enumeration"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Domain Groups",
@@ -12080,7 +12080,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Local Groups",
@@ -12112,7 +12112,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -12174,7 +12174,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Query Registry",
@@ -12211,7 +12211,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Remote System Discovery",
@@ -12270,7 +12270,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Software Discovery",
@@ -12309,7 +12309,7 @@
               "Firewall Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Information Discovery",
@@ -12381,7 +12381,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Location Discovery",
@@ -12406,7 +12406,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Network Configuration Discovery",
@@ -12467,7 +12467,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Network Connections Discovery",
@@ -12521,7 +12521,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Owner/User Discovery",
@@ -12588,7 +12588,7 @@
               "Process Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Service Discovery",
@@ -12624,7 +12624,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Time Discovery",
@@ -12657,7 +12657,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Virtualization/Sandbox Evasion",
@@ -12681,7 +12681,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "User Activity Based Checks",
@@ -12706,7 +12706,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -12746,7 +12746,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Internal Spearphishing",
@@ -12777,7 +12777,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Lateral Tool Transfer",
@@ -12820,7 +12820,7 @@
               "File Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Remote Service Session Hijacking",
@@ -12846,7 +12846,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "RDP Hijacking",
@@ -12872,7 +12872,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -12909,7 +12909,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Cloud Services",
@@ -12933,7 +12933,7 @@
                   "Logon Session Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Distributed Component Object Model",
@@ -12954,7 +12954,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Remote Desktop Protocol",
@@ -13006,7 +13006,7 @@
                   "Logon Session Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Windows Remote Management",
@@ -13038,7 +13038,7 @@
                   "Service Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -13070,7 +13070,7 @@
               "File Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Software Deployment Tools",
@@ -13098,7 +13098,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Taint Shared Content",
@@ -13129,7 +13129,7 @@
               "File Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Use Alternate Authentication Material",
@@ -13161,7 +13161,7 @@
               "User Account Authentication"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Application Access Token",
@@ -13186,7 +13186,7 @@
                   "Web Credential Usage"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Pass the Hash",
@@ -13217,7 +13217,7 @@
                   "User Account Authentication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Pass the Ticket",
@@ -13242,7 +13242,7 @@
                   "Active Directory Credential Request"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Web Session Cookie",
@@ -13266,7 +13266,7 @@
                   "Web Credential Usage"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -13303,7 +13303,7 @@
               "Service Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "ARP Cache Poisoning",
@@ -13326,7 +13326,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "DHCP Spoofing",
@@ -13348,7 +13348,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "LLMNR/NBT-NS Poisoning and SMB Relay",
@@ -13373,7 +13373,7 @@
                   "Windows Registry Key Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -13412,7 +13412,7 @@
               "File Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Audio Capture",
@@ -13435,7 +13435,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Automated Collection",
@@ -13476,7 +13476,7 @@
               "Script Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Browser Session Hijacking",
@@ -13496,7 +13496,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Clipboard Data",
@@ -13520,7 +13520,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Staged",
@@ -13549,7 +13549,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data from Cloud Storage",
@@ -13572,7 +13572,7 @@
               "Cloud Storage Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data from Configuration Repository",
@@ -13590,7 +13590,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Network Device Configuration Dump",
@@ -13608,7 +13608,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "SNMP (MIB Dump)",
@@ -13626,7 +13626,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -13661,7 +13661,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data from Local System",
@@ -13727,7 +13727,7 @@
               "File Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data from Network Shared Drive",
@@ -13762,7 +13762,7 @@
               "File Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data from Removable Media",
@@ -13787,7 +13787,7 @@
               "File Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Email Collection",
@@ -13819,7 +13819,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Email Forwarding Rule",
@@ -13846,7 +13846,7 @@
                   "Application Log Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Local Email Collection",
@@ -13869,7 +13869,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Remote Email Collection",
@@ -13906,7 +13906,7 @@
                   "Network Connection Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -13938,7 +13938,7 @@
               "Driver Load"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Credential API Hooking",
@@ -13958,7 +13958,7 @@
                   "OS API Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -13996,7 +13996,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Video Capture",
@@ -14020,7 +14020,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -14051,7 +14051,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "File Transfer Protocols",
@@ -14077,7 +14077,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Mail Protocols",
@@ -14104,7 +14104,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Web Protocols",
@@ -14174,7 +14174,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -14198,7 +14198,7 @@
               "Drive Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Content Injection",
@@ -14223,7 +14223,7 @@
               "File Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Encoding",
@@ -14242,7 +14242,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Non-Standard Encoding",
@@ -14261,7 +14261,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -14282,7 +14282,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Junk Data",
@@ -14303,7 +14303,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Protocol Impersonation",
@@ -14326,7 +14326,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Steganography",
@@ -14348,7 +14348,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -14377,7 +14377,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "DNS Calculation",
@@ -14398,7 +14398,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -14426,7 +14426,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Asymmetric Cryptography",
@@ -14453,7 +14453,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -14480,7 +14480,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hide Infrastructure",
@@ -14507,7 +14507,7 @@
               "Response Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Ingress Tool Transfer",
@@ -14611,7 +14611,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Multi-Stage Channels",
@@ -14636,7 +14636,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Non-Application Layer Protocol",
@@ -14667,7 +14667,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Non-Standard Port",
@@ -14700,7 +14700,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Protocol Tunneling",
@@ -14734,7 +14734,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Proxy",
@@ -14772,7 +14772,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Domain Fronting",
@@ -14793,7 +14793,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Internal Proxy",
@@ -14824,7 +14824,7 @@
                   "Network Connection Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Multi-hop Proxy",
@@ -14852,7 +14852,7 @@
                   "Network Connection Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -14893,7 +14893,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Traffic Signaling",
@@ -14917,7 +14917,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Port Knocking",
@@ -14940,7 +14940,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -14979,7 +14979,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Bidirectional Communication",
@@ -15017,7 +15017,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Dead Drop Resolver",
@@ -15043,7 +15043,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "One-Way Communication",
@@ -15066,7 +15066,7 @@
                   "Network Traffic Content"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -15107,7 +15107,7 @@
               "Script Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Traffic Duplication",
@@ -15126,7 +15126,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -15153,7 +15153,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exfiltration Over Alternative Protocol",
@@ -15189,7 +15189,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Exfiltration Over Unencrypted Non-C2 Protocol",
@@ -15225,7 +15225,7 @@
                   "Network Connection Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -15272,7 +15272,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exfiltration Over Other Network Medium",
@@ -15297,7 +15297,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Exfiltration Over Bluetooth",
@@ -15322,7 +15322,7 @@
                   "Network Connection Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -15349,7 +15349,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exfiltration Over Web Service",
@@ -15383,7 +15383,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Exfiltration Over Webhook",
@@ -15412,7 +15412,7 @@
                   "File Access"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Exfiltration to Cloud Storage",
@@ -15457,7 +15457,7 @@
                   "Command Execution"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Exfiltration to Code Repository",
@@ -15481,7 +15481,7 @@
                   "File Access"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Exfiltration to Text Storage Sites",
@@ -15501,7 +15501,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -15525,7 +15525,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Transfer Data to Cloud Account",
@@ -15555,7 +15555,7 @@
               "Cloud Storage Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -15588,7 +15588,7 @@
               "User Account Deletion"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Destruction",
@@ -15630,7 +15630,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Encrypted for Impact",
@@ -15670,7 +15670,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Manipulation",
@@ -15699,7 +15699,7 @@
               "File Metadata"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Transmitted Data Manipulation",
@@ -15723,7 +15723,7 @@
                   "Network Traffic Flow"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -15750,7 +15750,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Internal Defacement",
@@ -15777,7 +15777,7 @@
                   "File Modification"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -15806,7 +15806,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Disk Content Wipe",
@@ -15835,7 +15835,7 @@
                   "Process Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -15869,7 +15869,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Financial Theft",
@@ -15898,7 +15898,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Firmware Corruption",
@@ -15918,7 +15918,7 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Inhibit System Recovery",
@@ -15954,7 +15954,7 @@
               "File Deletion"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Network Denial of Service",
@@ -15983,7 +15983,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Resource Hijacking",
@@ -16019,7 +16019,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Service Stop",
@@ -16053,7 +16053,7 @@
               "Service Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Shutdown/Reboot",
@@ -16081,7 +16081,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       }
@@ -16742,7 +16742,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exploit Public-Facing Application",
@@ -16763,7 +16763,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exploitation of Remote Services",
@@ -16782,7 +16782,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "External Remote Services",
@@ -16805,7 +16805,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Internet Accessible Device",
@@ -16827,7 +16827,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Remote Services",
@@ -16858,7 +16858,7 @@
               "Network Share Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Replication Through Removable Media",
@@ -16880,7 +16880,7 @@
               "File Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Rogue Master",
@@ -16904,7 +16904,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Spearphishing Attachment",
@@ -16932,7 +16932,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Supply Chain Compromise",
@@ -16952,7 +16952,7 @@
               "File Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Transient Cyber Asset",
@@ -16971,7 +16971,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Wireless Compromise",
@@ -16992,7 +16992,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -17017,7 +17017,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Change Operating Mode",
@@ -17038,7 +17038,7 @@
               "Device Alarm"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Command-Line Interface",
@@ -17062,7 +17062,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Execution through API",
@@ -17079,7 +17079,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Graphical User Interface",
@@ -17104,7 +17104,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hooking",
@@ -17122,7 +17122,7 @@
               "Process Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Modify Controller Tasking",
@@ -17143,7 +17143,7 @@
               "Software"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Native API",
@@ -17160,7 +17160,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Scripting",
@@ -17189,7 +17189,7 @@
               "Script Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "User Execution",
@@ -17215,7 +17215,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -17240,7 +17240,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Modify Program",
@@ -17263,7 +17263,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Module Firmware",
@@ -17286,7 +17286,7 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Project File Infection",
@@ -17303,7 +17303,7 @@
               "File Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Firmware",
@@ -17328,7 +17328,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Valid Accounts",
@@ -17353,7 +17353,7 @@
               "Logon Session Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -17376,7 +17376,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hooking",
@@ -17394,7 +17394,7 @@
               "Process Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -17421,7 +17421,7 @@
               "Device Alarm"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exploitation for Evasion",
@@ -17438,7 +17438,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Indicator Removal on Host",
@@ -17467,7 +17467,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Masquerading",
@@ -17497,7 +17497,7 @@
               "Scheduled Job Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Rootkit",
@@ -17514,7 +17514,7 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Spoof Reporting Message",
@@ -17536,7 +17536,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Binary Proxy Execution",
@@ -17559,7 +17559,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -17587,7 +17587,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Network Sniffing",
@@ -17606,7 +17606,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Remote System Discovery",
@@ -17630,7 +17630,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Remote System Information Discovery",
@@ -17652,7 +17652,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Wireless Sniffing",
@@ -17669,7 +17669,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -17696,7 +17696,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exploitation of Remote Services",
@@ -17715,7 +17715,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hardcoded Credentials",
@@ -17734,7 +17734,7 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Lateral Tool Transfer",
@@ -17764,7 +17764,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Program Download",
@@ -17789,7 +17789,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Remote Services",
@@ -17820,7 +17820,7 @@
               "Network Share Access"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Valid Accounts",
@@ -17845,7 +17845,7 @@
               "Logon Session Metadata"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -17879,7 +17879,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Automated Collection",
@@ -17902,7 +17902,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data from Information Repositories",
@@ -17923,7 +17923,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data from Local System",
@@ -17947,7 +17947,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Detect Operating Mode",
@@ -17964,7 +17964,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "I/O Image",
@@ -17981,7 +17981,7 @@
               "Software"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Monitor Process State",
@@ -18000,7 +18000,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Point & Tag Identification",
@@ -18019,7 +18019,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Program Upload",
@@ -18039,7 +18039,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Screen Capture",
@@ -18061,7 +18061,7 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Wireless Sniffing",
@@ -18078,7 +18078,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -18104,7 +18104,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Connection Proxy",
@@ -18124,7 +18124,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Standard Application Layer Protocol",
@@ -18144,7 +18144,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -18171,7 +18171,7 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Alarm Suppression",
@@ -18192,7 +18192,7 @@
               "Process/Event Alarm"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Block Command Message",
@@ -18218,7 +18218,7 @@
               "Process/Event Alarm"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Block Reporting Message",
@@ -18244,7 +18244,7 @@
               "Process History/Live Data"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Block Serial COM",
@@ -18270,7 +18270,7 @@
               "Process Termination"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Change Credential",
@@ -18289,7 +18289,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Destruction",
@@ -18311,7 +18311,7 @@
               "Command Execution"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Denial of Service",
@@ -18336,7 +18336,7 @@
               "Process History/Live Data"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Device Restart/Shutdown",
@@ -18360,7 +18360,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Manipulate I/O Image",
@@ -18377,7 +18377,7 @@
               "Software"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Modify Alarm Settings",
@@ -18400,7 +18400,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Rootkit",
@@ -18417,7 +18417,7 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Service Stop",
@@ -18444,7 +18444,7 @@
               "Process Creation"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Firmware",
@@ -18469,7 +18469,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -18496,7 +18496,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Modify Parameter",
@@ -18519,7 +18519,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Module Firmware",
@@ -18542,7 +18542,7 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Spoof Reporting Message",
@@ -18564,7 +18564,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Unauthorized Command Message",
@@ -18590,7 +18590,7 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -18609,7 +18609,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Denial of Control",
@@ -18624,7 +18624,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Denial of View",
@@ -18637,7 +18637,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Loss of Availability",
@@ -18653,7 +18653,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Loss of Control",
@@ -18668,7 +18668,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Loss of Productivity and Revenue",
@@ -18685,7 +18685,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Loss of Protection",
@@ -18698,7 +18698,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Loss of Safety",
@@ -18711,7 +18711,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Loss of View",
@@ -18726,7 +18726,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Manipulation of Control",
@@ -18741,7 +18741,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Manipulation of View",
@@ -18754,7 +18754,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Theft of Operational Information",
@@ -18767,7 +18767,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       }
@@ -19011,7 +19011,7 @@
               "Network Communication"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Drive-By Compromise",
@@ -19031,7 +19031,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exploitation for Initial Access",
@@ -19049,7 +19049,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Lockscreen Bypass",
@@ -19067,7 +19067,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Phishing",
@@ -19092,7 +19092,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Replication Through Removable Media",
@@ -19110,7 +19110,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Supply Chain Compromise",
@@ -19128,7 +19128,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Compromise Hardware Supply Chain",
@@ -19146,7 +19146,7 @@
                   "Host Status"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Compromise Software Dependencies and Development Tools",
@@ -19164,7 +19164,7 @@
                   "API Calls"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Compromise Software Supply Chain",
@@ -19184,7 +19184,7 @@
                   "Host Status"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -19215,7 +19215,7 @@
               "Process Metadata"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Unix Shell",
@@ -19238,7 +19238,7 @@
                   "Process Metadata"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -19258,7 +19258,7 @@
               "Network Communication"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Native API",
@@ -19271,7 +19271,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Scheduled Task/Job",
@@ -19285,7 +19285,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -19309,7 +19309,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Compromise Application Executable",
@@ -19322,7 +19322,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Compromise Client Software Binary",
@@ -19342,7 +19342,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Event Triggered Execution",
@@ -19359,7 +19359,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Foreground Persistence",
@@ -19378,7 +19378,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hijack Execution Flow",
@@ -19395,7 +19395,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "System Runtime API Hijacking",
@@ -19412,7 +19412,7 @@
                   "Host Status"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -19428,7 +19428,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -19453,7 +19453,7 @@
               "Permissions Request"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Device Administrator Permissions",
@@ -19473,7 +19473,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -19495,7 +19495,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Process Injection",
@@ -19513,7 +19513,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -19539,7 +19539,7 @@
               "Network Communication"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Download New Code at Runtime",
@@ -19562,7 +19562,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Execution Guardrails",
@@ -19583,7 +19583,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Geofencing",
@@ -19607,7 +19607,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -19628,7 +19628,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hide Artifacts",
@@ -19647,7 +19647,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Hooking",
@@ -19660,7 +19660,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Impair Defenses",
@@ -19679,7 +19679,7 @@
               "Process Termination"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Device Lockout",
@@ -19696,7 +19696,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Disable or Modify Tools",
@@ -19715,7 +19715,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Prevent Application Removal",
@@ -19734,7 +19734,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -19756,7 +19756,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Disguise Root/Jailbreak Indicators",
@@ -19774,7 +19774,7 @@
                   "Host Status"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "File Deletion",
@@ -19793,7 +19793,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -19812,7 +19812,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Masquerading",
@@ -19832,7 +19832,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Native API",
@@ -19845,7 +19845,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Obfuscated Files or Information",
@@ -19866,7 +19866,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Steganography",
@@ -19879,7 +19879,7 @@
                 "data_sources": [],
                 "data_components": [],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -19899,7 +19899,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Proxy Through Victim",
@@ -19916,7 +19916,7 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Subvert Trust Controls",
@@ -19934,7 +19934,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Code Signing Policy Modification",
@@ -19954,7 +19954,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -19974,7 +19974,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "System Checks",
@@ -19994,7 +19994,7 @@
                   "API Calls"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -20023,7 +20023,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Clipboard Data",
@@ -20041,7 +20041,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Credentials from Password Store",
@@ -20060,7 +20060,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Input Capture",
@@ -20080,7 +20080,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Keylogging",
@@ -20102,7 +20102,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -20124,7 +20124,7 @@
               "System Notifications"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "URI Hijacking",
@@ -20144,7 +20144,7 @@
                   "System Notifications"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -20173,7 +20173,7 @@
               "Permissions Request"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Location Tracking",
@@ -20196,7 +20196,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Remote Device Management Services",
@@ -20214,7 +20214,7 @@
                   "System Notifications"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -20230,7 +20230,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Process Discovery",
@@ -20248,7 +20248,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Software Discovery",
@@ -20268,7 +20268,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Security Software Discovery",
@@ -20286,7 +20286,7 @@
                   "API Calls"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -20305,7 +20305,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Network Configuration Discovery",
@@ -20325,7 +20325,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "System Network Connections Discovery",
@@ -20340,7 +20340,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -20366,7 +20366,7 @@
               "Network Communication"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Replication Through Removable Media",
@@ -20384,7 +20384,7 @@
               "Host Status"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -20411,7 +20411,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Adversary-in-the-Middle",
@@ -20433,7 +20433,7 @@
               "Permissions Request"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Archive Collected Data",
@@ -20449,7 +20449,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Audio Capture",
@@ -20472,7 +20472,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Call Control",
@@ -20490,7 +20490,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Clipboard Data",
@@ -20508,7 +20508,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data from Local System",
@@ -20524,7 +20524,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Input Capture",
@@ -20544,7 +20544,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Keylogging",
@@ -20566,7 +20566,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -20591,7 +20591,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Remote Device Management Services",
@@ -20609,7 +20609,7 @@
                   "System Notifications"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -20631,7 +20631,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Calendar Entries",
@@ -20651,7 +20651,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Call Log",
@@ -20673,7 +20673,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "Contact List",
@@ -20696,7 +20696,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               },
               {
                 "name": "SMS Messages",
@@ -20719,7 +20719,7 @@
                   "System Settings"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -20740,7 +20740,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Stored Application Data",
@@ -20758,7 +20758,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Video Capture",
@@ -20780,7 +20780,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -20800,7 +20800,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Call Control",
@@ -20818,7 +20818,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Dynamic Resolution",
@@ -20836,7 +20836,7 @@
               "Network Communication"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "Domain Generation Algorithms",
@@ -20854,7 +20854,7 @@
                   "Network Communication"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           },
@@ -20870,7 +20870,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Ingress Tool Transfer",
@@ -20891,7 +20891,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Non-Standard Port",
@@ -20911,7 +20911,7 @@
               "Network Communication"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Out of Band Data",
@@ -20929,7 +20929,7 @@
               "System Notifications"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Remote Access Software",
@@ -20947,7 +20947,7 @@
               "Permissions Request"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Web Service",
@@ -20967,7 +20967,7 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "alpha": 0,
+            "visibility_ratio": 0,
             "sub_techniques": [
               {
                 "name": "One-Way Communication",
@@ -20987,7 +20987,7 @@
                   "Network Connection Creation"
                 ],
                 "visibility": false,
-                "alpha": 0
+                "visibility_ratio": 0
               }
             ]
           }
@@ -21009,7 +21009,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Exfiltration Over C2 Channel",
@@ -21025,7 +21025,7 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       },
@@ -21048,7 +21048,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Call Control",
@@ -21066,7 +21066,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Destruction",
@@ -21089,7 +21089,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Encrypted for Impact",
@@ -21106,7 +21106,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Data Manipulation",
@@ -21123,7 +21123,7 @@
               "API Calls"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Endpoint Denial of Service",
@@ -21143,7 +21143,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Generate Traffic from Victim",
@@ -21163,7 +21163,7 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Input Injection",
@@ -21180,7 +21180,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "Network Denial of Service",
@@ -21198,7 +21198,7 @@
               "System Notifications"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           },
           {
             "name": "SMS Control",
@@ -21215,7 +21215,7 @@
               "System Settings"
             ],
             "visibility": false,
-            "alpha": 0
+            "visibility_ratio": 0
           }
         ]
       }

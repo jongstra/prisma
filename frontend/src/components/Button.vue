@@ -90,7 +90,7 @@
 
 <template>
   <button v-if="showButton"
-    :style="{ backgroundColor: technique.visibility ? `rgba(255, 0, 0, ${technique.alpha})` : '' }"
+    :style="{ backgroundColor: technique.visibility ? `rgba(255, 0, 0, ${technique.visibility_ratio})` : '' }"
     :title="getHoverText()"
   >
     <span class="buttontext">{{ technique.name }}</span>
