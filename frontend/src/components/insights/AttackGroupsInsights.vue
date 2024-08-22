@@ -93,7 +93,7 @@ function getTechniqueCountPerGroup(): Group[] {
 
 .bar {
   height: 14px;
-  background-color: #3498db;
+  background-color: rgb(102, 150, 183);
   position: relative;
 }
 
