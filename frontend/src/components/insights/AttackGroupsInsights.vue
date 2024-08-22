@@ -23,10 +23,15 @@ function getTechniqueCountPerGroup(): Group[] {
     return [];
   }
 
-  return groups.slice(0, 20).map((group) => ({
+  // Return the top 20 groups (remove any groups with a 0 technique_counts).
+  return groups
+  .slice(0, 20)
+  .filter((group) => group.technique_count > 0)
+  .map((group) => ({
     name: group.name,
     technique_count: group.technique_count,
   }));
+
 }
 </script>
 
