@@ -38,7 +38,7 @@ function getTechniqueCountPerGroup(): Group[] {
 <template>
   <div class="item-visualization">
     <div class="title">
-      # Techniques per Group
+      # Techniques used by Group
       <span v-if="getTechniqueCountPerGroup().length >= 15"> - Top 15</span>
       <!-- Technique Count per Group - Top {{ getTechniqueCountPerGroup().length }} -->
       <!-- Technique Count per Group - 20 -->
