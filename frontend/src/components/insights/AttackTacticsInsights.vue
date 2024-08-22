@@ -33,7 +33,7 @@ function getTechniqueCountPerTactic(): Tactic[] {
 <template>
   <div class="item-visualization">
     <div class=title>
-      Technique Count Per Tactic
+      Technique Count per Tactic
     </div>
     <hr>
     <div v-for="(tactic, index) in getTechniqueCountPerTactic()" :key="index" class="item-row">

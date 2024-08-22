@@ -33,7 +33,7 @@ function getTechniqueCountPerPlatform(): Platform[] {
 <template>
   <div class="item-visualization">
     <div class=title>
-      Technique Count Per Platform
+      Technique Count per Platform
     </div>
     <hr>
     <div v-for="(platform, index) in getTechniqueCountPerPlatform()" :key="index" class="item-row">

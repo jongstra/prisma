@@ -33,7 +33,7 @@ function getTechniqueCountPerGroup(): Group[] {
 <template>
   <div class="item-visualization">
     <div class=title>
-      Technique Count Per Group - Top 20
+      Technique Count per Group - Top 20
     </div>
     <hr>
     <div v-for="(group, index) in getTechniqueCountPerGroup()" :key="index" class="item-row">
