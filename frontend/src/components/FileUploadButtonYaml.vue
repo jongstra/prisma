@@ -61,7 +61,8 @@ const onFileChange = () => {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
-  background-color: #e1e1e1;
+  background-color: #e73030;
+  color: rgb(255, 255, 255);
   border: 1px solid black;
   border-radius: 4px;
   text-align: center;

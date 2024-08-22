@@ -102,8 +102,12 @@ onBeforeUnmount(() => {
   border: 2px solid #555;
   border-radius: 5px;
   width: 300px;
-  background-color: #ffeba1;
-  color: #666666;
+  background-color: rgb(112, 152, 179);
+  color: #ffffff;
+  /* background-color: blue; */
+  /* color: white; */
+  /* background-color: #ffeba1;
+  color: #666666; */
 }
 
 .collapsible-content {

@@ -10,12 +10,6 @@
 
 
 <template>
-
-  <div class='upload-button'>
-      <!-- <FileUploadButtonJson/> -->
-      <FileUploadButtonYaml/>
-  </div>
-
   <div class='controls'>
 
     <div class='filter'>
@@ -33,7 +27,11 @@
     </div>
 
   </div>
-  
+
+  <div class='upload-button'>
+      <!-- <FileUploadButtonJson/> -->
+      <FileUploadButtonYaml/>
+  </div>
 
   <div class="attack-matrix">
 
@@ -68,32 +66,15 @@ h2 {
   display: flex;
   justify-content: space-around;
   background-color: #cccccc;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 0px;
+  margin-bottom: 15px;
   border: 2px solid black;
   border-radius: 5px;
-  max-width: 800px;
+  max-width: 900px;
 }
 
-.attack-statistics {
-  display: flex;
-  justify-content: space-around;
-  background-color: #eeeeee;
-  margin-bottom: 20px;
-  border: 3px solid black;
-  border-radius: 5px;
-}
-
-.statistic {
-  flex-grow: 1;
-  text-align: center;
-  background-color: #cdebba;
-  color: #000000;
-  font-size: 20px;
-  font-weight: bold;
-  border: 3px solid black;
-  margin: 4px;
-  border-radius: 5px;
+.upload-button  {
+  margin-bottom: 5px;
 }
 
 .attack-matrix {

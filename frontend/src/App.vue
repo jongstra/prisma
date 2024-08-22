@@ -52,7 +52,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding: 1.5% 2rem;
+  padding: 0.5% 0.5rem;
 }
 
 .navigation, .domain-switcher {
@@ -62,7 +62,7 @@
   margin-bottom: 10px;
   border: 3px solid black;
   border-radius: 5px;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .nav, .dom {
