@@ -6,18 +6,18 @@
 </script>
 
 <template>
-  <AttackTacticsInsights/>
-  <br>
-  <AttackPlatformsInsights/>
-  <br>
-  <AttackGroupsInsights/>
+  <div class="horizontal-container">
+    <AttackTacticsInsights/>
+    <AttackPlatformsInsights/>
+    <AttackGroupsInsights/>
+  </div>
 </template>
 
-
 <style>
-.insights {
-  display: grid;
-  grid-column: 1;
+.horizontal-container {
+  display: flex;
+  flex-wrap: wrap; /* This will allow items to wrap to the next line */
+  justify-content: flex-start; /* Adjust as needed to control spacing */
 }
 
 .insight {
@@ -25,5 +25,6 @@
   padding: 2px;
   margin: 2px;
   border-radius: 5px;
+  flex: 1 1 calc(33% - 40px); /* Each item takes up about a third of the row, with some space between */
 }
 </style>

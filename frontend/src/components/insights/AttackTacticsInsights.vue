@@ -39,7 +39,7 @@ function getTechniqueCountPerTactic(): Tactic[] {
     <div v-for="(tactic, index) in getTechniqueCountPerTactic()" :key="index" class="item-row">
       <div class="item-name">{{ tactic.name }}</div>
       <div class="bar-container">
-        <div class="bar" :style="{ width: tactic.technique_count * 10 + 'px' }">
+        <div class="bar" :style="{ width: tactic.technique_count * 5 + 'px' }">
           <span class="item-count">{{ tactic.technique_count }}</span>
         </div>
       </div>
@@ -52,7 +52,11 @@ function getTechniqueCountPerTactic(): Tactic[] {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
-  max-width: 650px;
+  border-radius: 5px;
+  width: 450px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
 }
 
 .title {

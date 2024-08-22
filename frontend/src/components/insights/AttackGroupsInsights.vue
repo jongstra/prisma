@@ -23,9 +23,9 @@ function getTechniqueCountPerGroup(): Group[] {
     return [];
   }
 
-  // Return the top 20 groups (remove any groups with a 0 technique_counts).
+  // Return the top 15 groups (remove any groups with a 0 technique_counts).
   return groups
-  .slice(0, 20)
+  .slice(0, 15)
   .filter((group) => group.technique_count > 0)
   .map((group) => ({
     name: group.name,
@@ -39,7 +39,7 @@ function getTechniqueCountPerGroup(): Group[] {
   <div class="item-visualization">
     <div class="title">
       Technique Count per Group
-      <span v-if="getTechniqueCountPerGroup().length >= 20"> - Top 20</span>
+      <span v-if="getTechniqueCountPerGroup().length >= 15"> - Top 15</span>
       <!-- Technique Count per Group - Top {{ getTechniqueCountPerGroup().length }} -->
       <!-- Technique Count per Group - 20 -->
     </div>
@@ -47,7 +47,7 @@ function getTechniqueCountPerGroup(): Group[] {
     <div v-for="(group, index) in getTechniqueCountPerGroup()" :key="index" class="item-row">
       <div class="item-name">{{ group.name }}</div>
       <div class="bar-container">
-        <div class="bar" :style="{ width: group.technique_count * 3.5 + 'px' }">
+        <div class="bar" :style="{ width: group.technique_count * 1.75 + 'px' }">
           <span class="item-count">{{ group.technique_count }}</span>
         </div>
       </div>
@@ -60,7 +60,11 @@ function getTechniqueCountPerGroup(): Group[] {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
-  max-width: 650px;
+  border-radius: 5px;
+  width: 450px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
 }
 
 .title {
