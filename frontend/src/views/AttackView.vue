@@ -11,13 +11,6 @@
 
 <template>
 
-  <!-- <div class="attack-statistics">
-    <div class="statistic"><p>Reconaissance visibility: {{ store.tacticStats[0]["visibilityPercentage"] }}%</p></div>
-    <div class="statistic"><p>Resource Development visibility: {{ store.tacticStats.find(stat => stat.name === 'Resource Development')?.visibilityPercentage.toFixed(2)|| 0 }}%</p></div>
-    <div class="statistic"><p>Initial Access visibility: {{ store.tacticStats.find(stat => stat.name === 'Initial Access')?.visibilityPercentage.toFixed(2)|| 0 }}%</p></div>
-    <div class="statistic"><p>Execution visibility: {{ store.tacticStats.find(stat => stat.name === 'Execution')?.visibilityPercentage.toFixed(2)|| 0 }}%</p></div>
-  </div> -->
-
   <div class='upload-button'>
       <!-- <FileUploadButtonJson/> -->
       <FileUploadButtonYaml/>

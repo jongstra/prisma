@@ -59,7 +59,7 @@ function getTechniqueCountPerGroup(): Group[] {
 .item-visualization {
   display: flex;
   flex-direction: column;
-  border: 3px solid black;
+  border: 2px solid black;
   max-width: 650px;
 }
 
