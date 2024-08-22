@@ -70,7 +70,8 @@ function getTechniqueCountPerGroup(): Group[] {
 .title {
   text-align: center;
   margin: 5px;
-  font-size: px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .item-row {
@@ -80,7 +81,7 @@ function getTechniqueCountPerGroup(): Group[] {
 }
 
 .item-name {
-  min-width: 160px;
+  min-width: 170px;
   text-align: right;
   padding-right: 10px;
   font-size: 13px;
@@ -101,7 +102,7 @@ function getTechniqueCountPerGroup(): Group[] {
 .item-count {
   position: absolute;
   left: 100%;
-  margin-left: 5px;
+  margin-left: 4px;
   font-size: 12px;
 }
 </style>
