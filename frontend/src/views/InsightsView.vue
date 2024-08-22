@@ -1,8 +1,15 @@
 <script setup lang="ts">
   import { tacticsStore } from '@/stores/tactics';
+  import AttackTacticsInsights from '../components/insights/AttackTacticsInsights.vue';
+  import AttackPlatformsInsights from '../components/insights/AttackPlatformsInsights.vue';
   const store = tacticsStore()
 </script>
 
+<template>
+  <AttackTacticsInsights/>
+  <br>
+  <AttackPlatformsInsights/>
+</template>
 
 <!-- <template>
   <div class="insights">
@@ -12,7 +19,7 @@
   </div>
 </template> -->
 
-<template>
+<!-- <template>
   <div class="insights">
     <div class="insight" v-for="stat in store.tacticStats(store.domain)" :key="stat.name">
       <div>{{ stat.name }}</div>
@@ -21,7 +28,9 @@
       <div>Visibility Percentage: {{ stat.visibilityPercentage.toFixed(2) }}%</div>
     </div>
   </div>
-</template>
+</template> -->
+
+
 
 
 <style>

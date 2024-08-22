@@ -1,0 +1,94 @@
+<script setup lang="ts">
+import { tacticsStore } from '@/stores/tactics';
+const store = tacticsStore();
+
+interface Platform {
+  name: string;
+  technique_count: number;
+}
+
+function getTechniqueCountPerPlatform(): Platform[] {
+  let platforms;
+
+  if (store.domain === 'enterprise-attack') {
+    platforms = store.enterprise?.platforms;
+  } else if (store.domain === 'mobile-attack') {
+    platforms = store.mobile?.platforms;
+  } else if (store.domain === 'ics-attack') {
+    platforms = store.ics?.platforms;
+  }
+
+  // Check if platforms is defined and is an array
+  if (!Array.isArray(platforms)) {
+    return [];
+  }
+
+  return platforms.map((platform) => ({
+    name: platform.name,
+    technique_count: platform.technique_count,
+  }));
+}
+</script>
+
+<template>
+  <div class="item-visualization">
+    <div class=title>
+      Technique Count Per Platform  |  Domain: {{store.domain}}
+    </div>
+    <hr>
+    <div v-for="(platform, index) in getTechniqueCountPerPlatform()" :key="index" class="item-row">
+      <div class="item-name">{{ platform.name }}</div>
+      <div class="bar-container">
+        <div class="bar" :style="{ width: platform.technique_count * 1 + 'px' }">
+          <span class="item-count">{{ platform.technique_count }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.item-visualization {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  max-width: 650px;
+}
+
+.title {
+  margin: 5px;
+  font-size: px;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.item-name {
+  min-width: 150px;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 12px;
+}
+
+.bar-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.bar {
+  height: 14px;
+  background-color: #3498db;
+  position: relative;
+}
+
+.item-count {
+  position: absolute;
+  left: 100%;
+  margin-left: 5px;
+  font-size: 11px;
+}
+</style>

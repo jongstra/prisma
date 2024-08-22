@@ -1,10 +1,6 @@
 <script setup lang="ts">
   import { onMounted, onBeforeUnmount } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
-  import FileUploadButtonJson from '@/components/FileUploadButtonJson.vue';
-  import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
-  import TechniqueFilter from '@/components/TechniqueFilter.vue';
-  import SearchBar from './components/SearchBar.vue';
   const store = tacticsStore();
   onMounted(() => {store.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
 
@@ -39,30 +35,6 @@
     <button :class="{'dom': true, 'selected': store.domain === 'ics-attack'}" @click="store.setDomain('ics-attack')">ICS</button>
   </div>
 
-  <div class='upload-button'>
-      <!-- <FileUploadButtonJson/> -->
-      <FileUploadButtonYaml/>
-  </div>
-
-  <div class='controls'>
-
-    <div class='filter'>
-      <TechniqueFilter attribute_type="platforms"/>
-    </div>
-    <!-- <div class='filter'>
-      <TechniqueFilter attribute_type="data_sources"/>
-    </div> -->
-    <!-- <div class='filter'>
-      <TechniqueFilter attribute_type="data_components"/>
-    </div> -->
-
-    <div class='search'>
-      <SearchBar/>
-    </div>
-
-  </div>
-
-
   <main>
     <div class="content">
       <RouterView />
@@ -89,17 +61,6 @@
   background-color: #eeeeee;
   margin-bottom: 10px;
   border: 3px solid black;
-  border-radius: 5px;
-  max-width: 800px;
-}
-
-.controls {
-  display: flex;
-  justify-content: space-around;
-  background-color: #cccccc;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  border: 2px solid black;
   border-radius: 5px;
   max-width: 800px;
 }

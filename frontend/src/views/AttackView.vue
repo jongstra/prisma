@@ -1,6 +1,10 @@
 <script setup lang="ts">
   import ButtonColumn from '../components/ButtonColumn.vue';
   import { tacticsStore } from '@/stores/tactics';
+  import FileUploadButtonJson from '@/components/FileUploadButtonJson.vue';
+  import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
+  import TechniqueFilter from '@/components/TechniqueFilter.vue';
+  import SearchBar from '@/components/SearchBar.vue';
   const store = tacticsStore();
 </script>
 
@@ -13,7 +17,31 @@
     <div class="statistic"><p>Initial Access visibility: {{ store.tacticStats.find(stat => stat.name === 'Initial Access')?.visibilityPercentage.toFixed(2)|| 0 }}%</p></div>
     <div class="statistic"><p>Execution visibility: {{ store.tacticStats.find(stat => stat.name === 'Execution')?.visibilityPercentage.toFixed(2)|| 0 }}%</p></div>
   </div> -->
+
+  <div class='upload-button'>
+      <!-- <FileUploadButtonJson/> -->
+      <FileUploadButtonYaml/>
+  </div>
+
+  <div class='controls'>
+
+    <div class='filter'>
+      <TechniqueFilter attribute_type="platforms"/>
+    </div>
+    <!-- <div class='filter'>
+      <TechniqueFilter attribute_type="data_sources"/>
+    </div> -->
+    <!-- <div class='filter'>
+      <TechniqueFilter attribute_type="data_components"/>
+    </div> -->
+
+    <div class='search'>
+      <SearchBar/>
+    </div>
+
+  </div>
   
+
   <div class="attack-matrix">
 
       <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
@@ -41,6 +69,17 @@
 h2 {
   text-align: center;
   height: 100px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  background-color: #cccccc;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  max-width: 800px;
 }
 
 .attack-statistics {
