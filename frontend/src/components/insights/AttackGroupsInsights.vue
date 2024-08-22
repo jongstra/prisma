@@ -2,30 +2,30 @@
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
-interface Tactic {
+interface Group {
   name: string;
   technique_count: number;
 }
 
-function getTechniqueCountPerTactic(): Tactic[] {
-  let tactics;
+function getTechniqueCountPerGroup(): Group[] {
+  let groups;
 
   if (store.domain === 'enterprise-attack') {
-    tactics = store.enterprise?.tactics;
+    groups = store.enterprise?.groups;
   } else if (store.domain === 'mobile-attack') {
-    tactics = store.mobile?.tactics;
+    groups = store.mobile?.groups;
   } else if (store.domain === 'ics-attack') {
-    tactics = store.ics?.tactics;
+    groups = store.ics?.groups;
   }
 
-  // Check if tactics is defined and is an array
-  if (!Array.isArray(tactics)) {
+  // Check if groups is defined and is an array
+  if (!Array.isArray(groups)) {
     return [];
   }
 
-  return tactics.map((tactic) => ({
-    name: tactic.name,
-    technique_count: tactic.techniques.length,
+  return groups.slice(0, 20).map((group) => ({
+    name: group.name,
+    technique_count: group.technique_count,
   }));
 }
 </script>
@@ -33,14 +33,14 @@ function getTechniqueCountPerTactic(): Tactic[] {
 <template>
   <div class="item-visualization">
     <div class=title>
-      Technique Count Per Tactic
+      Technique Count Per Group - Top 20
     </div>
     <hr>
-    <div v-for="(tactic, index) in getTechniqueCountPerTactic()" :key="index" class="item-row">
-      <div class="item-name">{{ tactic.name }}</div>
+    <div v-for="(group, index) in getTechniqueCountPerGroup()" :key="index" class="item-row">
+      <div class="item-name">{{ group.name }}</div>
       <div class="bar-container">
-        <div class="bar" :style="{ width: tactic.technique_count * 10 + 'px' }">
-          <span class="item-count">{{ tactic.technique_count }}</span>
+        <div class="bar" :style="{ width: group.technique_count * 3.5 + 'px' }">
+          <span class="item-count">{{ group.technique_count }}</span>
         </div>
       </div>
     </div>

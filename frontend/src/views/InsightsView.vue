@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { tacticsStore } from '@/stores/tactics';
-  import AttackTacticsInsights from '../components/insights/AttackTacticsInsights.vue';
-  import AttackPlatformsInsights from '../components/insights/AttackPlatformsInsights.vue';
+  import AttackTacticsInsights from '@/components/insights/AttackTacticsInsights.vue';
+  import AttackPlatformsInsights from '@/components/insights/AttackPlatformsInsights.vue';
+  import AttackGroupsInsights from '@/components/insights/AttackGroupsInsights.vue';
   const store = tacticsStore()
 </script>
 
@@ -9,6 +10,8 @@
   <AttackTacticsInsights/>
   <br>
   <AttackPlatformsInsights/>
+  <br>
+  <AttackGroupsInsights/>
 </template>
 
 <!-- <template>
