@@ -10,10 +10,8 @@
 
   // Ask user for confirmation when leaving/refreshing the page.
   const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-    const confirmationMessage = 'Are you sure you want to reload/leave? Changes you made will not be saved.';
-    event.preventDefault(); 
-    event.returnValue = confirmationMessage; 
-    return confirmationMessage;
+    event.preventDefault();
+    event.returnValue = ''; // Chrome requires returnValue to be set
   };
   onMounted(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
