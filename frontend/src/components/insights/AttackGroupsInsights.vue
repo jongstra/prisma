@@ -40,8 +40,6 @@ function getTechniqueCountPerGroup(): Group[] {
     <div class="title">
       # Techniques used by Group
       <span v-if="getTechniqueCountPerGroup().length >= 15"> - Top 15</span>
-      <!-- Technique Count per Group - Top {{ getTechniqueCountPerGroup().length }} -->
-      <!-- Technique Count per Group - 20 -->
     </div>
     <hr>
     <div v-for="(group, index) in getTechniqueCountPerGroup()" :key="index" class="item-row">
