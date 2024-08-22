@@ -59,7 +59,7 @@
   display: flex;
   justify-content: space-around;
   background-color: #eeeeee;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border: 3px solid black;
   border-radius: 5px;
   max-width: 900px;

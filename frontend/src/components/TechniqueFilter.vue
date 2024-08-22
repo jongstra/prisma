@@ -97,7 +97,7 @@ onBeforeUnmount(() => {
 }
 
 .collapsible-title {
-  padding: 8px;
+  padding: 8.5px;
   font-size: 16px;
   border: 2px solid #555;
   border-radius: 5px;

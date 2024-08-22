@@ -60,8 +60,7 @@ function getTechniqueCountPerGroup(): Group[] {
   border: 2px solid black;
   border-radius: 5px;
   width: 450px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 10px;
   margin-right: 10px;
 }
 

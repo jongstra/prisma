@@ -12,6 +12,11 @@
 <template>
   <div class='controls'>
 
+    <div class='upload-button'>
+      <!-- <FileUploadButtonJson/> -->
+      <FileUploadButtonYaml/>
+    </div>
+
     <div class='filter'>
       <TechniqueFilter attribute_type="platforms"/>
     </div>
@@ -28,10 +33,6 @@
 
   </div>
 
-  <div class='upload-button'>
-      <!-- <FileUploadButtonJson/> -->
-      <FileUploadButtonYaml/>
-  </div>
 
   <div class="attack-matrix">
 
@@ -67,14 +68,14 @@ h2 {
   justify-content: space-around;
   background-color: #cccccc;
   margin-top: 0px;
-  margin-bottom: 15px;
+  margin-bottom: 3px;
   border: 2px solid black;
   border-radius: 5px;
   max-width: 900px;
 }
 
 .upload-button  {
-  margin-bottom: 5px;
+  margin-top: 7px;
 }
 
 .attack-matrix {

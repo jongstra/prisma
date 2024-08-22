@@ -21,7 +21,7 @@ watch(searchQuery, (newValue) => {
   margin: 8px;
 }
 input[type="text"] {
-  padding: 8px;
+  padding: 9px;
   font-size: 16px;
   border: 2px solid #555;
   border-radius: 5px;
