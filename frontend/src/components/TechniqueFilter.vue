@@ -102,13 +102,13 @@ onBeforeUnmount(() => {
   border: 2px solid #333;
   border-radius: 5px;
   width: 300px;
-  background-color: rgba(10, 10, 10, 0.3);
+  background-color: rgba(10, 10, 10, 0.35);
   color: white;
   transition: 0.1s;
 }
 
 .collapsible-title:hover {
-  background-color: rgba(10, 10, 10, 0.2);
+  background-color: rgba(10, 10, 10, 0.25);
   color: white;
 }
 
