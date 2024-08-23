@@ -76,6 +76,7 @@
   border: 2px solid black;
   margin: 2px;
   border-radius: 5px;
+  transition: 0.1s;
 }
 
 .selected {
