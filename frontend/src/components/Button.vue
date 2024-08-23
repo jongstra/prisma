@@ -9,14 +9,19 @@
 
   const getHoverText = () => {
 
-    if (!props.technique.sub_techniques) {
-      return  `Technique ID: ${props.technique.external_id}\n\nNo Subtechniques\n\nGroups: ${props.technique.groups.join(', ')}\n\nCampaign occurrence: ${props.technique.occurrence}`;
-    } else {
-      // Concatenate names and external IDs of subtechniques.
-      const subtechniques_string = props.technique.sub_techniques.map(sub => `- ${sub.name} (${sub.external_id})`).join('\n');
-      
-      return `Technique ID: ${props.technique.external_id}\n\nSubtechniques:\n${subtechniques_string}\n\nGroups: ${props.technique.groups.join(', ')}\n\nCampaign occurrence: ${props.technique.occurrence}`
-    }
+  // Determine the groups string
+  const groups_string = props.technique.groups.length > 0 
+    ? `Groups:\n${props.technique.groups.map(group => `- ${group}`).join('\n')}`
+    : "No Groups";
+
+  if (!props.technique.sub_techniques) {
+    return `Technique ID: ${props.technique.external_id}\n\nNo Subtechniques\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}`;
+  } else {
+    // Concatenate names and external IDs of subtechniques.
+    const subtechniques_string = props.technique.sub_techniques.map(sub => `- ${sub.name}`).join('\n');
+
+    return `Technique ID: ${props.technique.external_id}\n\nSubtechniques:\n${subtechniques_string}\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}`;
+  }
   };
 
 
@@ -92,9 +97,9 @@ button {
 }
 
 .buttontext {
-  width: 100px;
-  height: 28px;
-  font-size: 12px;
+  width: 125px;
+  height: 24px;
+  font-size: 10.5px;
   overflow: hidden;
   display: block;
   text-overflow: ellipsis;
@@ -105,6 +110,7 @@ button {
 button:hover {
   transform: translateY(-1px); /* Slight upward movement on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Add a shadow */
+  border: solid red;
   background-color: rgb(215, 215, 215); /* Slightly lighter background on hover */
   z-index: 1000; /* Bring the button and tooltip to the front on hover */
 }
@@ -117,9 +123,9 @@ button[data-title] {
 button[data-title]:hover::after {
   content: attr(data-title); /* Use data-title instead of title */
   position: absolute;
-  left: calc(50% + 120px); /* Move tooltip 120px to the right */
+  left: calc(50% + 10px);
   transform: translateX(-50%);
-  top: 130%; /* Position tooltip below the button */
+  top: 140%; /* Position tooltip below the button */
   background-color: rgba(93, 125, 152, 0.9);
   color: white;
   border: 1px solid black;
@@ -130,31 +136,17 @@ button[data-title]:hover::after {
   z-index: 1001; /* Ensure tooltip is in front of other elements */
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.2s ease;
-  width: 200px;
+  transition: opacity 0.1s ease;
+  width: 140px;
   text-align: left;
 }
 
-button[data-title]:hover::before {
-  content: '';
-  position: absolute;
-  left: calc(50% + 120px); /* Move arrow with the tooltip */
-  transform: translateX(-50%);
-  top: 130%;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent rgba(0, 0, 0, 0.75) transparent;
-  z-index: 1001; /* Ensure arrow is in front of other elements */
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.2s ease;
-}
 
 /* Make the tooltip initially hidden */
-button[data-title]::after,
+/* button[data-title]::after,
 button[data-title]::before {
   opacity: 0;
   visibility: hidden;
-}
+} */
 
 </style>

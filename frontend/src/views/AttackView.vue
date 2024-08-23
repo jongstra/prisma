@@ -87,6 +87,7 @@ h2 {
 .button-columns {
   flex: 1; /* Allow components to grow and take up available space */
   width: auto; /* Allow components to take their natural width */
-  margin-right: 8px; /* Adjust spacing between components */
+  margin-right: 4px; /* Adjust spacing between components */
+  margin-bottom: 200px; /* Forces a bottom margin to create space for the Tooltip when hovering Technique Buttons. */
 }
 </style>
