@@ -80,7 +80,7 @@
 }
 
 .selected {
-  background-color: DarkSlateBlue;
+  background-color: rgb(57, 55, 139);
   color: white;
 }
 

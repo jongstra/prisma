@@ -99,16 +99,16 @@ onBeforeUnmount(() => {
 .collapsible-title {
   padding: 8.5px;
   font-size: 16px;
-  border: 2px solid #555;
+  border: 2px solid #333;
   border-radius: 5px;
   width: 300px;
-  background-color: hsla(0, 0%, 4%, 0.4);
+  background-color: rgba(10, 10, 10, 0.3);
   color: white;
   transition: 0.1s;
 }
 
 .collapsible-title:hover {
-  background-color: hsla(180, 10%, 27%, 0.3);
+  background-color: rgba(10, 10, 10, 0.5);
   color: white;
 }
 

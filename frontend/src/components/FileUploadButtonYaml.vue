@@ -72,8 +72,8 @@ const onFileChange = () => {
 }
 
 .file-button:hover {
-  background-color: rgb(255, 184, 103);
-  /* background-color: rgb(206, 57, 236); */
+  /* background-color: rgb(255, 184, 103); */
+  background-color: rgb(214, 133, 27);
   color: rgb(255, 255, 255);
 }
 </style>
