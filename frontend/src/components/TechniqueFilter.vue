@@ -104,6 +104,7 @@ onBeforeUnmount(() => {
   width: 300px;
   background-color: grey;
   color: #ffffff;
+  transition: 0.1s;
 }
 
 .collapsible-title:hover {

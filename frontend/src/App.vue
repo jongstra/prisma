@@ -22,24 +22,24 @@
 <template>
   <div id='app'>
 
-  <div class='navigation'>
-    <RouterLink class='nav' to='/' exact-active-class='selected'>ATT&CK</RouterLink>
-    <RouterLink class='nav' to='/insights' exact-active-class='selected'>Insights</RouterLink>
-    <RouterLink class='nav' to='/unified-kill-chain' exact-active-class='selected'>Unified Kill Chain</RouterLink>
-    <RouterLink class='nav' to='/magma' exact-active-class='selected'>MaGMa</RouterLink>
-  </div>
-
-  <div class='domain-switcher'>
-    <button :class="{'dom': true, 'selected': store.domain === 'enterprise-attack'}" @click="store.setDomain('enterprise-attack')">Enterprise</button>
-    <button :class="{'dom': true, 'selected': store.domain === 'mobile-attack'}" @click="store.setDomain('mobile-attack')">Mobile</button>
-    <button :class="{'dom': true, 'selected': store.domain === 'ics-attack'}" @click="store.setDomain('ics-attack')">ICS</button>
-  </div>
-
-  <main>
-    <div class="content">
-      <RouterView />
+    <div class='navigation'>
+      <RouterLink class='nav' to='/' exact-active-class='selected'>ATT&CK</RouterLink>
+      <RouterLink class='nav' to='/insights' exact-active-class='selected'>Insights</RouterLink>
+      <RouterLink class='nav' to='/unified-kill-chain' exact-active-class='selected'>Unified Kill Chain</RouterLink>
+      <RouterLink class='nav' to='/magma' exact-active-class='selected'>MaGMa</RouterLink>
     </div>
-  </main>
+
+    <div class='domain-switcher'>
+      <button :class="{'dom': true, 'selected': store.domain === 'enterprise-attack'}" @click="store.setDomain('enterprise-attack')">Enterprise</button>
+      <button :class="{'dom': true, 'selected': store.domain === 'mobile-attack'}" @click="store.setDomain('mobile-attack')">Mobile</button>
+      <button :class="{'dom': true, 'selected': store.domain === 'ics-attack'}" @click="store.setDomain('ics-attack')">ICS</button>
+    </div>
+
+    <main>
+      <div class="content">
+        <RouterView />
+      </div>
+    </main>
 
   </div>
 </template>
