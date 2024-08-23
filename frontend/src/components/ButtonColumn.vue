@@ -50,7 +50,7 @@
 .button-column-tactic-name {
   align-content: flex-end;
   height: 40px;
-  width: 110px;
+  width: 115px;
   margin-bottom: 5px;
   text-align: center;
   font-size: 14px;
