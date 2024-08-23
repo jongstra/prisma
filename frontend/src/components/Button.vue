@@ -108,7 +108,7 @@ button {
 
 /* Hover effect */
 button:hover {
-  transform: translateY(-1px); /* Slight upward movement on hover */
+  transform: translateY(-2px); /* Slight upward movement on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Add a shadow */
   border: solid red;
   background-color: rgb(215, 215, 215); /* Slightly lighter background on hover */
@@ -125,7 +125,7 @@ button[data-title]:hover::after {
   position: absolute;
   left: calc(50% + 10px);
   transform: translateX(-50%);
-  top: 140%; /* Position tooltip below the button */
+  top: 180%; /* Position tooltip below the button */
   background-color: rgba(93, 125, 152, 0.9);
   color: white;
   border: 1px solid black;
@@ -136,7 +136,7 @@ button[data-title]:hover::after {
   z-index: 1001; /* Ensure tooltip is in front of other elements */
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.1s ease;
+  transition: opacity 0.2s ease;
   width: 145px;
   text-align: left;
 }
