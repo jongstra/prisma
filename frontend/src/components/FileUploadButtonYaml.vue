@@ -61,7 +61,7 @@ const onFileChange = () => {
   display: inline-block;
   padding: 10px;
   cursor: pointer;
-  background-color: #e73030;
+  background-color: #d61b1b;
   color: rgb(255, 255, 255);
   border: 2px solid black;
   border-radius: 4px;
@@ -73,6 +73,7 @@ const onFileChange = () => {
 
 .file-button:hover {
   background-color: rgb(255, 184, 103);
+  /* background-color: rgb(206, 57, 236); */
   color: rgb(255, 255, 255);
 }
 </style>

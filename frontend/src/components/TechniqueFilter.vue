@@ -102,14 +102,14 @@ onBeforeUnmount(() => {
   border: 2px solid #555;
   border-radius: 5px;
   width: 300px;
-  background-color: grey;
-  color: #ffffff;
+  background-color: hsla(0, 0%, 4%, 0.4);
+  color: white;
   transition: 0.1s;
 }
 
 .collapsible-title:hover {
-  background-color: rgb(255, 184, 103);
-  color: rgb(255, 255, 255);
+  background-color: hsla(180, 10%, 27%, 0.3);
+  color: white;
 }
 
 .collapsible-content {

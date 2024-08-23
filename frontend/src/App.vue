@@ -80,7 +80,7 @@
 }
 
 .selected {
-  background-color: blue;
+  background-color: DarkSlateBlue;
   color: white;
 }
 
