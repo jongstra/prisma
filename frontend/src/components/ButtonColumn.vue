@@ -14,7 +14,7 @@
 
     <!-- Technique count statistic -->
     <div class="button-column-stats-div">
-      <p class="button-column-stat-1="> {{ tactic.techniques.length }} techniques </p>
+      <p class="button-column-stat-1"> {{ tactic.techniques.length }} techniques </p>
       
       <!-- Compute the tactic-visiblity solely based on the amount of visible techniques. -->
       <!-- <p class="button-column-stats2"> {{ Math.round(tactic.techniques.filter(technique => technique.visibility).length / tactic.techniques.length * 100) }}% visibility </p> -->
@@ -64,7 +64,7 @@
 
 .button-column-stat-2 {
   font-size: 9px;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 
