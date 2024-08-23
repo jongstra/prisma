@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
 }
 
 .collapsible-title:hover {
-  background-color: rgba(10, 10, 10, 0.5);
+  background-color: rgba(10, 10, 10, 0.2);
   color: white;
 }
 
