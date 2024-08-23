@@ -19,21 +19,6 @@
     }
   };
 
-  // function getBackgroundColor(visibility_ratio: number): string {
-  //   if (visibility_ratio <= 0.01) {
-  //     return ''
-  //   } else if (visibility_ratio <= 0.25) {
-  //     return '#E1BEE7';
-  //   } else if (visibility_ratio <= 0.5) {
-  //     return '#CE93D8';
-  //   } else if (visibility_ratio <= 0.75) {
-  //     return '#AB47BC';
-  //   } else if (visibility_ratio <= 0.99) {
-  //     return '#7B1FA2'
-  //   } else {
-  //     return '#4A148C'
-  //   }
-  // }
 
   function getButtonStyles(visibility_ratio: number): { backgroundColor: string, color: string } {
     let backgroundColor = '';
@@ -80,57 +65,13 @@
     
   });
 
-  // // Computed property to determine if the button should be shown.
-  // const showButton = computed(() => {
-  //   const data_sources = props.technique?.data_sources || [];
-  //   // Use the generalized activeAttributes getter with 'data_sources' as the attribute type
-  //   return data_sources.some(data_sources => store.activeAttributes('data_sources').includes(data_sources));
-  // });
-
-    // // Computed property to determine if the button should be shown.
-  // const showButton = computed(() => {
-  //   const data_components = props.technique?.data_components || [];
-  //   // Use the generalized activeAttributes getter with 'data_components' as the attribute type
-  //   return data_components.some(data_components => store.activeAttributes('data_components').includes(data_components));
-  // });
-
-
-
-  // // Computed property to determine if the button should be shown.
-  // const showButton = computed(() => {
-  //   const platforms = props.technique?.platforms || [];
-  //   const dataSources = props.technique?.data_sources || [];
-  //   const dataComponents = props.technique?.data_components || [];
-
-  //   const activePlatforms = store.activeAttributes('platforms') || [];
-  //   const activeDataSources = store.activeAttributes('data_sources') || [];
-  //   const activeDataComponents = store.activeAttributes('data_components') || [];
-
-  //   // Check if any platform is active
-  //   const isPlatformActive = platforms.some(platform => activePlatforms.includes(platform));
-
-  //   // Check if any data source is active
-  //   const isDataSourceActive = dataSources.some(dataSource => activeDataSources.includes(dataSource));
-
-  //   // Check if any data component is active
-  //   const isDataComponentActive = dataComponents.some(dataComponent => activeDataComponents.includes(dataComponent));
-
-  //   // Return true if any of the above conditions are met
-  //   return isPlatformActive || isDataSourceActive || isDataComponentActive;
-  // });
-  
-  
-  // TODO: create checkboxes to activate/deactivate the platform/data_sources/data_components filters.
-
-
 </script>
-
 
 
  <template>
   <button v-if="showButton"
     :style="getButtonStyles(technique.visibility_ratio)"
-    :title="getHoverText()"
+    :data-title="getHoverText()"
   >
     <span class="buttontext">{{ technique.name }}</span>
   </button>
@@ -138,11 +79,16 @@
 
 
 <style scoped>
+
 button {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
   background-color: rgb(246, 246, 246);
   border: 1.5px solid rgb(42, 42, 42);
+  border-radius: 4px; /* Slightly rounded corners */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for transform and shadow */
+  position: relative; /* Ensure the button's stacking context is isolated */
+  z-index: 1; /* Set a base z-index */
 }
 
 .buttontext {
@@ -153,6 +99,62 @@ button {
   display: block;
   text-overflow: ellipsis;
   text-align: center;
+}
+
+/* Hover effect */
+button:hover {
+  transform: translateY(-1px); /* Slight upward movement on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Add a shadow */
+  background-color: rgb(215, 215, 215); /* Slightly lighter background on hover */
+  z-index: 1000; /* Bring the button and tooltip to the front on hover */
+}
+
+/* Tooltip styling */
+button[data-title] {
+  position: relative;
+}
+
+button[data-title]:hover::after {
+  content: attr(data-title); /* Use data-title instead of title */
+  position: absolute;
+  left: calc(50% + 120px); /* Move tooltip 120px to the right */
+  transform: translateX(-50%);
+  top: 130%; /* Position tooltip below the button */
+  background-color: rgba(93, 125, 152, 0.9);
+  color: white;
+  border: 1px solid black;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: pre-line; /* Preserve line breaks in tooltip */
+  z-index: 1001; /* Ensure tooltip is in front of other elements */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease;
+  width: 200px;
+  text-align: left;
+}
+
+button[data-title]:hover::before {
+  content: '';
+  position: absolute;
+  left: calc(50% + 120px); /* Move arrow with the tooltip */
+  transform: translateX(-50%);
+  top: 130%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.75) transparent;
+  z-index: 1001; /* Ensure arrow is in front of other elements */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease;
+}
+
+/* Make the tooltip initially hidden */
+button[data-title]::after,
+button[data-title]::before {
+  opacity: 0;
+  visibility: hidden;
 }
 
 </style>
