@@ -137,7 +137,7 @@ button[data-title]:hover::after {
   opacity: 1;
   visibility: visible;
   transition: opacity 0.1s ease;
-  width: 140px;
+  width: 145px;
   text-align: left;
 }
 
