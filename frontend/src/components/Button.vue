@@ -84,12 +84,12 @@
 <style scoped>
 
 button {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
   background-color: rgb(246, 246, 246);
   border: 1.5px solid rgb(42, 42, 42);
   border-radius: 4px; /* Slightly rounded corners */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for transform and shadow */
+  transition: transform 0.1s ease, box-shadow 0.1s ease; /* Smooth transition for transform and shadow */
   position: relative; /* Ensure the button's stacking context is isolated */
   z-index: 1; /* Set a base z-index */
 }
@@ -106,10 +106,10 @@ button {
 
 /* Hover effect */
 button:hover {
-  transform: translateY(-2px); /* Slight upward movement on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Add a shadow */
-  border: solid red;
-  background-color: rgb(215, 215, 215); /* Slightly lighter background on hover */
+  transform: translate(1px, -2px); /* Move button slightly to the right and upwards on hover */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7); /* Add a shadow */
+  border: 1.5px solid red;
+  background-color: rgb(215, 215, 215); /* Slightl change background on hover */
   z-index: 1000; /* Bring the button and tooltip to the front on hover */
 }
 
