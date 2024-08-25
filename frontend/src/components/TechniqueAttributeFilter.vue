@@ -11,8 +11,8 @@ const props = defineProps({
 });
 
 // Local state
-const isCollapsed = ref(true);
 const store = tacticsStore();
+const isCollapsed = ref(true);
 const containerRef = ref<HTMLElement | null>(null);
 
 // Toggle collapse functionality

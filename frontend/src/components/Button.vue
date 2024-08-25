@@ -3,25 +3,20 @@
   import { computed } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
   const store = tacticsStore()
-
-  // defineProps(['technique']);
   const props = defineProps(['technique']);
 
   const getHoverText = () => {
-
-  // Determine the groups string
-  const groups_string = props.technique.groups.length > 0 
-    ? `Groups:\n${props.technique.groups.map(group => `- ${group}`).join('\n')}`
-    : "No Groups";
-
-  if (!props.technique.sub_techniques) {
-    return `Technique ID: ${props.technique.external_id}\n\nNo Subtechniques\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}`;
-  } else {
-    // Concatenate names and external IDs of subtechniques.
-    const subtechniques_string = props.technique.sub_techniques.map(sub => `- ${sub.name}`).join('\n');
-
-    return `Technique ID: ${props.technique.external_id}\n\nSubtechniques:\n${subtechniques_string}\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}`;
-  }
+    // Determine the groups string
+    const groups_string = props.technique.groups.length > 0 
+      ? `Groups:\n${props.technique.groups.map(group => `- ${group}`).join('\n')}`
+      : "No Groups";
+    if (!props.technique.sub_techniques) {
+      return `Technique ID: ${props.technique.external_id}\n\nNo Subtechniques\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}`;
+    } else {
+      // Concatenate names and external IDs of subtechniques.
+      const subtechniques_string = props.technique.sub_techniques.map(sub => `- ${sub.name}`).join('\n');
+      return `Technique ID: ${props.technique.external_id}\n\nSubtechniques:\n${subtechniques_string}\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}`;
+    }
   };
 
 
@@ -48,24 +43,26 @@
     return { backgroundColor, color };
   }
 
-  const toggleVisibility = () => {
-    store.toggleTechniqueVisiblity(props.technique);
-  }
-
   // Computed property to determine if the button should be shown.
   const showButton = computed(() => {
     const platforms = props.technique?.platforms || [];
 
     // Filter techniques based on the selected platforms in the Platforms filter.
     // Also filter techniques based on the searchQuery string in the search bar (if not empty).
-    if (
-          (platforms.some(platform => store.activeAttributes('platforms').includes(platform))) && 
-          (!store.searchQuery || props.technique.name.toLowerCase().includes(store.searchQuery.toLowerCase()))
-       ) {
-      return true;
-    }
-    else {
-      return false;
+    let platformFilterResult = (
+      (platforms.some(platform => store.activeAttributes('platforms').includes(platform))) && 
+      (!store.searchQuery || props.technique.name.toLowerCase().includes(store.searchQuery.toLowerCase()))
+    )
+
+    let techniquePercentageFilterResult = (
+      (props.technique.visibility_ratio >= store.minVisibilityRatio) &&
+      (props.technique.visibility_ratio <= store.maxVisibilityRatio)
+    )
+
+    if (platformFilterResult && techniquePercentageFilterResult) {
+      return true
+    } else {
+      return false
     }
     
   });
@@ -73,10 +70,11 @@
 </script>
 
 
- <template>
+<template>
   <button v-if="showButton"
     :style="getButtonStyles(technique.visibility_ratio)"
-    :data-title="getHoverText()"
+    :data-title= getHoverText()
+    @click="toggleTooltip"
   >
     <span class="buttontext">{{ technique.name }}</span>
   </button>
@@ -140,13 +138,5 @@ button[data-title]:hover::after {
   width: 145px;
   text-align: left;
 }
-
-
-/* Make the tooltip initially hidden */
-/* button[data-title]::after,
-button[data-title]::before {
-  opacity: 0;
-  visibility: hidden;
-} */
 
 </style>

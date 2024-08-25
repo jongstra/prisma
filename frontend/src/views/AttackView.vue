@@ -3,7 +3,8 @@
   import { tacticsStore } from '@/stores/tactics';
   import FileUploadButtonJson from '@/components/FileUploadButtonJson.vue';
   import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
-  import TechniqueFilter from '@/components/TechniqueFilter.vue';
+  import TechniqueAttributeFilter from '@/components/TechniqueAttributeFilter.vue';
+  import TechniquePercentageFilter from '@/components/TechniquePercentageFilter.vue';
   import SearchBar from '@/components/SearchBar.vue';
   const store = tacticsStore();
 </script>
@@ -18,14 +19,18 @@
     </div>
 
     <div class='filter'>
-      <TechniqueFilter attribute_type="platforms"/>
+      <TechniqueAttributeFilter attribute_type="platforms"/>
     </div>
     <!-- <div class='filter'>
-      <TechniqueFilter attribute_type="data_sources"/>
+      <TechniqueAttributeFilter attribute_type="data_sources"/>
     </div> -->
     <!-- <div class='filter'>
-      <TechniqueFilter attribute_type="data_components"/>
+      <TechniqueAttributeFilter attribute_type="data_components"/>
     </div> -->
+
+    <div class='filter'>
+      <TechniquePercentageFilter/>
+    </div>
 
     <div class='search'>
       <SearchBar/>

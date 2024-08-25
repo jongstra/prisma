@@ -66,6 +66,8 @@ export const tacticsStore = defineStore('tactics', {
     ics: [] as Domain[],
     mobile: [] as Domain[],
     searchQuery: '' as string,
+    minVisibilityRatio: 0 as number,
+    maxVisibilityRatio: 1 as number,
   }),
 
 
