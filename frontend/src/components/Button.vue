@@ -108,8 +108,8 @@ button {
 button:hover {
   transform: translate(1px, -2px); /* Move button slightly to the right and upwards on hover */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7); /* Add a shadow */
-  border: 1.5px solid red;
-  background-color: rgb(215, 215, 215); /* Slightl change background on hover */
+  border: 1.5px solid red;  /* Change the border color to red on hover */
+  filter: brightness(0.88); /* Slightly darken the button on hover */
   z-index: 1000; /* Bring the button and tooltip to the front on hover */
 }
 
