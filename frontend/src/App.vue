@@ -7,7 +7,6 @@
   // Ask user for confirmation when leaving/refreshing the page.
   const handleBeforeUnload = (event: BeforeUnloadEvent) => {
     event.preventDefault();
-    event.returnValue = ''; // Chrome requires returnValue to be set
   };
   onMounted(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);

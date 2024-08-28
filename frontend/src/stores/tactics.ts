@@ -135,17 +135,31 @@ export const tacticsStore = defineStore('tactics', {
       // Switch to relevant domain.
       this.domain = data.domain;
 
-      // Access tactics data of the current domain from the store.
-      let tactics: Tactic[];
+      // Access data of the current domain from the store.
+      let tactics: Tactics[];
+      let data_components_list: Attributes[];
       if (data.domain == 'enterprise-attack') {
         tactics = this.enterprise.tactics;
+        data_components_list = this.enterprise.data_components;
       } else if (data.domain == 'mobile-attack') {
         tactics = this.mobile.tactics;
+        data_components_list = this.mobile.data_components;
       } else if (data.domain == 'ics-attack') {
         tactics = this.ics.tactics;
+        data_components_list = this.ics.data_components;
       } else {
         return [];
       }
+
+      // Apply the quality settings of the active data sources (DETT&CT) to the data components (ATT&CK) in the Pinia store.
+      // TODO: correctly handle [DeTT&CT data source] items, such as "Internal DNS [DeTT&CT data source]".
+      data.data_sources.forEach((data_source) => {
+        let component = data_components_list.find((component) => component.name === data_source.data_source_name)
+        for (const quality_indicator in data_source.data_source[0]['data_quality']) {
+          component['quality'][quality_indicator] = data_source.data_source[0]['data_quality'][quality_indicator]
+        }
+      });
+
 
       // Get the names of all DeTT&CT data sources that are administerd in the YAML file.
       let dettect_data_sources_names = data.data_sources.map(
@@ -154,9 +168,38 @@ export const tacticsStore = defineStore('tactics', {
 
       // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
       let active_data_components = dettect_data_sources_names;
+      
+
+      // // TODO: Deze logica verbeteren om het inlezen te versnellen.
+      // data.data_sources.forEach((data_source) => {
+      //   let component = data_components_list.find((component) => component.name === data_source.data_source_name)
+      //   // console.log(component.detected_techniques);
+
+      //   tactics.forEach((tactic: object) => {
+      //     let technique = tactic.techniques.find((technique) => component['detected_techniques'].includes(technique.name));
+      //     if (technique) {
+      //       // console.log(tactic.name);
+      //       // console.log(technique.name);
+      //       technique.visibility = true;
+      //       technique.visibility_ratio = 1;
+            
+      //       if (typeof technique.sub_techniques !== "undefined") {
+      //         technique.sub_techniques.forEach((subtechnique: object) => {
+      //           let detected_subtechnique = technique.sub_techniques.find((subtechnique) => component['detected_techniques'].includes(subtechnique.name));
+      //           if (detected_subtechnique) {
+      //             console.log(detected_subtechnique.name);
+      //           }
+      //         })
+      //       }
+
+      //     }
+      //   })
+
+      // });
+
 
       // Loop over all tactics/techniques/subtechniques in the Pinia store to update their visibility and alpha.
-      tactics.forEach( (tactic: object) => {
+      tactics.forEach((tactic: object) => {
 
         // Update all techniques.
         tactic.techniques.forEach( (technique: object) => {
@@ -184,6 +227,8 @@ export const tacticsStore = defineStore('tactics', {
         })
 
       })
+
+
     },
 
 

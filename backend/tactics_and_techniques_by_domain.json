@@ -17982,7 +17982,14 @@
           "AS-REP Roasting",
           "Steal or Forge Kerberos Tickets",
           "Pass the Ticket"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "WMI Creation",
@@ -17994,7 +18001,14 @@
           "Remote Services",
           "Windows Management Instrumentation",
           "Windows Management Instrumentation Event Subscription"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Group Modification",
@@ -18002,21 +18016,42 @@
         "detected_techniques": [
           "Additional Email Delegate Permissions",
           "Account Manipulation"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Image Modification",
         "active": true,
         "detected_techniques": [
           "Implant Internal Image"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Pod Enumeration",
         "active": true,
         "detected_techniques": [
           "Container and Resource Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Response Content",
@@ -18050,14 +18085,28 @@
           "Hide Infrastructure",
           "Digital Certificates",
           "Digital Certificates"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Volume Metadata",
         "active": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Response Metadata",
@@ -18070,7 +18119,14 @@
           "Server",
           "Compromise Infrastructure",
           "Virtual Private Server"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Windows Registry Key Deletion",
@@ -18081,7 +18137,14 @@
           "Clear Persistence",
           "Disable or Modify Tools",
           "Indicator Removal"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Instance Stop",
@@ -18089,7 +18152,14 @@
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Revert Cloud Instance"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Malware Content",
@@ -18099,7 +18169,14 @@
           "Malware",
           "Obtain Capabilities",
           "Malware"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Snapshot Deletion",
@@ -18108,7 +18185,14 @@
           "Data Destruction",
           "Inhibit System Recovery",
           "Modify Cloud Compute Infrastructure"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Connection Creation",
@@ -18175,7 +18259,14 @@
           "Protocol Tunneling",
           "Drive-by Compromise",
           "Remote Email Collection"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Access",
@@ -18202,7 +18293,14 @@
           "System Owner/User Discovery",
           "Process Hollowing",
           "Thread Execution Hijacking"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Active Directory Object Creation",
@@ -18213,7 +18311,14 @@
           "Trust Modification",
           "Device Registration",
           "Rogue Domain Controller"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Certificate Registration",
@@ -18221,7 +18326,14 @@
         "detected_techniques": [
           "Obtain Capabilities",
           "Digital Certificates"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Access",
@@ -18276,7 +18388,14 @@
           "Data from Local System",
           "Exfiltration Over Webhook",
           "Credentials In Files"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Kernel Module Load",
@@ -18285,14 +18404,28 @@
           "Escape to Host",
           "Kernel Modules and Extensions",
           "Boot or Logon Autostart Execution"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Instance Enumeration",
         "active": true,
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Creation",
@@ -18400,7 +18533,14 @@
           "Compromise Host Software Binary",
           "Replication Through Removable Media",
           "Add-ins"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Active DNS",
@@ -18411,7 +18551,14 @@
           "Domains",
           "Acquire Infrastructure",
           "Domains"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Driver Load",
@@ -18431,7 +18578,14 @@
           "Input Capture",
           "Disable or Modify Tools",
           "Impair Defenses"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Traffic Content",
@@ -18549,7 +18703,14 @@
           "Symmetric Cryptography",
           "Lateral Tool Transfer",
           "Social Media Accounts"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Logon Session Metadata",
@@ -18567,7 +18728,14 @@
           "Silver Ticket",
           "External Remote Services",
           "Valid Accounts"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Volume Deletion",
@@ -18575,7 +18743,14 @@
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Data Destruction"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Creation",
@@ -18828,7 +19003,14 @@
           "Windows Command Shell",
           "Control Panel",
           "Indicator Blocking"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Drive Creation",
@@ -18839,7 +19021,14 @@
           "Hardware Additions",
           "Exfiltration over USB",
           "Replication Through Removable Media"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Snapshot Creation",
@@ -18848,7 +19037,14 @@
           "Transfer Data to Cloud Account",
           "Modify Cloud Compute Infrastructure",
           "Create Snapshot"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Storage Modification",
@@ -18856,7 +19052,14 @@
         "detected_techniques": [
           "Transfer Data to Cloud Account",
           "Data Encrypted for Impact"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Instance Modification",
@@ -18864,7 +19067,14 @@
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Revert Cloud Instance"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Instance Metadata",
@@ -18875,7 +19085,14 @@
           "Revert Cloud Instance",
           "Unused/Unsupported Cloud Regions",
           "Create Cloud Instance"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Storage Deletion",
@@ -18883,7 +19100,14 @@
         "detected_techniques": [
           "Inhibit System Recovery",
           "Data Destruction"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Drive Modification",
@@ -18895,14 +19119,28 @@
           "Disk Structure Wipe",
           "Disk Content Wipe",
           "Disk Wipe"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Pod Creation",
         "active": true,
         "detected_techniques": [
           "Deploy Container"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Service Creation",
@@ -18922,7 +19160,14 @@
           "Systemd Service",
           "Adversary-in-the-Middle",
           "Launch Daemon"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Storage Access",
@@ -18931,14 +19176,28 @@
           "Exfiltration Over Alternative Protocol",
           "Cloud Storage Object Discovery",
           "Data from Cloud Storage"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Storage Creation",
         "active": true,
         "detected_techniques": [
           "Transfer Data to Cloud Account"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Active Directory Object Modification",
@@ -18962,7 +19221,14 @@
           "Group Policy Modification",
           "Boot or Logon Initialization Scripts",
           "Access Token Manipulation"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Active Directory Object Access",
@@ -18972,7 +19238,14 @@
           "System Owner/User Discovery",
           "Group Policy Discovery",
           "OS Credential Dumping"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Web Credential Creation",
@@ -18980,7 +19253,14 @@
         "detected_techniques": [
           "SAML Tokens",
           "Forge Web Credentials"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Container Start",
@@ -18989,7 +19269,14 @@
           "Deploy Container",
           "Malicious Image",
           "User Execution"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Termination",
@@ -18998,7 +19285,14 @@
           "Service Stop",
           "Disable or Modify Tools",
           "Impair Defenses"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Metadata",
@@ -19051,7 +19345,14 @@
           "Data Manipulation",
           "Windows File and Directory Permissions Modification",
           "Lateral Tool Transfer"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Service Modification",
@@ -19063,14 +19364,28 @@
           "Launch Daemon",
           "Systemd Service",
           "Windows Service"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Pod Modification",
         "active": true,
         "detected_techniques": [
           "Deploy Container"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Command Execution",
@@ -19356,7 +19671,14 @@
           "InstallUtil",
           "System Binary Proxy Execution",
           "Hijack Execution Flow"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Drive Access",
@@ -19367,7 +19689,14 @@
           "Disk Content Wipe",
           "Direct Volume Access",
           "Communication Through Removable Media"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Firewall Metadata",
@@ -19375,7 +19704,14 @@
         "detected_techniques": [
           "Security Software Discovery",
           "Software Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Service Metadata",
@@ -19392,7 +19728,14 @@
           "BITS Jobs",
           "Windows Remote Management",
           "Masquerade Task or Service"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Instance Deletion",
@@ -19401,7 +19744,14 @@
           "Delete Cloud Instance",
           "Data Destruction",
           "Modify Cloud Compute Infrastructure"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Scheduled Job Metadata",
@@ -19409,7 +19759,14 @@
         "detected_techniques": [
           "Masquerading",
           "Masquerade Task or Service"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Windows Registry Key Creation",
@@ -19437,7 +19794,14 @@
           "Obfuscated Files or Information",
           "Office Template Macros",
           "Logon Script (Windows)"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Modification",
@@ -19551,7 +19915,14 @@
           "Setuid and Setgid",
           "Rootkit",
           "Modify System Image"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Host Status",
@@ -19575,14 +19946,28 @@
           "Impair Defenses",
           "OS Exhaustion Flood",
           "Spoof Security Alerting"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Image Deletion",
         "active": true,
         "detected_techniques": [
           "Data Destruction"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Snapshot Metadata",
@@ -19591,7 +19976,14 @@
           "Create Snapshot",
           "Transfer Data to Cloud Account",
           "Modify Cloud Compute Infrastructure"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Service Enumeration",
@@ -19601,7 +19993,14 @@
           "Cloud Service Discovery",
           "Credentials from Password Stores",
           "Network Service Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Group Metadata",
@@ -19609,7 +20008,14 @@
         "detected_techniques": [
           "Permission Groups Discovery",
           "Cloud Groups"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Group Enumeration",
@@ -19621,7 +20027,14 @@
           "Cloud Groups",
           "Local Groups",
           "Permission Groups Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Social Media",
@@ -19631,7 +20044,14 @@
           "Compromise Accounts",
           "Social Media Accounts",
           "Establish Accounts"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Active Directory Object Deletion",
@@ -19639,14 +20059,28 @@
         "detected_techniques": [
           "Domain or Tenant Policy Modification",
           "Group Policy Modification"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Container Enumeration",
         "active": true,
         "detected_techniques": [
           "Container and Resource Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Malware Metadata",
@@ -19659,7 +20093,14 @@
           "Malware",
           "Code Signing Certificates",
           "Code Signing Certificates"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "OS API Execution",
@@ -19764,7 +20205,14 @@
           "Credentials from Password Stores",
           "System Checks",
           "NTFS File Attributes"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Application Log Content",
@@ -19853,7 +20301,14 @@
           "Hardware Additions",
           "Exploit Public-Facing Application",
           "Indicator Removal from Tools"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Logon Session Creation",
@@ -19898,7 +20353,14 @@
           "Pluggable Authentication Modules",
           "Steal or Forge Authentication Certificates",
           "Multi-Factor Authentication Request Generation"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Script Execution",
@@ -19935,7 +20397,14 @@
           "Reversible Encryption",
           "Archive via Custom Method",
           "Automated Collection"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Container Creation",
@@ -19949,7 +20418,14 @@
           "Deploy Container",
           "Scheduled Task/Job",
           "Container Service"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Traffic Flow",
@@ -20049,7 +20525,14 @@
           "Non-Application Layer Protocol",
           "ARP Cache Poisoning",
           "Scanning IP Blocks"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "User Account Authentication",
@@ -20081,7 +20564,14 @@
           "Cloud Service Dashboard",
           "Unsecured Credentials",
           "Local Accounts"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Image Creation",
@@ -20091,14 +20581,28 @@
           "Malicious Image",
           "Implant Internal Image",
           "User Execution"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Service Metadata",
         "active": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Image Metadata",
@@ -20108,7 +20612,14 @@
           "Implant Internal Image",
           "Run Virtual Instance",
           "Masquerading"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Instance Creation",
@@ -20119,7 +20630,14 @@
           "User Execution",
           "Malicious Image",
           "Create Cloud Instance"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "User Account Metadata",
@@ -20131,14 +20649,28 @@
           "Hidden Users",
           "Reversible Encryption",
           "Hide Artifacts"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Named Pipe Metadata",
         "active": true,
         "detected_techniques": [
           "Lateral Tool Transfer"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Firmware Modification",
@@ -20153,7 +20685,14 @@
           "Firmware Corruption",
           "Pre-OS Boot",
           "TFTP Boot"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Firewall Enumeration",
@@ -20161,7 +20700,14 @@
         "detected_techniques": [
           "Software Discovery",
           "Security Software Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Module Load",
@@ -20222,7 +20768,14 @@
           "Time Providers",
           "Native API",
           "PowerShell"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Firewall Disable",
@@ -20231,7 +20784,14 @@
           "Disable or Modify Cloud Firewall",
           "Disable or Modify System Firewall",
           "Impair Defenses"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Passive DNS",
@@ -20242,7 +20802,14 @@
           "Acquire Infrastructure",
           "Compromise Infrastructure",
           "DNS Server"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "User Account Modification",
@@ -20262,7 +20829,14 @@
           "Disable or Modify Cloud Logs",
           "Additional Email Delegate Permissions",
           "Account Manipulation"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Firewall Rule Modification",
@@ -20273,7 +20847,14 @@
           "Impair Defenses",
           "Clear Network Connection History and Configurations",
           "Disable or Modify Cloud Firewall"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Volume Modification",
@@ -20281,7 +20862,14 @@
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Escape to Host"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Modification",
@@ -20299,7 +20887,14 @@
           "Portable Executable Injection",
           "Dynamic-link Library Injection",
           "Disable or Modify Linux Audit System"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "User Account Deletion",
@@ -20308,7 +20903,14 @@
           "Clear Persistence",
           "Indicator Removal",
           "Account Access Removal"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Windows Registry Key Modification",
@@ -20381,14 +20983,28 @@
           "Impair Defenses",
           "Indicator Removal",
           "Subvert Trust Controls"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Volume Creation",
         "active": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "User Account Creation",
@@ -20400,14 +21016,28 @@
           "Hide Artifacts",
           "Create Account",
           "Domain Account"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Storage Metadata",
         "active": true,
         "detected_techniques": [
           "Transfer Data to Cloud Account"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Service Modification",
@@ -20420,7 +21050,14 @@
           "Modify Cloud Compute Configurations",
           "Modify Authentication Process",
           "Event Triggered Execution"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Deletion",
@@ -20441,7 +21078,14 @@
           "Clear Command History",
           "Stored Data Manipulation",
           "File Deletion"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Service Disable",
@@ -20449,14 +21093,28 @@
         "detected_techniques": [
           "Impair Defenses",
           "Disable or Modify Cloud Logs"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Volume Enumeration",
         "active": true,
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Windows Registry Key Access",
@@ -20472,7 +21130,14 @@
           "System Owner/User Discovery",
           "Steal or Forge Authentication Certificates",
           "Credentials in Registry"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Metadata",
@@ -20493,7 +21158,14 @@
           "PowerShell",
           "Bypass User Account Control",
           "Access Token Manipulation"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Snapshot Modification",
@@ -20501,7 +21173,14 @@
         "detected_techniques": [
           "Transfer Data to Cloud Account",
           "Modify Cloud Compute Infrastructure"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Scheduled Job Creation",
@@ -20513,7 +21192,14 @@
           "Container Orchestration Job",
           "Systemd Timers",
           "Scheduled Task"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Share Access",
@@ -20525,7 +21211,14 @@
           "SMB/Windows Admin Shares",
           "Data Encrypted for Impact",
           "Remote Services"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Driver Metadata",
@@ -20533,7 +21226,14 @@
         "detected_techniques": [
           "Pre-OS Boot",
           "Component Firmware"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Instance Start",
@@ -20543,7 +21243,14 @@
           "User Execution",
           "Modify Cloud Compute Infrastructure",
           "Malicious Image"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Scheduled Job Modification",
@@ -20553,7 +21260,14 @@
           "Masquerade Task or Service",
           "Masquerading",
           "Clear Persistence"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Cloud Storage Enumeration",
@@ -20561,7 +21275,14 @@
         "detected_techniques": [
           "Cloud Infrastructure Discovery",
           "Cloud Storage Object Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Web Credential Usage",
@@ -20573,7 +21294,14 @@
           "Use Alternate Authentication Material",
           "Web Cookies",
           "Web Session Cookie"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Domain Registration",
@@ -20584,14 +21312,28 @@
           "Domains",
           "Hide Infrastructure",
           "Acquire Infrastructure"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Snapshot Enumeration",
         "active": true,
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       }
     ],
     "groups": [
@@ -27258,7 +28000,14 @@
         "active": true,
         "detected_techniques": [
           "Indicator Removal on Host"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Connection Creation",
@@ -27267,7 +28016,14 @@
           "User Execution",
           "Remote Services",
           "Drive-by Compromise"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Access",
@@ -27279,7 +28035,14 @@
           "Remote System Information Discovery",
           "Replication Through Removable Media",
           "Automated Collection"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Creation",
@@ -27289,7 +28052,14 @@
           "Lateral Tool Transfer",
           "Spearphishing Attachment",
           "Drive-by Compromise"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Traffic Content",
@@ -27330,7 +28100,14 @@
           "Unauthorized Command Message",
           "System Firmware",
           "User Execution"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Logon Session Metadata",
@@ -27339,7 +28116,14 @@
           "Internet Accessible Device",
           "Valid Accounts",
           "External Remote Services"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Creation",
@@ -27365,7 +28149,14 @@
           "Command-Line Interface",
           "Drive-by Compromise",
           "Autorun Image"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Drive Creation",
@@ -27373,7 +28164,14 @@
         "detected_techniques": [
           "Replication Through Removable Media",
           "Autorun Image"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process/Event Alarm",
@@ -27384,12 +28182,26 @@
           "Block Command Message",
           "Unauthorized Command Message",
           "Alarm Suppression"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Drive Modification",
         "active": true,
-        "detected_techniques": []
+        "detected_techniques": [],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Service Creation",
@@ -27397,7 +28209,14 @@
         "detected_techniques": [
           "Masquerading",
           "Adversary-in-the-Middle"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Termination",
@@ -27407,7 +28226,14 @@
           "Block Reporting Message",
           "Block Serial COM",
           "Service Stop"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Metadata",
@@ -27417,14 +28243,28 @@
           "Indicator Removal on Host",
           "Supply Chain Compromise",
           "Masquerading"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Service Modification",
         "active": true,
         "detected_techniques": [
           "Masquerading"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Command Execution",
@@ -27446,19 +28286,40 @@
           "Data from Local System",
           "Network Sniffing",
           "Data Destruction"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Service Metadata",
         "active": true,
         "detected_techniques": [
           "Service Stop"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Scheduled Job Metadata",
         "active": true,
-        "detected_techniques": []
+        "detected_techniques": [],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Modification",
@@ -27469,7 +28330,14 @@
           "Data Destruction",
           "Project File Infection",
           "Indicator Removal on Host"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Software",
@@ -27479,7 +28347,14 @@
           "Modify Program",
           "Modify Controller Tasking",
           "I/O Image"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process History/Live Data",
@@ -27493,7 +28368,14 @@
           "Modify Alarm Settings",
           "Denial of Service",
           "Block Reporting Message"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "OS API Execution",
@@ -27507,7 +28389,14 @@
           "Native API",
           "Data from Local System",
           "Screen Capture"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Application Log Content",
@@ -27546,7 +28435,14 @@
           "Adversary-in-the-Middle",
           "External Remote Services",
           "Rogue Master"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Logon Session Creation",
@@ -27559,7 +28455,14 @@
           "Hardcoded Credentials",
           "Wireless Compromise",
           "Graphical User Interface"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Device Alarm",
@@ -27578,7 +28481,14 @@
           "Modify Parameter",
           "Alarm Suppression",
           "Change Operating Mode"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Script Execution",
@@ -27589,7 +28499,14 @@
           "Network Connection Enumeration",
           "Data from Local System",
           "Scripting"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Traffic Flow",
@@ -27618,14 +28535,28 @@
           "Wireless Compromise",
           "Remote System Discovery",
           "Lateral Tool Transfer"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "User Account Authentication",
         "active": true,
         "detected_techniques": [
           "Valid Accounts"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Asset Inventory",
@@ -27635,7 +28566,14 @@
           "Modify Alarm Settings",
           "Modify Parameter",
           "Program Download"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Firmware Modification",
@@ -27644,7 +28582,14 @@
           "Rootkit",
           "Module Firmware",
           "System Firmware"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Module Load",
@@ -27653,7 +28598,14 @@
           "Remote Services",
           "Scripting",
           "Graphical User Interface"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Windows Registry Key Modification",
@@ -27663,7 +28615,14 @@
           "Indicator Removal on Host",
           "Spoof Reporting Message",
           "Service Stop"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "File Deletion",
@@ -27671,7 +28630,14 @@
         "detected_techniques": [
           "Data Destruction",
           "Indicator Removal on Host"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Metadata",
@@ -27680,14 +28646,28 @@
           "Scripting",
           "Masquerading",
           "Hooking"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Scheduled Job Creation",
         "active": true,
         "detected_techniques": [
           "Masquerading"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Share Access",
@@ -27696,14 +28676,28 @@
           "Lateral Tool Transfer",
           "Data from Information Repositories",
           "Remote Services"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Scheduled Job Modification",
         "active": true,
         "detected_techniques": [
           "Masquerading"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       }
     ],
     "groups": [
@@ -30339,7 +31333,14 @@
           "Web Service",
           "One-Way Communication",
           "Dead Drop Resolver"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Traffic Content",
@@ -30348,7 +31349,14 @@
           "Phishing",
           "Exploitation of Remote Services",
           "Download New Code at Runtime"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Creation",
@@ -30356,7 +31364,14 @@
         "detected_techniques": [
           "Command and Scripting Interpreter",
           "Unix Shell"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "System Settings",
@@ -30394,7 +31409,14 @@
           "Device Administrator Permissions",
           "Geofencing",
           "Device Lockout"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "API Calls",
@@ -30439,21 +31461,42 @@
           "Keychain",
           "Software Packing",
           "Match Legitimate Name or Location"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Application Assets",
         "active": true,
         "detected_techniques": [
           "SSL Pinning"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Termination",
         "active": true,
         "detected_techniques": [
           "Impair Defenses"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Command Execution",
@@ -30462,14 +31505,28 @@
           "Command and Scripting Interpreter",
           "Unix Shell",
           "Data Destruction"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Protected Configuration",
         "active": true,
         "detected_techniques": [
           "Adversary-in-the-Middle"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Communication",
@@ -30487,7 +31544,14 @@
           "Application Versioning",
           "Non-Standard Port",
           "Dead Drop Resolver"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Host Status",
@@ -30507,7 +31571,14 @@
           "Credentials from Password Store",
           "Compromise Hardware Supply Chain",
           "Drive-By Compromise"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Network Traffic Flow",
@@ -30517,7 +31588,14 @@
           "Phishing",
           "Impersonate SS7 Nodes",
           "Proxy Through Victim"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Permissions Requests",
@@ -30552,7 +31630,14 @@
           "Audio Capture",
           "Event Triggered Execution",
           "Input Capture"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "System Notifications",
@@ -30568,7 +31653,14 @@
           "Out of Band Data",
           "Match Legitimate Name or Location",
           "Steal Application Access Token"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Permissions Request",
@@ -30580,7 +31672,14 @@
           "Data Destruction",
           "Abuse Elevation Control Mechanism",
           "Adversary-in-the-Middle"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       },
       {
         "name": "Process Metadata",
@@ -30588,7 +31687,14 @@
         "detected_techniques": [
           "Command and Scripting Interpreter",
           "Unix Shell"
-        ]
+        ],
+        "quality": {
+          "device_completeness": null,
+          "data_field_completeness": null,
+          "timeliness": null,
+          "consistency": null,
+          "retention": null
+        }
       }
     ],
     "groups": [

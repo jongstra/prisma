@@ -7,22 +7,6 @@ systems:
     platform:
       - all
 data_sources:
-  - data_source_name: Internal DNS [DeTT&CT data source]
-    data_source:
-      - applicable_to:
-          - all
-        date_registered: null
-        date_connected: null
-        products:
-          - Windows DNS
-        available_for_data_analytics: true
-        comment: ''
-        data_quality:
-          device_completeness: 1
-          data_field_completeness: 1
-          timeliness: 1
-          consistency: 1
-          retention: 1
   - data_source_name: Network Connection Creation
     data_source:
       - applicable_to:
