@@ -17983,6 +17983,7 @@
           "Steal or Forge Kerberos Tickets",
           "Pass the Ticket"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18002,6 +18003,7 @@
           "Windows Management Instrumentation",
           "Windows Management Instrumentation Event Subscription"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18017,6 +18019,7 @@
           "Additional Email Delegate Permissions",
           "Account Manipulation"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18031,6 +18034,7 @@
         "detected_techniques": [
           "Implant Internal Image"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18045,6 +18049,7 @@
         "detected_techniques": [
           "Container and Resource Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18086,6 +18091,7 @@
           "Digital Certificates",
           "Digital Certificates"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18100,6 +18106,7 @@
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18120,6 +18127,7 @@
           "Compromise Infrastructure",
           "Virtual Private Server"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18138,6 +18146,7 @@
           "Disable or Modify Tools",
           "Indicator Removal"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18153,6 +18162,7 @@
           "Modify Cloud Compute Infrastructure",
           "Revert Cloud Instance"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18170,6 +18180,7 @@
           "Obtain Capabilities",
           "Malware"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18186,6 +18197,7 @@
           "Inhibit System Recovery",
           "Modify Cloud Compute Infrastructure"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18260,6 +18272,7 @@
           "Drive-by Compromise",
           "Remote Email Collection"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18294,6 +18307,7 @@
           "Process Hollowing",
           "Thread Execution Hijacking"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18312,6 +18326,7 @@
           "Device Registration",
           "Rogue Domain Controller"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18327,6 +18342,7 @@
           "Obtain Capabilities",
           "Digital Certificates"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18389,6 +18405,7 @@
           "Exfiltration Over Webhook",
           "Credentials In Files"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18405,6 +18422,7 @@
           "Kernel Modules and Extensions",
           "Boot or Logon Autostart Execution"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18419,6 +18437,7 @@
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18534,6 +18553,7 @@
           "Replication Through Removable Media",
           "Add-ins"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18552,6 +18572,7 @@
           "Acquire Infrastructure",
           "Domains"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18579,6 +18600,7 @@
           "Disable or Modify Tools",
           "Impair Defenses"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18704,6 +18726,7 @@
           "Lateral Tool Transfer",
           "Social Media Accounts"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18729,6 +18752,7 @@
           "External Remote Services",
           "Valid Accounts"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -18744,6 +18768,7 @@
           "Modify Cloud Compute Infrastructure",
           "Data Destruction"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19004,6 +19029,7 @@
           "Control Panel",
           "Indicator Blocking"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19022,6 +19048,7 @@
           "Exfiltration over USB",
           "Replication Through Removable Media"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19038,6 +19065,7 @@
           "Modify Cloud Compute Infrastructure",
           "Create Snapshot"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19053,6 +19081,7 @@
           "Transfer Data to Cloud Account",
           "Data Encrypted for Impact"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19068,6 +19097,7 @@
           "Modify Cloud Compute Infrastructure",
           "Revert Cloud Instance"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19086,6 +19116,7 @@
           "Unused/Unsupported Cloud Regions",
           "Create Cloud Instance"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19101,6 +19132,7 @@
           "Inhibit System Recovery",
           "Data Destruction"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19120,6 +19152,7 @@
           "Disk Content Wipe",
           "Disk Wipe"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19134,6 +19167,7 @@
         "detected_techniques": [
           "Deploy Container"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19161,6 +19195,7 @@
           "Adversary-in-the-Middle",
           "Launch Daemon"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19177,6 +19212,7 @@
           "Cloud Storage Object Discovery",
           "Data from Cloud Storage"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19191,6 +19227,7 @@
         "detected_techniques": [
           "Transfer Data to Cloud Account"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19222,6 +19259,7 @@
           "Boot or Logon Initialization Scripts",
           "Access Token Manipulation"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19239,6 +19277,7 @@
           "Group Policy Discovery",
           "OS Credential Dumping"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19254,6 +19293,7 @@
           "SAML Tokens",
           "Forge Web Credentials"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19270,6 +19310,7 @@
           "Malicious Image",
           "User Execution"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19286,6 +19327,7 @@
           "Disable or Modify Tools",
           "Impair Defenses"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19346,6 +19388,7 @@
           "Windows File and Directory Permissions Modification",
           "Lateral Tool Transfer"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19365,6 +19408,7 @@
           "Systemd Service",
           "Windows Service"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19379,6 +19423,7 @@
         "detected_techniques": [
           "Deploy Container"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19672,6 +19717,7 @@
           "System Binary Proxy Execution",
           "Hijack Execution Flow"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19690,6 +19736,7 @@
           "Direct Volume Access",
           "Communication Through Removable Media"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19705,6 +19752,7 @@
           "Security Software Discovery",
           "Software Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19729,6 +19777,7 @@
           "Windows Remote Management",
           "Masquerade Task or Service"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19745,6 +19794,7 @@
           "Data Destruction",
           "Modify Cloud Compute Infrastructure"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19760,6 +19810,7 @@
           "Masquerading",
           "Masquerade Task or Service"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19795,6 +19846,7 @@
           "Office Template Macros",
           "Logon Script (Windows)"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19916,6 +19968,7 @@
           "Rootkit",
           "Modify System Image"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19947,6 +20000,7 @@
           "OS Exhaustion Flood",
           "Spoof Security Alerting"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19961,6 +20015,7 @@
         "detected_techniques": [
           "Data Destruction"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19977,6 +20032,7 @@
           "Transfer Data to Cloud Account",
           "Modify Cloud Compute Infrastructure"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -19994,6 +20050,7 @@
           "Credentials from Password Stores",
           "Network Service Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20009,6 +20066,7 @@
           "Permission Groups Discovery",
           "Cloud Groups"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20028,6 +20086,7 @@
           "Local Groups",
           "Permission Groups Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20045,6 +20104,7 @@
           "Social Media Accounts",
           "Establish Accounts"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20060,6 +20120,7 @@
           "Domain or Tenant Policy Modification",
           "Group Policy Modification"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20074,6 +20135,7 @@
         "detected_techniques": [
           "Container and Resource Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20094,6 +20156,7 @@
           "Code Signing Certificates",
           "Code Signing Certificates"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20206,6 +20269,7 @@
           "System Checks",
           "NTFS File Attributes"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20302,6 +20366,7 @@
           "Exploit Public-Facing Application",
           "Indicator Removal from Tools"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20354,6 +20419,7 @@
           "Steal or Forge Authentication Certificates",
           "Multi-Factor Authentication Request Generation"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20398,6 +20464,7 @@
           "Archive via Custom Method",
           "Automated Collection"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20419,6 +20486,7 @@
           "Scheduled Task/Job",
           "Container Service"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20526,6 +20594,7 @@
           "ARP Cache Poisoning",
           "Scanning IP Blocks"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20565,6 +20634,7 @@
           "Unsecured Credentials",
           "Local Accounts"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20582,6 +20652,7 @@
           "Implant Internal Image",
           "User Execution"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20596,6 +20667,7 @@
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20613,6 +20685,7 @@
           "Run Virtual Instance",
           "Masquerading"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20631,6 +20704,7 @@
           "Malicious Image",
           "Create Cloud Instance"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20650,6 +20724,7 @@
           "Reversible Encryption",
           "Hide Artifacts"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20664,6 +20739,7 @@
         "detected_techniques": [
           "Lateral Tool Transfer"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20686,6 +20762,7 @@
           "Pre-OS Boot",
           "TFTP Boot"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20701,6 +20778,7 @@
           "Software Discovery",
           "Security Software Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20769,6 +20847,7 @@
           "Native API",
           "PowerShell"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20785,6 +20864,7 @@
           "Disable or Modify System Firewall",
           "Impair Defenses"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20803,6 +20883,7 @@
           "Compromise Infrastructure",
           "DNS Server"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20830,6 +20911,7 @@
           "Additional Email Delegate Permissions",
           "Account Manipulation"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20848,6 +20930,7 @@
           "Clear Network Connection History and Configurations",
           "Disable or Modify Cloud Firewall"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20863,6 +20946,7 @@
           "Modify Cloud Compute Infrastructure",
           "Escape to Host"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20888,6 +20972,7 @@
           "Dynamic-link Library Injection",
           "Disable or Modify Linux Audit System"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20904,6 +20989,7 @@
           "Indicator Removal",
           "Account Access Removal"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20984,6 +21070,7 @@
           "Indicator Removal",
           "Subvert Trust Controls"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -20998,6 +21085,7 @@
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21017,6 +21105,7 @@
           "Create Account",
           "Domain Account"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21031,6 +21120,7 @@
         "detected_techniques": [
           "Transfer Data to Cloud Account"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21051,6 +21141,7 @@
           "Modify Authentication Process",
           "Event Triggered Execution"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21079,6 +21170,7 @@
           "Stored Data Manipulation",
           "File Deletion"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21094,6 +21186,7 @@
           "Impair Defenses",
           "Disable or Modify Cloud Logs"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21108,6 +21201,7 @@
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21131,6 +21225,7 @@
           "Steal or Forge Authentication Certificates",
           "Credentials in Registry"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21159,6 +21254,7 @@
           "Bypass User Account Control",
           "Access Token Manipulation"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21174,6 +21270,7 @@
           "Transfer Data to Cloud Account",
           "Modify Cloud Compute Infrastructure"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21193,6 +21290,7 @@
           "Systemd Timers",
           "Scheduled Task"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21212,6 +21310,7 @@
           "Data Encrypted for Impact",
           "Remote Services"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21227,6 +21326,7 @@
           "Pre-OS Boot",
           "Component Firmware"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21244,6 +21344,7 @@
           "Modify Cloud Compute Infrastructure",
           "Malicious Image"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21261,6 +21362,7 @@
           "Masquerading",
           "Clear Persistence"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21276,6 +21378,7 @@
           "Cloud Infrastructure Discovery",
           "Cloud Storage Object Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21295,6 +21398,7 @@
           "Web Cookies",
           "Web Session Cookie"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21313,6 +21417,7 @@
           "Hide Infrastructure",
           "Acquire Infrastructure"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -21327,6 +21432,7 @@
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28001,6 +28107,7 @@
         "detected_techniques": [
           "Indicator Removal on Host"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28017,6 +28124,7 @@
           "Remote Services",
           "Drive-by Compromise"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28036,6 +28144,7 @@
           "Replication Through Removable Media",
           "Automated Collection"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28053,6 +28162,7 @@
           "Spearphishing Attachment",
           "Drive-by Compromise"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28101,6 +28211,7 @@
           "System Firmware",
           "User Execution"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28117,6 +28228,7 @@
           "Valid Accounts",
           "External Remote Services"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28150,6 +28262,7 @@
           "Drive-by Compromise",
           "Autorun Image"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28165,6 +28278,7 @@
           "Replication Through Removable Media",
           "Autorun Image"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28183,6 +28297,7 @@
           "Unauthorized Command Message",
           "Alarm Suppression"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28195,6 +28310,7 @@
         "name": "Drive Modification",
         "active": true,
         "detected_techniques": [],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28210,6 +28326,7 @@
           "Masquerading",
           "Adversary-in-the-Middle"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28227,6 +28344,7 @@
           "Block Serial COM",
           "Service Stop"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28244,6 +28362,7 @@
           "Supply Chain Compromise",
           "Masquerading"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28258,6 +28377,7 @@
         "detected_techniques": [
           "Masquerading"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28287,6 +28407,7 @@
           "Network Sniffing",
           "Data Destruction"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28301,6 +28422,7 @@
         "detected_techniques": [
           "Service Stop"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28313,6 +28435,7 @@
         "name": "Scheduled Job Metadata",
         "active": true,
         "detected_techniques": [],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28331,6 +28454,7 @@
           "Project File Infection",
           "Indicator Removal on Host"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28348,6 +28472,7 @@
           "Modify Controller Tasking",
           "I/O Image"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28369,6 +28494,7 @@
           "Denial of Service",
           "Block Reporting Message"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28390,6 +28516,7 @@
           "Data from Local System",
           "Screen Capture"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28436,6 +28563,7 @@
           "External Remote Services",
           "Rogue Master"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28456,6 +28584,7 @@
           "Wireless Compromise",
           "Graphical User Interface"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28482,6 +28611,7 @@
           "Alarm Suppression",
           "Change Operating Mode"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28500,6 +28630,7 @@
           "Data from Local System",
           "Scripting"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28536,6 +28667,7 @@
           "Remote System Discovery",
           "Lateral Tool Transfer"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28550,6 +28682,7 @@
         "detected_techniques": [
           "Valid Accounts"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28567,6 +28700,7 @@
           "Modify Parameter",
           "Program Download"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28583,6 +28717,7 @@
           "Module Firmware",
           "System Firmware"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28599,6 +28734,7 @@
           "Scripting",
           "Graphical User Interface"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28616,6 +28752,7 @@
           "Spoof Reporting Message",
           "Service Stop"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28631,6 +28768,7 @@
           "Data Destruction",
           "Indicator Removal on Host"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28647,6 +28785,7 @@
           "Masquerading",
           "Hooking"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28661,6 +28800,7 @@
         "detected_techniques": [
           "Masquerading"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28677,6 +28817,7 @@
           "Data from Information Repositories",
           "Remote Services"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -28691,6 +28832,7 @@
         "detected_techniques": [
           "Masquerading"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31334,6 +31476,7 @@
           "One-Way Communication",
           "Dead Drop Resolver"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31350,6 +31493,7 @@
           "Exploitation of Remote Services",
           "Download New Code at Runtime"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31365,6 +31509,7 @@
           "Command and Scripting Interpreter",
           "Unix Shell"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31410,6 +31555,7 @@
           "Geofencing",
           "Device Lockout"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31462,6 +31608,7 @@
           "Software Packing",
           "Match Legitimate Name or Location"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31476,6 +31623,7 @@
         "detected_techniques": [
           "SSL Pinning"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31490,6 +31638,7 @@
         "detected_techniques": [
           "Impair Defenses"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31506,6 +31655,7 @@
           "Unix Shell",
           "Data Destruction"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31520,6 +31670,7 @@
         "detected_techniques": [
           "Adversary-in-the-Middle"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31545,6 +31696,7 @@
           "Non-Standard Port",
           "Dead Drop Resolver"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31572,6 +31724,7 @@
           "Compromise Hardware Supply Chain",
           "Drive-By Compromise"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31589,6 +31742,7 @@
           "Impersonate SS7 Nodes",
           "Proxy Through Victim"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31631,6 +31785,7 @@
           "Event Triggered Execution",
           "Input Capture"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31654,6 +31809,7 @@
           "Match Legitimate Name or Location",
           "Steal Application Access Token"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31673,6 +31829,7 @@
           "Abuse Elevation Control Mechanism",
           "Adversary-in-the-Middle"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,
@@ -31688,6 +31845,7 @@
           "Command and Scripting Interpreter",
           "Unix Shell"
         ],
+        "visibility": false,
         "quality": {
           "device_completeness": null,
           "data_field_completeness": null,

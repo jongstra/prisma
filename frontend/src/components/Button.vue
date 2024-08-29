@@ -6,17 +6,32 @@
   const props = defineProps(['technique']);
 
   const getHoverText = () => {
-    // Determine the groups string
+    
+    // Create the subtechniques string
+    const subtechniques_string = props.technique.sub_techniques 
+      ? `Subtechniques:\n${props.technique.sub_techniques.map(sub => `- ${sub.name}`).join('\n')}`
+      : 'No Subtechniques';
+
+    // Create the groups string
     const groups_string = props.technique.groups.length > 0 
       ? `Groups:\n${props.technique.groups.map(group => `- ${group}`).join('\n')}`
       : "No Groups";
-    if (!props.technique.sub_techniques) {
-      return `Technique ID: ${props.technique.external_id}\n\nNo Subtechniques\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}`;
-    } else {
-      // Concatenate names and external IDs of subtechniques.
-      const subtechniques_string = props.technique.sub_techniques.map(sub => `- ${sub.name}`).join('\n');
-      return `Technique ID: ${props.technique.external_id}\n\nSubtechniques:\n${subtechniques_string}\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}`;
-    }
+
+    // Create the components string
+    let components_string = '';
+    const visible_components = store.visibleAttributes('data_components');
+    const total_components_detecting_technique = props.technique.data_components.length;
+    let visible_components_detecting_technique = 0;
+    props.technique.data_components.forEach((component) => {
+      if (visible_components.includes(component)) {
+        visible_components_detecting_technique+=1;
+        components_string += `- ${component}\n`
+      } 
+    });
+    components_string = `${visible_components_detecting_technique} of ${total_components_detecting_technique} components visible` +
+                          ((components_string.length>0) ? ':' : '.') + `\n` + components_string;
+
+    return `Technique ID: ${props.technique.external_id}\n\n${subtechniques_string}\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}\n\n${components_string}`;
   };
 
 

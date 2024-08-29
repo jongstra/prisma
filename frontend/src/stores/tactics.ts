@@ -104,6 +104,39 @@ export const tacticsStore = defineStore('tactics', {
       return active_attributes;
     },
 
+
+    // TODO: mogelijk deze code met de functie hierboven samenvoegen (extra parameter toevoegen aan function call).
+    // Generalized getter function (attribute_type examples: platform/data_sources/data_components)
+    visibleAttributes: (state) => (attribute_type: string) => {
+      // Determine the correct data source based on the domain
+      let data;
+      switch (state.domain) {
+        case 'enterprise-attack':
+          data = state.enterprise[attribute_type];
+          break;
+        case 'mobile-attack':
+          data = state.mobile[attribute_type];
+          break;
+        case 'ics-attack':
+          data = state.ics[attribute_type];
+          break;
+        default:
+          data = {}; // Default to an empty object if domain doesn't match
+      }
+
+      // Check if the attributeType exists in the data
+      if (!data) {
+        return []; // Return an empty array if attributeType is not found in the data
+      }
+
+      // Filter and map the visible items based on the attributeType
+      const active_attributes = data
+        .filter(item => item.visibility) // Filter the array to include only items with visibility
+        .map(item => item.name);
+
+      return active_attributes;
+    },
+
   },
 
 
@@ -155,9 +188,12 @@ export const tacticsStore = defineStore('tactics', {
       // TODO: correctly handle [DeTT&CT data source] items, such as "Internal DNS [DeTT&CT data source]".
       data.data_sources.forEach((data_source) => {
         let component = data_components_list.find((component) => component.name === data_source.data_source_name)
+
         for (const quality_indicator in data_source.data_source[0]['data_quality']) {
           component['quality'][quality_indicator] = data_source.data_source[0]['data_quality'][quality_indicator]
         }
+
+        component.visibility = true;
       });
 
 
@@ -176,23 +212,32 @@ export const tacticsStore = defineStore('tactics', {
       //   // console.log(component.detected_techniques);
 
       //   tactics.forEach((tactic: object) => {
-      //     let technique = tactic.techniques.find((technique) => component['detected_techniques'].includes(technique.name));
-      //     if (technique) {
-      //       // console.log(tactic.name);
-      //       // console.log(technique.name);
-      //       technique.visibility = true;
-      //       technique.visibility_ratio = 1;
-            
-      //       if (typeof technique.sub_techniques !== "undefined") {
-      //         technique.sub_techniques.forEach((subtechnique: object) => {
-      //           let detected_subtechnique = technique.sub_techniques.find((subtechnique) => component['detected_techniques'].includes(subtechnique.name));
-      //           if (detected_subtechnique) {
-      //             console.log(detected_subtechnique.name);
-      //           }
-      //         })
-      //       }
 
-      //     }
+      //     component.detected_techniques.forEach((detected_technique) => {
+      //       let technique = tactic.techniques.find((technique) => technique.name == detected_technique);
+      //       if (technique) {
+      //         technique.visibility = true;
+      //         technique.visibility_ratio = 1;
+      //       }
+      //     })
+          
+          
+      //     // if (technique) {
+      //     //   // console.log(tactic.name);
+      //     //   // console.log(technique.name);
+      //     //   technique.visibility = true;
+      //     //   technique.visibility_ratio = 1;
+            
+      //     //   if (typeof technique.sub_techniques !== "undefined") {
+      //     //     technique.sub_techniques.forEach((subtechnique: object) => {
+      //     //       let detected_subtechnique = technique.sub_techniques.find((subtechnique) => component['detected_techniques'].includes(subtechnique.name));
+      //     //       if (detected_subtechnique) {
+      //     //         console.log(detected_subtechnique.name);
+      //     //       }
+      //     //     })
+      //     //   }
+
+      //     // }
       //   })
 
       // });
@@ -205,30 +250,46 @@ export const tacticsStore = defineStore('tactics', {
         tactic.techniques.forEach( (technique: object) => {
 
           // OPTION: dont use 'some', but compute a coverage statistic that can be added to the technique (also add to subtechnique!)
-          if (technique.data_components.some(component => active_data_components.includes(component))){
+          let check = technique.data_components.some(component => active_data_components.includes(component));
+          if (check) {
             technique.visibility = true;
             technique.visibility_ratio = 1;
           }
+
+          // const active_data_components_set = new Set(active_data_components)
+          // const intersection_technique = Array.from(active_data_components_set).filter(x =>  technique.data_components.includes(x));
+          // console.log(intersection_technique);
+          // if (intersection_technique.length > 0){
+          //   technique.visibility = true;
+          //   technique.visibility_ratio = 1;
+          // }
 
           // Update all sub-techniques, as well as the alpha values of their parent techniques. 
           if (typeof technique.sub_techniques !== "undefined") {
             let total_sub_techniques_visible = 0;
             technique.sub_techniques.forEach( (sub_technique: Array) => {
 
-              if (sub_technique.data_components.some(component => active_data_components.includes(component))){
+              let check2 = sub_technique.data_components.some(component => active_data_components.includes(component));
+              if (check2){
                 sub_technique.visibility = true;
                 total_sub_techniques_visible += 1;
               }
+              // const intersection_subtechnique = Array.from(active_data_components_set).filter(x =>  sub_technique.data_components.includes(x));
+              // if (intersection_subtechnique.length > 0){
+              //   sub_technique.visibility = true;
+              //   total_sub_techniques_visible= 1;
+              // }
 
             });
-            technique.visibility_ratio = (total_sub_techniques_visible+1) / (technique.sub_techniques.length+1);
+            technique.visibility_ratio = (technique.visibility_ratio + total_sub_techniques_visible) / (technique.visibility_ratio + technique.sub_techniques.length);
+
           }
 
         })
 
       })
 
-
+      
     },
 
 
