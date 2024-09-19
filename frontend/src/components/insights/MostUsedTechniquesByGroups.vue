@@ -3,7 +3,7 @@ import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
 function getTopTechniquesByGroup() {
-  const sortedTechniques = [...store.sortedTechniques].sort((a, b) => b.group_occurrence - a.group_occurrence);
+  const sortedTechniques = [...store.techniquesOccurrences].sort((a, b) => b.group_occurrence - a.group_occurrence);
   return sortedTechniques.slice(0, 15);
 }
 </script>
