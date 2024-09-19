@@ -39,12 +39,11 @@
 
   </div>
 
-  <div class="legend">
+  <div class='legend'>
       <ColorLegend/>
   </div>
 
-
-  <div class="attack-matrix">
+  <div class='attack-matrix'>
 
       <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
         <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
@@ -86,6 +85,10 @@ h2 {
 
 .upload-button  {
   margin-top: 7px;
+}
+
+.legend {
+  margin-top: 5px;
 }
 
 .attack-matrix {
