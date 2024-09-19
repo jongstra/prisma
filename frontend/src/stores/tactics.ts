@@ -7,7 +7,9 @@ interface SubTechnique {
   external_id: string;
   platforms: string[];
   groups: string[];
-  occurrence: number;
+  occurrence_groups: number;
+  software: string[];
+  occurrence_software: number;
   data_sources: string[];
   data_components: string[];
   available_datasources: string[];
@@ -19,7 +21,9 @@ interface Technique {
   external_id: string;
   platforms: string[];
   groups: string[];
-  occurrence: number;
+  occurrence_groups: number;
+  software: string[];
+  occurrence_software: number;
   data_sources: string[];
   data_components: string[];
   available_datasources: string[];
