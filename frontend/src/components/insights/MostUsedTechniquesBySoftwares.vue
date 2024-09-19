@@ -11,7 +11,7 @@ function getTopTechniquesBySoftware() {
 <template>
   <div class="technique-visualization">
     <div class="title">
-      # Top Techniques by Software Occurrence
+      Top Techniques by Software Occurrence
       <span v-if="getTopTechniquesBySoftware().length >= 15"> - Top 15</span>
     </div>
     <hr>
