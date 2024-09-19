@@ -23,7 +23,7 @@ function getTopTechniques() {
           :style="{ width: technique.group_occurrence * 0.55 + 'px' }"
         ></div>
         <div 
-          class="bar blue-bar" 
+          class="bar green-bar" 
           :style="{ width: technique.software_occurrence * 0.55 + 'px' }"
         ></div>
         <span class="technique-count">{{ technique.total_occurrence }}</span>
@@ -79,7 +79,7 @@ function getTopTechniques() {
   background-color: FireBrick;
 }
 
-.blue-bar {
+.green-bar {
   background-color: Olive;
 }
 
