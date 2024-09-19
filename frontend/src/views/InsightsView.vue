@@ -1,15 +1,15 @@
 <script setup lang="ts">
   import { tacticsStore } from '@/stores/tactics';
-  import AttackTacticsInsights from '@/components/insights/AttackTacticsInsights.vue';
-  import AttackPlatformsInsights from '@/components/insights/AttackPlatformsInsights.vue';
-  import AttackGroupsInsights from '@/components/insights/AttackGroupsInsights.vue';
+  import TechniquesPerTactic from '@/components/insights/TechniquesPerTactic.vue';
+  import TechniquesPerPlaftorm from '@/components/insights/TechniquesPerPlaftorm.vue';
+  import TechniquesPerGroup from '@/components/insights/TechniquesPerGroup.vue';
 </script>
 
 <template>
   <div class="horizontal-container">
-    <AttackTacticsInsights/>
-    <AttackPlatformsInsights/>
-    <AttackGroupsInsights/>
+    <TechniquesPerTactic/>
+    <TechniquesPerPlaftorm/>
+    <TechniquesPerGroup/>
   </div>
 </template>
 

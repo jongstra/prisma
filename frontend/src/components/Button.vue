@@ -31,7 +31,7 @@
     components_string = `${visible_components_detecting_technique} of ${total_components_detecting_technique} components visible` +
                           ((components_string.length>0) ? ':' : '.') + `\n` + components_string;
 
-    return `Technique ID: ${props.technique.external_id}\n\n${subtechniques_string}\n\n${groups_string}\n\nCampaign occurrence: ${props.technique.occurrence}\n\n${components_string}`;
+    return `Technique ID: ${props.technique.external_id}\n\n${subtechniques_string}\n\n${groups_string}\n\nNr groups using this: ${props.technique.occurrence}\n\n${components_string}`;
   };
 
 
