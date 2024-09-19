@@ -76,11 +76,11 @@ function getTopTechniques() {
 }
 
 .red-bar {
-  background-color: #d0351a;
+  background-color: FireBrick;
 }
 
 .blue-bar {
-  background-color: SteelBlue;
+  background-color: Olive;
 }
 
 .technique-count {

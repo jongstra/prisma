@@ -72,7 +72,7 @@ function getTopTechniquesBySoftware() {
 }
 
 .blue-bar {
-  background-color: SteelBlue;
+  background-color: Olive;
 }
 
 .technique-count {

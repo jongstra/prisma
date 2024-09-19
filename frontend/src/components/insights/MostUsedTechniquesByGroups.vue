@@ -72,7 +72,7 @@ function getTopTechniquesByGroup() {
 }
 
 .red-bar {
-  background-color: #d0351a;
+  background-color: FireBrick;
 }
 
 .technique-count {
