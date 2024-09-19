@@ -1,0 +1,105 @@
+<script setup lang="ts">
+import { tacticsStore } from '@/stores/tactics';
+const store = tacticsStore();
+
+interface Software {
+  name: string;
+  technique_count: number;
+}
+
+function getTechniqueCountPerSoftware(): Software[] {
+  let softwares;
+
+  if (store.domain === 'enterprise-attack') {
+    softwares = store.enterprise?.softwares;
+  } else if (store.domain === 'mobile-attack') {
+    softwares = store.mobile?.softwares;
+  } else if (store.domain === 'ics-attack') {
+    softwares = store.ics?.softwares;
+  }
+
+  // Check if softwares is defined and is an array
+  if (!Array.isArray(softwares)) {
+    return [];
+  }
+
+  // Return the top 15 softwares (remove any softwares with a 0 technique_counts).
+  return softwares
+  .slice(0, 15)
+  .filter((software) => software.technique_count > 0)
+  .map((group) => ({
+    name: group.name,
+    technique_count: group.technique_count,
+  }));
+
+}
+</script>
+
+<template>
+  <div class="item-visualization">
+    <div class="title">
+      # Techniques used by Software
+      <span v-if="getTechniqueCountPerSoftware().length >= 15"> - Top 15</span>
+    </div>
+    <hr>
+    <div v-for="(group, index) in getTechniqueCountPerSoftware()" :key="index" class="item-row">
+      <div class="item-name">{{ group.name }}</div>
+      <div class="bar-container">
+        <div class="bar" :style="{ width: group.technique_count * 1.75 + 'px' }">
+          <span class="item-count">{{ group.technique_count }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.item-visualization {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 450px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.title {
+  text-align: center;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.item-name {
+  min-width: 170px;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 13px;
+}
+
+.bar-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.bar {
+  height: 14px;
+  background-color: SteelBlue;
+  position: relative;
+}
+
+.item-count {
+  position: absolute;
+  left: 100%;
+  margin-left: 4px;
+  font-size: 12px;
+}
+</style>

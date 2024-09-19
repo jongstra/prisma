@@ -1,15 +1,23 @@
 <script setup lang="ts">
   import { tacticsStore } from '@/stores/tactics';
-  import TechniquesPerTactic from '@/components/insights/TechniquesPerTactic.vue';
-  import TechniquesPerPlaftorm from '@/components/insights/TechniquesPerPlaftorm.vue';
-  import TechniquesPerGroup from '@/components/insights/TechniquesPerGroup.vue';
+  import NumberTechniquesPerTactic from '@/components/insights/NumberTechniquesPerTactic.vue';
+  import NumberTechniquesPerPlaftorm from '@/components/insights/NumberTechniquesPerPlaftorm.vue';
+  import NumberTechniquesPerGroup from '@/components/insights/NumberTechniquesPerGroup.vue';
+  import NumberTechniquesPerSoftware from '@/components/insights/NumberTechniquesPerSoftware.vue';
+  import MostUsedTechniquesBySoftwares from '@/components/insights/MostUsedTechniquesBySoftwares.vue';
+  import MostUsedTechniquesByGroups from '@/components/insights/MostUsedTechniquesByGroups.vue';
+  import MostUsedTechniquesTotal from '@/components/insights/MostUsedTechniquesTotal.vue';
 </script>
 
 <template>
   <div class="horizontal-container">
-    <TechniquesPerTactic/>
-    <TechniquesPerPlaftorm/>
-    <TechniquesPerGroup/>
+    <NumberTechniquesPerTactic/>
+    <NumberTechniquesPerPlaftorm/>
+    <NumberTechniquesPerGroup/>
+    <NumberTechniquesPerSoftware/>
+    <MostUsedTechniquesByGroups/>
+    <MostUsedTechniquesBySoftwares/>
+    <MostUsedTechniquesTotal/>
   </div>
 </template>
 

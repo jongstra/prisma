@@ -77,6 +77,47 @@ export const tacticsStore = defineStore('tactics', {
 
   getters: {
 
+    sortedTechniques: (state) => {
+      let tactics;
+
+      if (state.domain === 'enterprise-attack') {
+        tactics = state.enterprise?.tactics;
+      } else if (state.domain === 'mobile-attack') {
+        tactics = state.mobile?.tactics;
+      } else if (state.domain === 'ics-attack') {
+        tactics = state.ics?.tactics;
+      }
+
+      if (!tactics) {
+        return [];
+      }
+
+      const techniquesMap = {};
+
+      // Aggregate occurrences
+      tactics.forEach(tactic => {
+        tactic.techniques.forEach(technique => {
+          const { name, software, groups } = technique;
+          if (!techniquesMap[name]) {
+            techniquesMap[name] = {
+              name,
+              group_occurrence: 0,
+              software_occurrence: 0,
+              total_occurrence: 0
+            };
+          }
+          techniquesMap[name].group_occurrence += groups.length;
+          techniquesMap[name].software_occurrence += software.length;
+          techniquesMap[name].total_occurrence = techniquesMap[name].group_occurrence + techniquesMap[name].software_occurrence;
+        });
+      });
+
+      // Convert map to array and sort by total_occurrence
+      const sortedTechniques = Object.values(techniquesMap).sort((a, b) => b.total_occurrence - a.total_occurrence);
+
+      return sortedTechniques;
+    },
+    
     // Generalized getter function (attribute_type examples: platform/data_sources/data_components)
     activeAttributes: (state) => (attribute_type: string) => {
       // Determine the correct data source based on the domain
