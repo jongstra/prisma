@@ -5,14 +5,14 @@ const store = tacticsStore();
 function getTactics(): any {
   let tactics;
   if (store.domain === 'enterprise-attack') {
-    tactics = store.enterprise.tactics;
+    tactics = store.enterprise.tactics.slice(); // Create a shallow copy
   } else if (store.domain === 'mobile-attack') {
-    tactics = store.mobile.tactics;
+    tactics = store.mobile.tactics.slice(); // Create a shallow copy
   } else if (store.domain === 'ics-attack') {
-    tactics = store.ics.tactics;
+    tactics = store.ics.tactics.slice(); // Create a shallow copy
   }
 
-  // Sort tactics by visibility percentage in descending order
+  // Sort the copied array by visibility percentage in descending order
   return tactics.sort((a, b) => getVisibilityPercentage(b) - getVisibilityPercentage(a));
 }
 
