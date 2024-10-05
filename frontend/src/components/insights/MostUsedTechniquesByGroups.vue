@@ -11,8 +11,9 @@ function getTopTechniquesByGroup() {
 <template>
   <div class="technique-visualization">
     <div class="title">
-      Top Techniques by Group Occurrence
-      <span v-if="getTopTechniquesByGroup().length >= 15"> - Top 15</span>
+     Techniques
+      <span v-if="getTopTechniquesByGroup().length >= 15"> (Top 15)</span>
+      - Occurrence in Groups
     </div>
     <hr>
     <div v-for="(technique, index) in getTopTechniquesByGroup()" :key="index" class="technique-row">

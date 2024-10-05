@@ -38,8 +38,9 @@ function getTechniqueCountPerSoftware(): Software[] {
 <template>
   <div class="item-visualization">
     <div class="title">
-      # Techniques used by Software
-      <span v-if="getTechniqueCountPerSoftware().length >= 15"> - Top 15</span>
+      Software
+      <span v-if="getTechniqueCountPerSoftware().length >= 15"> (Top 15)</span>
+      - Number of Techniques
     </div>
     <hr>
     <div v-for="(group, index) in getTechniqueCountPerSoftware()" :key="index" class="item-row">
