@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { tacticsStore } from '@/stores/tactics';
+  // import { tacticsStore } from '@/stores/tactics';
+  import VisibilityPerTactic from '@/components/insights/VisibilityPerTactic.vue';
   import NumberTechniquesPerTactic from '@/components/insights/NumberTechniquesPerTactic.vue';
   import NumberTechniquesPerPlaftorm from '@/components/insights/NumberTechniquesPerPlaftorm.vue';
   import NumberTechniquesPerGroup from '@/components/insights/NumberTechniquesPerGroup.vue';
@@ -11,6 +12,7 @@
 
 <template>
   <div class="horizontal-container">
+    <VisibilityPerTactic/>
     <NumberTechniquesPerTactic/>
     <NumberTechniquesPerPlaftorm/>
     <NumberTechniquesPerGroup/>
