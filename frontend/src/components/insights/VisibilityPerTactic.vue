@@ -5,13 +5,15 @@ const store = tacticsStore();
 function getTactics(): any {
   let tactics;
   if (store.domain === 'enterprise-attack') {
-      tactics = store.enterprise.tactics;
-    } else if (store.domain === 'mobile-attack') {
-      tactics = store.mobile.tactics;
-    } else if (store.domain === 'ics-attack') {
-      tactics = store.ics.tactics;
-    }
-  return tactics;
+    tactics = store.enterprise.tactics;
+  } else if (store.domain === 'mobile-attack') {
+    tactics = store.mobile.tactics;
+  } else if (store.domain === 'ics-attack') {
+    tactics = store.ics.tactics;
+  }
+
+  // Sort tactics by visibility percentage in descending order
+  return tactics.sort((a, b) => getVisibilityPercentage(b) - getVisibilityPercentage(a));
 }
 
 function getVisibilityPercentage(tactic) {
