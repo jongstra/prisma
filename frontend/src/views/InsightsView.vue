@@ -4,9 +4,9 @@
   import NumberTechniquesPerPlaftorm from '@/components/insights/NumberTechniquesPerPlaftorm.vue';
   import NumberTechniquesPerGroup from '@/components/insights/NumberTechniquesPerGroup.vue';
   import NumberTechniquesPerSoftware from '@/components/insights/NumberTechniquesPerSoftware.vue';
-  import MostUsedTechniquesBySoftwares from '@/components/insights/MostUsedTechniquesBySoftwares.vue';
-  import MostUsedTechniquesByGroups from '@/components/insights/MostUsedTechniquesByGroups.vue';
-  import MostUsedTechniquesTotal from '@/components/insights/MostUsedTechniquesTotal.vue';
+  import TechniquesOccurrenceBySoftware from '@/components/insights/TechniquesOccurrenceBySoftware.vue';
+  import TechniquesOccurrenceByGroups from '@/components/insights/TechniquesOccurrenceByGroups.vue';
+  import TechniquesOccurrenceTotal from '@/components/insights/TechniquesOccurrenceTotal.vue';
 </script>
 
 <template>
@@ -15,9 +15,9 @@
     <NumberTechniquesPerPlaftorm/>
     <NumberTechniquesPerGroup/>
     <NumberTechniquesPerSoftware/>
-    <MostUsedTechniquesByGroups/>
-    <MostUsedTechniquesBySoftwares/>
-    <MostUsedTechniquesTotal/>
+    <TechniquesOccurrenceByGroups/>
+    <TechniquesOccurrenceBySoftware/>
+    <TechniquesOccurrenceTotal/>
   </div>
 </template>
 

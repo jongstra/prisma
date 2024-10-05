@@ -2,8 +2,8 @@
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
-function getTopTechniquesBySoftware() {
-  const sortedTechniques = [...store.techniquesOccurrences].sort((a, b) => b.software_occurrence - a.software_occurrence);
+function getTopTechniquesByGroup() {
+  const sortedTechniques = [...store.techniquesOccurrences].sort((a, b) => b.group_occurrence - a.group_occurrence);
   return sortedTechniques.slice(0, 15);
 }
 </script>
@@ -11,19 +11,19 @@ function getTopTechniquesBySoftware() {
 <template>
   <div class="technique-visualization">
     <div class="title">
-      Techniques
-      <span v-if="getTopTechniquesBySoftware().length >= 15"> (Top 15)</span>
-      - Occurrence in Software
+     Techniques
+      <span v-if="getTopTechniquesByGroup().length >= 15"> (Top 15)</span>
+      - Occurrence by Groups
     </div>
     <hr>
-    <div v-for="(technique, index) in getTopTechniquesBySoftware()" :key="index" class="technique-row">
+    <div v-for="(technique, index) in getTopTechniquesByGroup()" :key="index" class="technique-row">
       <div class="technique-name">{{ technique.name }}</div>
       <div class="bar-container">
         <div 
-          class="bar green-bar" 
-          :style="{ width: technique.software_occurrence * 0.55 + 'px' }"
+          class="bar red-bar" 
+          :style="{ width: technique.group_occurrence * 1.5 + 'px' }"
         ></div>
-        <span class="technique-count">{{ technique.software_occurrence }}</span>
+        <span class="technique-count">{{ technique.group_occurrence }}</span>
       </div>
     </div>
   </div>
@@ -72,8 +72,8 @@ function getTopTechniquesBySoftware() {
   height: 14px;
 }
 
-.green-bar {
-  background-color: Olive;
+.red-bar {
+  background-color: FireBrick;
 }
 
 .technique-count {
