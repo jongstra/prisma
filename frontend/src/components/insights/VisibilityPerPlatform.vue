@@ -74,7 +74,7 @@ function calculatePlatformVisibility(): { name: string; percentage: number }[] {
   const result = Object.keys(platformCounts).map(platform => ({
     name: platform,
     percentage: Math.round((platformCounts[platform] / techniqueCounts[platform]) * 100),
-  })).sort((a, b) => b.percentage - a.percentage);
+  })).sort((a, b) => a.percentage - b.percentage);
 
   return result;
 }

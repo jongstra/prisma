@@ -18,7 +18,7 @@ function getTactics(): any {
   }
 
   // Sort the copied array by visibility percentage in descending order
-  return tactics.sort((a, b) => getVisibilityPercentage(b) - getVisibilityPercentage(a));
+  return tactics.sort((a, b) => getVisibilityPercentage(a) - getVisibilityPercentage(b));
 }
 
 function getVisibilityPercentage(tactic) {
