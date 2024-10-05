@@ -14,8 +14,20 @@ function getTactics(): any {
   return tactics;
 }
 
-</script>
+function getVisibilityPercentage(tactic) {
+  const percentage = Math.round(
+    tactic.techniques.reduce((sum, technique) => sum + (technique.visibility ? technique.visibility_ratio : 0), 0) / 
+    tactic.techniques.length * 100
+  );
+  return percentage;
+}
 
+function getBarColor(percentage) {
+  const red = Math.max(0, 255 - (255 * percentage) / 100);
+  const green = Math.min(255, (255 * percentage) / 100);
+  return `rgb(${red}, ${green}, 0)`;
+}
+</script>
 
 <template>
   <div class="item-visualization">
@@ -26,14 +38,19 @@ function getTactics(): any {
     <div v-for="tactic in getTactics()" class="item-row">
       <div class="item-name">{{ tactic.name }}</div>
       <div class="bar-container">
-        <div class="bar" :style="{ width: Math.round(tactic.techniques.reduce((sum, technique) => sum + (technique.visibility ? technique.visibility_ratio : 0), 0) / tactic.techniques.length * 100) * 1.75 + 'px' }">
-          <span class="item-count">{{ Math.round(tactic.techniques.reduce((sum, technique) => sum + (technique.visibility ? technique.visibility_ratio : 0), 0) / tactic.techniques.length * 100) }}</span>
+        <div 
+          class="bar" 
+          :style="{ 
+            width: (getVisibilityPercentage(tactic) * 2.3) + 'px', 
+            backgroundColor: getBarColor(getVisibilityPercentage(tactic)) 
+          }"
+        >
+          <span class="item-count">{{ getVisibilityPercentage(tactic) }}</span>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .item-visualization {
@@ -74,7 +91,6 @@ function getTactics(): any {
 
 .bar {
   height: 14px;
-  background-color: SteelBlue;
   position: relative;
 }
 
