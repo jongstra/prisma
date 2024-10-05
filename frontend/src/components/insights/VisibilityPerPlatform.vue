@@ -4,22 +4,28 @@ const store = tacticsStore();
 
 function getDomain(): any {
   let domain;
-  if (store.domain === 'enterprise-attack') {
+  
+  if (store.domain === 'enterprise-attack' && store.enterprise) {
     domain = store.enterprise;
-  } else if (store.domain === 'mobile-attack') {
+  } else if (store.domain === 'mobile-attack' && store.mobile) {
     domain = store.mobile;
-  } else if (store.domain === 'ics-attack') {
+  } else if (store.domain === 'ics-attack' && store.ics) {
     domain = store.ics;
   }
-  return domain;
+
+  return domain || {};
 }
 
 function getPlatforms(): string[] {
   const platformsSet = new Set<string>();
   let domain = getDomain();
-  domain.platforms.forEach(platform => {
-    platformsSet.add(platform.name);
-  });
+
+  if (domain.platforms) {
+    domain.platforms.forEach(platform => {
+      platformsSet.add(platform.name);
+    });
+  }
+
   return Array.from(platformsSet);
 }
 
@@ -33,34 +39,36 @@ function calculatePlatformVisibility(): { name: string; percentage: number }[] {
     techniqueCounts[platform] = 0;
   });
 
-  // Iterate through all tactics and techniques to count the platforms with visibility
-  getDomain().tactics.forEach(tactic => {
-    
-    // Create an edge-case for domain 'ics-attack', since all techniques there have platform 'None'.
-    if (store.domain === 'ics-attack') {
+  let domain = getDomain();
+
+  if (domain.tactics) {
+    // Iterate through all tactics and techniques to count the platforms with visibility
+    domain.tactics.forEach(tactic => {
       tactic.techniques.forEach(technique => {
         if (technique.visibility) {
-          platformCounts['None'] += technique.visibility_ratio;
+          if (store.domain === 'ics-attack') {
+            platformCounts['None'] += technique.visibility_ratio;
+          } else {
+            technique.platforms.forEach(platform => {
+              if (platform in platformCounts) {
+                platformCounts[platform] += technique.visibility_ratio;
+              }
+            });
+          }
         }
-        techniqueCounts['None']++;
-      });
-    } else {
-      tactic.techniques.forEach(technique => {
-        if (technique.visibility) {
+
+        if (store.domain === 'ics-attack') {
+          techniqueCounts['None']++;
+        } else {
           technique.platforms.forEach(platform => {
-            if (platform in platformCounts) {
-              platformCounts[platform] += technique.visibility_ratio;
+            if (platform in techniqueCounts) {
+              techniqueCounts[platform]++;
             }
           });
         }
-        technique.platforms.forEach(platform => {
-          if (platform in techniqueCounts) {
-            techniqueCounts[platform]++;
-          }
-        });
       });
-    }
-  });
+    });
+  }
 
   // Calculate the visibility percentage for each platform and sort by percentage
   const result = Object.keys(platformCounts).map(platform => ({
