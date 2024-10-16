@@ -2,22 +2,24 @@
 import { ref } from 'vue'
 import { tacticsStore } from '@/stores/tactics';
 import * as YAML from 'js-yaml';
-const input = ref<HTMLInputElement>()
 
+const input = ref<HTMLInputElement>()
+const isLoading = ref(false) // Track loading state
 
 const uploadFile = async () => {
-  const file = input.value?.files?.[0]
-  if (!file) {
-    alert("No file selected")
-    return
-  }
-
-  if (file.type !== "text/yaml" && file.type !== "application/x-yaml") {
-    alert("Please upload a valid YAML file")
-    return
-  }
-
   try {
+    isLoading.value = true // Start loading
+    const file = input.value?.files?.[0]
+    if (!file) {
+      alert("No file selected")
+      return
+    }
+
+    if (file.type !== "text/yaml" && file.type !== "application/x-yaml") {
+      alert("Please upload a valid YAML file")
+      return
+    }
+
     const fileContent = await file.text() // Reading file content asynchronously
     const yamlData = YAML.load(fileContent) // Parsing JSON content, now use js-yaml to load yaml data
 
@@ -28,6 +30,8 @@ const uploadFile = async () => {
   } catch (error) {
     console.log("Error")
     console.error(error)
+  } finally {
+    isLoading.value = false // End loading
   }
 }
 
@@ -39,7 +43,6 @@ const onFileChange = () => {
 }
 </script>
 
-
 <template>
   <div>
     <input
@@ -49,12 +52,11 @@ const onFileChange = () => {
       @change="onFileChange"
       style="display: none;"
     >
-    <label for="fileInput" class="file-button">
-      Upload DeTT&CT File  (YAML)
+    <label for="fileInput" class="file-button" :class="{ 'loading': isLoading }">
+      {{ isLoading ? "Loading File..." : "Upload DeTT&CT File (YAML)" }}
     </label>
   </div>
 </template>
-
 
 <style scoped>
 .file-button {
@@ -69,11 +71,12 @@ const onFileChange = () => {
   text-decoration: none;
   font-size: 14px;
   transition: 0.1s;
+  width: 220px;
 }
 
 .file-button:hover {
-  /* background-color: rgb(255, 184, 103); */
   background-color: rgb(214, 133, 27);
   color: rgb(255, 255, 255);
 }
+
 </style>
