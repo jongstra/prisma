@@ -11,10 +11,8 @@
   const store = tacticsStore();
 </script>
 
-
 <template>
   <div class='controls'>
-
     <!-- <div class='upload-button'>
       <FileUploadButtonYaml/>
     </div> -->
@@ -40,19 +38,18 @@
     <div class='search'>
       <SearchBar/>
     </div>
-
   </div>
 
   <div class='legend'>
-      <ColorLegend/>
+    <ColorLegend/>
   </div>
 
   <div class='upload-button'>
-      <FileUploadButtonYaml/>
+    <FileUploadButtonYaml/>
   </div>
 
-  <div class='attack-matrix'>
-
+  <div class="matrix-container">
+    <div class='attack-matrix'>
       <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
         <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
@@ -69,10 +66,9 @@
         <br>
         <p>Please upload a DETT&CT File using the button above.</p>
       </div>
-
+    </div>
   </div>
 </template>
-
 
 <style>
 h2 {
@@ -91,7 +87,7 @@ h2 {
   max-width: 900px;
 }
 
-.upload-button  {
+.upload-button {
   margin-top: 5px;
 }
 
@@ -99,16 +95,23 @@ h2 {
   margin-top: 5px;
 }
 
+.matrix-container {
+  margin-top: 5px;
+  overflow-x: auto; /* Enable horizontal scrollbar */
+  width: 100%; /* Full width of the parent container */
+  transform: rotateX(180deg);  /* Rotates container upside down so the horizontal scrollbar is at the top. */
+}
+
 .attack-matrix {
   display: flex;
-  overflow-x: auto; /* Enable horizontal scrollbar */
-  width: fit-content;
+  width: fit-content; /* Allow content to take up natural width */
+  transform: rotateX(180deg); /* Rotates the matrix content upside down AGAIN (after doing this to the .matrix-container), so it rotated back to normal. */
 }
 
 .button-columns {
   flex: 1; /* Allow components to grow and take up available space */
   width: auto; /* Allow components to take their natural width */
   margin-right: 4px; /* Adjust spacing between components */
-  margin-bottom: 800px; /* Forces a bottom margin to create space for the Tooltip when hovering Technique Buttons. */
+  margin-bottom: 600px; /* Forces a bottom margin to create space for the Tooltip when hovering Technique Buttons. */
 }
 </style>
