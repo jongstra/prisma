@@ -17,6 +17,7 @@ const uploadFile = async () => {
 
     if (file.type !== "text/yaml" && file.type !== "application/x-yaml") {
       alert("Please upload a valid YAML file")
+      isLoading.value = false // End loading
       return
     }
 
