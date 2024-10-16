@@ -10,6 +10,7 @@ interface SubTechnique {
   occurrence_groups: number;
   software: string[];
   occurrence_software: number;
+  occurrence_total: number,
   data_sources: string[];
   data_components: string[];
   available_datasources: string[];
@@ -24,6 +25,7 @@ interface Technique {
   occurrence_groups: number;
   software: string[];
   occurrence_software: number;
+  occurrence_total: number,
   data_sources: string[];
   data_components: string[];
   available_datasources: string[];
@@ -72,6 +74,7 @@ export const tacticsStore = defineStore('tactics', {
     searchQuery: '' as string,
     minVisibilityRatio: 0 as number,
     maxVisibilityRatio: 1 as number,
+    minTotalOccurrences: 0 as number,
   }),
 
 

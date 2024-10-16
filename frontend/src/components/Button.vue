@@ -34,7 +34,7 @@
     return `Technique ID: ${props.technique.external_id}\n\n${subtechniques_string}\n\n${groups_string}
             \nNr groups using this: ${props.technique.occurrence_groups}
             Nr software using this: ${props.technique.occurrence_software}
-            Total occurrence: ${props.technique.occurrence_groups + props.technique.occurrence_software}
+            Total occurrence: ${props.technique.occurrence_total}
             \n${components_string}`;
   };
 
@@ -73,12 +73,17 @@
       (!store.searchQuery || props.technique.name.toLowerCase().includes(store.searchQuery.toLowerCase()))
     )
 
-    let techniquePercentageFilterResult = (
+    let techniqueVisibilityPercentageFilterResult = (
       (props.technique.visibility_ratio >= store.minVisibilityRatio) &&
       (props.technique.visibility_ratio <= store.maxVisibilityRatio)
     )
 
-    if (platformFilterResult && techniquePercentageFilterResult) {
+    let techniqueTotalOccurrencesFilterResult = (
+      props.technique.occurrence_total >= store.minTotalOccurrences
+    )
+
+
+    if (platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult) {
       return true
     } else {
       return false

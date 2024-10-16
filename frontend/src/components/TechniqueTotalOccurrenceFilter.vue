@@ -1,0 +1,73 @@
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+import '@vueform/slider/themes/default.css'
+import Slider from '@vueform/slider'
+import { tacticsStore } from '@/stores/tactics';
+
+const store = tacticsStore();
+const value = ref(0) // Default knob position: 0
+
+// Watch the 'value' ref and update the store when it changes
+watch(value, (newValue) => {
+  store.minTotalOccurrences = newValue;
+});
+</script>
+
+<template>
+  <div class="slider-container">
+    <Slider
+      v-model="value"
+      :min="0"
+      :max="100"
+      :interval="1"
+      :showTooltip="'always'"
+    />
+    <p class="slider-title">Minimum Total Occurrence</p>
+  </div>
+</template>
+
+<style scoped>
+.slider-container {
+  width: 200px;
+  margin-top: 12px;
+  margin-bottom: -25px;
+  padding: 20px;
+
+  /* Customizing the tooltips */
+  --slider-tooltip-line-height: 0.6rem;
+  --slider-tooltip-font-size: 0.6rem;
+
+  /* Customizing tooltip colors */
+  --slider-tooltip-bg: #333; /* Background color */
+  --slider-tooltip-color: #fff; /* Text color */
+  --slider-tooltip-border-radius: 4px; /* Optional: Border radius */
+}
+
+.slider-title {
+  margin-top: 3px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Customizing the background color of the connected part */
+.slider-container :deep(.slider-connect) {
+  background-color: firebrick;
+}
+
+/* Customizing the unselected parts */
+.slider-container :deep(.slider-base) {
+  background-color: seashell; /* Background color for the unselected track */
+}
+
+/* Customizing tooltip styles more explicitly */
+.slider-container :deep(.slider-tooltip) {
+  background-color: var(--slider-tooltip-bg); /* Use the variable for background */
+  color: var(--slider-tooltip-color); /* Use the variable for text color */
+  border-radius: var(--slider-tooltip-border-radius); /* Optional: use the variable for border-radius */
+}
+
+/* Optional: Customize the tooltip arrow if needed */
+.slider-container :deep(.slider-tooltip:before) {
+  border-top-color: var(--slider-tooltip-bg); /* Arrow color to match the tooltip background */
+}
+</style>

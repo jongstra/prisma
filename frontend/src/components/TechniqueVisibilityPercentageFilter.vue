@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import '@vueform/slider/themes/default.css' // Import default styles
+import '@vueform/slider/themes/default.css'
 import Slider from '@vueform/slider'
-import { tacticsStore } from '@/stores/tactics'; // Import your store
+import { tacticsStore } from '@/stores/tactics';
 
-const store = tacticsStore(); // Initialize the store
+const store = tacticsStore();
 const values = ref([0, 100]) // Default knob positions: 0% and 100%
 
 // Watch the 'values' ref and update the store when they change
@@ -26,7 +26,7 @@ watch(values, (newValues) => {
       :options="{connect: [false, true, false]}"
       :range="true"
     />
-    <p class="slider-title">Visibility Percentage Filter</p>
+    <p class="slider-title">Visibility Percentage</p>
   </div>
 </template>
 

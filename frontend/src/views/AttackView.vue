@@ -4,7 +4,8 @@
   import FileUploadButtonJson from '@/components/FileUploadButtonJson.vue';
   import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
   import TechniqueAttributeFilter from '@/components/TechniqueAttributeFilter.vue';
-  import TechniquePercentageFilter from '@/components/TechniquePercentageFilter.vue';
+  import TechniqueVisibilityPercentageFilter from '@/components/TechniqueVisibilityPercentageFilter.vue';
+  import TechniqueTotalOccurrenceFilter from '@/components/TechniqueTotalOccurrenceFilter.vue';
   import ColorLegend from '@/components/ColorLegend.vue';
   import SearchBar from '@/components/SearchBar.vue';
   const store = tacticsStore();
@@ -14,10 +15,9 @@
 <template>
   <div class='controls'>
 
-    <div class='upload-button'>
-      <!-- <FileUploadButtonJson/> -->
+    <!-- <div class='upload-button'>
       <FileUploadButtonYaml/>
-    </div>
+    </div> -->
 
     <div class='filter'>
       <TechniqueAttributeFilter attribute_type="platforms"/>
@@ -30,7 +30,11 @@
     </div> -->
 
     <div class='filter'>
-      <TechniquePercentageFilter/>
+      <TechniqueVisibilityPercentageFilter/>
+    </div>
+
+    <div class='filter'>
+      <TechniqueTotalOccurrenceFilter/>
     </div>
 
     <div class='search'>
@@ -41,6 +45,10 @@
 
   <div class='legend'>
       <ColorLegend/>
+  </div>
+
+  <div class='upload-button'>
+      <FileUploadButtonYaml/>
   </div>
 
   <div class='attack-matrix'>
