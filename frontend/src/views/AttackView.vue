@@ -92,7 +92,7 @@ h2 {
 }
 
 .upload-button  {
-  margin-top: 7px;
+  margin-top: 5px;
 }
 
 .legend {

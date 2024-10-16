@@ -27,7 +27,7 @@ function capitalizeFirstLetter(string: string) {
 
 // Toggle selection functionality
 function toggleAttribute(attribute: any) {
-  attribute.active = !attribute.active;
+  attribute.active_in_filter = !attribute.active_in_filter;
 }
 
 // Compute attributes based on the current domain and attribute type
@@ -65,7 +65,7 @@ onBeforeUnmount(() => {
   <div class="collapsible-container" ref="containerRef">
     <!-- Collapsible search bar -->
     <div class="collapsible-header" @click="toggleCollapse">
-      <span class="collapsible-title">{{ capitalizeFirstLetter(props.attribute_type) }} Filter</span>
+      <span class="collapsible-title">{{ capitalizeFirstLetter(props.attribute_type) }}</span>
     </div>
     <div v-if="!isCollapsed" class="collapsible-content">
       <ul>
@@ -73,7 +73,7 @@ onBeforeUnmount(() => {
           <label>
             <input 
               type="checkbox" 
-              :checked="attribute.active"
+              :checked="attribute.active_in_filter"
               @change="toggleAttribute(attribute)"
             />
             {{ attribute.name }}

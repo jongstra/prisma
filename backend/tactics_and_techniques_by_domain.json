@@ -25981,7 +25981,7 @@
     "platforms": [
       {
         "name": "Windows",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Extra Window Memory Injection",
           "Scheduled Task",
@@ -26426,7 +26426,7 @@
       },
       {
         "name": "macOS",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Socket Filters",
           "Archive via Utility",
@@ -26754,7 +26754,7 @@
       },
       {
         "name": "Linux",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Socket Filters",
           "Archive via Utility",
@@ -27075,7 +27075,7 @@
       },
       {
         "name": "Network",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Boot or Logon Initialization Scripts",
           "Adversary-in-the-Middle",
@@ -27176,7 +27176,7 @@
       },
       {
         "name": "IaaS",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Revert Cloud Instance",
           "Password Guessing",
@@ -27277,7 +27277,7 @@
       },
       {
         "name": "PRE",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Acquire Infrastructure",
           "Serverless",
@@ -27375,7 +27375,7 @@
       },
       {
         "name": "Office 365",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Password Guessing",
           "Direct Network Flood",
@@ -27461,7 +27461,7 @@
       },
       {
         "name": "SaaS",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Password Guessing",
           "Direct Network Flood",
@@ -27537,7 +27537,7 @@
       },
       {
         "name": "Google Workspace",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Password Guessing",
           "Direct Network Flood",
@@ -27607,7 +27607,7 @@
       },
       {
         "name": "Azure AD",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Password Guessing",
           "Direct Network Flood",
@@ -27661,7 +27661,7 @@
       },
       {
         "name": "Containers",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Container and Resource Discovery",
           "Password Guessing",
@@ -27714,157 +27714,157 @@
     "data_sources": [
       {
         "name": "Pod",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Container",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "User Account",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Windows Registry",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Script",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Image",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Web Credential",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Named Pipe",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Certificate",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "WMI",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Cloud Storage",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Internet Scan",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Persona",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Group",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Application Log",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Logon Session",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Instance",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Sensor Health",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "File",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Drive",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Snapshot",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Command",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Kernel",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Driver",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Volume",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Cloud Service",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Malware Repository",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Network Share",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Network Traffic",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Scheduled Job",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Firmware",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Active Directory",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Service",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Domain Name",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Process",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Firewall",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Module",
-        "active": true
+        "active_in_filter": true
       }
     ],
     "data_components": [
       {
         "name": "Active Directory Credential Request",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Golden Ticket",
           "Use Alternate Authentication Material",
@@ -27886,7 +27886,7 @@
       },
       {
         "name": "WMI Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Obfuscated Files or Information",
           "Event Triggered Execution",
@@ -27906,7 +27906,7 @@
       },
       {
         "name": "Group Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Additional Email Delegate Permissions",
           "Account Manipulation"
@@ -27922,7 +27922,7 @@
       },
       {
         "name": "Image Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Implant Internal Image"
         ],
@@ -27937,7 +27937,7 @@
       },
       {
         "name": "Pod Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Container and Resource Discovery"
         ],
@@ -27952,7 +27952,7 @@
       },
       {
         "name": "Response Content",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "SEO Poisoning",
           "Client Configurations",
@@ -27994,7 +27994,7 @@
       },
       {
         "name": "Volume Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
         ],
@@ -28009,7 +28009,7 @@
       },
       {
         "name": "Response Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Hide Infrastructure",
           "Acquire Infrastructure",
@@ -28030,7 +28030,7 @@
       },
       {
         "name": "Windows Registry Key Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Registry",
           "Impair Defenses",
@@ -28049,7 +28049,7 @@
       },
       {
         "name": "Instance Stop",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Revert Cloud Instance"
@@ -28065,7 +28065,7 @@
       },
       {
         "name": "Malware Content",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Develop Capabilities",
           "Malware",
@@ -28083,7 +28083,7 @@
       },
       {
         "name": "Snapshot Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Data Destruction",
           "Inhibit System Recovery",
@@ -28100,7 +28100,7 @@
       },
       {
         "name": "Network Connection Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "SNMP (MIB Dump)",
           "CMSTP",
@@ -28175,7 +28175,7 @@
       },
       {
         "name": "Process Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Authentication Process",
           "LSASS Memory",
@@ -28210,7 +28210,7 @@
       },
       {
         "name": "Active Directory Object Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Domain or Tenant Policy Modification",
           "Group Policy Modification",
@@ -28229,7 +28229,7 @@
       },
       {
         "name": "Certificate Registration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Obtain Capabilities",
           "Digital Certificates"
@@ -28245,7 +28245,7 @@
       },
       {
         "name": "File Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Group Policy Preferences",
           "Local Email Collection",
@@ -28308,7 +28308,7 @@
       },
       {
         "name": "Kernel Module Load",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Escape to Host",
           "Kernel Modules and Extensions",
@@ -28325,7 +28325,7 @@
       },
       {
         "name": "Instance Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
         ],
@@ -28340,7 +28340,7 @@
       },
       {
         "name": "File Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Container Orchestration Job",
           "Path Interception by PATH Environment Variable",
@@ -28456,7 +28456,7 @@
       },
       {
         "name": "Active DNS",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "DNS Server",
           "Compromise Infrastructure",
@@ -28475,7 +28475,7 @@
       },
       {
         "name": "Driver Load",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Disk Wipe",
           "Create or Modify System Process",
@@ -28503,7 +28503,7 @@
       },
       {
         "name": "Network Traffic Content",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "OS Credential Dumping",
           "Phishing for Information",
@@ -28629,7 +28629,7 @@
       },
       {
         "name": "Logon Session Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Local Accounts",
           "Trusted Relationship",
@@ -28655,7 +28655,7 @@
       },
       {
         "name": "Volume Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Data Destruction"
@@ -28671,7 +28671,7 @@
       },
       {
         "name": "Process Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Hidden Files and Directories",
           "AppInit DLLs",
@@ -28932,7 +28932,7 @@
       },
       {
         "name": "Drive Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Communication Through Removable Media",
           "Exfiltration Over Physical Medium",
@@ -28951,7 +28951,7 @@
       },
       {
         "name": "Snapshot Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Transfer Data to Cloud Account",
           "Modify Cloud Compute Infrastructure",
@@ -28968,7 +28968,7 @@
       },
       {
         "name": "Cloud Storage Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Transfer Data to Cloud Account",
           "Data Encrypted for Impact"
@@ -28984,7 +28984,7 @@
       },
       {
         "name": "Instance Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Revert Cloud Instance"
@@ -29000,7 +29000,7 @@
       },
       {
         "name": "Instance Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Delete Cloud Instance",
@@ -29019,7 +29019,7 @@
       },
       {
         "name": "Cloud Storage Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Inhibit System Recovery",
           "Data Destruction"
@@ -29035,7 +29035,7 @@
       },
       {
         "name": "Drive Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Rootkit",
           "Bootkit",
@@ -29055,7 +29055,7 @@
       },
       {
         "name": "Pod Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Deploy Container"
         ],
@@ -29070,7 +29070,7 @@
       },
       {
         "name": "Service Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Create or Modify System Process",
           "LLMNR/NBT-NS Poisoning and SMB Relay",
@@ -29098,7 +29098,7 @@
       },
       {
         "name": "Cloud Storage Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Exfiltration Over Alternative Protocol",
           "Cloud Storage Object Discovery",
@@ -29115,7 +29115,7 @@
       },
       {
         "name": "Cloud Storage Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Transfer Data to Cloud Account"
         ],
@@ -29130,7 +29130,7 @@
       },
       {
         "name": "Active Directory Object Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Reversible Encryption",
           "Conditional Access Policies",
@@ -29162,7 +29162,7 @@
       },
       {
         "name": "Active Directory Object Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "DCSync",
           "System Owner/User Discovery",
@@ -29180,7 +29180,7 @@
       },
       {
         "name": "Web Credential Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "SAML Tokens",
           "Forge Web Credentials"
@@ -29196,7 +29196,7 @@
       },
       {
         "name": "Container Start",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Deploy Container",
           "Malicious Image",
@@ -29213,7 +29213,7 @@
       },
       {
         "name": "Process Termination",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Service Stop",
           "Disable or Modify Tools",
@@ -29230,7 +29230,7 @@
       },
       {
         "name": "File Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Hide Artifacts",
           "Command Obfuscation",
@@ -29291,7 +29291,7 @@
       },
       {
         "name": "Service Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Launch Agent",
           "Create or Modify System Process",
@@ -29311,7 +29311,7 @@
       },
       {
         "name": "Pod Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Deploy Container"
         ],
@@ -29326,7 +29326,7 @@
       },
       {
         "name": "Command Execution",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Exfiltration Over C2 Channel",
           "Credentials from Web Browsers",
@@ -29620,7 +29620,7 @@
       },
       {
         "name": "Drive Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Disk Wipe",
           "Disk Structure Wipe",
@@ -29639,7 +29639,7 @@
       },
       {
         "name": "Firewall Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Security Software Discovery",
           "Software Discovery"
@@ -29655,7 +29655,7 @@
       },
       {
         "name": "Service Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Executable Installer File Permissions Weakness",
           "Hijack Execution Flow",
@@ -29680,7 +29680,7 @@
       },
       {
         "name": "Instance Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Delete Cloud Instance",
           "Data Destruction",
@@ -29697,7 +29697,7 @@
       },
       {
         "name": "Scheduled Job Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Masquerading",
           "Masquerade Task or Service"
@@ -29713,7 +29713,7 @@
       },
       {
         "name": "Windows Registry Key Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Scheduled Task",
           "Safe Mode Boot",
@@ -29749,7 +29749,7 @@
       },
       {
         "name": "File Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Scheduled Task",
           "DLL Search Order Hijacking",
@@ -29871,7 +29871,7 @@
       },
       {
         "name": "Host Status",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Disable or Modify Tools",
           "Service Exhaustion Flood",
@@ -29903,7 +29903,7 @@
       },
       {
         "name": "Image Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Data Destruction"
         ],
@@ -29918,7 +29918,7 @@
       },
       {
         "name": "Snapshot Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Create Snapshot",
           "Transfer Data to Cloud Account",
@@ -29935,7 +29935,7 @@
       },
       {
         "name": "Cloud Service Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Cloud Secrets Management Stores",
           "Cloud Service Discovery",
@@ -29953,7 +29953,7 @@
       },
       {
         "name": "Group Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Permission Groups Discovery",
           "Cloud Groups"
@@ -29969,7 +29969,7 @@
       },
       {
         "name": "Group Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Domain Groups",
           "Local Account",
@@ -29989,7 +29989,7 @@
       },
       {
         "name": "Social Media",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Social Media Accounts",
           "Compromise Accounts",
@@ -30007,7 +30007,7 @@
       },
       {
         "name": "Active Directory Object Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Domain or Tenant Policy Modification",
           "Group Policy Modification"
@@ -30023,7 +30023,7 @@
       },
       {
         "name": "Container Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Container and Resource Discovery"
         ],
@@ -30038,7 +30038,7 @@
       },
       {
         "name": "Malware Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Obtain Capabilities",
           "Develop Capabilities",
@@ -30059,7 +30059,7 @@
       },
       {
         "name": "OS API Execution",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Ptrace System Calls",
           "VDSO Hijacking",
@@ -30172,7 +30172,7 @@
       },
       {
         "name": "Application Log Content",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Drive-by Compromise",
           "Service Exhaustion Flood",
@@ -30269,7 +30269,7 @@
       },
       {
         "name": "Logon Session Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Email Collection",
           "Multi-Factor Authentication",
@@ -30322,7 +30322,7 @@
       },
       {
         "name": "Script Execution",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Archive via Library",
           "Command and Scripting Interpreter",
@@ -30367,7 +30367,7 @@
       },
       {
         "name": "Container Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Create or Modify System Process",
           "Container Orchestration Job",
@@ -30389,7 +30389,7 @@
       },
       {
         "name": "Network Traffic Flow",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Application Exhaustion Flood",
           "Server Software Component",
@@ -30497,7 +30497,7 @@
       },
       {
         "name": "User Account Authentication",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Password Cracking",
           "Domain Accounts",
@@ -30537,7 +30537,7 @@
       },
       {
         "name": "Image Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Build Image on Host",
           "Malicious Image",
@@ -30555,7 +30555,7 @@
       },
       {
         "name": "Cloud Service Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
         ],
@@ -30570,7 +30570,7 @@
       },
       {
         "name": "Image Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Match Legitimate Name or Location",
           "Implant Internal Image",
@@ -30588,7 +30588,7 @@
       },
       {
         "name": "Instance Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Unused/Unsupported Cloud Regions",
@@ -30607,7 +30607,7 @@
       },
       {
         "name": "User Account Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Password Policy Discovery",
           "Access Token Manipulation",
@@ -30627,7 +30627,7 @@
       },
       {
         "name": "Named Pipe Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Lateral Tool Transfer"
         ],
@@ -30642,7 +30642,7 @@
       },
       {
         "name": "Firmware Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Component Firmware",
           "Hidden File System",
@@ -30665,7 +30665,7 @@
       },
       {
         "name": "Firewall Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Software Discovery",
           "Security Software Discovery"
@@ -30681,7 +30681,7 @@
       },
       {
         "name": "Module Load",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Inter-Process Communication",
           "AppDomainManager",
@@ -30750,7 +30750,7 @@
       },
       {
         "name": "Firewall Disable",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Disable or Modify Cloud Firewall",
           "Disable or Modify System Firewall",
@@ -30767,7 +30767,7 @@
       },
       {
         "name": "Passive DNS",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Domains",
           "Domains",
@@ -30786,7 +30786,7 @@
       },
       {
         "name": "User Account Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Additional Cloud Credentials",
           "Abuse Elevation Control Mechanism",
@@ -30814,7 +30814,7 @@
       },
       {
         "name": "Firewall Rule Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Indicator Removal",
           "Disable or Modify System Firewall",
@@ -30833,7 +30833,7 @@
       },
       {
         "name": "Volume Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure",
           "Escape to Host"
@@ -30849,7 +30849,7 @@
       },
       {
         "name": "Process Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Browser Session Hijacking",
           "ListPlanting",
@@ -30875,7 +30875,7 @@
       },
       {
         "name": "User Account Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Clear Persistence",
           "Indicator Removal",
@@ -30892,7 +30892,7 @@
       },
       {
         "name": "Windows Registry Key Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Registry",
           "Bypass User Account Control",
@@ -30973,7 +30973,7 @@
       },
       {
         "name": "Volume Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Cloud Compute Infrastructure"
         ],
@@ -30988,7 +30988,7 @@
       },
       {
         "name": "User Account Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Hidden Users",
           "Cloud Account",
@@ -31008,7 +31008,7 @@
       },
       {
         "name": "Cloud Storage Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Transfer Data to Cloud Account"
         ],
@@ -31023,7 +31023,7 @@
       },
       {
         "name": "Cloud Service Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Serverless Execution",
           "Conditional Access Policies",
@@ -31044,7 +31044,7 @@
       },
       {
         "name": "File Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Clear Persistence",
           "Clear Linux or Mac System Logs",
@@ -31073,7 +31073,7 @@
       },
       {
         "name": "Cloud Service Disable",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Impair Defenses",
           "Disable or Modify Cloud Logs"
@@ -31089,7 +31089,7 @@
       },
       {
         "name": "Volume Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
         ],
@@ -31104,7 +31104,7 @@
       },
       {
         "name": "Windows Registry Key Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Unsecured Credentials",
           "Security Account Manager",
@@ -31128,7 +31128,7 @@
       },
       {
         "name": "Process Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Dynamic-link Library Injection",
           "Credential API Hooking",
@@ -31157,7 +31157,7 @@
       },
       {
         "name": "Snapshot Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Transfer Data to Cloud Account",
           "Modify Cloud Compute Infrastructure"
@@ -31173,7 +31173,7 @@
       },
       {
         "name": "Scheduled Job Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Scheduled Task/Job",
           "At",
@@ -31193,7 +31193,7 @@
       },
       {
         "name": "Network Share Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Data from Network Shared Drive",
           "Lateral Tool Transfer",
@@ -31213,7 +31213,7 @@
       },
       {
         "name": "Driver Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Pre-OS Boot",
           "Component Firmware"
@@ -31229,7 +31229,7 @@
       },
       {
         "name": "Instance Start",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Revert Cloud Instance",
           "User Execution",
@@ -31247,7 +31247,7 @@
       },
       {
         "name": "Scheduled Job Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Indicator Removal",
           "Masquerade Task or Service",
@@ -31265,7 +31265,7 @@
       },
       {
         "name": "Cloud Storage Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Cloud Infrastructure Discovery",
           "Cloud Storage Object Discovery"
@@ -31281,7 +31281,7 @@
       },
       {
         "name": "Web Credential Usage",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "SAML Tokens",
           "Forge Web Credentials",
@@ -31301,7 +31301,7 @@
       },
       {
         "name": "Domain Registration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Compromise Infrastructure",
           "Domains",
@@ -31320,7 +31320,7 @@
       },
       {
         "name": "Snapshot Enumeration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Cloud Infrastructure Discovery"
         ],
@@ -51395,7 +51395,7 @@
     "platforms": [
       {
         "name": "None",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Block Command Message",
           "Service Stop",
@@ -51486,77 +51486,77 @@
     "data_sources": [
       {
         "name": "User Account",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Windows Registry",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Script",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Operational Databases",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Application Log",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Logon Session",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "File",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Drive",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Command",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Asset",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Network Share",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Network Traffic",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Scheduled Job",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Firmware",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Service",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Process",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Module",
-        "active": true
+        "active_in_filter": true
       }
     ],
     "data_components": [
       {
         "name": "Windows Registry Key Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Indicator Removal on Host"
         ],
@@ -51571,7 +51571,7 @@
       },
       {
         "name": "Network Connection Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "User Execution",
           "Remote Services",
@@ -51588,7 +51588,7 @@
       },
       {
         "name": "File Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Data from Local System",
           "Remote System Discovery",
@@ -51608,7 +51608,7 @@
       },
       {
         "name": "File Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Replication Through Removable Media",
           "Lateral Tool Transfer",
@@ -51626,7 +51626,7 @@
       },
       {
         "name": "Network Traffic Content",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Connection Proxy",
           "Change Operating Mode",
@@ -51675,7 +51675,7 @@
       },
       {
         "name": "Logon Session Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Internet Accessible Device",
           "Valid Accounts",
@@ -51692,7 +51692,7 @@
       },
       {
         "name": "Process Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Data from Local System",
           "Spearphishing Attachment",
@@ -51726,7 +51726,7 @@
       },
       {
         "name": "Drive Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Replication Through Removable Media",
           "Autorun Image"
@@ -51742,7 +51742,7 @@
       },
       {
         "name": "Process/Event Alarm",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Block Serial COM",
           "Block Reporting Message",
@@ -51761,7 +51761,7 @@
       },
       {
         "name": "Drive Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [],
         "visibility": false,
         "quality": {
@@ -51774,7 +51774,7 @@
       },
       {
         "name": "Service Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Masquerading",
           "Adversary-in-the-Middle"
@@ -51790,7 +51790,7 @@
       },
       {
         "name": "Process Termination",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Block Command Message",
           "Block Reporting Message",
@@ -51808,7 +51808,7 @@
       },
       {
         "name": "File Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Lateral Tool Transfer",
           "Indicator Removal on Host",
@@ -51826,7 +51826,7 @@
       },
       {
         "name": "Service Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Masquerading"
         ],
@@ -51841,7 +51841,7 @@
       },
       {
         "name": "Command Execution",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Network Connection Enumeration",
           "Screen Capture",
@@ -51871,7 +51871,7 @@
       },
       {
         "name": "Service Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Service Stop"
         ],
@@ -51886,7 +51886,7 @@
       },
       {
         "name": "Scheduled Job Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [],
         "visibility": false,
         "quality": {
@@ -51899,7 +51899,7 @@
       },
       {
         "name": "File Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Masquerading",
           "Service Stop",
@@ -51918,7 +51918,7 @@
       },
       {
         "name": "Software",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Manipulate I/O Image",
           "Modify Program",
@@ -51936,7 +51936,7 @@
       },
       {
         "name": "Process History/Live Data",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Unauthorized Command Message",
           "Block Serial COM",
@@ -51958,7 +51958,7 @@
       },
       {
         "name": "OS API Execution",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Service Stop",
           "Indicator Removal on Host",
@@ -51980,7 +51980,7 @@
       },
       {
         "name": "Application Log Content",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Modify Alarm Settings",
           "Modify Controller Tasking",
@@ -52027,7 +52027,7 @@
       },
       {
         "name": "Logon Session Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Remote Services",
           "Data from Information Repositories",
@@ -52048,7 +52048,7 @@
       },
       {
         "name": "Device Alarm",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "System Firmware",
           "Module Firmware",
@@ -52075,7 +52075,7 @@
       },
       {
         "name": "Script Execution",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Automated Collection",
           "System Binary Proxy Execution",
@@ -52094,7 +52094,7 @@
       },
       {
         "name": "Network Traffic Flow",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Spoof Reporting Message",
           "Block Serial COM",
@@ -52131,7 +52131,7 @@
       },
       {
         "name": "User Account Authentication",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Valid Accounts"
         ],
@@ -52146,7 +52146,7 @@
       },
       {
         "name": "Asset Inventory",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Rogue Master",
           "Modify Alarm Settings",
@@ -52164,7 +52164,7 @@
       },
       {
         "name": "Firmware Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Rootkit",
           "Module Firmware",
@@ -52181,7 +52181,7 @@
       },
       {
         "name": "Module Load",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Remote Services",
           "Scripting",
@@ -52198,7 +52198,7 @@
       },
       {
         "name": "Windows Registry Key Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Adversary-in-the-Middle",
           "Indicator Removal on Host",
@@ -52216,7 +52216,7 @@
       },
       {
         "name": "File Deletion",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Data Destruction",
           "Indicator Removal on Host"
@@ -52232,7 +52232,7 @@
       },
       {
         "name": "Process Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Scripting",
           "Masquerading",
@@ -52249,7 +52249,7 @@
       },
       {
         "name": "Scheduled Job Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Masquerading"
         ],
@@ -52264,7 +52264,7 @@
       },
       {
         "name": "Network Share Access",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Lateral Tool Transfer",
           "Data from Information Repositories",
@@ -52281,7 +52281,7 @@
       },
       {
         "name": "Scheduled Job Modification",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Masquerading"
         ],
@@ -56466,7 +56466,7 @@
     "platforms": [
       {
         "name": "Android",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Scheduled Task/Job",
           "Adversary-in-the-Middle",
@@ -56590,7 +56590,7 @@
       },
       {
         "name": "iOS",
-        "active": true,
+        "active_in_filter": true,
         "techniques": [
           "Scheduled Task/Job",
           "Adversary-in-the-Middle",
@@ -56685,33 +56685,33 @@
     "data_sources": [
       {
         "name": "Sensor Health",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "User Interface",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Command",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Network Traffic",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Application Vetting",
-        "active": true
+        "active_in_filter": true
       },
       {
         "name": "Process",
-        "active": true
+        "active_in_filter": true
       }
     ],
     "data_components": [
       {
         "name": "Network Connection Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Adversary-in-the-Middle",
           "Bidirectional Communication",
@@ -56730,7 +56730,7 @@
       },
       {
         "name": "Network Traffic Content",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Phishing",
           "Exploitation of Remote Services",
@@ -56747,7 +56747,7 @@
       },
       {
         "name": "Process Creation",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Command and Scripting Interpreter",
           "Unix Shell"
@@ -56763,7 +56763,7 @@
       },
       {
         "name": "System Settings",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Endpoint Denial of Service",
           "SMS Messages",
@@ -56809,7 +56809,7 @@
       },
       {
         "name": "API Calls",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Virtualization/Sandbox Evasion",
           "Data Manipulation",
@@ -56862,7 +56862,7 @@
       },
       {
         "name": "Application Assets",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "SSL Pinning"
         ],
@@ -56877,7 +56877,7 @@
       },
       {
         "name": "Process Termination",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Impair Defenses"
         ],
@@ -56892,7 +56892,7 @@
       },
       {
         "name": "Command Execution",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Command and Scripting Interpreter",
           "Unix Shell",
@@ -56909,7 +56909,7 @@
       },
       {
         "name": "Protected Configuration",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Adversary-in-the-Middle"
         ],
@@ -56924,7 +56924,7 @@
       },
       {
         "name": "Network Communication",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Ingress Tool Transfer",
           "Bidirectional Communication",
@@ -56950,7 +56950,7 @@
       },
       {
         "name": "Host Status",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Exploitation for Privilege Escalation",
           "Lockscreen Bypass",
@@ -56978,7 +56978,7 @@
       },
       {
         "name": "Network Traffic Flow",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Non-Standard Port",
           "Phishing",
@@ -56996,7 +56996,7 @@
       },
       {
         "name": "Permissions Requests",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "SMS Messages",
           "Call Log",
@@ -57039,7 +57039,7 @@
       },
       {
         "name": "System Notifications",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Foreground Persistence",
           "Call Control",
@@ -57063,7 +57063,7 @@
       },
       {
         "name": "Permissions Request",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Device Administrator Permissions",
           "Remote Access Software",
@@ -57083,7 +57083,7 @@
       },
       {
         "name": "Process Metadata",
-        "active": true,
+        "active_in_filter": true,
         "detected_techniques": [
           "Command and Scripting Interpreter",
           "Unix Shell"

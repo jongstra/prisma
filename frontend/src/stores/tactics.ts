@@ -41,7 +41,7 @@ interface Tactic {
 
 interface Attribute {
   name: string;
-  active: boolean;
+  active_in_filter: boolean;
 }
 
 interface Attributes {
@@ -142,7 +142,7 @@ export const tacticsStore = defineStore('tactics', {
 
       // Filter and map the active items based on the attributeType
       const active_attributes = data
-        .filter(item => item.active) // Filter the array to include only active items
+        .filter(item => item.active_in_filter) // Filter the array to include only active items.
         .map(item => item.name);
 
       return active_attributes;
