@@ -44,6 +44,26 @@ const attributes = computed(() => {
   }
 });
 
+// Compute the state of the main checkbox
+const allSelected = computed(() => {
+  return attributes.value.every((attribute) => attribute.active_in_filter);
+});
+
+const anySelected = computed(() => {
+  return attributes.value.some((attribute) => attribute.active_in_filter);
+});
+
+const isIndeterminate = computed(() => {
+  return anySelected.value && !allSelected.value;
+});
+
+// Handle the click event on the main checkbox
+function toggleAllAttributes(checked: boolean) {
+  attributes.value.forEach((attribute) => {
+    attribute.active_in_filter = checked;
+  });
+}
+
 // Click outside to collapse
 function handleClickOutside(event: MouseEvent) {
   if (containerRef.value && !containerRef.value.contains(event.target as Node)) {
@@ -60,19 +80,31 @@ onBeforeUnmount(() => {
 });
 </script>
 
-
 <template>
   <div class="collapsible-container" ref="containerRef">
     <!-- Collapsible search bar -->
-    <div class="collapsible-header" @click="toggleCollapse">
+    <div class="collapsible-header" @click="toggleCollapse" :class="{ active: !isCollapsed }">
       <span class="collapsible-title">{{ capitalizeFirstLetter(props.attribute_type) }}</span>
+      <span class="collapsible-icon"></span>
     </div>
     <div v-if="!isCollapsed" class="collapsible-content">
       <ul>
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              :indeterminate="isIndeterminate"
+              :checked="allSelected"
+              @change="toggleAllAttributes($event.target.checked)"
+            />
+            All
+          </label>
+        ------------
+        </li>
         <li v-for="attribute in attributes" :key="attribute.name">
           <label>
-            <input 
-              type="checkbox" 
+            <input
+              type="checkbox"
               :checked="attribute.active_in_filter"
               @change="toggleAttribute(attribute)"
             />
@@ -84,30 +116,43 @@ onBeforeUnmount(() => {
   </div>
 </template>
 
-
-
 <style scoped>
 .collapsible-container {
   position: relative;
-  margin: 18px;
+  margin-top: 8px;
 }
 
 .collapsible-header {
   cursor: pointer;
-}
-
-.collapsible-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 8.5px;
   font-size: 16px;
   border: 2px solid #333;
   border-radius: 5px;
-  width: 300px;
+  width: 120%;
   background-color: rgba(10, 10, 10, 0.35);
   color: white;
   transition: 0.1s;
 }
 
-.collapsible-title:hover {
+.collapsible-title {
+  flex-grow: 1;
+}
+
+.collapsible-icon::after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  margin-left: 5px;
+}
+
+.active .collapsible-icon::after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.collapsible-header:hover {
   background-color: rgba(10, 10, 10, 0.25);
   color: white;
 }
@@ -116,9 +161,9 @@ onBeforeUnmount(() => {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  width: 120%;
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }

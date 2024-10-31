@@ -54,7 +54,7 @@ const onFileChange = () => {
       style="display: none;"
     >
     <label for="fileInput" class="file-button" :class="{ 'loading': isLoading }">
-      {{ isLoading ? "Loading File..." : "Upload DeTT&CT File (YAML)" }}
+      {{ isLoading ? "Processing File..." : "Upload DeTT&CT File (YAML)" }}
     </label>
   </div>
 </template>
