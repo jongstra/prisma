@@ -1,11 +1,20 @@
 <script setup lang="ts">
 
-  import { computed } from 'vue';
+  import { computed, ref } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
+  import { v4 as uuidv4 } from 'uuid';
   const store = tacticsStore()
   const props = defineProps(['technique']);
+  const id = uuidv4();
 
-  const getHoverText = () => {
+
+  let pinTooltip = ref(false)
+  const toggleTooltipPinning = () => {
+    pinTooltip.value = !pinTooltip.value;
+  }
+  
+
+  const getTooltipText = () => {
     
     // Create the subtechniques string
     const subtechniques_string = props.technique.sub_techniques 
@@ -14,7 +23,7 @@
 
     // Create the groups string
     const groups_string = props.technique.groups.length > 0 
-      ? `Groups:\n${props.technique.groups.map(group => `- ${group}`).join('\n')}`
+      ? `Groups:\n${props.technique.groups.map(group => `- [ ] ${group}`).join('\n')}`
       : "No Groups";
 
     // Create the components string
@@ -97,8 +106,9 @@
 <template>
   <button v-if="showButton"
     :style="getButtonStyles(technique.visibility_ratio)"
-    :data-title= getHoverText()
-    @click="toggleTooltip"
+    :data-tooltip=getTooltipText()
+    :class="{'pin-tooltip': pinTooltip}"
+    @click="toggleTooltipPinning"
   >
     <span class="buttontext">{{ technique.name }}</span>
   </button>
@@ -129,7 +139,8 @@ button {
 }
 
 /* Hover effect */
-button:hover {
+button:hover,
+button.pin-tooltip {
   transform: translate(1px, -2px); /* Move button slightly to the right and upwards on hover */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7); /* Add a shadow */
   border: 1.5px solid red;  /* Change the border color to red on hover */
@@ -138,12 +149,14 @@ button:hover {
 }
 
 /* Tooltip styling */
-button[data-title] {
+button[data-tooltip] {
   position: relative;
 }
 
-button[data-title]:hover::after {
-  content: attr(data-title); /* Use data-title instead of title */
+/* Define tooltip content */
+button[data-tooltip]:hover::after,
+button.pin-tooltip::after {
+  content: attr(data-tooltip); /* Use data-tooltip instead of title */
   position: absolute;
   left: calc(50% + 10px);
   transform: translateX(-50%);

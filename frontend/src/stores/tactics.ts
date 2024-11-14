@@ -54,6 +54,8 @@ interface Domain {
   platforms: Attributes;
   data_sources: Attributes;
   data_components: Attributes;
+  groups: Attributes;
+  softwares: Attributes;
 }
 
 interface TacticStats {
@@ -75,6 +77,7 @@ export const tacticsStore = defineStore('tactics', {
     minVisibilityRatio: 0 as number,
     maxVisibilityRatio: 1 as number,
     minTotalOccurrences: 0 as number,
+    pinnedTooltipId: '' as string,
   }),
 
 
