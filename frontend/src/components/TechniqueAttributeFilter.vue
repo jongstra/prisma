@@ -82,7 +82,6 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="collapsible-container" ref="containerRef">
-    <!-- Collapsible search bar -->
     <div class="collapsible-header" @click="toggleCollapse" :class="{ active: !isCollapsed }">
       <span class="collapsible-title">{{ capitalizeFirstLetter(props.attribute_type) }}</span>
       <span class="collapsible-icon"></span>

@@ -216,10 +216,7 @@ export const tacticsStore = defineStore('tactics', {
     unpinToolTip() {
       this.pinnedTooltipId = '';
     },
-    hideAllTooltips() {
 
-    },
-    
 
     processDettectYaml(data: any) {
 
