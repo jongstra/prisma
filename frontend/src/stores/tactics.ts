@@ -208,6 +208,17 @@ export const tacticsStore = defineStore('tactics', {
     setSearchQuery(query: string) {
       this.searchQuery = query;
     },
+
+
+    pinToolTip(id: string) {
+      this.pinnedTooltipId = id;
+    },
+    unpinToolTip() {
+      this.pinnedTooltipId = '';
+    },
+    hideAllTooltips() {
+
+    },
     
 
     processDettectYaml(data: any) {
