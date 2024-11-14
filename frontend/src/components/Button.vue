@@ -136,23 +136,8 @@ const showButton = computed(() => {
   return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult;
 });
 
-// Function to handle keydown event
-const handleKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Escape' || event.key === 'Esc') {
-    store.unpinToolTip();
-  }
-};
-
-// Add event listener on component mount
-onMounted(() => {
-  window.addEventListener('keydown', handleKeydown);
-});
-
-// Remove event listener on component unmount
-onBeforeUnmount(() => {
-  window.removeEventListener('keydown', handleKeydown);
-});
 </script>
+
 
 <template>
   <button v-if="showButton"
@@ -172,6 +157,7 @@ onBeforeUnmount(() => {
        v-html="getTooltipText()"
   ></div>
 </template>
+
 
 <style scoped>
 button {

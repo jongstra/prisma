@@ -1,76 +1,95 @@
 <script setup lang="ts">
-  import ButtonColumn from '../components/ButtonColumn.vue';
-  import { tacticsStore } from '@/stores/tactics';
-  import FileUploadButtonJson from '@/components/FileUploadButtonJson.vue';
-  import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
-  import TechniqueAttributeFilter from '@/components/TechniqueAttributeFilter.vue';
-  import TechniqueVisibilityPercentageFilter from '@/components/TechniqueVisibilityPercentageFilter.vue';
-  import TechniqueTotalOccurrenceFilter from '@/components/TechniqueTotalOccurrenceFilter.vue';
-  import ColorLegend from '@/components/ColorLegend.vue';
-  import SearchBar from '@/components/SearchBar.vue';
-  const store = tacticsStore();
+import { onMounted, onBeforeUnmount } from 'vue';
+import ButtonColumn from '../components/ButtonColumn.vue';
+import { tacticsStore } from '@/stores/tactics';
+import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
+import TechniqueAttributeFilter from '@/components/TechniqueAttributeFilter.vue';
+import TechniqueVisibilityPercentageFilter from '@/components/TechniqueVisibilityPercentageFilter.vue';
+import TechniqueTotalOccurrenceFilter from '@/components/TechniqueTotalOccurrenceFilter.vue';
+import ColorLegend from '@/components/ColorLegend.vue';
+import SearchBar from '@/components/SearchBar.vue';
+const store = tacticsStore();
+
+
+// Function to handle keydown event
+const handleKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' || event.key === 'Esc') {
+    store.unpinToolTip();
+    console.log('test')
+  }
+};
+
+// Add event listener on component mount
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
+});
+
+// Remove event listener on component unmount
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown);
+});
+
 </script>
 
+
 <template>
-  <div class='controls'>
-    <!-- <div class='upload-button'>
-      <FileUploadButtonYaml/>
-    </div> -->
+<div class='controls'>
 
-    <div class='filter'>
-      <TechniqueAttributeFilter attribute_type="platforms"/>
-    </div>
-    <!-- <div class='filter'>
-      <TechniqueAttributeFilter attribute_type="data_sources"/>
-    </div> -->
-    <!-- <div class='filter'>
-      <TechniqueAttributeFilter attribute_type="data_components"/>
-    </div> -->
+  <div class='filter'>
+    <TechniqueAttributeFilter attribute_type="platforms"/>
+  </div>
+  <!-- <div class='filter'>
+    <TechniqueAttributeFilter attribute_type="data_sources"/>
+  </div> -->
+  <!-- <div class='filter'>
+    <TechniqueAttributeFilter attribute_type="data_components"/>
+  </div> -->
 
-    <div class='filter'>
-      <TechniqueVisibilityPercentageFilter/>
-    </div>
-
-    <div class='filter'>
-      <TechniqueTotalOccurrenceFilter/>
-    </div>
-
-    <div class='search'>
-      <SearchBar/>
-    </div>
+  <div class='filter'>
+    <TechniqueVisibilityPercentageFilter/>
   </div>
 
-  <div class='legend'>
-    <ColorLegend/>
+  <div class='filter'>
+    <TechniqueTotalOccurrenceFilter/>
   </div>
 
-  <div class='upload-button'>
-    <FileUploadButtonYaml/>
+  <div class='search'>
+    <SearchBar/>
   </div>
+</div>
 
-  <div class="matrix-container">
-    <div class='attack-matrix'>
-      <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
-        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
-      </div>
+<div class='legend'>
+  <ColorLegend/>
+</div>
 
-      <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile.tactics" class="button-columns">
-        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
-      </div>
+<div class='upload-button'>
+  <FileUploadButtonYaml/>
+</div>
 
-      <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
-        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
-      </div>
+<div class="matrix-container">
+  <div class='attack-matrix'>
+    <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
+      <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+    </div>
 
-      <div v-else>
-        <br>
-        <p>Please upload a DETT&CT File using the button above.</p>
-      </div>
+    <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile.tactics" class="button-columns">
+      <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+    </div>
+
+    <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
+      <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+    </div>
+
+    <div v-else>
+      <br>
+      <p>Please upload a DETT&CT File using the button above.</p>
     </div>
   </div>
+</div>
 </template>
 
-<style>
+
+<style scoped>
 h2 {
   text-align: center;
   height: 100px;
