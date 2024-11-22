@@ -7,15 +7,9 @@ defineProps(['tactic', 'techniques']);
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
-// Reference to the root element of this component
-const buttonColumnRef = ref<HTMLElement | null>(null);
-
-
 // Method to handle clicks outside of buttons
 const handleClickOutside = (event: MouseEvent) => {
   if (
-    buttonColumnRef.value &&
-    !buttonColumnRef.value.contains(event.target as Node) &&
     !(event.target as HTMLElement).closest('button') &&
     !(event.target as HTMLElement).closest('.tooltip')
   ) {
