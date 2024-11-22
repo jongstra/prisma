@@ -16,7 +16,8 @@ const handleClickOutside = (event: MouseEvent) => {
   if (
     buttonColumnRef.value &&
     !buttonColumnRef.value.contains(event.target as Node) &&
-    !(event.target as HTMLElement).closest('button')
+    !(event.target as HTMLElement).closest('button') &&
+    !(event.target as HTMLElement).closest('.tooltip')
   ) {
     store.pinnedTooltipId = '';
   }
