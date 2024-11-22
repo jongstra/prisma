@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import Button from './Button.vue';
-
-defineProps(['tactic', 'techniques']);
-
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
-// Method to handle clicks outside of buttons
+defineProps(['tactic', 'techniques']);
+
+
+// Method to handle clicks outside of buttons and their tooltips.
 const handleClickOutside = (event: MouseEvent) => {
   if (
     !(event.target as HTMLElement).closest('button') &&
