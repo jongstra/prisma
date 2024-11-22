@@ -10,19 +10,15 @@ const store = tacticsStore();
 // Reference to the root element of this component
 const buttonColumnRef = ref<HTMLElement | null>(null);
 
-// Method to handle clicks outside the component
-const handleUnpinTooltipClick = () => {
-  store.pinnedTooltipId = '';
-};
 
-// Click event handler for the document
+// Method to handle clicks outside of buttons
 const handleClickOutside = (event: MouseEvent) => {
   if (
     buttonColumnRef.value &&
     !buttonColumnRef.value.contains(event.target as Node) &&
     !(event.target as HTMLElement).closest('button')
   ) {
-    handleUnpinTooltipClick();
+    store.pinnedTooltipId = '';
   }
 };
 

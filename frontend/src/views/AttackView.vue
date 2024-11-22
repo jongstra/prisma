@@ -14,8 +14,7 @@ const store = tacticsStore();
 // Function to handle keydown event
 const handleKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape' || event.key === 'Esc') {
-    store.unpinToolTip();
-    console.log('test')
+    store.pinnedTooltipId = '';
   }
 };
 

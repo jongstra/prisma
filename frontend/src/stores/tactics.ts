@@ -83,6 +83,56 @@ export const tacticsStore = defineStore('tactics', {
 
   getters: {
 
+    hoveredGroupsTechniquesSet: (state) => {
+      let groups;
+
+      if (state.domain === 'enterprise-attack') {
+        groups = state.enterprise?.groups;
+      } else if (state.domain === 'mobile-attack') {
+        groups = state.mobile?.groups;
+      } else if (state.domain === 'ics-attack') {
+        groups = state.ics?.groups;
+      }
+      
+      // Add all techniques of hovered groups to a list.
+      let groupsTechniques = [];
+      groups.forEach(group => {
+        if (group?.hovered) {
+          groupsTechniques.push(...group.techniques)
+        }
+      });
+      
+      // Remove duplicates in the techniques list, and return it.
+      const groupsTechniquesSet = new Set(groupsTechniques);
+      return groupsTechniquesSet;
+    },
+
+
+    checkedGroupsTechniquesSet: (state) => {
+      let groups;
+
+      if (state.domain === 'enterprise-attack') {
+        groups = state.enterprise?.groups;
+      } else if (state.domain === 'mobile-attack') {
+        groups = state.mobile?.groups;
+      } else if (state.domain === 'ics-attack') {
+        groups = state.ics?.groups;
+      }
+      
+      // Add all techniques of checked groups to a list.
+      let groupsTechniques = [];
+      groups.forEach(group => {
+        if (group?.checked) {
+          groupsTechniques.push(...group.techniques)
+        }
+      });
+      
+      // Remove duplicates in the techniques list, and return it.
+      const groupsTechniquesSet = new Set(groupsTechniques);
+      return groupsTechniquesSet;
+    },
+
+
     techniquesOccurrences: (state) => {
       let tactics;
     
@@ -207,14 +257,6 @@ export const tacticsStore = defineStore('tactics', {
 
     setSearchQuery(query: string) {
       this.searchQuery = query;
-    },
-
-
-    pinToolTip(id: string) {
-      this.pinnedTooltipId = id;
-    },
-    unpinToolTip() {
-      this.pinnedTooltipId = '';
     },
 
 

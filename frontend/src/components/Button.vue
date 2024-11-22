@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue';
+import { computed, ref, watch, reactive, onMounted, onBeforeUnmount } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 import { v4 as uuidv4 } from 'uuid';
 
 const store = tacticsStore();
+
+let domain;
+if (store.domain === 'enterprise-attack') {
+  domain = store.enterprise;
+} else if (store.domain === 'mobile-attack') {
+  domain = store.mobile;
+} else if (store.domain === 'ics-attack') {
+  domain = store.ics;
+}
+
 const props = defineProps(['technique']);
 const id = uuidv4();
 
@@ -15,7 +25,7 @@ let tooltipPosition = ref({ top: 0, left: 0 });
 watch(buttonRef, (buttonRef) => {
   if (store.pinnedTooltipId === '' && buttonRef) {
     const buttonRect = buttonRef.getBoundingClientRect();
-    tooltipPosition.value.top = buttonRect.bottom + window.scrollY - 280; // Position below the button
+    tooltipPosition.value.top = buttonRect.bottom - 280; // Position below the button
     tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 70; // Center the tooltip horizontally
   }
 });
@@ -29,9 +39,9 @@ watch(() => store.pinnedTooltipId, (newPinnedTooltipId) => {
 
 const toggleTooltipPinning = () => {
   if (store.pinnedTooltipId === id) {
-    store.unpinToolTip();
+    store.pinnedTooltipId = '';
   } else {
-    store.pinToolTip(id);
+    store.pinnedTooltipId = id;
   }
 };
 
@@ -47,14 +57,74 @@ const hideTooltip = () => {
   }
 };
 
-const getCheckboxHtml = (groups: string[]) => {
-  return groups.map(group => `
-    <label for="${group}-${id}" style="display: inline-flex; align-items: center; margin-right: 10px;">
-      <input type="checkbox" id="${group}-${id}" name="${group}" style="margin-right: 5px;">
-      <span class="group-name">${group}</span>
-    </label>
-  `).join('');
+
+const toggleCheckbox = (id, groupName: string) => {
+  // const checkbox = document.getElementById(id);
+  
+  domain.groups.forEach(group => {
+    if (group.name === groupName) {
+      if (!group?.checked) {
+        group.checked = true;
+      } else {
+        delete group.checked;
+      }
+    }
+  });
 };
+
+const hoverGroup = (groupName: string) => {
+  console.log(`entered ${groupName}`);
+  domain.groups.forEach(group => {
+    if (group.name === groupName) {
+      group.hovered = true;
+    }
+    else {delete group.hovered;}  // Only allow one group to be hovered at a time (in case the unhoverGroup of other groups does not trigger).
+  });
+};
+
+const unhoverGroup = (groupName: string) => {
+  console.log(`left ${groupName}`);
+  domain.groups.forEach(group => {
+    if (group.name === groupName) {
+      delete group.hovered;
+    }
+  });
+};
+
+// Attach methods to the window object
+window.hoverGroup = hoverGroup;
+window.unhoverGroup = unhoverGroup;
+window.toggleCheckbox = toggleCheckbox;
+
+
+const generateCheckboxHtml = (groups) => {
+  return groups.map(group => {
+    const id = `${group}-${Math.random()}`;
+    // const checked = group.checked ? 'checked' : '';
+    return `
+      <label for="${id}" style="display: inline-flex; align-items: center; margin-right: 10px;">
+        <input type="checkbox" id="${id}" name="${group}" style="margin-right: 5px;" ${group.checked ? 'checked' : ''}>
+        <span 
+          class="group-box"
+          style="
+            display: inline-block;
+            padding: 10px 10px;
+            margin: 0px;
+            background-color: gray;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+          "
+          onmouseover="hoverGroup('${group}')"
+          onmouseleave="unhoverGroup('${group}')"
+          onclick="toggleCheckbox('${id}, $group')">${group}</span>
+      </label>
+    `;
+  }).join('');
+};
+
+
 
 const getTooltipText = () => {
   const subtechniques_string = props.technique.sub_techniques 
@@ -62,7 +132,7 @@ const getTooltipText = () => {
     : 'No Subtechniques';
 
   const groups_string = props.technique.groups.length > 0 
-    ? `Groups:<br>${getCheckboxHtml(props.technique.groups)}`
+    ? `Groups:<br>${generateCheckboxHtml(props.technique.groups)}`
     : "No Groups";
 
   let components_string = '';
@@ -136,7 +206,25 @@ const showButton = computed(() => {
   return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult;
 });
 
+
+const occursInHoveredGroups = () => {
+  if (store.hoveredGroupsTechniquesSet.has(props.technique.name)) {
+    return true
+  } else {
+    return false
+  }
+};
+
+const occursInCheckedGroups = () => {
+  if (store.checkedGroupsTechniquesSet.has(props.technique.name)) {
+    return true
+  } else {
+    return false
+  }
+};
+
 </script>
+
 
 
 <template>
@@ -146,7 +234,7 @@ const showButton = computed(() => {
     @click="toggleTooltipPinning"
     @mouseover="showTooltip"
     @mouseleave="hideTooltip"
-    :class="{ pinned: store.pinnedTooltipId === id }"
+    :class="{ pinned: store.pinnedTooltipId === id, 'occurs-in-hovered-groups': occursInHoveredGroups(), 'occurs-in-checked-groups': occursInCheckedGroups() }"
   >
     <span class="buttontext">{{ technique.name }}</span>
   </button>
@@ -159,12 +247,13 @@ const showButton = computed(() => {
 </template>
 
 
+
 <style scoped>
 button {
   margin-top: 0px;
   margin-bottom: 0px;
   background-color: rgb(246, 246, 246);
-  border: 1.5px solid rgb(42, 42, 42);
+  border: 2px solid rgb(42, 42, 42);
   border-radius: 4px; /* Slightly rounded corners */
   transition: transform 0.1s ease, box-shadow 0.1s ease; /* Smooth transition for hover effects */
   position: relative; /* Ensure the button's stacking context is isolated */
@@ -175,7 +264,17 @@ button.pinned {
   transform: translate(1px, -2px); /* Move button slightly to the right and upwards on hover */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7); /* Add a shadow */
   filter: brightness(0.88); /* Slightly darken the button on hover */
-  border: 1.5px solid red;  /* Change the border color to red on hover */
+  outline: 2px solid rgb(57, 55, 139);  /* Change the border color on hover */
+}
+
+button.occurs-in-selected-groups {
+  border: 2px solid rgb(1, 255, 26);  /* Change the border color on group select */
+  /* box-shadow: 0 0 10px 5px rgba(0,0,0,0.5); */
+}
+
+button.occurs-in-hovered-groups {
+  border: 2px solid rgb(255, 128, 0.8);  /* Change the border color on group select */
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
 }
 
 .buttontext {
@@ -201,4 +300,5 @@ button.pinned {
   width: 145px;
   text-align: left;
 }
+
 </style>
