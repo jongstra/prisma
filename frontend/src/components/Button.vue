@@ -86,38 +86,31 @@ window.hoverGroup = hoverGroup;
 window.toggleCheckbox = toggleCheckbox;
 
 
-// TODO
-// [X] Proberen om unhover consistent aan te roepen, nu blijft hij soms gewoon hangen voor sommige groups.
-//     - Probleem lijkt er bij te liggen dat 'unhover' niet goed wordt aangeroepen.
-// [ ] UNHOVER AANROEPEN VANUIT ATTACKVIEW IPV BUTTONCOLUMN, IS EFFICIENTER!2
-
-// [ ] Getter functie maken die alle groups beschikbaar maakt in een map als volgt:  key:groepnaam value:groep.
-// [ ] Checkboxes laten vullen obv group.checked property van de groep met de overeenkomstige naam.
-// [ ] Proberen om kliks op de checkboxes te laten werken.
-
-
-const generateCheckboxHtml = (groups) => {
+// Create
+const generateGroupButtonHtml = (groups) => {
   return groups.map(group => {
     const id = `${group}-${Math.random()}`;
     return `
-      <label for="${id}" style="display: inline-flex; align-items: center; margin-right: 10px;">
-        <input type="checkbox" id="${id}" name="${group}" style="margin-right: 5px;" ${group.checked ? 'checked' : ''}>
+      <label for="${id}" style="display: inline-flex; align-items: center; margin-right: 5px;">
         <span 
           class="group-box"
           style="
             display: inline-block;
-            padding: 10px 10px;
-            margin: 0px;
+            padding: 5px 5px;
+            margin-left: 3px;
+            margin-top: 3px;
+            margin-bottom: 3px;
             background-color: gray;
             border: 1px solid #ccc;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.2s, border-color 0.2s;
-          "
+            font-size: 11px;"
           onmouseover="hoverGroup('${group}')"
-          onclick="toggleCheckbox('${id}, ${group}')">${group}</span>
-      </label>
-    `;
+          onclick="toggleCheckbox('${id}', '${group}')">
+          ${group}
+        </span>
+      </label>`.replace(/\s+/g, ' ').trim();  // Replace multiple spaces and newlines with a single space, and trim leading/trailing spaces.
   }).join('');
 };
 
@@ -128,7 +121,7 @@ const getTooltipText = () => {
     : 'No Subtechniques';
 
   const groups_string = props.technique.groups.length > 0 
-    ? `Groups:<br>${generateCheckboxHtml(props.technique.groups)}`
+    ? `Groups:<br>${generateGroupButtonHtml(props.technique.groups)}`
     : "No Groups";
 
   let components_string = '';
@@ -144,17 +137,16 @@ const getTooltipText = () => {
   components_string = `${visible_components_count} of ${total_components_detecting_technique}` +
                         ((components_string.length > 0) ? ':' : '') + `<br>` + components_string;
 
-  return `
-      ${props.technique.name}<br>
-      ID: ${props.technique.external_id}<br>
-      ----<br>
-      ${subtechniques_string}<br>
-      ----<br>
+  return `${props.technique.name}
+      ID: ${props.technique.external_id}
+      ----
+      ${subtechniques_string}
+      ----
       <div>Nr groups using: ${props.technique.occurrence_groups}</div>
       <div>Nr software using: ${props.technique.occurrence_software}</div>
       <div>Total occurrence: ${props.technique.occurrence_total}</div>
-      <div>Components visible:<br> ${components_string}</div>
-      ----<br>
+      <div>Components visible: ${components_string}</div>
+      ----
       ${groups_string}
   `;
 };
@@ -288,13 +280,15 @@ button.occurs-in-hovered-groups {
   background-color: rgba(93, 125, 152, 0.9);
   color: white;
   border: 1px solid black;
-  padding: 6px 8px;
+  padding: 4px 4px;
   border-radius: 4px;
   font-size: 11px;
-  white-space: pre-line; /* Preserve line breaks in tooltip */
   z-index: 1002; /* Ensure tooltip is always on top */
-  width: 145px;
+  width: 171px;
   text-align: left;
+  white-space: pre-line;
 }
 
 </style>
+
+<!-- white-space: pre-line; /* Preserve line breaks in tooltip */ -->
