@@ -4,6 +4,11 @@ import { tacticsStore } from '@/stores/tactics';
 import { v4 as uuidv4 } from 'uuid';
 
 const store = tacticsStore();
+const props = defineProps(['technique']);
+const id = uuidv4();
+
+let showTooltipBool = ref(false);
+
 
 let domain;
 if (store.domain === 'enterprise-attack') {
@@ -14,16 +19,11 @@ if (store.domain === 'enterprise-attack') {
   domain = store.ics;
 }
 
-const props = defineProps(['technique']);
-const id = uuidv4();
-
-let showTooltipBool = ref(false);
-
 // Calculate the tooltip position, and update it when the button location would be modified.
 const buttonRef = ref<HTMLElement | null>(null);
 let tooltipPosition = ref({ top: 0, left: 0 });
 watch(buttonRef, (buttonRef) => {
-  if (store.pinnedTooltipId === '' && buttonRef) {
+  if (buttonRef) {
     const buttonRect = buttonRef.getBoundingClientRect();
     tooltipPosition.value.top = buttonRect.bottom - 280; // Position below the button
     tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 70; // Center the tooltip horizontally
@@ -78,29 +78,27 @@ const hoverGroup = (groupName: string) => {
     if (group.name === groupName) {
       group.hovered = true;
     }
-    else {delete group.hovered;}  // Only allow one group to be hovered at a time (in case the unhoverGroup of other groups does not trigger).
-  });
-};
-
-const unhoverGroup = (groupName: string) => {
-  console.log(`left ${groupName}`);
-  domain.groups.forEach(group => {
-    if (group.name === groupName) {
-      delete group.hovered;
-    }
   });
 };
 
 // Attach methods to the window object
 window.hoverGroup = hoverGroup;
-window.unhoverGroup = unhoverGroup;
 window.toggleCheckbox = toggleCheckbox;
+
+
+// TODO
+// [X] Proberen om unhover consistent aan te roepen, nu blijft hij soms gewoon hangen voor sommige groups.
+//     - Probleem lijkt er bij te liggen dat 'unhover' niet goed wordt aangeroepen.
+// [ ] UNHOVER AANROEPEN VANUIT ATTACKVIEW IPV BUTTONCOLUMN, IS EFFICIENTER!2
+
+// [ ] Getter functie maken die alle groups beschikbaar maakt in een map als volgt:  key:groepnaam value:groep.
+// [ ] Checkboxes laten vullen obv group.checked property van de groep met de overeenkomstige naam.
+// [ ] Proberen om kliks op de checkboxes te laten werken.
 
 
 const generateCheckboxHtml = (groups) => {
   return groups.map(group => {
     const id = `${group}-${Math.random()}`;
-    // const checked = group.checked ? 'checked' : '';
     return `
       <label for="${id}" style="display: inline-flex; align-items: center; margin-right: 10px;">
         <input type="checkbox" id="${id}" name="${group}" style="margin-right: 5px;" ${group.checked ? 'checked' : ''}>
@@ -117,13 +115,11 @@ const generateCheckboxHtml = (groups) => {
             transition: background-color 0.2s, border-color 0.2s;
           "
           onmouseover="hoverGroup('${group}')"
-          onmouseleave="unhoverGroup('${group}')"
-          onclick="toggleCheckbox('${id}, $group')">${group}</span>
+          onclick="toggleCheckbox('${id}, ${group}')">${group}</span>
       </label>
     `;
   }).join('');
 };
-
 
 
 const getTooltipText = () => {

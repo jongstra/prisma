@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount } from 'vue';
+import { onMounted, onUnmounted, watch } from 'vue';
 import ButtonColumn from '../components/ButtonColumn.vue';
 import { tacticsStore } from '@/stores/tactics';
 import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
@@ -11,7 +11,12 @@ import SearchBar from '@/components/SearchBar.vue';
 const store = tacticsStore();
 
 
-// Function to handle keydown event
+// When the domain is changed, we want to unpin any pinned tooltips for cleanliness
+watch(() => store.domain, () => {
+  store.pinnedTooltipId = '';
+});
+
+// // Function to handle keydown event
 const handleKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape' || event.key === 'Esc') {
     store.pinnedTooltipId = '';
@@ -24,7 +29,7 @@ onMounted(() => {
 });
 
 // Remove event listener on component unmount
-onBeforeUnmount(() => {
+onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown);
 });
 

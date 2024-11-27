@@ -6,9 +6,17 @@ const store = tacticsStore();
 
 defineProps(['tactic', 'techniques']);
 
+let domain;
+if (store.domain === 'enterprise-attack') {
+  domain = store.enterprise;
+} else if (store.domain === 'mobile-attack') {
+  domain = store.mobile;
+} else if (store.domain === 'ics-attack') {
+  domain = store.ics;
+}
 
-// Method to handle clicks outside of buttons and their tooltips.
-const handleClickOutside = (event: MouseEvent) => {
+// Method to handle clicks outside of buttons and their tooltips, to close button tooltips.
+const handleClickOutsideToCloseTooltips = (event: MouseEvent) => {
   if (
     !(event.target as HTMLElement).closest('button') &&
     !(event.target as HTMLElement).closest('.tooltip')
@@ -17,16 +25,30 @@ const handleClickOutside = (event: MouseEvent) => {
   }
 };
 
+// Method to handle movements outside of tooltip group buttons, to remove group.hovered properties.
+const handleMoveOutsideToDisableGroupHover = (event: MouseEvent) => {
+  if (
+    !(event.target as HTMLElement).closest('.group-box')
+  ) {
+    domain.groups.forEach(group => {
+      delete group.hovered;
+    });
+  }
+};
+
 // Add click event listener on mount
 onMounted(() => {
-  document.addEventListener('click', handleClickOutside);
+  document.addEventListener('click', handleClickOutsideToCloseTooltips);
+  document.addEventListener('mousemove', handleMoveOutsideToDisableGroupHover);
 });
 
 // Remove click event listener on unmount
 onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside);
+  document.removeEventListener('click', handleClickOutsideToCloseTooltips);
+  document.removeEventListener('mousemove', handleMoveOutsideToDisableGroupHover);
 });
 </script>
+
 
 <template>
 <div ref="buttonColumnRef" class="button-column">

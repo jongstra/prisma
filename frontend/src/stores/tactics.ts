@@ -70,6 +70,7 @@ interface TacticStats {
 export const tacticsStore = defineStore('tactics', {
   state: () => ({
     domain: 'enterprise-attack',  // Alternative initial value: 'none'.
+    dataLoaded: false,
     enterprise: [] as Domain[],
     ics: [] as Domain[],
     mobile: [] as Domain[],
@@ -241,12 +242,15 @@ export const tacticsStore = defineStore('tactics', {
 
     async fetchTactics() {
       try {
+        this.dataLoaded = false; // Set dataLoaded to true before fetching
         const response = await axios.get('http://localhost:5001/api/tactics');
         this.enterprise = response.data.enterprise;
         this.mobile = response.data.mobile;
         this.ics = response.data.ics;
       } catch (error) {
         console.error('Failed to fetch tactics:', error);
+      } finally {
+        this.dataLoaded = true; // Set dataLoadedw to false after fetching
       }
     },
 
