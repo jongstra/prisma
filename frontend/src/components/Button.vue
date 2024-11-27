@@ -58,18 +58,18 @@ const hideTooltip = () => {
 };
 
 
-const toggleCheckbox = (id, groupName: string) => {
+const toggleGroupSelected = (id, groupName: string) => {
   // const checkbox = document.getElementById(id);
   
-  domain.groups.forEach(group => {
-    if (group.name === groupName) {
-      if (!group?.checked) {
-        group.checked = true;
-      } else {
-        delete group.checked;
-      }
-    }
-  });
+  // domain.groups.forEach(group => {
+  //   if (group.name === groupName) {
+  //     if (!group?.checked) {
+  //       group.selected = true;
+  //     } else {
+  //       delete group.selected;
+  //     }
+  //   }
+  // });
 };
 
 const hoverGroup = (groupName: string) => {
@@ -83,10 +83,10 @@ const hoverGroup = (groupName: string) => {
 
 // Attach methods to the window object
 window.hoverGroup = hoverGroup;
-window.toggleCheckbox = toggleCheckbox;
+window.toggleGroupSelected = toggleGroupSelected;
 
 
-// Create
+// Create a tooltip-button for each group, to use within the tooltip content.
 const generateGroupButtonHtml = (groups) => {
   return groups.map(group => {
     const id = `${group}-${Math.random()}`;
@@ -97,9 +97,9 @@ const generateGroupButtonHtml = (groups) => {
           style="
             display: inline-block;
             padding: 5px 5px;
-            margin-left: 3px;
-            margin-top: 3px;
-            margin-bottom: 3px;
+            margin-left: 1px;
+            margin-top: 2px;
+            margin-bottom: 2px;
             background-color: gray;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -107,7 +107,7 @@ const generateGroupButtonHtml = (groups) => {
             transition: background-color 0.2s, border-color 0.2s;
             font-size: 11px;"
           onmouseover="hoverGroup('${group}')"
-          onclick="toggleCheckbox('${id}', '${group}')">
+          onclick="toggleGroupSelected('${id}', '${group}')">
           ${group}
         </span>
       </label>`.replace(/\s+/g, ' ').trim();  // Replace multiple spaces and newlines with a single space, and trim leading/trailing spaces.
