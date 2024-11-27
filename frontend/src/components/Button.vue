@@ -121,7 +121,7 @@ const getTooltipText = () => {
     : 'No Subtechniques';
 
   const groups_string = props.technique.groups.length > 0 
-    ? `Groups:<br>${generateGroupButtonHtml(props.technique.groups)}`
+    ? `Groups<br>${generateGroupButtonHtml(props.technique.groups)}`
     : "No Groups";
 
   let components_string = '';
@@ -134,21 +134,23 @@ const getTooltipText = () => {
       components_string += `- ${component}<br>`;
     } 
   });
-  components_string = `${visible_components_count} of ${total_components_detecting_technique}` +
+  components_string = `(${visible_components_count} of ${total_components_detecting_technique})` +
                         ((components_string.length > 0) ? ':' : '') + `<br>` + components_string;
 
-  return `${props.technique.name}
+  return `
+      ${props.technique.name}<br><br>
       ID: ${props.technique.external_id}
-      ----
+      <br>----<br>
       ${subtechniques_string}
-      ----
+      <br>----<br>
       <div>Nr groups using: ${props.technique.occurrence_groups}</div>
       <div>Nr software using: ${props.technique.occurrence_software}</div>
       <div>Total occurrence: ${props.technique.occurrence_total}</div>
-      <div>Components visible: ${components_string}</div>
-      ----
+      ----<br>
+      <div>Components visible ${components_string}</div>
+      ----<br>
       ${groups_string}
-  `;
+  `.replace(/\s+/g, ' ').trim();;
 };
 
 function getButtonStyles(visibility_ratio: number) {
