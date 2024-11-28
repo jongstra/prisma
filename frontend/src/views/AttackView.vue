@@ -11,13 +11,14 @@ import SearchBar from '@/components/SearchBar.vue';
 import GroupSelectionTool from '@/components/GroupSelectionTool.vue';
 const store = tacticsStore();
 
-// When the domain is changed, we want to unpin any pinned tooltips for cleanliness
+// When the domain is changed, we want to unpin any pinned tooltips for cleanliness,
+// and clear the technique filter search box text.
 watch(() => store.domain, () => {
   store.pinnedTooltipId = '';
   store.searchQuery = '';
 });
 
-// Function to handle keydown event
+// Handle keydown event to unpin tooltips on escape
 const handleKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape' || event.key === 'Esc') {
     store.pinnedTooltipId = '';
