@@ -66,7 +66,7 @@ const addGroupFromSearch = () => {
       <div class="title-box">
         <p>Selected Groups</p>
       </div>
-      <input class='group-search-box' v-model="searchQuery" placeholder="Add Groups..." @keydown.enter="addGroupFromSearch" />
+      <input class='group-search-box' v-model="searchQuery" placeholder="Search and add groups..." @keydown.enter="addGroupFromSearch" />
       <button class='clear-all-button' @click="clearAllSelections">Clear All</button>
     </div>
     <div v-if="filteredGroups.length && searchQuery" class="suggestions">

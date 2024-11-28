@@ -36,16 +36,7 @@ onUnmounted(() => {
 
 <template>
   <div class='combined-controls'>
-    <!-- Information section -->
-    <div class="controls-row">
-      <div class='upload-button'><FileUploadButtonYaml/></div>
-      <div class='legend'><ColorLegend/></div>
-      <div class='group-selection-tool'><GroupSelectionTool/></div>
-    </div>
-
-    <!-- Horizontal bar -->
-    <div class="horizontal-bar"></div>
-
+    
     <!-- Controls section -->
     <div class="controls-row">
       <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
@@ -53,6 +44,17 @@ onUnmounted(() => {
       <div class='filter'><TechniqueTotalOccurrenceFilter/></div>
       <div class='search'><SearchBar/></div>
     </div>
+
+    <!-- Horizontal bar -->
+    <div class="horizontal-bar"></div>
+
+    <!-- Information section -->
+    <div class="controls-row">
+      <div class='upload-button'><FileUploadButtonYaml/></div>
+      <div class='legend'><ColorLegend/></div>
+      <div class='group-selection-tool'><GroupSelectionTool/></div>
+    </div>
+
   </div>
 
   <div class="matrix-container">
@@ -67,11 +69,6 @@ onUnmounted(() => {
 
       <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
         <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
-      </div>
-
-      <div v-else>
-        <br>
-        <p>Please upload a DETT&CT File using the button above.</p>
       </div>
     </div>
   </div>

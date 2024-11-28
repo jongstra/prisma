@@ -16,6 +16,9 @@ watch(searchQuery, (newValue) => {
 </template>
 
 
+# TODO: Search query domein dependent maken.
+
+
 <style scoped>
 .search-bar {
   margin: 8px;
