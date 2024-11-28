@@ -14,6 +14,7 @@ const store = tacticsStore();
 // When the domain is changed, we want to unpin any pinned tooltips for cleanliness
 watch(() => store.domain, () => {
   store.pinnedTooltipId = '';
+  store.searchQuery = '';
 });
 
 // Function to handle keydown event
@@ -111,7 +112,7 @@ onUnmounted(() => {
 }
 
 .matrix-container {
-  margin-top: 5px;
+  /* margin-top: 0px; */
   overflow-x: auto; /* Enable horizontal scrollbar */
   width: 100%; /* Full width of the parent container */
   transform: rotateX(180deg);  /* Rotates container upside down so the horizontal scrollbar is at the top. */

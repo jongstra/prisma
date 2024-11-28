@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { computed } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
-const searchQuery = ref('');
 
-watch(searchQuery, (newValue) => {
-  store.setSearchQuery(newValue);
+// Create a computed property that syncs with store.searchQuery
+const searchQuery = computed({
+  get: () => store.searchQuery,
+  set: (newValue) => {
+    store.searchQuery = newValue;
+  }
 });
 </script>
 
@@ -14,10 +17,6 @@ watch(searchQuery, (newValue) => {
     <input v-model="searchQuery" type="text" placeholder="Filter Techniques..." />
   </div>
 </template>
-
-
-# TODO: Search query domein dependent maken.
-
 
 <style scoped>
 .search-bar {

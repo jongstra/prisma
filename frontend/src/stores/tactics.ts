@@ -253,16 +253,10 @@ export const tacticsStore = defineStore('tactics', {
         this.dataLoaded = true; // Set dataLoadedw to false after fetching
       }
     },
-
     
     setDomain(newDomain: string) {
       this.domain = newDomain;
     },
-
-    setSearchQuery(query: string) {
-      this.searchQuery = query;
-    },
-
 
     processDettectYaml(data: any) {
 
