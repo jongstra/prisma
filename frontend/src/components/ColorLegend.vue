@@ -55,6 +55,7 @@ const legendItems = ref([
 .legend-box {
   border: 2px solid black;
   padding: 2px;
+  margin-bottom: 5px;
   border-radius: 5px;
   background-color: #ddd;
   display: flex;

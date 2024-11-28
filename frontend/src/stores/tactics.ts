@@ -109,7 +109,7 @@ export const tacticsStore = defineStore('tactics', {
     },
 
 
-    checkedGroupsTechniquesSet: (state) => {
+    selectedGroupsTechniquesSet: (state) => {
       let groups;
 
       if (state.domain === 'enterprise-attack') {
@@ -120,10 +120,10 @@ export const tacticsStore = defineStore('tactics', {
         groups = state.ics?.groups;
       }
       
-      // Add all techniques of checked groups to a list.
+      // Add all techniques of selected groups to a list.
       let groupsTechniques = [];
       groups.forEach(group => {
-        if (group?.checked) {
+        if (group?.selected) {
           groupsTechniques.push(...group.techniques)
         }
       });

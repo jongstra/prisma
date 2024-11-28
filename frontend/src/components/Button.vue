@@ -9,14 +9,13 @@ const id = uuidv4();
 
 let showTooltipBool = ref(false);
 
-
 let domain;
 if (store.domain === 'enterprise-attack') {
-  domain = store.enterprise;
+  domain = reactive(store.enterprise);
 } else if (store.domain === 'mobile-attack') {
-  domain = store.mobile;
+  domain = reactive(store.mobile);
 } else if (store.domain === 'ics-attack') {
-  domain = store.ics;
+  domain = reactive(store.ics);
 }
 
 // Calculate the tooltip position, and update it when the button location would be modified.
@@ -57,19 +56,12 @@ const hideTooltip = () => {
   }
 };
 
-
-const toggleGroupSelected = (id, groupName: string) => {
-  // const checkbox = document.getElementById(id);
-  
-  // domain.groups.forEach(group => {
-  //   if (group.name === groupName) {
-  //     if (!group?.checked) {
-  //       group.selected = true;
-  //     } else {
-  //       delete group.selected;
-  //     }
-  //   }
-  // });
+const toggleGroupSelected = (groupName: string) => {
+  domain.groups.forEach(group => {
+    if (group.name === groupName) {
+      group.selected = !group.selected;
+    }
+  });
 };
 
 const hoverGroup = (groupName: string) => {
@@ -85,43 +77,13 @@ const hoverGroup = (groupName: string) => {
 window.hoverGroup = hoverGroup;
 window.toggleGroupSelected = toggleGroupSelected;
 
-
-// Create a tooltip-button for each group, to use within the tooltip content.
-const generateGroupButtonHtml = (groups) => {
-  return groups.map(group => {
-    const id = `${group}-${Math.random()}`;
-    return `
-      <label for="${id}" style="display: inline-flex; align-items: center; margin-right: 5px;">
-        <span 
-          class="group-box"
-          style="
-            display: inline-block;
-            padding: 5px 5px;
-            margin-left: 1px;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            background-color: gray;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s, border-color 0.2s;
-            font-size: 11px;"
-          onmouseover="hoverGroup('${group}')"
-          onclick="toggleGroupSelected('${id}', '${group}')">
-          ${group}
-        </span>
-      </label>`.replace(/\s+/g, ' ').trim();  // Replace multiple spaces and newlines with a single space, and trim leading/trailing spaces.
-  }).join('');
-};
-
-
 const getTooltipText = () => {
   const subtechniques_string = props.technique.sub_techniques 
     ? `Subtechniques:\n${props.technique.sub_techniques.map(sub => `- ${sub.name}`).join('\n')}`
     : 'No Subtechniques';
 
   const groups_string = props.technique.groups.length > 0 
-    ? `Groups<br>${generateGroupButtonHtml(props.technique.groups)}`
+    ? `Groups<br>`
     : "No Groups";
 
   let components_string = '';
@@ -150,7 +112,7 @@ const getTooltipText = () => {
       <div>Components visible ${components_string}</div>
       ----<br>
       ${groups_string}
-  `.replace(/\s+/g, ' ').trim();;
+  `.replace(/\s+/g, ' ').trim();
 };
 
 function getButtonStyles(visibility_ratio: number) {
@@ -196,7 +158,6 @@ const showButton = computed(() => {
   return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult;
 });
 
-
 const occursInHoveredGroups = () => {
   if (store.hoveredGroupsTechniquesSet.has(props.technique.name)) {
     return true
@@ -205,8 +166,8 @@ const occursInHoveredGroups = () => {
   }
 };
 
-const occursInCheckedGroups = () => {
-  if (store.checkedGroupsTechniquesSet.has(props.technique.name)) {
+const occursInSelectedGroups = () => {
+  if (store.selectedGroupsTechniquesSet.has(props.technique.name)) {
     return true
   } else {
     return false
@@ -224,7 +185,7 @@ const occursInCheckedGroups = () => {
     @click="toggleTooltipPinning"
     @mouseover="showTooltip"
     @mouseleave="hideTooltip"
-    :class="{ pinned: store.pinnedTooltipId === id, 'occurs-in-hovered-groups': occursInHoveredGroups(), 'occurs-in-checked-groups': occursInCheckedGroups() }"
+    :class="{ pinned: store.pinnedTooltipId === id, 'occurs-in-hovered-groups': occursInHoveredGroups(), 'occurs-in-selected-groups': occursInSelectedGroups() }"
   >
     <span class="buttontext">{{ technique.name }}</span>
   </button>
@@ -232,9 +193,36 @@ const occursInCheckedGroups = () => {
   <!-- Tooltip positioned relative to the button -->
   <div v-if="showTooltipBool || store.pinnedTooltipId === id" class="tooltip"
        :style="{ top: `${tooltipPosition.top}px`, left: `${tooltipPosition.left}px` }"
-       v-html="getTooltipText()"
-  ></div>
+  >
+    <div v-html="getTooltipText()"></div>
+    <div v-if="props.technique.groups.length > 0">
+      <label v-for="group in props.technique.groups" :key="group" for="${group}-${Math.random()}" style="display: inline-flex; align-items: center; margin-right: 5px;">
+        <span 
+          class="group-box"
+          :style="{
+            display: 'inline-block',
+            padding: '5px 5px',
+            marginLeft: '1px',
+            marginTop: '2px',
+            marginBottom: '2px',
+            backgroundColor: 'gray',
+            borderColor: domain.groups.find(g => g.name === group)?.selected ? 'rgb(230, 0, 0)' : '#ccc',
+            borderWidth: '1.5px',
+            borderStyle: 'solid',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            transition: 'background-color 0.2s, border-color 0.2s',
+            fontSize: '11px'
+          }"
+          @mouseover="hoverGroup(group)"
+          @click="toggleGroupSelected(group)">
+          {{ group }}
+        </span>
+      </label>
+    </div>
+  </div>
 </template>
+
 
 
 
@@ -258,12 +246,12 @@ button.pinned {
 }
 
 button.occurs-in-selected-groups {
-  border: 2px solid rgb(1, 255, 26);  /* Change the border color on group select */
+  border: 2px solid rgb(255, 0, 0);  /* Change the border color on group select */
   /* box-shadow: 0 0 10px 5px rgba(0,0,0,0.5); */
 }
 
 button.occurs-in-hovered-groups {
-  border: 2px solid rgb(255, 128, 0.8);  /* Change the border color on group select */
+  /* border: 2px solid rgb(255, 192, 1); */
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
 }
 
@@ -291,6 +279,23 @@ button.occurs-in-hovered-groups {
   white-space: pre-line;
 }
 
-</style>
+/* .group-box {
+  display: inline-block;
+  padding: 5px 5px;
+  margin-left: '1px';
+  margin-top: '2px';
+  margin-bottom: '2px';
+  background-color: gray;
+  border-width: '1px';
+  border-style: 'solid';
+  border-radius: '4px';
+  cursor: 'pointer';
+  transition: background-color 0.2s, border-color 0.2s;
+  font-size: '11px';
+}
 
-<!-- white-space: pre-line; /* Preserve line breaks in tooltip */ -->
+.group-box.selected {
+  border-color: #FF0000;
+} */
+
+</style>

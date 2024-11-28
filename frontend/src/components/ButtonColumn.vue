@@ -19,7 +19,8 @@ if (store.domain === 'enterprise-attack') {
 const handleClickOutsideToCloseTooltips = (event: MouseEvent) => {
   if (
     !(event.target as HTMLElement).closest('button') &&
-    !(event.target as HTMLElement).closest('.tooltip')
+    !(event.target as HTMLElement).closest('.tooltip') &&
+    !(event.target as HTMLElement).closest('.group-box')
   ) {
     store.pinnedTooltipId = '';
   }

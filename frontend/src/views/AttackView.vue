@@ -8,6 +8,7 @@ import TechniqueVisibilityPercentageFilter from '@/components/TechniqueVisibilit
 import TechniqueTotalOccurrenceFilter from '@/components/TechniqueTotalOccurrenceFilter.vue';
 import ColorLegend from '@/components/ColorLegend.vue';
 import SearchBar from '@/components/SearchBar.vue';
+import GroupSelectionTool from '@/components/GroupSelectionTool.vue';
 const store = tacticsStore();
 
 
@@ -37,33 +38,17 @@ onUnmounted(() => {
 
 
 <template>
-<div class='controls'>
 
-  <div class='filter'>
-    <TechniqueAttributeFilter attribute_type="platforms"/>
-  </div>
-  <!-- <div class='filter'>
-    <TechniqueAttributeFilter attribute_type="data_sources"/>
-  </div> -->
-  <!-- <div class='filter'>
-    <TechniqueAttributeFilter attribute_type="data_components"/>
-  </div> -->
-
-  <div class='filter'>
-    <TechniqueVisibilityPercentageFilter/>
-  </div>
-
-  <div class='filter'>
-    <TechniqueTotalOccurrenceFilter/>
-  </div>
-
-  <div class='search'>
-    <SearchBar/>
-  </div>
+<div class='information'>
+  <div class='legend'><ColorLegend/></div>
+  <div class='group-selection-tool'><GroupSelectionTool/></div>
 </div>
 
-<div class='legend'>
-  <ColorLegend/>
+<div class='controls'>
+  <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
+  <div class='filter'><TechniqueVisibilityPercentageFilter/></div>
+  <div class='filter'><TechniqueTotalOccurrenceFilter/></div>
+  <div class='search'><SearchBar/></div>
 </div>
 
 <div class='upload-button'>
@@ -99,10 +84,10 @@ h2 {
   height: 100px;
 }
 
-.controls {
+.controls, .information {
   display: flex;
   justify-content: space-around;
-  background-color: #cccccc;
+  background-color: #ccc;
   margin-top: 0px;
   margin-bottom: 3px;
   border: 2px solid black;
