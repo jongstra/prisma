@@ -11,7 +11,7 @@ watch(searchQuery, (newValue) => {
 
 <template>
   <div class="search-bar">
-    <input v-model="searchQuery" type="text" placeholder="Search Techniques..." />
+    <input v-model="searchQuery" type="text" placeholder="Filter Techniques..." />
   </div>
 </template>
 
@@ -25,6 +25,6 @@ input[type="text"] {
   font-size: 16px;
   border: 2px solid #555;
   border-radius: 5px;
-  width: 200px;
+  width: 170px;
 }
 </style>

@@ -54,7 +54,7 @@ const onFileChange = () => {
       style="display: none;"
     >
     <label for="fileInput" class="file-button" :class="{ 'loading': isLoading }">
-      {{ isLoading ? "Processing File..." : "Upload DeTT&CT File (YAML)" }}
+      {{ isLoading ? "Processing File..." : "Upload DeTT&CT YAML" }}
     </label>
   </div>
 </template>
@@ -62,7 +62,7 @@ const onFileChange = () => {
 <style scoped>
 .file-button {
   display: inline-block;
-  padding: 10px;
+  padding: 3px;
   cursor: pointer;
   background-color: #d61b1b;
   color: rgb(255, 255, 255);
@@ -72,7 +72,8 @@ const onFileChange = () => {
   text-decoration: none;
   font-size: 14px;
   transition: 0.1s;
-  width: 220px;
+  width: 110px;
+  height: 62px;
 }
 
 .file-button:hover {

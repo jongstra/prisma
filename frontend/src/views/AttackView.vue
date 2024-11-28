@@ -11,13 +11,12 @@ import SearchBar from '@/components/SearchBar.vue';
 import GroupSelectionTool from '@/components/GroupSelectionTool.vue';
 const store = tacticsStore();
 
-
 // When the domain is changed, we want to unpin any pinned tooltips for cleanliness
 watch(() => store.domain, () => {
   store.pinnedTooltipId = '';
 });
 
-// // Function to handle keydown event
+// Function to handle keydown event
 const handleKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape' || event.key === 'Esc') {
     store.pinnedTooltipId = '';
@@ -33,74 +32,85 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown);
 });
-
 </script>
 
-
 <template>
-
-<div class='information'>
-  <div class='legend'><ColorLegend/></div>
-  <div class='group-selection-tool'><GroupSelectionTool/></div>
-</div>
-
-<div class='controls'>
-  <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
-  <div class='filter'><TechniqueVisibilityPercentageFilter/></div>
-  <div class='filter'><TechniqueTotalOccurrenceFilter/></div>
-  <div class='search'><SearchBar/></div>
-</div>
-
-<div class='upload-button'>
-  <FileUploadButtonYaml/>
-</div>
-
-<div class="matrix-container">
-  <div class='attack-matrix'>
-    <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
-      <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+  <div class='combined-controls'>
+    <!-- Information section -->
+    <div class="controls-row">
+      <div class='upload-button'><FileUploadButtonYaml/></div>
+      <div class='legend'><ColorLegend/></div>
+      <div class='group-selection-tool'><GroupSelectionTool/></div>
     </div>
 
-    <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile.tactics" class="button-columns">
-      <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
-    </div>
+    <!-- Horizontal bar -->
+    <div class="horizontal-bar"></div>
 
-    <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
-      <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
-    </div>
-
-    <div v-else>
-      <br>
-      <p>Please upload a DETT&CT File using the button above.</p>
+    <!-- Controls section -->
+    <div class="controls-row">
+      <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
+      <div class='filter'><TechniqueVisibilityPercentageFilter/></div>
+      <div class='filter'><TechniqueTotalOccurrenceFilter/></div>
+      <div class='search'><SearchBar/></div>
     </div>
   </div>
-</div>
+
+  <div class="matrix-container">
+    <div class='attack-matrix'>
+      <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
+        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+      </div>
+
+      <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile.tactics" class="button-columns">
+        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+      </div>
+
+      <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
+        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+      </div>
+
+      <div v-else>
+        <br>
+        <p>Please upload a DETT&CT File using the button above.</p>
+      </div>
+    </div>
+  </div>
 </template>
 
-
 <style scoped>
-h2 {
-  text-align: center;
-  height: 100px;
-}
-
-.controls, .information {
+.combined-controls {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column; /* Arrange items in a column */
+  justify-content: space-around; /* This aligns items vertically */
   background-color: #ccc;
   margin-top: 0px;
   margin-bottom: 3px;
   border: 2px solid black;
   border-radius: 5px;
   max-width: 900px;
+  height: auto; /* Ensure the container has a defined height */
 }
 
-.upload-button {
-  margin-top: 5px;
+.controls-row {
+  display: flex;
+  justify-content: space-around; /* This aligns items horizontally */
+  align-items: center; /* This vertically centers the items */
+  flex-wrap: wrap; /* Allows items to wrap onto multiple lines if needed */
 }
 
-.legend {
-  margin-top: 5px;
+.horizontal-bar {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  margin: 0px 0; /* Adds vertical spacing around the bar */
+}
+
+.filter, .search, .upload-button, .legend, .group-selection-tool {
+  flex: 1; /* Allows the items to grow and fill space */
+  display: flex;
+  align-items: center; /* Ensure the content inside is also centered */
+  justify-content: center; /* Center the content horizontally */
+  margin: 5px; /* Add some spacing between items */
 }
 
 .matrix-container {

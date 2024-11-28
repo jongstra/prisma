@@ -24,7 +24,7 @@ let tooltipPosition = ref({ top: 0, left: 0 });
 watch(buttonRef, (buttonRef) => {
   if (buttonRef) {
     const buttonRect = buttonRef.getBoundingClientRect();
-    tooltipPosition.value.top = buttonRect.bottom - 280; // Position below the button
+    tooltipPosition.value.top = buttonRect.bottom - 272; // Position below the button
     tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 70; // Center the tooltip horizontally
   }
 });
