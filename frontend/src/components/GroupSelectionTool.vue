@@ -18,6 +18,7 @@ const domain = computed(() => {
 
 // Computed property to get only the selected groups
 const selectedGroups = computed(() => {
+  if (!domain.value.groups) return [];
   return domain.value.groups.filter(group => group.selected === true);
 });
 

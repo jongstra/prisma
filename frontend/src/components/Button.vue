@@ -24,8 +24,8 @@ let tooltipPosition = ref({ top: 0, left: 0 });
 watch(buttonRef, (buttonRef) => {
   if (buttonRef) {
     const buttonRect = buttonRef.getBoundingClientRect();
-    tooltipPosition.value.top = buttonRect.bottom - 272; // Position below the button
-    tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 70; // Center the tooltip horizontally
+    tooltipPosition.value.top = buttonRect.bottom - 270; // Position below the button
+    tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 72; // Center the tooltip horizontally
   }
 });
 
@@ -65,7 +65,6 @@ const toggleGroupSelected = (groupName: string) => {
 };
 
 const hoverGroup = (groupName: string) => {
-  console.log(`entered ${groupName}`);
   domain.groups.forEach(group => {
     if (group.name === groupName) {
       group.hovered = true;
@@ -278,24 +277,5 @@ button.occurs-in-hovered-groups {
   text-align: left;
   white-space: pre-line;
 }
-
-/* .group-box {
-  display: inline-block;
-  padding: 5px 5px;
-  margin-left: '1px';
-  margin-top: '2px';
-  margin-bottom: '2px';
-  background-color: gray;
-  border-width: '1px';
-  border-style: 'solid';
-  border-radius: '4px';
-  cursor: 'pointer';
-  transition: background-color 0.2s, border-color 0.2s;
-  font-size: '11px';
-}
-
-.group-box.selected {
-  border-color: #FF0000;
-} */
 
 </style>
