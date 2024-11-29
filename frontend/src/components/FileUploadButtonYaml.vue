@@ -72,8 +72,8 @@ const onFileChange = () => {
   text-decoration: none;
   font-size: 14px;
   transition: 0.1s;
-  width: 110px;
-  height: 62px;
+  width: 130px;
+  height: 42px;
 }
 
 .file-button:hover {

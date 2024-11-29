@@ -39,7 +39,7 @@ onUnmounted(() => {
 <template>
   <div class='combined-controls'>
     
-    <!-- Controls section -->
+    <!-- Row 1 -->
     <div class="controls-row">
       <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
       <div class='filter'><TechniqueVisibilityPercentageFilter/></div>
@@ -50,7 +50,7 @@ onUnmounted(() => {
     <!-- Horizontal bar -->
     <div class="horizontal-bar"></div>
 
-    <!-- Information section -->
+    <!-- Row 2 -->
     <div class="controls-row">
       <div class='upload-button'><FileUploadButtonYaml/></div>
       <div class='legend'><ColorLegend/></div>
@@ -76,11 +76,15 @@ onUnmounted(() => {
   </div>
 </template>
 
+
+
+# TODO: Controls herschikken mbv Gridbox ipv flexbox? Zie: https://gridbyexample.com/examples/
+
+
 <style scoped>
 .combined-controls {
   display: flex;
   flex-direction: column; /* Arrange items in a column */
-  justify-content: space-around; /* This aligns items vertically */
   background-color: #ccc;
   margin-top: 0px;
   margin-bottom: 3px;
@@ -92,7 +96,8 @@ onUnmounted(() => {
 
 .controls-row {
   display: flex;
-  justify-content: space-around; /* This aligns items horizontally */
+  flex-direction: row;
+  justify-content: space-; /* This aligns items horizontally */
   align-items: center; /* This vertically centers the items */
   flex-wrap: wrap; /* Allows items to wrap onto multiple lines if needed */
 }
@@ -107,13 +112,10 @@ onUnmounted(() => {
 .filter, .search, .upload-button, .legend, .group-selection-tool {
   flex: 1; /* Allows the items to grow and fill space */
   display: flex;
-  align-items: center; /* Ensure the content inside is also centered */
-  justify-content: center; /* Center the content horizontally */
   margin: 5px; /* Add some spacing between items */
 }
 
 .matrix-container {
-  /* margin-top: 0px; */
   overflow-x: auto; /* Enable horizontal scrollbar */
   width: 100%; /* Full width of the parent container */
   transform: rotateX(180deg);  /* Rotates container upside down so the horizontal scrollbar is at the top. */

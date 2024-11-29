@@ -54,13 +54,13 @@ const legendItems = ref([
 <style scoped>
 .legend-box {
   border: 2px solid black;
-  padding: 2px;
-  margin: 2px;
+  padding: 5px;
   border-radius: 5px;
   background-color: #ddd;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 70px;
   max-width: 300px;
 }
 

@@ -19,14 +19,12 @@ const searchQuery = computed({
 </template>
 
 <style scoped>
-.search-bar {
-  margin: 8px;
-}
+
 input[type="text"] {
   padding: 9px;
   font-size: 16px;
   border: 2px solid #555;
   border-radius: 5px;
-  width: 170px;
+  width: 200px;
 }
 </style>

@@ -118,7 +118,6 @@ onBeforeUnmount(() => {
 <style scoped>
 .collapsible-container {
   position: relative;
-  margin-top: 8px;
 }
 
 .collapsible-header {

@@ -65,10 +65,10 @@ const addGroupFromSearch = () => {
   <div class="group-container">
     <div class="header">
       <div class="title-box">
-        <p>Selected Groups</p>
+        <p>Groups</p>
       </div>
       <input class='group-search-box' v-model="searchQuery" placeholder="Search and add groups..." @keydown.enter="addGroupFromSearch" />
-      <button class='clear-all-button' @click="clearAllSelections">Clear All</button>
+      <button class='clear-all-button' @click="clearAllSelections">Clear</button>
     </div>
     <div v-if="filteredGroups.length && searchQuery" class="suggestions">
       <div 
@@ -94,13 +94,12 @@ const addGroupFromSearch = () => {
 
 <style scoped>
 .group-container {
-  margin: 2px;
   padding: 2px;
   font-size: 14px;
   border: 2px solid #555;
   border-radius: 5px;
   background-color: #ddd;
-  width: 400px;
+  width: 460px;
   height: 70px;
   position: relative; /* Ensure absolute positioning is relative to this container */
 }

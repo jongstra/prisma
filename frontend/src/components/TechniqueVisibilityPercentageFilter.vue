@@ -22,7 +22,7 @@ watch(values, (newValues) => {
       :max="100"
       :interval="1"
       :showTooltip="'always'"
-      :format="{'suffix': '%'}"
+      :format="{'suffix': ''}"
       :options="{connect: [false, true, false]}"
       :range="true"
     />
@@ -32,10 +32,17 @@ watch(values, (newValues) => {
 
 <style scoped>
 .slider-container {
-  width: 200px;
-  margin-top: 12px;
-  margin-bottom: -25px;
-  padding: 20px;
+  width: 250px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 36px;
+  padding-left: 13px;
+  padding-right: 17px;
+  padding-bottom: 3px;
+  border: 2px solid #555;
+  border-radius: 5px;
+  background-color: #ddd;
+  height: 70px;
 
   /* Customizing the tooltips */
   --slider-tooltip-line-height: 0.6rem;
