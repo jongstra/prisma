@@ -22,9 +22,10 @@ const searchQuery = computed({
 
 input[type="text"] {
   padding: 9px;
-  font-size: 16px;
+  font-size: 13.3px;
   border: 2px solid #555;
   border-radius: 5px;
-  width: 200px;
+  width: 150;
+  height: 30px;
 }
 </style>

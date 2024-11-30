@@ -6,7 +6,7 @@ import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
 import TechniqueAttributeFilter from '@/components/TechniqueAttributeFilter.vue';
 import TechniqueVisibilityPercentageFilter from '@/components/TechniqueVisibilityPercentageFilter.vue';
 import TechniqueTotalOccurrenceFilter from '@/components/TechniqueTotalOccurrenceFilter.vue';
-import ColorLegend from '@/components/ColorLegend.vue';
+import VisibilityLegend from '@/components/VisibilityLegend.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import GroupSelectionTool from '@/components/GroupSelectionTool.vue';
 const store = tacticsStore();
@@ -41,10 +41,10 @@ onUnmounted(() => {
     
     <!-- Row 1 -->
     <div class="controls-row">
-      <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
-      <div class='filter'><TechniqueVisibilityPercentageFilter/></div>
+      <div class='upload-button'><FileUploadButtonYaml/></div>
       <div class='filter'><TechniqueTotalOccurrenceFilter/></div>
-      <div class='search'><SearchBar/></div>
+      <div class='filter'><TechniqueVisibilityPercentageFilter/></div>
+      <div class='legend'><VisibilityLegend/></div>
     </div>
 
     <!-- Horizontal bar -->
@@ -52,8 +52,8 @@ onUnmounted(() => {
 
     <!-- Row 2 -->
     <div class="controls-row">
-      <div class='upload-button'><FileUploadButtonYaml/></div>
-      <div class='legend'><ColorLegend/></div>
+      <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
+      <div class='search'><SearchBar/></div>
       <div class='group-selection-tool'><GroupSelectionTool/></div>
     </div>
 
@@ -97,7 +97,7 @@ onUnmounted(() => {
 .controls-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-; /* This aligns items horizontally */
+  justify-content: space-between; /* This aligns items horizontally */
   align-items: center; /* This vertically centers the items */
   flex-wrap: wrap; /* Allows items to wrap onto multiple lines if needed */
 }

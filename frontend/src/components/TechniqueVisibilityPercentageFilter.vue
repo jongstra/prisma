@@ -32,7 +32,6 @@ watch(values, (newValues) => {
 
 <style scoped>
 .slider-container {
-  width: 250px;
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 36px;
@@ -42,6 +41,7 @@ watch(values, (newValues) => {
   border: 2px solid #555;
   border-radius: 5px;
   background-color: #ddd;
+  width: 250px;
   height: 70px;
 
   /* Customizing the tooltips */
