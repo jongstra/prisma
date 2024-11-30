@@ -100,7 +100,7 @@ const getTooltipText = () => {
 
   return `
       ${props.technique.name}<br><br>
-      ID: ${props.technique.external_id}
+      ID: <a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.external_id}</a>
       <br>----<br>
       ${subtechniques_string}
       <br>----<br>
@@ -113,6 +113,7 @@ const getTooltipText = () => {
       ${groups_string}
   `.replace(/\s+/g, ' ').trim();
 };
+
 
 function getButtonStyles(visibility_ratio: number) {
   let backgroundColor = '';

@@ -403,8 +403,8 @@
             "occurrence_software": 0,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -428,8 +428,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Network Traffic",
-                  "Application Log"
+                  "Application Log",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Application Log Content",
@@ -865,8 +865,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
-              "Persona"
+              "Persona",
+              "Network Traffic"
             ],
             "data_components": [
               "Social Media",
@@ -1088,8 +1088,8 @@
             "occurrence_software": 0,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
-              "Persona"
+              "Persona",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -1285,9 +1285,9 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -1351,10 +1351,10 @@
             "occurrence_software": 9,
             "occurrence_total": 37,
             "data_sources": [
-              "Network Traffic",
-              "File",
+              "Process",
               "Application Log",
-              "Process"
+              "File",
+              "Network Traffic"
             ],
             "data_components": [
               "Application Log Content",
@@ -1422,8 +1422,8 @@
             "occurrence_software": 6,
             "occurrence_total": 37,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -1476,8 +1476,8 @@
             "occurrence_software": 5,
             "occurrence_total": 27,
             "data_sources": [
-              "Network Traffic",
               "Application Log",
+              "Network Traffic",
               "Logon Session"
             ],
             "data_components": [
@@ -1506,9 +1506,9 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
+              "Application Log",
               "Network Traffic",
-              "Drive",
-              "Application Log"
+              "Drive"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -1541,9 +1541,9 @@
             "occurrence_software": 2,
             "occurrence_total": 4,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "File Creation",
@@ -1609,8 +1609,8 @@
                 "occurrence_software": 1,
                 "occurrence_total": 12,
                 "data_sources": [
-                  "Network Traffic",
-                  "Application Log"
+                  "Application Log",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Traffic Flow",
@@ -1660,9 +1660,9 @@
             "occurrence_software": 17,
             "occurrence_total": 24,
             "data_sources": [
-              "Drive",
               "File",
-              "Process"
+              "Process",
+              "Drive"
             ],
             "data_components": [
               "File Access",
@@ -1760,8 +1760,8 @@
             "occurrence_software": 0,
             "occurrence_total": 8,
             "data_sources": [
-              "Network Traffic",
               "Application Log",
+              "Network Traffic",
               "Logon Session"
             ],
             "data_components": [
@@ -2000,9 +2000,9 @@
             "occurrence_software": 2,
             "occurrence_total": 3,
             "data_sources": [
+              "Command",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "Command Execution",
@@ -2065,10 +2065,10 @@
             "occurrence_software": 18,
             "occurrence_total": 32,
             "data_sources": [
-              "Module",
               "Command",
-              "Script",
-              "Process"
+              "Module",
+              "Process",
+              "Script"
             ],
             "data_components": [
               "Script Execution",
@@ -2285,10 +2285,10 @@
                 "occurrence_software": 101,
                 "occurrence_total": 171,
                 "data_sources": [
-                  "Module",
                   "Command",
-                  "Script",
-                  "Process"
+                  "Module",
+                  "Process",
+                  "Script"
                 ],
                 "data_components": [
                   "Script Execution",
@@ -2355,8 +2355,8 @@
                 "occurrence_software": 25,
                 "occurrence_total": 39,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -2418,8 +2418,8 @@
                 "occurrence_software": 34,
                 "occurrence_total": 37,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -2548,10 +2548,10 @@
                 "occurrence_software": 61,
                 "occurrence_total": 104,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Process",
-                  "Script",
-                  "Command"
+                  "Script"
                 ],
                 "data_components": [
                   "Module Load",
@@ -2895,8 +2895,8 @@
                 "occurrence_software": 257,
                 "occurrence_total": 319,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -2926,8 +2926,8 @@
             "occurrence_software": 4,
             "occurrence_total": 5,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -2955,8 +2955,8 @@
             "occurrence_total": 4,
             "data_sources": [
               "Application Log",
-              "Pod",
-              "Container"
+              "Container",
+              "Pod"
             ],
             "data_components": [
               "Container Start",
@@ -3301,9 +3301,9 @@
             "occurrence_total": 5,
             "data_sources": [
               "File",
-              "Command",
               "Process",
               "Scheduled Job",
+              "Command",
               "Container"
             ],
             "data_components": [
@@ -3339,11 +3339,11 @@
                 "occurrence_software": 3,
                 "occurrence_total": 6,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
-                  "Command",
                   "Process",
-                  "Scheduled Job"
+                  "Network Traffic",
+                  "Scheduled Job",
+                  "Command"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -3368,9 +3368,9 @@
                 "occurrence_total": 0,
                 "data_sources": [
                   "File",
-                  "Process",
+                  "Command",
                   "Scheduled Job",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "File Modification",
@@ -3501,11 +3501,11 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
+              "Process",
+              "Windows Registry",
               "File",
               "Command",
-              "Service",
-              "Process",
-              "Windows Registry"
+              "Service"
             ],
             "data_components": [
               "Windows Registry Key Modification",
@@ -3587,11 +3587,11 @@
                 "occurrence_software": 46,
                 "occurrence_total": 56,
                 "data_sources": [
-                  "Network Traffic",
-                  "Command",
-                  "Service",
                   "Process",
-                  "Windows Registry"
+                  "Network Traffic",
+                  "Windows Registry",
+                  "Command",
+                  "Service"
                 ],
                 "data_components": [
                   "Windows Registry Key Modification",
@@ -3624,14 +3624,14 @@
             "occurrence_software": 0,
             "occurrence_total": 2,
             "data_sources": [
+              "Image",
+              "Process",
+              "Application Log",
               "Network Traffic",
               "File",
-              "Image",
-              "Application Log",
               "Command",
-              "Instance",
-              "Process",
-              "Container"
+              "Container",
+              "Instance"
             ],
             "data_components": [
               "Instance Start",
@@ -3664,11 +3664,11 @@
                 "occurrence_software": 0,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Image",
                   "Application Log",
                   "Command",
-                  "Instance",
-                  "Container"
+                  "Image",
+                  "Container",
+                  "Instance"
                 ],
                 "data_components": [
                   "Application Log Content",
@@ -3763,8 +3763,8 @@
                 "occurrence_software": 25,
                 "occurrence_total": 65,
                 "data_sources": [
-                  "Network Traffic",
-                  "File"
+                  "File",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "File Creation",
@@ -3898,10 +3898,10 @@
             "occurrence_software": 76,
             "occurrence_total": 108,
             "data_sources": [
-              "Network Traffic",
-              "Process",
               "WMI",
-              "Command"
+              "Process",
+              "Command",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Connection Creation",
@@ -3956,12 +3956,12 @@
             "occurrence_software": 5,
             "occurrence_total": 15,
             "data_sources": [
+              "Group",
               "File",
-              "Active Directory",
-              "Command",
-              "User Account",
               "Process",
-              "Group"
+              "User Account",
+              "Command",
+              "Active Directory"
             ],
             "data_components": [
               "Command Execution",
@@ -3992,9 +3992,9 @@
                 "occurrence_software": 0,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "Group",
                   "User Account",
-                  "Application Log"
+                  "Application Log",
+                  "Group"
                 ],
                 "data_components": [
                   "Group Modification",
@@ -4033,10 +4033,10 @@
             "occurrence_software": 8,
             "occurrence_total": 13,
             "data_sources": [
-              "Network Traffic",
-              "Service",
+              "Command",
               "Process",
-              "Command"
+              "Network Traffic",
+              "Service"
             ],
             "data_components": [
               "Command Execution",
@@ -4069,12 +4069,12 @@
             "occurrence_total": 5,
             "data_sources": [
               "File",
-              "Command",
-              "Driver",
               "Process",
-              "Kernel",
+              "Driver",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "Command",
+              "Kernel"
             ],
             "data_components": [
               "OS API Execution",
@@ -4105,9 +4105,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "Process",
-                  "Windows Registry",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4132,9 +4132,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "Module",
-                  "Windows Registry",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4160,10 +4160,10 @@
                 "occurrence_software": 2,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Kernel",
                   "Process",
-                  "Command"
+                  "Kernel"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4190,9 +4190,9 @@
                 "occurrence_software": 2,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "File",
                   "Module",
-                  "Driver",
-                  "File"
+                  "Driver"
                 ],
                 "data_components": [
                   "Module Load",
@@ -4242,8 +4242,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Module",
                   "File",
+                  "Module",
                   "Windows Registry",
                   "Process"
                 ],
@@ -4273,11 +4273,11 @@
                 "occurrence_software": 2,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "File",
-                  "Driver",
                   "Process",
+                  "Driver",
                   "Module",
-                  "Windows Registry"
+                  "Windows Registry",
+                  "File"
                 ],
                 "data_components": [
                   "Windows Registry Key Modification",
@@ -4301,8 +4301,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "File",
-                  "Command"
+                  "Command",
+                  "File"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4552,10 +4552,10 @@
                 "occurrence_software": 177,
                 "occurrence_total": 227,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Windows Registry",
                   "Process",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4583,9 +4583,9 @@
                 "occurrence_software": 3,
                 "occurrence_total": 3,
                 "data_sources": [
+                  "Command",
                   "Module",
-                  "Windows Registry",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4661,10 +4661,10 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -4700,10 +4700,10 @@
                 "occurrence_software": 8,
                 "occurrence_total": 11,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4733,8 +4733,8 @@
                 "occurrence_total": 5,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Creation",
@@ -4767,11 +4767,11 @@
             "occurrence_software": 1,
             "occurrence_total": 3,
             "data_sources": [
-              "File",
-              "Active Directory",
-              "Command",
               "Process",
-              "Windows Registry"
+              "Windows Registry",
+              "File",
+              "Command",
+              "Active Directory"
             ],
             "data_components": [
               "File Modification",
@@ -4797,8 +4797,8 @@
                 "occurrence_total": 0,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Creation",
@@ -4829,9 +4829,9 @@
                 "occurrence_software": 4,
                 "occurrence_total": 6,
                 "data_sources": [
+                  "Command",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4853,10 +4853,10 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Active Directory",
                   "Process",
-                  "Command"
+                  "Active Directory"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4890,8 +4890,8 @@
                 "occurrence_total": 5,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Creation",
@@ -4916,9 +4916,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -4952,11 +4952,11 @@
             "occurrence_software": 4,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Command",
               "Process",
-              "Windows Registry"
+              "Windows Registry",
+              "Network Traffic",
+              "Command"
             ],
             "data_components": [
               "Windows Registry Key Creation",
@@ -5036,9 +5036,9 @@
             "occurrence_software": 0,
             "occurrence_total": 3,
             "data_sources": [
+              "Command",
               "User Account",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -5066,13 +5066,13 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
+              "Process",
+              "Driver",
+              "Windows Registry",
               "File",
               "Command",
-              "Driver",
-              "Service",
-              "Process",
-              "Windows Registry",
-              "Container"
+              "Container",
+              "Service"
             ],
             "data_components": [
               "Service Creation",
@@ -5102,8 +5102,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Container",
-                  "Command"
+                  "Command",
+                  "Container"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -5144,8 +5144,8 @@
                 "occurrence_total": 18,
                 "data_sources": [
                   "File",
-                  "Service",
-                  "Command"
+                  "Command",
+                  "Service"
                 ],
                 "data_components": [
                   "File Modification",
@@ -5179,10 +5179,10 @@
                 "occurrence_software": 9,
                 "occurrence_total": 9,
                 "data_sources": [
-                  "Service",
                   "File",
+                  "Command",
                   "Process",
-                  "Command"
+                  "Service"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -5218,10 +5218,10 @@
                 "occurrence_software": 6,
                 "occurrence_total": 9,
                 "data_sources": [
+                  "Command",
                   "Process",
                   "File",
-                  "Service",
-                  "Command"
+                  "Service"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -5368,13 +5368,13 @@
                 "occurrence_software": 99,
                 "occurrence_total": 120,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
-                  "Command",
-                  "Driver",
-                  "Service",
                   "Process",
-                  "Windows Registry"
+                  "Driver",
+                  "Network Traffic",
+                  "Windows Registry",
+                  "Command",
+                  "Service"
                 ],
                 "data_components": [
                   "Windows Registry Key Modification",
@@ -5412,13 +5412,13 @@
             "occurrence_software": 1,
             "occurrence_total": 1,
             "data_sources": [
-              "File",
-              "Cloud Service",
-              "Command",
               "Process",
-              "WMI",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "WMI",
+              "Cloud Service",
+              "File",
+              "Command"
             ],
             "data_components": [
               "Module Load",
@@ -5452,10 +5452,10 @@
                 "occurrence_software": 3,
                 "occurrence_total": 4,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -5493,10 +5493,10 @@
                 "occurrence_software": 11,
                 "occurrence_total": 12,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -5523,9 +5523,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -5549,10 +5549,10 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "Module",
-                  "Process",
                   "Windows Registry",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -5578,9 +5578,9 @@
                 "occurrence_total": 1,
                 "data_sources": [
                   "File",
+                  "Command",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "File Modification",
@@ -5610,8 +5610,8 @@
                 "occurrence_total": 3,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -5668,8 +5668,8 @@
             "occurrence_software": 5,
             "occurrence_total": 27,
             "data_sources": [
-              "Network Traffic",
               "Application Log",
+              "Network Traffic",
               "Logon Session"
             ],
             "data_components": [
@@ -5704,12 +5704,12 @@
             "occurrence_software": 5,
             "occurrence_total": 6,
             "data_sources": [
-              "File",
-              "Command",
-              "Service",
               "Process",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "File",
+              "Command",
+              "Service"
             ],
             "data_components": [
               "Windows Registry Key Modification",
@@ -5739,10 +5739,10 @@
                 "occurrence_software": 1,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -5826,8 +5826,8 @@
                 "occurrence_software": 36,
                 "occurrence_total": 59,
                 "data_sources": [
-                  "Module",
                   "File",
+                  "Module",
                   "Process"
                 ],
                 "data_components": [
@@ -5853,8 +5853,8 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Module",
-                  "File"
+                  "File",
+                  "Module"
                 ],
                 "data_components": [
                   "Module Load",
@@ -5941,15 +5941,15 @@
             "occurrence_software": 3,
             "occurrence_total": 4,
             "data_sources": [
-              "File",
-              "Active Directory",
-              "Application Log",
-              "Cloud Service",
-              "User Account",
               "Process",
+              "Application Log",
               "Module",
               "Windows Registry",
-              "Logon Session"
+              "User Account",
+              "Logon Session",
+              "Cloud Service",
+              "File",
+              "Active Directory"
             ],
             "data_components": [
               "Application Log Content",
@@ -6010,12 +6010,12 @@
             "occurrence_software": 0,
             "occurrence_total": 2,
             "data_sources": [
-              "File",
-              "Application Log",
-              "Command",
               "Process",
+              "Application Log",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "File",
+              "Command"
             ],
             "data_components": [
               "File Creation",
@@ -6047,10 +6047,10 @@
                 "occurrence_software": 1,
                 "occurrence_total": 2,
                 "data_sources": [
-                  "Process",
                   "File",
+                  "Command",
                   "Windows Registry",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Windows Registry Key Modification",
@@ -6081,10 +6081,10 @@
                 "occurrence_software": 2,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "Process",
                   "File",
+                  "Command",
                   "Windows Registry",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "File Creation",
@@ -6113,10 +6113,10 @@
                 "occurrence_total": 1,
                 "data_sources": [
                   "File",
-                  "Command",
                   "Process",
                   "Module",
-                  "Windows Registry"
+                  "Windows Registry",
+                  "Command"
                 ],
                 "data_components": [
                   "Windows Registry Key Creation",
@@ -6145,9 +6145,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "Application Log",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Application Log Content",
@@ -6174,9 +6174,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "Command",
                   "Application Log",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Application Log Content",
@@ -6201,9 +6201,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "Application Log",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -6255,12 +6255,12 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
-              "Command",
-              "Firmware",
-              "Driver",
               "Process",
-              "Drive"
+              "Driver",
+              "Firmware",
+              "Network Traffic",
+              "Drive",
+              "Command"
             ],
             "data_components": [
               "Drive Modification",
@@ -6318,9 +6318,9 @@
             "occurrence_total": 5,
             "data_sources": [
               "File",
-              "Command",
               "Process",
               "Scheduled Job",
+              "Command",
               "Container"
             ],
             "data_components": [
@@ -6356,11 +6356,11 @@
                 "occurrence_software": 3,
                 "occurrence_total": 6,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
-                  "Command",
                   "Process",
-                  "Scheduled Job"
+                  "Network Traffic",
+                  "Scheduled Job",
+                  "Command"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -6385,9 +6385,9 @@
                 "occurrence_total": 0,
                 "data_sources": [
                   "File",
-                  "Process",
+                  "Command",
                   "Scheduled Job",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "File Modification",
@@ -6415,9 +6415,9 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
               "File",
               "Application Log",
+              "Network Traffic",
               "Process"
             ],
             "data_components": [
@@ -6485,8 +6485,8 @@
             "occurrence_software": 11,
             "occurrence_total": 11,
             "data_sources": [
-              "Network Traffic",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -6757,10 +6757,10 @@
             "occurrence_total": 0,
             "data_sources": [
               "File",
-              "Command",
-              "User Account",
               "Process",
-              "Windows Registry"
+              "Windows Registry",
+              "User Account",
+              "Command"
             ],
             "data_components": [
               "Process Creation",
@@ -6814,8 +6814,8 @@
                 "occurrence_software": 2,
                 "occurrence_total": 2,
                 "data_sources": [
-                  "File",
-                  "Command"
+                  "Command",
+                  "File"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -6837,9 +6837,9 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -6908,10 +6908,10 @@
             "occurrence_software": 17,
             "occurrence_total": 20,
             "data_sources": [
+              "Command",
               "User Account",
-              "Active Directory",
               "Process",
-              "Command"
+              "Active Directory"
             ],
             "data_components": [
               "OS API Execution",
@@ -6962,12 +6962,12 @@
             "occurrence_software": 5,
             "occurrence_total": 15,
             "data_sources": [
+              "Group",
               "File",
-              "Active Directory",
-              "Command",
-              "User Account",
               "Process",
-              "Group"
+              "User Account",
+              "Command",
+              "Active Directory"
             ],
             "data_components": [
               "Command Execution",
@@ -6998,9 +6998,9 @@
                 "occurrence_software": 0,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "Group",
                   "User Account",
-                  "Application Log"
+                  "Application Log",
+                  "Group"
                 ],
                 "data_components": [
                   "Group Modification",
@@ -7034,12 +7034,12 @@
             "occurrence_total": 5,
             "data_sources": [
               "File",
-              "Command",
-              "Driver",
               "Process",
-              "Kernel",
+              "Driver",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "Command",
+              "Kernel"
             ],
             "data_components": [
               "OS API Execution",
@@ -7070,9 +7070,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "Process",
-                  "Windows Registry",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7097,9 +7097,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "Module",
-                  "Windows Registry",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7125,10 +7125,10 @@
                 "occurrence_software": 2,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Kernel",
                   "Process",
-                  "Command"
+                  "Kernel"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7155,9 +7155,9 @@
                 "occurrence_software": 2,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "File",
                   "Module",
-                  "Driver",
-                  "File"
+                  "Driver"
                 ],
                 "data_components": [
                   "Module Load",
@@ -7207,8 +7207,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Module",
                   "File",
+                  "Module",
                   "Windows Registry",
                   "Process"
                 ],
@@ -7238,11 +7238,11 @@
                 "occurrence_software": 2,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "File",
-                  "Driver",
                   "Process",
+                  "Driver",
                   "Module",
-                  "Windows Registry"
+                  "Windows Registry",
+                  "File"
                 ],
                 "data_components": [
                   "Windows Registry Key Modification",
@@ -7266,8 +7266,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "File",
-                  "Command"
+                  "Command",
+                  "File"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7517,10 +7517,10 @@
                 "occurrence_software": 177,
                 "occurrence_total": 227,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Windows Registry",
                   "Process",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7548,9 +7548,9 @@
                 "occurrence_software": 3,
                 "occurrence_total": 3,
                 "data_sources": [
+                  "Command",
                   "Module",
-                  "Windows Registry",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7626,10 +7626,10 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -7665,10 +7665,10 @@
                 "occurrence_software": 8,
                 "occurrence_total": 11,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7698,8 +7698,8 @@
                 "occurrence_total": 5,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Creation",
@@ -7732,11 +7732,11 @@
             "occurrence_software": 1,
             "occurrence_total": 3,
             "data_sources": [
-              "File",
-              "Active Directory",
-              "Command",
               "Process",
-              "Windows Registry"
+              "Windows Registry",
+              "File",
+              "Command",
+              "Active Directory"
             ],
             "data_components": [
               "File Modification",
@@ -7762,8 +7762,8 @@
                 "occurrence_total": 0,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Creation",
@@ -7794,9 +7794,9 @@
                 "occurrence_software": 4,
                 "occurrence_total": 6,
                 "data_sources": [
+                  "Command",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7818,10 +7818,10 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Active Directory",
                   "Process",
-                  "Command"
+                  "Active Directory"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7855,8 +7855,8 @@
                 "occurrence_total": 5,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Creation",
@@ -7881,9 +7881,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7914,13 +7914,13 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
+              "Process",
+              "Driver",
+              "Windows Registry",
               "File",
               "Command",
-              "Driver",
-              "Service",
-              "Process",
-              "Windows Registry",
-              "Container"
+              "Container",
+              "Service"
             ],
             "data_components": [
               "Service Creation",
@@ -7950,8 +7950,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Container",
-                  "Command"
+                  "Command",
+                  "Container"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -7992,8 +7992,8 @@
                 "occurrence_total": 18,
                 "data_sources": [
                   "File",
-                  "Service",
-                  "Command"
+                  "Command",
+                  "Service"
                 ],
                 "data_components": [
                   "File Modification",
@@ -8027,10 +8027,10 @@
                 "occurrence_software": 9,
                 "occurrence_total": 9,
                 "data_sources": [
-                  "Service",
                   "File",
+                  "Command",
                   "Process",
-                  "Command"
+                  "Service"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -8066,10 +8066,10 @@
                 "occurrence_software": 6,
                 "occurrence_total": 9,
                 "data_sources": [
+                  "Command",
                   "Process",
                   "File",
-                  "Service",
-                  "Command"
+                  "Service"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -8216,13 +8216,13 @@
                 "occurrence_software": 99,
                 "occurrence_total": 120,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
-                  "Command",
-                  "Driver",
-                  "Service",
                   "Process",
-                  "Windows Registry"
+                  "Driver",
+                  "Network Traffic",
+                  "Windows Registry",
+                  "Command",
+                  "Service"
                 ],
                 "data_components": [
                   "Windows Registry Key Modification",
@@ -8255,9 +8255,9 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Active Directory",
+              "Command",
               "Application Log",
-              "Command"
+              "Active Directory"
             ],
             "data_components": [
               "Active Directory Object Deletion",
@@ -8291,8 +8291,8 @@
             "occurrence_total": 5,
             "data_sources": [
               "Volume",
-              "Process",
               "Container",
+              "Process",
               "Kernel"
             ],
             "data_components": [
@@ -8324,13 +8324,13 @@
             "occurrence_software": 1,
             "occurrence_total": 1,
             "data_sources": [
-              "File",
-              "Cloud Service",
-              "Command",
               "Process",
-              "WMI",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "WMI",
+              "Cloud Service",
+              "File",
+              "Command"
             ],
             "data_components": [
               "Module Load",
@@ -8364,10 +8364,10 @@
                 "occurrence_software": 3,
                 "occurrence_total": 4,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -8405,10 +8405,10 @@
                 "occurrence_software": 11,
                 "occurrence_total": 12,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -8435,9 +8435,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -8461,10 +8461,10 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
+                  "Command",
                   "Module",
-                  "Process",
                   "Windows Registry",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -8490,9 +8490,9 @@
                 "occurrence_total": 1,
                 "data_sources": [
                   "File",
+                  "Command",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "File Modification",
@@ -8522,8 +8522,8 @@
                 "occurrence_total": 3,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -8619,12 +8619,12 @@
             "occurrence_software": 5,
             "occurrence_total": 6,
             "data_sources": [
-              "File",
-              "Command",
-              "Service",
               "Process",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "File",
+              "Command",
+              "Service"
             ],
             "data_components": [
               "Windows Registry Key Modification",
@@ -8654,10 +8654,10 @@
                 "occurrence_software": 1,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -8741,8 +8741,8 @@
                 "occurrence_software": 36,
                 "occurrence_total": 59,
                 "data_sources": [
-                  "Module",
                   "File",
+                  "Module",
                   "Process"
                 ],
                 "data_components": [
@@ -8768,8 +8768,8 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Module",
-                  "File"
+                  "File",
+                  "Module"
                 ],
                 "data_components": [
                   "Module Load",
@@ -8893,8 +8893,8 @@
             "occurrence_software": 58,
             "occurrence_total": 70,
             "data_sources": [
-              "Module",
               "File",
+              "Module",
               "Process"
             ],
             "data_components": [
@@ -9285,9 +9285,9 @@
             "occurrence_total": 5,
             "data_sources": [
               "File",
-              "Command",
               "Process",
               "Scheduled Job",
+              "Command",
               "Container"
             ],
             "data_components": [
@@ -9323,11 +9323,11 @@
                 "occurrence_software": 3,
                 "occurrence_total": 6,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
-                  "Command",
                   "Process",
-                  "Scheduled Job"
+                  "Network Traffic",
+                  "Scheduled Job",
+                  "Command"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -9352,9 +9352,9 @@
                 "occurrence_total": 0,
                 "data_sources": [
                   "File",
-                  "Process",
+                  "Command",
                   "Scheduled Job",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "File Modification",
@@ -9596,10 +9596,10 @@
             "occurrence_total": 0,
             "data_sources": [
               "File",
-              "Command",
-              "User Account",
               "Process",
-              "Windows Registry"
+              "Windows Registry",
+              "User Account",
+              "Command"
             ],
             "data_components": [
               "Process Creation",
@@ -9653,8 +9653,8 @@
                 "occurrence_software": 2,
                 "occurrence_total": 2,
                 "data_sources": [
-                  "File",
-                  "Command"
+                  "Command",
+                  "File"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -9676,9 +9676,9 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -9747,10 +9747,10 @@
             "occurrence_software": 17,
             "occurrence_total": 20,
             "data_sources": [
+              "Command",
               "User Account",
-              "Active Directory",
               "Process",
-              "Command"
+              "Active Directory"
             ],
             "data_components": [
               "OS API Execution",
@@ -9790,10 +9790,10 @@
             "occurrence_software": 8,
             "occurrence_total": 13,
             "data_sources": [
-              "Network Traffic",
-              "Service",
+              "Command",
               "Process",
-              "Command"
+              "Network Traffic",
+              "Service"
             ],
             "data_components": [
               "Command Execution",
@@ -9816,8 +9816,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
-              "Image"
+              "Image",
+              "Network Traffic"
             ],
             "data_components": [
               "Image Creation",
@@ -9855,9 +9855,9 @@
             "occurrence_software": 10,
             "occurrence_total": 11,
             "data_sources": [
+              "Command",
               "Application Log",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -10166,8 +10166,8 @@
             "occurrence_total": 4,
             "data_sources": [
               "Application Log",
-              "Pod",
-              "Container"
+              "Container",
+              "Pod"
             ],
             "data_components": [
               "Container Start",
@@ -10196,9 +10196,9 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Drive",
               "File",
-              "Command"
+              "Command",
+              "Drive"
             ],
             "data_components": [
               "File Creation",
@@ -10222,9 +10222,9 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Active Directory",
+              "Command",
               "Application Log",
-              "Command"
+              "Active Directory"
             ],
             "data_components": [
               "Active Directory Object Deletion",
@@ -10263,8 +10263,8 @@
             "occurrence_software": 12,
             "occurrence_total": 12,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -10296,8 +10296,8 @@
                 "occurrence_software": 5,
                 "occurrence_total": 7,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -10350,10 +10350,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
+              "Command",
               "File",
-              "Active Directory",
               "Process",
-              "Command"
+              "Active Directory"
             ],
             "data_components": [
               "Process Creation",
@@ -10385,15 +10385,15 @@
             "occurrence_software": 5,
             "occurrence_total": 5,
             "data_sources": [
-              "File",
-              "Application Log",
-              "Command",
-              "Firmware",
-              "User Account",
               "Process",
-              "Service",
+              "Application Log",
+              "Firmware",
+              "Windows Registry",
               "Script",
-              "Windows Registry"
+              "User Account",
+              "File",
+              "Command",
+              "Service"
             ],
             "data_components": [
               "File Metadata",
@@ -10435,8 +10435,8 @@
                 "occurrence_software": 4,
                 "occurrence_total": 6,
                 "data_sources": [
-                  "Firmware",
                   "File",
+                  "Firmware",
                   "Windows Registry"
                 ],
                 "data_components": [
@@ -10514,8 +10514,8 @@
                 "occurrence_total": 50,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -10545,11 +10545,11 @@
                 "occurrence_software": 1,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "File",
-                  "Command",
-                  "User Account",
                   "Process",
-                  "Windows Registry"
+                  "Windows Registry",
+                  "User Account",
+                  "File",
+                  "Command"
                 ],
                 "data_components": [
                   "File Modification",
@@ -10622,9 +10622,9 @@
                 "occurrence_total": 43,
                 "data_sources": [
                   "File",
+                  "Command",
                   "Process",
-                  "Script",
-                  "Command"
+                  "Script"
                 ],
                 "data_components": [
                   "File Modification",
@@ -10652,8 +10652,8 @@
                 "occurrence_software": 2,
                 "occurrence_total": 2,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -10691,9 +10691,9 @@
                 "occurrence_software": 14,
                 "occurrence_total": 15,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -10744,8 +10744,8 @@
                 "occurrence_total": 2,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Metadata",
@@ -10774,12 +10774,12 @@
                 "occurrence_software": 3,
                 "occurrence_total": 3,
                 "data_sources": [
+                  "Process",
+                  "Command",
+                  "Windows Registry",
                   "File",
                   "Image",
-                  "Command",
-                  "Service",
-                  "Process",
-                  "Windows Registry"
+                  "Service"
                 ],
                 "data_components": [
                   "Windows Registry Key Modification",
@@ -10840,12 +10840,12 @@
             "occurrence_software": 5,
             "occurrence_total": 6,
             "data_sources": [
-              "File",
-              "Command",
-              "Service",
               "Process",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "File",
+              "Command",
+              "Service"
             ],
             "data_components": [
               "Windows Registry Key Modification",
@@ -10875,10 +10875,10 @@
                 "occurrence_software": 1,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -10962,8 +10962,8 @@
                 "occurrence_software": 36,
                 "occurrence_total": 59,
                 "data_sources": [
-                  "Module",
                   "File",
+                  "Module",
                   "Process"
                 ],
                 "data_components": [
@@ -10989,8 +10989,8 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Module",
-                  "File"
+                  "File",
+                  "Module"
                 ],
                 "data_components": [
                   "Module Load",
@@ -11050,17 +11050,17 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "File",
-              "Cloud Service",
-              "Command",
-              "User Account",
-              "Driver",
-              "Script",
               "Process",
-              "Service",
-              "Sensor Health",
+              "Firewall",
+              "Driver",
               "Windows Registry",
-              "Firewall"
+              "Sensor Health",
+              "Script",
+              "User Account",
+              "Cloud Service",
+              "File",
+              "Command",
+              "Service"
             ],
             "data_components": [
               "File Modification",
@@ -11104,12 +11104,12 @@
                 "occurrence_software": 1,
                 "occurrence_total": 5,
                 "data_sources": [
-                  "Application Log",
-                  "Command",
                   "Process",
-                  "Script",
+                  "Application Log",
+                  "Windows Registry",
                   "Sensor Health",
-                  "Windows Registry"
+                  "Script",
+                  "Command"
                 ],
                 "data_components": [
                   "Host Status",
@@ -11190,8 +11190,8 @@
                 "occurrence_total": 0,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "OS API Execution",
@@ -11249,9 +11249,9 @@
                 "occurrence_software": 18,
                 "occurrence_total": 29,
                 "data_sources": [
+                  "Command",
                   "Windows Registry",
-                  "Firewall",
-                  "Command"
+                  "Firewall"
                 ],
                 "data_components": [
                   "Firewall Rule Modification",
@@ -11359,12 +11359,12 @@
                 "occurrence_software": 58,
                 "occurrence_total": 78,
                 "data_sources": [
-                  "Command",
-                  "Driver",
-                  "Service",
                   "Process",
+                  "Driver",
+                  "Windows Registry",
                   "Sensor Health",
-                  "Windows Registry"
+                  "Command",
+                  "Service"
                 ],
                 "data_components": [
                   "Host Status",
@@ -11393,8 +11393,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -11457,10 +11457,10 @@
                 "occurrence_software": 6,
                 "occurrence_total": 8,
                 "data_sources": [
+                  "Command",
                   "Process",
                   "Windows Registry",
-                  "Sensor Health",
-                  "Command"
+                  "Sensor Health"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -11570,15 +11570,15 @@
             "occurrence_software": 21,
             "occurrence_total": 24,
             "data_sources": [
-              "Network Traffic",
-              "File",
-              "Application Log",
-              "Command",
-              "User Account",
               "Process",
+              "Firewall",
+              "Application Log",
               "Windows Registry",
+              "Network Traffic",
               "Scheduled Job",
-              "Firewall"
+              "User Account",
+              "File",
+              "Command"
             ],
             "data_components": [
               "Scheduled Job Modification",
@@ -11624,12 +11624,12 @@
                 "occurrence_software": 10,
                 "occurrence_total": 10,
                 "data_sources": [
-                  "File",
-                  "Command",
-                  "User Account",
                   "Process",
                   "Windows Registry",
-                  "Scheduled Job"
+                  "User Account",
+                  "Scheduled Job",
+                  "File",
+                  "Command"
                 ],
                 "data_components": [
                   "File Deletion",
@@ -11900,8 +11900,8 @@
                 "occurrence_software": 201,
                 "occurrence_total": 240,
                 "data_sources": [
-                  "File",
-                  "Command"
+                  "Command",
+                  "File"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -11928,10 +11928,10 @@
                 "occurrence_software": 3,
                 "occurrence_total": 4,
                 "data_sources": [
-                  "Network Traffic",
-                  "User Account",
+                  "Command",
                   "Process",
-                  "Command"
+                  "Network Traffic",
+                  "User Account"
                 ],
                 "data_components": [
                   "Network Traffic Content",
@@ -11961,8 +11961,8 @@
             "occurrence_software": 2,
             "occurrence_total": 3,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -12030,12 +12030,12 @@
             "occurrence_software": 27,
             "occurrence_total": 42,
             "data_sources": [
-              "Image",
-              "File",
-              "Command",
-              "Service",
               "Process",
-              "Scheduled Job"
+              "Command",
+              "Scheduled Job",
+              "File",
+              "Image",
+              "Service"
             ],
             "data_components": [
               "File Modification",
@@ -12175,9 +12175,9 @@
                 "occurrence_software": 55,
                 "occurrence_total": 75,
                 "data_sources": [
-                  "Service",
                   "Scheduled Job",
-                  "Command"
+                  "Command",
+                  "Service"
                 ],
                 "data_components": [
                   "Scheduled Job Modification",
@@ -12213,8 +12213,8 @@
                 "occurrence_total": 7,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Modification",
@@ -12304,15 +12304,15 @@
             "occurrence_software": 3,
             "occurrence_total": 4,
             "data_sources": [
-              "File",
-              "Active Directory",
-              "Application Log",
-              "Cloud Service",
-              "User Account",
               "Process",
+              "Application Log",
               "Module",
               "Windows Registry",
-              "Logon Session"
+              "User Account",
+              "Logon Session",
+              "Cloud Service",
+              "File",
+              "Active Directory"
             ],
             "data_components": [
               "Application Log Content",
@@ -12369,9 +12369,9 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Snapshot",
               "Volume",
               "Instance",
+              "Snapshot",
               "Cloud Service"
             ],
             "data_components": [
@@ -12644,9 +12644,9 @@
             "occurrence_total": 143,
             "data_sources": [
               "Network Traffic",
+              "Process",
               "Command",
-              "Windows Registry",
-              "Process"
+              "Windows Registry"
             ],
             "data_components": [
               "Windows Registry Key Modification",
@@ -12905,13 +12905,13 @@
             "occurrence_software": 126,
             "occurrence_total": 143,
             "data_sources": [
-              "File",
-              "Command",
-              "Script",
-              "WMI",
               "Process",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "Script",
+              "WMI",
+              "File",
+              "Command"
             ],
             "data_components": [
               "WMI Creation",
@@ -12998,8 +12998,8 @@
                 "occurrence_total": 54,
                 "data_sources": [
                   "File",
-                  "Script",
-                  "Command"
+                  "Command",
+                  "Script"
                 ],
                 "data_components": [
                   "File Metadata",
@@ -13033,9 +13033,9 @@
                 "occurrence_software": 5,
                 "occurrence_total": 8,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -13066,8 +13066,8 @@
                 "occurrence_software": 5,
                 "occurrence_total": 6,
                 "data_sources": [
-                  "Module",
                   "File",
+                  "Module",
                   "Process"
                 ],
                 "data_components": [
@@ -13282,9 +13282,9 @@
             "occurrence_software": 1,
             "occurrence_total": 1,
             "data_sources": [
+              "Command",
               "File",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -13309,12 +13309,12 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
-              "Command",
-              "Firmware",
-              "Driver",
               "Process",
-              "Drive"
+              "Driver",
+              "Firmware",
+              "Network Traffic",
+              "Drive",
+              "Command"
             ],
             "data_components": [
               "Drive Modification",
@@ -13435,8 +13435,8 @@
             "occurrence_software": 58,
             "occurrence_total": 70,
             "data_sources": [
-              "Module",
               "File",
+              "Module",
               "Process"
             ],
             "data_components": [
@@ -13838,8 +13838,8 @@
             "occurrence_total": 17,
             "data_sources": [
               "Module",
-              "Script",
-              "Process"
+              "Process",
+              "Script"
             ],
             "data_components": [
               "Module Load",
@@ -13863,8 +13863,8 @@
             "occurrence_software": 1,
             "occurrence_total": 1,
             "data_sources": [
-              "Network Traffic",
               "User Account",
+              "Network Traffic",
               "Active Directory"
             ],
             "data_components": [
@@ -13919,8 +13919,8 @@
             "occurrence_total": 26,
             "data_sources": [
               "File",
-              "Drive",
-              "Firmware"
+              "Firmware",
+              "Drive"
             ],
             "data_components": [
               "Drive Modification",
@@ -13946,11 +13946,11 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
-              "File",
-              "Command",
               "Process",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "File",
+              "Command"
             ],
             "data_components": [
               "Module Load",
@@ -13983,9 +13983,9 @@
                 "occurrence_software": 4,
                 "occurrence_total": 4,
                 "data_sources": [
+                  "Command",
                   "Windows Registry",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -14014,12 +14014,12 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
-              "Network Traffic",
-              "File",
-              "Command",
               "Process",
               "Module",
-              "Windows Registry"
+              "Windows Registry",
+              "Network Traffic",
+              "File",
+              "Command"
             ],
             "data_components": [
               "Network Connection Creation",
@@ -14048,9 +14048,9 @@
                 "occurrence_software": 0,
                 "occurrence_total": 2,
                 "data_sources": [
-                  "Network Traffic",
+                  "Command",
                   "Process",
-                  "Command"
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Connection Creation",
@@ -14081,8 +14081,8 @@
                 "occurrence_total": 6,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Creation",
@@ -14109,11 +14109,11 @@
                 "occurrence_software": 2,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "File",
-                  "Command",
                   "Process",
                   "Module",
-                  "Windows Registry"
+                  "Windows Registry",
+                  "File",
+                  "Command"
                 ],
                 "data_components": [
                   "File Creation",
@@ -14140,8 +14140,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -14162,9 +14162,9 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -14213,10 +14213,10 @@
                 "occurrence_software": 9,
                 "occurrence_total": 25,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
+                  "Command",
                   "Process",
-                  "Command"
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -14243,9 +14243,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 2,
                 "data_sources": [
+                  "Command",
                   "Module",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -14269,8 +14269,8 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -14323,10 +14323,10 @@
                 "occurrence_software": 19,
                 "occurrence_total": 30,
                 "data_sources": [
+                  "Command",
                   "Module",
                   "Network Traffic",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Module Load",
@@ -14351,8 +14351,8 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -14375,9 +14375,9 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
+              "Command",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "Command Execution",
@@ -14411,8 +14411,8 @@
             "occurrence_software": 2,
             "occurrence_total": 10,
             "data_sources": [
-              "Network Traffic",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Connection Creation",
@@ -14449,8 +14449,8 @@
             "occurrence_software": 11,
             "occurrence_total": 11,
             "data_sources": [
-              "Network Traffic",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -14504,8 +14504,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -14556,11 +14556,11 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Active Directory",
+              "Web Credential",
               "Application Log",
               "User Account",
               "Logon Session",
-              "Web Credential"
+              "Active Directory"
             ],
             "data_components": [
               "Application Log Content",
@@ -14635,8 +14635,8 @@
                 "occurrence_total": 17,
                 "data_sources": [
                   "User Account",
-                  "Active Directory",
-                  "Logon Session"
+                  "Logon Session",
+                  "Active Directory"
                 ],
                 "data_components": [
                   "Logon Session Creation",
@@ -14667,8 +14667,8 @@
                 "occurrence_total": 6,
                 "data_sources": [
                   "User Account",
-                  "Active Directory",
-                  "Logon Session"
+                  "Logon Session",
+                  "Active Directory"
                 ],
                 "data_components": [
                   "User Account Authentication",
@@ -14945,8 +14945,8 @@
             "occurrence_software": 17,
             "occurrence_total": 18,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -14976,8 +14976,8 @@
                 "occurrence_software": 2,
                 "occurrence_total": 4,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "OS API Execution",
@@ -15104,10 +15104,10 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
-              "Service",
               "Application Log",
-              "Windows Registry"
+              "Windows Registry",
+              "Network Traffic",
+              "Service"
             ],
             "data_components": [
               "Application Log Content",
@@ -15159,8 +15159,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Network Traffic",
-                  "Application Log"
+                  "Application Log",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Traffic Content",
@@ -15249,8 +15249,8 @@
             "occurrence_total": 19,
             "data_sources": [
               "User Account",
-              "Application Log",
-              "Command"
+              "Command",
+              "Application Log"
             ],
             "data_components": [
               "User Account Authentication",
@@ -15346,9 +15346,9 @@
             "occurrence_total": 31,
             "data_sources": [
               "File",
+              "Command",
               "Process",
-              "Cloud Service",
-              "Command"
+              "Cloud Service"
             ],
             "data_components": [
               "File Access",
@@ -15473,9 +15473,9 @@
                 "occurrence_software": 53,
                 "occurrence_total": 74,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -15514,8 +15514,8 @@
                 "occurrence_total": 13,
                 "data_sources": [
                   "File",
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "File Access",
@@ -15572,8 +15572,8 @@
             "occurrence_software": 1,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
-              "File"
+              "File",
+              "Network Traffic"
             ],
             "data_components": [
               "File Access",
@@ -15604,8 +15604,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Logon Session",
-              "Web Credential"
+              "Web Credential",
+              "Logon Session"
             ],
             "data_components": [
               "Web Credential Usage",
@@ -15638,10 +15638,10 @@
             "occurrence_software": 5,
             "occurrence_total": 6,
             "data_sources": [
-              "Driver",
               "File",
               "Windows Registry",
-              "Process"
+              "Process",
+              "Driver"
             ],
             "data_components": [
               "File Modification",
@@ -15716,15 +15716,15 @@
             "occurrence_software": 3,
             "occurrence_total": 4,
             "data_sources": [
-              "File",
-              "Active Directory",
-              "Application Log",
-              "Cloud Service",
-              "User Account",
               "Process",
+              "Application Log",
               "Module",
               "Windows Registry",
-              "Logon Session"
+              "User Account",
+              "Logon Session",
+              "Cloud Service",
+              "File",
+              "Active Directory"
             ],
             "data_components": [
               "Application Log Content",
@@ -15871,8 +15871,8 @@
             "occurrence_software": 10,
             "occurrence_total": 15,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -15912,12 +15912,12 @@
             "occurrence_software": 6,
             "occurrence_total": 15,
             "data_sources": [
+              "Process",
+              "Windows Registry",
               "Network Traffic",
               "File",
-              "Active Directory",
               "Command",
-              "Process",
-              "Windows Registry"
+              "Active Directory"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -16051,8 +16051,8 @@
                 "occurrence_software": 9,
                 "occurrence_total": 18,
                 "data_sources": [
-                  "Windows Registry",
-                  "Command"
+                  "Command",
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Windows Registry Key Access",
@@ -16135,10 +16135,10 @@
                 "occurrence_total": 59,
                 "data_sources": [
                   "File",
-                  "Command",
                   "Process",
                   "Windows Registry",
-                  "Logon Session"
+                  "Logon Session",
+                  "Command"
                 ],
                 "data_components": [
                   "Process Access",
@@ -16186,8 +16186,8 @@
                 "occurrence_software": 4,
                 "occurrence_total": 20,
                 "data_sources": [
-                  "File",
-                  "Command"
+                  "Command",
+                  "File"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -16212,8 +16212,8 @@
                 "occurrence_software": 3,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "File",
-                  "Command"
+                  "Command",
+                  "File"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -16261,9 +16261,9 @@
                 "occurrence_software": 15,
                 "occurrence_total": 25,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Windows Registry",
-                  "Command"
+                  "Windows Registry"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -16371,11 +16371,11 @@
             "occurrence_total": 3,
             "data_sources": [
               "File",
-              "Active Directory",
               "Application Log",
-              "Command",
               "Windows Registry",
-              "Logon Session"
+              "Logon Session",
+              "Command",
+              "Active Directory"
             ],
             "data_components": [
               "Command Execution",
@@ -16403,10 +16403,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
+              "Command",
               "File",
-              "Active Directory",
               "Logon Session",
-              "Command"
+              "Active Directory"
             ],
             "data_components": [
               "Command Execution",
@@ -16435,8 +16435,8 @@
                 "occurrence_software": 3,
                 "occurrence_total": 4,
                 "data_sources": [
-                  "Active Directory",
-                  "Logon Session"
+                  "Logon Session",
+                  "Active Directory"
                 ],
                 "data_components": [
                   "Active Directory Credential Request",
@@ -16529,11 +16529,11 @@
             "occurrence_total": 3,
             "data_sources": [
               "File",
-              "Application Log",
-              "Command",
-              "User Account",
               "Process",
-              "Windows Registry"
+              "Application Log",
+              "Windows Registry",
+              "User Account",
+              "Command"
             ],
             "data_components": [
               "Windows Registry Key Access",
@@ -16665,9 +16665,9 @@
                 "occurrence_software": 17,
                 "occurrence_total": 28,
                 "data_sources": [
+                  "Command",
                   "File",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -16736,8 +16736,8 @@
                 "occurrence_software": 10,
                 "occurrence_total": 14,
                 "data_sources": [
-                  "File",
-                  "Command"
+                  "Command",
+                  "File"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -16780,9 +16780,9 @@
             "occurrence_software": 3,
             "occurrence_total": 5,
             "data_sources": [
+              "Command",
               "File",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -16872,8 +16872,8 @@
             "occurrence_software": 29,
             "occurrence_total": 31,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -16914,9 +16914,9 @@
             "occurrence_software": 11,
             "occurrence_total": 15,
             "data_sources": [
+              "Command",
               "File",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -16942,9 +16942,9 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Snapshot",
               "Volume",
               "Instance",
+              "Snapshot",
               "Cloud Storage"
             ],
             "data_components": [
@@ -17053,8 +17053,8 @@
             "occurrence_software": 2,
             "occurrence_total": 3,
             "data_sources": [
-              "Pod",
-              "Container"
+              "Container",
+              "Pod"
             ],
             "data_components": [
               "Pod Enumeration",
@@ -17090,9 +17090,9 @@
             "occurrence_software": 10,
             "occurrence_total": 11,
             "data_sources": [
+              "Command",
               "Application Log",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -17120,9 +17120,9 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
+              "Command",
               "Windows Registry",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -17167,10 +17167,10 @@
             "occurrence_software": 14,
             "occurrence_total": 20,
             "data_sources": [
+              "Command",
               "Network Traffic",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "Process Creation",
@@ -17502,8 +17502,8 @@
             "occurrence_software": 261,
             "occurrence_total": 303,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -17531,11 +17531,11 @@
             "occurrence_software": 3,
             "occurrence_total": 4,
             "data_sources": [
+              "Process",
               "Network Traffic",
-              "Active Directory",
-              "Command",
               "Script",
-              "Process"
+              "Command",
+              "Active Directory"
             ],
             "data_components": [
               "Script Execution",
@@ -17568,8 +17568,8 @@
             "occurrence_total": 3,
             "data_sources": [
               "File",
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "File Access",
@@ -17652,9 +17652,9 @@
             "occurrence_software": 31,
             "occurrence_total": 54,
             "data_sources": [
+              "Command",
               "Network Traffic",
-              "Cloud Service",
-              "Command"
+              "Cloud Service"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -17737,8 +17737,8 @@
             "occurrence_software": 44,
             "occurrence_total": 57,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -17781,8 +17781,8 @@
             "occurrence_software": 10,
             "occurrence_total": 15,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -17818,8 +17818,8 @@
             "occurrence_total": 8,
             "data_sources": [
               "User Account",
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "User Account Metadata",
@@ -17891,8 +17891,8 @@
             "occurrence_software": 38,
             "occurrence_total": 46,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -17935,10 +17935,10 @@
             "occurrence_software": 6,
             "occurrence_total": 11,
             "data_sources": [
-              "Group",
+              "Command",
               "Application Log",
-              "Process",
-              "Command"
+              "Group",
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -17972,10 +17972,10 @@
                 "occurrence_software": 3,
                 "occurrence_total": 4,
                 "data_sources": [
-                  "Group",
+                  "Command",
                   "Application Log",
-                  "Process",
-                  "Command"
+                  "Group",
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -18032,9 +18032,9 @@
                 "occurrence_software": 19,
                 "occurrence_total": 29,
                 "data_sources": [
+                  "Command",
                   "Group",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Group Enumeration",
@@ -18086,9 +18086,9 @@
                 "occurrence_software": 18,
                 "occurrence_total": 25,
                 "data_sources": [
+                  "Command",
                   "Group",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "OS API Execution",
@@ -18381,8 +18381,8 @@
             "occurrence_software": 227,
             "occurrence_total": 263,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -18510,9 +18510,9 @@
             "occurrence_software": 90,
             "occurrence_total": 104,
             "data_sources": [
+              "Command",
               "Windows Registry",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -18618,10 +18618,10 @@
             "occurrence_software": 46,
             "occurrence_total": 78,
             "data_sources": [
-              "Network Traffic",
-              "File",
+              "Command",
               "Process",
-              "Command"
+              "File",
+              "Network Traffic"
             ],
             "data_components": [
               "Command Execution",
@@ -18689,9 +18689,9 @@
             "occurrence_software": 28,
             "occurrence_total": 40,
             "data_sources": [
+              "Command",
               "Process",
-              "Firewall",
-              "Command"
+              "Firewall"
             ],
             "data_components": [
               "OS API Execution",
@@ -19084,8 +19084,8 @@
             "occurrence_software": 316,
             "occurrence_total": 363,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -19123,8 +19123,8 @@
             "occurrence_software": 10,
             "occurrence_total": 11,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -19386,9 +19386,9 @@
             "occurrence_software": 200,
             "occurrence_total": 235,
             "data_sources": [
+              "Command",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "Command Execution",
@@ -19505,8 +19505,8 @@
             "occurrence_software": 59,
             "occurrence_total": 88,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -19732,12 +19732,12 @@
             "occurrence_software": 166,
             "occurrence_total": 199,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Active Directory",
-              "Command",
               "Process",
-              "Windows Registry"
+              "Network Traffic",
+              "Windows Registry",
+              "Command",
+              "Active Directory"
             ],
             "data_components": [
               "Active Directory Object Access",
@@ -19829,8 +19829,8 @@
             "occurrence_software": 47,
             "occurrence_total": 60,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -19932,8 +19932,8 @@
             "occurrence_software": 66,
             "occurrence_total": 75,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -19977,8 +19977,8 @@
             "occurrence_software": 17,
             "occurrence_total": 18,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -20008,8 +20008,8 @@
                 "occurrence_software": 2,
                 "occurrence_total": 4,
                 "data_sources": [
-                  "Process",
-                  "Command"
+                  "Command",
+                  "Process"
                 ],
                 "data_components": [
                   "OS API Execution",
@@ -20066,8 +20066,8 @@
             "occurrence_software": 13,
             "occurrence_total": 23,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -20099,8 +20099,8 @@
             "occurrence_software": 0,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -20154,12 +20154,12 @@
             "occurrence_software": 17,
             "occurrence_total": 28,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Command",
               "Process",
+              "Network Share",
+              "Network Traffic",
               "Named Pipe",
-              "Network Share"
+              "Command"
             ],
             "data_components": [
               "Named Pipe Metadata",
@@ -20188,10 +20188,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
+              "Command",
               "Process",
-              "Logon Session",
-              "Command"
+              "Network Traffic",
+              "Logon Session"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -20219,10 +20219,10 @@
                 "occurrence_software": 1,
                 "occurrence_total": 2,
                 "data_sources": [
-                  "Network Traffic",
+                  "Command",
                   "Process",
                   "Logon Session",
-                  "Command"
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Logon Session Creation",
@@ -20258,13 +20258,13 @@
             "occurrence_software": 4,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
-              "Command",
               "Process",
-              "WMI",
               "Module",
+              "Network Share",
+              "Network Traffic",
+              "WMI",
               "Logon Session",
-              "Network Share"
+              "Command"
             ],
             "data_components": [
               "Module Load",
@@ -20322,9 +20322,9 @@
                 "occurrence_software": 3,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "Network Traffic",
+                  "Process",
                   "Module",
-                  "Process"
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Connection Creation",
@@ -20392,8 +20392,8 @@
                 "occurrence_software": 16,
                 "occurrence_total": 44,
                 "data_sources": [
-                  "Network Traffic",
                   "Process",
+                  "Network Traffic",
                   "Logon Session"
                 ],
                 "data_components": [
@@ -20428,11 +20428,11 @@
                 "occurrence_software": 3,
                 "occurrence_total": 8,
                 "data_sources": [
-                  "Network Traffic",
-                  "Command",
-                  "Service",
                   "Process",
-                  "Logon Session"
+                  "Network Traffic",
+                  "Logon Session",
+                  "Command",
+                  "Service"
                 ],
                 "data_components": [
                   "Process Creation",
@@ -20485,9 +20485,9 @@
             "occurrence_software": 17,
             "occurrence_total": 24,
             "data_sources": [
-              "Drive",
               "File",
-              "Process"
+              "Process",
+              "Drive"
             ],
             "data_components": [
               "File Access",
@@ -20561,8 +20561,8 @@
             "occurrence_total": 11,
             "data_sources": [
               "File",
-              "Process",
-              "Network Share"
+              "Network Share",
+              "Process"
             ],
             "data_components": [
               "Network Share Access",
@@ -20594,11 +20594,11 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Active Directory",
+              "Web Credential",
               "Application Log",
               "User Account",
               "Logon Session",
-              "Web Credential"
+              "Active Directory"
             ],
             "data_components": [
               "Application Log Content",
@@ -20673,8 +20673,8 @@
                 "occurrence_total": 17,
                 "data_sources": [
                   "User Account",
-                  "Active Directory",
-                  "Logon Session"
+                  "Logon Session",
+                  "Active Directory"
                 ],
                 "data_components": [
                   "Logon Session Creation",
@@ -20705,8 +20705,8 @@
                 "occurrence_total": 6,
                 "data_sources": [
                   "User Account",
-                  "Active Directory",
-                  "Logon Session"
+                  "Logon Session",
+                  "Active Directory"
                 ],
                 "data_components": [
                   "User Account Authentication",
@@ -20770,10 +20770,10 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
-              "Service",
               "Application Log",
-              "Windows Registry"
+              "Windows Registry",
+              "Network Traffic",
+              "Service"
             ],
             "data_components": [
               "Application Log Content",
@@ -20825,8 +20825,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Network Traffic",
-                  "Application Log"
+                  "Application Log",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Traffic Content",
@@ -20937,10 +20937,10 @@
             "occurrence_software": 38,
             "occurrence_total": 49,
             "data_sources": [
-              "Process",
+              "Command",
               "File",
-              "Script",
-              "Command"
+              "Process",
+              "Script"
             ],
             "data_components": [
               "Command Execution",
@@ -20996,8 +20996,8 @@
             "occurrence_software": 28,
             "occurrence_total": 29,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -21079,9 +21079,9 @@
             "occurrence_software": 40,
             "occurrence_total": 55,
             "data_sources": [
+              "Command",
               "File",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "Command Execution",
@@ -21178,8 +21178,8 @@
             "occurrence_software": 34,
             "occurrence_total": 36,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -21213,8 +21213,8 @@
             "occurrence_total": 7,
             "data_sources": [
               "File",
-              "Windows Registry",
-              "Command"
+              "Command",
+              "Windows Registry"
             ],
             "data_components": [
               "File Access",
@@ -21559,10 +21559,10 @@
             "occurrence_software": 146,
             "occurrence_total": 184,
             "data_sources": [
+              "Command",
               "File",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "OS API Execution",
@@ -21601,10 +21601,10 @@
             "occurrence_software": 4,
             "occurrence_total": 11,
             "data_sources": [
-              "Network Traffic",
-              "File",
               "Command",
-              "Network Share"
+              "Network Share",
+              "File",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Share Access",
@@ -21655,8 +21655,8 @@
             "occurrence_software": 19,
             "occurrence_total": 22,
             "data_sources": [
-              "File",
-              "Command"
+              "Command",
+              "File"
             ],
             "data_components": [
               "Command Execution",
@@ -21686,11 +21686,11 @@
             "occurrence_software": 1,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
-              "File",
               "Application Log",
-              "Command",
-              "Logon Session"
+              "Network Traffic",
+              "Logon Session",
+              "File",
+              "Command"
             ],
             "data_components": [
               "Logon Session Creation",
@@ -21722,8 +21722,8 @@
                 "occurrence_software": 0,
                 "occurrence_total": 3,
                 "data_sources": [
-                  "Application Log",
-                  "Command"
+                  "Command",
+                  "Application Log"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -21800,10 +21800,10 @@
                 "occurrence_software": 4,
                 "occurrence_total": 15,
                 "data_sources": [
-                  "Network Traffic",
+                  "Command",
                   "Application Log",
-                  "Logon Session",
-                  "Command"
+                  "Network Traffic",
+                  "Logon Session"
                 ],
                 "data_components": [
                   "Application Log Content",
@@ -21839,10 +21839,10 @@
             "occurrence_software": 5,
             "occurrence_total": 6,
             "data_sources": [
-              "Driver",
               "File",
               "Windows Registry",
-              "Process"
+              "Process",
+              "Driver"
             ],
             "data_components": [
               "File Modification",
@@ -22054,8 +22054,8 @@
             "occurrence_software": 133,
             "occurrence_total": 147,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -22112,8 +22112,8 @@
             "occurrence_software": 30,
             "occurrence_total": 32,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "OS API Execution",
@@ -22663,9 +22663,9 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -23180,8 +23180,8 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
               "Internet Scan",
+              "Network Traffic",
               "Domain Name"
             ],
             "data_components": [
@@ -23638,9 +23638,9 @@
             "occurrence_software": 351,
             "occurrence_total": 428,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Command"
+              "Command",
+              "Network Traffic"
             ],
             "data_components": [
               "File Creation",
@@ -24198,8 +24198,8 @@
             "occurrence_software": 11,
             "occurrence_total": 11,
             "data_sources": [
-              "Network Traffic",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -24493,10 +24493,10 @@
             "occurrence_software": 16,
             "occurrence_total": 20,
             "data_sources": [
-              "Network Traffic",
+              "Command",
               "File",
-              "Script",
-              "Command"
+              "Network Traffic",
+              "Script"
             ],
             "data_components": [
               "Command Execution",
@@ -24603,11 +24603,11 @@
             "occurrence_software": 7,
             "occurrence_total": 8,
             "data_sources": [
-              "Network Traffic",
               "File",
               "Application Log",
-              "Command",
-              "Cloud Storage"
+              "Network Traffic",
+              "Cloud Storage",
+              "Command"
             ],
             "data_components": [
               "Cloud Storage Access",
@@ -24667,9 +24667,9 @@
                 "occurrence_software": 20,
                 "occurrence_total": 29,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
-                  "Command"
+                  "Command",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Traffic Flow",
@@ -24844,9 +24844,9 @@
             "occurrence_software": 126,
             "occurrence_total": 145,
             "data_sources": [
-              "Network Traffic",
+              "Command",
               "File",
-              "Command"
+              "Network Traffic"
             ],
             "data_components": [
               "Command Execution",
@@ -24872,9 +24872,9 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Command"
+              "Command",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -24902,9 +24902,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Network Traffic",
+                  "Command",
                   "File",
-                  "Command"
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Traffic Flow",
@@ -24932,10 +24932,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Drive",
               "File",
+              "Command",
               "Process",
-              "Command"
+              "Drive"
             ],
             "data_components": [
               "File Access",
@@ -24971,10 +24971,10 @@
             "occurrence_software": 3,
             "occurrence_total": 6,
             "data_sources": [
-              "Network Traffic",
-              "File",
+              "Command",
               "Application Log",
-              "Command"
+              "File",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -25004,10 +25004,10 @@
                 "occurrence_software": 0,
                 "occurrence_total": 0,
                 "data_sources": [
-                  "Network Traffic",
-                  "File",
+                  "Command",
                   "Application Log",
-                  "Command"
+                  "File",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Application Log Content",
@@ -25066,9 +25066,9 @@
                 "occurrence_software": 12,
                 "occurrence_total": 31,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
-                  "Command"
+                  "Command",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Traffic Content",
@@ -25096,9 +25096,9 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Network Traffic",
+                  "Command",
                   "File",
-                  "Command"
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -25192,9 +25192,9 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Snapshot",
-              "Network Traffic",
               "Application Log",
+              "Network Traffic",
+              "Snapshot",
               "Cloud Storage"
             ],
             "data_components": [
@@ -25292,14 +25292,14 @@
             "occurrence_software": 19,
             "occurrence_total": 24,
             "data_sources": [
-              "Image",
-              "File",
-              "Command",
               "Process",
-              "Instance",
-              "Cloud Storage",
+              "Command",
               "Snapshot",
-              "Volume"
+              "Cloud Storage",
+              "Volume",
+              "File",
+              "Image",
+              "Instance"
             ],
             "data_components": [
               "Snapshot Deletion",
@@ -25387,11 +25387,11 @@
             "occurrence_software": 45,
             "occurrence_total": 55,
             "data_sources": [
-              "File",
-              "Command",
               "Process",
+              "Network Share",
               "Cloud Storage",
-              "Network Share"
+              "File",
+              "Command"
             ],
             "data_components": [
               "File Modification",
@@ -25484,9 +25484,9 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -25519,9 +25519,9 @@
                 "occurrence_software": 4,
                 "occurrence_total": 6,
                 "data_sources": [
-                  "Network Traffic",
                   "File",
-                  "Application Log"
+                  "Application Log",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "File Creation",
@@ -25549,10 +25549,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Drive",
               "Driver",
+              "Command",
               "Process",
-              "Command"
+              "Drive"
             ],
             "data_components": [
               "Driver Load",
@@ -25589,10 +25589,10 @@
                 "occurrence_software": 7,
                 "occurrence_total": 8,
                 "data_sources": [
-                  "Drive",
                   "Driver",
+                  "Command",
                   "Process",
-                  "Command"
+                  "Drive"
                 ],
                 "data_components": [
                   "Drive Modification",
@@ -25631,8 +25631,8 @@
             "occurrence_software": 2,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
               "Application Log",
+              "Network Traffic",
               "Sensor Health"
             ],
             "data_components": [
@@ -25760,12 +25760,12 @@
             "occurrence_total": 36,
             "data_sources": [
               "File",
-              "Command",
-              "Service",
               "Process",
-              "Cloud Storage",
+              "Windows Registry",
               "Snapshot",
-              "Windows Registry"
+              "Cloud Storage",
+              "Command",
+              "Service"
             ],
             "data_components": [
               "Process Creation",
@@ -25845,11 +25845,11 @@
             "occurrence_software": 9,
             "occurrence_total": 13,
             "data_sources": [
-              "Network Traffic",
-              "File",
-              "Command",
               "Process",
-              "Sensor Health"
+              "Network Traffic",
+              "Sensor Health",
+              "File",
+              "Command"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -25914,10 +25914,10 @@
             "occurrence_total": 34,
             "data_sources": [
               "File",
-              "Command",
-              "Service",
               "Process",
-              "Windows Registry"
+              "Windows Registry",
+              "Command",
+              "Service"
             ],
             "data_components": [
               "Process Creation",
@@ -48829,10 +48829,10 @@
             "occurrence_software": 1,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
-              "File",
+              "Process",
               "Application Log",
-              "Process"
+              "File",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -48858,8 +48858,8 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Application Log Content",
@@ -48885,8 +48885,8 @@
             "occurrence_software": 4,
             "occurrence_total": 4,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Application Log Content",
@@ -48909,8 +48909,8 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
-              "Network Traffic",
               "Application Log",
+              "Network Traffic",
               "Logon Session"
             ],
             "data_components": [
@@ -48965,12 +48965,12 @@
             "occurrence_software": 3,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
-              "Command",
               "Process",
               "Module",
+              "Network Share",
+              "Network Traffic",
               "Logon Session",
-              "Network Share"
+              "Command"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -48999,9 +48999,9 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
-              "Drive",
               "File",
-              "Process"
+              "Process",
+              "Drive"
             ],
             "data_components": [
               "Process Creation",
@@ -49024,10 +49024,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Asset",
+              "Application Log",
               "Operational Databases",
               "Network Traffic",
-              "Application Log"
+              "Asset"
             ],
             "data_components": [
               "Asset Inventory",
@@ -49059,10 +49059,10 @@
             "occurrence_software": 2,
             "occurrence_total": 6,
             "data_sources": [
-              "Network Traffic",
               "File",
               "Application Log",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "Process Creation",
@@ -49110,8 +49110,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -49132,8 +49132,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
               "Application Log",
+              "Network Traffic",
               "Logon Session"
             ],
             "data_components": [
@@ -49162,8 +49162,8 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
-              "Drive",
-              "Process"
+              "Process",
+              "Drive"
             ],
             "data_components": [
               "Drive Creation",
@@ -49188,9 +49188,9 @@
             "occurrence_software": 3,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Application Log"
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -49218,9 +49218,9 @@
             "occurrence_software": 2,
             "occurrence_total": 4,
             "data_sources": [
+              "Command",
               "Application Log",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -49266,10 +49266,10 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
+              "Command",
               "Module",
               "Process",
-              "Logon Session",
-              "Command"
+              "Logon Session"
             ],
             "data_components": [
               "Process Creation",
@@ -49320,9 +49320,9 @@
             "occurrence_software": 3,
             "occurrence_total": 3,
             "data_sources": [
-              "Asset",
+              "Application Log",
               "Operational Databases",
-              "Application Log"
+              "Asset"
             ],
             "data_components": [
               "Application Log Content",
@@ -49376,10 +49376,10 @@
             "occurrence_software": 2,
             "occurrence_total": 6,
             "data_sources": [
+              "Command",
               "Module",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "Command Execution",
@@ -49408,11 +49408,11 @@
             "occurrence_software": 4,
             "occurrence_total": 4,
             "data_sources": [
-              "Network Traffic",
               "File",
+              "Process",
               "Application Log",
-              "Command",
-              "Process"
+              "Network Traffic",
+              "Command"
             ],
             "data_components": [
               "Command Execution",
@@ -49471,10 +49471,10 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Asset",
-              "Application Log"
+              "Network Traffic",
+              "Asset"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -49497,10 +49497,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Firmware",
-              "Application Log"
+              "Network Traffic",
+              "Firmware"
             ],
             "data_components": [
               "Device Alarm",
@@ -49550,9 +49550,9 @@
             "occurrence_total": 2,
             "data_sources": [
               "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Firmware",
-              "Application Log"
+              "Firmware"
             ],
             "data_components": [
               "Device Alarm",
@@ -49669,9 +49669,9 @@
             "occurrence_software": 3,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Application Log"
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -49720,10 +49720,10 @@
             "occurrence_software": 2,
             "occurrence_total": 3,
             "data_sources": [
+              "Command",
               "File",
               "Windows Registry",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -49757,11 +49757,11 @@
             "occurrence_software": 4,
             "occurrence_total": 5,
             "data_sources": [
+              "Process",
+              "Scheduled Job",
               "File",
               "Command",
-              "Service",
-              "Process",
-              "Scheduled Job"
+              "Service"
             ],
             "data_components": [
               "Service Creation",
@@ -49810,8 +49810,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
               "Operational Databases",
+              "Network Traffic",
               "Windows Registry"
             ],
             "data_components": [
@@ -49837,9 +49837,9 @@
             "occurrence_software": 0,
             "occurrence_total": 1,
             "data_sources": [
+              "Command",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "Script Execution",
@@ -49870,9 +49870,9 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
+              "Command",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "Command Execution",
@@ -49899,8 +49899,8 @@
             "occurrence_software": 3,
             "occurrence_total": 3,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Process Creation",
@@ -49929,9 +49929,9 @@
             "occurrence_software": 5,
             "occurrence_total": 6,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "File Access",
@@ -49960,9 +49960,9 @@
             "occurrence_software": 5,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
               "File",
-              "Process"
+              "Process",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -50040,8 +50040,8 @@
             "occurrence_software": 4,
             "occurrence_total": 4,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Application Log Content",
@@ -50096,11 +50096,11 @@
             "occurrence_software": 5,
             "occurrence_total": 7,
             "data_sources": [
+              "Process",
+              "Network Share",
               "Network Traffic",
               "File",
-              "Command",
-              "Process",
-              "Network Share"
+              "Command"
             ],
             "data_components": [
               "Network Share Access",
@@ -50133,10 +50133,10 @@
             "occurrence_software": 4,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Asset",
-              "Application Log"
+              "Network Traffic",
+              "Asset"
             ],
             "data_components": [
               "Device Alarm",
@@ -50166,12 +50166,12 @@
             "occurrence_software": 3,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
-              "Command",
               "Process",
               "Module",
+              "Network Share",
+              "Network Traffic",
               "Logon Session",
-              "Network Share"
+              "Command"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -50238,11 +50238,11 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
-              "Application Log",
-              "Service",
               "Process",
-              "Windows Registry"
+              "Application Log",
+              "Network Traffic",
+              "Windows Registry",
+              "Service"
             ],
             "data_components": [
               "Windows Registry Key Modification",
@@ -50271,10 +50271,10 @@
             "occurrence_software": 3,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
+              "Command",
               "File",
-              "Script",
-              "Command"
+              "Network Traffic",
+              "Script"
             ],
             "data_components": [
               "Script Execution",
@@ -50299,9 +50299,9 @@
             "occurrence_software": 1,
             "occurrence_total": 1,
             "data_sources": [
+              "Network Share",
               "Application Log",
-              "Logon Session",
-              "Network Share"
+              "Logon Session"
             ],
             "data_components": [
               "Logon Session Creation",
@@ -50328,9 +50328,9 @@
             "occurrence_total": 3,
             "data_sources": [
               "File",
+              "Command",
               "Process",
-              "Script",
-              "Command"
+              "Script"
             ],
             "data_components": [
               "File Access",
@@ -50402,8 +50402,8 @@
             "occurrence_software": 3,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -50427,8 +50427,8 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -50452,8 +50452,8 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
-              "Application Log"
+              "Application Log",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -50478,8 +50478,8 @@
             "occurrence_software": 0,
             "occurrence_total": 2,
             "data_sources": [
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -50615,9 +50615,9 @@
             "occurrence_software": 1,
             "occurrence_total": 1,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Application Log"
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -50639,8 +50639,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
-              "Operational Databases"
+              "Operational Databases",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -50668,8 +50668,8 @@
             "occurrence_total": 2,
             "data_sources": [
               "Network Traffic",
-              "Operational Databases",
               "Application Log",
+              "Operational Databases",
               "Process"
             ],
             "data_components": [
@@ -50699,8 +50699,8 @@
             "occurrence_total": 2,
             "data_sources": [
               "Network Traffic",
-              "Operational Databases",
               "Application Log",
+              "Operational Databases",
               "Process"
             ],
             "data_components": [
@@ -50729,10 +50729,10 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
-              "Operational Databases",
+              "Process",
               "Application Log",
-              "Process"
+              "Operational Databases",
+              "Network Traffic"
             ],
             "data_components": [
               "Process/Event Alarm",
@@ -50756,8 +50756,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
-              "Operational Databases"
+              "Operational Databases",
+              "Network Traffic"
             ],
             "data_components": [
               "Device Alarm",
@@ -50783,8 +50783,8 @@
             "occurrence_total": 3,
             "data_sources": [
               "File",
-              "Process",
-              "Command"
+              "Command",
+              "Process"
             ],
             "data_components": [
               "File Modification",
@@ -50814,9 +50814,9 @@
             "occurrence_software": 3,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Application Log"
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -50843,9 +50843,9 @@
             "occurrence_software": 1,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Application Log"
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -50891,10 +50891,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Asset",
+              "Application Log",
               "Operational Databases",
               "Network Traffic",
-              "Application Log"
+              "Asset"
             ],
             "data_components": [
               "Application Log Content",
@@ -50945,11 +50945,11 @@
             "occurrence_software": 5,
             "occurrence_total": 5,
             "data_sources": [
+              "Process",
+              "Windows Registry",
               "File",
               "Command",
-              "Service",
-              "Process",
-              "Windows Registry"
+              "Service"
             ],
             "data_components": [
               "File Modification",
@@ -50980,9 +50980,9 @@
             "occurrence_total": 2,
             "data_sources": [
               "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Firmware",
-              "Application Log"
+              "Firmware"
             ],
             "data_components": [
               "Device Alarm",
@@ -51014,9 +51014,9 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Application Log"
+              "Network Traffic"
             ],
             "data_components": [
               "Process History/Live Data",
@@ -51042,10 +51042,10 @@
             "occurrence_software": 3,
             "occurrence_total": 3,
             "data_sources": [
-              "Asset",
+              "Application Log",
               "Operational Databases",
               "Network Traffic",
-              "Application Log"
+              "Asset"
             ],
             "data_components": [
               "Asset Inventory",
@@ -51068,10 +51068,10 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Firmware",
-              "Application Log"
+              "Network Traffic",
+              "Firmware"
             ],
             "data_components": [
               "Device Alarm",
@@ -51094,8 +51094,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
               "Operational Databases",
+              "Network Traffic",
               "Windows Registry"
             ],
             "data_components": [
@@ -51126,9 +51126,9 @@
             "occurrence_software": 3,
             "occurrence_total": 5,
             "data_sources": [
-              "Network Traffic",
+              "Application Log",
               "Operational Databases",
-              "Application Log"
+              "Network Traffic"
             ],
             "data_components": [
               "Process History/Live Data",
@@ -52999,9 +52999,9 @@
             "occurrence_software": 1,
             "occurrence_total": 1,
             "data_sources": [
+              "Command",
               "Application Vetting",
-              "Process",
-              "Command"
+              "Process"
             ],
             "data_components": [
               "Command Execution",
@@ -53033,9 +53033,9 @@
                 "occurrence_software": 7,
                 "occurrence_total": 7,
                 "data_sources": [
+                  "Command",
                   "Application Vetting",
-                  "Process",
-                  "Command"
+                  "Process"
                 ],
                 "data_components": [
                   "Command Execution",
@@ -53525,8 +53525,8 @@
             "occurrence_software": 37,
             "occurrence_total": 38,
             "data_sources": [
-              "Network Traffic",
-              "Application Vetting"
+              "Application Vetting",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Communication",
@@ -54854,8 +54854,8 @@
             "occurrence_software": 2,
             "occurrence_total": 2,
             "data_sources": [
-              "Network Traffic",
-              "Application Vetting"
+              "Application Vetting",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Content",
@@ -54948,9 +54948,9 @@
             "occurrence_software": 3,
             "occurrence_total": 3,
             "data_sources": [
-              "Network Traffic",
               "User Interface",
-              "Application Vetting"
+              "Application Vetting",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Connection Creation",
@@ -55967,8 +55967,8 @@
             "occurrence_software": 7,
             "occurrence_total": 7,
             "data_sources": [
-              "Network Traffic",
-              "Application Vetting"
+              "Application Vetting",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Traffic Flow",
@@ -56052,8 +56052,8 @@
             "occurrence_software": 0,
             "occurrence_total": 0,
             "data_sources": [
-              "Network Traffic",
-              "Application Vetting"
+              "Application Vetting",
+              "Network Traffic"
             ],
             "data_components": [
               "Network Communication",
@@ -56077,8 +56077,8 @@
                 "occurrence_software": 1,
                 "occurrence_total": 1,
                 "data_sources": [
-                  "Network Traffic",
-                  "Application Vetting"
+                  "Application Vetting",
+                  "Network Traffic"
                 ],
                 "data_components": [
                   "Network Communication",
@@ -56228,9 +56228,9 @@
             "occurrence_software": 1,
             "occurrence_total": 1,
             "data_sources": [
+              "Command",
               "User Interface",
-              "Application Vetting",
-              "Command"
+              "Application Vetting"
             ],
             "data_components": [
               "System Settings",

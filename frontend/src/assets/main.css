@@ -11,7 +11,7 @@
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: rgb(32, 248, 176);
   transition: 0.1s;
   padding: 3px;
 }
