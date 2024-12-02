@@ -112,9 +112,9 @@ const addGroupFromSearch = () => {
 }
 
 .title-box {
-  background-color: #bbb;
+  background-color: #999;
   color: white;
-  border: 2px dotted #888;
+  border: 2px dotted #777;
   padding: 2px 8px;
   border-radius: 4px;
   height: 26px;

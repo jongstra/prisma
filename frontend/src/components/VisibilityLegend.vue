@@ -1,6 +1,8 @@
 <template>
-  <div class="legend-box">
-    <h3>Legend: Visibility</h3>
+  <div class="legend-container">
+    <div class="title-box">
+      <p>Legend: Visibility</p>
+    </div>
     <div class="legend-items">
       <div v-for="item in legendItems" :key="item.range" class="legend-item">
         <button
@@ -52,7 +54,7 @@ const legendItems = ref([
 </script>
 
 <style scoped>
-.legend-box {
+.legend-container {
   border: 2px solid black;
   padding: 5px;
   border-radius: 5px;
@@ -64,10 +66,18 @@ const legendItems = ref([
   width: 250px;
 }
 
-.legend-box h3 {
-  margin: 0;
-  margin-bottom: 3px;
-  font-size: 14px;
+.title-box {
+  background-color: #999;
+  color: white;
+  border: 2px dotted #777;
+  padding: 2px 6px;
+  margin-top: -1px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
 }
 
 .legend-items {
