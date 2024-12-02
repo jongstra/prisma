@@ -14,7 +14,7 @@ const searchQuery = computed({
 
 <template>
   <div class="search-bar">
-    <input v-model="searchQuery" type="text" placeholder="Filter Techniques..." />
+    <input v-model="searchQuery" type="text" placeholder="Search Techniques..." />
   </div>
 </template>
 
