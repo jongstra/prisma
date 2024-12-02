@@ -82,7 +82,7 @@ const getTooltipText = () => {
     : 'No Subtechniques';
 
   const groups_string = props.technique.groups.length > 0 
-    ? `Groups<br>`
+    ? `Groups:`
     : "No Groups";
 
   let components_string = '';
@@ -92,26 +92,25 @@ const getTooltipText = () => {
   props.technique.data_components.forEach((component) => {
     if (visible_components.includes(component)) {
       visible_components_count += 1;
-      components_string += `- ${component}<br>`;
+      components_string += `<br>- ${component}`;
     } 
   });
   components_string = `(${visible_components_count} of ${total_components_detecting_technique})` +
-                        ((components_string.length > 0) ? ':' : '') + `<br>` + components_string;
+                        ((components_string.length > 0) ? ':' : '') + components_string;
 
-  return `
-      ${props.technique.name}<br><br>
+  return `${props.technique.name}<br>
       ID: <a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.external_id}</a>
-      <br>----<br>
+      ----
       ${subtechniques_string}
-      <br>----<br>
-      <div>Nr groups using: ${props.technique.occurrence_groups}</div>
-      <div>Nr software using: ${props.technique.occurrence_software}</div>
-      <div>Total occurrence: ${props.technique.occurrence_total}</div>
-      ----<br>
-      <div>Components visible ${components_string}</div>
-      ----<br>
+      ----
+      Nr groups using: ${props.technique.occurrence_groups}
+      Nr software using: ${props.technique.occurrence_software}
+      Total occurrence: ${props.technique.occurrence_total}
+      ----
+      Components visible ${components_string}
+      ----
       ${groups_string}
-  `.replace(/\s+/g, ' ').trim();
+  `
 };
 
 
