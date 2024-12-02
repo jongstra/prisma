@@ -130,12 +130,11 @@ onBeforeUnmount(() => {
   font-size: 16px;
   border: 2px solid #333;
   border-radius: 5px;
-  /* width: 120%; */
   background-color: rgba(10, 10, 10, 0.35);
   color: white;
   transition: 0.1s;
   width: 150px;
-  height: 30px;
+  height: 38px;
 }
 
 .collapsible-title {
