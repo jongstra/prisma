@@ -56,6 +56,7 @@ interface Domain {
   data_components: Attributes;
   groups: Attributes;
   softwares: Attributes;
+  only_show_selected_groups: false,
 }
 
 interface TacticStats {

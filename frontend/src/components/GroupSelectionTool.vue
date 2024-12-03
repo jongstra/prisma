@@ -32,6 +32,18 @@ const clearAllSelections = () => {
   domain.value.groups.forEach(group => delete group.selected);
 };
 
+// Function to clear selections with confirmation.
+const confirmClearAllSelections = () => {
+  if (selectedGroups.value.length === 0) {
+    // No selected groups, do nothing
+    return;
+  }
+
+  if (confirm('Are you sure you want to clear all selections?')) {
+    clearAllSelections();
+  }
+};
+
 // Search field functionality
 const searchQuery = ref('');
 const filteredGroups = computed(() => {
@@ -47,18 +59,29 @@ const selectGroup = (group: { id: string, name: string }) => {
   searchQuery.value = ''; // Clear the search query after selection
 };
 
-// Function to add a new group (assuming you have a way to create groups)
-const addGroup = (newGroupName: string) => {
-  domain.value.groups.push({ id: Date.now().toString(), name: newGroupName, selected: false });
-};
-
-// Example of adding a group when search query matches an existing one
+// Function to add a group from search (only if it exists)
 const addGroupFromSearch = () => {
-  if (searchQuery.value && !domain.value.groups.some(group => group.name.toLowerCase() === searchQuery.value.toLowerCase())) {
-    addGroup(searchQuery.value);
-    searchQuery.value = '';
+  const existingGroup = domain.value.groups.find(group =>
+    group.name.toLowerCase() === searchQuery.value.toLowerCase()
+  );
+  if (existingGroup) {
+    selectGroup(existingGroup);
   }
 };
+
+// Computed property to get and set the only_show_selected_groups value
+const onlyShowSelectedGroups = computed({
+  get: () => domain.value.only_show_selected_groups,
+  set: (value) => {
+    if (store.domain === 'enterprise-attack') {
+      store.enterprise.only_show_selected_groups = value;
+    } else if (store.domain === 'mobile-attack') {
+      store.mobile.only_show_selected_groups = value;
+    } else if (store.domain === 'ics-attack') {
+      store.ics.only_show_selected_groups = value;
+    }
+  },
+});
 </script>
 
 <template>
@@ -68,7 +91,11 @@ const addGroupFromSearch = () => {
         <p>Groups</p>
       </div>
       <input class='group-search-box' v-model="searchQuery" placeholder="Search groups..." @keydown.enter="addGroupFromSearch" />
-      <button class='clear-all-button' @click="clearAllSelections">Clear</button>
+      <button class='clear-all-button' @click="confirmClearAllSelections">Clear</button>
+      <label class="toggle-label">
+        <input type="checkbox" v-model="onlyShowSelectedGroups" />
+        <span class="toggle-switch"></span>
+      </label>
     </div>
     <div v-if="filteredGroups.length && searchQuery" class="suggestions">
       <div 
@@ -91,7 +118,6 @@ const addGroupFromSearch = () => {
     </div>
   </div>
 </template>
-
 <style scoped>
 .group-container {
   padding: 2px;
@@ -99,7 +125,7 @@ const addGroupFromSearch = () => {
   border: 2px solid #555;
   border-radius: 5px;
   background-color: #ddd;
-  width: 510px;
+  width: 350px;
   height: 70px;
   position: relative; /* Ensure absolute positioning is relative to this container */
 }
@@ -130,7 +156,7 @@ input {
   border-radius: 4px;
   height: 26px;
   font-size: 13.3px;
-  min-width: 100px;
+  min-width: 180px;
 }
 
 button {
@@ -209,4 +235,47 @@ button::before {
   overflow-y: auto; /* Add vertical scrollbar only to this div */
 }
 
+/* Toggle switch styles */
+.toggle-label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggle-switch {
+  position: absolute;
+  top: -1px; /* Adjusted for vertical alignment */
+  left: 5px;
+  width: 36px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: .4s;
+}
+
+.toggle-switch:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+.toggle-label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-label input:checked + .toggle-switch {
+  background-color: #2196F3;
+}
+
+.toggle-label input:checked + .toggle-switch:before {
+  transform: translateX(16px);
+}
 </style>

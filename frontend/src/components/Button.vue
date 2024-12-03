@@ -153,7 +153,14 @@ const showButton = computed(() => {
     props.technique.occurrence_total >= store.minTotalOccurrences
   );
 
-  return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult;
+  // When the group tool mask toggle (domain.only_show_selected_groups) is switch to 'true', we want to hide all techniques that are not covered by the selected groups.
+  let groupMaskFilterResult = (
+    !(domain.only_show_selected_groups && !store.selectedGroupsTechniquesSet.has(props.technique.name))
+  );
+
+  // console.log(groupMaskFilterResult);
+
+  return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult && groupMaskFilterResult;
 });
 
 const occursInHoveredGroups = () => {
