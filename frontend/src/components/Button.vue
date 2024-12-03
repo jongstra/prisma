@@ -18,16 +18,10 @@ if (store.domain === 'enterprise-attack') {
   domain = reactive(store.ics);
 }
 
-// Calculate the tooltip position, and update it when the button location would be modified.
+// Set variables to define the tooltip position.
 const buttonRef = ref<HTMLElement | null>(null);
 let tooltipPosition = ref({ top: 0, left: 0 });
-watch(buttonRef, (buttonRef) => {
-  if (buttonRef) {
-    const buttonRect = buttonRef.getBoundingClientRect();
-    tooltipPosition.value.top = buttonRect.bottom - 270; // Position below the button
-    tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 72; // Center the tooltip horizontally
-  }
-});
+
 
 // Watch for changes in store.pinnedTooltipId
 watch(() => store.pinnedTooltipId, (newPinnedTooltipId) => {
@@ -44,11 +38,16 @@ const toggleTooltipPinning = () => {
   }
 };
 
+// Update the tooltip position and show the tooltip.
 const showTooltip = () => {
-  if (store.pinnedTooltipId === '' && buttonRef) {
+  if (store.pinnedTooltipId === '' && buttonRef.value) {
+    const buttonRect = buttonRef.value.getBoundingClientRect();
+    tooltipPosition.value.top = buttonRect.bottom - 270; // Position below the button
+    tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 72; // Center the tooltip horizontally
     showTooltipBool.value = true;
   }
 };
+
 
 const hideTooltip = () => {
   if (store.pinnedTooltipId === '') {
