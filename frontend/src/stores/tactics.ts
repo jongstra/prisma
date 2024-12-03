@@ -341,49 +341,57 @@ export const tacticsStore = defineStore('tactics', {
       // Loop over all tactics/techniques/subtechniques in the Pinia store to update their visibility and alpha.
       tactics.forEach((tactic: object) => {
 
-        // Update all techniques.
+        // Update the visibility properties of all techniques.
         tactic.techniques.forEach( (technique: object) => {
-
-          // OPTION: dont use 'some', but compute a coverage statistic that can be added to the technique (also add to subtechnique!)
-          let check = technique.data_components.some(component => active_data_components.includes(component));
-          if (check) {
-            technique.visibility = true;
-            technique.visibility_ratio = 1;
-          }
-
-          // const active_data_components_set = new Set(active_data_components)
-          // const intersection_technique = Array.from(active_data_components_set).filter(x =>  technique.data_components.includes(x));
-          // console.log(intersection_technique);
-          // if (intersection_technique.length > 0){
-          //   technique.visibility = true;
-          //   technique.visibility_ratio = 1;
-          // }
-
-          // Update all sub-techniques, as well as the alpha values of their parent techniques. 
-          if (typeof technique.sub_techniques !== "undefined") {
-            let total_sub_techniques_visible = 0;
-            technique.sub_techniques.forEach( (sub_technique: Array) => {
-
-              let check2 = sub_technique.data_components.some(component => active_data_components.includes(component));
-              if (check2){
-                sub_technique.visibility = true;
-                total_sub_techniques_visible += 1;
-              }
-              // const intersection_subtechnique = Array.from(active_data_components_set).filter(x =>  sub_technique.data_components.includes(x));
-              // if (intersection_subtechnique.length > 0){
-              //   sub_technique.visibility = true;
-              //   total_sub_techniques_visible= 1;
-              // }
-
-            });
-            technique.visibility_ratio = (technique.visibility_ratio + total_sub_techniques_visible) / (technique.visibility_ratio + technique.sub_techniques.length);
-
-          }
-
+          const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
+          technique.visibility = matchingComponents.length > 0;
+          technique.visibility_ratio = matchingComponents.length / technique.data_components.length;
         })
 
-      })
 
+        // // Old visibility computation, using subtechnique visibility.
+        // // Update the visibility properties of all techniques.
+        // tactic.techniques.forEach( (technique: object) => {
+        //   // OPTION: dont use 'some', but compute a coverage statistic that can be added to the technique (also add to subtechnique!)
+        //   let check = technique.data_components.some(component => active_data_components.includes(component));
+        //   if (check) {
+        //     technique.visibility = true;
+        //     technique.visibility_ratio = 1;
+        //   }
+
+        //   // const active_data_components_set = new Set(active_data_components)
+        //   // const intersection_technique = Array.from(active_data_components_set).filter(x =>  technique.data_components.includes(x));
+        //   // console.log(intersection_technique);
+        //   // if (intersection_technique.length > 0){
+        //   //   technique.visibility = true;
+        //   //   technique.visibility_ratio = 1;
+        //   // }
+
+        //   // Update all sub-techniques, as well as the alpha values of their parent techniques. 
+        //   if (typeof technique.sub_techniques !== "undefined") {
+        //     let total_sub_techniques_visible = 0;
+        //     technique.sub_techniques.forEach( (sub_technique: Array) => {
+
+        //       let check2 = sub_technique.data_components.some(component => active_data_components.includes(component));
+        //       if (check2){
+        //         sub_technique.visibility = true;
+        //         total_sub_techniques_visible += 1;
+        //       }
+        //       // const intersection_subtechnique = Array.from(active_data_components_set).filter(x =>  sub_technique.data_components.includes(x));
+        //       // if (intersection_subtechnique.length > 0){
+        //       //   sub_technique.visibility = true;
+        //       //   total_sub_techniques_visible= 1;
+        //       // }
+
+        //     });
+        //     technique.visibility_ratio = (technique.visibility_ratio + total_sub_techniques_visible) / (technique.visibility_ratio + technique.sub_techniques.length);
+        //   }
+
+        // })
+
+
+
+      })
       
     },
 

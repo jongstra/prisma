@@ -241,17 +241,17 @@ button.pinned {
   transform: translate(1px, -2px); /* Move button slightly to the right and upwards on hover */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7); /* Add a shadow */
   filter: brightness(0.88); /* Slightly darken the button on hover */
-  outline: 2px solid rgb(57, 55, 139);  /* Change the border color on hover */
+  outline: 3px solid rgb(57, 55, 139);  /* Change the border color on hover */
 }
 
 button.occurs-in-selected-groups {
   border: 2px solid rgb(255, 0, 0);  /* Change the border color on group select */
-  /* box-shadow: 0 0 10px 5px rgba(0,0,0,0.5); */
 }
 
+/* TODO: Change this so the box-shadow itself is always in front of other buttons (in terms of z-index). */
 button.occurs-in-hovered-groups {
-  /* border: 2px solid rgb(255, 192, 1); */
-  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+  box-shadow: 0 0 8px 5px rgba(255, 174, 0, 1);
+  z-index: 1001;
 }
 
 .buttontext {
