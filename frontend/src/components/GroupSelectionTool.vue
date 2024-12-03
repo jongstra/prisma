@@ -240,12 +240,13 @@ button::before {
   position: relative;
   display: inline-block;
   cursor: pointer;
+  width: 40px;
 }
 
 .toggle-switch {
   position: absolute;
   top: -1px; /* Adjusted for vertical alignment */
-  left: 5px;
+  left: 3px;
   width: 36px;
   height: 20px;
   background-color: #ccc;
