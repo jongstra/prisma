@@ -44,7 +44,7 @@ const toggleTooltipPinning = () => {
   }
 };
 
-// Update the tooltip position and show the tooltip (seems superfluous, but seems to improve consistent tooltip behavior).
+// Update the tooltip position and show the tooltip (looks superfluous, but seems to improve consistent tooltip behavior).
 const showTooltip = () => {
   if (store.pinnedTooltipId === '' && buttonRef.value) {
     const buttonRect = buttonRef.value.getBoundingClientRect();
