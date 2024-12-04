@@ -346,7 +346,8 @@ export const tacticsStore = defineStore('tactics', {
         tactic.techniques.forEach( (technique: object) => {
           const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
           technique.visibility = matchingComponents.length > 0;
-          technique.visibility_ratio = matchingComponents.length / technique.data_components.length;
+          if (technique.data_components.length === 0) {technique.visibility_ratio = 0;}
+          else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
         })
 
 
