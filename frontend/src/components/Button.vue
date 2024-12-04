@@ -21,13 +21,33 @@ if (store.domain === 'enterprise-attack') {
 // Calculate the tooltip position, and update it when the button location would be modified.
 const buttonRef = ref<HTMLElement | null>(null);
 let tooltipPosition = ref({ top: 0, left: 0 });
-watch(buttonRef, (buttonRef) => {
-  if (buttonRef) {
-    const buttonRect = buttonRef.getBoundingClientRect();
-    tooltipPosition.value.top = buttonRect.bottom - 270; // Position below the button
-    tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 72; // Center the tooltip horizontally
+
+// Function to calculate the cumulative scroll positions of all ancestors.
+const calculateScroll = (e) => {
+  if (e && e.parentNode) {
+    const [scrollTop, scrollLeft] = calculateScroll(e.parentNode);
+    return [(e.scrollTop || 0) + scrollTop, (e.scrollLeft || 0) + scrollLeft];
+  } else {
+    return [0, 0];
   }
-});
+};
+
+// Update the tooltip position relative to the document.
+const updateTooltipPosition = () => {
+  // The !(store.pinnedTooltipId === id) part keeps the tooltip in place after making it visible.
+  // Without this part of the check, the tooltip would move due to the changed location
+  // caused by the hover translate effect.
+  if ((buttonRef.value) && !(store.pinnedTooltipId === id)) {
+    const buttonRect = buttonRef.value.getBoundingClientRect();
+    const [scrollTop, scrollLeft] = calculateScroll(buttonRef.value);
+
+    // Adjust tooltip position to be relative to the document
+    tooltipPosition.value.top = buttonRect.bottom + scrollTop - 270; // Position below the button
+    tooltipPosition.value.left = buttonRect.left + scrollLeft; // Position the tooltip horizontally
+
+    console.log(tooltipPosition.value.top, tooltipPosition.value.left);
+  }
+};
 
 // Watch for changes in store.pinnedTooltipId
 watch(() => store.pinnedTooltipId, (newPinnedTooltipId) => {
@@ -44,16 +64,14 @@ const toggleTooltipPinning = () => {
   }
 };
 
-// Update the tooltip position and show the tooltip (looks superfluous, but seems to improve consistent tooltip behavior).
 const showTooltip = () => {
-  if (store.pinnedTooltipId === '' && buttonRef.value) {
-    const buttonRect = buttonRef.value.getBoundingClientRect();
-    tooltipPosition.value.top = buttonRect.bottom - 270; // Position below the button
-    tooltipPosition.value.left = buttonRect.left + (buttonRect.width / 2) - 72; // Center the tooltip horizontally
-    showTooltipBool.value = true;
+  if (buttonRef.value) {
+    updateTooltipPosition();
+    if (store.pinnedTooltipId === '') {
+      showTooltipBool.value = true;
+    }
   }
 };
-
 
 const hideTooltip = () => {
   if (store.pinnedTooltipId === '') {
