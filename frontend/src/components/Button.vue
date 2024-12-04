@@ -42,7 +42,7 @@ const updateTooltipPosition = () => {
     const [scrollTop, scrollLeft] = calculateScroll(buttonRef.value);
 
     // Adjust tooltip position to be relative to the document
-    tooltipPosition.value.top = buttonRect.bottom + scrollTop - 270; // Position below the button
+    tooltipPosition.value.top = buttonRect.bottom + scrollTop - 276; // Position below the button
     tooltipPosition.value.left = buttonRect.left + scrollLeft; // Position the tooltip horizontally
   }
 };
