@@ -105,7 +105,7 @@ const getTooltipText = () => {
     : 'No Subtechniques';
 
   const groups_string = props.technique.groups.length > 0 
-    ? `Groups:`
+    ? `Groups:\n`
     : "No Groups";
 
   let components_string = '';
@@ -123,15 +123,19 @@ const getTooltipText = () => {
 
   return `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a><br>
       ID: ${props.technique.external_id}
-      ----
+
+      <hr>
       ${subtechniques_string}
-      ----
+      
+      <hr>
       Nr groups using: ${props.technique.occurrence_groups}
       Nr software using: ${props.technique.occurrence_software}
       Total occurrence: ${props.technique.occurrence_total}
-      ----
+
+      <hr>
       Components visible ${components_string}
-      ----
+
+      <hr>
       ${groups_string}
   `
 };
@@ -282,7 +286,11 @@ button.occurs-in-selected-groups {
 
 /* TODO: Change this so the box-shadow itself is always in front of other buttons (in terms of z-index). */
 button.occurs-in-hovered-groups {
+  /* transform: translate(1px, -2px);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+  outline: 3px solid rgb(57, 55, 139); */
   box-shadow: 0 0 8px 5px rgba(255, 174, 0, 1);
+  /* text-shadow: 0px 0px 4px rgb(255, 0, 0); */
   z-index: 1001;
 }
 
