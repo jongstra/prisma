@@ -87,9 +87,6 @@ const onlyShowSelectedGroups = computed({
 <template>
   <div class="group-container">
     <div class="header">
-      <div class="title-box">
-        <p>Groups</p>
-      </div>
       <input class='group-search-box' v-model="searchQuery" placeholder="Search groups..." @keydown.enter="addGroupFromSearch" />
       <button class='clear-all-button' @click="confirmClearAllSelections">Clear</button>
       <label class="toggle-label">
@@ -118,6 +115,7 @@ const onlyShowSelectedGroups = computed({
     </div>
   </div>
 </template>
+
 <style scoped>
 .group-container {
   padding: 2px;
@@ -125,7 +123,7 @@ const onlyShowSelectedGroups = computed({
   border: 2px solid #555;
   border-radius: 5px;
   background-color: #ddd;
-  width: 350px;
+  width: 300px;
   height: 70px;
   position: relative; /* Ensure absolute positioning is relative to this container */
 }
@@ -135,17 +133,6 @@ const onlyShowSelectedGroups = computed({
   align-items: center;
   justify-content: space-between;
   padding: 2px;
-}
-
-.title-box {
-  background-color: #999;
-  color: white;
-  border: 2px dotted #777;
-  padding: 2px 8px;
-  border-radius: 4px;
-  height: 26px;
-  display: flex;
-  align-items: center;
 }
 
 input {
