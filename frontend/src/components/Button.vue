@@ -42,7 +42,7 @@ const updateTooltipPosition = () => {
     const [scrollTop, scrollLeft] = calculateScroll(buttonRef.value);
 
     // Adjust tooltip position to be relative to the document
-    tooltipPosition.value.top = buttonRect.bottom + scrollTop - 276; // Position below the button
+    tooltipPosition.value.top = buttonRect.bottom + scrollTop - 273; // Position below the button
     tooltipPosition.value.left = buttonRect.left + scrollLeft; // Position the tooltip horizontally
   }
 };
@@ -99,7 +99,9 @@ window.toggleGroupSelected = toggleGroupSelected;
 
 const getTooltipText = () => {
   const subtechniques_string = props.technique.sub_techniques 
-    ? `Subtechniques:\n${props.technique.sub_techniques.map(sub => `- ${sub.name}`).join('\n')}`
+    ? `Subtechniques:\n${props.technique.sub_techniques.map(
+      sub => `<a href='https://attack.mitre.org/techniques/${sub.external_id.split('.')[0]}/${sub.external_id.split('.')[1]}/' target="_blank">- ${sub.name}</a>`
+    ).join('\n')}`
     : 'No Subtechniques';
 
   const groups_string = props.technique.groups.length > 0 
@@ -119,8 +121,8 @@ const getTooltipText = () => {
   components_string = `(${visible_components_count} of ${total_components_detecting_technique})` +
                         ((components_string.length > 0) ? ':' : '') + components_string;
 
-  return `${props.technique.name}<br>
-      ID: <a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.external_id}</a>
+  return `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a><br>
+      ID: ${props.technique.external_id}
       ----
       ${subtechniques_string}
       ----
@@ -134,6 +136,8 @@ const getTooltipText = () => {
   `
 };
 
+// ${props.technique.name}<br>
+// ID: <a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.external_id}</a>
 
 function getButtonStyles(visibility_ratio: number) {
   let backgroundColor = '';
