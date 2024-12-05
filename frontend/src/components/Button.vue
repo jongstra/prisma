@@ -100,7 +100,7 @@ window.toggleGroupSelected = toggleGroupSelected;
 const getTooltipText = () => {
   const subtechniques_string = props.technique.sub_techniques 
     ? `Subtechniques:\n${props.technique.sub_techniques.map(
-      sub => `<a href='https://attack.mitre.org/techniques/${sub.external_id.split('.')[0]}/${sub.external_id.split('.')[1]}/' target="_blank">- ${sub.name}</a>`
+      sub => `<a href='https://attack.mitre.org/techniques/${sub.external_id.split('.')[0]}/${sub.external_id.split('.')[1]}/' target="_blank">• ${sub.name}</a>`
     ).join('\n')}`
     : 'No Subtechniques';
 
