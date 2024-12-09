@@ -197,15 +197,15 @@ const showButton = computed(() => {
   }
   // Minimum Total Occurrence: Medium
   if (store.minTotalOccurrencesBinned === 1) {
-    techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.3)
+    techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.25)
   }
   // Minimum Total Occurrence: High
   if (store.minTotalOccurrencesBinned === 2) {
-    techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.6)
+    techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.5)
   }
   // Minimum Total Occurrence: Very High
   if (store.minTotalOccurrencesBinned >= 3) {
-  techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.9)
+  techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.75)
   }
 
 
