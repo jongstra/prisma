@@ -18,6 +18,11 @@ if (store.domain === 'enterprise-attack') {
   domain = reactive(store.ics);
 }
 
+// console.log(domain.tactics.reduce((sum, tactic) => {
+//   sum += tactic.techniques.length;
+//   return sum; // Return the updated sum
+// }, 0)); // Initialize sum to 0
+
 // Calculate the tooltip position, and update it when the button location would be modified.
 const buttonRef = ref<HTMLElement | null>(null);
 let tooltipPosition = ref({ top: 0, left: 0 });
@@ -179,18 +184,37 @@ const showButton = computed(() => {
     (props.technique.visibility_ratio <= store.maxVisibilityRatio)
   );
 
+  // Filter techniques based on the Minimum Total Occurrence slider.
   let techniqueTotalOccurrencesFilterResult = (
     props.technique.occurrence_total >= store.minTotalOccurrences
   );
+
+  // Filter techniques based on the Minimum Total Occurrence BINNED slider.
+  let techniqueTotalOccurrencesFilterBinnedResult = false;
+  // Minimum Total Occurrence: Low
+  if (store.minTotalOccurrencesBinned <= 0) {
+    techniqueTotalOccurrencesFilterBinnedResult = true;
+  }
+  // Minimum Total Occurrence: Medium
+  if (store.minTotalOccurrencesBinned === 1) {
+    techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.3)
+  }
+  // Minimum Total Occurrence: High
+  if (store.minTotalOccurrencesBinned === 2) {
+    techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.6)
+  }
+  // Minimum Total Occurrence: Very High
+  if (store.minTotalOccurrencesBinned >= 3) {
+  techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.9)
+  }
+
 
   // When the group tool mask toggle (domain.only_show_selected_groups) is switch to 'true', we want to hide all techniques that are not covered by the selected groups.
   let groupMaskFilterResult = (
     !(domain.only_show_selected_groups && !store.selectedGroupsTechniquesSet.has(props.technique.name))
   );
 
-  // console.log(groupMaskFilterResult);
-
-  return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult && groupMaskFilterResult;
+  return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult && techniqueTotalOccurrencesFilterBinnedResult && groupMaskFilterResult;
 });
 
 const occursInHoveredGroups = () => {

@@ -79,6 +79,7 @@ export const tacticsStore = defineStore('tactics', {
     minVisibilityRatio: 0 as number,
     maxVisibilityRatio: 1 as number,
     minTotalOccurrences: 0 as number,
+    minTotalOccurrencesBinned: 0 as number,
     pinnedTooltipId: '' as string,
   }),
 
@@ -135,41 +136,41 @@ export const tacticsStore = defineStore('tactics', {
     },
 
 
-    techniquesOccurrences: (state) => {
-      let tactics;
+    // techniquesOccurrences: (state) => {
+    //   let tactics;
     
-      if (state.domain === 'enterprise-attack') {
-        tactics = state.enterprise?.tactics;
-      } else if (state.domain === 'mobile-attack') {
-        tactics = state.mobile?.tactics;
-      } else if (state.domain === 'ics-attack') {
-        tactics = state.ics?.tactics;
-      }
+    //   if (state.domain === 'enterprise-attack') {
+    //     tactics = state.enterprise?.tactics;
+    //   } else if (state.domain === 'mobile-attack') {
+    //     tactics = state.mobile?.tactics;
+    //   } else if (state.domain === 'ics-attack') {
+    //     tactics = state.ics?.tactics;
+    //   }
     
-      if (!tactics) {
-        return [];
-      }
+    //   if (!tactics) {
+    //     return [];
+    //   }
     
-      const techniquesMap = {};
+    //   const techniquesMap = {};
     
-      // Aggregate occurrences
-      tactics.forEach(tactic => {
-        tactic.techniques.forEach(technique => {
-          const { name, software, groups } = technique;
-          if (!techniquesMap[name]) {
-            techniquesMap[name] = {
-              name,
-              group_occurrence: groups.length,
-              software_occurrence: software.length,
-              total_occurrence: groups.length + software.length,
-            };
-          }
-        });
-      });
+    //   // Aggregate occurrences
+    //   tactics.forEach(tactic => {
+    //     tactic.techniques.forEach(technique => {
+    //       const { name, software, groups } = technique;
+    //       if (!techniquesMap[name]) {
+    //         techniquesMap[name] = {
+    //           name,
+    //           group_occurrence: groups.length,
+    //           software_occurrence: software.length,
+    //           total_occurrence: groups.length + software.length,
+    //         };
+    //       }
+    //     });
+    //   });
     
-      // Convert map to array without sorting
-      return Object.values(techniquesMap);
-    },
+    //   // Convert map to array without sorting
+    //   return Object.values(techniquesMap);
+    // },
 
     
     // Generalized getter function (attribute_type examples: platform/data_sources/data_components)

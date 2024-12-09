@@ -6,6 +6,7 @@ import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
 import TechniqueAttributeFilter from '@/components/TechniqueAttributeFilter.vue';
 import TechniqueVisibilityPercentageFilter from '@/components/TechniqueVisibilityPercentageFilter.vue';
 import TechniqueTotalOccurrenceFilter from '@/components/TechniqueTotalOccurrenceFilter.vue';
+import TechniqueTotalOccurrenceFilterBinned from '@/components/TechniqueTotalOccurrenceFilterBinned.vue';
 import VisibilityLegend from '@/components/VisibilityLegend.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import GroupSelectionTool from '@/components/GroupSelectionTool.vue';
@@ -42,7 +43,7 @@ onUnmounted(() => {
     <!-- Row 1 -->
     <div class="controls-row">
       <div class='upload-button'><FileUploadButtonYaml/></div>
-      <div class='filter'><TechniqueTotalOccurrenceFilter/></div>
+      <div class='filter'><TechniqueTotalOccurrenceFilterBinned/></div>
       <div class='filter'><TechniqueVisibilityPercentageFilter/></div>
       <div class='legend'><VisibilityLegend/></div>
     </div>

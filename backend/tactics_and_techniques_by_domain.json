@@ -75,7 +75,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Gather Victim Host Information",
@@ -181,7 +184,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Gather Victim Identity Information",
@@ -293,7 +299,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.11940298507462686,
+            "occurrence_groups_order_normalized": 0.24242424242424243,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Gather Victim Network Information",
@@ -335,7 +344,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Gather Victim Org Information",
@@ -397,7 +409,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Phishing for Information",
@@ -453,7 +468,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Search Closed Sources",
@@ -471,7 +489,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Search Open Technical Databases",
@@ -524,7 +545,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Search Open Websites/Domains",
@@ -566,7 +590,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Search Victim-Owned Websites",
@@ -594,7 +621,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1044776119402985,
+            "occurrence_groups_order_normalized": 0.21212121212121213,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -616,7 +646,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Acquire Infrastructure",
@@ -894,7 +927,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.08955223880597014,
+            "occurrence_groups_order_normalized": 0.18181818181818182,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Compromise Accounts",
@@ -916,7 +952,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Compromise Infrastructure",
@@ -1097,7 +1136,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Develop Capabilities",
@@ -1123,7 +1165,10 @@
               "Response Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Establish Accounts",
@@ -1149,7 +1194,10 @@
               "Social Media"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Obtain Capabilities",
@@ -1225,7 +1273,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Stage Capabilities",
@@ -1314,7 +1365,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -1350,7 +1404,10 @@
               "File Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Drive-by Compromise",
@@ -1423,7 +1480,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6119402985074627,
+            "occurrence_groups_order_normalized": 0.9393939393939394,
+            "occurrence_software_order_normalized": 0.1724137931034483
           },
           {
             "name": "Exploit Public-Facing Application",
@@ -1495,7 +1555,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6417910447761194,
+            "occurrence_groups_order_normalized": 1.121212121212121,
+            "occurrence_software_order_normalized": 0.10344827586206896
           },
           {
             "name": "External Remote Services",
@@ -1556,7 +1619,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.44776119402985076,
+            "occurrence_groups_order_normalized": 0.7575757575757576,
+            "occurrence_software_order_normalized": 0.08620689655172414
           },
           {
             "name": "Hardware Additions",
@@ -1584,7 +1650,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Phishing",
@@ -1689,7 +1758,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.08955223880597014,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Replication Through Removable Media",
@@ -1741,7 +1813,10 @@
               "File Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.373134328358209,
+            "occurrence_groups_order_normalized": 0.21212121212121213,
+            "occurrence_software_order_normalized": 0.3103448275862069
           },
           {
             "name": "Supply Chain Compromise",
@@ -1809,7 +1884,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Trusted Relationship",
@@ -1850,7 +1928,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.13432835820895522,
+            "occurrence_groups_order_normalized": 0.2727272727272727,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Valid Accounts",
@@ -2062,7 +2143,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.7014925373134329,
+            "occurrence_groups_order_normalized": 1.2424242424242424,
+            "occurrence_software_order_normalized": 0.10344827586206896
           }
         ]
       },
@@ -2097,7 +2181,10 @@
               "Script Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Command and Scripting Interpreter",
@@ -3065,7 +3152,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.5373134328358209,
+            "occurrence_groups_order_normalized": 0.48484848484848486,
+            "occurrence_software_order_normalized": 0.3448275862068966
           },
           {
             "name": "Container Administration Command",
@@ -3094,7 +3184,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Deploy Container",
@@ -3126,7 +3219,10 @@
               "Pod Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Exploitation for Client Execution",
@@ -3207,7 +3303,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.7611940298507462,
+            "occurrence_groups_order_normalized": 1.1515151515151516,
+            "occurrence_software_order_normalized": 0.22413793103448276
           },
           {
             "name": "Inter-Process Communication",
@@ -3244,7 +3343,10 @@
               "Process Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.13432835820895522,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.15517241379310345
           },
           {
             "name": "Native API",
@@ -3452,7 +3554,10 @@
               "Module Load"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 2.716417910447761,
+            "occurrence_groups_order_normalized": 0.48484848484848486,
+            "occurrence_software_order_normalized": 2.8620689655172415
           },
           {
             "name": "Scheduled Task/Job",
@@ -3557,7 +3662,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Serverless Execution",
@@ -3583,7 +3691,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Shared Modules",
@@ -3628,7 +3739,10 @@
               "Module Load"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.29850746268656714,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.3448275862068966
           },
           {
             "name": "Software Deployment Tools",
@@ -3661,7 +3775,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "System Services",
@@ -3785,7 +3902,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "User Execution",
@@ -3966,7 +4086,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Windows Management Instrumentation",
@@ -4112,7 +4235,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.7611940298507462,
+            "occurrence_groups_order_normalized": 1.0909090909090908,
+            "occurrence_software_order_normalized": 1.4137931034482758
           }
         ]
       },
@@ -4195,7 +4321,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "BITS Jobs",
@@ -4236,7 +4365,10 @@
               "Service Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.19402985074626866,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.13793103448275862
           },
           {
             "name": "Boot or Logon Autostart Execution",
@@ -4943,7 +5075,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08620689655172414
           },
           {
             "name": "Boot or Logon Initialization Scripts",
@@ -5128,7 +5263,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Browser Extensions",
@@ -5165,7 +5303,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Compromise Host Software Binary",
@@ -5209,7 +5350,10 @@
               "File Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2537313432835821,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.25862068965517243
           },
           {
             "name": "Create Account",
@@ -5245,7 +5389,10 @@
               "User Account Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Create or Modify System Process",
@@ -5596,7 +5743,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Event Triggered Execution",
@@ -5851,7 +6001,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "External Remote Services",
@@ -5912,7 +6065,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.44776119402985076,
+            "occurrence_groups_order_normalized": 0.7575757575757576,
+            "occurrence_software_order_normalized": 0.08620689655172414
           },
           {
             "name": "Hijack Execution Flow",
@@ -6127,7 +6283,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.13432835820895522,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.13793103448275862
           },
           {
             "name": "Implant Internal Image",
@@ -6150,7 +6309,10 @@
               "Image Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Modify Authentication Process",
@@ -6228,7 +6390,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Office Application Startup",
@@ -6451,7 +6616,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Power Settings",
@@ -6476,7 +6644,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Pre-OS Boot",
@@ -6531,7 +6702,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Scheduled Task/Job",
@@ -6636,7 +6810,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Server Software Component",
@@ -6694,7 +6871,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Traffic Signaling",
@@ -6764,7 +6944,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.16417910447761194,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.1896551724137931
           },
           {
             "name": "Valid Accounts",
@@ -6976,7 +7159,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.7014925373134329,
+            "occurrence_groups_order_normalized": 1.2424242424242424,
+            "occurrence_software_order_normalized": 0.10344827586206896
           }
         ]
       },
@@ -7118,7 +7304,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Access Token Manipulation",
@@ -7168,7 +7357,10 @@
               "Active Directory Object Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.29850746268656714,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.29310344827586204
           },
           {
             "name": "Account Manipulation",
@@ -7245,7 +7437,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Boot or Logon Autostart Execution",
@@ -7952,7 +8147,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08620689655172414
           },
           {
             "name": "Boot or Logon Initialization Scripts",
@@ -8137,7 +8335,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Create or Modify System Process",
@@ -8488,7 +8689,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Domain or Tenant Policy Modification",
@@ -8515,7 +8719,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Escape to Host",
@@ -8551,7 +8758,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Event Triggered Execution",
@@ -8806,7 +9016,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Exploitation for Privilege Escalation",
@@ -8868,7 +9081,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5223880597014925,
+            "occurrence_groups_order_normalized": 0.5454545454545454,
+            "occurrence_software_order_normalized": 0.29310344827586204
           },
           {
             "name": "Hijack Execution Flow",
@@ -9083,7 +9299,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.13432835820895522,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.13793103448275862
           },
           {
             "name": "Process Injection",
@@ -9549,7 +9768,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 1.0597014925373134,
+            "occurrence_groups_order_normalized": 0.36363636363636365,
+            "occurrence_software_order_normalized": 1.0172413793103448
           },
           {
             "name": "Scheduled Task/Job",
@@ -9654,7 +9876,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Valid Accounts",
@@ -9866,7 +10091,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.7014925373134329,
+            "occurrence_groups_order_normalized": 1.2424242424242424,
+            "occurrence_software_order_normalized": 0.10344827586206896
           }
         ]
       },
@@ -10008,7 +10236,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Access Token Manipulation",
@@ -10058,7 +10289,10 @@
               "Active Directory Object Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.29850746268656714,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.29310344827586204
           },
           {
             "name": "BITS Jobs",
@@ -10099,7 +10333,10 @@
               "Service Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.19402985074626866,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.13793103448275862
           },
           {
             "name": "Build Image on Host",
@@ -10123,7 +10360,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Debugger Evasion",
@@ -10166,7 +10406,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.208955223880597,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.22413793103448276
           },
           {
             "name": "Deobfuscate/Decode Files or Information",
@@ -10466,7 +10709,10 @@
               "File Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 4.059701492537314,
+            "occurrence_groups_order_normalized": 1.0303030303030303,
+            "occurrence_software_order_normalized": 4.103448275862069
           },
           {
             "name": "Deploy Container",
@@ -10498,7 +10744,10 @@
               "Pod Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Direct Volume Access",
@@ -10528,7 +10777,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Domain or Tenant Policy Modification",
@@ -10555,7 +10807,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Execution Guardrails",
@@ -10636,7 +10891,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.2835820895522388,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.3103448275862069
           },
           {
             "name": "Exploitation for Defense Evasion",
@@ -10664,7 +10922,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "File and Directory Permissions Modification",
@@ -10692,7 +10953,10 @@
               "File Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Hide Artifacts",
@@ -11151,7 +11415,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08620689655172414
           },
           {
             "name": "Hijack Execution Flow",
@@ -11366,7 +11633,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.13432835820895522,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.13793103448275862
           },
           {
             "name": "Impair Defenses",
@@ -11850,7 +12120,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Impersonation",
@@ -11882,7 +12155,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08955223880597014,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Indicator Removal",
@@ -12346,7 +12622,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.417910447761194,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.43103448275862066
           },
           {
             "name": "Indirect Command Execution",
@@ -12374,7 +12653,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Masquerading",
@@ -12729,7 +13011,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.6716417910447762,
+            "occurrence_groups_order_normalized": 0.5454545454545454,
+            "occurrence_software_order_normalized": 0.46551724137931033
           },
           {
             "name": "Modify Authentication Process",
@@ -12807,7 +13092,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Modify Cloud Compute Infrastructure",
@@ -12936,7 +13224,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Modify Cloud Resource Hierarchy",
@@ -12956,7 +13247,10 @@
               "Cloud Service Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Modify Registry",
@@ -13137,7 +13431,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 2.2388059701492535,
+            "occurrence_groups_order_normalized": 0.7575757575757576,
+            "occurrence_software_order_normalized": 2.1551724137931036
           },
           {
             "name": "Modify System Image",
@@ -13201,7 +13498,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Network Boundary Bridging",
@@ -13224,7 +13524,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Obfuscated Files or Information",
@@ -13788,7 +14091,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 2.208955223880597,
+            "occurrence_groups_order_normalized": 0.5454545454545454,
+            "occurrence_software_order_normalized": 2.2413793103448274
           },
           {
             "name": "Plist File Modification",
@@ -13815,7 +14121,10 @@
               "File Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Pre-OS Boot",
@@ -13870,7 +14179,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Process Injection",
@@ -14336,7 +14648,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 1.0597014925373134,
+            "occurrence_groups_order_normalized": 0.36363636363636365,
+            "occurrence_software_order_normalized": 1.0172413793103448
           },
           {
             "name": "Reflective Code Loading",
@@ -14385,7 +14700,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.31343283582089554,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.3275862068965517
           },
           {
             "name": "Rogue Domain Controller",
@@ -14412,7 +14730,10 @@
               "Active Directory Object Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Rootkit",
@@ -14466,7 +14787,10 @@
               "File Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3880597014925373,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.3620689655172414
           },
           {
             "name": "Subvert Trust Controls",
@@ -14534,7 +14858,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "System Binary Proxy Execution",
@@ -14905,7 +15232,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "System Script Proxy Execution",
@@ -14929,7 +15259,10 @@
               "Script Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Template Injection",
@@ -14964,7 +15297,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.14925373134328357,
+            "occurrence_groups_order_normalized": 0.24242424242424243,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Traffic Signaling",
@@ -15034,7 +15370,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.16417910447761194,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.1896551724137931
           },
           {
             "name": "Trusted Developer Utilities Proxy Execution",
@@ -15059,7 +15398,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Unused/Unsupported Cloud Regions",
@@ -15080,7 +15422,10 @@
               "Instance Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Use Alternate Authentication Material",
@@ -15253,7 +15598,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Valid Accounts",
@@ -15465,7 +15813,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.7014925373134329,
+            "occurrence_groups_order_normalized": 1.2424242424242424,
+            "occurrence_software_order_normalized": 0.10344827586206896
           },
           {
             "name": "Virtualization/Sandbox Evasion",
@@ -15546,7 +15897,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.31343283582089554,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.3275862068965517
           },
           {
             "name": "Weaken Encryption",
@@ -15608,7 +15962,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "XSL Script Processing",
@@ -15636,7 +15993,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.017241379310344827
           }
         ]
       },
@@ -15787,7 +16147,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Brute Force",
@@ -15879,7 +16242,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.3283582089552239,
+            "occurrence_groups_order_normalized": 0.45454545454545453,
+            "occurrence_software_order_normalized": 0.1206896551724138
           },
           {
             "name": "Credentials from Password Stores",
@@ -16118,7 +16484,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.5074626865671642,
+            "occurrence_groups_order_normalized": 0.3939393939393939,
+            "occurrence_software_order_normalized": 0.3620689655172414
           },
           {
             "name": "Exploitation for Credential Access",
@@ -16145,7 +16514,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Forced Authentication",
@@ -16175,7 +16547,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Forge Web Credentials",
@@ -16204,7 +16579,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Input Capture",
@@ -16282,7 +16660,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.11940298507462686,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.10344827586206896
           },
           {
             "name": "Modify Authentication Process",
@@ -16360,7 +16741,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Multi-Factor Authentication Interception",
@@ -16393,7 +16777,10 @@
               "Windows Registry Key Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Multi-Factor Authentication Request Generation",
@@ -16428,7 +16815,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Network Sniffing",
@@ -16472,7 +16862,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.23880597014925373,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.1896551724137931
           },
           {
             "name": "OS Credential Dumping",
@@ -16879,7 +17272,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.2537313432835821,
+            "occurrence_groups_order_normalized": 0.30303030303030304,
+            "occurrence_software_order_normalized": 0.1206896551724138
           },
           {
             "name": "Steal Application Access Token",
@@ -16911,7 +17307,10 @@
               "User Account Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.05970149253731343,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Steal Web Session Cookie",
@@ -16956,7 +17355,10 @@
               "File Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2537313432835821,
+            "occurrence_groups_order_normalized": 0.18181818181818182,
+            "occurrence_software_order_normalized": 0.1896551724137931
           },
           {
             "name": "Steal or Forge Authentication Certificates",
@@ -16995,7 +17397,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Steal or Forge Kerberos Tickets",
@@ -17110,7 +17515,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Unsecured Credentials",
@@ -17360,7 +17768,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.06896551724137931
           }
         ]
       },
@@ -17436,7 +17847,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.08955223880597014,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Application Window Discovery",
@@ -17496,7 +17910,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4925373134328358,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.5172413793103449
           },
           {
             "name": "Browser Information Discovery",
@@ -17542,7 +17959,10 @@
               "File Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.26865671641791045,
+            "occurrence_groups_order_normalized": 0.18181818181818182,
+            "occurrence_software_order_normalized": 0.20689655172413793
           },
           {
             "name": "Cloud Infrastructure Discovery",
@@ -17572,7 +17992,10 @@
               "Snapshot Enumeration"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Cloud Service Dashboard",
@@ -17599,7 +18022,10 @@
               "User Account Authentication"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Cloud Service Discovery",
@@ -17628,7 +18054,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Cloud Storage Object Discovery",
@@ -17652,7 +18081,10 @@
               "Cloud Storage Enumeration"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Container and Resource Discovery",
@@ -17679,7 +18111,10 @@
               "Container Enumeration"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Debugger Evasion",
@@ -17722,7 +18157,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.208955223880597,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.22413793103448276
           },
           {
             "name": "Device Driver Discovery",
@@ -17753,7 +18191,10 @@
               "Windows Registry Key Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Domain Trust Discovery",
@@ -17807,7 +18248,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.373134328358209,
+            "occurrence_groups_order_normalized": 0.18181818181818182,
+            "occurrence_software_order_normalized": 0.3275862068965517
           },
           {
             "name": "File and Directory Discovery",
@@ -18155,7 +18599,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 4.776119402985074,
+            "occurrence_groups_order_normalized": 1.393939393939394,
+            "occurrence_software_order_normalized": 4.724137931034483
           },
           {
             "name": "Group Policy Discovery",
@@ -18191,7 +18638,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08955223880597014,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.08620689655172414
           },
           {
             "name": "Log Enumeration",
@@ -18226,7 +18676,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08955223880597014,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Network Service Discovery",
@@ -18319,7 +18772,10 @@
               "Cloud Service Enumeration"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.9253731343283582,
+            "occurrence_groups_order_normalized": 0.8787878787878788,
+            "occurrence_software_order_normalized": 0.5689655172413793
           },
           {
             "name": "Network Share Discovery",
@@ -18409,7 +18865,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.9402985074626866,
+            "occurrence_groups_order_normalized": 0.42424242424242425,
+            "occurrence_software_order_normalized": 0.8448275862068966
           },
           {
             "name": "Network Sniffing",
@@ -18453,7 +18912,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.23880597014925373,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.1896551724137931
           },
           {
             "name": "Password Policy Discovery",
@@ -18494,7 +18956,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.11940298507462686,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.08620689655172414
           },
           {
             "name": "Peripheral Device Discovery",
@@ -18571,7 +19036,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.746268656716418,
+            "occurrence_groups_order_normalized": 0.2727272727272727,
+            "occurrence_software_order_normalized": 0.7068965517241379
           },
           {
             "name": "Permission Groups Discovery",
@@ -18773,7 +19241,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.1791044776119403,
+            "occurrence_groups_order_normalized": 0.18181818181818182,
+            "occurrence_software_order_normalized": 0.10344827586206896
           },
           {
             "name": "Process Discovery",
@@ -19076,7 +19547,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 4.104477611940299,
+            "occurrence_groups_order_normalized": 1.121212121212121,
+            "occurrence_software_order_normalized": 4.103448275862069
           },
           {
             "name": "Query Registry",
@@ -19211,7 +19685,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.6119402985074627,
+            "occurrence_groups_order_normalized": 0.48484848484848486,
+            "occurrence_software_order_normalized": 1.5862068965517242
           },
           {
             "name": "Remote System Discovery",
@@ -19326,7 +19803,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.2537313432835822,
+            "occurrence_groups_order_normalized": 1.0909090909090908,
+            "occurrence_software_order_normalized": 0.8275862068965517
           },
           {
             "name": "Software Discovery",
@@ -19400,7 +19880,10 @@
               "Firewall Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6417910447761194,
+            "occurrence_groups_order_normalized": 0.36363636363636365,
+            "occurrence_software_order_normalized": 0.5344827586206896
           },
           {
             "name": "System Information Discovery",
@@ -19814,7 +20297,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 5.746268656716418,
+            "occurrence_groups_order_normalized": 1.606060606060606,
+            "occurrence_software_order_normalized": 5.724137931034483
           },
           {
             "name": "System Location Discovery",
@@ -19857,7 +20343,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.22388059701492538,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.22413793103448276
           },
           {
             "name": "System Network Configuration Discovery",
@@ -20133,7 +20622,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 3.671641791044776,
+            "occurrence_groups_order_normalized": 1.121212121212121,
+            "occurrence_software_order_normalized": 3.603448275862069
           },
           {
             "name": "System Network Connections Discovery",
@@ -20253,7 +20745,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.3582089552238805,
+            "occurrence_groups_order_normalized": 0.9090909090909091,
+            "occurrence_software_order_normalized": 1.0517241379310345
           },
           {
             "name": "System Owner/User Discovery",
@@ -20501,7 +20996,10 @@
               "Process Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 3.1343283582089554,
+            "occurrence_groups_order_normalized": 1.0909090909090908,
+            "occurrence_software_order_normalized": 3.0
           },
           {
             "name": "System Service Discovery",
@@ -20589,7 +21087,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.9104477611940298,
+            "occurrence_groups_order_normalized": 0.42424242424242425,
+            "occurrence_software_order_normalized": 0.8103448275862069
           },
           {
             "name": "System Time Discovery",
@@ -20698,7 +21199,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.208955223880597,
+            "occurrence_groups_order_normalized": 0.3333333333333333,
+            "occurrence_software_order_normalized": 1.206896551724138
           },
           {
             "name": "Virtualization/Sandbox Evasion",
@@ -20779,7 +21283,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.31343283582089554,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.3275862068965517
           }
         ]
       },
@@ -20835,7 +21342,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3582089552238806,
+            "occurrence_groups_order_normalized": 0.3333333333333333,
+            "occurrence_software_order_normalized": 0.22413793103448276
           },
           {
             "name": "Internal Spearphishing",
@@ -20868,7 +21378,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Lateral Tool Transfer",
@@ -20939,7 +21452,10 @@
               "File Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5223880597014925,
+            "occurrence_groups_order_normalized": 0.45454545454545453,
+            "occurrence_software_order_normalized": 0.3448275862068966
           },
           {
             "name": "Remote Service Session Hijacking",
@@ -21001,7 +21517,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Remote Services",
@@ -21218,7 +21737,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.1044776119402985,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Replication Through Removable Media",
@@ -21270,7 +21792,10 @@
               "File Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.373134328358209,
+            "occurrence_groups_order_normalized": 0.21212121212121213,
+            "occurrence_software_order_normalized": 0.3103448275862069
           },
           {
             "name": "Software Deployment Tools",
@@ -21303,7 +21828,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Taint Shared Content",
@@ -21346,7 +21874,10 @@
               "File Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1791044776119403,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.1206896551724138
           },
           {
             "name": "Use Alternate Authentication Material",
@@ -21519,7 +22050,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           }
         ]
       },
@@ -21670,7 +22204,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Archive Collected Data",
@@ -21751,7 +22288,10 @@
               "File Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.7611940298507462,
+            "occurrence_groups_order_normalized": 0.36363636363636365,
+            "occurrence_software_order_normalized": 0.6724137931034483
           },
           {
             "name": "Audio Capture",
@@ -21807,7 +22347,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.44776119402985076,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.5
           },
           {
             "name": "Automated Collection",
@@ -21902,7 +22445,10 @@
               "Script Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.9253731343283582,
+            "occurrence_groups_order_normalized": 0.6060606060606061,
+            "occurrence_software_order_normalized": 0.7241379310344828
           },
           {
             "name": "Browser Session Hijacking",
@@ -21937,7 +22483,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.16417910447761194,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.1896551724137931
           },
           {
             "name": "Clipboard Data",
@@ -22002,7 +22551,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.582089552238806,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.6379310344827587
           },
           {
             "name": "Data Staged",
@@ -22040,7 +22592,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.11940298507462686,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Data from Cloud Storage",
@@ -22071,7 +22626,10 @@
               "Cloud Storage Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Data from Configuration Repository",
@@ -22136,7 +22694,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Data from Information Repositories",
@@ -22201,7 +22762,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.13432835820895522,
+            "occurrence_groups_order_normalized": 0.18181818181818182,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Data from Local System",
@@ -22428,7 +22992,10 @@
               "File Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 2.91044776119403,
+            "occurrence_groups_order_normalized": 1.2727272727272727,
+            "occurrence_software_order_normalized": 2.6379310344827585
           },
           {
             "name": "Data from Network Shared Drive",
@@ -22472,7 +23039,10 @@
               "File Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1791044776119403,
+            "occurrence_groups_order_normalized": 0.24242424242424243,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Data from Removable Media",
@@ -22521,7 +23091,10 @@
               "File Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.34328358208955223,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.3448275862068966
           },
           {
             "name": "Email Collection",
@@ -22679,7 +23252,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Input Capture",
@@ -22757,7 +23333,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.11940298507462686,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.10344827586206896
           },
           {
             "name": "Screen Capture",
@@ -22938,7 +23517,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 2.3134328358208953,
+            "occurrence_groups_order_normalized": 0.48484848484848486,
+            "occurrence_software_order_normalized": 2.396551724137931
           },
           {
             "name": "Video Capture",
@@ -22997,7 +23579,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4925373134328358,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.5172413793103449
           }
         ]
       },
@@ -23512,7 +24097,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.19402985074626866,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.15517241379310345
           },
           {
             "name": "Communication Through Removable Media",
@@ -23540,7 +24128,10 @@
               "Drive Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Content Injection",
@@ -23570,7 +24161,10 @@
               "File Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Data Encoding",
@@ -23636,7 +24230,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.07462686567164178,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08620689655172414
           },
           {
             "name": "Data Obfuscation",
@@ -23790,7 +24387,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.16417910447761194,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.1724137931034483
           },
           {
             "name": "Dynamic Resolution",
@@ -23855,7 +24455,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.19402985074626866,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.13793103448275862
           },
           {
             "name": "Encrypted Channel",
@@ -23994,7 +24597,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.23880597014925373,
+            "occurrence_groups_order_normalized": 0.18181818181818182,
+            "occurrence_software_order_normalized": 0.1724137931034483
           },
           {
             "name": "Fallback Channels",
@@ -24069,7 +24675,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.746268656716418,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.7931034482758621
           },
           {
             "name": "Hide Infrastructure",
@@ -24101,7 +24710,10 @@
               "Response Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Ingress Tool Transfer",
@@ -24573,7 +25185,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 6.582089552238806,
+            "occurrence_groups_order_normalized": 2.484848484848485,
+            "occurrence_software_order_normalized": 6.189655172413793
           },
           {
             "name": "Multi-Stage Channels",
@@ -24611,7 +25226,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.19402985074626866,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.15517241379310345
           },
           {
             "name": "Non-Application Layer Protocol",
@@ -24722,7 +25340,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.2686567164179106,
+            "occurrence_groups_order_normalized": 0.3333333333333333,
+            "occurrence_software_order_normalized": 1.2758620689655173
           },
           {
             "name": "Non-Standard Port",
@@ -24792,7 +25413,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6716417910447762,
+            "occurrence_groups_order_normalized": 0.42424242424242425,
+            "occurrence_software_order_normalized": 0.5344827586206896
           },
           {
             "name": "Protocol Tunneling",
@@ -24847,7 +25471,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.43283582089552236,
+            "occurrence_groups_order_normalized": 0.3939393939393939,
+            "occurrence_software_order_normalized": 0.27586206896551724
           },
           {
             "name": "Proxy",
@@ -25065,7 +25692,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.8059701492537313,
+            "occurrence_groups_order_normalized": 0.45454545454545453,
+            "occurrence_software_order_normalized": 0.6724137931034483
           },
           {
             "name": "Remote Access Software",
@@ -25115,7 +25745,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3283582089552239,
+            "occurrence_groups_order_normalized": 0.48484848484848486,
+            "occurrence_software_order_normalized": 0.10344827586206896
           },
           {
             "name": "Traffic Signaling",
@@ -25185,7 +25818,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.16417910447761194,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.1896551724137931
           },
           {
             "name": "Web Service",
@@ -25399,7 +26035,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.582089552238806,
+            "occurrence_groups_order_normalized": 0.45454545454545453,
+            "occurrence_software_order_normalized": 0.41379310344827586
           }
         ]
       },
@@ -25485,7 +26124,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.34328358208955223,
+            "occurrence_groups_order_normalized": 0.18181818181818182,
+            "occurrence_software_order_normalized": 0.29310344827586204
           },
           {
             "name": "Data Transfer Size Limits",
@@ -25528,7 +26170,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.26865671641791045,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.22413793103448276
           },
           {
             "name": "Exfiltration Over Alternative Protocol",
@@ -25637,7 +26282,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.13432835820895522,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.1206896551724138
           },
           {
             "name": "Exfiltration Over C2 Channel",
@@ -25825,7 +26473,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 2.3582089552238807,
+            "occurrence_groups_order_normalized": 0.696969696969697,
+            "occurrence_software_order_normalized": 2.3275862068965516
           },
           {
             "name": "Exfiltration Over Other Network Medium",
@@ -25885,7 +26536,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Exfiltration Over Physical Medium",
@@ -25913,7 +26567,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Exfiltration Over Web Service",
@@ -26102,7 +26759,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.08955223880597014,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.05172413793103448
           },
           {
             "name": "Scheduled Transfer",
@@ -26145,7 +26805,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.26865671641791045,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.29310344827586204
           },
           {
             "name": "Transfer Data to Cloud Account",
@@ -26180,7 +26843,10 @@
               "Cloud Storage Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -26222,7 +26888,10 @@
               "User Account Deletion"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08955223880597014,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.06896551724137931
           },
           {
             "name": "Data Destruction",
@@ -26290,7 +26959,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3880597014925373,
+            "occurrence_groups_order_normalized": 0.12121212121212122,
+            "occurrence_software_order_normalized": 0.3793103448275862
           },
           {
             "name": "Data Encrypted for Impact",
@@ -26387,7 +27059,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.9402985074626866,
+            "occurrence_groups_order_normalized": 0.3939393939393939,
+            "occurrence_software_order_normalized": 0.8620689655172413
           },
           {
             "name": "Data Manipulation",
@@ -26452,7 +27127,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.014925373134328358,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Defacement",
@@ -26519,7 +27197,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Disk Wipe",
@@ -26595,7 +27276,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Endpoint Denial of Service",
@@ -26629,7 +27313,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Financial Theft",
@@ -26665,7 +27352,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.14925373134328357,
+            "occurrence_groups_order_normalized": 0.2727272727272727,
+            "occurrence_software_order_normalized": 0.017241379310344827
           },
           {
             "name": "Firmware Corruption",
@@ -26691,7 +27381,10 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.029850746268656716,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Inhibit System Recovery",
@@ -26772,7 +27465,10 @@
               "File Deletion"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6268656716417911,
+            "occurrence_groups_order_normalized": 0.06060606060606061,
+            "occurrence_software_order_normalized": 0.6896551724137931
           },
           {
             "name": "Network Denial of Service",
@@ -26803,7 +27499,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04477611940298507,
+            "occurrence_groups_order_normalized": 0.030303030303030304,
+            "occurrence_software_order_normalized": 0.034482758620689655
           },
           {
             "name": "Resource Hijacking",
@@ -26842,7 +27541,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Service Stop",
@@ -26913,7 +27615,10 @@
               "Service Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5522388059701493,
+            "occurrence_groups_order_normalized": 0.15151515151515152,
+            "occurrence_software_order_normalized": 0.5517241379310345
           },
           {
             "name": "System Shutdown/Reboot",
@@ -26962,7 +27667,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.29850746268656714,
+            "occurrence_groups_order_normalized": 0.09090909090909091,
+            "occurrence_software_order_normalized": 0.29310344827586204
           }
         ]
       }
@@ -51089,7 +51797,10 @@
               "Network Connection Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.8,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Exploit Public-Facing Application",
@@ -51113,7 +51824,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Exploitation of Remote Services",
@@ -51140,7 +51854,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4444444444444444,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.5714285714285714
           },
           {
             "name": "External Remote Services",
@@ -51168,7 +51885,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Internet Accessible Device",
@@ -51195,7 +51915,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Remote Services",
@@ -51233,7 +51956,10 @@
               "Network Share Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Replication Through Removable Media",
@@ -51261,7 +51987,10 @@
               "File Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Rogue Master",
@@ -51288,7 +52017,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Spearphishing Attachment",
@@ -51322,7 +52054,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6666666666666666,
+            "occurrence_groups_order_normalized": 0.8,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Supply Chain Compromise",
@@ -51347,7 +52082,10 @@
               "File Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Transient Cyber Asset",
@@ -51369,7 +52107,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Wireless Compromise",
@@ -51393,7 +52134,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -51421,7 +52165,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Change Operating Mode",
@@ -51449,7 +52196,10 @@
               "Device Alarm"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Command-Line Interface",
@@ -51479,7 +52229,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4444444444444444,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Execution through API",
@@ -51501,7 +52254,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Graphical User Interface",
@@ -51529,7 +52285,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Hooking",
@@ -51553,7 +52312,10 @@
               "Process Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Modify Controller Tasking",
@@ -51581,7 +52343,10 @@
               "Software"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Native API",
@@ -51605,7 +52370,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Scripting",
@@ -51640,7 +52408,10 @@
               "Script Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6666666666666666,
+            "occurrence_groups_order_normalized": 0.8,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "User Execution",
@@ -51674,7 +52445,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4444444444444444,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.5714285714285714
           }
         ]
       },
@@ -51705,7 +52479,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Modify Program",
@@ -51734,7 +52511,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Module Firmware",
@@ -51760,7 +52540,10 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Project File Infection",
@@ -51782,7 +52565,10 @@
               "File Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "System Firmware",
@@ -51812,7 +52598,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Valid Accounts",
@@ -51843,7 +52632,10 @@
               "Logon Session Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6666666666666666,
+            "occurrence_groups_order_normalized": 0.8,
+            "occurrence_software_order_normalized": 0.2857142857142857
           }
         ]
       },
@@ -51872,7 +52664,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Hooking",
@@ -51896,7 +52691,10 @@
               "Process Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           }
         ]
       },
@@ -51930,7 +52728,10 @@
               "Device Alarm"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Exploitation for Evasion",
@@ -51952,7 +52753,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Indicator Removal on Host",
@@ -51987,7 +52791,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Masquerading",
@@ -52025,7 +52832,10 @@
               "Scheduled Job Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.5714285714285714
           },
           {
             "name": "Rootkit",
@@ -52047,7 +52857,10 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Spoof Reporting Message",
@@ -52072,7 +52885,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "System Binary Proxy Execution",
@@ -52098,7 +52914,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -52132,7 +52951,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Network Sniffing",
@@ -52158,7 +52980,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Remote System Discovery",
@@ -52191,7 +53016,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6666666666666666,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.7142857142857143
           },
           {
             "name": "Remote System Information Discovery",
@@ -52222,7 +53050,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.7142857142857143
           },
           {
             "name": "Wireless Sniffing",
@@ -52242,7 +53073,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -52272,7 +53106,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Exploitation of Remote Services",
@@ -52299,7 +53136,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4444444444444444,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.5714285714285714
           },
           {
             "name": "Hardcoded Credentials",
@@ -52324,7 +53164,10 @@
               "Logon Session Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Lateral Tool Transfer",
@@ -52363,7 +53206,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.7777777777777778,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.7142857142857143
           },
           {
             "name": "Program Download",
@@ -52396,7 +53242,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.5714285714285714
           },
           {
             "name": "Remote Services",
@@ -52434,7 +53283,10 @@
               "Network Share Access"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Valid Accounts",
@@ -52465,7 +53317,10 @@
               "Logon Session Metadata"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6666666666666666,
+            "occurrence_groups_order_normalized": 0.8,
+            "occurrence_software_order_normalized": 0.2857142857142857
           }
         ]
       },
@@ -52504,7 +53359,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Automated Collection",
@@ -52534,7 +53392,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Data from Information Repositories",
@@ -52560,7 +53421,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Data from Local System",
@@ -52591,7 +53455,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Detect Operating Mode",
@@ -52613,7 +53480,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "I/O Image",
@@ -52635,7 +53505,10 @@
               "Software"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Monitor Process State",
@@ -52661,7 +53534,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Point & Tag Identification",
@@ -52686,7 +53562,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Program Upload",
@@ -52712,7 +53591,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Screen Capture",
@@ -52737,7 +53619,10 @@
               "OS API Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Wireless Sniffing",
@@ -52757,7 +53642,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -52789,7 +53677,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Connection Proxy",
@@ -52815,7 +53706,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Standard Application Layer Protocol",
@@ -52844,7 +53738,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6666666666666666,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.7142857142857143
           }
         ]
       },
@@ -52876,7 +53773,10 @@
               "Application Log Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Alarm Suppression",
@@ -52900,7 +53800,10 @@
               "Process/Event Alarm"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Block Command Message",
@@ -52931,7 +53834,10 @@
               "Process/Event Alarm"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Block Reporting Message",
@@ -52962,7 +53868,10 @@
               "Process History/Live Data"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Block Serial COM",
@@ -52993,7 +53902,10 @@
               "Process Termination"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Change Credential",
@@ -53015,7 +53927,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Data Destruction",
@@ -53045,7 +53960,10 @@
               "Command Execution"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4444444444444444,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.5714285714285714
           },
           {
             "name": "Denial of Service",
@@ -53078,7 +53996,10 @@
               "Process History/Live Data"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.6666666666666666,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.5714285714285714
           },
           {
             "name": "Device Restart/Shutdown",
@@ -53107,7 +54028,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Manipulate I/O Image",
@@ -53130,7 +54054,10 @@
               "Software"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Modify Alarm Settings",
@@ -53156,7 +54083,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Rootkit",
@@ -53178,7 +54108,10 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Service Stop",
@@ -53214,7 +54147,10 @@
               "Process Creation"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.7142857142857143
           },
           {
             "name": "System Firmware",
@@ -53244,7 +54180,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           }
         ]
       },
@@ -53278,7 +54217,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Modify Parameter",
@@ -53308,7 +54250,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.42857142857142855
           },
           {
             "name": "Module Firmware",
@@ -53334,7 +54279,10 @@
               "Firmware Modification"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Spoof Reporting Message",
@@ -53359,7 +54307,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Unauthorized Command Message",
@@ -53392,7 +54343,10 @@
               "Network Traffic Content"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.42857142857142855
           }
         ]
       },
@@ -53414,7 +54368,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Denial of Control",
@@ -53434,7 +54391,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Denial of View",
@@ -53452,7 +54412,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Loss of Availability",
@@ -53473,7 +54436,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.4,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Loss of Control",
@@ -53494,7 +54460,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Loss of Productivity and Revenue",
@@ -53522,7 +54491,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.1111111111111112,
+            "occurrence_groups_order_normalized": 0.6,
+            "occurrence_software_order_normalized": 1.0
           },
           {
             "name": "Loss of Protection",
@@ -53540,7 +54512,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Loss of Safety",
@@ -53558,7 +54533,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.1111111111111111,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.14285714285714285
           },
           {
             "name": "Loss of View",
@@ -53581,7 +54559,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.5555555555555556,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.5714285714285714
           },
           {
             "name": "Manipulation of Control",
@@ -53602,7 +54583,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.3333333333333333,
+            "occurrence_groups_order_normalized": 0.2,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Manipulation of View",
@@ -53621,7 +54605,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2222222222222222,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.2857142857142857
           },
           {
             "name": "Theft of Operational Information",
@@ -53642,7 +54629,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4444444444444444,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.5714285714285714
           }
         ]
       }
@@ -55016,7 +56006,10 @@
               "Network Communication"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Drive-By Compromise",
@@ -55044,7 +56037,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.2,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 0.16
           },
           {
             "name": "Exploitation for Initial Access",
@@ -55068,7 +56064,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Lockscreen Bypass",
@@ -55092,7 +56091,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Phishing",
@@ -55123,7 +56125,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.28,
+            "occurrence_groups_order_normalized": 1.25,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Replication Through Removable Media",
@@ -55147,7 +56152,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Supply Chain Compromise",
@@ -55243,7 +56251,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -55313,7 +56324,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Exploitation for Client Execution",
@@ -55336,7 +56350,10 @@
               "Network Communication"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Native API",
@@ -55359,7 +56376,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.24,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.24
           },
           {
             "name": "Scheduled Task/Job",
@@ -55380,7 +56400,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.12,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.12
           }
         ]
       },
@@ -55411,7 +56434,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.12,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.12
           },
           {
             "name": "Compromise Application Executable",
@@ -55431,7 +56457,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.12,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.12
           },
           {
             "name": "Compromise Client Software Binary",
@@ -55463,7 +56492,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.32,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.32
           },
           {
             "name": "Event Triggered Execution",
@@ -55485,7 +56517,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Foreground Persistence",
@@ -55512,7 +56547,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.16,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.16
           },
           {
             "name": "Hijack Execution Flow",
@@ -55560,7 +56598,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Scheduled Task/Job",
@@ -55581,7 +56622,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.12,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.12
           }
         ]
       },
@@ -55643,7 +56687,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Exploitation for Privilege Escalation",
@@ -55684,7 +56731,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.68,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.68
           },
           {
             "name": "Process Injection",
@@ -55705,7 +56755,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -55736,7 +56789,10 @@
               "Network Communication"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Download New Code at Runtime",
@@ -55800,7 +56856,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.52,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 1.48
           },
           {
             "name": "Execution Guardrails",
@@ -55856,7 +56915,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Foreground Persistence",
@@ -55883,7 +56945,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.16,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.16
           },
           {
             "name": "Hide Artifacts",
@@ -55905,7 +56970,10 @@
               "System Settings"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Hooking",
@@ -55923,7 +56991,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Impair Defenses",
@@ -56034,7 +57105,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Indicator Removal on Host",
@@ -56121,7 +57195,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Input Injection",
@@ -56154,7 +57231,10 @@
               "System Settings"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.48,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.48
           },
           {
             "name": "Masquerading",
@@ -56177,7 +57257,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Native API",
@@ -56200,7 +57283,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.24,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.24
           },
           {
             "name": "Obfuscated Files or Information",
@@ -56285,7 +57371,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 1.68,
+            "occurrence_groups_order_normalized": 0.5,
+            "occurrence_software_order_normalized": 1.6
           },
           {
             "name": "Process Injection",
@@ -56306,7 +57395,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Proxy Through Victim",
@@ -56329,7 +57421,10 @@
               "Network Traffic Flow"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Subvert Trust Controls",
@@ -56384,7 +57479,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Virtualization/Sandbox Evasion",
@@ -56448,7 +57546,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           }
         ]
       },
@@ -56491,7 +57592,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.52,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 0.48
           },
           {
             "name": "Clipboard Data",
@@ -56517,7 +57621,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.16,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.16
           },
           {
             "name": "Credentials from Password Store",
@@ -56539,7 +57646,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Input Capture",
@@ -56607,7 +57717,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Steal Application Access Token",
@@ -56655,7 +57768,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -56697,7 +57813,10 @@
               "Permissions Request"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.52,
+            "occurrence_groups_order_normalized": 0.5,
+            "occurrence_software_order_normalized": 0.44
           },
           {
             "name": "Location Tracking",
@@ -56797,7 +57916,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 2.08,
+            "occurrence_groups_order_normalized": 0.5,
+            "occurrence_software_order_normalized": 2.0
           },
           {
             "name": "Network Service Scanning",
@@ -56814,7 +57936,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Process Discovery",
@@ -56844,7 +57969,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.32,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.32
           },
           {
             "name": "Software Discovery",
@@ -56936,7 +58064,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 1.68,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 1.64
           },
           {
             "name": "System Information Discovery",
@@ -57007,7 +58138,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 2.08,
+            "occurrence_groups_order_normalized": 0.5,
+            "occurrence_software_order_normalized": 2.0
           },
           {
             "name": "System Network Configuration Discovery",
@@ -57070,7 +58204,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.6,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 1.56
           },
           {
             "name": "System Network Connections Discovery",
@@ -57096,7 +58233,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.32,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 0.28
           }
         ]
       },
@@ -57128,7 +58268,10 @@
               "Network Communication"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Replication Through Removable Media",
@@ -57152,7 +58295,10 @@
               "Host Status"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           }
         ]
       },
@@ -57195,7 +58341,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.52,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 0.48
           },
           {
             "name": "Adversary-in-the-Middle",
@@ -57224,7 +58373,10 @@
               "Permissions Request"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.12,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.12
           },
           {
             "name": "Archive Collected Data",
@@ -57255,7 +58407,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.48,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 0.44
           },
           {
             "name": "Audio Capture",
@@ -57326,7 +58481,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.84,
+            "occurrence_groups_order_normalized": 0.5,
+            "occurrence_software_order_normalized": 1.76
           },
           {
             "name": "Call Control",
@@ -57358,7 +58516,10 @@
               "System Settings"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.4
           },
           {
             "name": "Clipboard Data",
@@ -57384,7 +58545,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.16,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.16
           },
           {
             "name": "Data from Local System",
@@ -57448,7 +58612,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.8,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 1.76
           },
           {
             "name": "Input Capture",
@@ -57516,7 +58683,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Location Tracking",
@@ -57616,7 +58786,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 2.08,
+            "occurrence_groups_order_normalized": 0.5,
+            "occurrence_software_order_normalized": 2.0
           },
           {
             "name": "Protected User Data",
@@ -57895,7 +59068,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Screen Capture",
@@ -57941,7 +59117,10 @@
               "System Settings"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.92,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.92
           },
           {
             "name": "Stored Application Data",
@@ -57991,7 +59170,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.08,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 1.04
           },
           {
             "name": "Video Capture",
@@ -58051,7 +59233,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.4,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 1.36
           }
         ]
       },
@@ -58077,7 +59262,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Call Control",
@@ -58109,7 +59297,10 @@
               "System Settings"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.4
           },
           {
             "name": "Dynamic Resolution",
@@ -58158,7 +59349,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Encrypted Channel",
@@ -58178,7 +59372,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Ingress Tool Transfer",
@@ -58212,7 +59409,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 0.36
           },
           {
             "name": "Non-Standard Port",
@@ -58243,7 +59443,10 @@
               "Network Communication"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.28,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.28
           },
           {
             "name": "Out of Band Data",
@@ -58281,7 +59484,10 @@
               "System Notifications"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.64,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.64
           },
           {
             "name": "Remote Access Software",
@@ -58305,7 +59511,10 @@
               "Permissions Request"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.08,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.08
           },
           {
             "name": "Web Service",
@@ -58355,7 +59564,10 @@
                 "visibility": false,
                 "visibility_ratio": 0
               }
-            ]
+            ],
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           }
         ]
       },
@@ -58380,7 +59592,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Exfiltration Over C2 Channel",
@@ -58420,7 +59635,10 @@
             "data_sources": [],
             "data_components": [],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.84,
+            "occurrence_groups_order_normalized": 0.25,
+            "occurrence_software_order_normalized": 0.8
           }
         ]
       },
@@ -58448,7 +59666,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Call Control",
@@ -58480,7 +59701,10 @@
               "System Settings"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.4,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.4
           },
           {
             "name": "Data Destruction",
@@ -58508,7 +59732,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "Data Encrypted for Impact",
@@ -58532,7 +59759,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.12,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.12
           },
           {
             "name": "Data Manipulation",
@@ -58552,7 +59782,10 @@
               "API Calls"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.0,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.0
           },
           {
             "name": "Endpoint Denial of Service",
@@ -58580,7 +59813,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.16,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.16
           },
           {
             "name": "Generate Traffic from Victim",
@@ -58620,7 +59856,10 @@
               "Permissions Requests"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.64,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.64
           },
           {
             "name": "Input Injection",
@@ -58653,7 +59892,10 @@
               "System Settings"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.48,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.48
           },
           {
             "name": "Network Denial of Service",
@@ -58676,7 +59918,10 @@
               "System Notifications"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 0.04,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 0.04
           },
           {
             "name": "SMS Control",
@@ -58726,7 +59971,10 @@
               "System Settings"
             ],
             "visibility": false,
-            "visibility_ratio": 0
+            "visibility_ratio": 0,
+            "occurrence_total_order_normalized": 1.16,
+            "occurrence_groups_order_normalized": 0.0,
+            "occurrence_software_order_normalized": 1.16
           }
         ]
       }
