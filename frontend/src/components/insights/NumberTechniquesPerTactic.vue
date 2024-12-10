@@ -5,6 +5,7 @@ const store = tacticsStore();
 interface Tactic {
   name: string;
   technique_count: number;
+  subtechnique_count: number;
 }
 
 function getTechniqueCountPerTactic(): Tactic[] {
@@ -25,27 +26,37 @@ function getTechniqueCountPerTactic(): Tactic[] {
 
   return tactics.map((tactic) => ({
     name: tactic.name,
-    technique_count: tactic.techniques.length,
+    technique_count: tactic.technique_count,
+    subtechnique_count: tactic.subtechnique_count,
   }));
 }
 </script>
 
+
+
 <template>
   <div class="item-visualization">
-    <div class=title>
-      Tactics - Number of Techniques
+    <div class="title">
+      Tactics - Number of (Sub)Techniques
     </div>
     <hr>
     <div v-for="(tactic, index) in getTechniqueCountPerTactic()" :key="index" class="item-row">
       <div class="item-name">{{ tactic.name }}</div>
       <div class="bar-container">
-        <div class="bar" :style="{ width: tactic.technique_count * 5 + 'px' }">
-          <span class="item-count">{{ tactic.technique_count }}</span>
-        </div>
+        <div 
+          class="bar blue-bar" 
+          :style="{ width: tactic.technique_count * 1.7 + 'px' }"
+        ></div>
+        <div 
+          class="bar lightblue-bar" 
+          :style="{ width: tactic.subtechnique_count * 1.7 + 'px' }"
+        ></div>
+        <span class="item-count">{{ tactic.technique_count + tactic.subtechnique_count }}</span>
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .item-visualization {
@@ -82,18 +93,25 @@ function getTechniqueCountPerTactic(): Tactic[] {
   flex-grow: 1;
   display: flex;
   align-items: center;
+  position: relative;
+  height: 14px;
 }
 
 .bar {
   height: 14px;
+}
+
+.blue-bar {
   background-color: SteelBlue;
-  position: relative;
+}
+
+.lightblue-bar {
+  background-color: #89AFCF;
 }
 
 .item-count {
-  position: absolute;
-  left: 100%;
   margin-left: 4px;
   font-size: 12px;
 }
+
 </style>

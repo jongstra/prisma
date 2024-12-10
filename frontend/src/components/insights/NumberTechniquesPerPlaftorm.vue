@@ -5,6 +5,7 @@ const store = tacticsStore();
 interface Platform {
   name: string;
   technique_count: number;
+  subtechnique_count: number; // Added this field
 }
 
 function getTechniqueCountPerPlatform(): Platform[] {
@@ -23,29 +24,39 @@ function getTechniqueCountPerPlatform(): Platform[] {
     return [];
   }
 
+  // Ensure each platform has a subtechnique_count
   return platforms.map((platform) => ({
     name: platform.name,
     technique_count: platform.technique_count,
+    subtechnique_count: platform.subtechnique_count ?? 0,
   }));
 }
 </script>
 
+
 <template>
   <div class="item-visualization">
-    <div class=title>
+    <div class="title">
       Platforms - Number of Techniques
     </div>
     <hr>
     <div v-for="(platform, index) in getTechniqueCountPerPlatform()" :key="index" class="item-row">
       <div class="item-name">{{ platform.name }}</div>
       <div class="bar-container">
-        <div class="bar" :style="{ width: platform.technique_count * 0.5 + 'px' }">
-          <span class="item-count">{{ platform.technique_count }}</span>
-        </div>
+        <div 
+          class="bar blue-bar" 
+          :style="{ width: platform.technique_count * 0.52 + 'px' }"
+        ></div>
+        <div 
+          class="bar lightblue-bar" 
+          :style="{ width: platform.subtechnique_count * 0.52 + 'px' }"
+        ></div>
+        <span class="item-count">{{ platform.technique_count + platform.subtechnique_count }}</span>
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .item-visualization {
@@ -82,18 +93,25 @@ function getTechniqueCountPerPlatform(): Platform[] {
   flex-grow: 1;
   display: flex;
   align-items: center;
+  position: relative;
+  height: 14px;
 }
 
 .bar {
   height: 14px;
+}
+
+.blue-bar {
   background-color: SteelBlue;
-  position: relative;
+}
+
+.lightblue-bar {
+  background-color: #89AFCF;
 }
 
 .item-count {
-  position: absolute;
-  left: 100%;
   margin-left: 4px;
   font-size: 12px;
 }
 </style>
+

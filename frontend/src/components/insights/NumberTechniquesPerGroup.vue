@@ -5,6 +5,7 @@ const store = tacticsStore();
 interface Group {
   name: string;
   technique_count: number;
+  subtechnique_count: number;
 }
 
 function getTechniqueCountPerGroup(): Group[] {
@@ -23,15 +24,15 @@ function getTechniqueCountPerGroup(): Group[] {
     return [];
   }
 
-  // Return the top 15 groups (remove any groups with a 0 technique_counts).
+  // Return the top 15 groups (they are pre-sorted in Python on all_technique_count). Remove any groups with a 0 all_technique_count.
   return groups
-  .slice(0, 15)
-  .filter((group) => group.technique_count > 0)
-  .map((group) => ({
-    name: group.name,
-    technique_count: group.technique_count,
-  }));
-
+    .filter((group) => group.all_technique_count > 0)
+    .slice(0, 15)
+    .map((group) => ({
+      name: group.name,
+      technique_count: group.technique_count,
+      subtechnique_count: group.subtechnique_count,
+    }));
 }
 </script>
 
@@ -40,15 +41,21 @@ function getTechniqueCountPerGroup(): Group[] {
     <div class="title">
       Groups
       <span v-if="getTechniqueCountPerGroup().length >= 15"> (Top 15)</span>
-      - Number of Techniques
+      - Number (Sub)Techniques
     </div>
     <hr>
     <div v-for="(group, index) in getTechniqueCountPerGroup()" :key="index" class="item-row">
       <div class="item-name">{{ group.name }}</div>
       <div class="bar-container">
-        <div class="bar" :style="{ width: group.technique_count * 1.75 + 'px' }">
-          <span class="item-count">{{ group.technique_count }}</span>
-        </div>
+        <div 
+          class="bar blue-bar" 
+          :style="{ width: group.technique_count * 2 + 'px' }"
+        ></div>
+        <div 
+          class="bar lightblue-bar" 
+          :style="{ width: group.subtechnique_count * 2 + 'px' }"
+        ></div>
+        <span class="item-count">{{ group.technique_count + group.subtechnique_count }}</span>
       </div>
     </div>
   </div>
@@ -89,17 +96,23 @@ function getTechniqueCountPerGroup(): Group[] {
   flex-grow: 1;
   display: flex;
   align-items: center;
+  position: relative;
+  height: 14px;
 }
 
 .bar {
   height: 14px;
+}
+
+.blue-bar {
   background-color: SteelBlue;
-  position: relative;
+}
+
+.lightblue-bar {
+  background-color: #89AFCF;
 }
 
 .item-count {
-  position: absolute;
-  left: 100%;
   margin-left: 4px;
   font-size: 12px;
 }

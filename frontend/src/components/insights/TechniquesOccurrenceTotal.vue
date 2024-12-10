@@ -21,13 +21,13 @@ function getTopTechniques() {
       <div class="bar-container">
         <div 
           class="bar red-bar" 
-          :style="{ width: technique.group_occurrence * 0.55 + 'px' }"
+          :style="{ width: technique.group_occurrence * 0.53 + 'px' }"
         ></div>
         <div 
           class="bar green-bar" 
-          :style="{ width: technique.software_occurrence * 0.55 + 'px' }"
+          :style="{ width: technique.software_occurrence * 0.53 + 'px' }"
         ></div>
-        <span class="technique-count">{{ technique.total_occurrence }}</span>
+        <span class="item-count">{{ technique.total_occurrence }}</span>
       </div>
     </div>
   </div>
@@ -84,8 +84,8 @@ function getTopTechniques() {
   background-color: Olive;
 }
 
-.technique-count {
-  margin-left: 8px;
+.item-count {
+  margin-left: 4px;
   font-size: 12px;
 }
 </style>

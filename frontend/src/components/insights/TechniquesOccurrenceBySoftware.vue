@@ -21,9 +21,9 @@ function getTopTechniquesBySoftware() {
       <div class="bar-container">
         <div 
           class="bar green-bar" 
-          :style="{ width: technique.software_occurrence * 0.55 + 'px' }"
+          :style="{ width: technique.software_occurrence * 0.65 + 'px' }"
         ></div>
-        <span class="technique-count">{{ technique.software_occurrence }}</span>
+        <span class="item-count">{{ technique.software_occurrence }}</span>
       </div>
     </div>
   </div>
@@ -76,8 +76,8 @@ function getTopTechniquesBySoftware() {
   background-color: Olive;
 }
 
-.technique-count {
-  margin-left: 8px;
+.item-count {
+  margin-left: 4px;
   font-size: 12px;
 }
 </style>

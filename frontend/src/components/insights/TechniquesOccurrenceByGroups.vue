@@ -21,9 +21,9 @@ function getTopTechniquesByGroup() {
       <div class="bar-container">
         <div 
           class="bar red-bar" 
-          :style="{ width: technique.group_occurrence * 1.5 + 'px' }"
+          :style="{ width: technique.group_occurrence * 3 + 'px' }"
         ></div>
-        <span class="technique-count">{{ technique.group_occurrence }}</span>
+        <span class="item-count">{{ technique.group_occurrence }}</span>
       </div>
     </div>
   </div>
@@ -76,8 +76,8 @@ function getTopTechniquesByGroup() {
   background-color: FireBrick;
 }
 
-.technique-count {
-  margin-left: 8px;
+.item-count {
+  margin-left: 4px;
   font-size: 12px;
 }
 </style>
