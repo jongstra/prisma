@@ -18,7 +18,7 @@ data_sources:
         available_for_data_analytics: true
         comment: ''
         data_quality:
-          device_completeness: 1
+          device_completeness: 5
           data_field_completeness: 1
           timeliness: 1
           consistency: 1

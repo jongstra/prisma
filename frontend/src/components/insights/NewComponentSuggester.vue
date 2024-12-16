@@ -44,7 +44,7 @@ function getTopNewComponents(): Component[] {
 <template>
   <div class="item-visualization">
     <div class="title">
-      Suggested Components: New
+      Suggestion: Add New Components
       <span v-if="getTopNewComponents().length >= 15"> (Top 15)</span>
       <!-- - Nr. (Sub)Techniques -->
     </div>

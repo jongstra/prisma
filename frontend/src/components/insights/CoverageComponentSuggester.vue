@@ -36,6 +36,7 @@ function getTopCoverageComponents(): Component[] {
       name: component.name,
       technique_count: component.technique_count,
       subtechnique_count: component.subtechnique_count,
+      coverage: (component.quality.device_completeness * 0.2 * 100).toFixed(0),
     }));
 }
 
@@ -45,13 +46,13 @@ function getTopCoverageComponents(): Component[] {
 <template>
   <div class="item-visualization">
     <div class="title">
-      Suggested Components: Improve Coverage
+      Suggestion: Improve Coverage of Exisiting Components
       <span v-if="getTopCoverageComponents().length >= 15"> (Top 15)</span>
       <!-- - Nr. (Sub)Techniques -->
     </div>
     <hr>
     <div v-for="(component, index) in getTopCoverageComponents()" :key="index" class="item-row">
-      <div class="item-name">{{ component.name }}</div>
+      <div class="item-name">{{ component.name }} <br/> [Current Coverage: {{component.coverage}}%] </div>
       <div class="bar-container">
         <div 
           class="bar blue-bar" 

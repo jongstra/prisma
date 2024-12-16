@@ -294,13 +294,19 @@ export const tacticsStore = defineStore('tactics', {
       });
 
 
-      // Get the names of all DeTT&CT data sources that are administerd in the YAML file.
-      let dettect_data_sources_names = data.data_sources.map(
-        (data_source) => data_source.data_source_name
+      // Get all DeTT&CT data sources that are administerd in the YAML file, and make an array of Objects (name, device_completeness) for them.
+      // let dettect_data_sources = data.data_sources.map(
+      //   (data_source) => data_source.data_source_name
+      // );
+      let dettect_data_sources = data.data_sources.map(
+        (data_source) => ({
+          name: data_source.data_source_name,
+          device_completeness: data_source.data_source[0]['data_quality']['device_completeness']
+        })
       );
-
+      
       // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
-      let active_data_components = dettect_data_sources_names;
+      let active_data_components = dettect_data_sources;
       
 
       // // TODO: Deze logica verbeteren om het inlezen te versnellen.
@@ -345,10 +351,17 @@ export const tacticsStore = defineStore('tactics', {
 
         // Update the visibility properties of all techniques.
         tactic.techniques.forEach( (technique: object) => {
-          const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
+          // const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
+          const matchingComponents = active_data_components.filter(component => technique.data_components.includes(component.name));
           technique.visibility = matchingComponents.length > 0;
           if (technique.data_components.length === 0) {technique.visibility_ratio = 0;}
-          else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
+          else {
+            technique.visibility_ratio = 0
+            for (const component of matchingComponents) {
+              technique.visibility_ratio += (component.device_completeness / 5) /  technique.data_components.length;
+            }
+          }
+          // else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
         })
 
 
