@@ -349,7 +349,7 @@ export const tacticsStore = defineStore('tactics', {
       // Loop over all tactics/techniques/subtechniques in the Pinia store to update their visibility and alpha.
       tactics.forEach((tactic: object) => {
 
-        // Update the visibility properties of all techniques.
+        // Update the visibility properties of techniques.
         tactic.techniques.forEach( (technique: object) => {
           // const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
           const matchingComponents = active_data_components.filter(component => technique.data_components.includes(component.name));
@@ -363,6 +363,28 @@ export const tacticsStore = defineStore('tactics', {
           }
           // else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
         })
+
+        // Update the visibility properties of subtechniques.
+        tactic.techniques.forEach( (technique: object) => {
+          if (typeof technique.sub_techniques !== "undefined") {
+            
+            technique.sub_techniques.forEach( (subtechnique: object) => {
+
+              const matchingComponents = active_data_components.filter(component => subtechnique.data_components.includes(component.name));
+              subtechnique.visibility = matchingComponents.length > 0;
+              if (subtechnique.data_components.length === 0) {subtechnique.visibility_ratio = 0;}
+              else {
+                subtechnique.visibility_ratio = 0
+                for (const component of matchingComponents) {
+                  subtechnique.visibility_ratio += (component.device_completeness / 5) /  subtechnique.data_components.length;
+                }
+              }
+
+          })
+
+          }
+        })
+        
 
 
         // // Old visibility computation, using subtechnique visibility.

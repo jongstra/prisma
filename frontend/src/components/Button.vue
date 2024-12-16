@@ -105,7 +105,7 @@ window.toggleGroupSelected = toggleGroupSelected;
 const getTooltipText = () => {
   const subtechniques_string = props.technique.sub_techniques 
     ? `Subtechniques:\n${props.technique.sub_techniques.map(
-      sub => `<a href='https://attack.mitre.org/techniques/${sub.external_id.split('.')[0]}/${sub.external_id.split('.')[1]}/' target="_blank">• ${sub.name}</a>`
+      sub => `<a href='https://attack.mitre.org/techniques/${sub.external_id.split('.')[0]}/${sub.external_id.split('.')[1]}/' target="_blank">• ${sub.name}</a> - Vis: ${(sub.visibility_ratio*100).toFixed(0)}%`
     ).join('\n')}`
     : 'No Subtechniques';
 
@@ -337,7 +337,7 @@ button.occurs-in-hovered-groups {
   border-radius: 4px;
   font-size: 11px;
   z-index: 1002; /* Ensure tooltip is always on top */
-  width: 171px;
+  width: 240px;
   text-align: left;
   white-space: pre-line;
 }

@@ -66,7 +66,7 @@ onUnmounted(() => {
     <!-- Compute the tactic-visiblity solely based on the amount of visible techniques. -->
     <!-- <p class="button-column-stats2"> {{ Math.round(tactic.techniques.filter(technique => technique.visibility).length / tactic.techniques.length * 100) }}% visibility </p> -->
     
-    <!-- Compute the tactic-visibility based on the technique visibility_ratio value (which is a weighted value based on the visibility of the technique AND its sub techniques). -->
+    <!-- Compute the tactic-visibility based on the technique visibility_ratio value. -->
     <p class="button-column-stat-2">{{ Math.round(tactic.techniques.reduce((sum, technique) => sum + (technique.visibility ? technique.visibility_ratio : 0), 0) / tactic.techniques.length * 100) }}% visibility</p>
   </div>
 
