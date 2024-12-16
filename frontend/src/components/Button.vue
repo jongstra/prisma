@@ -126,8 +126,9 @@ const getTooltipText = () => {
   components_string = `(${visible_components_count} of ${total_components_detecting_technique})` +
                         ((components_string.length > 0) ? ':' : '') + components_string;
 
-  return `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a><br>
-      ID: ${props.technique.external_id}
+  return `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})
+
+      Visibility: ${(props.technique.visibility_ratio*100).toFixed(0)}%
 
       <hr>
       ${subtechniques_string}
