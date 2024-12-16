@@ -2,6 +2,8 @@
   // import { tacticsStore } from '@/stores/tactics';
   import VisibilityPerTactic from '@/components/insights/VisibilityPerTactic.vue';
   import VisibilityPerPlatform from '@/components/insights/VisibilityPerPlatform.vue';
+  import NewComponentSuggester from '@/components/insights/NewComponentSuggester.vue';
+  import CoverageComponentSuggester from '@/components/insights/CoverageComponentSuggester.vue';
   import NumberTechniquesPerTactic from '@/components/insights/NumberTechniquesPerTactic.vue';
   import NumberTechniquesPerPlaftorm from '@/components/insights/NumberTechniquesPerPlaftorm.vue';
   import NumberTechniquesPerGroup from '@/components/insights/NumberTechniquesPerGroup.vue';
@@ -15,6 +17,8 @@
   <div class="horizontal-container">
     <VisibilityPerTactic/>
     <VisibilityPerPlatform/>
+    <NewComponentSuggester/>
+    <CoverageComponentSuggester/>
     <NumberTechniquesPerTactic/>
     <NumberTechniquesPerPlaftorm/>
     <NumberTechniquesPerGroup/>
