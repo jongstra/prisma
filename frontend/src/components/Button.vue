@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch, reactive, onMounted, onBeforeUnmount } from 'vue';
+import { computed, ref, watch, reactive } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,11 +17,6 @@ if (store.domain === 'enterprise-attack') {
 } else if (store.domain === 'ics-attack') {
   domain = reactive(store.ics);
 }
-
-// console.log(domain.tactics.reduce((sum, tactic) => {
-//   sum += tactic.techniques.length;
-//   return sum; // Return the updated sum
-// }, 0)); // Initialize sum to 0
 
 // Calculate the tooltip position, and update it when the button location would be modified.
 const buttonRef = ref<HTMLElement | null>(null);
@@ -82,14 +77,6 @@ const hideTooltip = () => {
   }
 };
 
-const toggleGroupSelected = (groupName: string) => {
-  domain.groups.forEach(group => {
-    if (group.name === groupName) {
-      group.selected = !group.selected;
-    }
-  });
-};
-
 const hoverGroup = (groupName: string) => {
   domain.groups.forEach(group => {
     if (group.name === groupName) {
@@ -98,9 +85,37 @@ const hoverGroup = (groupName: string) => {
   });
 };
 
+
+const toggleGroupSelected = (groupName: string) => {
+  domain.groups.forEach(group => {
+    if (group.name === groupName) {
+      group.selected = !group.selected;
+    }
+  });
+};
+
+const hoverComponent = (componentName: string) => {
+  domain.data_components.forEach(component => {
+    if (component.name === componentName) {
+      component.hovered = true;
+    }
+  });
+};
+
+const toggleComponentSelected = (componentName: string) => {
+  domain.data_components.forEach(component => {
+    if (component.name === componentName) {
+      component.selected = !component.selected;
+    }
+  });
+};
+
 // Attach methods to the window object
 window.hoverGroup = hoverGroup;
 window.toggleGroupSelected = toggleGroupSelected;
+window.hoverComponent = hoverComponent;
+window.toggleComponentSelected = toggleComponentSelected;
+
 
 const getTooltipText = () => {
   const subtechniques_string = props.technique.sub_techniques 
@@ -108,23 +123,6 @@ const getTooltipText = () => {
       sub => `<a href='https://attack.mitre.org/techniques/${sub.external_id.split('.')[0]}/${sub.external_id.split('.')[1]}/' target="_blank">• ${sub.name}</a> - Vis: ${(sub.visibility_ratio*100).toFixed(0)}%`
     ).join('\n')}`
     : 'No Subtechniques';
-
-  const groups_string = props.technique.groups.length > 0 
-    ? `Groups:\n`
-    : "No Groups";
-
-  let components_string = '';
-  const visible_components = store.visibleAttributes('data_components');
-  const total_components_detecting_technique = props.technique.data_components.length;
-  let visible_components_count = 0;
-  props.technique.data_components.forEach((component) => {
-    if (visible_components.includes(component)) {
-      visible_components_count += 1;
-      components_string += `<br>- ${component}`;
-    } 
-  });
-  components_string = `(${visible_components_count} of ${total_components_detecting_technique})` +
-                        ((components_string.length > 0) ? ':' : '') + components_string;
 
   return `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})
 
@@ -137,17 +135,11 @@ const getTooltipText = () => {
       Nr groups using: ${props.technique.occurrence_groups}
       Nr software using: ${props.technique.occurrence_software}
       Total occurrence: ${props.technique.occurrence_total}
-
+      
       <hr>
-      Components visible ${components_string}
-
-      <hr>
-      ${groups_string}
   `
 };
 
-// ${props.technique.name}<br>
-// ID: <a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.external_id}</a>
 
 function getButtonStyles(visibility_ratio: number) {
   let backgroundColor = '';
@@ -234,6 +226,22 @@ const occursInSelectedGroups = () => {
   }
 };
 
+const occursInHoveredComponents = () => {
+  if (store.hoveredComponentsTechniquesSet.has(props.technique.name)) {
+    return true
+  } else {
+    return false
+  }
+};
+
+const occursInSelectedComponents = () => {
+  if (store.selectedComponentsTechniquesSet.has(props.technique.name)) {
+    return true
+  } else {
+    return false
+  }
+};
+
 </script>
 
 
@@ -245,7 +253,12 @@ const occursInSelectedGroups = () => {
     @click="toggleTooltipPinning"
     @mouseover="showTooltip"
     @mouseleave="hideTooltip"
-    :class="{ pinned: store.pinnedTooltipId === id, 'occurs-in-hovered-groups': occursInHoveredGroups(), 'occurs-in-selected-groups': occursInSelectedGroups() }"
+    :class="{ pinned: store.pinnedTooltipId === id,
+      'occurs-in-hovered-groups': occursInHoveredGroups(),
+      'occurs-in-selected-groups': occursInSelectedGroups(),
+      'occurs-in-hovered-components': occursInHoveredComponents(),
+      'occurs-in-selected-components': occursInSelectedComponents(),
+      }"
   >
     <span class="buttontext">{{ technique.name }}</span>
   </button>
@@ -256,8 +269,10 @@ const occursInSelectedGroups = () => {
   >
     <div v-html="getTooltipText()"></div>
     <div v-if="props.technique.groups.length > 0">
+      Groups:<br>
+      <!-- Group buttons -->
       <label v-for="group in props.technique.groups" :key="group" for="${group}-${Math.random()}" style="display: inline-flex; align-items: center; margin-right: 5px;">
-        <span 
+        <span
           class="group-box"
           :style="{
             display: 'inline-block',
@@ -280,8 +295,42 @@ const occursInSelectedGroups = () => {
         </span>
       </label>
     </div>
+    <div v-else>No Groups</div>
+    <br>
+    <hr>
+    <br>
+    <div v-if="props.technique.data_components.length > 0">
+      Components:<br>
+      <!-- Component buttons -->
+      <label v-for="component in props.technique.data_components" :key="component" for="${component}-${Math.random()}" style="display: inline-flex; align-items: center; margin-right: 5px;">
+        <span
+          class="component-box"
+          :style="{
+            display: 'inline-block',
+            padding: '5px 5px',
+            marginLeft: '1px',
+            marginTop: '2px',
+            marginBottom: '2px',
+            backgroundColor: 'gray',
+            borderColor: domain.data_components.find(c => c.name === component)?.selected ? 'rgb(230, 0, 0)' : '#ccc',
+            borderWidth: '1.5px',
+            borderStyle: 'solid',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            transition: 'background-color 0.2s, border-color 0.2s',
+            fontSize: '11px'
+          }"
+          @mouseover="hoverComponent(component)"
+          @click="toggleComponentSelected(component)">
+          {{ component }} {{ domain.data_components.find(c => c.name === component).visibility ? '[VISIBLE]' : ''}}
+        </span>
+      </label>
+    </div>
+    <div v-else>No Components</div>
+    <br>
   </div>
 </template>
+
 
 
 
@@ -310,7 +359,7 @@ button.occurs-in-selected-groups {
 }
 
 /* TODO: Change this so the box-shadow itself is always in front of other buttons (in terms of z-index). */
-button.occurs-in-hovered-groups {
+button.occurs-in-hovered-groups, button.occurs-in-hovered-components {
   /* transform: translate(1px, -2px);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
   outline: 3px solid rgb(57, 55, 139); */

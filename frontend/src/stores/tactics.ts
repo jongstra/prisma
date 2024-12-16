@@ -136,6 +136,55 @@ export const tacticsStore = defineStore('tactics', {
     },
 
 
+    hoveredComponentsTechniquesSet: (state) => {
+      let components;
+
+      if (state.domain === 'enterprise-attack') {
+        components = state.enterprise?.data_components;
+      } else if (state.domain === 'mobile-attack') {
+        components = state.mobile?.data_components;
+      } else if (state.domain === 'ics-attack') {
+        components = state.ics?.data_components;
+      }
+      
+      // Add all techniques of hovered data_components to a list.
+      let componentsTechniques = [];
+      components.forEach(component => {
+        if (component?.hovered) {
+          componentsTechniques.push(...component.techniques)
+        }
+      });
+      
+      // Remove duplicates in the techniques list, and return it.
+      const componentsTechniquesSet = new Set(componentsTechniques);
+      return componentsTechniquesSet;
+    },
+
+    selectedComponentsTechniquesSet: (state) => {
+      let components;
+
+      if (state.domain === 'enterprise-attack') {
+        components = state.enterprise?.data_components;
+      } else if (state.domain === 'mobile-attack') {
+        components = state.mobile?.data_components;
+      } else if (state.domain === 'ics-attack') {
+        components = state.ics?.data_components;
+      }
+      
+      // Add all techniques of selected data_components to a list.
+      let componentsTechniques = [];
+      components.forEach(component => {
+        if (component?.selected) {
+          componentsTechniques.push(...component.techniques)
+        }
+      });
+      
+      // Remove duplicates in the techniques list, and return it.
+      const componentsTechniquesSet = new Set(componentsTechniques);
+      return componentsTechniquesSet;
+    },
+
+
     techniquesOccurrences: (state) => {
       let tactics;
     
@@ -308,6 +357,44 @@ export const tacticsStore = defineStore('tactics', {
       // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
       let active_data_components = dettect_data_sources;
       
+      // Loop over all tactics/techniques/subtechniques in the Pinia store to update their visibility and alpha.
+      tactics.forEach((tactic: object) => {
+
+        // Update the visibility properties of techniques.
+        tactic.techniques.forEach((technique: object) => {
+          // const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
+          const matchingComponents = active_data_components.filter(component => technique.data_components.includes(component.name));
+          technique.visibility = matchingComponents.length > 0;
+          if (technique.data_components.length === 0) {technique.visibility_ratio = 0;}
+          else {
+            technique.visibility_ratio = 0
+            for (const component of matchingComponents) {
+              technique.visibility_ratio += (component.device_completeness / 5) /  technique.data_components.length;
+            }
+          }
+          // else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
+        })
+
+        // Update the visibility properties of subtechniques. And update the technique visibility_ratio as well when it has such subtechniques.
+        tactic.techniques.forEach((technique: object) => {
+          if (typeof technique.sub_techniques !== "undefined") {
+            technique.visibility_ratio = technique.visibility_ratio / (technique.sub_techniques.length+1)  // Normalize technique visibility_ratio based on amount of subtechniques plus the technique itsself as the normalization factor.
+            technique.sub_techniques.forEach((subtechnique: object) => {
+              const matchingComponents = active_data_components.filter(component => subtechnique.data_components.includes(component.name));
+              subtechnique.visibility = matchingComponents.length > 0;
+              if (subtechnique.data_components.length === 0) {subtechnique.visibility_ratio = 0;}
+              else {
+                subtechnique.visibility_ratio = 0
+                for (const component of matchingComponents) {
+                  subtechnique.visibility_ratio += (component.device_completeness / 5) /  subtechnique.data_components.length;
+                  technique.visibility_ratio += (subtechnique.visibility_ratio / (technique.sub_techniques.length+1)) // With each subtechnique, update technique visibility_ratio using the same normalization factor as above.
+                }
+              }
+            })
+          }
+        })
+      })
+    },
 
       // // TODO: Deze logica verbeteren om het inlezen te versnellen.
       // data.data_sources.forEach((data_source) => {
@@ -346,42 +433,7 @@ export const tacticsStore = defineStore('tactics', {
       // });
 
 
-      // Loop over all tactics/techniques/subtechniques in the Pinia store to update their visibility and alpha.
-      tactics.forEach((tactic: object) => {
 
-        // Update the visibility properties of techniques.
-        tactic.techniques.forEach((technique: object) => {
-          // const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
-          const matchingComponents = active_data_components.filter(component => technique.data_components.includes(component.name));
-          technique.visibility = matchingComponents.length > 0;
-          if (technique.data_components.length === 0) {technique.visibility_ratio = 0;}
-          else {
-            technique.visibility_ratio = 0
-            for (const component of matchingComponents) {
-              technique.visibility_ratio += (component.device_completeness / 5) /  technique.data_components.length;
-            }
-          }
-          // else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
-        })
-
-        // Update the visibility properties of subtechniques. And update the technique visibility_ratio as well when it has such subtechniques.
-        tactic.techniques.forEach((technique: object) => {
-          if (typeof technique.sub_techniques !== "undefined") {
-            technique.visibility_ratio = technique.visibility_ratio / (technique.sub_techniques.length+1)  // Normalize technique visibility_ratio based on amount of subtechniques plus the technique itsself as the normalization factor.
-            technique.sub_techniques.forEach((subtechnique: object) => {
-              const matchingComponents = active_data_components.filter(component => subtechnique.data_components.includes(component.name));
-              subtechnique.visibility = matchingComponents.length > 0;
-              if (subtechnique.data_components.length === 0) {subtechnique.visibility_ratio = 0;}
-              else {
-                subtechnique.visibility_ratio = 0
-                for (const component of matchingComponents) {
-                  subtechnique.visibility_ratio += (component.device_completeness / 5) /  subtechnique.data_components.length;
-                  technique.visibility_ratio += (subtechnique.visibility_ratio / (technique.sub_techniques.length+1)) // With each subtechnique, update technique visibility_ratio using the same normalization factor as above.
-                }
-              }
-            })
-          }
-        })
         
 
 
@@ -425,11 +477,9 @@ export const tacticsStore = defineStore('tactics', {
 
         // })
 
-
-
-      })
+    //   })
       
-    },
+    // },
 
 
 

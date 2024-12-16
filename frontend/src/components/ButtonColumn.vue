@@ -20,7 +20,8 @@ const handleClickOutsideToCloseTooltips = (event: MouseEvent) => {
   if (
     !(event.target as HTMLElement).closest('button') &&
     !(event.target as HTMLElement).closest('.tooltip') &&
-    !(event.target as HTMLElement).closest('.group-box')
+    !(event.target as HTMLElement).closest('.group-box') &&
+    !(event.target as HTMLElement).closest('.component-box')
   ) {
     store.pinnedTooltipId = '';
   }
@@ -36,17 +37,29 @@ const handleMoveOutsideToDisableGroupHover = (event: MouseEvent) => {
     });
   }
 };
+// Method to handle movements outside of tooltip component buttons, to remove component.hovered properties.
+const handleMoveOutsideToDisableComponentHover = (event: MouseEvent) => {
+  if (
+    !(event.target as HTMLElement).closest('.component-box')
+  ) {
+    domain.data_components.forEach(component => {
+      delete component.hovered;
+    });
+  }
+};
 
 // Add click event listener on mount
 onMounted(() => {
   document.addEventListener('click', handleClickOutsideToCloseTooltips);
   document.addEventListener('mousemove', handleMoveOutsideToDisableGroupHover);
+  document.addEventListener('mousemove', handleMoveOutsideToDisableComponentHover);
 });
 
 // Remove click event listener on unmount
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutsideToCloseTooltips);
   document.removeEventListener('mousemove', handleMoveOutsideToDisableGroupHover);
+  document.removeEventListener('mousemove', handleMoveOutsideToDisableComponentHover);
 });
 </script>
 
