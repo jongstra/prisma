@@ -350,7 +350,7 @@ export const tacticsStore = defineStore('tactics', {
       tactics.forEach((tactic: object) => {
 
         // Update the visibility properties of techniques.
-        tactic.techniques.forEach( (technique: object) => {
+        tactic.techniques.forEach((technique: object) => {
           // const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
           const matchingComponents = active_data_components.filter(component => technique.data_components.includes(component.name));
           technique.visibility = matchingComponents.length > 0;
@@ -364,12 +364,11 @@ export const tacticsStore = defineStore('tactics', {
           // else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
         })
 
-        // Update the visibility properties of subtechniques.
-        tactic.techniques.forEach( (technique: object) => {
+        // Update the visibility properties of subtechniques. And update the technique visibility_ratio as well when it has such subtechniques.
+        tactic.techniques.forEach((technique: object) => {
           if (typeof technique.sub_techniques !== "undefined") {
-            
-            technique.sub_techniques.forEach( (subtechnique: object) => {
-
+            technique.visibility_ratio = technique.visibility_ratio / (technique.sub_techniques.length+1)  // Normalize technique visibility_ratio based on amount of subtechniques plus the technique itsself as the normalization factor.
+            technique.sub_techniques.forEach((subtechnique: object) => {
               const matchingComponents = active_data_components.filter(component => subtechnique.data_components.includes(component.name));
               subtechnique.visibility = matchingComponents.length > 0;
               if (subtechnique.data_components.length === 0) {subtechnique.visibility_ratio = 0;}
@@ -377,11 +376,10 @@ export const tacticsStore = defineStore('tactics', {
                 subtechnique.visibility_ratio = 0
                 for (const component of matchingComponents) {
                   subtechnique.visibility_ratio += (component.device_completeness / 5) /  subtechnique.data_components.length;
+                  technique.visibility_ratio += (subtechnique.visibility_ratio / (technique.sub_techniques.length+1)) // With each subtechnique, update technique visibility_ratio using the same normalization factor as above.
                 }
               }
-
-          })
-
+            })
           }
         })
         
