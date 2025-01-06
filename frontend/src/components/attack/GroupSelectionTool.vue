@@ -123,7 +123,7 @@ const onlyShowSelectedGroups = computed({
   border: 2px solid #555;
   border-radius: 5px;
   background-color: #ddd;
-  width: 275px;
+  width: 265px;
   height: 70px;
   position: relative; /* Ensure absolute positioning is relative to this container */
 }
@@ -132,7 +132,7 @@ const onlyShowSelectedGroups = computed({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2px;
+  padding-top: 2px;
 }
 
 input {
@@ -143,7 +143,7 @@ input {
   border-radius: 4px;
   height: 26px;
   font-size: 13.3px;
-  min-width: 180px;
+  min-width: 165px;
 }
 
 button {
