@@ -207,7 +207,12 @@ const showButton = computed(() => {
     !(domain.only_show_selected_groups && !store.selectedGroupsTechniquesSet.has(props.technique.name))
   );
 
-  return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult && techniqueTotalOccurrencesFilterBinnedResult && groupMaskFilterResult;
+  // When the component tool mask toggle (domain.only_show_selected_components) is switch to 'true', we want to hide all techniques that are not covered by the selected components.
+    let componentMaskFilterResult = (
+    !(domain.only_show_selected_components && !store.selectedComponentsTechniquesSet.has(props.technique.name))
+  );
+
+  return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult && techniqueTotalOccurrencesFilterBinnedResult && groupMaskFilterResult && componentMaskFilterResult;
 });
 
 const occursInHoveredGroups = () => {
@@ -312,7 +317,7 @@ const occursInSelectedComponents = () => {
             marginTop: '2px',
             marginBottom: '2px',
             backgroundColor: 'gray',
-            borderColor: domain.data_components.find(c => c.name === component)?.selected ? 'rgb(230, 0, 0)' : '#ccc',
+            borderColor: domain.data_components.find(c => c.name === component)?.selected ? 'rgb(0, 230, 0)' : '#ccc',
             borderWidth: '1.5px',
             borderStyle: 'solid',
             borderRadius: '4px',
@@ -338,7 +343,7 @@ const occursInSelectedComponents = () => {
 <style scoped>
 button {
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 3px;
   background-color: rgb(246, 246, 246);
   border: 2px solid rgb(42, 42, 42);
   border-radius: 4px; /* Slightly rounded corners */
@@ -346,26 +351,26 @@ button {
   position: relative; /* Ensure the button's stacking context is isolated */
 }
 
-button:hover,
-button.pinned {
-  transform: translate(1px, -2px); /* Move button slightly to the right and upwards on hover */
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7); /* Add a shadow */
+/* By adding button.occurs-in-hovered-groups.pinned, button.occurs-in-hovered-components.pinned here,
+we override the box-shadow that is normally shown when hovering a group/component in the tooltip. */
+button:hover, button.pinned, button.occurs-in-hovered-groups.pinned, button.occurs-in-hovered-components.pinned {
+  transform: translate(1px, -2px) scale(1.04);  /* On hover, move the button slightly to the right and upwards, and enlarge it slightly. */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px, rgb(51, 51, 51) 0px 0px 0px 3px; /* On hover, add a thick black 'outline' to the button. */
   filter: brightness(0.88); /* Slightly darken the button on hover */
-  outline: 3px solid rgb(57, 55, 139);  /* Change the border color on hover */
+  z-index: 1001;
+}
+
+button.occurs-in-hovered-groups, button.occurs-in-hovered-components {
+  box-shadow: 0px 0px 3px 3px rgba(255, 174, 0, 1);
 }
 
 button.occurs-in-selected-groups {
-  border: 2px solid rgb(255, 0, 0);  /* Change the border color on group select */
+  border: 2px solid red;  /* Change the border color on group select */
 }
 
-/* TODO: Change this so the box-shadow itself is always in front of other buttons (in terms of z-index). */
-button.occurs-in-hovered-groups, button.occurs-in-hovered-components {
-  /* transform: translate(1px, -2px);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
-  outline: 3px solid rgb(57, 55, 139); */
-  box-shadow: 0 0 8px 5px rgba(255, 174, 0, 1);
-  /* text-shadow: 0px 0px 4px rgb(255, 0, 0); */
-  z-index: 1001;
+button.occurs-in-selected-components {
+  outline: 2px solid #03c03cd2;  /* Change the outline color and style on component select */
+  outline-offset: -5px;
 }
 
 .buttontext {

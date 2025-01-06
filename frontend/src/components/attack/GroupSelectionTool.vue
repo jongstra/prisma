@@ -123,7 +123,7 @@ const onlyShowSelectedGroups = computed({
   border: 2px solid #555;
   border-radius: 5px;
   background-color: #ddd;
-  width: 300px;
+  width: 275px;
   height: 70px;
   position: relative; /* Ensure absolute positioning is relative to this container */
 }
@@ -163,7 +163,7 @@ button {
 }
 
 button:hover {
-  background-color: red;
+  background-color: rgb(225, 52, 52);
 }
 
 button::before {

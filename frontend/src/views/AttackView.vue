@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch } from 'vue';
-import ButtonColumn from '../components/ButtonColumn.vue';
+import ButtonColumn from '../components/attack/ButtonColumn.vue';
 import { tacticsStore } from '@/stores/tactics';
-import FileUploadButtonYaml from '@/components/FileUploadButtonYaml.vue';
-import TechniqueAttributeFilter from '@/components/TechniqueAttributeFilter.vue';
-import TechniqueVisibilityPercentageFilter from '@/components/TechniqueVisibilityPercentageFilter.vue';
+import FileUploadButtonYaml from '@/components/attack/FileUploadButtonYaml.vue';
+import TechniqueAttributeFilter from '@/components/attack/TechniqueAttributeFilter.vue';
+import TechniqueVisibilityPercentageFilter from '@/components/attack/TechniqueVisibilityPercentageFilter.vue';
 // import TechniqueTotalOccurrenceFilter from '@/components/TechniqueTotalOccurrenceFilter.vue';
-import TechniqueTotalOccurrenceFilterBinned from '@/components/TechniqueTotalOccurrenceFilterBinned.vue';
-import VisibilityLegend from '@/components/VisibilityLegend.vue';
-import SearchBar from '@/components/SearchBar.vue';
-import GroupSelectionTool from '@/components/GroupSelectionTool.vue';
+import TechniqueTotalOccurrenceFilterBinned from '@/components/attack/TechniqueTotalOccurrenceFilterBinned.vue';
+import VisibilityLegend from '@/components/attack/VisibilityLegend.vue';
+import SearchBar from '@/components/attack/SearchBar.vue';
+import GroupSelectionTool from '@/components/attack/GroupSelectionTool.vue';
+import ComponentSelectionTool from '@/components/attack/ComponentSelectionTool.vue';
 const store = tacticsStore();
 
 // When the domain is changed, we want to unpin any pinned tooltips for cleanliness,
@@ -56,6 +57,7 @@ onUnmounted(() => {
       <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
       <div class='search'><SearchBar/></div>
       <div class='group-selection-tool'><GroupSelectionTool/></div>
+      <div class='component-selection-tool'><ComponentSelectionTool/></div>
     </div>
 
   </div>
