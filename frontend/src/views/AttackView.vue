@@ -112,10 +112,10 @@ onUnmounted(() => {
   margin: 0px 0; /* Adds vertical spacing around the bar */
 }
 
-.filter, .search, .upload-button, .legend, .group-selection-tool {
+.filter, .search, .upload-button, .legend, .group-selection-tool, .component-selection-tool {
   flex: 1; /* Allows the items to grow and fill space */
   display: flex;
-  margin: 5px; /* Add some spacing between items */
+  margin: 3px; /* Add some spacing between items */
 }
 
 .matrix-container {
