@@ -91,7 +91,7 @@ const onlyShowSelectedGroups = computed({
       <button class='clear-all-button' @click="confirmClearAllSelections">Clear</button>
       <label class="toggle-label">
         <input type="checkbox" v-model="onlyShowSelectedGroups" />
-        <span class="toggle-switch"></span>
+        <span class="toggle-switch" title="Only show techniques used by selected groups."></span>
       </label>
     </div>
     <div v-if="filteredGroups.length && searchQuery" class="suggestions">

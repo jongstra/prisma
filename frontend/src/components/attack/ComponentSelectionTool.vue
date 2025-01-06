@@ -91,7 +91,7 @@ const onlyShowSelectedComponents = computed({
       <button class='clear-all-button' @click="confirmClearAllSelections">Clear</button>
       <label class="toggle-label">
         <input type="checkbox" v-model="onlyShowSelectedComponents" />
-        <span class="toggle-switch"></span>
+        <span class="toggle-switch" title="Only show techniques covered by selected components."></span>
       </label>
     </div>
     <div v-if="filteredComponents.length && searchQuery" class="suggestions">
