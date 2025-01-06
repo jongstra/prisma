@@ -42,7 +42,7 @@ const updateTooltipPosition = () => {
     const [scrollTop, scrollLeft] = calculateScroll(buttonRef.value);
 
     // Adjust tooltip position to be relative to the document
-    tooltipPosition.value.top = buttonRect.bottom + scrollTop - 273; // Position below the button
+    tooltipPosition.value.top = buttonRect.bottom + scrollTop - 265; // Position below the button
     tooltipPosition.value.left = buttonRect.left + scrollLeft; // Position the tooltip horizontally
   }
 };
@@ -354,7 +354,7 @@ button {
 /* By adding button.occurs-in-hovered-groups.pinned, button.occurs-in-hovered-components.pinned here,
 we override the box-shadow that is normally shown when hovering a group/component in the tooltip. */
 button:hover, button.pinned, button.occurs-in-hovered-groups.pinned, button.occurs-in-hovered-components.pinned {
-  transform: translate(1px, -2px) scale(1.04);  /* On hover, move the button slightly to the right and upwards, and enlarge it slightly. */
+  transform: translate(0px, -2px) scale(1.04); /* On hover, move the button slightly to the right and upwards, and enlarge it slightly. */
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px, rgb(51, 51, 51) 0px 0px 0px 3px; /* On hover, add a thick black 'outline' to the button. */
   filter: brightness(0.88); /* Slightly darken the button on hover */
   z-index: 1001;
