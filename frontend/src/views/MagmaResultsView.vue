@@ -8,7 +8,7 @@
 
   <div class="magma-results">
     <div>
-      <h1>MAGMA RESULTS</h1>
+      <h1>MAGMA RESULTS: TO BE BUILT</h1>
     </div>
   </div>
   

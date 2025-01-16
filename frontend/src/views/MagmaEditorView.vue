@@ -8,7 +8,7 @@
 
   <div class="magma-editor">
     <div>
-      <h1>MAGMA EDITOR</h1>
+      <h1>MAGMA EDITOR: TO BE BUILT</h1>
     </div>
   </div>
   
