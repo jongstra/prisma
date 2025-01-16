@@ -24,8 +24,8 @@
     <div class='navigation'>
       <RouterLink class='nav' to='/' exact-active-class='selected'>ATT&CK</RouterLink>
       <RouterLink class='nav' to='/insights' exact-active-class='selected'>Insights</RouterLink>
-      <RouterLink class='nav' to='/unified-kill-chain' exact-active-class='selected'>Unified Kill Chain</RouterLink>
-      <RouterLink class='nav' to='/magma' exact-active-class='selected'>MaGMa</RouterLink>
+      <RouterLink class='nav' to='/magma-editor' exact-active-class='selected'>MaGMa - Editor</RouterLink>
+      <RouterLink class='nav' to='/magma-results' exact-active-class='selected'>MaGMa - Results</RouterLink>
     </div>
 
     <div class='domain-switcher'>

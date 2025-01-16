@@ -6,9 +6,9 @@
 
 <template>
 
-  <div class="unified-kill-chain">
+  <div class="magma-editor">
     <div>
-      <h1>UNIFIED KILL CHAIN VIEW: TO BE CREATED</h1>
+      <h1>MAGMA EDITOR</h1>
     </div>
   </div>
   
@@ -16,7 +16,7 @@
 
 
 <style>
-.unified-kill-chain {
+.magma-editor {
   text-align: center;
 }
 </style>

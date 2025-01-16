@@ -16,16 +16,16 @@ const router = createRouter({
       component: () => import('../views/InsightsView.vue')
     },
     {
-      path: '/unified-kill-chain',
-      name: 'unified-kill-chain',
+      path: '/magma-editor',
+      name: 'magma-editor',
       // Lazy-loaded when this route is visited.
-      component: () => import('../views/UnifiedKillChainView.vue')
+      component: () => import('../views/MagmaEditorView.vue')
     },
     {
-      path: '/magma',
-      name: 'magma',
+      path: '/magma-results',
+      name: 'magma-results',
       // Lazy-loaded when this route is visited.
-      component: () => import('../views/MagmaView.vue')
+      component: () => import('../views/MagmaResultsView.vue')
     }
   ]
 })
