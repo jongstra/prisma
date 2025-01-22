@@ -16,17 +16,11 @@ const router = createRouter({
       component: () => import('../views/InsightsView.vue')
     },
     {
-      path: '/magma-editor',
-      name: 'magma-editor',
+      path: '/magma',
+      name: 'magma',
       // Lazy-loaded when this route is visited.
-      component: () => import('../views/MagmaEditorView.vue')
+      component: () => import('../views/MagmaView.vue')
     },
-    {
-      path: '/magma-results',
-      name: 'magma-results',
-      // Lazy-loaded when this route is visited.
-      component: () => import('../views/MagmaResultsView.vue')
-    }
   ]
 })
 

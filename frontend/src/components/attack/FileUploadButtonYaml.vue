@@ -16,7 +16,7 @@ const uploadFile = async () => {
     }
 
     if (file.type !== "text/yaml" && file.type !== "application/x-yaml") {
-      alert("Please upload a valid YAML file")
+      alert("Please select a valid DeTT&CT YAML file")
       isLoading.value = false // End loading
       return
     }
@@ -54,7 +54,7 @@ const onFileChange = () => {
       style="display: none;"
     >
     <label for="fileInput" class="file-button" :class="{ 'loading': isLoading }">
-      {{ isLoading ? "Processing File..." : "Upload DeTT&CT Data Sources YAML" }}
+      {{ isLoading ? "Loading File..." : "Load DeTT&CT Data Sources YAML" }}
     </label>
   </div>
 </template>

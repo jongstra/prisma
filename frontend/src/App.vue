@@ -24,8 +24,7 @@
     <div class='navigation'>
       <RouterLink class='nav' to='/' exact-active-class='selected'>ATT&CK</RouterLink>
       <RouterLink class='nav' to='/insights' exact-active-class='selected'>Insights</RouterLink>
-      <RouterLink class='nav' to='/magma-editor' exact-active-class='selected'>MaGMa - Editor</RouterLink>
-      <RouterLink class='nav' to='/magma-results' exact-active-class='selected'>MaGMa - Results</RouterLink>
+      <RouterLink class='nav' to='/magma' exact-active-class='selected'>MaGMa</RouterLink>
     </div>
 
     <div class='domain-switcher'>
@@ -77,6 +76,7 @@
   margin: 2px;
   border-radius: 5px;
   transition: 0.1s;
+  width: 0; /* This makes the navigation buttons and the domain buttons all have the same width. */
 }
 
 .selected {

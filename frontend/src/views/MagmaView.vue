@@ -6,9 +6,9 @@
 
 <template>
 
-  <div class="magma-results">
+  <div class="magma-editor">
     <div>
-      <h1>MAGMA RESULTS: TO BE BUILT</h1>
+      <h1>MAGMA: TO BE BUILT</h1>
     </div>
   </div>
   
@@ -16,7 +16,7 @@
 
 
 <style>
-.magma-results {
+.magma-editor {
   text-align: center;
 }
 </style>
