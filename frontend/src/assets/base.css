@@ -58,6 +58,18 @@
   font-weight: normal;
 }
 
+/* Remove arrows at right side of number input fields. */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* body {
   min-height: 100vh;
   color: var(--color-text);

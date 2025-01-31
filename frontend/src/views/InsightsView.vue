@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  // import { tacticsStore } from '@/stores/tactics';
   import VisibilityPerTactic from '@/components/insights/VisibilityPerTactic.vue';
   import VisibilityPerPlatform from '@/components/insights/VisibilityPerPlatform.vue';
   import NewComponentSuggester from '@/components/insights/NewComponentSuggester.vue';

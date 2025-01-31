@@ -1,22 +1,22 @@
 <script setup lang="ts">
   import { tacticsStore } from '@/stores/tactics';
   const store = tacticsStore()
+  import SheetTabs from '@/components/magma/SheetTabs.vue';
 </script>
 
 
 <template>
 
-  <div class="magma-editor">
-    <div>
-      <h1>MAGMA: TO BE BUILT</h1>
-    </div>
+  <div class="magma-container">
+    <SheetTabs/>
   </div>
   
 </template>
 
 
 <style>
-.magma-editor {
+.magma-container {
+  margin-top: 10px;
   text-align: center;
 }
 </style>
