@@ -24,14 +24,14 @@ const L1Headers = {
 const L2Headers = {
   name: 'Use Case Name',
   id: 'ID',
-  L1id: 'Linked ID',
+  L1id: 'Linked Use Case',
   visibility: 'Visibility %',
 };
 
 const L3Headers = {
   name: 'Use Case Name',
   id: 'ID',
-  L2id: 'Linked ID',
+  L2id: 'Linked Use Case',
   visibility: 'Visibility %',
 };
 
@@ -90,9 +90,9 @@ const visibilityValidity = ref<{ [key: string]: boolean }>({});
 const useCaseIdValidity = ref<{ [key: string]: boolean }>({});
 
 const validateUseCaseId = (tab: string, id: string) => {
-  const prefix = `L${store.getActiveTab + 1}-`;
+  const prefix = `${store.getActiveTab}-`;
   const isCorrectPrefix = id.startsWith(prefix);
-  
+
   let objects;
   switch (tab) {
     case 'L1':
@@ -114,6 +114,10 @@ const validateUseCaseId = (tab: string, id: string) => {
 
   // Check for uniqueness
   const isUnique = !filteredObjects.some(obj => obj.id === id);
+
+  console.log(activeObject)
+  console.log(filteredObjects)
+  console.log(isUnique)
 
   useCaseIdValidity.value[`${tab}-${id}`] = isCorrectPrefix && isUnique;
 
@@ -169,7 +173,7 @@ const confirmRemove = (id: string) => {
 
 const addNewUseCase = () => {
   const newUid = uuidv4();
-  const newId = `L${store.getActiveTab+1}-${newUid.slice(26)}`; // Generate a unique ID based on the UID.
+  const newId = `${store.getActiveTab}-${newUid.slice(26)}`; // Generate a unique ID based on the UID.
   const newUseCase: any = { uid: newUid, id: newId };
   
   Object.keys(headers.value).forEach(key => {
