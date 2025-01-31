@@ -5,7 +5,7 @@ export const magmaStore = defineStore('magma', {
     L1Objects: [],
     L2Objects: [],
     L3Objects: [],
-    activeTab: 2, // Initialize the active tab here
+    activeTab: 'L3', // Initialize the active tab here
   }),
   getters: {
     getL1ObjectById: (state) => (id) => state.L1Objects.find(L1 => L1['id'] === id),
@@ -94,8 +94,8 @@ export const magmaStore = defineStore('magma', {
       return meanVisibility;
     },
 
-    setActiveTab(index) { // Action to set the active tab
-      this.activeTab = index;
+    setActiveTab(tab) { // Action to set the active tab
+      this.activeTab = tab;
     },
 
     updateL3Object(id, updatedFields) {

@@ -4,7 +4,7 @@ import { magmaStore } from '@/stores/magma';
 import { v4 as uuidv4 } from 'uuid';
 
 const store = magmaStore();
-const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Results']);
+const tabs = ref<string[]>(['L3', 'L2', 'L1', 'Results']);
 
 // Define header maps for each tab
 const L1Headers = {
@@ -44,11 +44,11 @@ const editableFieldsMap = {
 
 const activeTabData = computed(() => {
   switch (store.getActiveTab) { // Use the getter from the store
-    case 0:
+    case 'L1':
       return store.L1Objects;
-    case 1:
+    case 'L2':
       return store.L2Objects;
-    case 2:
+    case 'L3':
       return store.L3Objects;
     default:
       const averageVisibility = store.L1Objects.reduce((acc, l1) => acc + (l1.visibility || 0), 0) / store.L1Objects.length;
@@ -58,11 +58,11 @@ const activeTabData = computed(() => {
 
 const headers = computed(() => {
   switch (store.getActiveTab) {
-    case 0:
+    case 'L1':
       return L1Headers;
-    case 1:
+    case 'L2':
       return L2Headers;
-    case 2:
+    case 'L3':
       return L3Headers;
     default:
       return {};
@@ -71,11 +71,11 @@ const headers = computed(() => {
 
 const editableFields = computed(() => {
   switch (store.getActiveTab) {
-    case 0:
+    case 'L1':
       return editableFieldsMap.L1;
-    case 1:
+    case 'L2':
       return editableFieldsMap.L2;
-    case 2:
+    case 'L3':
       return editableFieldsMap.L3;
     default:
       return { TotalVisibility: false };
@@ -149,13 +149,13 @@ const updateObjectField = (tab: string, id: string, field: string, value: any) =
 
 const removeItem = (id: string) => {
   switch (store.getActiveTab) {
-    case 0:
+    case 'L1':
       store.removeL1Object(id);
       break;
-    case 1:
+    case 'L2':
       store.removeL2Object(id);
       break;
-    case 2:
+    case 'L3':
       store.removeL3Object(id);
       break;
   }
@@ -179,18 +179,18 @@ const addNewUseCase = () => {
   });
 
   switch (store.getActiveTab) {
-    case 0:
+    case 'L1':
       store.addL1Object(newUseCase);
       break;
-    case 1:
+    case 'L2':
       store.addL2Object(newUseCase);
       break;
-    case 2:
+    case 'L3':
       store.addL3Object(newUseCase);
       break;
   }
 
-  validateUseCaseId(tabs.value[store.getActiveTab], newId);
+  validateUseCaseId(store.getActiveTab, newId);
 };
 
 // Method to resize textarea
@@ -213,18 +213,17 @@ store.addL1Object({ id: 'L1-2', name: 'Execution'});
 <template>
   <div class="sheet-tabs">
     <button 
-      v-for="(tab, index) in tabs" 
-      :key="index"
+      v-for="(tab) in tabs" 
       class="sheet-tab"
-      :class="{ active: store.getActiveTab === index }"
-      @click="setActiveTab(index)"
+      :class="{ active: store.getActiveTab === tab }"
+      @click="setActiveTab(tab)"
     >
       {{ tab }}
     </button>
   </div>
 
   <div class="scroll-container">
-    <table v-if="store.getActiveTab !== 3" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Results tab is active, we show another div element. -->
+    <table v-if="store.getActiveTab !== 'Results'" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Results tab is active, we show another div element. -->
       <thead>
         <tr>
           <th class="remove-col"></th> <!-- Add a class for the remove button column -->
@@ -250,24 +249,24 @@ store.addL1Object({ id: 'L1-2', name: 'Execution'});
               <input 
                 v-if="headerKey === 'visibility'"
                 :type="headerKey === 'visibility' ? 'number' : 'text'" 
-                :value="item[headerKey]" 
-                @input="(event) => { updateObjectField(tabs[store.getActiveTab], item.id, headerKey, event.target.value); resizeTextarea(event) }" 
-                :style="{ backgroundColor: visibilityValidity[`${tabs[store.getActiveTab]}-${item.id}`] === false ? 'red' : '' }"
+                :value="item[headerKey]"
+                @input="(event) => { updateObjectField(store.getActiveTab, item.id, headerKey, event.target.value); resizeTextarea(event) }" 
+                :style="{ backgroundColor: visibilityValidity[`${store.getActiveTab}-${item.id}`] === false ? 'red' : '' }"
               />
               <template v-else>
                 <input 
                   v-if="headerKey === 'id'"
                   :value="item[headerKey]" 
-                  @blur="(event) => { validateUseCaseId(tabs[store.getActiveTab], item.id); resizeTextarea(event) }" 
-                  @keydown="(event) => { if (event.key === 'Enter') validateUseCaseId(tabs[store.getActiveTab], item.id) }" 
-                  @input="(event) => { updateObjectField(tabs[store.getActiveTab], item.id, headerKey, event.target.value); resizeTextarea(event) }" 
-                  :style="{ backgroundColor: useCaseIdValidity[`${tabs[store.getActiveTab]}-${item.id}`] === false ? 'red' : '' }"
+                  @blur="(event) => { validateUseCaseId(store.getActiveTab, item.id); resizeTextarea(event) }" 
+                  @keydown="(event) => { if (event.key === 'Enter') validateUseCaseId(store.getActiveTab, item.id) }" 
+                  @input="(event) => { updateObjectField(store.getActiveTab, item.id, headerKey, event.target.value); resizeTextarea(event) }" 
+                  :style="{ backgroundColor: useCaseIdValidity[`${store.getActiveTab}-${item.id}`] === false ? 'red' : '' }"
                 />
                 <input 
                   v-else
                   :value="item[headerKey]" 
-                  @input="(event) => { updateObjectField(tabs[store.getActiveTab], item.id, headerKey, event.target.value); resizeTextarea(event) }" 
-                  :style="{ backgroundColor: useCaseIdValidity[`${tabs[store.getActiveTab]}-${item.id}`] === false ? 'red' : '' }"
+                  @input="(event) => { updateObjectField(store.getActiveTab, item.id, headerKey, event.target.value); resizeTextarea(event) }" 
+                  :style="{ backgroundColor: useCaseIdValidity[`${store.getActiveTab}-${item.id}`] === false ? 'red' : '' }"
                 />
               </template>
             </template>
