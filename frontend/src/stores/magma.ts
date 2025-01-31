@@ -5,7 +5,7 @@ export const magmaStore = defineStore('magma', {
     L1Objects: [],
     L2Objects: [],
     L3Objects: [],
-    activeTab: 'L3', // Initialize the active tab here
+    activeTab: 'L1', // Initialize the active tab here
   }),
   getters: {
     getL1ObjectById: (state) => (id) => state.L1Objects.find(L1 => L1['id'] === id),

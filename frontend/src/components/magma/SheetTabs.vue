@@ -4,7 +4,7 @@ import { magmaStore } from '@/stores/magma';
 import { v4 as uuidv4 } from 'uuid';
 
 const store = magmaStore();
-const tabs = ref<string[]>(['L3', 'L2', 'L1', 'Results']);
+const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Results']);
 
 // Define header maps for each tab
 const L1Headers = {
