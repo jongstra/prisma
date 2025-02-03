@@ -10,12 +10,16 @@
 - [ ] Input box laten groeien in de hoogte.
 - [ ] Spaces niet toelaten in ID input veld.
 - [ ] Visibility truncaten.
-- [ ] Wellicht een aantal gespecialiseerde componenten maken voor de verschillende input/output items in de Magma sheets.
-- [ ] Fix weirde ID clash detectie. GOAL: relatief simpel houden. Alleen clashes detecteren en rood maken. Eventueel invalidaten zou ook mooi zijn.
+- [ ] Mogelijk beter om een aantal gespecialiseerde componenten te maken voor de verschillende input/output items in de Magma sheets.
+- [ ] Fix ID clash detectie. GOAL: relatief simpel houden. Alleen clashes detecteren en rood maken. Eventueel invalidaten zou ook mooi zijn.
 - [ ] Linked ID's alleen laten selecteren uit bestaande set (de waarde 'None' moet wel ook als default aanwezig zijn en ook in deze set staan).
 - [ ] L3 use cases koppelen aan Mitre ATT&CK mappings.
 - [X] Alle kolommen even breed laten zijn, en horizontaal scrollable maken.
-- [ ] Magma informatie ook relateren aan tactics domain.
+- [ ] Magma informatie domain afhankelijk maken (enterprise/mobile/ICS).
     - [ ] Optie: algemene variabelen (domain, activeTab) in aparte store zetten?
 - [ ] Import/export functionaliteit inbouwen.
 - [ ] Page refresh requests van user correct afvangen (ook icm refreshes na uploaden DETT&CT data).
+- [ ] Uneditable fields een grijze achtergrond geven?
+- [ ] Inbouwen "Display all errors" filter.
+- [ ] Voor L3 use cases met een gelinked DeTT&CT ID een "lock" toepasssen op de visibility (en de visibility uit de DeTT&CT data halen).
+- [ ] Magma store interacties refactoren en versimpelen.

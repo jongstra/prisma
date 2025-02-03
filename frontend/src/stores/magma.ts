@@ -1,127 +1,222 @@
 import { defineStore } from 'pinia';
+import { v4 as uuidv4 } from 'uuid';
+
+
+interface UseCase {
+  id: string;
+  uid: string;
+  parentIds: Array<string>;
+  name: string;
+  level: number;
+  visibility: number;
+}
+
 
 export const magmaStore = defineStore('magma', {
   state: () => ({
-    L1Objects: [],
-    L2Objects: [],
-    L3Objects: [],
+    useCases: [],
     activeTab: 'L1', // Initialize the active tab here
   }),
+
   getters: {
-    getL1ObjectById: (state) => (id) => state.L1Objects.find(L1 => L1['id'] === id),
-    getL2ObjectById: (state) => (id) => state.L2Objects.find(L2 => L2['id'] === id),
-    getL3ObjectById: (state) => (id) => state.L3Objects.find(L3 => L3['id'] === id),
-    getActiveTab: (state) => state.activeTab, // Getter for active tab
+    getUseCaseById: (state) => (id: string) => {
+      return state.useCases.find(useCase => useCase['id'] === id);
+    },
+    getUseCaseByUid: (state) => (uid: string) => {
+      return state.useCases.find(useCase => useCase['uid'] === uid);
+    },
+    L1UseCases: (state) => {
+      return state.useCases.filter(useCase => useCase['level'] === 1);
+    },
+    L2UseCases: (state) => {
+      return state.useCases.filter(useCase => useCase['level'] === 2);
+    },
+    L3UseCases: (state) => {
+      return state.useCases.filter(useCase => useCase['level'] === 3);
+    },
+    getAllIds: (state) => {
+      return state.useCases.map(useCase => useCase['id']);
+    },
+    getAllUids: (state) => {
+      return state.useCases.map(useCase => useCase['uid']);
+    },
+    getParentUseCasesById: (state) => (id: string) => {
+      const useCase = state.useCases.find(useCase => useCase['id'] === id);
+      if (useCase.parentIds) {
+        const parentIds = useCase.parentIds;
+        const parentUseCases = state.useCases.filter(useCase => parentIds.includes(useCase['id']));
+        // const parentUseCases = state.useCases.filter(useCase => Array.isArray(useCase['parentIds']) && useCase['parentIds'].includes(id));
+        // console.log(`Found ${parentUseCases.length} parent use cases for id: "${id}": ${JSON.stringify(parentUseCases)}.`);
+        return parentUseCases;
+      } else {
+        return [];
+      }
+    },
+    getChildUseCasesById: (state) => (id: string) => {
+      const childUseCases = state.useCases.filter(useCase => Array.isArray(useCase['parentIds']) && useCase['parentIds'].includes(id));
+      // console.log(`Found ${childUseCases.length} child use cases for id: "${id}".`);
+      return childUseCases;
+    }
   },
+
+
   actions: {
 
-    addL1Object(useCase) {
-      if (this.getL1ObjectById(useCase['id'])) {
-        console.error(`L1 Object with id ${useCase['id']} already exists.`);
-        return;
-      }
-      this.L1Objects.push(useCase);
-      this.updateL1Visibility(useCase['id']);
-    },
-    removeL1Object(id) {
-      this.L1Objects = this.L1Objects.filter(L1 => L1['id'] !== id);
+
+    addNewUseCase(level: number = 0) {
+      const uid = uuidv4()
+      const useCase: UseCase = {
+        id: `L${level}-${uid.substring(0, 8)}`, // Example ID format
+        parentIds: [],
+        name: '',
+        level,
+        visibility: 0,
+        uid: uid,
+      };
+      this.useCases.push(useCase);
     },
 
-    addL2Object(useCase) {
-      if (this.getL2ObjectById(useCase['id'])) {
-        console.error(`L2 Object with id ${useCase['id']} already exists.`);
-        return;
+
+    addExistingUseCase(useCase: any) {
+      
+      // Ensure that the use case has an ID.
+      if (!useCase.id) {
+        throw new Error(`The use case "${JSON.stringify(useCase)}" has no ID. Use case has not been added.`); 
       }
-      this.L2Objects.push(useCase);
-      this.updateL2Visibility(useCase['id']);
-      this.updateL1Visibility(useCase['L1id']);
-    },
-    removeL2Object(id) {
-      const L2 = this.getL2ObjectById(id);
-      if (L2) {
-        this.L2Objects = this.L2Objects.filter(L2 => L2['id'] !== id);
+
+      // Catch duplicate ID's.
+      if (this.getUseCaseById(useCase['id'])) {
+        throw new Error(`Use case with id ${useCase['id']} already exists. Use case has not been added.`); 
+      };
+
+      // If the use case does not have a level set, extract it from the ID.
+      if (!useCase.level) {
+        useCase.level = parseInt(useCase['id'].substring(1, 2));
+        // console.log(`Extracted level from the ID for use case: "${JSON.stringify(useCase)}"`)
+      }
+
+      // Check that the use case has a valid use case level.
+      if (useCase.level !== 1 && useCase.level !== 2 && useCase.level !== 3) {
+        throw new Error(`Use case level is incorrect for use case "${JSON.stringify(useCase)}". Use case has not been added.`); 
+      }
+
+      // Check that the level in the useCase.level and useCase.id are consistent with eachother.
+      if (useCase.level !== parseInt(useCase['id'].substring(1, 2))) {
+        throw new Error(`Usecase level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
+      }
+
+      // Add the level and a unique ID to the use case, and add it to the store.
+      useCase['uid'] = uuidv4();
+      this.useCases.push(useCase);
+      // console.log(`Added use case: "${JSON.stringify(useCase)}"`)
+      
+      // If a L1 or L2 use case was added, recompute its values it after adding.
+      if (useCase.level < 3) {
+        this.recomputeUseCases([this.getUseCaseById(useCase.id)!]);
+      }
+
+      // If a L3 use case was added, recompute the values of any parents.
+      if (useCase.level > 1) {
+        // console.log(useCase.id)
+        if (useCase.parentIds) {
+          this.recomputeUseCases(this.getParentUseCasesById(useCase.id));
+        }
       }
     },
 
-    addL3Object(useCase) {
-      if (this.getL3ObjectById(useCase['id'])) {
-        console.error(`L3 Object with id ${useCase['id']} already exists.`);
-        return;
-      }
-      this.L3Objects.push(useCase);
-      this.updateL2Visibility(useCase['L2id']);
-    },
-    removeL3Object(id) {
-      const L3 = this.getL3ObjectById(id);
-      if (L3) {
-        this.L3Objects = this.L3Objects.filter(L3 => L3['id'] !== id);
-      }
-    },
 
-    updateL2Visibility(L2id) {
-      const L3Objects = this.L3Objects.filter(l3 => l3['L2id'] === L2id);
-      const visibility = this.calculateMeanVisibility(L3Objects);
-      const L2Object = this.getL2ObjectById(L2id);
-      if (L2Object) {
-        L2Object.visibility = visibility || null;
-        this.updateL1Visibility(L2Object['L1id']);
-      }
-    },
+    // removeUseCase(useCase: UseCase) {
+    //   // Find parent use cases.
+    //   var parentUseCases = [];
+    //   if (useCase.parentIds) {
+    //     parentUseCases = this.getParentUseCasesById(useCase.id);
+    //   }
 
-    updateL1Visibility(L1id) {
-      const L2Objects = this.L2Objects.filter(l2 => l2['L1id'] === L1id);
-      const visibility = this.calculateMeanVisibility(L2Objects);
-      const L1Object = this.getL1ObjectById(L1id);
-      if (L1Object) {
-        L1Object.visibility = visibility || null;
-      }
-    },
-
-    calculateMeanVisibility(objects) {
-      if (objects.length === 0) return null;
+    //   // remove the use case.
+    //   this.useCases = this.useCases.filter(x => x['uid'] !== uid);
+    //   // console.log(`Removed use case: "${JSON.stringify(useCase)}"`)
+      
+    //   // Recompute values of any use cases that were parents of this one.
+    //   if (useCase.level > 1) {
+    //     this.recomputeUseCases(parentUseCases);
+    //   }
+    // },
     
-      // Filter out objects with visibility outside the range [0, 100]
-      const validObjects = objects.filter(obj => {
-        const visibility = Number(obj['visibility']) || 0;
-        return visibility >= 0 && visibility <= 100 && !obj.invalid;
+
+    // removeUseCasebyId(id: string) {
+    //   const useCase = this.getUseCaseById(id);
+    //   if (!useCase) {throw new Error(`No use case with id "${id}" exists.`);}
+    //   this.removeUseCase(useCase);
+    // },
+
+    
+    removeUseCaseByUid(uid: string) {
+      const useCase = this.getUseCaseByUid(uid);
+      if (!useCase) {throw new Error(`No use case with uid "${uid}" exists.`);}
+
+      // Find parent use cases.
+      var parentUseCases = [];
+      if (useCase.parentIds) {
+        parentUseCases = this.getParentUseCasesById(useCase.id);
+      }
+
+      // remove the use case.
+      this.useCases = this.useCases.filter(x => x['uid'] !== uid);
+      // console.log(`Removed use case: "${JSON.stringify(useCase)}"`)
+      
+      // Recompute values of any use cases that were parents of this one.
+      if (useCase.level > 1) {
+        this.recomputeUseCases(parentUseCases);
+      }
+    },
+
+
+    recomputeUseCases(useCases: Array<UseCase>) {
+      // console.log(`Updating use cases: ${JSON.stringify(useCases)}`);
+      useCases.forEach((useCase) => {
+        const parentUseCases = this.getParentUseCasesById(useCase.id);
+        const childUseCases = this.getChildUseCasesById(useCase.id);
+        const meanVisibility = this.calculateMeanVisibility(childUseCases);
+        if (useCase.level != 3) {
+          useCase['visibility'] = meanVisibility;
+        }
+        // If this use case has parents, check if they also need to be updated based on the new values of this use case.
+        if (useCase.level > 1) {
+          this.recomputeUseCases(parentUseCases);
+        }
+      });
+    },
+
+
+    calculateMeanVisibility(useCases: Array<UseCase>) {
+      if (useCases.length === 0) return 0;
+    
+      // Filter out useCases which have a visibility value outside of the valid range (0-100), or have a property named 'invalid'.
+      const validObjects = useCases.filter(useCase => {
+        const visibility = Number(useCase['visibility']) || 0;
+        return visibility >= 0 && visibility <= 100 && !useCase.invalid;
       });
     
-      // If no valid objects are left, return null
-      if (validObjects.length === 0) return null;
+      // If no valid objects are left, return 0.
+      if (validObjects.length === 0) return 0;
     
-      // Calculate the mean of the valid visibility values
+      // Calculate and return the mean of the valid visibility values.
       const meanVisibility = validObjects.reduce((sum, obj) => sum + (Number(obj['visibility']) || 0), 0) / validObjects.length;
       return meanVisibility;
     },
 
-    setActiveTab(tab) { // Action to set the active tab
-      this.activeTab = tab;
-    },
 
-    updateL3Object(id, updatedFields) {
-      const L3Object = this.getL3ObjectById(id);
-      if (L3Object) {
-        Object.assign(L3Object, updatedFields);
-        this.updateL2Visibility(L3Object['L2id']);
+
+    updateUseCase(uid: string, updatedFields: {}) {
+      const useCase = this.getUseCaseByUid(uid);
+      if (useCase) {
+        Object.assign(useCase, updatedFields);
+        this.recomputeUseCases([useCase]);
       }
     },
 
-    updateL2Object(id, updatedFields) {
-      const L2Object = this.getL2ObjectById(id);
-      if (L2Object) {
-        Object.assign(L2Object, updatedFields);
-        this.updateL2Visibility(L2Object['id'])
-        this.updateL1Visibility(L2Object['L1id']);
-      }
-    },
 
-    updateL1Object(id, updatedFields) {
-      const L1Object = this.getL1ObjectById(id);
-      if (L1Object) {
-        Object.assign(L1Object, updatedFields);
-        this.updateL1Visibility(L1Object['id'])
-      }
-    },
+  }
 
-  },
+
 });

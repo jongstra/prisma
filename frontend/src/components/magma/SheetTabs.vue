@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
 import { magmaStore } from '@/stores/magma';
-import { v4 as uuidv4 } from 'uuid';
+import { stateStore } from '@/stores/state';
 
-const store = magmaStore();
+const magma = magmaStore();
+const state = stateStore()
 const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Results']);
 
-// Define header maps for each tab
+
+// Define header maps for each tab.
 const L1Headers = {
   name: 'Use Case Name',
   id: 'ID',
@@ -24,14 +26,14 @@ const L1Headers = {
 const L2Headers = {
   name: 'Use Case Name',
   id: 'ID',
-  L1id: 'Linked Use Case',
+  parentIds: 'Parent Use Cases',
   visibility: 'Visibility %',
 };
 
 const L3Headers = {
   name: 'Use Case Name',
   id: 'ID',
-  L2id: 'Linked Use Case',
+  parentIds: 'Parent Use Cases',
   visibility: 'Visibility %',
 };
 
@@ -43,21 +45,21 @@ const editableFieldsMap = {
 };
 
 const activeTabData = computed(() => {
-  switch (store.getActiveTab) { // Use the getter from the store
+  switch (state.getActiveMagmaTab) {
     case 'L1':
-      return store.L1Objects;
+      return magma.L1UseCases;
     case 'L2':
-      return store.L2Objects;
+      return magma.L2UseCases;
     case 'L3':
-      return store.L3Objects;
+      return magma.L3UseCases;
     default:
-      const averageVisibility = store.L1Objects.reduce((acc, l1) => acc + (l1.visibility || 0), 0) / store.L1Objects.length;
+      const averageVisibility = magma.useCases.reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / magma.L1UseCases.length;
       return [{ TotalVisibility: averageVisibility.toFixed(2) }]; // Format to 2 decimal places
   }
 });
 
 const headers = computed(() => {
-  switch (store.getActiveTab) {
+  switch (state.getActiveMagmaTab) {
     case 'L1':
       return L1Headers;
     case 'L2':
@@ -70,7 +72,7 @@ const headers = computed(() => {
 });
 
 const editableFields = computed(() => {
-  switch (store.getActiveTab) {
+  switch (state.getActiveMagmaTab) {
     case 'L1':
       return editableFieldsMap.L1;
     case 'L2':
@@ -82,206 +84,168 @@ const editableFields = computed(() => {
   }
 });
 
-const setActiveTab = (index: number) => {
-    store.setActiveTab(index); // Use the action from the store
+
+const addNewUseCase = () => {
+  const tab = state.getActiveMagmaTab;
+  const level = parseFloat(tab.slice(-1));
+  magma.addNewUseCase(level);
 };
 
-const visibilityValidity = ref<{ [key: string]: boolean }>({});
-const useCaseIdValidity = ref<{ [key: string]: boolean }>({});
 
-const validateUseCaseId = (tab: string, id: string) => {
-  const prefix = `${store.getActiveTab}-`;
-  const isCorrectPrefix = id.startsWith(prefix);
-
-  let objects;
-  switch (tab) {
-    case 'L1':
-      objects = store.L1Objects;
-      break;
-    case 'L2':
-      objects = store.L2Objects;
-      break;
-    case 'L3':
-      objects = store.L3Objects;
-      break;
+const confirmRemove = (uid: string) => {
+  console.log(uid);
+  if (confirm('Are you sure you want to remove this item?')) {
+    magma.removeUseCaseByUid(uid);
   }
-
-  // Get the current object being edited
-  const activeObject = objects.find(obj => obj.id === id);
-
-  // Filter out the current object being edited using its uid
-  const filteredObjects = objects.filter(obj => obj.uid !== activeObject?.uid);
-
-  // Check for uniqueness
-  const isUnique = !filteredObjects.some(obj => obj.id === id);
-
-  console.log(activeObject)
-  console.log(filteredObjects)
-  console.log(isUnique)
-
-  useCaseIdValidity.value[`${tab}-${id}`] = isCorrectPrefix && isUnique;
-
 };
 
-const updateObjectField = (tab: string, id: string, field: string, value: any) => {
+
+
+const updateObjectField = (uid: string, field: string, value: any) => {
+  
   if (field === 'visibility') {
-    // Convert the value to a number and check if it's valid
+    // Convert the value to a number and check if it's valid.
     const numericValue = parseFloat(value);
-    visibilityValidity.value[`${tab}-${id}`] = !isNaN(numericValue) && numericValue >= 0 && numericValue <= 100;
-    if (!visibilityValidity.value[`${tab}-${id}`]) {
-      console.error('Invalid number for visibility. Must be between 0 and 100');
-    }
     value = numericValue;
   }
 
   if (field === 'id') {
-    // Validation will be handled on blur or enter
+    
   }
 
-  switch (tab) {
-    case 'L1':
-      store.updateL1Object(id, { [field]: value });
-      break;
-    case 'L2':
-      store.updateL2Object(id, { [field]: value });
-      break;
-    case 'L3':
-      store.updateL3Object(id, { [field]: value });
-      break;
-  }
+  magma.updateUseCase(uid, { [field]: value });
 };
 
-const removeItem = (id: string) => {
-  switch (store.getActiveTab) {
-    case 'L1':
-      store.removeL1Object(id);
-      break;
-    case 'L2':
-      store.removeL2Object(id);
-      break;
-    case 'L3':
-      store.removeL3Object(id);
-      break;
+
+
+const getBackgroundColor = (uid: string, field: string) => {
+  if (field === 'visibility') {
+    // Check the validity of the number and return a backgroundcolor based on the validity of the number.
+    const visibility = magma.getUseCaseByUid(uid).visibility;
+    const validVisibility = !isNaN(visibility) && visibility >= 0 && visibility <= 100;
+    if (validVisibility) {return 'white';} else {return 'red';}
+    
+  }
+
+  if (field === 'id') {
+    const id = magma.getUseCaseByUid(uid).id;
+    const allIds = magma.getAllIds;
+    const validId = (allIds.filter(item => item === id).length <= 1)
+    if (validId) {return 'white';} else {return 'red';}
   }
 };
 
-const confirmRemove = (id: string) => {
-  if (confirm('Are you sure you want to remove this item?')) {
-    removeItem(id);
-  }
-};
 
-const addNewUseCase = () => {
-  const newUid = uuidv4();
-  const newId = `${store.getActiveTab}-${newUid.slice(26)}`; // Generate a unique ID based on the UID.
-  const newUseCase: any = { uid: newUid, id: newId };
-  
-  Object.keys(headers.value).forEach(key => {
-    if (key !== 'id') {
-      newUseCase[key] = '';
-    }
-  });
+// Add Mock data
+magma.addExistingUseCase({id: 'L3-1', parentIds: ['L2-1'], name: 'Spearphishing Attachment', visibility: 60});
+magma.addExistingUseCase({id: 'L2-1', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
+magma.addExistingUseCase({id: 'L1-1', name: 'Spearphishing Attachment'});
+magma.addExistingUseCase({id: 'L3-2', parentIds: ['L2-1'], name: 'Test Attachment', visibility: 20});
+magma.addNewUseCase(3);
+magma.getParentUseCasesById('L2-1');
 
-  switch (store.getActiveTab) {
-    case 'L1':
-      store.addL1Object(newUseCase);
-      break;
-    case 'L2':
-      store.addL2Object(newUseCase);
-      break;
-    case 'L3':
-      store.addL3Object(newUseCase);
-      break;
-  }
+magma.getParentUseCasesById('L2-1');
+// magma.removeUseCasebyId('L3-1');
+// magma.removeUseCasebyUId('L2-1');
+// magma.addExistingUseCase({id: 'L2-1', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
+// console.log(magma.useCases);
 
-  validateUseCaseId(store.getActiveTab, newId);
-};
 
-// Method to resize textarea
-const resizeTextarea = (event: any) => {
-  const target = event.target;
-  target.style.height = 'auto';
-  target.style.height = `${target.scrollHeight}px`;
-};
-
-// Add mock data.
-store.addL3Object({ id: 'L3-1', L2id: 'L2-1', name: 'Spearphishing Attachment', visibility: 75 });
-store.addL3Object({ id: 'L3-2', L2id: 'L2-2', name: 'Windows Service', visibility: 50 });
-store.addL3Object({ id: 'L3-3', L2id: 'L2-2', name: 'Scheduled Task/Job', visibility: 80 });
-store.addL2Object({ id: 'L2-1', L1id: 'L1-1', name: 'Phishing'});
-store.addL2Object({ id: 'L2-2', L1id: 'L1-2', name: 'System Services'});
-store.addL1Object({ id: 'L1-1', name: 'Initial Access'});
-store.addL1Object({ id: 'L1-2', name: 'Execution'});
 </script>
 
+
 <template>
+
+  <!-- Tab switcher -->
   <div class="sheet-tabs">
     <button 
       v-for="(tab) in tabs" 
       class="sheet-tab"
-      :class="{ active: store.getActiveTab === tab }"
-      @click="setActiveTab(tab)"
+      :class="{ active: state.getActiveMagmaTab === tab }"
+      @click="state.setActiveMagmaTab(tab)"
     >
       {{ tab }}
     </button>
   </div>
 
+  <!-- Scrolling container -->
   <div class="scroll-container">
-    <table v-if="store.getActiveTab !== 'Results'" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Results tab is active, we show another div element. -->
+    <table v-if="state.getActiveMagmaTab !== 'Results'" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Results tab is active, we show another div element. -->
       <thead>
         <tr>
-          <th class="remove-col"></th> <!-- Add a class for the remove button column -->
-          <th v-for="(headerName, headerKey) in headers" :key="headerKey" :class="{ 'use-case-name': headerName === 'Use Case Name' }">
-            {{ headerName }}
+          <!-- Render column headers. -->
+          <th class="remove-col"></th>
+          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ 'use-case-name': columnName === 'Use Case Name' }">
+            {{ columnName }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in activeTabData" :key="index">
-          <td class="remove-col"> <!-- Add the same class here -->
-            <!-- Add the remove button with confirmation dialog -->
-            <button class='remove-button' @click="confirmRemove(item.id)" style="background-color: #e73030; color: white; border: none; cursor: pointer;">
+
+          <!-- Remove-use-case buttons -->
+          <td class="remove-col">
+            <button class='remove-button' @click="confirmRemove(item.uid)" style="background-color: #e73030; color: white; border: none; cursor: pointer;">
               &times;
             </button>
           </td>
-          <td
-            v-for="(headerName, headerKey) in headers" 
-            :key="headerKey"
-          >
-            <template v-if="editableFields[headerKey]">
-              <!-- Check if the field is 'visibility' to use type="number" -->
-              <input 
-                v-if="headerKey === 'visibility'"
-                :type="headerKey === 'visibility' ? 'number' : 'text'" 
-                :value="item[headerKey]"
-                @input="(event) => { updateObjectField(store.getActiveTab, item.id, headerKey, event.target.value); resizeTextarea(event) }" 
-                :style="{ backgroundColor: visibilityValidity[`${store.getActiveTab}-${item.id}`] === false ? 'red' : '' }"
+          
+
+          <td v-for="(columnName, columnKey) in headers" :key="columnKey">
+
+            <!-- Editable fields -->
+            <template v-if="editableFields[columnKey]">
+
+              <!-- Visibility fields -->
+              <input
+                v-if="columnKey === 'visibility'"
+                :type="columnKey === 'visibility' ? 'number' : 'text'"
+                :value="item[columnKey]"
+                @input="(event) => { updateObjectField(item.uid, columnKey, event.target.value);}"
+                :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
               />
+
+              <!-- ID fields -->
               <template v-else>
                 <input 
-                  v-if="headerKey === 'id'"
-                  :value="item[headerKey]" 
-                  @blur="(event) => { validateUseCaseId(store.getActiveTab, item.id); resizeTextarea(event) }" 
-                  @keydown="(event) => { if (event.key === 'Enter') validateUseCaseId(store.getActiveTab, item.id) }" 
-                  @input="(event) => { updateObjectField(store.getActiveTab, item.id, headerKey, event.target.value); resizeTextarea(event) }" 
-                  :style="{ backgroundColor: useCaseIdValidity[`${store.getActiveTab}-${item.id}`] === false ? 'red' : '' }"
+                  v-if="columnKey === 'id'"
+                  :value="item[columnKey]"
+                  @input="(event) => { updateObjectField(item.uid, columnKey, event.target.value);}"
+                  :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
                 />
+
+                <!-- Use Case Name input fields -->
                 <input 
-                  v-else
-                  :value="item[headerKey]" 
-                  @input="(event) => { updateObjectField(store.getActiveTab, item.id, headerKey, event.target.value); resizeTextarea(event) }" 
-                  :style="{ backgroundColor: useCaseIdValidity[`${store.getActiveTab}-${item.id}`] === false ? 'red' : '' }"
+                  v-if="columnKey === 'name'"
+                  :value="item[columnKey]"
+                  @input="(event) => { updateObjectField(item.uid, columnKey, event.target.value);}"
+                  :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
                 />
+
+                <!-- Any other editable fields -->
+                <!-- <input 
+                  v-else
+                  :value="item[columnKey]" 
+                /> -->
               </template>
+
+
+            <!-- Non-editable fields -->
             </template>
             <template v-else>
-              {{ item[headerKey] }}
+              {{ item[columnKey] }}
             </template>
+            
           </td>
+
+
         </tr>
+
+
       </tbody>
       <tfoot>
         <tr>
+          <!-- Button to add new use cases. -->
           <td colspan="10" class="add-button-cell">
             <button @click="addNewUseCase">
               + ADD NEW USE CASE +
@@ -296,6 +260,7 @@ store.addL1Object({ id: 'L1-2', name: 'Execution'});
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .sheet-tabs {
