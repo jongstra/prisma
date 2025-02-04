@@ -67,7 +67,7 @@ export const magmaStore = defineStore('magma', {
       const uid = uuidv4()
       const useCase: UseCase = {
         id: `L${level}-${uid.substring(0, 8)}`, // Example ID format
-        parentIds: [],
+        parentIds: ['none'],
         name: '',
         level,
         visibility: 0,
@@ -124,31 +124,6 @@ export const magmaStore = defineStore('magma', {
       }
     },
 
-
-    // removeUseCase(useCase: UseCase) {
-    //   // Find parent use cases.
-    //   var parentUseCases = [];
-    //   if (useCase.parentIds) {
-    //     parentUseCases = this.getParentUseCasesById(useCase.id);
-    //   }
-
-    //   // remove the use case.
-    //   this.useCases = this.useCases.filter(x => x['uid'] !== uid);
-    //   // console.log(`Removed use case: "${JSON.stringify(useCase)}"`)
-      
-    //   // Recompute values of any use cases that were parents of this one.
-    //   if (useCase.level > 1) {
-    //     this.recomputeUseCases(parentUseCases);
-    //   }
-    // },
-    
-
-    // removeUseCasebyId(id: string) {
-    //   const useCase = this.getUseCaseById(id);
-    //   if (!useCase) {throw new Error(`No use case with id "${id}" exists.`);}
-    //   this.removeUseCase(useCase);
-    // },
-
     
     removeUseCaseByUid(uid: string) {
       const useCase = this.getUseCaseByUid(uid);
@@ -177,6 +152,7 @@ export const magmaStore = defineStore('magma', {
         const parentUseCases = this.getParentUseCasesById(useCase.id);
         const childUseCases = this.getChildUseCasesById(useCase.id);
         const meanVisibility = this.calculateMeanVisibility(childUseCases);
+        // Only recompute the visibility for a use case on L1 or L2.
         if (useCase.level != 3) {
           useCase['visibility'] = meanVisibility;
         }
@@ -209,10 +185,23 @@ export const magmaStore = defineStore('magma', {
 
     updateUseCase(uid: string, updatedFields: {}) {
       const useCase = this.getUseCaseByUid(uid);
+
       if (useCase) {
+
+        // Get old parent use cases.
+        const parentUseCases = this.getParentUseCasesById(useCase.id);
+
+        // Update use case.
         Object.assign(useCase, updatedFields);
         this.recomputeUseCases([useCase]);
+
+        // Update old parent use cases, if use case is L2 or L3.
+        if (useCase.level > 1) {
+          this.recomputeUseCases(parentUseCases);
+        }
       }
+
+
     },
 
 

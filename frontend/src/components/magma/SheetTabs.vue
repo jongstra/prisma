@@ -26,22 +26,22 @@ const L1Headers = {
 const L2Headers = {
   name: 'Use Case Name',
   id: 'ID',
-  parentIds: 'Parent Use Cases',
+  parentIds: 'Parent Use Case',
   visibility: 'Visibility %',
 };
 
 const L3Headers = {
   name: 'Use Case Name',
   id: 'ID',
-  parentIds: 'Parent Use Cases',
+  parentIds: 'Parent Use Case',
   visibility: 'Visibility %',
 };
 
 // Define editable fields for each tab
 const editableFieldsMap = {
   L1: { name: true, id: true, visibility: false },
-  L2: { name: true, id: true, L1id: true, visibility: false },
-  L3: { name: true, id: true, L2id: true, visibility: true }
+  L2: { name: true, id: true, parentIds: true, visibility: false },
+  L3: { name: true, id: true, parentIds: true, visibility: true }
 };
 
 const activeTabData = computed(() => {
@@ -100,7 +100,6 @@ const confirmRemove = (uid: string) => {
 };
 
 
-
 const updateObjectField = (uid: string, field: string, value: any) => {
   
   if (field === 'visibility') {
@@ -109,13 +108,8 @@ const updateObjectField = (uid: string, field: string, value: any) => {
     value = numericValue;
   }
 
-  if (field === 'id') {
-    
-  }
-
   magma.updateUseCase(uid, { [field]: value });
 };
-
 
 
 const getBackgroundColor = (uid: string, field: string) => {
@@ -130,17 +124,42 @@ const getBackgroundColor = (uid: string, field: string) => {
   if (field === 'id') {
     const id = magma.getUseCaseByUid(uid).id;
     const allIds = magma.getAllIds;
-    const validId = (allIds.filter(item => item === id).length <= 1)
+    const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
+    const correctFormat = (id.substring(0, 3) === state.activeMagmaTab + '-');
+    const validId = noDuplicateId && correctFormat;
     if (validId) {return 'white';} else {return 'red';}
+  }
+
+  if (field === 'parentIds') {
+    const parentIds = magma.getUseCaseByUid(uid).parentIds;
+    const validParentIds = Array.isArray(parentIds) && parentIds.every(id => magma.getAllIds.includes(id));
+    if (validParentIds) return 'white';
+    else return 'red';
   }
 };
 
 
+const parentIdsOptions = computed(() => {
+  switch (state.getActiveMagmaTab) {
+    case 'L3':
+      return magma.L2UseCases.map(useCase => useCase.id);
+    case 'L2':
+      return magma.L1UseCases.map(useCase => useCase.id);
+    default:
+      return [];
+  }
+});
+
+
+
 // Add Mock data
-magma.addExistingUseCase({id: 'L3-1', parentIds: ['L2-1'], name: 'Spearphishing Attachment', visibility: 60});
+magma.addExistingUseCase({id: 'L3-1', parentIds: ['L2-1'], name: 'Spearphishing Attachment', visibility: 67});
 magma.addExistingUseCase({id: 'L2-1', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
 magma.addExistingUseCase({id: 'L1-1', name: 'Spearphishing Attachment'});
-magma.addExistingUseCase({id: 'L3-2', parentIds: ['L2-1'], name: 'Test Attachment', visibility: 20});
+magma.addExistingUseCase({id: 'L3-2', parentIds: ['L2-1'], name: 'Test Attachment', visibility: 22});
+magma.addExistingUseCase({id: 'L3-4', parentIds: ['L2-1'], name: 'Test', visibility: 43});
+magma.addExistingUseCase({id: 'L3-5', parentIds: ['L2-1'], name: 'Test', visibility: 27});
+magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
 magma.addNewUseCase(3);
 magma.getParentUseCasesById('L2-1');
 
@@ -196,7 +215,7 @@ magma.getParentUseCasesById('L2-1');
             <!-- Editable fields -->
             <template v-if="editableFields[columnKey]">
 
-              <!-- Visibility fields -->
+              <!-- Editable Visibility fields -->
               <input
                 v-if="columnKey === 'visibility'"
                 :type="columnKey === 'visibility' ? 'number' : 'text'"
@@ -205,7 +224,7 @@ magma.getParentUseCasesById('L2-1');
                 :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
               />
 
-              <!-- ID fields -->
+              <!-- Editable ID fields -->
               <template v-else>
                 <input 
                   v-if="columnKey === 'id'"
@@ -214,13 +233,26 @@ magma.getParentUseCasesById('L2-1');
                   :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
                 />
 
-                <!-- Use Case Name input fields -->
+                <!-- Editable Use Case Name input fields -->
                 <input 
                   v-if="columnKey === 'name'"
                   :value="item[columnKey]"
                   @input="(event) => { updateObjectField(item.uid, columnKey, event.target.value);}"
                   :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
                 />
+
+                <!-- Editable Parent Use Case selector -->
+                <template v-if="columnKey === 'parentIds'">
+                  <select 
+                    multiple
+                    :value="item[columnKey]"
+                    @change="(event) => { updateObjectField(item.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"
+                    :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                  >
+                    <option value="none">None</option>
+                    <option v-for="parentId in parentIdsOptions" :key="parentId" :value="parentId">{{ parentId }}</option>
+                  </select>
+                </template>
 
                 <!-- Any other editable fields -->
                 <!-- <input 
@@ -372,5 +404,9 @@ th.remove-col {
 
 th.use-case-name {
   width: 250px;
+}
+
+select {
+  width: 150px;
 }
 </style>
