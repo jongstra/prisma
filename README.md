@@ -1,6 +1,6 @@
 # MaGMa-DeTT&CT Visualizer
 
-# Installation Instructions
+## Installation Instructions
 
 
 ## Project Status 
@@ -21,14 +21,14 @@ This project is currently in development. You may run into unusual behavior and/
 - Providing high-level insights and suggestions regarding visibility and use case management.
 
 ## Technical Setup
-- Backend: Python/Flask\
 - Frontend: JS/Vue
+- Backend: Python/Flask
 
 ## Future
 - When ready, the aim is to distribute this project under an open source license (AGPL-3).
 - The name of the project 'MaGMa-DeTT&CT Visualizer' is still subject to change.
 - This project has a strong focus on pragmatism and simplicity for the benefit of the end user. Its design is sometimes strongly opinionated and limited with this goal in mind. New features may be added based on common user needs, but should not undermine this philosphy.
-- Python is currently used to pre-process the MITRE ATT&CK data, and to serve this data to the front end. It is possible that a switch to JS will be made for this last part.
+- Python is currently used to pre-process the MITRE ATT&CK data and to serve this data to the front end. It is possible that a switch to JS will be made for this last part.
 
 ## Thanks
 The initial development of this project has been funded by the Dutch government. This support has been instrumental for the creation this project.
