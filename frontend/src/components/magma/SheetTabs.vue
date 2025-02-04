@@ -174,8 +174,8 @@ const formatVisibility = (number: number) => {
 
 
 // Add Mock data
-magma.addExistingUseCase({id: 'L3-1', parentIds: ['L2-1'], name: 'Spearphishing Attachment', visibility: 67});
-magma.addExistingUseCase({id: 'L2-1', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
+magma.addExistingUseCase({id: 'L3-1', parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67});
+magma.addExistingUseCase({id: 'L2-1', parentIds: ['L1-1'], name: 'Sample L2 Use Case Attachment'});
 magma.addExistingUseCase({id: 'L1-1', name: 'Spearphishing Attachment'});
 magma.addExistingUseCase({id: 'L3-2', parentIds: ['L2-1'], name: 'Test Attachment', visibility: 22});
 magma.addExistingUseCase({id: 'L3-4', parentIds: ['L2-1'], name: 'Test', visibility: 43});
@@ -264,13 +264,16 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
                   :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
                 />
 
-                <!-- Editable Use Case Name input fields -->
-                <input 
+                <!-- Editable Use Case Name div -->
+                <div
+                  class="use-case-name-editable"
                   v-if="columnKey === 'name'"
-                  :value="item[columnKey]"
-                  @input="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
+                  contenteditable="true"
+                  @input="(event) => {updateObjectField(item.uid, columnKey, event.target.innerText);}"
                   :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
-                />
+                >
+                  {{ item[columnKey] }}
+                </div>
 
                 <!-- Editable Parent Use Case selector -->
                 <template v-if="columnKey === 'parentIds'">
@@ -395,13 +398,16 @@ tr {
   font-size: 14px;
 }
 
-input {
+input, .use-case-name-editable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-size: 14px;
   width: 100%;
   border: 0px;
-  min-height: 42px;
-  overflow-wrap: break-word;
+  min-height: 65px;
+
 }
 
 td.remove-col {
