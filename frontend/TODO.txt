@@ -8,11 +8,9 @@
 - [X] Knop maken om use cases toe te voegen.
 - [X] Knoppen maken om use cases te verwijderen.
 - [ ] Input box laten groeien in de hoogte.
-- [ ] Spaces niet toelaten in ID input veld.
-- [ ] Visibility truncaten.
-- [ ] Mogelijk beter om een aantal gespecialiseerde componenten te maken voor de verschillende input/output items in de Magma sheets.
+- [X] Visibility truncaten.
 - [ ] Fix ID clash detectie. GOAL: relatief simpel houden. Alleen clashes detecteren en rood maken. Eventueel invalidaten zou ook mooi zijn.
-- [ ] Linked ID's alleen laten selecteren uit bestaande set (de waarde 'None' moet wel ook als default aanwezig zijn en ook in deze set staan).
+- [X] Linked ID's alleen laten selecteren uit bestaande set (de waarde 'None' moet wel ook als default aanwezig zijn en ook in deze set staan).
 - [ ] L3 use cases koppelen aan Mitre ATT&CK mappings.
 - [X] Alle kolommen even breed laten zijn, en horizontaal scrollable maken.
 - [ ] Magma informatie domain afhankelijk maken (enterprise/mobile/ICS).

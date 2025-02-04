@@ -9,6 +9,9 @@ interface UseCase {
   name: string;
   level: number;
   visibility: number;
+  invalidVisibility: boolean,
+  invalidId: boolean,
+  invalidParentIds: boolean,
 }
 
 
@@ -40,18 +43,16 @@ export const magmaStore = defineStore('magma', {
     getAllUids: (state) => {
       return state.useCases.map(useCase => useCase['uid']);
     },
-    getParentUseCasesById: (state) => (id: string) => {
-      const useCase = state.useCases.find(useCase => useCase['id'] === id);
-      if (useCase.parentIds) {
-        const parentIds = useCase.parentIds;
-        const parentUseCases = state.useCases.filter(useCase => parentIds.includes(useCase['id']));
-        // const parentUseCases = state.useCases.filter(useCase => Array.isArray(useCase['parentIds']) && useCase['parentIds'].includes(id));
-        // console.log(`Found ${parentUseCases.length} parent use cases for id: "${id}": ${JSON.stringify(parentUseCases)}.`);
+    getParentUseCases: (state) => (useCase) => {
+      if (useCase && Array.isArray(useCase.parentIds)) {
+        const parentUseCases = state.useCases.filter(childUseCase => useCase.parentIds.includes(childUseCase['id']));
         return parentUseCases;
       } else {
+        // console.log('useCase or useCase.parentIds is undefined:', useCase);
         return [];
       }
     },
+    
     getChildUseCasesById: (state) => (id: string) => {
       const childUseCases = state.useCases.filter(useCase => Array.isArray(useCase['parentIds']) && useCase['parentIds'].includes(id));
       // console.log(`Found ${childUseCases.length} child use cases for id: "${id}".`);
@@ -64,17 +65,41 @@ export const magmaStore = defineStore('magma', {
 
 
     addNewUseCase(level: number = 0) {
-      const uid = uuidv4()
+      // Filter existing use cases to find those that match the specified level
+      const filteredUseCases = this.useCases.filter(useCase => useCase['level'] === level);
+    
+      // Extract numeric suffixes from the IDs of these use cases
+      let maxSuffix = 0;
+      for (const useCase of filteredUseCases) {
+        const suffixPart = useCase['id'].split('-')[1];
+        if (suffixPart) {
+          const suffix = parseInt(suffixPart);
+          if (!isNaN(suffix)) {
+            maxSuffix = Math.max(maxSuffix, suffix);
+          }
+        }
+      }
+    
+      // Increment the highest numeric suffix to generate a new unique ID
+      const newSuffix = maxSuffix + 1;
+    
+      // Generate the new use case ID
+      const uid = uuidv4();
       const useCase: UseCase = {
-        id: `L${level}-${uid.substring(0, 8)}`, // Example ID format
+        id: `L${level}-${newSuffix.toString()}`,
         parentIds: ['none'],
         name: '',
         level,
         visibility: 0,
         uid: uid,
+        invalidVisibility: false,
+        invalidId: false,
+        invalidParentIds: false,
       };
+      
       this.useCases.push(useCase);
     },
+    
 
 
     addExistingUseCase(useCase: any) {
@@ -86,7 +111,8 @@ export const magmaStore = defineStore('magma', {
 
       // Catch duplicate ID's.
       if (this.getUseCaseById(useCase['id'])) {
-        throw new Error(`Use case with id ${useCase['id']} already exists. Use case has not been added.`); 
+        console.log(`Use case with id ${useCase['id']} already exists. Use case has not been added.`); 
+        return;
       };
 
       // If the use case does not have a level set, extract it from the ID.
@@ -97,16 +123,21 @@ export const magmaStore = defineStore('magma', {
 
       // Check that the use case has a valid use case level.
       if (useCase.level !== 1 && useCase.level !== 2 && useCase.level !== 3) {
-        throw new Error(`Use case level is incorrect for use case "${JSON.stringify(useCase)}". Use case has not been added.`); 
+        console.log(`Use case level is incorrect for use case "${JSON.stringify(useCase)}". Use case has not been added.`);
+        return;
       }
 
       // Check that the level in the useCase.level and useCase.id are consistent with eachother.
       if (useCase.level !== parseInt(useCase['id'].substring(1, 2))) {
-        throw new Error(`Usecase level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
+        console.log(`Usecase level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
+        return;
       }
 
-      // Add the level and a unique ID to the use case, and add it to the store.
+      // Add a unique ID and some organizational parameters to the use case, and add it to the store.
       useCase['uid'] = uuidv4();
+      useCase['invalidVisibility'] = false;
+      useCase['invalidId'] = false;
+      useCase['invalidParentIds'] = false;
       this.useCases.push(useCase);
       // console.log(`Added use case: "${JSON.stringify(useCase)}"`)
       
@@ -117,9 +148,9 @@ export const magmaStore = defineStore('magma', {
 
       // If a L3 use case was added, recompute the values of any parents.
       if (useCase.level > 1) {
-        // console.log(useCase.id)
         if (useCase.parentIds) {
-          this.recomputeUseCases(this.getParentUseCasesById(useCase.id));
+          const parentUseCases = this.getParentUseCases(useCase);
+          this.recomputeUseCases(parentUseCases);
         }
       }
     },
@@ -130,10 +161,7 @@ export const magmaStore = defineStore('magma', {
       if (!useCase) {throw new Error(`No use case with uid "${uid}" exists.`);}
 
       // Find parent use cases.
-      var parentUseCases = [];
-      if (useCase.parentIds) {
-        parentUseCases = this.getParentUseCasesById(useCase.id);
-      }
+      const parentUseCases = this.getParentUseCases(useCase);
 
       // remove the use case.
       this.useCases = this.useCases.filter(x => x['uid'] !== uid);
@@ -149,13 +177,15 @@ export const magmaStore = defineStore('magma', {
     recomputeUseCases(useCases: Array<UseCase>) {
       // console.log(`Updating use cases: ${JSON.stringify(useCases)}`);
       useCases.forEach((useCase) => {
-        const parentUseCases = this.getParentUseCasesById(useCase.id);
+        const parentUseCases = this.getParentUseCases(useCase);
         const childUseCases = this.getChildUseCasesById(useCase.id);
         const meanVisibility = this.calculateMeanVisibility(childUseCases);
+
         // Only recompute the visibility for a use case on L1 or L2.
         if (useCase.level != 3) {
           useCase['visibility'] = meanVisibility;
         }
+
         // If this use case has parents, check if they also need to be updated based on the new values of this use case.
         if (useCase.level > 1) {
           this.recomputeUseCases(parentUseCases);
@@ -164,20 +194,35 @@ export const magmaStore = defineStore('magma', {
     },
 
 
+
     calculateMeanVisibility(useCases: Array<UseCase>) {
       if (useCases.length === 0) return 0;
-    
-      // Filter out useCases which have a visibility value outside of the valid range (0-100), or have a property named 'invalid'.
-      const validObjects = useCases.filter(useCase => {
-        const visibility = Number(useCase['visibility']) || 0;
-        return visibility >= 0 && visibility <= 100 && !useCase.invalid;
+      
+
+      // // DEZE PRINTS LATEN DE ERROR ZIEN. Lijkt mis te gaan met een race condition in getBackgroundColor.
+      // console.log('ALL USE CASES:')
+      // useCases.forEach((useCase) => console.log(useCase))
+      // useCases.forEach((useCase) => console.log(useCase.invalidVisibility))
+      // useCases.forEach((useCase) => console.log(useCase.invalidId))
+      // useCases.forEach((useCase) => console.log(`${useCase.id} ${useCase.invalidParentIds}`))
+
+
+      // PLEASE LOOK INTO THIS: Here all 5 use cases are shown. They all have properties invalidVisibility, invalidId and invalidParentIds set to false.
+      const validUseCases = useCases.filter(useCase => {
+        return(useCase)
+        // return (!useCase.invalidVisibility && !useCase.invalidId && !useCase.invalidParentIds);
       });
+
+      // console.log('VALID USE CASES:')
+      // validUseCases.forEach((useCase) => console.log(useCase))
+      // PLEASE LOOK INTO THIS: Here only 4 use cases are shown. Why is one filtered out? Could this be due to a race condition? The missing use case is the one that was used in updateUseCase..
     
-      // If no valid objects are left, return 0.
-      if (validObjects.length === 0) return 0;
+      // If no valid use cases are left, return 0.
+      if (validUseCases.length === 0) return 0;
     
       // Calculate and return the mean of the valid visibility values.
-      const meanVisibility = validObjects.reduce((sum, obj) => sum + (Number(obj['visibility']) || 0), 0) / validObjects.length;
+      const meanVisibility = validUseCases.reduce((sum, obj) => sum + (Number(obj['visibility']) || 0), 0) / validUseCases.length;
+      
       return meanVisibility;
     },
 
@@ -189,19 +234,18 @@ export const magmaStore = defineStore('magma', {
       if (useCase) {
 
         // Get old parent use cases.
-        const parentUseCases = this.getParentUseCasesById(useCase.id);
+        const parentUseCases = this.getParentUseCases(useCase);
 
         // Update use case.
         Object.assign(useCase, updatedFields);
         this.recomputeUseCases([useCase]);
+        // console.log(`useCase: ${JSON.stringify(useCase)}`);
 
         // Update old parent use cases, if use case is L2 or L3.
         if (useCase.level > 1) {
           this.recomputeUseCases(parentUseCases);
         }
       }
-
-
     },
 
 

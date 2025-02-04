@@ -101,41 +101,58 @@ const confirmRemove = (uid: string) => {
 
 
 const updateObjectField = (uid: string, field: string, value: any) => {
-  
-  if (field === 'visibility') {
-    // Convert the value to a number and check if it's valid.
-    const numericValue = parseFloat(value);
-    value = numericValue;
-  }
-
   magma.updateUseCase(uid, { [field]: value });
 };
 
 
 const getBackgroundColor = (uid: string, field: string) => {
+  const useCase = magma.getUseCaseByUid(uid);
+
   if (field === 'visibility') {
     // Check the validity of the number and return a backgroundcolor based on the validity of the number.
-    const visibility = magma.getUseCaseByUid(uid).visibility;
+    const visibility = useCase.visibility;
     const validVisibility = !isNaN(visibility) && visibility >= 0 && visibility <= 100;
-    if (validVisibility) {return 'white';} else {return 'red';}
-    
+    if (validVisibility) {
+      // useCase.invalidVisibility = false;
+      return 'white';
+    } else {
+      // useCase.invalidVisibility = true;
+      return 'red';
+    } 
   }
 
   if (field === 'id') {
-    const id = magma.getUseCaseByUid(uid).id;
-    const allIds = magma.getAllIds;
-    const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
-    const correctFormat = (id.substring(0, 3) === state.activeMagmaTab + '-');
-    const validId = noDuplicateId && correctFormat;
-    if (validId) {return 'white';} else {return 'red';}
+  const id = useCase.id;
+  const allIds = magma.getAllIds;
+  const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
+  
+  // Regular expression to check if the format is 'prefix-numeric'
+  const correctFormat = new RegExp(`^${state.activeMagmaTab}-\\d+$`).test(id);
+  
+  const validId = noDuplicateId && correctFormat;
+  
+  if (validId) {
+    // useCase.invalidId = false;
+    return 'white';
+  } else {
+    // useCase.invalidId = true;
+    return 'red';
   }
+}
+
 
   if (field === 'parentIds') {
-    const parentIds = magma.getUseCaseByUid(uid).parentIds;
+    const parentIds = useCase.parentIds;
     const validParentIds = Array.isArray(parentIds) && parentIds.every(id => magma.getAllIds.includes(id));
-    if (validParentIds) return 'white';
-    else return 'red';
+    if (validParentIds) {
+      // useCase.invalidParentIds = false;
+      return 'white';
+    } else {
+      // useCase.invalidParentIds = true;
+      return 'red';
+    }
   }
+
 };
 
 
@@ -151,6 +168,10 @@ const parentIdsOptions = computed(() => {
 });
 
 
+const formatVisibility = (number: number) => {
+  return number.toFixed(2);
+};
+
 
 // Add Mock data
 magma.addExistingUseCase({id: 'L3-1', parentIds: ['L2-1'], name: 'Spearphishing Attachment', visibility: 67});
@@ -160,10 +181,20 @@ magma.addExistingUseCase({id: 'L3-2', parentIds: ['L2-1'], name: 'Test Attachmen
 magma.addExistingUseCase({id: 'L3-4', parentIds: ['L2-1'], name: 'Test', visibility: 43});
 magma.addExistingUseCase({id: 'L3-5', parentIds: ['L2-1'], name: 'Test', visibility: 27});
 magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-magma.addNewUseCase(3);
-magma.getParentUseCasesById('L2-1');
+// magma.addExistingUseCase({id: 'L3-7', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-8', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-9', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-10', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-11', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-12', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-13', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-14', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-15', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-16', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addNewUseCase(3);
+// magma.getParentUseCasesById('L2-1');
 
-magma.getParentUseCasesById('L2-1');
+// magma.getParentUseCasesById('L2-1');
 // magma.removeUseCasebyId('L3-1');
 // magma.removeUseCasebyUId('L2-1');
 // magma.addExistingUseCase({id: 'L2-1', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
@@ -220,8 +251,8 @@ magma.getParentUseCasesById('L2-1');
                 v-if="columnKey === 'visibility'"
                 :type="columnKey === 'visibility' ? 'number' : 'text'"
                 :value="item[columnKey]"
-                @input="(event) => { updateObjectField(item.uid, columnKey, event.target.value);}"
-                :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                @input="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
+                :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
               />
 
               <!-- Editable ID fields -->
@@ -229,16 +260,16 @@ magma.getParentUseCasesById('L2-1');
                 <input 
                   v-if="columnKey === 'id'"
                   :value="item[columnKey]"
-                  @input="(event) => { updateObjectField(item.uid, columnKey, event.target.value);}"
-                  :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                  @input="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
+                  :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
                 />
 
                 <!-- Editable Use Case Name input fields -->
                 <input 
                   v-if="columnKey === 'name'"
                   :value="item[columnKey]"
-                  @input="(event) => { updateObjectField(item.uid, columnKey, event.target.value);}"
-                  :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                  @input="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
+                  :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
                 />
 
                 <!-- Editable Parent Use Case selector -->
@@ -246,8 +277,8 @@ magma.getParentUseCasesById('L2-1');
                   <select 
                     multiple
                     :value="item[columnKey]"
-                    @change="(event) => { updateObjectField(item.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"
-                    :style="{ backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                    @change="(event) => {updateObjectField(item.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"
+                    :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
                   >
                     <option value="none">None</option>
                     <option v-for="parentId in parentIdsOptions" :key="parentId" :value="parentId">{{ parentId }}</option>
@@ -260,10 +291,16 @@ magma.getParentUseCasesById('L2-1');
                   :value="item[columnKey]" 
                 /> -->
               </template>
+            </template>
 
 
             <!-- Non-editable fields -->
+            <template v-else-if="columnKey === 'visibility'"> 
+              <div class="visibility-uneditable" style="background-color: lightgoldenrodyellow;">
+              {{ formatVisibility(item[columnKey]) }}
+              </div>
             </template>
+              
             <template v-else>
               {{ item[columnKey] }}
             </template>
@@ -408,5 +445,13 @@ th.use-case-name {
 
 select {
   width: 150px;
+  height: 65px;
+}
+
+input, .visibility-uneditable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
 }
 </style>
