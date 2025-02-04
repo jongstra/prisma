@@ -117,7 +117,7 @@ const getBackgroundColor = (uid: string, field: string) => {
       return 'white';
     } else {
       // useCase.invalidVisibility = true;
-      return 'red';
+      return 'Crimson';
     } 
   }
 
@@ -136,7 +136,7 @@ const getBackgroundColor = (uid: string, field: string) => {
     return 'white';
   } else {
     // useCase.invalidId = true;
-    return 'red';
+    return 'Crimson';
   }
 }
 
@@ -149,7 +149,7 @@ const getBackgroundColor = (uid: string, field: string) => {
       return 'white';
     } else {
       // useCase.invalidParentIds = true;
-      return 'red';
+      return 'Crimson';
     }
   }
 
