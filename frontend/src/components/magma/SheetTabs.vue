@@ -135,7 +135,7 @@ const getBackgroundColor = (uid: string, field: string) => {
   
   if (validId) {
     // useCase.invalidId = false;
-    return 'rgb(246, 246, 246)';
+    return 'white';
   } else {
     // useCase.invalidId = true;
     return 'Crimson';
@@ -148,7 +148,7 @@ const getBackgroundColor = (uid: string, field: string) => {
     const validParentIds = Array.isArray(parentIds) && parentIds.every(id => magma.getAllIds.includes(id));
     if (validParentIds) {
       // useCase.invalidParentIds = false;
-      return 'rgb(246, 246, 246)';
+      return 'white';
     } else {
       // useCase.invalidParentIds = true;
       return 'Crimson';
@@ -227,7 +227,7 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
         <tr>
           <!-- Render column headers. -->
           <th class="remove-col"></th>
-          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ 'use-case-name': columnName === 'Use Case Name' }">
+          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ 'use-case-name': columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique'  }">
             {{ columnName }}
           </th>
         </tr>
@@ -386,7 +386,8 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
 th, td, input {
   width: 150px;
   border: 2px solid rgb(42, 42, 42);
-  border-radius: 4px; /* Slightly rounded corners */
+  border-radius: 4px;
+  background-color: white;
 }
 
 th {
@@ -445,7 +446,11 @@ th.remove-col {
 }
 
 th.use-case-name {
-  width: 250px;
+  width: 200px;
+}
+
+th.attack {
+  width: 160px;
 }
 
 select {

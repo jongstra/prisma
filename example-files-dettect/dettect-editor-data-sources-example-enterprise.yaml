@@ -1,0 +1,41 @@
+version: 1.1
+file_type: data-source-administration
+name: example
+domain: enterprise-attack
+systems:
+  - applicable_to: default
+    platform:
+      - all
+data_sources:
+  - data_source_name: Network Connection Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products:
+          - EDR
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 1
+          timeliness: 1
+          consistency: 1
+          retention: 1
+  - data_source_name: User Account Authentication
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products:
+          - Azure AD
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 1
+          data_field_completeness: 1
+          timeliness: 1
+          consistency: 1
+          retention: 1
