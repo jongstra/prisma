@@ -114,7 +114,7 @@ const getBackgroundColor = (uid: string, field: string) => {
     const validVisibility = !isNaN(visibility) && visibility >= 0 && visibility <= 100;
     if (validVisibility) {
       // useCase.invalidVisibility = false;
-      return 'white';
+      return 'rgb(246, 246, 246);';
     } else {
       // useCase.invalidVisibility = true;
       return 'Crimson';
@@ -133,7 +133,7 @@ const getBackgroundColor = (uid: string, field: string) => {
   
   if (validId) {
     // useCase.invalidId = false;
-    return 'white';
+    return 'rgb(246, 246, 246);';
   } else {
     // useCase.invalidId = true;
     return 'Crimson';
@@ -146,7 +146,7 @@ const getBackgroundColor = (uid: string, field: string) => {
     const validParentIds = Array.isArray(parentIds) && parentIds.every(id => magma.getAllIds.includes(id));
     if (validParentIds) {
       // useCase.invalidParentIds = false;
-      return 'white';
+      return 'rgb(246, 246, 246);';
     } else {
       // useCase.invalidParentIds = true;
       return 'Crimson';
@@ -377,9 +377,11 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
   table-layout: fixed; 
 }
 
-th, td {
+/* Defaul cell settings, will be overwritten later. But gives more consistent feel. */
+th, td, input {
   width: 150px;
-  border-radius: 5px;
+  border: 2px solid rgb(42, 42, 42);
+  border-radius: 4px; /* Slightly rounded corners */
 }
 
 th {
@@ -401,10 +403,6 @@ input {
   min-height: 42px;
   overflow-wrap: break-word;
 }
-
-/* tr:nth-child(even) {
-  background-color: #f2f2f2;
-} */
 
 td.remove-col {
   background-color: #e73030;
