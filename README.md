@@ -16,7 +16,7 @@ This project is currently in development. You may run into unusual behavior and/
 
 ## Project Goals
 - Helping organizations manage their cyber security use cases (using the [MaGMa](https://www.betaalvereniging.nl/en/safety/magma/) framework).
-- Visualizing the visibility organizations have on their digital infractructure (using [DeTT&CT](https://github.com/rabobank-cdc/DeTTECT)/[dettectinator](https://github.com/siriussecurity/dettectinator)
+- Visualizing the visibility organizations have on their digital infractructure (using [DeTT&CT](https://github.com/rabobank-cdc/DeTTECT)/[dettectinator](https://github.com/siriussecurity/dettectinator)).
 - Integrating DeTT&CT visibility with MaGMa use case management.
 - Providing high-level insights and suggestions regarding visibility and use case management.
 
