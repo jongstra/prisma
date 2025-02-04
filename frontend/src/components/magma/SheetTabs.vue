@@ -34,6 +34,7 @@ const L3Headers = {
   name: 'Use Case Name',
   id: 'ID',
   parentIds: 'Parent Use Case',
+  attack: 'ATT&CK Technique',
   visibility: 'Visibility %',
 };
 
@@ -448,7 +449,7 @@ th.use-case-name {
 }
 
 select {
-  width: 150px;
+  width: 144px;
   height: 65px;
 }
 
