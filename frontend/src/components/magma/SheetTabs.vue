@@ -114,7 +114,7 @@ const getBackgroundColor = (uid: string, field: string) => {
     const validVisibility = !isNaN(visibility) && visibility >= 0 && visibility <= 100;
     if (validVisibility) {
       // useCase.invalidVisibility = false;
-      return 'rgb(246, 246, 246);';
+      return 'rgb(246, 246, 246)';
     } else {
       // useCase.invalidVisibility = true;
       return 'Crimson';
@@ -130,10 +130,11 @@ const getBackgroundColor = (uid: string, field: string) => {
   const correctFormat = new RegExp(`^${state.activeMagmaTab}-\\d+$`).test(id);
   
   const validId = noDuplicateId && correctFormat;
+  console.log(`id: ${useCase.id}`)
   
   if (validId) {
     // useCase.invalidId = false;
-    return 'rgb(246, 246, 246);';
+    return 'rgb(246, 246, 246)';
   } else {
     // useCase.invalidId = true;
     return 'Crimson';
@@ -146,7 +147,7 @@ const getBackgroundColor = (uid: string, field: string) => {
     const validParentIds = Array.isArray(parentIds) && parentIds.every(id => magma.getAllIds.includes(id));
     if (validParentIds) {
       // useCase.invalidParentIds = false;
-      return 'rgb(246, 246, 246);';
+      return 'rgb(246, 246, 246)';
     } else {
       // useCase.invalidParentIds = true;
       return 'Crimson';
@@ -407,7 +408,6 @@ input, .use-case-name-editable {
   width: 100%;
   border: 0px;
   min-height: 65px;
-
 }
 
 td.remove-col {
