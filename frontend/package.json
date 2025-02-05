@@ -6,7 +6,8 @@
   "scripts": {
     "serve-backend": "cd ../backend && source venv/bin/activate && python3 app.py",
     "serve": "vite",
-    "dev": "concurrently \"npm:serve\" \"npm:serve-backend\"",
+    "dev": "npm run serve",
+    "dev-old": "concurrently \"npm:serve\" \"npm:serve-backend\"",
     "build": "run-p build-vue build-backend",
     "preview": "vite preview",
     "test-unit": "vitest",

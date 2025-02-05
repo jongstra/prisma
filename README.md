@@ -2,6 +2,25 @@
 
 ## Installation Instructions
 
+### Clone this Repository
+```sh
+git clone git@github.com:mitre-attack/attack-stix-data.git
+```
+
+### Enter Frontend Directory
+```sh
+cd frontend
+```
+
+### Install Frontend
+```sh
+npm install
+```
+
+### Run Frontend (for Development & Testing)
+```sh
+npm run dev
+```
 
 ## Project Status 
 This project is currently in development. You may run into unusual behavior and/or bugs.
@@ -22,13 +41,12 @@ This project is currently in development. You may run into unusual behavior and/
 
 ## Technical Setup
 - Frontend: JS/Vue
-- Backend: Python/Flask
+- Backend: Python
 
 ## Future
 - When ready, the aim is to distribute this project under an open source license (AGPL-3).
 - The name of the project 'MaGMa-DeTT&CT Visualizer' is still subject to change.
 - This project has a strong focus on pragmatism and simplicity for the benefit of the end user. Its design is sometimes strongly opinionated and limited with this goal in mind. New features may be added based on common user needs, but should not undermine this philosphy.
-- Python is currently used to pre-process the MITRE ATT&CK data and to serve this data to the front end. It is possible that a switch to JS will be made for this last part.
 
 ## Thanks
 The initial development of this project has been funded by the Dutch government. This support has been instrumental for the creation this project.

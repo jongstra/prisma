@@ -2,8 +2,6 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import json
 
-from test import test
-
 
 app = Flask(__name__)
 CORS(app)  # This should enable CORS for all routes.
@@ -13,11 +11,6 @@ def get_tactics():
     with open('tactics_and_techniques_by_domain.json') as f:
         data = json.load(f)
     return jsonify(data)
-
-
-@app.route('/test')
-def run_test():
-    return test()
 
 
 if __name__ == '__main__':

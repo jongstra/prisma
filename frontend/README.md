@@ -1,7 +1,6 @@
 # dettect-visualizer-frontend
-This project is currently in development.
 
-## Recommended IDE Setup
+## Recommended IDE Setup for Vue Development on Project
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
 ## Type Support for `.vue` Imports in TS
@@ -9,18 +8,3 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 ## Customize configuration
 See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development and Testing
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-```sh
-npm run build
-```
