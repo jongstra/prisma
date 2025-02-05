@@ -7,20 +7,23 @@
 git clone git@github.com:jongstra/dettect-visualizer.git
 ```
 
-### Enter Frontend Directory
+### Enter Project Frontend Directory
 ```sh
-cd frontend
+cd dettect-visualizer/frontend
 ```
 
-### Install Frontend
+### Install Application
 ```sh
 npm install
 ```
 
-### Run Frontend (for Development & Testing)
+### Run Application (for Development & Testing)
 ```sh
 npm run dev
 ```
+
+To use the application, go to the local link shown in your terminal (something like http://localhost:5173/).
+
 
 ## Project Status 
 This project is currently in development. You may run into unusual behavior and/or bugs.
