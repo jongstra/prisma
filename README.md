@@ -23,7 +23,7 @@ npm run dev
 ```
 
 - To use the application, open the local link shown in your terminal (similar to localhost:5173) in your browser.
-- To try the application, you can load one of the example DeTT&CT YAML files (from the project's example-data-dettect folder) into the application using the big red button.
+- To try out the application, you can load one of the example DeTT&CT YAML files (from the project's example-data-dettect folder) into the application using the big red button.
 - Alternatively, you can create an example DETT&CT Data Sources YAML file using the [DeTT&CT Editor](https://rabobank-cdc.github.io/dettect-editor/#/datasources). The resulting YAML file can be saved to your computer, and loaded into the application using the big red button.
 
 ## Project Status 
