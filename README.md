@@ -22,7 +22,7 @@ npm install
 npm run dev
 ```
 
-To use the application, go to the local link shown in your terminal (something like http://localhost:5173/).
+To use the application, go to the local link shown in your terminal (something like localhost:5173).
 
 
 ## Project Status 
