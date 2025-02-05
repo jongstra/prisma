@@ -1,0 +1,39 @@
+version: 1.1
+file_type: data-source-administration
+name: example
+domain: mobile-attack
+systems:
+  - applicable_to: default
+    platform:
+      - all
+data_sources:
+  - data_source_name: System Settings
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 1
+          timeliness: 1
+          consistency: 1
+          retention: 1
+  - data_source_name: Command Execution
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 3
+          data_field_completeness: 1
+          timeliness: 1
+          consistency: 1
+          retention: 1
