@@ -54,7 +54,7 @@ const activeTabData = computed(() => {
     case 'L3':
       return magma.L3UseCases;
     default:
-      const averageVisibility = magma.useCases.reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / magma.L1UseCases.length;
+      const averageVisibility = magma.L1UseCases.reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / magma.L1UseCases.length;
       return [{ TotalVisibility: averageVisibility.toFixed(2) }]; // Format to 2 decimal places
   }
 });
@@ -330,7 +330,7 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
     </table>
 
     <div v-else>
-      <p>Average Visibility: {{ activeTabData[0].TotalVisibility }}%</p>
+      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalVisibility }}%</p>
     </div>
   </div>
 </template>
