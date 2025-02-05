@@ -53,4 +53,7 @@ This project is currently in development. You may run into unusual behavior and/
 - This project has a strong focus on pragmatism and simplicity for the benefit of the end user. Its design is sometimes strongly opinionated and limited with this goal in mind. New features may be added based on common user needs, but should not undermine this philosphy.
 
 ## Thanks
-The initial development of this project has been funded by the Dutch government. This support has been instrumental for the creation this project.
+Thanks are extended to the following:
+- Dutch Government: The initial development of this project has been funded by the Dutch government. This support has been instrumental for the creation this project.
+- MITRE: This project builds on the work of MITRE in providing ATT&CK mapppings. These mappings form a crucial basis for this project.
+- Developers of DeTT&CT: This project extends the work in DETT&CT and would not have existed without it.
