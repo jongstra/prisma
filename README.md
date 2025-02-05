@@ -4,7 +4,7 @@
 
 ### Clone this Repository
 ```sh
-git clone git@github.com:mitre-attack/attack-stix-data.git
+git clone git@github.com:jongstra/dettect-visualizer.git
 ```
 
 ### Enter Frontend Directory
