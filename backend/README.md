@@ -1,0 +1,5 @@
+# Backend
+
+The Jupyter Notebook in this directory can be used to create a new tactics_and_techniques_by_domain.json file (to be placed in the frontend folder). When a new definition of the [MITRE ATT&CK® STIX Data](https://github.com/mitre-attack/attack-stix-data) is released on Github, we can run this notebook with these new files (after updating filenames) in order to get a new pre-processed tactics_and_techniques_by_domain.json file for the frontend.
+
+This manual process takes a very small amount of time (after installing the requirements in a new environment, and activating this environment). This process could be automated, but currently the choice has been made to regularly update the tactics_and_techniques_by_domain.json in our Github repo so the frontend direclt has access to it after cloning this repository.
