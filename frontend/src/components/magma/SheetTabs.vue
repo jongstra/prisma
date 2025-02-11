@@ -171,19 +171,49 @@ const parentIdsOptions = computed(() => {
 
 
 const formatVisibility = (number: number) => {
-  return number.toFixed(1);
+  console.log(number);
+  return number.toFixed(2);
+};
+
+
+// Validation method to limit input to numbers with up to two decimal places, and rangebound between 0 and 100.
+const validateAndFormat = (event: Event) => {
+  const inputElement = event.target as HTMLInputElement;
+  let value = inputElement.value;
+
+  // Regular expression to match numbers with up to two decimal places
+  const regex = /^\d*\.?\d{0,2}$/;
+
+  // Check if the value matches the regex
+  if (!regex.test(value)) {
+    // Remove the last character (that caused the invalid input)
+    inputElement.value = value.slice(0, -1);
+    return;
+  }
+
+  // Parse the value to a float
+  const parsedValue = parseFloat(value);
+
+  // Check if the parsed value is within the range [0, 100]
+  if (!isNaN(parsedValue)) {
+    if (parsedValue < 0) {
+      inputElement.value = '0.00';
+    } else if (parsedValue > 100) {
+      inputElement.value = '100.00';
+    }
+  }
 };
 
 
 // Add Mock data
-magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67, attackTechniqueIdAndName: 'T1595: Active Scanning'});
-magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case Attachment'});
-magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Spearphishing Attachment'});
-magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Test Attachment', visibility: 22});
-magma.addExistingUseCase({id: 'L3-4', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 43});
-magma.addExistingUseCase({id: 'L3-5', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 27});
-magma.addExistingUseCase({id: 'L3-6', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-magma.removeAllUseCases();
+// magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67, attackTechniqueIdAndName: 'T1595: Active Scanning'});
+// magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case Attachment'});
+// magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Spearphishing Attachment'});
+// magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Test Attachment', visibility: 22});
+// magma.addExistingUseCase({id: 'L3-4', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 43});
+// magma.addExistingUseCase({id: 'L3-5', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 27});
+// magma.addExistingUseCase({id: 'L3-6', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.removeAllUseCases();
 magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67, attackTechniqueIdAndName: 'T1595: Active Scanning'});
 magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37});
 magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case'});
@@ -256,9 +286,9 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
               <!-- Editable Visibility fields -->
               <input
                 v-if="columnKey === 'visibility'"
-                :type="columnKey === 'visibility' ? 'number' : 'text'"
+                type="number"
                 :value="item[columnKey]"
-                @input="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
+                @input="(event) => { validateAndFormat(event); updateObjectField(item.uid, columnKey, event.target.value); }"
                 :style="{backgroundColor: item.visibilityFromAttackTechnique ? 'lightgoldenrodyellow' : getBackgroundColor(item.uid, columnKey)}"
                 :disabled="item.visibilityFromAttackTechnique"
               />
