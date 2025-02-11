@@ -292,16 +292,16 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-    // updateAllL3UseCasesVisibility() {
-    //   L3UseCases.forEach((useCase) => {
-    //     if (useCase.visibilityFromAttackTechnique === true) {
-    //       const attackTechniqueID = updatedFields.attackTechniqueIdAndName.split(':')[0];
-    //       useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueID);
-    //       const parentUseCases = this.getParentUseCases(useCase);
-    //       this.recomputeUseCases(parentUseCases);
-    //     }
-    //   });
-    // },
+    updateAllL3UseCasesVisibility() {
+      this.L3UseCases.forEach((useCase) => {
+        if (useCase.visibilityFromAttackTechnique === true) {
+          const attackTechniqueID = useCase.attackTechniqueIdAndName.split(':')[0];
+          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueID);
+          const parentUseCases = this.getParentUseCases(useCase);
+          this.recomputeUseCases(parentUseCases);
+        }
+      });
+    },
 
 
   }

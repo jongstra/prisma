@@ -24,8 +24,8 @@ const uploadFile = async () => {
     const fileContent = await file.text() // Reading file content asynchronously
     const yamlData = YAML.load(fileContent) // Parsing JSON content, now use js-yaml to load yaml data
 
-    const store = tacticsStore() // Accessing the Pinia store
-    store.processDettectYaml(yamlData) // Updating the store with YAML data
+    const store = tacticsStore()
+    store.processDettectYaml(yamlData) // Updating the tactics store with YAML data
 
     console.log("YAML file successfully uploaded and store updated!")
   } catch (error) {

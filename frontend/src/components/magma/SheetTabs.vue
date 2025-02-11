@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
-import VueMultiselect from 'vue-multiselect'
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 
@@ -9,6 +8,8 @@ const magma = magmaStore();
 const tactics = tacticsStore();
 const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Results']);
 
+// Always update the L3 use cases visibility when switching to the MaGMa page.
+magma.updateAllL3UseCasesVisibility()
 
 // Define header maps for each tab.
 const L1Headers = {
@@ -171,7 +172,6 @@ const parentIdsOptions = computed(() => {
 
 
 const formatVisibility = (number: number) => {
-  console.log(number);
   return number.toFixed(2);
 };
 
@@ -237,7 +237,6 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
 // magma.addExistingUseCase({id: 'L2-1', level: 'L2', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
 // console.log(magma.useCases);
 
-
 </script>
 
 
@@ -287,7 +286,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
               <input
                 v-if="columnKey === 'visibility'"
                 type="number"
-                :value="item[columnKey]"
+                :value="formatVisibility(item[columnKey])"
                 @input="(event) => { validateAndFormat(event); updateObjectField(item.uid, columnKey, event.target.value); }"
                 :style="{backgroundColor: item.visibilityFromAttackTechnique ? 'lightgoldenrodyellow' : getBackgroundColor(item.uid, columnKey)}"
                 :disabled="item.visibilityFromAttackTechnique"
