@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
+import { tacticsStore } from '@/stores/tactics';
+const tactics = tacticsStore();
 
 
 interface UseCase {
@@ -8,6 +10,8 @@ interface UseCase {
   parentIds: Array<string>;
   name: string;
   level: number;
+  attackTechniqueIdAndName: string;
+  visibilityFromAttackTechnique: boolean;
   visibility: number;
   invalidVisibility: boolean,
   invalidId: boolean,
@@ -18,7 +22,7 @@ interface UseCase {
 export const magmaStore = defineStore('magma', {
   state: () => ({
     useCases: [],
-    activeTab: 'L1', // Initialize the active tab here
+    activeTab: 'L1',
   }),
 
   getters: {
@@ -90,6 +94,8 @@ export const magmaStore = defineStore('magma', {
         parentIds: ['none'],
         name: '',
         level,
+        attackTechniqueIdAndName: 'none',
+        visibilityFromAttackTechnique: false,
         visibility: 0,
         uid: uid,
         invalidVisibility: false,
@@ -100,7 +106,6 @@ export const magmaStore = defineStore('magma', {
       this.useCases.push(useCase);
     },
     
-
 
     addExistingUseCase(useCase: any) {
       
@@ -115,13 +120,19 @@ export const magmaStore = defineStore('magma', {
         return;
       };
 
-      // If the use case does not have a level set, extract it from the ID.
+      // // If the use case does not have a level set, extract it from the ID.
+      // if (!useCase.level) {
+      //   useCase.level = parseInt(useCase['id'].substring(1, 2));
+      //   // console.log(`Extracted level from the ID for use case: "${JSON.stringify(useCase)}"`)
+      // }
+
+
+      // Check that the use case has a level.
       if (!useCase.level) {
-        useCase.level = parseInt(useCase['id'].substring(1, 2));
-        // console.log(`Extracted level from the ID for use case: "${JSON.stringify(useCase)}"`)
+        console.log(`No use case level found for use case "${JSON.stringify(useCase)}". Use case has not been added.`);
       }
 
-      // Check that the use case has a valid use case level.
+      // Check that the use case level is valid.
       if (useCase.level !== 1 && useCase.level !== 2 && useCase.level !== 3) {
         console.log(`Use case level is incorrect for use case "${JSON.stringify(useCase)}". Use case has not been added.`);
         return;
@@ -131,6 +142,22 @@ export const magmaStore = defineStore('magma', {
       if (useCase.level !== parseInt(useCase['id'].substring(1, 2))) {
         console.log(`Usecase level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
         return;
+      }
+
+      // If an attackTechnique is set, check that it exists and is valid.
+      if (useCase.attackTechniqueIdAndName) {
+        const attackTechniqueID = useCase.attackTechniqueIdAndName.split(':')[0];
+        if (tactics.domainTechniqueByIdMap.hasOwnProperty(attackTechniqueID)) {
+          // If the attackTechniqueID is valid, update the use case visibility based on the visibility of the attack technique.
+          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueID);
+          useCase.visibilityFromAttackTechnique = true;
+        }
+      }
+
+      // If no attackTechnique is set, use the default value 'none'.
+      if (!useCase.attackTechniqueIdAndName) {
+        useCase.attackTechniqueIdAndName = 'none'
+        useCase.visibilityFromAttackTechnique = false;
       }
 
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
@@ -171,6 +198,11 @@ export const magmaStore = defineStore('magma', {
       if (useCase.level > 1) {
         this.recomputeUseCases(parentUseCases);
       }
+    },
+
+
+    removeAllUseCases() {
+      this.useCases = [];
     },
 
 
@@ -227,7 +259,6 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-
     updateUseCase(uid: string, updatedFields: {}) {
       const useCase = this.getUseCaseByUid(uid);
 
@@ -235,6 +266,18 @@ export const magmaStore = defineStore('magma', {
 
         // Get old parent use cases.
         const parentUseCases = this.getParentUseCases(useCase);
+        
+        // If the attackTechniqueIdAndName field was updated, do the following.
+        if (updatedFields.attackTechniqueIdAndName) {
+          // Set visibility based on the visibility ratio of the selected ATT&CK technique (if one is selected).
+          if (updatedFields.attackTechniqueIdAndName == 'none') {
+            useCase.visibilityFromAttackTechnique = false;
+          } else {
+            const attackTechniqueID = updatedFields.attackTechniqueIdAndName.split(':')[0];
+            useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueID);
+            useCase.visibilityFromAttackTechnique = true;
+          }
+        }
 
         // Update use case.
         Object.assign(useCase, updatedFields);
@@ -247,6 +290,18 @@ export const magmaStore = defineStore('magma', {
         }
       }
     },
+
+
+    // updateAllL3UseCasesVisibility() {
+    //   L3UseCases.forEach((useCase) => {
+    //     if (useCase.visibilityFromAttackTechnique === true) {
+    //       const attackTechniqueID = updatedFields.attackTechniqueIdAndName.split(':')[0];
+    //       useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueID);
+    //       const parentUseCases = this.getParentUseCases(useCase);
+    //       this.recomputeUseCases(parentUseCases);
+    //     }
+    //   });
+    // },
 
 
   }

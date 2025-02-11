@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { onMounted, onBeforeUnmount } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
-  const store = tacticsStore();
-  onMounted(() => {store.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
+  const tactics = tacticsStore();
+  onMounted(() => {tactics.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
 
   // Ask user for confirmation when leaving/refreshing the page.
   const handleBeforeUnload = (event: BeforeUnloadEvent) => {
@@ -28,9 +28,9 @@
     </div>
 
     <div class='domain-switcher'>
-      <button :class="{'dom': true, 'selected': store.domain === 'enterprise-attack'}" @click="store.setDomain('enterprise-attack')">Enterprise</button>
-      <button :class="{'dom': true, 'selected': store.domain === 'mobile-attack'}" @click="store.setDomain('mobile-attack')">Mobile</button>
-      <button :class="{'dom': true, 'selected': store.domain === 'ics-attack'}" @click="store.setDomain('ics-attack')">ICS</button>
+      <button :class="{'dom': true, 'selected': tactics.domain === 'enterprise-attack'}" @click="tactics.setDomain('enterprise-attack')">Enterprise</button>
+      <button :class="{'dom': true, 'selected': tactics.domain === 'mobile-attack'}" @click="tactics.setDomain('mobile-attack')">Mobile</button>
+      <button :class="{'dom': true, 'selected': tactics.domain === 'ics-attack'}" @click="tactics.setDomain('ics-attack')">ICS</button>
     </div>
 
     <main>

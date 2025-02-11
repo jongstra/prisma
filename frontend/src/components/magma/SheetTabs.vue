@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
+import VueMultiselect from 'vue-multiselect'
 import { magmaStore } from '@/stores/magma';
-import { stateStore } from '@/stores/state';
+import { tacticsStore } from '@/stores/tactics';
+
 
 const magma = magmaStore();
-const state = stateStore()
+const tactics = tacticsStore();
 const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Results']);
 
 
@@ -34,7 +36,7 @@ const L3Headers = {
   name: 'Use Case Name',
   id: 'ID',
   parentIds: 'Parent Use Case',
-  attack: 'ATT&CK Technique',
+  attackTechniqueIdAndName: 'ATT&CK Technique',
   visibility: 'Visibility %',
 };
 
@@ -42,11 +44,11 @@ const L3Headers = {
 const editableFieldsMap = {
   L1: { name: true, id: true, visibility: false },
   L2: { name: true, id: true, parentIds: true, visibility: false },
-  L3: { name: true, id: true, parentIds: true, visibility: true }
+  L3: { name: true, id: true, parentIds: true, attackTechniqueIdAndName: true, visibility: true }
 };
 
 const activeTabData = computed(() => {
-  switch (state.getActiveMagmaTab) {
+  switch (magma.activeTab) {
     case 'L1':
       return magma.L1UseCases;
     case 'L2':
@@ -60,7 +62,7 @@ const activeTabData = computed(() => {
 });
 
 const headers = computed(() => {
-  switch (state.getActiveMagmaTab) {
+  switch (magma.activeTab) {
     case 'L1':
       return L1Headers;
     case 'L2':
@@ -73,7 +75,7 @@ const headers = computed(() => {
 });
 
 const editableFields = computed(() => {
-  switch (state.getActiveMagmaTab) {
+  switch (magma.activeTab) {
     case 'L1':
       return editableFieldsMap.L1;
     case 'L2':
@@ -87,14 +89,13 @@ const editableFields = computed(() => {
 
 
 const addNewUseCase = () => {
-  const tab = state.getActiveMagmaTab;
+  const tab = magma.activeTab;
   const level = parseFloat(tab.slice(-1));
   magma.addNewUseCase(level);
 };
 
 
 const confirmRemove = (uid: string) => {
-  console.log(uid);
   if (confirm('Are you sure you want to remove this item?')) {
     magma.removeUseCaseByUid(uid);
   }
@@ -102,7 +103,7 @@ const confirmRemove = (uid: string) => {
 
 
 const updateObjectField = (uid: string, field: string, value: any) => {
-  magma.updateUseCase(uid, { [field]: value });
+  magma.updateUseCase(uid, {[field]: value});
 };
 
 
@@ -128,10 +129,9 @@ const getBackgroundColor = (uid: string, field: string) => {
   const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
   
   // Regular expression to check if the format is 'prefix-numeric'
-  const correctFormat = new RegExp(`^${state.activeMagmaTab}-\\d+$`).test(id);
+  const correctFormat = new RegExp(`^${magma.activeTab}-\\d+$`).test(id);
   
   const validId = noDuplicateId && correctFormat;
-  console.log(`id: ${useCase.id}`)
   
   if (validId) {
     // useCase.invalidId = false;
@@ -159,7 +159,7 @@ const getBackgroundColor = (uid: string, field: string) => {
 
 
 const parentIdsOptions = computed(() => {
-  switch (state.getActiveMagmaTab) {
+  switch (magma.activeTab) {
     case 'L3':
       return magma.L2UseCases.map(useCase => useCase.id);
     case 'L2':
@@ -171,35 +171,40 @@ const parentIdsOptions = computed(() => {
 
 
 const formatVisibility = (number: number) => {
-  return number.toFixed(2);
+  return number.toFixed(1);
 };
 
 
 // Add Mock data
-magma.addExistingUseCase({id: 'L3-1', parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67});
-magma.addExistingUseCase({id: 'L2-1', parentIds: ['L1-1'], name: 'Sample L2 Use Case Attachment'});
-magma.addExistingUseCase({id: 'L1-1', name: 'Spearphishing Attachment'});
-magma.addExistingUseCase({id: 'L3-2', parentIds: ['L2-1'], name: 'Test Attachment', visibility: 22});
-magma.addExistingUseCase({id: 'L3-4', parentIds: ['L2-1'], name: 'Test', visibility: 43});
-magma.addExistingUseCase({id: 'L3-5', parentIds: ['L2-1'], name: 'Test', visibility: 27});
-magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-7', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-8', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-9', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-10', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-11', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-12', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-13', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-14', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-15', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-16', parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67, attackTechniqueIdAndName: 'T1595: Active Scanning'});
+magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case Attachment'});
+magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Spearphishing Attachment'});
+magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Test Attachment', visibility: 22});
+magma.addExistingUseCase({id: 'L3-4', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 43});
+magma.addExistingUseCase({id: 'L3-5', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 27});
+magma.addExistingUseCase({id: 'L3-6', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+magma.removeAllUseCases();
+magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67, attackTechniqueIdAndName: 'T1595: Active Scanning'});
+magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37});
+magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case'});
+magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
+// magma.addExistingUseCase({id: 'L3-7', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-8', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-9', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-10', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-11', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-12', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-13', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-14', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-15', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
+// magma.addExistingUseCase({id: 'L3-16', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
 // magma.addNewUseCase(3);
 // magma.getParentUseCasesById('L2-1');
 
 // magma.getParentUseCasesById('L2-1');
 // magma.removeUseCasebyId('L3-1');
 // magma.removeUseCasebyUId('L2-1');
-// magma.addExistingUseCase({id: 'L2-1', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
+// magma.addExistingUseCase({id: 'L2-1', level: 'L2', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
 // console.log(magma.useCases);
 
 
@@ -213,8 +218,8 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
     <button 
       v-for="(tab) in tabs" 
       class="sheet-tab"
-      :class="{ active: state.getActiveMagmaTab === tab }"
-      @click="state.setActiveMagmaTab(tab)"
+      :class="{ active: magma.activeTab === tab }"
+      @click="magma.activeTab = tab"
     >
       {{ tab }}
     </button>
@@ -222,12 +227,12 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
 
   <!-- Scrolling container -->
   <div class="scroll-container">
-    <table v-if="state.getActiveMagmaTab !== 'Results'" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Results tab is active, we show another div element. -->
+    <table v-if="magma.activeTab !== 'Results'" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Results tab is active, we show another div element. -->
       <thead>
         <tr>
           <!-- Render column headers. -->
           <th class="remove-col"></th>
-          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ 'use-case-name': columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique'  }">
+          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ 'use-case-name': columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique', parent: columnName === 'Parent Use Case'}">
             {{ columnName }}
           </th>
         </tr>
@@ -254,7 +259,8 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
                 :type="columnKey === 'visibility' ? 'number' : 'text'"
                 :value="item[columnKey]"
                 @input="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
-                :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                :style="{backgroundColor: item.visibilityFromAttackTechnique ? 'lightgoldenrodyellow' : getBackgroundColor(item.uid, columnKey)}"
+                :disabled="item.visibilityFromAttackTechnique"
               />
 
               <!-- Editable ID fields -->
@@ -279,8 +285,8 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
 
                 <!-- Editable Parent Use Case selector -->
                 <template v-if="columnKey === 'parentIds'">
-                  <select 
-                    multiple
+                  <select
+                    class="parent-ids"
                     :value="item[columnKey]"
                     @change="(event) => {updateObjectField(item.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"
                     :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
@@ -289,6 +295,19 @@ magma.addExistingUseCase({id: 'L3-6', parentIds: ['L2-1'], name: 'Test', visibil
                     <option v-for="parentId in parentIdsOptions" :key="parentId" :value="parentId">{{ parentId }}</option>
                   </select>
                 </template>
+
+                <!-- Editable Attack Technique selector -->
+                <template v-if="columnKey === 'attackTechniqueIdAndName'">
+                  <select
+                    class="attack-technique"
+                    :value="item[columnKey]"
+                    @change="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
+                  >
+                    <option value="none">None</option>
+                    <option v-for="techniqueNameAndId in tactics.allTechniquesIdsAndNames" :key="techniqueNameAndId" :value="techniqueNameAndId">{{ techniqueNameAndId }}</option>
+                </select>
+                </template>
+
 
                 <!-- Any other editable fields -->
                 <!-- <input 
@@ -409,7 +428,7 @@ input, .use-case-name-editable {
   font-size: 14px;
   width: 100%;
   border: 0px;
-  min-height: 65px;
+  min-height: 50px;
 }
 
 td.remove-col {
@@ -449,19 +468,29 @@ th.use-case-name {
   width: 200px;
 }
 
-th.attack {
-  width: 160px;
+select {
+  height: 50px;
+  text-align: center;
 }
 
-select {
-  width: 144px;
-  height: 65px;
+th.parent {
+  width: 160px;
+}
+select.parent-ids {
+  width: 154px;
+}
+
+th.attack {
+  width: 250px;
+}
+select.attack-technique {
+  width: 244px;
 }
 
 input, .visibility-uneditable {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 65px;
+  height: 50px;
 }
 </style>

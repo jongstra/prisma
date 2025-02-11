@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios';
 
+
 // Define interfaces
 interface SubTechnique {
   technique: string;
@@ -86,6 +87,71 @@ export const tacticsStore = defineStore('tactics', {
 
 
   getters: {
+
+    allTechniquesIdsAndNames: (state) => {
+      let tactics;
+
+      if (state.domain === 'enterprise-attack') {
+        tactics = state.enterprise?.tactics;
+      } else if (state.domain === 'mobile-attack') {
+        tactics = state.mobile?.tactics;
+      } else if (state.domain === 'ics-attack') {
+        tactics = state.ics?.tactics;
+      }
+
+      let allTechniquesIdsAndNames = tactics.flatMap(tactic => {
+        let techniques = tactic.techniques;
+        let tacticTechniquesIdsAndNames = techniques.map(technique => {
+          return `${technique.external_id}: ${technique.name}`
+        })
+        return tacticTechniquesIdsAndNames
+      })
+
+      // Remove duplicates using a Set
+      allTechniquesIdsAndNames = [...new Set(allTechniquesIdsAndNames)];
+
+      // Sort the array alphabetically (in practice, the ID's are leading, so items are sorted on the ID's)
+      allTechniquesIdsAndNames.sort((a, b) => a.localeCompare(b));
+
+      return allTechniquesIdsAndNames;
+    },
+
+
+    domainTechniqueByIdMap: (state) => {
+      let tactics;
+    
+      if (state.domain === 'enterprise-attack') {
+        tactics = state.enterprise?.tactics;
+      } else if (state.domain === 'mobile-attack') {
+        tactics = state.mobile?.tactics;
+      } else if (state.domain === 'ics-attack') {
+        tactics = state.ics?.tactics;
+      }
+    
+      let domainTechniqueByIdMap = {};
+    
+      if (tactics) {
+        tactics.forEach(tactic => {
+          tactic.techniques.forEach(technique => {
+            domainTechniqueByIdMap[technique.external_id] = technique;
+          });
+        });
+      }
+    
+      return domainTechniqueByIdMap;
+    },
+    
+
+    getDomainTechniqueVisibilityPercentageById: (state) => (id: string) => {
+      let technique = state.domainTechniqueByIdMap[id];
+  
+      if (technique) {
+        return technique.visibility_ratio * 100;
+      }
+  
+      return undefined;
+    },
+    
 
     hoveredGroupsTechniquesSet: (state) => {
       let groups;
@@ -316,7 +382,7 @@ export const tacticsStore = defineStore('tactics', {
       this.domain = data.domain;
 
       // Access data of the current domain from the store.
-      let tactics: Tactics[];
+      let tactics;
       let data_components_list: Attributes[];
       if (data.domain == 'enterprise-attack') {
         tactics = this.enterprise.tactics;
