@@ -117,6 +117,35 @@ export const tacticsStore = defineStore('tactics', {
     },
 
 
+    // allSubTechniquesAndTechniquesIdsAndNames: (state) => {
+    //   let tactics;
+
+    //   if (state.domain === 'enterprise-attack') {
+    //     tactics = state.enterprise?.tactics;
+    //   } else if (state.domain === 'mobile-attack') {
+    //     tactics = state.mobile?.tactics;
+    //   } else if (state.domain === 'ics-attack') {
+    //     tactics = state.ics?.tactics;
+    //   }
+
+    //   let allTechniquesIdsAndNames = tactics.flatMap(tactic => {
+    //     let techniques = tactic.techniques;
+    //     let tacticTechniquesIdsAndNames = techniques.map(technique => {
+    //       return `${technique.external_id}: ${technique.name}`
+    //     })
+    //     return tacticTechniquesIdsAndNames
+    //   })
+
+    //   // Remove duplicates using a Set
+    //   allTechniquesIdsAndNames = [...new Set(allTechniquesIdsAndNames)];
+
+    //   // Sort the array alphabetically (in practice, the ID's are leading, so items are sorted on the ID's)
+    //   allTechniquesIdsAndNames.sort((a, b) => a.localeCompare(b));
+
+    //   return allTechniquesIdsAndNames;
+    // },
+
+
     domainTechniqueByIdMap: (state) => {
       let tactics;
     

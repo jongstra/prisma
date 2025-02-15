@@ -2,7 +2,7 @@
 import { ref, computed, nextTick } from 'vue';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
-
+import ParentIdSelector from './ParentIdSelector.vue';
 
 const magma = magmaStore();
 const tactics = tacticsStore();
@@ -96,11 +96,17 @@ const addNewUseCase = () => {
 };
 
 
-const confirmRemove = (uid: string) => {
-  if (confirm('Are you sure you want to remove this item?')) {
+const confirmRemoveUseCase = (uid: string) => {
+  if (confirm('Are you sure you want to remove this use case?')) {
     magma.removeUseCaseByUid(uid);
   }
 };
+
+const confirmRemoveUseCaseLevel = () => {
+  if (confirm(`Are you sure you want to remove ALL use cases in level ${magma.activeTab}?`)) {
+    magma.removeActiveTabUseCases()
+  }
+}
 
 
 const updateObjectField = (uid: string, field: string, value: any) => {
@@ -159,16 +165,57 @@ const getBackgroundColor = (uid: string, field: string) => {
 };
 
 
-const parentIdsOptions = computed(() => {
-  switch (magma.activeTab) {
-    case 'L3':
-      return magma.L2UseCases.map(useCase => useCase.id);
-    case 'L2':
-      return magma.L1UseCases.map(useCase => useCase.id);
-    default:
-      return [];
-  }
+// Return all UNIQUE ids (when an ID occurs multiple times, it is invalid).
+// const parentIdsOptions = computed(() => {
+//   const ids = (() => {
+//     switch (magma.activeTab) {
+//       case 'L3':
+//         return magma.L2UseCases.map(useCase => useCase.id);
+//       case 'L2':
+//         return magma.L1UseCases.map(useCase => useCase.id);
+//       default:
+//         return [];
+//     }
+//   })();
+
+//   // Create an object to count occurrences of each ID
+//   const idCounts = ids.reduce((acc, id) => {
+//     acc[id] = (acc[id] || 0) + 1;
+//     return acc;
+//   }, {});
+
+//   // Filter out IDs that occur more than once
+//   const uniqueIds = ids.filter(id => idCounts[id] === 1);
+
+//   return uniqueIds;
+// });
+
+
+const parentLevelUseCases = computed(() => {
+  const useCases = (() => {
+    switch (magma.activeTab) {
+      case 'L3':
+        return magma.L2UseCases;
+      case 'L2':
+        return magma.L1UseCases;
+      default:
+        return [];
+    }
+  })();
+
+  // Create a map to count occurrences of each ID
+  const idCounts = new Map<string, number>();
+
+  // Count occurrences of each ID
+  useCases.forEach(useCase => {
+    idCounts.set(useCase.id, (idCounts.get(useCase.id) || 0) + 1);
+  });
+
+  // Filter out IDs that occur more than once.
+  return useCases
+    .filter(useCase => (idCounts.get(useCase.id) || 0) === 1)
 });
+
 
 
 const formatVisibility = (number: number) => {
@@ -214,10 +261,12 @@ const validateAndFormat = (event: Event) => {
 // magma.addExistingUseCase({id: 'L3-5', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 27});
 // magma.addExistingUseCase({id: 'L3-6', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
 // magma.removeAllUseCases();
-magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67, attackTechniqueIdAndName: 'T1595: Active Scanning'});
+magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, attackTechniqueIdAndName: 'T1595: Active Scanning'});
 magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37});
 magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case'});
 magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
+// console.log(magma.activeTabUseCases());
+// magma.removeActiveTabUseCases()
 // magma.addExistingUseCase({id: 'L3-7', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
 // magma.addExistingUseCase({id: 'L3-8', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
 // magma.addExistingUseCase({id: 'L3-9', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
@@ -260,18 +309,18 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
       <thead>
         <tr>
           <!-- Render column headers. -->
-          <th class="remove-col"></th>
+          <th class="remove-col" @click="confirmRemoveUseCaseLevel()" style="background-color: #e73030; color: white; cursor: pointer;">&#10806;</th>  <!-- Character found in list: https://www.w3schools.com/charsets/ref_utf_math.asp -->
           <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ 'use-case-name': columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique', parent: columnName === 'Parent Use Case'}">
             {{ columnName }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in activeTabData" :key="index">
+        <tr v-for="(useCase, index) in activeTabData" :key="index">
 
           <!-- Remove-use-case buttons -->
           <td class="remove-col">
-            <button class='remove-button' @click="confirmRemove(item.uid)" style="background-color: #e73030; color: white; border: none; cursor: pointer;">
+            <button class='remove-button' @click="confirmRemoveUseCase(useCase.uid)" style="background-color: #e73030; color: white; border: none; cursor: pointer;">
               &times;
             </button>
           </td>
@@ -286,19 +335,19 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
               <input
                 v-if="columnKey === 'visibility'"
                 type="number"
-                :value="formatVisibility(item[columnKey])"
-                @input="(event) => { validateAndFormat(event); updateObjectField(item.uid, columnKey, event.target.value); }"
-                :style="{backgroundColor: item.visibilityFromAttackTechnique ? 'lightgoldenrodyellow' : getBackgroundColor(item.uid, columnKey)}"
-                :disabled="item.visibilityFromAttackTechnique"
+                :value="formatVisibility(useCase[columnKey])"
+                @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                :style="{backgroundColor: useCase.visibilityFromAttackTechnique ? 'lightgoldenrodyellow' : getBackgroundColor(useCase.uid, columnKey)}"
+                :disabled="useCase.visibilityFromAttackTechnique"
               />
 
               <!-- Editable ID fields -->
               <template v-else>
                 <input 
                   v-if="columnKey === 'id'"
-                  :value="item[columnKey]"
-                  @input="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
-                  :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                  :value="useCase[columnKey]"
+                  @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.value);}"
+                  :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
                 />
 
                 <!-- Editable Use Case Name div -->
@@ -306,22 +355,22 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
                   class="use-case-name-editable"
                   v-if="columnKey === 'name'"
                   contenteditable="true"
-                  @input="(event) => {updateObjectField(item.uid, columnKey, event.target.innerText);}"
-                  :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                  @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
+                  :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
                 >
-                  {{ item[columnKey] }}
+                  {{ useCase[columnKey] }}
                 </div>
 
                 <!-- Editable Parent Use Case selector -->
                 <template v-if="columnKey === 'parentIds'">
                   <select
                     class="parent-ids"
-                    :value="item[columnKey]"
-                    @change="(event) => {updateObjectField(item.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"
-                    :style="{backgroundColor: getBackgroundColor(item.uid, columnKey)}"
+                    :value="useCase[columnKey]"
+                    @change="(event) => {updateObjectField(useCase.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"
+                    :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
                   >
                     <option value="none">None</option>
-                    <option v-for="parentId in parentIdsOptions" :key="parentId" :value="parentId">{{ parentId }}</option>
+                    <option v-for="useCase in parentLevelUseCases" :key="useCase.id" :value="useCase.id">{{ useCase.id }}: {{ useCase.name }}</option>
                   </select>
                 </template>
 
@@ -329,8 +378,8 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
                 <template v-if="columnKey === 'attackTechniqueIdAndName'">
                   <select
                     class="attack-technique"
-                    :value="item[columnKey]"
-                    @change="(event) => {updateObjectField(item.uid, columnKey, event.target.value);}"
+                    :value="useCase[columnKey]"
+                    @change="(event) => {updateObjectField(useCase.uid, columnKey, event.target.value);}"
                   >
                     <option value="none">None</option>
                     <option v-for="techniqueNameAndId in tactics.allTechniquesIdsAndNames" :key="techniqueNameAndId" :value="techniqueNameAndId">{{ techniqueNameAndId }}</option>
@@ -350,12 +399,12 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
             <!-- Non-editable fields -->
             <template v-else-if="columnKey === 'visibility'"> 
               <div class="visibility-uneditable" style="background-color: lightgoldenrodyellow;">
-              {{ formatVisibility(item[columnKey]) }}
+              {{ formatVisibility(useCase[columnKey]) }}
               </div>
             </template>
               
             <template v-else>
-              {{ item[columnKey] }}
+              {{ useCase[columnKey] }}
             </template>
             
           </td>
@@ -440,7 +489,7 @@ th, td, input {
 
 th {
   font-size: 16px;
-  /* font-weight: bold; */
+  font-weight: bold;
   padding: 7px;
   background-color: rgb(196, 213, 234);
 }
@@ -460,11 +509,17 @@ input, .use-case-name-editable {
   min-height: 50px;
 }
 
+th.remove-col {
+  font-size: 28px;
+  transform: rotateX(180deg);
+  padding: 3px;
+}
+
 td.remove-col {
   background-color: #e73030;
 }
 button.remove-button {
-  font-size: 35px;
+  font-size: 30px;
 }
 
 .add-button-cell {
@@ -489,9 +544,7 @@ button.remove-button {
   width: 40px
 }
 
-th.remove-col {
-  background-color: lightpink;
-}
+
 
 th.use-case-name {
   width: 200px;
@@ -503,10 +556,10 @@ select {
 }
 
 th.parent {
-  width: 160px;
+  width: 250px;
 }
 select.parent-ids {
-  width: 154px;
+  width: 244px;
 }
 
 th.attack {

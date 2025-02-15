@@ -81,9 +81,6 @@ onUnmounted(() => {
 
 
 
-# TODO: Controls herschikken mbv Gridbox ipv flexbox? Zie: https://gridbyexample.com/examples/
-
-
 <style scoped>
 .combined-controls {
   display: flex;
