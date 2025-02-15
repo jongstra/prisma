@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Swal from 'sweetalert2';
 import { computed, ref } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 
@@ -38,10 +39,20 @@ const confirmClearAllSelections = () => {
     // No selected groups, do nothing
     return;
   }
-
-  if (confirm('Are you sure you want to clear all selections?')) {
-    clearAllSelections();
-  }
+  
+  Swal.fire({
+    title: 'Clear all group selections?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, clear all group selections!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      clearAllSelections();
+    }
+  });
 };
 
 // Search field functionality

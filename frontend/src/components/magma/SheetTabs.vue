@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, nextTick } from 'vue';
+import Swal from 'sweetalert2';
+import { ref, computed } from 'vue';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
-import ParentIdSelector from './ParentIdSelector.vue';
 
 const magma = magmaStore();
 const tactics = tacticsStore();
@@ -96,17 +96,53 @@ const addNewUseCase = () => {
 };
 
 
+// const confirmRemoveUseCase = (uid: string) => {
+//   if (confirm('Are you sure you want to remove this use case?')) {
+//     magma.removeUseCaseByUid(uid);
+//   }
+// };
+
+// const confirmRemoveUseCaseLevel = () => {
+//   if (magma.activeTabUseCases().length > 0) {
+//     if (confirm(`WARNING!\n\nYou are about to delete all use cases on level ${magma.activeTab}. This is a permanent and irreversible action.\n\nDo you wish to proceed?`)) {
+//       magma.removeActiveTabUseCases()
+//     }
+//   }
+// };
+
 const confirmRemoveUseCase = (uid: string) => {
-  if (confirm('Are you sure you want to remove this use case?')) {
-    magma.removeUseCaseByUid(uid);
-  }
+  Swal.fire({
+    title: 'Delete this use case?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete this use case!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      magma.removeUseCaseByUid(uid);
+    }
+  });
 };
+
 
 const confirmRemoveUseCaseLevel = () => {
   if (magma.activeTabUseCases().length > 0) {
-    if (confirm(`BEWARE! ACCEPTING REMOVES ALL USE CASES ON LEVEL ${magma.activeTab}!\n\nAre you sure you want to remove ALL use cases on level ${magma.activeTab}?`)) {
-      magma.removeActiveTabUseCases()
+    Swal.fire({
+    title: `Warning! You are about to delete all use cases on level ${magma.activeTab}.`,
+    text: `This is a permanent and irreversible action.\n\nDo you wish to proceed?`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: `Yes, delete all ${magma.activeTab} use cases!`
+  }).then((result) => {
+    if (result.isConfirmed) {
+      magma.removeUseCaseByUid(uid);
     }
+  });
+
   }
 }
 
@@ -410,6 +446,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
 
 
 <style scoped>
+
 .sheet-tabs {
   display: flex;
   background-color: #f8f9fa;
