@@ -504,7 +504,7 @@ button.remove-button {
 }
 
 .add-button-cell button {
-  width: 1200px;
+  width: calc(100vw - 40px);
   padding: 10px;
   background-color: green;
   color: white;
