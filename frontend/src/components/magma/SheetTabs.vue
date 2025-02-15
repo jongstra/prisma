@@ -363,10 +363,9 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
                   {{ useCase[columnKey] }}
                 </div>
 
-                <!-- Editable Parent Use Case selector -->
                 <template v-if="columnKey === 'parentIds'">
                   <select 
-                    class="parent-ids"
+                    class="parent-ids select-with-wrap"
                     :value="useCase[columnKey]"
                     @change="(event) => {updateObjectField(useCase.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"
                     :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
@@ -376,10 +375,9 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
                   </select>
                 </template>
 
-                <!-- Editable Attack Technique selector -->
                 <template v-if="columnKey === 'attackTechniqueId'">
                   <select
-                    class="attack-technique"
+                    class="attack-technique select-with-wrap"
                     :value="useCase[columnKey] || 'none'"
                     @change="(event) => {updateObjectField(useCase.uid, columnKey, event.target.value);}"
                     :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
@@ -547,8 +545,6 @@ button.remove-button {
   width: 40px
 }
 
-
-
 th.use-case-name {
   width: 200px;
 }
@@ -556,6 +552,11 @@ th.use-case-name {
 select {
   height: 50px;
   text-align: center;
+}
+
+.select-with-wrap {
+  white-space: normal; 
+  overflow-wrap: break-word;
 }
 
 th.parent {
