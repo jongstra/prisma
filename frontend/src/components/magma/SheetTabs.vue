@@ -216,7 +216,7 @@ const parentLevelUseCases = computed(() => {
   // Filter out IDs that occur more than once.
   return useCases
     .filter(useCase => (idCounts.get(useCase.id) || 0) === 1)
-    sort((a, b) => a.id.localeCompare(b.id));
+    .sort((a, b) => a.id.localeCompare(b.id));
 });
 
 
