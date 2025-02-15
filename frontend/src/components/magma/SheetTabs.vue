@@ -103,8 +103,10 @@ const confirmRemoveUseCase = (uid: string) => {
 };
 
 const confirmRemoveUseCaseLevel = () => {
-  if (confirm(`Are you sure you want to remove ALL use cases in level ${magma.activeTab}?`)) {
-    magma.removeActiveTabUseCases()
+  if (magma.activeTabUseCases().length > 0) {
+    if (confirm(`Are you sure you want to remove ALL use cases in level ${magma.activeTab}?`)) {
+      magma.removeActiveTabUseCases()
+    }
   }
 }
 
