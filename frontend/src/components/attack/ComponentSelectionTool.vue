@@ -45,14 +45,21 @@ const confirmClearAllSelections = () => {
     text: "You won't be able to revert this!",
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
+    confirmButtonColor: 'green',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, clear all component selections!'
+    confirmButtonText: 'Yes, clear all group selections!',
+    cancelButtonText: 'No, cancel!',
+    reverseButtons: true,
+    customClass: {
+      confirmButton: 'swal2-confirm-custom',
+      cancelButton: 'swal2-cancel-custom'
+    }
   }).then((result) => {
     if (result.isConfirmed) {
       clearAllSelections();
     }
   });
+  
 };
 
 // Search field functionality

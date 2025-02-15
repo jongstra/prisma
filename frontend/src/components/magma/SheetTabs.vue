@@ -96,29 +96,17 @@ const addNewUseCase = () => {
 };
 
 
-// const confirmRemoveUseCase = (uid: string) => {
-//   if (confirm('Are you sure you want to remove this use case?')) {
-//     magma.removeUseCaseByUid(uid);
-//   }
-// };
-
-// const confirmRemoveUseCaseLevel = () => {
-//   if (magma.activeTabUseCases().length > 0) {
-//     if (confirm(`WARNING!\n\nYou are about to delete all use cases on level ${magma.activeTab}. This is a permanent and irreversible action.\n\nDo you wish to proceed?`)) {
-//       magma.removeActiveTabUseCases()
-//     }
-//   }
-// };
-
 const confirmRemoveUseCase = (uid: string) => {
   Swal.fire({
     title: 'Delete this use case?',
     text: "You won't be able to revert this!",
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
+    confirmButtonColor: 'green',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete this use case!'
+    confirmButtonText: 'Yes, delete this use case!',
+    cancelButtonText: 'No, cancel!',
+    reverseButtons: true,
   }).then((result) => {
     if (result.isConfirmed) {
       magma.removeUseCaseByUid(uid);
@@ -134,9 +122,11 @@ const confirmRemoveUseCaseLevel = () => {
     text: `This is a permanent and irreversible action.\n\nDo you wish to proceed?`,
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
+    confirmButtonColor: 'green',
     cancelButtonColor: '#d33',
-    confirmButtonText: `Yes, delete all ${magma.activeTab} use cases!`
+    confirmButtonText: `Yes, delete all ${magma.activeTab} use cases!`,
+    cancelButtonText: 'No, cancel!',
+    reverseButtons: true,
   }).then((result) => {
     if (result.isConfirmed) {
       magma.removeUseCaseByUid(uid);
