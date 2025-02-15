@@ -216,6 +216,7 @@ const parentLevelUseCases = computed(() => {
   // Filter out IDs that occur more than once.
   return useCases
     .filter(useCase => (idCounts.get(useCase.id) || 0) === 1)
+    sort((a, b) => a.id.localeCompare(b.id));
 });
 
 
@@ -362,7 +363,8 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
                 >
                   {{ useCase[columnKey] }}
                 </div>
-
+                
+                <!-- Editable Parent Use Case selector -->
                 <template v-if="columnKey === 'parentIds'">
                   <select 
                     class="parent-ids select-with-wrap"
@@ -375,6 +377,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
                   </select>
                 </template>
 
+                <!-- Editable Attack Technique selector -->
                 <template v-if="columnKey === 'attackTechniqueId'">
                   <select
                     class="attack-technique select-with-wrap"
