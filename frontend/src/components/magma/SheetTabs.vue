@@ -337,7 +337,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
 
                 <!-- Editable Parent Use Case selector -->
                 <template v-if="columnKey === 'parentIds'">
-                  <select
+                  <select 
                     class="parent-ids"
                     :value="useCase[columnKey]"
                     @change="(event) => {updateObjectField(useCase.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"

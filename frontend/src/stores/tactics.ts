@@ -117,33 +117,48 @@ export const tacticsStore = defineStore('tactics', {
       return uniqueTechniques;
     },
 
-    // allSubTechniquesAndTechniquesIdsAndNames: (state) => {
-    //   let tactics;
 
-    //   if (state.domain === 'enterprise-attack') {
-    //     tactics = state.enterprise?.tactics;
-    //   } else if (state.domain === 'mobile-attack') {
-    //     tactics = state.mobile?.tactics;
-    //   } else if (state.domain === 'ics-attack') {
-    //     tactics = state.ics?.tactics;
-    //   }
-
-    //   let allTechniquesIdsAndNames = tactics.flatMap(tactic => {
-    //     let techniques = tactic.techniques;
-    //     let tacticTechniquesIdsAndNames = techniques.map(technique => {
-    //       return `${technique.external_id}: ${technique.name}`
-    //     })
-    //     return tacticTechniquesIdsAndNames
-    //   })
-
-    //   // Remove duplicates using a Set
-    //   allTechniquesIdsAndNames = [...new Set(allTechniquesIdsAndNames)];
-
-    //   // Sort the array alphabetically (in practice, the ID's are leading, so items are sorted on the ID's)
-    //   allTechniquesIdsAndNames.sort((a, b) => a.localeCompare(b));
-
-    //   return allTechniquesIdsAndNames;
-    // },
+    allTechniquesAndSubtechniquesIdsAndNames: (state) => {
+      let tactics;
+    
+      if (state.domain === 'enterprise-attack') {
+        tactics = state.enterprise?.tactics || [];
+      } else if (state.domain === 'mobile-attack') {
+        tactics = state.mobile?.tactics || [];
+      } else if (state.domain === 'ics-attack') {
+        tactics = state.ics?.tactics || [];
+      } else {
+        tactics = [];
+      }
+    
+      let allTechniquesAndSubtechniquesIdsAndNames = tactics.flatMap(tactic => {
+        return tactic.techniques.flatMap(technique => {
+          let techniqueData = [
+            {
+              id: technique.external_id,
+              name: technique.name
+            }
+          ];
+    
+          if (technique.sub_techniques) {
+            techniqueData.push(...technique.sub_techniques.map(subTechnique => ({
+              id: subTechnique.external_id,
+              name: subTechnique.name
+            })));
+          }
+    
+          return techniqueData;
+        });
+      });
+    
+      // Remove duplicates using a Set based on the ID
+      const uniqueTechniques = Array.from(new Map(allTechniquesAndSubtechniquesIdsAndNames.map(item => [item.id, item])).values());
+    
+      // Sort the array alphabetically based on the ID
+      uniqueTechniques.sort((a, b) => a.id.localeCompare(b.id));
+    
+      return uniqueTechniques;
+    },
 
 
     domainTechniqueByIdMap: (state) => {
@@ -163,6 +178,11 @@ export const tacticsStore = defineStore('tactics', {
         tactics.forEach(tactic => {
           tactic.techniques.forEach(technique => {
             domainTechniqueByIdMap[technique.external_id] = technique;
+            if (technique.sub_techniques) {
+              technique.sub_techniques.forEach(subTechnique => {
+                domainTechniqueByIdMap[subTechnique.external_id] = subTechnique;
+              });
+            }
           });
         });
       }
@@ -173,11 +193,11 @@ export const tacticsStore = defineStore('tactics', {
 
     getDomainTechniqueVisibilityPercentageById: (state) => (id: string) => {
       let technique = state.domainTechniqueByIdMap[id];
-  
+    
       if (technique) {
         return technique.visibility_ratio * 100;
       }
-  
+    
       return undefined;
     },
     
