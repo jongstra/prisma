@@ -42,7 +42,7 @@ const confirmClearAllSelections = () => {
 
   Swal.fire({
     title: 'Clear all component selections?',
-    text: "You won't be able to revert this!",
+    text: "You won't be able to revert this.",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: 'green',

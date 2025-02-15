@@ -99,7 +99,7 @@ const addNewUseCase = () => {
 const confirmRemoveUseCase = (uid: string) => {
   Swal.fire({
     title: 'Delete this use case?',
-    text: "You won't be able to revert this!",
+    text: "You won't be able to revert this.",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: 'green',
