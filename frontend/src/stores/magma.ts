@@ -10,7 +10,7 @@ interface UseCase {
   parentIds: Array<string>
   name: string;
   level: number;
-  attackTechniqueIdAndName: string;
+  attackTechniqueId: string;
   visibilityFromAttackTechnique: boolean;
   visibility: number;
   invalidVisibility: boolean,
@@ -107,7 +107,7 @@ export const magmaStore = defineStore('magma', {
         parentIds: ['none'],
         name: '',
         level,
-        attackTechniqueIdAndName: 'none',
+        attackTechniqueId: 'none',
         visibilityFromAttackTechnique: false,
         visibility: 0,
         uid: uid,
@@ -158,18 +158,17 @@ export const magmaStore = defineStore('magma', {
       }
 
       // If an attackTechnique is set, check that it exists and is valid.
-      if (useCase.attackTechniqueIdAndName) {
-        const attackTechniqueID = useCase.attackTechniqueIdAndName.split(':')[0];
-        if (tactics.domainTechniqueByIdMap.hasOwnProperty(attackTechniqueID)) {
-          // If the attackTechniqueID is valid, update the use case visibility based on the visibility of the attack technique.
-          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueID);
+      if (useCase.attackTechniqueId) {
+        if (tactics.domainTechniqueByIdMap.hasOwnProperty(useCase.attackTechniqueId)) {
+          // If the useCase.attackTechniqueId is valid, update the use case visibility based on the visibility of the attack technique.
+          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
           useCase.visibilityFromAttackTechnique = true;
         }
       }
 
       // If no attackTechnique is set, use the default value 'none'.
-      if (!useCase.attackTechniqueIdAndName) {
-        useCase.attackTechniqueIdAndName = 'none'
+      if (!useCase.attackTechniqueId) {
+        useCase.attackTechniqueId = 'none'
         useCase.visibilityFromAttackTechnique = false;
       }
 
@@ -353,14 +352,14 @@ export const magmaStore = defineStore('magma', {
         // Get old parent use cases.
         const parentUseCases = this.getParentUseCases(useCase);
         
-        // If the attackTechniqueIdAndName field was updated, do the following.
-        if (updatedFields.attackTechniqueIdAndName) {
+        // If the attackTechniqueId field was updated, do the following.
+        if (updatedFields.attackTechniqueId) {
           // Set visibility based on the visibility ratio of the selected ATT&CK technique (if one is selected).
-          if (updatedFields.attackTechniqueIdAndName == 'none') {
+          if (updatedFields.attackTechniqueId == 'none') {
             useCase.visibilityFromAttackTechnique = false;
           } else {
-            const attackTechniqueID = updatedFields.attackTechniqueIdAndName.split(':')[0];
-            useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueID);
+            const attackTechniqueId = updatedFields.attackTechniqueId;
+            useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueId);
             useCase.visibilityFromAttackTechnique = true;
           }
         }
@@ -381,8 +380,7 @@ export const magmaStore = defineStore('magma', {
     updateAllL3UseCasesVisibility() {
       this.L3UseCases.forEach((useCase) => {
         if (useCase.visibilityFromAttackTechnique === true) {
-          const attackTechniqueID = useCase.attackTechniqueIdAndName.split(':')[0];
-          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueID);
+          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
           const parentUseCases = this.getParentUseCases(useCase);
           this.recomputeUseCases(parentUseCases);
         }

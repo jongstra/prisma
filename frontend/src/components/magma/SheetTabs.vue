@@ -37,7 +37,7 @@ const L3Headers = {
   name: 'Use Case Name',
   id: 'ID',
   parentIds: 'Parent Use Case',
-  attackTechniqueIdAndName: 'ATT&CK Technique',
+  attackTechniqueId: 'ATT&CK Technique',
   visibility: 'Visibility %',
 };
 
@@ -45,7 +45,7 @@ const L3Headers = {
 const editableFieldsMap = {
   L1: { name: true, id: true, visibility: false },
   L2: { name: true, id: true, parentIds: true, visibility: false },
-  L3: { name: true, id: true, parentIds: true, attackTechniqueIdAndName: true, visibility: true }
+  L3: { name: true, id: true, parentIds: true, attackTechniqueId: true, visibility: true }
 };
 
 const activeTabData = computed(() => {
@@ -165,32 +165,6 @@ const getBackgroundColor = (uid: string, field: string) => {
 };
 
 
-// Return all UNIQUE ids (when an ID occurs multiple times, it is invalid).
-// const parentIdsOptions = computed(() => {
-//   const ids = (() => {
-//     switch (magma.activeTab) {
-//       case 'L3':
-//         return magma.L2UseCases.map(useCase => useCase.id);
-//       case 'L2':
-//         return magma.L1UseCases.map(useCase => useCase.id);
-//       default:
-//         return [];
-//     }
-//   })();
-
-//   // Create an object to count occurrences of each ID
-//   const idCounts = ids.reduce((acc, id) => {
-//     acc[id] = (acc[id] || 0) + 1;
-//     return acc;
-//   }, {});
-
-//   // Filter out IDs that occur more than once
-//   const uniqueIds = ids.filter(id => idCounts[id] === 1);
-
-//   return uniqueIds;
-// });
-
-
 const parentLevelUseCases = computed(() => {
   const useCases = (() => {
     switch (magma.activeTab) {
@@ -261,7 +235,7 @@ const validateAndFormat = (event: Event) => {
 // magma.addExistingUseCase({id: 'L3-5', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 27});
 // magma.addExistingUseCase({id: 'L3-6', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
 // magma.removeAllUseCases();
-magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, attackTechniqueIdAndName: 'T1595: Active Scanning'});
+magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, attackTechniqueId: 'T1595'});
 magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37});
 magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case'});
 magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
@@ -375,15 +349,16 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
                 </template>
 
                 <!-- Editable Attack Technique selector -->
-                <template v-if="columnKey === 'attackTechniqueIdAndName'">
+                <template v-if="columnKey === 'attackTechniqueId'">
                   <select
                     class="attack-technique"
-                    :value="useCase[columnKey]"
+                    :value="useCase[columnKey] || 'none'"
                     @change="(event) => {updateObjectField(useCase.uid, columnKey, event.target.value);}"
+                    :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
                   >
                     <option value="none">None</option>
-                    <option v-for="techniqueNameAndId in tactics.allTechniquesIdsAndNames" :key="techniqueNameAndId" :value="techniqueNameAndId">{{ techniqueNameAndId }}</option>
-                </select>
+                    <option v-for="technique in tactics.allTechniquesIdsAndNames" :key="technique.id" :value="technique.id">{{ technique.id }}: {{ technique.name }}</option>
+                  </select>
                 </template>
 
 
@@ -408,7 +383,6 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
             </template>
             
           </td>
-
 
         </tr>
 
