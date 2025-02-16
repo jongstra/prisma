@@ -96,9 +96,9 @@ const addNewUseCase = () => {
 };
 
 
-const confirmRemoveUseCase = (uid: string) => {
+const confirmRemoveUseCase = (useCase: any) => {
   Swal.fire({
-    title: 'Delete this use case?',
+    title: `Delete use case '${useCase.id}'?`,
     text: "You won't be able to revert this.",
     icon: 'warning',
     showCancelButton: true,
@@ -109,7 +109,7 @@ const confirmRemoveUseCase = (uid: string) => {
     reverseButtons: true,
   }).then((result) => {
     if (result.isConfirmed) {
-      magma.removeUseCaseByUid(uid);
+      magma.removeUseCaseByUid(useCase.uid);
     }
   });
 };
@@ -118,7 +118,7 @@ const confirmRemoveUseCase = (uid: string) => {
 const confirmRemoveUseCaseLevel = () => {
   if (magma.activeTabUseCases().length > 0) {
     Swal.fire({
-    title: `Warning! You are about to delete all use cases on level ${magma.activeTab}.`,
+    title: `Warning! You are about to delete ALL ${magma.activeTab} use cases.`,
     text: `This is a permanent and irreversible action.\n\nDo you wish to proceed?`,
     icon: 'warning',
     showCancelButton: true,
@@ -129,7 +129,7 @@ const confirmRemoveUseCaseLevel = () => {
     reverseButtons: true,
   }).then((result) => {
     if (result.isConfirmed) {
-      magma.removeUseCaseByUid(uid);
+      magma.removeActiveTabUseCases()
     }
   });
 
@@ -323,7 +323,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
 
           <!-- Remove-use-case buttons -->
           <td class="remove-col">
-            <button class='remove-button' @click="confirmRemoveUseCase(useCase.uid)" style="background-color: #e73030; color: white; border: none; cursor: pointer;">
+            <button class='remove-button' @click="confirmRemoveUseCase(useCase)" style="background-color: #e73030; color: white; border: none; cursor: pointer;">
               &times;
             </button>
           </td>
