@@ -2,6 +2,10 @@
 
 ## Installation Instructions
 
+### Install Node.js
+If you do not have Node.js installed, please [download](https://nodejs.org/en/download) and install it.
+After this step, we assume you have Node.js installed with npm as the package manager.
+
 ### Clone this Repository
 ```sh
 git clone git@github.com:jongstra/dettect-visualizer.git
