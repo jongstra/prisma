@@ -66,16 +66,4 @@ watch(value, (newValue) => {
 .slider-container :deep(.slider-base) {
   background-color: seashell; /* Background color for the unselected track */
 }
-
-/* Customizing tooltip styles more explicitly */
-.slider-container :deep(.slider-tooltip) {
-  background-color: var(--slider-tooltip-bg); /* Use the variable for background */
-  color: var(--slider-tooltip-color); /* Use the variable for text color */
-  border-radius: var(--slider-tooltip-border-radius); /* Optional: use the variable for border-radius */
-}
-
-/* Optional: Customize the tooltip arrow if needed */
-.slider-container :deep(.slider-tooltip:before) {
-  border-top-color: var(--slider-tooltip-bg); /* Arrow color to match the tooltip background */
-}
 </style>
