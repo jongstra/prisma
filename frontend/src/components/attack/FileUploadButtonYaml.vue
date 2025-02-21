@@ -2,35 +2,60 @@
 import { ref } from 'vue'
 import { tacticsStore } from '@/stores/tactics';
 import * as YAML from 'js-yaml';
+import Swal from 'sweetalert2';
 
 const input = ref<HTMLInputElement>()
-const isLoading = ref(false) // Track loading state
+const isLoading = ref(false)
+const store = tacticsStore()
 
 const uploadFile = async () => {
+
+  let yamlData: any = null; //
+
+  // Try to load the data from the uploaded file.
   try {
     isLoading.value = true // Start loading
     const file = input.value?.files?.[0]
     if (!file) {
-      alert("No file selected")
+      Swal.fire({
+        icon: 'error',
+        title: 'No file selected',
+        text: 'Please select a YAML file to upload.'
+      })
       return
     }
 
     if (file.type !== "text/yaml" && file.type !== "application/x-yaml") {
-      alert("Please select a valid DeTT&CT YAML file")
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid file type',
+        text: 'Please select a valid DeTT&CT YAML file.'
+      })
       isLoading.value = false // End loading
       return
     }
 
     const fileContent = await file.text() // Reading file content asynchronously
-    const yamlData = YAML.load(fileContent) // Parsing JSON content, now use js-yaml to load yaml data
-
-    const store = tacticsStore()
+    yamlData = YAML.load(fileContent) // Parsing JSON content
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error uploading YAML file',
+      text: `An error occurred while processing the uploaded file. Error details: ${error.message}`
+    })
+  }
+  
+  // Try to process the file data.
+  try {
     store.processDettectYaml(yamlData) // Updating the tactics store with YAML data
-
     console.log("YAML file successfully uploaded and store updated!")
   } catch (error) {
-    console.log("Error")
-    console.error(error)
+    store.resetDomainVisibility(yamlData.domain);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error uploading YAML file',
+      text: `An error occurred while processing the uploaded file. The visibility for this domain has been reset. Error details: ${error.message}`
+    })
   } finally {
     isLoading.value = false // End loading
   }
@@ -81,5 +106,4 @@ const onFileChange = () => {
   background-color: rgb(214, 133, 27);
   color: rgb(255, 255, 255);
 }
-
 </style>

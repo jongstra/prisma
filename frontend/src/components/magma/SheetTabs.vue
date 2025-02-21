@@ -222,7 +222,12 @@ const parentLevelUseCases = computed(() => {
 
 
 const formatVisibility = (number: number) => {
-  return number.toFixed(2);
+  if (typeof(number) === 'number') {
+    return number.toFixed(2);
+  } else {
+    console.log(`Function formatVisibility received an incorrect value for variable 'number'. The value was: ${number}.`)
+    return null
+  }
 };
 
 

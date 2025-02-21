@@ -425,6 +425,7 @@ export const tacticsStore = defineStore('tactics', {
       this.domain = newDomain;
     },
 
+
     processDettectYaml(data: any) {
 
       // Switch to relevant domain.
@@ -510,6 +511,44 @@ export const tacticsStore = defineStore('tactics', {
           }
         })
       })
+    },
+
+    
+    resetDomainVisibility(domain: string) {
+      let tactics;
+      let data_components_list: Attributes[];
+      if (domain == 'enterprise-attack') {
+        tactics = this.enterprise.tactics;
+        data_components_list = this.enterprise.data_components;
+      } else if (domain == 'mobile-attack') {
+        tactics = this.mobile.tactics;
+        data_components_list = this.mobile.data_components;
+      } else if (domain == 'ics-attack') {
+        tactics = this.ics.tactics;
+        data_components_list = this.ics.data_components;
+      } else {
+        return;
+      }
+
+      // Reset all components to visibility = false
+      data_components_list.forEach(component => {
+        component.visibility = false;
+      });
+
+      // Reset all techniques and subtechniques to visibility_ratio = 0
+      tactics.forEach((tactic: any) => {
+        tactic.techniques.forEach((technique: any) => {
+          technique.visibility = false;
+          technique.visibility_ratio = 0;
+
+          if (typeof technique.sub_techniques !== "undefined") {
+            technique.sub_techniques.forEach((subtechnique: any) => {
+              subtechnique.visibility = false;
+              subtechnique.visibility_ratio = 0;
+            });
+          }
+        });
+      });
     },
 
       // // TODO: Deze logica verbeteren om het inlezen te versnellen.
