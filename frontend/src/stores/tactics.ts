@@ -513,25 +513,25 @@ export const tacticsStore = defineStore('tactics', {
       })
     },
 
-    
+
     resetDomainVisibility(domain: string) {
       let tactics;
-      let data_components_list: Attributes[];
+      let data_components: Attributes[];
       if (domain == 'enterprise-attack') {
         tactics = this.enterprise.tactics;
-        data_components_list = this.enterprise.data_components;
+        data_components = this.enterprise.data_components;
       } else if (domain == 'mobile-attack') {
         tactics = this.mobile.tactics;
-        data_components_list = this.mobile.data_components;
+        data_components = this.mobile.data_components;
       } else if (domain == 'ics-attack') {
         tactics = this.ics.tactics;
-        data_components_list = this.ics.data_components;
+        data_components = this.ics.data_components;
       } else {
         return;
       }
 
       // Reset all components to visibility = false
-      data_components_list.forEach(component => {
+      data_components.forEach(component => {
         component.visibility = false;
       });
 
