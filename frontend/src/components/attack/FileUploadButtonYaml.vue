@@ -54,7 +54,7 @@ const uploadFile = async () => {
     Swal.fire({
       icon: 'error',
       title: 'Error uploading YAML file',
-      text: `An error occurred while processing the uploaded file. The visibility for this domain has been reset. Error details: ${error.message}`
+      text: `An error occurred while processing the uploaded file. Please check that all content of your file is valid. The visibility for the domain has been reset. Error details: ${error.message}`
     })
   } finally {
     isLoading.value = false // End loading
