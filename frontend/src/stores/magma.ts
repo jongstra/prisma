@@ -163,33 +163,7 @@ export const magmaStore = defineStore('magma', {
         console.log(`Use case level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
         return;
       }
-    
-      // If an attackTechnique is set, check that it exists and is valid.
-      if (useCase.attackTechniqueId) {
-        if (tactics.domainTechniqueByIdMap.hasOwnProperty(useCase.attackTechniqueId)) {
-          // If the useCase.attackTechniqueId is valid, update the use case visibility based on the visibility of the attack technique.
-          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
-          useCase.visibilityFromAttackTechnique = true;
-        }
-      }
-    
-      // If no attackTechnique is set, use the default value 'none'.
-      if (!useCase.attackTechniqueId) {
-        useCase.attackTechniqueId = 'none';
-        useCase.visibilityFromAttackTechnique = false;
-      }
-    
-      // If visibilityFromAttackTechniqueOverride is not set, use the default value 'false'.
-      if (!useCase.visibilityFromAttackTechniqueOverride) {
-        useCase.visibilityFromAttackTechniqueOverride = false;
-      }
-    
-      // Ensure that visibilityFromAttackTechniqueOverride is a boolean.
-      if (typeof useCase.visibilityFromAttackTechniqueOverride !== 'boolean') {
-        console.log(`Use case has an invalid (non-boolean) value for property visibilityFromAttackTechniqueOverride. Use case has not been added.`);
-        return;
-      }
-    
+
       // Check that the domain is set to a valid value.
       if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
         console.log(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case has not been added.`);
@@ -209,9 +183,42 @@ export const magmaStore = defineStore('magma', {
         console.log(`Use case effectiveness "${useCase.effectiveness}" is not valid. It must be between 0 and 100. Use case has not been added.`);
         return;
       }
+
+      // If visibilityFromAttackTechniqueOverride is not set, use the default value 'false'.
+      if (!useCase.visibilityFromAttackTechniqueOverride) {
+        useCase.visibilityFromAttackTechniqueOverride = false;
+      }
     
-      // Compute the weight.
-      useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
+      // Ensure that visibilityFromAttackTechniqueOverride is a boolean.
+      if (typeof useCase.visibilityFromAttackTechniqueOverride !== 'boolean') {
+        console.log(`Use case has an invalid (non-boolean) value for property visibilityFromAttackTechniqueOverride. Use case has not been added.`);
+        return;
+      }
+      
+      // If visibilityFromAttackTechniqueOverride is set to true, compute the weight BEFORE setting the visibility based on the attack technique.
+      if (useCase.visibilityFromAttackTechniqueOverride) {
+        useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
+      }
+
+      // If an attackTechnique is set, check that it exists and is valid.
+      if (useCase.attackTechniqueId) {
+        if (tactics.domainTechniqueByIdMap.hasOwnProperty(useCase.attackTechniqueId)) {
+          // If the useCase.attackTechniqueId is valid, update the use case visibility based on the visibility of the attack technique.
+          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
+          useCase.visibilityFromAttackTechnique = true;
+        }
+      }
+    
+      // If no attackTechnique is set, use the default value 'none'.
+      if (!useCase.attackTechniqueId) {
+        useCase.attackTechniqueId = 'none';
+        useCase.visibilityFromAttackTechnique = false;
+      }
+
+      // If visibilityFromAttackTechniqueOverride is set to false, compute the weight AFTER setting the visibility from the attack technique.
+      if (!useCase.visibilityFromAttackTechniqueOverride) {
+        useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
+      }
     
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
       useCase['uid'] = uuidv4();
