@@ -51,13 +51,13 @@ const editableFieldsMap = {
 const activeTabData = computed(() => {
   switch (magma.activeTab) {
     case 'L1':
-      return magma.L1UseCases;
+      return magma.L1UseCases(tactics.domain);
     case 'L2':
-      return magma.L2UseCases;
+      return magma.L2UseCases(tactics.domain);
     case 'L3':
-      return magma.L3UseCases;
+      return magma.L3UseCases(tactics.domain);
     default:
-      const averageVisibility = magma.L1UseCases.reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / magma.L1UseCases.length;
+      const averageVisibility = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / magma.L1UseCases(tactics.domain).length;
       return [{ TotalVisibility: averageVisibility.toFixed(2) }]; // Format to 2 decimal places
   }
 });
@@ -92,7 +92,7 @@ const editableFields = computed(() => {
 const addNewUseCase = () => {
   const tab = magma.activeTab;
   const level = parseFloat(tab.slice(-1));
-  magma.addNewUseCase(level);
+  magma.addNewUseCase(level, tactics.domain);
 };
 
 
@@ -109,14 +109,14 @@ const confirmRemoveUseCase = (useCase: any) => {
     reverseButtons: true,
   }).then((result) => {
     if (result.isConfirmed) {
-      magma.removeUseCaseByUid(useCase.uid);
+      magma.removeUseCaseByUid(useCase.uid, tactics.domain);
     }
   });
 };
 
 
 const confirmRemoveUseCaseLevel = () => {
-  if (magma.activeTabUseCases().length > 0) {
+  if (magma.activeTabUseCases(tactics.domain).length > 0) {
     Swal.fire({
     title: `Warning! You are about to delete ALL ${magma.activeTab} use cases.`,
     text: `This is a permanent and irreversible action.\n\nDo you wish to proceed?`,
@@ -129,7 +129,7 @@ const confirmRemoveUseCaseLevel = () => {
     reverseButtons: true,
   }).then((result) => {
     if (result.isConfirmed) {
-      magma.removeActiveTabUseCases()
+      magma.removeActiveTabUseCases(tactics.domain)
     }
   });
 
@@ -138,12 +138,12 @@ const confirmRemoveUseCaseLevel = () => {
 
 
 const updateObjectField = (uid: string, field: string, value: any) => {
-  magma.updateUseCase(uid, {[field]: value});
+  magma.updateUseCase(uid, {[field]: value}, tactics.domain);
 };
 
 
 const getBackgroundColor = (uid: string, field: string) => {
-  const useCase = magma.getUseCaseByUid(uid);
+  const useCase = magma.getUseCaseByUid(uid, tactics.domain);
 
   if (field === 'visibility') {
     // Check the validity of the number and return a backgroundcolor based on the validity of the number.
@@ -160,7 +160,7 @@ const getBackgroundColor = (uid: string, field: string) => {
 
   if (field === 'id') {
   const id = useCase.id;
-  const allIds = magma.getAllIds;
+  const allIds = magma.getAllIds(tactics.domain);
   const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
   
   // Regular expression to check if the format is 'prefix-numeric'
@@ -180,7 +180,7 @@ const getBackgroundColor = (uid: string, field: string) => {
 
   if (field === 'parentIds') {
     const parentIds = useCase.parentIds;
-    const validParentIds = Array.isArray(parentIds) && parentIds.every(id => magma.getAllIds.includes(id));
+    const validParentIds = Array.isArray(parentIds) && parentIds.every(id => magma.getAllIds(tactics.domain).includes(id));
     if (validParentIds) {
       // useCase.invalidParentIds = false;
       return 'white';
@@ -197,9 +197,9 @@ const parentLevelUseCases = computed(() => {
   const useCases = (() => {
     switch (magma.activeTab) {
       case 'L3':
-        return magma.L2UseCases;
+        return magma.L2UseCases(tactics.domain);
       case 'L2':
-        return magma.L1UseCases;
+        return magma.L1UseCases(tactics.domain);
       default:
         return [];
     }
@@ -269,10 +269,10 @@ const validateAndFormat = (event: Event) => {
 // magma.addExistingUseCase({id: 'L3-5', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 27});
 // magma.addExistingUseCase({id: 'L3-6', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
 // magma.removeAllUseCases();
-magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, attackTechniqueId: 'T1595'});
-magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37});
-magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case'});
-magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
+magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, attackTechniqueId: 'T1595', domain: 'enterprise-attack'});
+magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37, domain: 'enterprise-attack'});
+magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case', domain: 'enterprise-attack'});
+magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', domain: 'enterprise-attack'});
 // console.log(magma.activeTabUseCases());
 // magma.removeActiveTabUseCases()
 // magma.addExistingUseCase({id: 'L3-7', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
@@ -426,7 +426,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case'});
         <tr>
           <!-- Button to add new use cases. -->
           <td colspan="10" class="add-button-cell">
-            <button @click="addNewUseCase">
+            <button @click="addNewUseCase(tactics.domain)">
               + ADD NEW USE CASE +
             </button>
           </td>

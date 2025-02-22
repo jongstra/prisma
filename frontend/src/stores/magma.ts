@@ -3,87 +3,91 @@ import { v4 as uuidv4 } from 'uuid';
 import { tacticsStore } from '@/stores/tactics';
 const tactics = tacticsStore();
 
-
 interface UseCase {
   id: string;
   uid: string;
-  parentIds: Array<string>
+  parentIds: Array<string>;
   name: string;
   level: number;
   attackTechniqueId: string;
   visibilityFromAttackTechnique: boolean;
   visibility: number;
-  invalidVisibility: boolean,
-  invalidId: boolean,
-  invalidParentIds: boolean,
+  invalidVisibility: boolean;
+  invalidId: boolean;
+  invalidParentIds: boolean;
+  domain: string;
 }
-
 
 export const magmaStore = defineStore('magma', {
   state: () => ({
-    useCases: [],
+    useCases: [] as UseCase[],
     activeTab: 'L1',
   }),
 
   getters: {
     getUseCaseById(state) {
-      return (id) => state.useCases.find(useCase => useCase['id'] === id);
+      return (id: string, domain?: string) => state.useCases.find(useCase => useCase['id'] === id && (!domain || useCase.domain === domain));
     },
     getUseCaseByUid(state) {
-      return (uid) => state.useCases.find(useCase => useCase['uid'] === uid);
+      return (uid: string, domain?: string) => state.useCases.find(useCase => useCase['uid'] === uid && (!domain || useCase.domain === domain));
     },
     L1UseCases(state) {
-      return state.useCases.filter(useCase => useCase['level'] === 1);
+      return (domain?: string) => state.useCases.filter(useCase => useCase['level'] === 1 && (!domain || useCase.domain === domain));
     },
     L2UseCases(state) {
-      return state.useCases.filter(useCase => useCase['level'] === 2);
+      return (domain?: string) => state.useCases.filter(useCase => useCase['level'] === 2 && (!domain || useCase.domain === domain));
     },
     L3UseCases(state) {
-      return state.useCases.filter(useCase => useCase['level'] === 3);
+      return (domain?: string) => state.useCases.filter(useCase => useCase['level'] === 3 && (!domain || useCase.domain === domain));
     },
     activeTabUseCases(state) {
-      return () => {
+      return (domain?: string) => {
         if (state.activeTab === 'L1') {
-          return this.L1UseCases;
+          return this.L1UseCases(domain);
         }
         if (state.activeTab === 'L2') {
-          return this.L2UseCases;
+          return this.L2UseCases(domain);
         }
         if (state.activeTab === 'L3') {
-          return this.L3UseCases;
+          return this.L3UseCases(domain);
         }
         return []; // Default case
       };
     },
     getAllIds(state) {
-      return state.useCases.map(useCase => useCase['id']);
+      return (domain?: string) => state.useCases
+        .filter(useCase => !domain || useCase.domain === domain)
+        .map(useCase => useCase['id']);
     },
     getAllUids(state) {
-      return state.useCases.map(useCase => useCase['uid']);
+      return (domain?: string) => state.useCases
+        .filter(useCase => !domain || useCase.domain === domain)
+        .map(useCase => useCase['uid']);
     },
-    getParentUseCases: (state) => (useCase) => {
-      if (useCase && Array.isArray(useCase.parentIds)) {
-        const parentUseCases = state.useCases.filter(childUseCase => useCase.parentIds.includes(childUseCase['id']));
-        return parentUseCases;
-      } else {
-        // console.log('useCase or useCase.parentIds is undefined:', useCase);
-        return [];
-      }
+    getParentUseCases(state) {
+      return (useCase: UseCase, domain?: string) => {
+        if (useCase && Array.isArray(useCase.parentIds)) {
+          const parentUseCases = state.useCases.filter(childUseCase => useCase.parentIds.includes(childUseCase['id']) && (!domain || childUseCase.domain === domain));
+          return parentUseCases;
+        } else {
+          // console.log('useCase or useCase.parentIds is undefined:', useCase);
+          return [];
+        }
+      };
     },
-    getChildUseCasesById: (state) => (id: string) => {
-      const childUseCases = state.useCases.filter(useCase => Array.isArray(useCase['parentIds']) && useCase['parentIds'].includes(id));
-      // console.log(`Found ${childUseCases.length} child use cases for id: "${id}".`);
-      return childUseCases;
+    getChildUseCasesById(state) {
+      return (id: string, domain?: string) => {
+        const childUseCases = state.useCases.filter(useCase => Array.isArray(useCase['parentIds']) && useCase['parentIds'].includes(id) && (!domain || useCase.domain === domain));
+        // console.log(`Found ${childUseCases.length} child use cases for id: "${id}".`);
+        return childUseCases;
+      };
     }
   },
 
-
   actions: {
-
-
-    addNewUseCase(level: number = 0) {
+    addNewUseCase(level: number = 0, domain?: string) {
       // Filter existing use cases to find those that match the specified level
-      const filteredUseCases = this.useCases.filter(useCase => useCase['level'] === level);
+      const filteredUseCases = this.useCases.filter(useCase => useCase['level'] === level && (!domain || useCase.domain === domain));
     
       // Extract numeric suffixes from the IDs of these use cases
       let maxSuffix = 0;
@@ -114,6 +118,7 @@ export const magmaStore = defineStore('magma', {
         invalidVisibility: false,
         invalidId: false,
         invalidParentIds: false,
+        domain: domain,
       };
       
       this.useCases.push(useCase);
@@ -133,13 +138,6 @@ export const magmaStore = defineStore('magma', {
         return;
       };
 
-      // // If the use case does not have a level set, extract it from the ID.
-      // if (!useCase.level) {
-      //   useCase.level = parseInt(useCase['id'].substring(1, 2));
-      //   // console.log(`Extracted level from the ID for use case: "${JSON.stringify(useCase)}"`)
-      // }
-
-
       // Check that the use case has a level.
       if (!useCase.level) {
         console.log(`No use case level found for use case "${JSON.stringify(useCase)}". Use case has not been added.`);
@@ -151,7 +149,7 @@ export const magmaStore = defineStore('magma', {
         return;
       }
 
-      // Check that the level in the useCase.level and useCase.id are consistent with eachother.
+      // Check that the level in the useCase.level and useCase.id are consistent with each other.
       if (useCase.level !== parseInt(useCase['id'].substring(1, 2))) {
         console.log(`Usecase level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
         return;
@@ -168,8 +166,14 @@ export const magmaStore = defineStore('magma', {
 
       // If no attackTechnique is set, use the default value 'none'.
       if (!useCase.attackTechniqueId) {
-        useCase.attackTechniqueId = 'none'
+        useCase.attackTechniqueId = 'none';
         useCase.visibilityFromAttackTechnique = false;
+      }
+
+      // Check that the domain is set to a valid value.
+      if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
+        console.log(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case has not been added.`);
+        return;
       }
 
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
@@ -177,10 +181,10 @@ export const magmaStore = defineStore('magma', {
       useCase['invalidVisibility'] = false;
       useCase['invalidId'] = false;
       useCase['invalidParentIds'] = false;
+      useCase['domain'] = useCase.domain;
       this.useCases.push(useCase);
-      // console.log(`Added use case: "${JSON.stringify(useCase)}"`)
       
-      // If a L1 or L2 use case was added, recompute its values it after adding.
+      // If a L1 or L2 use case was added, recompute its values after adding.
       if (useCase.level < 3) {
         this.recomputeUseCases([this.getUseCaseById(useCase.id)!]);
       }
@@ -197,14 +201,13 @@ export const magmaStore = defineStore('magma', {
     
     removeUseCaseByUid(uid: string) {
       const useCase = this.getUseCaseByUid(uid);
-      if (!useCase) {throw new Error(`No use case with uid "${uid}" exists.`);}
+      if (!useCase) { throw new Error(`No use case with uid "${uid}" exists.`);}
 
       // Find parent use cases.
       const parentUseCases = this.getParentUseCases(useCase);
 
       // remove the use case.
       this.useCases = this.useCases.filter(x => x['uid'] !== uid);
-      // console.log(`Removed use case: "${JSON.stringify(useCase)}"`)
       
       // Recompute values of any use cases that were parents of this one.
       if (useCase.level > 1) {
@@ -218,36 +221,35 @@ export const magmaStore = defineStore('magma', {
     },
     
 
-    removeActiveTabUseCases() {
-      this.activeTabUseCases().forEach(useCase => {
+    removeActiveTabUseCases(domain?: string) {
+      this.activeTabUseCases(domain).forEach(useCase => {
         this.removeUseCaseByUid(useCase.uid);
       });
     },
 
 
-    removeL1UseCases() {
-      this.L1UseCases.forEach(useCase => {
+    removeL1UseCases(domain?: string) {
+      this.L1UseCases(domain).forEach(useCase => {
         this.removeUseCaseByUid(useCase.uid);
       })
     },
 
 
-    removeL2UseCases() {
-      this.L2UseCases.forEach(useCase => {
+    removeL2UseCases(domain?: string) {
+      this.L2UseCases(domain).forEach(useCase => {
         this.removeUseCaseByUid(useCase.uid);
       })
     },
 
 
-    removeL3UseCases() {
-      this.L3UseCases.forEach(useCase => {
+    removeL3UseCases(domain?: string) {
+      this.L3UseCases(domain).forEach(useCase => {
         this.removeUseCaseByUid(useCase.uid);
       })
     },
 
 
     recomputeUseCases(useCases: Array<UseCase>) {
-      // console.log(`Updating use cases: ${JSON.stringify(useCases)}`);
       useCases.forEach((useCase) => {
         const parentUseCases = this.getParentUseCases(useCase);
         const childUseCases = this.getChildUseCasesById(useCase.id);
@@ -270,26 +272,10 @@ export const magmaStore = defineStore('magma', {
     calculateMeanVisibility(useCases: Array<UseCase>) {
       if (useCases.length === 0) return 0;
       
-
-      // // DEZE PRINTS LATEN DE ERROR ZIEN. Lijkt mis te gaan met een race condition in getBackgroundColor.
-      // console.log('ALL USE CASES:')
-      // useCases.forEach((useCase) => console.log(useCase))
-      // useCases.forEach((useCase) => console.log(useCase.invalidVisibility))
-      // useCases.forEach((useCase) => console.log(useCase.invalidId))
-      // useCases.forEach((useCase) => console.log(`${useCase.id} ${useCase.invalidParentIds}`))
-
-
-      // PLEASE LOOK INTO THIS: Here all 5 use cases are shown. They all have properties invalidVisibility, invalidId and invalidParentIds set to false.
       const validUseCases = useCases.filter(useCase => {
-        // console.log(useCase)
-        return(useCase)
-        // return (!useCase.invalidVisibility && !useCase.invalidId && !useCase.invalidParentIds);
+        return !useCase.invalidVisibility && !useCase.invalidId && !useCase.invalidParentIds;
       });
 
-      // console.log('VALID USE CASES:')
-      // validUseCases.forEach((useCase) => console.log(useCase))
-      // PLEASE LOOK INTO THIS: Here only 4 use cases are shown. Why is one filtered out? Could this be due to a race condition? The missing use case is the one that was used in updateUseCase..
-    
       // If no valid use cases are left, return 0.
       if (validUseCases.length === 0) return 0;
     
@@ -300,54 +286,10 @@ export const magmaStore = defineStore('magma', {
     },
     
 
-    // updateActiveUseCasesIdValidity() {
-      
-    //   // Find duplicate IDs in activeTabUseCases
-    //   const useCases = this.activeTabUseCases();
-    //   const useCasesIds = useCases.map(useCase => useCase.id);
-    //   // Iterate through the useCasesIds array. For each id, check if the first occurrence index is different from the current index. If so, the id is a duplicate.
-    //   const duplicateIds = useCasesIds.filter((id, index) => useCasesIds.indexOf(id) !== index);
-
-    //   console.log(useCasesIds)
-
-    //   // Set useCase.invalidId if useCase.id is in duplicateIds
-    //   useCases.forEach(useCase => {
-    //     useCase.invalidId = duplicateIds.has(useCase.id);
-    //   });
-    // },
-
-    updateUseCase(uid: string, updatedFields: {}) {
-      const useCase = this.getUseCaseByUid(uid);
+    updateUseCase(uid: string, updatedFields: {}, domain?: string) {
+      const useCase = this.getUseCaseByUid(uid, domain);
 
       if (useCase) {
-
-        // // Update the ID validity of all use cases in the active tab.
-        // if (updatedFields.id) {
-        //   this.updateActiveUseCasesIdValidity()
-        // }
-        //   // TODO: Find duplicate IDs in activeTabUseCases.
-        //   const duplicateIds = this.activeTabUseCases()
-
-        //   // TODO: set useCase invalidId if useCase.id is in duplicateIds.
-        //   this.activeTabUseCases().forEach(useCase => {
-            
-        //   });
-        // }
-        
-        // // Isolate the parentIds from the parentIdsAndNames.
-        // if (updatedFields.parentIdsAndNames) {
-        //   updatedFields.parentIds = updatedFields.parentIdsAndNames.map(idString => {
-        //     // Use a regular expression to match the ID part of the string.
-        //     const match = idString.match(/^([^:]+):/);v
-        //     // If a match is found, return the captured group (the ID).
-        //     if (match) {
-        //       return match[1].trim();
-        //     }
-        //   });
-        // }
-        
-        // Update the ID validity of all use cases in the active tab.
-
 
         // Get old parent use cases.
         const parentUseCases = this.getParentUseCases(useCase);
@@ -355,7 +297,7 @@ export const magmaStore = defineStore('magma', {
         // If the attackTechniqueId field was updated, do the following.
         if (updatedFields.attackTechniqueId) {
           // Set visibility based on the visibility ratio of the selected ATT&CK technique (if one is selected).
-          if (updatedFields.attackTechniqueId == 'none') {
+          if (updatedFields.attackTechniqueId === 'none') {
             useCase.visibilityFromAttackTechnique = false;
           } else {
             const attackTechniqueId = updatedFields.attackTechniqueId;
@@ -366,8 +308,10 @@ export const magmaStore = defineStore('magma', {
 
         // Update use case.
         Object.assign(useCase, updatedFields);
+        if (domain) {
+          useCase.domain = domain;
+        }
         this.recomputeUseCases([useCase]);
-        // console.log(`useCase: ${JSON.stringify(useCase)}`);
 
         // Update old parent use cases, if use case is L2 or L3.
         if (useCase.level > 1) {
@@ -377,18 +321,14 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-    updateAllL3UseCasesVisibility() {
-      this.L3UseCases.forEach((useCase) => {
+    updateAllL3UseCasesVisibility(domain?: string) {
+      this.L3UseCases(domain).forEach((useCase) => {
         if (useCase.visibilityFromAttackTechnique === true) {
           useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
-          const parentUseCases = this.getParentUseCases(useCase);
+          const parentUseCases = this.getParentUseCases(useCase, domain);
           this.recomputeUseCases(parentUseCases);
         }
       });
     },
-
-
   }
-
-
 });
