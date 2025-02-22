@@ -12,7 +12,7 @@ interface UseCase {
   attackTechniqueId: string;
   visibilityFromAttackTechnique: boolean;
   visibilityFromAttackTechniqueOverride: boolean;
-  visibility: number;
+  visibility: number | null;
   invalidVisibility: boolean;
   invalidId: boolean;
   invalidParentIds: boolean;
@@ -86,7 +86,7 @@ export const magmaStore = defineStore('magma', {
   },
 
   actions: {
-    addNewUseCase(level: number = 0, domain?: string) {
+    addNewUseCase(level: number = 0, domain: string) {
       // Filter existing use cases to find those that match the specified level
       const filteredUseCases = this.useCases.filter(useCase => useCase['level'] === level && (!domain || useCase.domain === domain));
     
@@ -115,7 +115,7 @@ export const magmaStore = defineStore('magma', {
         attackTechniqueId: 'none',
         visibilityFromAttackTechnique: false,
         visibilityFromAttackTechniqueOverride: false,
-        visibility: 0,
+        visibility: null,
         uid: uid,
         invalidVisibility: false,
         invalidId: false,

@@ -235,6 +235,9 @@ const validateAndFormat = (event: Event) => {
       inputElement.value = '0.00';
     } else if (parsedValue > 100) {
       inputElement.value = '100.00';
+    } else {
+      // Set the input element to the parsed value (this prevents the user from inputting numbers with leading zeroes in the input field).
+      inputElement.value = parsedValue;
     }
   }
 };
