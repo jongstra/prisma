@@ -39,7 +39,7 @@ const L3Headers = {
   parentIds: 'Parent Use Case',
   attackTechniqueId: 'ATT&CK Technique',
   visibility: 'Visibility %',
-  visibilityFromAttackTechniqueOverride: 'Visibility Override',
+  visibilityFromAttackTechniqueOverride: 'Override',
 };
 
 // Define editable fields for each tab
@@ -265,7 +265,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
         <tr>
           <!-- Render column headers. -->
           <th class="remove-col" @click="confirmRemoveUseCaseLevel()" style="background-color: #e73030; color: white; cursor: pointer;">&#10806;</th>  <!-- Character found in list: https://www.w3schools.com/charsets/ref_utf_math.asp -->
-          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ name: columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique', parent: columnName === 'Parent Use Case', override: columnName === 'Visibility Override'}">
+          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ name: columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique', parent: columnName === 'Parent Use Case', override: columnName === 'Override'}">
             {{ columnName }}
           </th>
         </tr>
@@ -290,7 +290,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
                 type="number"
                 :value="useCase[columnKey]"
                 @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
-                :style="{backgroundColor: useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride ? 'lightgoldenrodyellow' : getBackgroundColor(useCase.uid, columnKey)}"
+                :style="{backgroundColor: (useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride) ? 'lightgoldenrodyellow' : getBackgroundColor(useCase.uid, columnKey)}"
                 :disabled="useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride"
               />
 
@@ -362,8 +362,8 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
 
 
             <!-- Non-editable fields -->
-            <template v-else-if="columnKey === 'visibility'"> 
-              <div class="visibility-uneditable" style="background-color: lightgoldenrodyellow;">
+            <template v-else-if="columnKey === 'visibility'">
+              <div class="visibility-uneditable">
                 {{ formatVisibility(useCase[columnKey]) }}
               </div>
             </template>
@@ -539,21 +539,22 @@ th.override {
   width: 80px;
 }
 
-input, .visibility-uneditable {
-
+input {
   justify-content: center;
   align-items: center;
   height: 50px;
 }
 
+.visibility-uneditable {
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+
 input[type=checkbox] {
-  /* display: flex; */
-  /* margin: 4px 0 0; */
-  /* line-height: normal; */
-  /* width: 30px;
-  height: 30px; */
   accent-color: silver;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 </style>
