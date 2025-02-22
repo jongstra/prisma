@@ -11,6 +11,7 @@ interface UseCase {
   level: number;
   attackTechniqueId: string;
   visibilityFromAttackTechnique: boolean;
+  visibilityFromAttackTechniqueOverride: boolean;
   visibility: number;
   invalidVisibility: boolean;
   invalidId: boolean;
@@ -113,6 +114,7 @@ export const magmaStore = defineStore('magma', {
         level,
         attackTechniqueId: 'none',
         visibilityFromAttackTechnique: false,
+        visibilityFromAttackTechniqueOverride: false,
         visibility: 0,
         uid: uid,
         invalidVisibility: false,
@@ -151,7 +153,7 @@ export const magmaStore = defineStore('magma', {
 
       // Check that the level in the useCase.level and useCase.id are consistent with each other.
       if (useCase.level !== parseInt(useCase['id'].substring(1, 2))) {
-        console.log(`Usecase level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
+        console.log(`Use case level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
         return;
       }
 
@@ -168,6 +170,17 @@ export const magmaStore = defineStore('magma', {
       if (!useCase.attackTechniqueId) {
         useCase.attackTechniqueId = 'none';
         useCase.visibilityFromAttackTechnique = false;
+      }
+
+      // If visibilityFromAttackTechniqueOverride is not set, use the default value 'false'.
+      if (!useCase.visibilityFromAttackTechniqueOverride) {
+        useCase.visibilityFromAttackTechniqueOverride = false;
+      }
+
+      // Ensure that visibilityFromAttackTechniqueOverride is a boolean.
+      if (typeof useCase.visibilityFromAttackTechniqueOverride !== 'boolean') {
+        console.log(`Use case has an invalid (non-boolean) value for property visibilityFromAttackTechniqueOverride. Use case has not been added.`);
+        return;
       }
 
       // Check that the domain is set to a valid value.
@@ -323,7 +336,7 @@ export const magmaStore = defineStore('magma', {
 
     updateAllL3UseCasesVisibility(domain?: string) {
       this.L3UseCases(domain).forEach((useCase) => {
-        if (useCase.visibilityFromAttackTechnique === true) {
+        if (useCase.visibilityFromAttackTechnique === true && useCase.visibilityFromAttackTechniqueOverride === false) {
           useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
           const parentUseCases = this.getParentUseCases(useCase, domain);
           this.recomputeUseCases(parentUseCases);

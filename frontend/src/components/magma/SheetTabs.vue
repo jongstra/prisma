@@ -39,13 +39,14 @@ const L3Headers = {
   parentIds: 'Parent Use Case',
   attackTechniqueId: 'ATT&CK Technique',
   visibility: 'Visibility %',
+  visibilityFromAttackTechniqueOverride: 'Visibility Override',
 };
 
 // Define editable fields for each tab
 const editableFieldsMap = {
   L1: { name: true, id: true, visibility: false },
   L2: { name: true, id: true, parentIds: true, visibility: false },
-  L3: { name: true, id: true, parentIds: true, attackTechniqueId: true, visibility: true }
+  L3: { name: true, id: true, parentIds: true, attackTechniqueId: true, visibilityFromAttackTechniqueOverride: true, visibility: true}
 };
 
 const activeTabData = computed(() => {
@@ -88,13 +89,11 @@ const editableFields = computed(() => {
   }
 });
 
-
 const addNewUseCase = () => {
   const tab = magma.activeTab;
   const level = parseFloat(tab.slice(-1));
   magma.addNewUseCase(level, tactics.domain);
 };
-
 
 const confirmRemoveUseCase = (useCase: any) => {
   Swal.fire({
@@ -114,33 +113,29 @@ const confirmRemoveUseCase = (useCase: any) => {
   });
 };
 
-
 const confirmRemoveUseCaseLevel = () => {
   if (magma.activeTabUseCases(tactics.domain).length > 0) {
     Swal.fire({
-    title: `Warning! You are about to delete ALL ${magma.activeTab} use cases.`,
-    text: `This is a permanent and irreversible action.\n\nDo you wish to proceed?`,
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#d33',
-    cancelButtonColor: 'green',
-    confirmButtonText: `Yes, delete all ${magma.activeTab} use cases!`,
-    cancelButtonText: 'No, cancel!',
-    reverseButtons: true,
-  }).then((result) => {
-    if (result.isConfirmed) {
-      magma.removeActiveTabUseCases(tactics.domain)
-    }
-  });
-
+      title: `Warning! You are about to delete ALL ${magma.activeTab} use cases.`,
+      text: `This is a permanent and irreversible action.\n\nDo you wish to proceed?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: 'green',
+      confirmButtonText: `Yes, delete all ${magma.activeTab} use cases!`,
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        magma.removeActiveTabUseCases(tactics.domain);
+      }
+    });
   }
-}
-
+};
 
 const updateObjectField = (uid: string, field: string, value: any) => {
   magma.updateUseCase(uid, {[field]: value}, tactics.domain);
 };
-
 
 const getBackgroundColor = (uid: string, field: string) => {
   const useCase = magma.getUseCaseByUid(uid, tactics.domain);
@@ -150,48 +145,40 @@ const getBackgroundColor = (uid: string, field: string) => {
     const visibility = useCase.visibility;
     const validVisibility = !isNaN(visibility) && visibility >= 0 && visibility <= 100;
     if (validVisibility) {
-      // useCase.invalidVisibility = false;
       return 'rgb(246, 246, 246)';
     } else {
-      // useCase.invalidVisibility = true;
       return 'Crimson';
-    } 
+    }
   }
 
   if (field === 'id') {
-  const id = useCase.id;
-  const allIds = magma.getAllIds(tactics.domain);
-  const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
-  
-  // Regular expression to check if the format is 'prefix-numeric'
-  const correctFormat = new RegExp(`^${magma.activeTab}-\\d+$`).test(id);
-  
-  const validId = noDuplicateId && correctFormat;
-  
-  if (validId) {
-    // useCase.invalidId = false;
-    return 'white';
-  } else {
-    // useCase.invalidId = true;
-    return 'Crimson';
-  }
-}
+    const id = useCase.id;
+    const allIds = magma.getAllIds(tactics.domain);
+    const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
 
+    // Regular expression to check if the format is 'prefix-numeric'
+    const correctFormat = new RegExp(`^${magma.activeTab}-\\d+$`).test(id);
+
+    const validId = noDuplicateId && correctFormat;
+
+    if (validId) {
+      return 'white';
+    } else {
+      return 'Crimson';
+    }
+  }
 
   if (field === 'parentIds') {
     const parentIds = useCase.parentIds;
     const validParentIds = Array.isArray(parentIds) && parentIds.every(id => magma.getAllIds(tactics.domain).includes(id));
     if (validParentIds) {
-      // useCase.invalidParentIds = false;
       return 'white';
     } else {
-      // useCase.invalidParentIds = true;
       return 'Crimson';
     }
   }
 
 };
-
 
 const parentLevelUseCases = computed(() => {
   const useCases = (() => {
@@ -219,17 +206,10 @@ const parentLevelUseCases = computed(() => {
     .sort((a, b) => a.id.localeCompare(b.id));
 });
 
-
-
-const formatVisibility = (number: number) => {
-  if (typeof(number) === 'number') {
-    return number.toFixed(2);
-  } else {
-    console.log(`Function formatVisibility received an incorrect value for variable 'number'. The value was: ${number}.`)
-    return null
-  }
+const formatVisibility = (number: any) => {
+  number = Number(number);
+  return number.toFixed(2);
 };
-
 
 // Validation method to limit input to numbers with up to two decimal places, and rangebound between 0 and 100.
 const validateAndFormat = (event: Event) => {
@@ -259,46 +239,13 @@ const validateAndFormat = (event: Event) => {
   }
 };
 
-
-// Add Mock data
-// magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 67, attackTechniqueIdAndName: 'T1595: Active Scanning'});
-// magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case Attachment'});
-// magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Spearphishing Attachment'});
-// magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Test Attachment', visibility: 22});
-// magma.addExistingUseCase({id: 'L3-4', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 43});
-// magma.addExistingUseCase({id: 'L3-5', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 27});
-// magma.addExistingUseCase({id: 'L3-6', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.removeAllUseCases();
 magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, attackTechniqueId: 'T1595', domain: 'enterprise-attack'});
 magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37, domain: 'enterprise-attack'});
 magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case', domain: 'enterprise-attack'});
 magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', domain: 'enterprise-attack'});
-// console.log(magma.activeTabUseCases());
-// magma.removeActiveTabUseCases()
-// magma.addExistingUseCase({id: 'L3-7', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-8', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-9', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-10', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-11', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-12', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-13', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-14', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-15', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addExistingUseCase({id: 'L3-16', level: 3, parentIds: ['L2-1'], name: 'Test', visibility: 13.222});
-// magma.addNewUseCase(3);
-// magma.getParentUseCasesById('L2-1');
-
-// magma.getParentUseCasesById('L2-1');
-// magma.removeUseCasebyId('L3-1');
-// magma.removeUseCasebyUId('L2-1');
-// magma.addExistingUseCase({id: 'L2-1', level: 'L2', parentIds: ['L1-1'], name: 'Spearphishing Attachment'});
-// console.log(magma.useCases);
-
 </script>
 
-
 <template>
-
   <!-- Tab switcher -->
   <div class="sheet-tabs">
     <button 
@@ -318,7 +265,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
         <tr>
           <!-- Render column headers. -->
           <th class="remove-col" @click="confirmRemoveUseCaseLevel()" style="background-color: #e73030; color: white; cursor: pointer;">&#10806;</th>  <!-- Character found in list: https://www.w3schools.com/charsets/ref_utf_math.asp -->
-          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ 'use-case-name': columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique', parent: columnName === 'Parent Use Case'}">
+          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ name: columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique', parent: columnName === 'Parent Use Case', override: columnName === 'Visibility Override'}">
             {{ columnName }}
           </th>
         </tr>
@@ -332,10 +279,8 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
               &times;
             </button>
           </td>
-          
 
           <td v-for="(columnName, columnKey) in headers" :key="columnKey">
-
             <!-- Editable fields -->
             <template v-if="editableFields[columnKey]">
 
@@ -343,10 +288,10 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
               <input
                 v-if="columnKey === 'visibility'"
                 type="number"
-                :value="formatVisibility(useCase[columnKey])"
+                :value="useCase[columnKey]"
                 @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
-                :style="{backgroundColor: useCase.visibilityFromAttackTechnique ? 'lightgoldenrodyellow' : getBackgroundColor(useCase.uid, columnKey)}"
-                :disabled="useCase.visibilityFromAttackTechnique"
+                :style="{backgroundColor: useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride ? 'lightgoldenrodyellow' : getBackgroundColor(useCase.uid, columnKey)}"
+                :disabled="useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride"
               />
 
               <!-- Editable ID fields -->
@@ -395,12 +340,23 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
                   </select>
                 </template>
 
+                <!-- Editable Visibility Override checkbox -->
+                <template v-if="columnKey === 'visibilityFromAttackTechniqueOverride'">
+                  <input 
+                    type="checkbox"
+                    :checked="useCase[columnKey]"
+                    @change="(event) => {
+                      updateObjectField(useCase.uid, columnKey, event.target.checked);
+                      if (!event.target.checked) {
+                        // Reset attackTechniqueId to its previous value when visibilityFromAttackTechniqueOverride is unchecked
+                        updateObjectField(useCase.uid, 'attackTechniqueId', useCase.attackTechniqueId);
+                      }
+                    }"
+                    :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
+                  />
+                </template>
 
                 <!-- Any other editable fields -->
-                <!-- <input 
-                  v-else
-                  :value="item[columnKey]" 
-                /> -->
               </template>
             </template>
 
@@ -408,10 +364,10 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
             <!-- Non-editable fields -->
             <template v-else-if="columnKey === 'visibility'"> 
               <div class="visibility-uneditable" style="background-color: lightgoldenrodyellow;">
-              {{ formatVisibility(useCase[columnKey]) }}
+                {{ formatVisibility(useCase[columnKey]) }}
               </div>
             </template>
-              
+            
             <template v-else>
               {{ useCase[columnKey] }}
             </template>
@@ -440,9 +396,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
   </div>
 </template>
 
-
 <style scoped>
-
 .sheet-tabs {
   display: flex;
   background-color: #f8f9fa;
@@ -488,7 +442,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
   table-layout: fixed; 
 }
 
-/* Defaul cell settings, will be overwritten later. But gives more consistent feel. */
+/* Default cell settings, will be overwritten later. But gives more consistent feel. */
 th, td, input {
   width: 150px;
   border: 2px solid rgb(42, 42, 42);
@@ -553,7 +507,7 @@ button.remove-button {
   width: 40px
 }
 
-th.use-case-name {
+th.name {
   width: 200px;
 }
 
@@ -581,10 +535,25 @@ select.attack-technique {
   width: 244px;
 }
 
+th.override {
+  width: 80px;
+}
+
 input, .visibility-uneditable {
-  display: flex;
+
   justify-content: center;
   align-items: center;
   height: 50px;
+}
+
+input[type=checkbox] {
+  /* display: flex; */
+  /* margin: 4px 0 0; */
+  /* line-height: normal; */
+  /* width: 30px;
+  height: 30px; */
+  accent-color: silver;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 </style>
