@@ -339,11 +339,12 @@ export const magmaStore = defineStore('magma', {
           }
         }
 
-        // If attack technique, override, visibility, implementation or effectiveness was changed, we recompute the weight percentage.
+        // Update the use case.
+        Object.assign(useCase, updatedFields);
+
+        // Recompute the weight (strictly only necessary if at least one of the following updatedFields was changed: [attackTechniqueId, visibilityFromAttackTechniqueOverride, visibility, implementation, effectiveness]).
         useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
 
-        // Update use case.
-        Object.assign(useCase, updatedFields);
         if (domain) {
           useCase.domain = domain;
         }
