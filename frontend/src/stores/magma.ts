@@ -195,17 +195,17 @@ export const magmaStore = defineStore('magma', {
         return;
       }
       
-      // If visibilityFromAttackTechniqueOverride is set to true, compute the weight BEFORE setting the visibility based on the attack technique.
-      if (useCase.visibilityFromAttackTechniqueOverride) {
-        useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
-      }
-
       // If an attackTechnique is set, check that it exists and is valid.
       if (useCase.attackTechniqueId) {
         if (tactics.domainTechniqueByIdMap.hasOwnProperty(useCase.attackTechniqueId)) {
           // If the useCase.attackTechniqueId is valid, update the use case visibility based on the visibility of the attack technique.
-          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
-          useCase.visibilityFromAttackTechnique = true;
+            // Handle a possible visibility override.
+            if (!useCase.visibilityFromAttackTechniqueOverride) {
+              useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
+              useCase.visibilityFromAttackTechnique = true;
+            } else {
+              useCase.visibilityFromAttackTechnique = false;
+            }
         }
       }
     
@@ -215,10 +215,8 @@ export const magmaStore = defineStore('magma', {
         useCase.visibilityFromAttackTechnique = false;
       }
 
-      // If visibilityFromAttackTechniqueOverride is set to false, compute the weight AFTER setting the visibility from the attack technique.
-      if (!useCase.visibilityFromAttackTechniqueOverride) {
-        useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
-      }
+      // Compute the weight.
+      useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
     
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
       useCase['uid'] = uuidv4();
