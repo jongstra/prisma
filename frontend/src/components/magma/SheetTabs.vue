@@ -536,7 +536,7 @@ select.attack-technique {
 }
 
 th.override {
-  width: 80px;
+  width: 88px;
 }
 
 input, .visibility-uneditable {
@@ -550,8 +550,7 @@ input, .visibility-uneditable {
   background-color: lightgoldenrodyellow;
 }
 
-
 input[type=checkbox] {
-  accent-color: silver;
+  accent-color: white;
 }
 </style>

@@ -313,8 +313,10 @@ export const magmaStore = defineStore('magma', {
           if (updatedFields.attackTechniqueId === 'none') {
             useCase.visibilityFromAttackTechnique = false;
           } else {
-            const attackTechniqueId = updatedFields.attackTechniqueId;
-            useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueId);
+            if (!useCase.visibilityFromAttackTechniqueOverride) {
+              const attackTechniqueId = updatedFields.attackTechniqueId;
+              useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueId);
+            }
             useCase.visibilityFromAttackTechnique = true;
           }
         }
