@@ -13,6 +13,9 @@ interface UseCase {
   visibilityFromAttackTechnique: boolean;
   visibilityFromAttackTechniqueOverride: boolean;
   visibility: number | null;
+  implementation: number | null;
+  effectiveness: number | null;
+  weight: number | null;
   invalidVisibility: boolean;
   invalidId: boolean;
   invalidParentIds: boolean;
@@ -116,6 +119,9 @@ export const magmaStore = defineStore('magma', {
         visibilityFromAttackTechnique: false,
         visibilityFromAttackTechniqueOverride: false,
         visibility: null,
+        implementation: null,
+        effectiveness: null,
+        weight: null,
         uid: uid,
         invalidVisibility: false,
         invalidId: false,
@@ -188,6 +194,12 @@ export const magmaStore = defineStore('magma', {
         console.log(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case has not been added.`);
         return;
       }
+
+      // Check that the visibility, implementation and effectiveness values are valid (between 0 and 100).
+      // Todo: write check.
+
+      // Compute the weight.
+      useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
 
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
       useCase['uid'] = uuidv4();
@@ -266,11 +278,18 @@ export const magmaStore = defineStore('magma', {
       useCases.forEach((useCase) => {
         const parentUseCases = this.getParentUseCases(useCase);
         const childUseCases = this.getChildUseCasesById(useCase.id);
-        const meanVisibility = this.calculateMeanVisibility(childUseCases);
+        // const meanVisibility = this.calculateMeanVisibility(childUseCases);
 
         // Only recompute the visibility for a use case on L1 or L2.
         if (useCase.level != 3) {
+          const meanVisibility = childUseCases.reduce((sum, obj) => sum + (Number(obj['visibility']) || 0), 0) / childUseCases.length;
+          const meanImplementation = childUseCases.reduce((sum, obj) => sum + (Number(obj['implementation']) || 0), 0) / childUseCases.length;
+          const meanEffectiveness = childUseCases.reduce((sum, obj) => sum + (Number(obj['effectiveness']) || 0), 0) / childUseCases.length;
+          const meanWeight = childUseCases.reduce((sum, obj) => sum + (Number(obj['weight']) || 0), 0) / childUseCases.length;
           useCase['visibility'] = meanVisibility;
+          useCase['implementation'] = meanImplementation;
+          useCase['effectiveness'] = meanEffectiveness;
+          useCase['weight'] = meanWeight;
         }
 
         // If this use case has parents, check if they also need to be updated based on the new values of this use case.
@@ -281,22 +300,21 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-
-    calculateMeanVisibility(useCases: Array<UseCase>) {
-      if (useCases.length === 0) return 0;
+    // calculateMeanVisibility(useCases: Array<UseCase>) {
+    //   if (useCases.length === 0) return 0;
       
-      const validUseCases = useCases.filter(useCase => {
-        return !useCase.invalidVisibility && !useCase.invalidId && !useCase.invalidParentIds;
-      });
+    //   const validUseCases = useCases.filter(useCase => {
+    //     return !useCase.invalidVisibility && !useCase.invalidId && !useCase.invalidParentIds;
+    //   });
 
-      // If no valid use cases are left, return 0.
-      if (validUseCases.length === 0) return 0;
+    //   // If no valid use cases are left, return 0.
+    //   if (validUseCases.length === 0) return 0;
     
-      // Calculate and return the mean of the valid visibility values.
-      const meanVisibility = validUseCases.reduce((sum, obj) => sum + (Number(obj['visibility']) || 0), 0) / validUseCases.length;
+    //   // Calculate and return the mean of the valid visibility values.
+    //   const meanVisibility = validUseCases.reduce((sum, obj) => sum + (Number(obj['visibility']) || 0), 0) / validUseCases.length;
       
-      return meanVisibility;
-    },
+    //   return meanVisibility;
+    // },
     
 
     updateUseCase(uid: string, updatedFields: {}, domain?: string) {
@@ -320,6 +338,9 @@ export const magmaStore = defineStore('magma', {
             useCase.visibilityFromAttackTechnique = true;
           }
         }
+
+        // If attack technique, override, visibility, implementation or effectiveness was changed, we recompute the weight percentage.
+        useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
 
         // Update use case.
         Object.assign(useCase, updatedFields);

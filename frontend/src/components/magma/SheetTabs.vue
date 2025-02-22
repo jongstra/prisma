@@ -16,14 +16,9 @@ const L1Headers = {
   name: 'Use Case Name',
   id: 'ID',
   visibility: 'Visibility %',
-  a: 'a',
-  b: 'b',
-  c: 'c',
-  d: 'd',
-  e: 'e',
-  f: 'f',
-  g: 'g',
-  h: 'h',
+  implementation: 'Implementation %',
+  effectiveness: "Effectiveness %",
+  weight: "Weight %",
 };
 
 const L2Headers = {
@@ -31,6 +26,9 @@ const L2Headers = {
   id: 'ID',
   parentIds: 'Parent Use Case',
   visibility: 'Visibility %',
+  implementation: 'Implementation %',
+  effectiveness: "Effectiveness %",
+  weight: "Weight %",
 };
 
 const L3Headers = {
@@ -38,15 +36,18 @@ const L3Headers = {
   id: 'ID',
   parentIds: 'Parent Use Case',
   attackTechniqueId: 'ATT&CK Technique',
-  visibility: 'Visibility %',
   visibilityFromAttackTechniqueOverride: 'Override',
+  visibility: 'Visibility %',
+  implementation: 'Implementation %',
+  effectiveness: "Effectiveness %",
+  weight: "Weight %",
 };
 
 // Define editable fields for each tab
 const editableFieldsMap = {
-  L1: { name: true, id: true, visibility: false },
-  L2: { name: true, id: true, parentIds: true, visibility: false },
-  L3: { name: true, id: true, parentIds: true, attackTechniqueId: true, visibilityFromAttackTechniqueOverride: true, visibility: true}
+  L1: { name: true, id: true, },
+  L2: { name: true, id: true, parentIds: true, },
+  L3: { name: true, id: true, parentIds: true, attackTechniqueId: true, visibilityFromAttackTechniqueOverride: true, visibility: true, implementation: true, effectiveness: true }
 };
 
 const activeTabData = computed(() => {
@@ -145,7 +146,7 @@ const getBackgroundColor = (uid: string, field: string) => {
     const visibility = useCase.visibility;
     const validVisibility = !isNaN(visibility) && visibility >= 0 && visibility <= 100;
     if (validVisibility) {
-      return 'rgb(246, 246, 246)';
+      return 'white'; //'rgb(246, 246, 246)';
     } else {
       return 'Crimson';
     }
@@ -206,7 +207,7 @@ const parentLevelUseCases = computed(() => {
     .sort((a, b) => a.id.localeCompare(b.id));
 });
 
-const formatVisibility = (number: any) => {
+const formatPercentage = (number: any) => {
   number = Number(number);
   return number.toFixed(2);
 };
@@ -232,9 +233,9 @@ const validateAndFormat = (event: Event) => {
   // Check if the parsed value is within the range [0, 100]
   if (!isNaN(parsedValue)) {
     if (parsedValue < 0) {
-      inputElement.value = '0.00';
+      inputElement.value = '0';
     } else if (parsedValue > 100) {
-      inputElement.value = '100.00';
+      inputElement.value = '100';
     } else {
       // Set the input element to the parsed value (this prevents the user from inputting numbers with leading zeroes in the input field).
       inputElement.value = parsedValue;
@@ -242,8 +243,8 @@ const validateAndFormat = (event: Event) => {
   }
 };
 
-magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, attackTechniqueId: 'T1595', domain: 'enterprise-attack'});
-magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37, domain: 'enterprise-attack'});
+magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, attackTechniqueId: 'T1595', implementation: 12, effectiveness: 50, domain: 'enterprise-attack'});
+magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 37,  implementation: 23, effectiveness: 67, domain: 'enterprise-attack'});
 magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case', domain: 'enterprise-attack'});
 magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', domain: 'enterprise-attack'});
 </script>
@@ -268,7 +269,15 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
         <tr>
           <!-- Render column headers. -->
           <th class="remove-col" @click="confirmRemoveUseCaseLevel()" style="background-color: #e73030; color: white; cursor: pointer;">&#10806;</th>  <!-- Character found in list: https://www.w3schools.com/charsets/ref_utf_math.asp -->
-          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ name: columnName === 'Use Case Name', attack: columnName === 'ATT&CK Technique', parent: columnName === 'Parent Use Case', override: columnName === 'Override'}">
+          <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ name: columnName === 'Use Case Name',
+                                                                                    id: columnName === 'ID',
+                                                                                    parent: columnName === 'Parent Use Case',
+                                                                                    attack: columnName === 'ATT&CK Technique',
+                                                                                    override: columnName === 'Override',
+                                                                                    visibility: columnName === 'Visibility %',
+                                                                                    implementation: columnName === 'Implementation %',
+                                                                                    effectiveness: columnName === 'Effectiveness %',
+                                                                                    weight: columnName === 'Weight %',}">
             {{ columnName }}
           </th>
         </tr>
@@ -297,14 +306,24 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
                 :disabled="useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride"
               />
 
+              <!-- Editable Implementation fields -->
+              <input
+                v-if="columnKey === 'implementation'"
+                type="number"
+                :value="useCase[columnKey]"
+                @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
+              />
+
+              <!-- Editable Effectiveness fields -->
+              <input
+                v-if="columnKey === 'effectiveness'"
+                type="number"
+                :value="useCase[columnKey]"
+                @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
+              />
+
               <!-- Editable ID fields -->
               <template v-else>
-                <input 
-                  v-if="columnKey === 'id'"
-                  :value="useCase[columnKey]"
-                  @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.value);}"
-                  :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
-                />
 
                 <!-- Editable Use Case Name div -->
                 <div
@@ -316,7 +335,18 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
                 >
                   {{ useCase[columnKey] }}
                 </div>
-                
+
+                <!-- Editable ID div -->
+                <div
+                  class="use-case-id-editable"
+                  v-if="columnKey === 'id'"
+                  contenteditable="true"
+                  @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
+                  :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
+                >
+                  {{ useCase[columnKey] }}
+                </div>
+
                 <!-- Editable Parent Use Case selector -->
                 <template v-if="columnKey === 'parentIds'">
                   <select 
@@ -364,10 +394,28 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
             </template>
 
 
-            <!-- Non-editable fields -->
+            <!-- Uneditable fields -->
             <template v-else-if="columnKey === 'visibility'">
-              <div class="visibility-uneditable">
-                {{ formatVisibility(useCase[columnKey]) }}
+              <div class="uneditable">
+                {{ formatPercentage(useCase[columnKey]) }}
+              </div>
+            </template>
+
+            <template v-else-if="columnKey === 'implementation'">
+              <div class="uneditable">
+                {{ formatPercentage(useCase[columnKey]) }}
+              </div>
+            </template>
+
+            <template v-else-if="columnKey === 'effectiveness'">
+              <div class="uneditable">
+                {{ formatPercentage(useCase[columnKey]) }}
+              </div>
+            </template>
+
+            <template v-else-if="columnKey === 'weight'">
+              <div class="uneditable">
+                {{ formatPercentage(useCase[columnKey]) }}
               </div>
             </template>
             
@@ -398,6 +446,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .sheet-tabs {
@@ -447,7 +496,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
 
 /* Default cell settings, will be overwritten later. But gives more consistent feel. */
 th, td, input {
-  width: 150px;
+  width: 140px;
   border: 2px solid rgb(42, 42, 42);
   border-radius: 4px;
   background-color: white;
@@ -464,7 +513,7 @@ tr {
   font-size: 14px;
 }
 
-input, .use-case-name-editable {
+input, .use-case-name-editable, .use-case-id-editable {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -510,10 +559,6 @@ button.remove-button {
   width: 40px
 }
 
-th.name {
-  width: 200px;
-}
-
 select {
   height: 50px;
   text-align: center;
@@ -524,32 +569,56 @@ select {
   overflow-wrap: break-word;
 }
 
+th.name {
+  width: 175px;
+}
+
+th.id {
+  width: 100px;
+}
+
 th.parent {
-  width: 250px;
+  width: 150px;
 }
 select.parent-ids {
-  width: 244px;
+  width: 144px;
 }
 
 th.attack {
-  width: 250px;
+  width: 170px;
 }
 select.attack-technique {
-  width: 244px;
+  width: 164px;
 }
 
 th.override {
-  width: 88px;
+  width: 85px;
 }
 
-input, .visibility-uneditable {
+th.visibility {
+  width: 105px;
+}
+
+th.implementation {
+  width: 155px;
+}
+
+th.effectiveness {
+  width: 140px;
+}
+
+th.weight {
+  width: 90px;
+}
+
+input, .uneditable {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
 }
 
-.visibility-uneditable {
+.uneditable {
   background-color: lightgoldenrodyellow;
 }
 
