@@ -539,7 +539,8 @@ th.override {
   width: 80px;
 }
 
-input {
+input, .visibility-uneditable {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
@@ -547,10 +548,6 @@ input {
 
 .visibility-uneditable {
   background-color: lightgoldenrodyellow;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
 }
 
 
