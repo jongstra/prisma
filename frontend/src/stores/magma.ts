@@ -134,35 +134,36 @@ export const magmaStore = defineStore('magma', {
     
 
     addExistingUseCase(useCase: any) {
-      
+  
       // Ensure that the use case has an ID.
       if (!useCase.id) {
         throw new Error(`The use case "${JSON.stringify(useCase)}" has no ID. Use case has not been added.`); 
       }
-
-      // Catch duplicate ID's.
+    
+      // Catch duplicate IDs.
       if (this.getUseCaseById(useCase['id'])) {
         console.log(`Use case with id ${useCase['id']} already exists. Use case has not been added.`); 
         return;
       };
-
+    
       // Check that the use case has a level.
       if (!useCase.level) {
         console.log(`No use case level found for use case "${JSON.stringify(useCase)}". Use case has not been added.`);
+        return;
       }
-
+    
       // Check that the use case level is valid.
       if (useCase.level !== 1 && useCase.level !== 2 && useCase.level !== 3) {
         console.log(`Use case level is incorrect for use case "${JSON.stringify(useCase)}". Use case has not been added.`);
         return;
       }
-
+    
       // Check that the level in the useCase.level and useCase.id are consistent with each other.
       if (useCase.level !== parseInt(useCase['id'].substring(1, 2))) {
         console.log(`Use case level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
         return;
       }
-
+    
       // If an attackTechnique is set, check that it exists and is valid.
       if (useCase.attackTechniqueId) {
         if (tactics.domainTechniqueByIdMap.hasOwnProperty(useCase.attackTechniqueId)) {
@@ -171,36 +172,47 @@ export const magmaStore = defineStore('magma', {
           useCase.visibilityFromAttackTechnique = true;
         }
       }
-
+    
       // If no attackTechnique is set, use the default value 'none'.
       if (!useCase.attackTechniqueId) {
         useCase.attackTechniqueId = 'none';
         useCase.visibilityFromAttackTechnique = false;
       }
-
+    
       // If visibilityFromAttackTechniqueOverride is not set, use the default value 'false'.
       if (!useCase.visibilityFromAttackTechniqueOverride) {
         useCase.visibilityFromAttackTechniqueOverride = false;
       }
-
+    
       // Ensure that visibilityFromAttackTechniqueOverride is a boolean.
       if (typeof useCase.visibilityFromAttackTechniqueOverride !== 'boolean') {
         console.log(`Use case has an invalid (non-boolean) value for property visibilityFromAttackTechniqueOverride. Use case has not been added.`);
         return;
       }
-
+    
       // Check that the domain is set to a valid value.
       if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
         console.log(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case has not been added.`);
         return;
       }
-
+    
       // Check that the visibility, implementation and effectiveness values are valid (between 0 and 100).
-      // Todo: write check.
-
+      if (useCase.visibility < 0 || useCase.visibility > 100) {
+        console.log(`Use case visibility "${useCase.visibility}" is not valid. It must be between 0 and 100. Use case has not been added.`);
+        return;
+      }
+      if (useCase.implementation < 0 || useCase.implementation > 100) {
+        console.log(`Use case implementation "${useCase.implementation}" is not valid. It must be between 0 and 100. Use case has not been added.`);
+        return;
+      }
+      if (useCase.effectiveness < 0 || useCase.effectiveness > 100) {
+        console.log(`Use case effectiveness "${useCase.effectiveness}" is not valid. It must be between 0 and 100. Use case has not been added.`);
+        return;
+      }
+    
       // Compute the weight.
       useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
-
+    
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
       useCase['uid'] = uuidv4();
       useCase['invalidVisibility'] = false;
@@ -213,7 +225,7 @@ export const magmaStore = defineStore('magma', {
       if (useCase.level < 3) {
         this.recomputeUseCases([this.getUseCaseById(useCase.id)!]);
       }
-
+    
       // If a L3 use case was added, recompute the values of any parents.
       if (useCase.level > 1) {
         if (useCase.parentIds) {
