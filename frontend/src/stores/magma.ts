@@ -22,6 +22,18 @@ interface UseCase {
   domain: string;
 }
 
+interface UpdatedFields {
+  name?: string;
+  id?: string;
+  parentIds?: Array<string>;
+  attackTechniqueId?: string;
+  visibilityFromAttackTechniqueOverride?: boolean;
+  visibility?: number | null;
+  implementation?: number | null;
+  effectiveness?: number | null;
+}
+
+
 export const magmaStore = defineStore('magma', {
   state: () => ({
     useCases: [] as UseCase[],
@@ -316,25 +328,8 @@ export const magmaStore = defineStore('magma', {
       });
     },
 
-
-    // calculateMeanVisibility(useCases: Array<UseCase>) {
-    //   if (useCases.length === 0) return 0;
-      
-    //   const validUseCases = useCases.filter(useCase => {
-    //     return !useCase.invalidVisibility && !useCase.invalidId && !useCase.invalidParentIds;
-    //   });
-
-    //   // If no valid use cases are left, return 0.
-    //   if (validUseCases.length === 0) return 0;
     
-    //   // Calculate and return the mean of the valid visibility values.
-    //   const meanVisibility = validUseCases.reduce((sum, obj) => sum + (Number(obj['visibility']) || 0), 0) / validUseCases.length;
-      
-    //   return meanVisibility;
-    // },
-    
-
-    updateUseCase(uid: string, updatedFields: {}, domain?: string) {
+    updateUseCase(uid: string, updatedFields: UpdatedFields, domain?: string) {
       const useCase = this.getUseCaseByUid(uid, domain);
 
       if (useCase) {
@@ -360,7 +355,7 @@ export const magmaStore = defineStore('magma', {
         Object.assign(useCase, updatedFields);
 
         // Recompute the weight (strictly only necessary if at least one of the following updatedFields was changed: [attackTechniqueId, visibilityFromAttackTechniqueOverride, visibility, implementation, effectiveness]).
-        useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
+        useCase.weight = (useCase.visibility??0/100) * (useCase.implementation??0/100) * (useCase.effectiveness??0/100) * 100;
 
         if (domain) {
           useCase.domain = domain;

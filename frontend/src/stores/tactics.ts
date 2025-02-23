@@ -57,8 +57,8 @@ interface Domain {
   data_components: Attributes;
   groups: Attributes;
   softwares: Attributes;
-  only_show_selected_groups: false,
-  only_show_selected_components: false,
+  only_show_selected_groups: boolean;
+  only_show_selected_components: boolean;
 }
 
 interface TacticStats {
@@ -198,7 +198,7 @@ export const tacticsStore = defineStore('tactics', {
         return technique.visibility_ratio * 100;
       }
     
-      return undefined;
+      return null;
     },
     
 
