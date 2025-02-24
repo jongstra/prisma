@@ -96,6 +96,33 @@ const addNewUseCase = () => {
   magma.addNewUseCase(level, tactics.domain);
 };
 
+const exportYaml = () => {
+  const yamlData = magma.exportUseCases();
+  const blob = new Blob([yamlData], { type: 'text/yaml' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'use_cases.yaml';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+};
+
+const importYaml = (event: Event) => {
+  magma.removeAllUseCases(); // Clear any existing use cases before importing new ones.
+  const fileInput = event.target as HTMLInputElement;
+  const file = fileInput.files?.[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const yamlContent = e.target?.result as string;
+      magma.importUseCases(yamlContent);
+      fileInput.value = ''; // Reset the file input value (if the user uploads the same file again to 'reset', we want to register a change so the file gets processed).
+    };
+    reader.readAsText(file);
+  }
+};
+
 const confirmRemoveUseCase = (useCase: any) => {
   Swal.fire({
     title: `Delete use case '${useCase.id}'?`,
@@ -247,6 +274,7 @@ magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Samp
 magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 85,  implementation: 80, effectiveness: 95, domain: 'enterprise-attack'});
 magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case', domain: 'enterprise-attack'});
 magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', domain: 'enterprise-attack'});
+
 </script>
 
 <template>
@@ -260,7 +288,23 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
     >
       {{ tab }}
     </button>
+      <input
+        id="importYamlFile"
+        type="file"
+        @change="importYaml"
+        style="display: none;"
+      />
+      <label for="importYamlFile" class="load-button">Load YAML</label>
+      <label class="save-button" @click="exportYaml">Save YAML</label>
   </div>
+
+
+<!-- 
+TODO:
+- Button format hetzelfde maken (in code block hierboven).
+- Buttons restylen (alleen kleur aanpassen: gelijk maken aan dettect upload button?)
+-->
+
 
   <!-- Scrolling container -->
   <div class="scroll-container">
@@ -456,7 +500,7 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
 }
 
 .sheet-tab {
-  width: 150px; /* Set the width of each tab */
+  width: 120px; /* Set the width of each tab */
   padding: 8px;
   margin-right: 2px;
   background-color: #ddd;
@@ -625,4 +669,28 @@ input, .uneditable {
 input[type=checkbox] {
   accent-color: white;
 }
+
+.load-button, .save-button {
+  background-color: #d61b1b;
+  border: 2px solid black;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  padding: 5px 25px;
+  margin-bottom: 1px;
+  cursor: pointer;
+}
+
+.load-button {
+  margin-left: 130px;
+}
+
+.save-button {
+  margin-left: 10px;
+}
+
+.load-button:hover, .save-button:hover {
+  background-color: rgb(214, 133, 27);
+  color: rgb(255, 255, 255);
+}
+
 </style>

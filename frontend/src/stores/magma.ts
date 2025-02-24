@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
 import { tacticsStore } from '@/stores/tactics';
+import * as yaml from 'yaml';
+
 const tactics = tacticsStore();
 
 interface UseCase {
@@ -147,14 +149,20 @@ export const magmaStore = defineStore('magma', {
 
     addExistingUseCase(useCase: any) {
   
+      // Check that the domain is set to a valid value.
+      if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
+        console.log(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case has not been added.`);
+        return;
+      }
+
       // Ensure that the use case has an ID.
       if (!useCase.id) {
         throw new Error(`The use case "${JSON.stringify(useCase)}" has no ID. Use case has not been added.`); 
       }
     
       // Catch duplicate IDs.
-      if (this.getUseCaseById(useCase['id'])) {
-        console.log(`Use case with id ${useCase['id']} already exists. Use case has not been added.`); 
+      if (this.getUseCaseById(useCase['id'], useCase.domain)) {
+        console.log(`Use case with id "${useCase['id']}" in domain "${useCase.domain}" already exists. Use case has not been added.`); 
         return;
       };
     
@@ -173,12 +181,6 @@ export const magmaStore = defineStore('magma', {
       // Check that the level in the useCase.level and useCase.id are consistent with each other.
       if (useCase.level !== parseInt(useCase['id'].substring(1, 2))) {
         console.log(`Use case level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
-        return;
-      }
-
-      // Check that the domain is set to a valid value.
-      if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
-        console.log(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case has not been added.`);
         return;
       }
     
@@ -379,5 +381,45 @@ export const magmaStore = defineStore('magma', {
         }
       });
     },
+
+
+    exportUseCases() {
+      const exportedUseCases = this.useCases.map(useCase => ({
+        id: useCase.id,
+        parentIds: useCase.parentIds,
+        name: useCase.name,
+        level: useCase.level,
+        attackTechniqueId: useCase.attackTechniqueId,
+        visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
+        visibility: useCase.visibility,
+        implementation: useCase.implementation,
+        effectiveness: useCase.effectiveness,
+        domain: useCase.domain
+      }));
+    
+      return yaml.stringify(exportedUseCases);
+    },
+
+
+    importUseCases(yamlData: string) {
+      const importedUseCases = yaml.parse(yamlData);
+
+      importedUseCases.forEach(useCase => {
+        this.addExistingUseCase({
+          id: useCase.id,
+          parentIds: useCase.parentIds,
+          name: useCase.name,
+          level: useCase.level,
+          attackTechniqueId: useCase.attackTechniqueId,
+          visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
+          visibility: useCase.visibility,
+          implementation: useCase.implementation,
+          effectiveness: useCase.effectiveness,
+          domain: useCase.domain
+        });
+      });
+    },
+
+
   }
 });
