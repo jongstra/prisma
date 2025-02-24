@@ -102,7 +102,7 @@ const exportYaml = () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'use_cases.yaml';
+  a.download = 'magma_data.yaml';
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -297,14 +297,6 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
       <label for="importYamlFile" class="load-button">Load YAML</label>
       <label class="save-button" @click="exportYaml">Save YAML</label>
   </div>
-
-
-<!-- 
-TODO:
-- Button format hetzelfde maken (in code block hierboven).
-- Buttons restylen (alleen kleur aanpassen: gelijk maken aan dettect upload button?)
--->
-
 
   <!-- Scrolling container -->
   <div class="scroll-container">
