@@ -109,10 +109,10 @@ const exportYaml = () => {
 };
 
 const importYaml = (event: Event) => {
-  magma.removeAllUseCases(); // Clear any existing use cases before importing new ones.
   const fileInput = event.target as HTMLInputElement;
   const file = fileInput.files?.[0];
   if (file) {
+    magma.removeAllUseCases(); // Clear any existing use cases before importing new ones.
     const reader = new FileReader();
     reader.onload = (e) => {
       const yamlContent = e.target?.result as string;
