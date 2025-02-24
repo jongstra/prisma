@@ -161,19 +161,18 @@ export const tacticsStore = defineStore('tactics', {
     },
 
 
-    domainTechniqueByIdMap: (state) => {
+    domainTechniqueByIdMap: (state) => (domain) => {
       let tactics;
-    
-      if (state.domain === 'enterprise-attack') {
+      if (domain === 'enterprise-attack') {
         tactics = state.enterprise?.tactics;
-      } else if (state.domain === 'mobile-attack') {
+      } else if (domain === 'mobile-attack') {
         tactics = state.mobile?.tactics;
-      } else if (state.domain === 'ics-attack') {
+      } else if (domain === 'ics-attack') {
         tactics = state.ics?.tactics;
       }
-    
+
       let domainTechniqueByIdMap = {};
-    
+      
       if (tactics) {
         tactics.forEach(tactic => {
           tactic.techniques.forEach(technique => {
@@ -186,13 +185,13 @@ export const tacticsStore = defineStore('tactics', {
           });
         });
       }
-    
+
       return domainTechniqueByIdMap;
     },
-    
 
-    getDomainTechniqueVisibilityPercentageById: (state) => (id: string) => {
-      let technique = state.domainTechniqueByIdMap[id];
+
+    getDomainTechniqueVisibilityPercentageById: (state) => (id: string, domain: string) => {
+      let technique = state.domainTechniqueByIdMap(domain)[id];
     
       if (technique) {
         return technique.visibility_ratio * 100;

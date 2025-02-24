@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
 import { tacticsStore } from '@/stores/tactics';
 import * as yaml from 'yaml';
+import Swal from 'sweetalert2';
 
 const tactics = tacticsStore();
 
@@ -151,78 +152,71 @@ export const magmaStore = defineStore('magma', {
   
       // Check that the domain is set to a valid value.
       if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
-        console.log(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case has not been added.`);
-        return;
+        throw new Error(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case: ${JSON.stringify(useCase)}`);
       }
 
       // Ensure that the use case has an ID.
       if (!useCase.id) {
-        throw new Error(`The use case "${JSON.stringify(useCase)}" has no ID. Use case has not been added.`); 
+        throw new Error(`The use case has no ID. Use case: ${JSON.stringify(useCase)}`);
       }
-    
+
       // Catch duplicate IDs.
-      if (this.getUseCaseById(useCase['id'], useCase.domain)) {
-        console.log(`Use case with id "${useCase['id']}" in domain "${useCase.domain}" already exists. Use case has not been added.`); 
-        return;
-      };
-    
+      if (this.getUseCaseById(useCase.id, useCase.domain)) {
+        throw new Error(`Use case with id "${useCase.id}" in domain "${useCase.domain}" already exists. Use case: ${JSON.stringify(useCase)}`);
+      }
+
       // Check that the use case has a level.
       if (!useCase.level) {
-        console.log(`No use case level found for use case "${JSON.stringify(useCase)}". Use case has not been added.`);
-        return;
+        throw new Error(`No use case level found. Use case: ${JSON.stringify(useCase)}`);
       }
-    
+
       // Check that the use case level is valid.
       if (useCase.level !== 1 && useCase.level !== 2 && useCase.level !== 3) {
-        console.log(`Use case level is incorrect for use case "${JSON.stringify(useCase)}". Use case has not been added.`);
-        return;
+        throw new Error(`Use case level is incorrect. Use case: ${JSON.stringify(useCase)}`);
       }
-    
+
       // Check that the level in the useCase.level and useCase.id are consistent with each other.
-      if (useCase.level !== parseInt(useCase['id'].substring(1, 2))) {
-        console.log(`Use case level "${useCase.level}" and usecase ID "${useCase.id}" are not consistent with each other. Use case has not been added.`);
-        return;
+      if (useCase.level !== parseInt(useCase.id.substring(1, 2))) {
+        throw new Error(`Use case level "${useCase.level}" and use case ID "${useCase.id}" are not consistent with each other. Use case: ${JSON.stringify(useCase)}`);
       }
-    
+
       // Check that the visibility, implementation and effectiveness values are valid (between 0 and 100).
       if (useCase.visibility < 0 || useCase.visibility > 100) {
-        console.log(`Use case visibility "${useCase.visibility}" is not valid. It must be between 0 and 100. Use case has not been added.`);
-        return;
+        throw new Error(`Use case visibility "${useCase.visibility}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
       if (useCase.implementation < 0 || useCase.implementation > 100) {
-        console.log(`Use case implementation "${useCase.implementation}" is not valid. It must be between 0 and 100. Use case has not been added.`);
-        return;
+        throw new Error(`Use case implementation "${useCase.implementation}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
       if (useCase.effectiveness < 0 || useCase.effectiveness > 100) {
-        console.log(`Use case effectiveness "${useCase.effectiveness}" is not valid. It must be between 0 and 100. Use case has not been added.`);
-        return;
+        throw new Error(`Use case effectiveness "${useCase.effectiveness}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
 
       // If visibilityFromAttackTechniqueOverride is not set, use the default value 'false'.
       if (!useCase.visibilityFromAttackTechniqueOverride) {
         useCase.visibilityFromAttackTechniqueOverride = false;
       }
-    
+
       // Ensure that visibilityFromAttackTechniqueOverride is a boolean.
       if (typeof useCase.visibilityFromAttackTechniqueOverride !== 'boolean') {
-        console.log(`Use case has an invalid (non-boolean) value for property visibilityFromAttackTechniqueOverride. Use case has not been added.`);
-        return;
+        throw new Error(`Use case has an invalid (non-boolean) value for property visibilityFromAttackTechniqueOverride. Use case: ${JSON.stringify(useCase)}`);
       }
-      
+
       // If an attackTechnique is set, check that it exists and is valid.
-      if (useCase.attackTechniqueId) {
-        if (tactics.domainTechniqueByIdMap.hasOwnProperty(useCase.attackTechniqueId)) {
+      if (useCase.attackTechniqueId && useCase.attackTechniqueId !== 'none') {
+        if (!tactics.domainTechniqueByIdMap(useCase.domain).hasOwnProperty(useCase.attackTechniqueId)) {
+          throw new Error(`Use case attackTechniqueId "${useCase.attackTechniqueId}" does not exist in the specified domain. Use case: ${JSON.stringify(useCase)}`);
+        } else {
           // If the useCase.attackTechniqueId is valid, update the use case visibility based on the visibility of the attack technique.
-            // Handle a possible visibility override.
-            if (!useCase.visibilityFromAttackTechniqueOverride) {
-              useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
-              useCase.visibilityFromAttackTechnique = true;
-            } else {
-              useCase.visibilityFromAttackTechnique = false;
-            }
+          // Handle a possible visibility override.
+          if (!useCase.visibilityFromAttackTechniqueOverride) {
+            useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain)??0;
+            useCase.visibilityFromAttackTechnique = true;
+          } else {
+            useCase.visibilityFromAttackTechnique = false;
+          }
         }
       }
-    
+
       // If no attackTechnique is set, use the default value 'none'.
       if (!useCase.attackTechniqueId) {
         useCase.attackTechniqueId = 'none';
@@ -230,21 +224,21 @@ export const magmaStore = defineStore('magma', {
       }
 
       // Compute the weight.
-      useCase.weight = (useCase.visibility/100) * (useCase.implementation/100) * (useCase.effectiveness/100) * 100;
-    
+      useCase.weight = (useCase.visibility / 100) * (useCase.implementation / 100) * (useCase.effectiveness / 100) * 100;
+
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
-      useCase['uid'] = uuidv4();
-      useCase['invalidVisibility'] = false;
-      useCase['invalidId'] = false;
-      useCase['invalidParentIds'] = false;
-      useCase['domain'] = useCase.domain;
+      useCase.uid = uuidv4();
+      useCase.invalidVisibility = false;
+      useCase.invalidId = false;
+      useCase.invalidParentIds = false;
+      useCase.domain = useCase.domain;
       this.useCases.push(useCase);
-      
+
       // If a L1 or L2 use case was added, recompute its values after adding.
       if (useCase.level < 3) {
         this.recomputeUseCases([this.getUseCaseById(useCase.id)!]);
       }
-    
+
       // If a L3 use case was added, recompute the values of any parents.
       if (useCase.level > 1) {
         if (useCase.parentIds) {
@@ -252,6 +246,7 @@ export const magmaStore = defineStore('magma', {
           this.recomputeUseCases(parentUseCases);
         }
       }
+
     },
 
     
@@ -347,7 +342,7 @@ export const magmaStore = defineStore('magma', {
           } else {
             if (!useCase.visibilityFromAttackTechniqueOverride) {
               const attackTechniqueId = updatedFields.attackTechniqueId;
-              useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueId);
+              useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueId, domain)??0;
             }
             useCase.visibilityFromAttackTechnique = true;
           }
@@ -357,7 +352,7 @@ export const magmaStore = defineStore('magma', {
         Object.assign(useCase, updatedFields);
 
         // Recompute the weight (strictly only necessary if at least one of the following updatedFields was changed: [attackTechniqueId, visibilityFromAttackTechniqueOverride, visibility, implementation, effectiveness]).
-        useCase.weight = (useCase.visibility??0/100) * (useCase.implementation??0/100) * (useCase.effectiveness??0/100) * 100;
+        useCase.weight = ((useCase.visibility??0)/100) * ((useCase.implementation??0)/100) * ((useCase.effectiveness??0)/100) * 100;
 
         if (domain) {
           useCase.domain = domain;
@@ -375,7 +370,7 @@ export const magmaStore = defineStore('magma', {
     updateAllL3UseCasesVisibility(domain?: string) {
       this.L3UseCases(domain).forEach((useCase) => {
         if (useCase.visibilityFromAttackTechnique === true && useCase.visibilityFromAttackTechniqueOverride === false) {
-          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId);
+          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, domain)??0;
           const parentUseCases = this.getParentUseCases(useCase, domain);
           this.recomputeUseCases(parentUseCases);
         }
@@ -402,23 +397,51 @@ export const magmaStore = defineStore('magma', {
 
 
     importUseCases(yamlData: string) {
-      const importedUseCases = yaml.parse(yamlData);
-
-      importedUseCases.forEach(useCase => {
-        this.addExistingUseCase({
-          id: useCase.id,
-          parentIds: useCase.parentIds,
-          name: useCase.name,
-          level: useCase.level,
-          attackTechniqueId: useCase.attackTechniqueId,
-          visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
-          visibility: useCase.visibility,
-          implementation: useCase.implementation,
-          effectiveness: useCase.effectiveness,
-          domain: useCase.domain
+      try {
+        // Parse the YAML data
+        const useCases = yaml.parse(yamlData);
+    
+        // Initialize counters and an array for error messages
+        let successCount = 0;
+        let failCount = 0;
+        const errorMessages: string[] = [];
+    
+        // Iterate over each use case and try to add it
+        useCases.forEach((useCase: any) => {
+          try {
+            this.addExistingUseCase(useCase);
+            successCount++;
+          } catch (error) {
+            failCount++;
+            errorMessages.push(error.message);
+          }
         });
-      });
-    },
+    
+        // Prepare the summary message
+        let summary = `Successful imports: ${successCount}. Failed imports: ${failCount}.`;
+    
+        // If there are any errors, append them to the summary
+        if (errorMessages.length > 0) {
+          summary += " _________________________________________________ FAILED USE CASES _________________________________________________ " + errorMessages.join("• ");
+        }
+    
+        // Show the summary message
+        Swal.fire({
+          title: 'Import Summary',
+          text: summary,
+          icon: failCount > 0 ? 'warning' : 'success',
+          confirmButtonText: 'OK'
+        });
+      } catch (error) {
+        console.error('Failed to parse YAML data:', error);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed to parse YAML data. Please check the format.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    },    
 
 
   }
