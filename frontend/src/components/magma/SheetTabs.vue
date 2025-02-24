@@ -112,10 +112,10 @@ const importYaml = (event: Event) => {
   const fileInput = event.target as HTMLInputElement;
   const file = fileInput.files?.[0];
   if (file) {
-    magma.removeAllUseCases(); // Clear any existing use cases before importing new ones.
     const reader = new FileReader();
     reader.onload = (e) => {
       const yamlContent = e.target?.result as string;
+      magma.removeAllUseCases(); // Clear any existing use cases before importing new ones.
       magma.importUseCases(yamlContent);
       fileInput.value = ''; // Reset the file input value (if the user uploads the same file again to 'reset', we want to register a change so the file gets processed).
     };
