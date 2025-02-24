@@ -294,8 +294,8 @@ magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', doma
         @change="importYaml"
         style="display: none;"
       />
-      <label for="importYamlFile" class="load-button">Load YAML</label>
-      <label class="save-button" @click="exportYaml">Save YAML</label>
+      <label for="importYamlFile" class="load-button">Load MaGMa YAML</label>
+      <label class="save-button" @click="exportYaml">Save MaGMa YAML</label>
   </div>
 
   <!-- Scrolling container -->
@@ -667,13 +667,13 @@ input[type=checkbox] {
   border: 2px solid black;
   border-radius: 4px;
   color: rgb(255, 255, 255);
-  padding: 5px 25px;
+  padding: 5px 10px;
   margin-bottom: 1px;
   cursor: pointer;
 }
 
 .load-button {
-  margin-left: 130px;
+  margin-left: 67px;
 }
 
 .save-button {
