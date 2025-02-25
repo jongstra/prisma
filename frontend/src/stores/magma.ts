@@ -36,6 +36,10 @@ interface UpdatedFields {
   effectiveness?: number | null;
 }
 
+const formatPercentage = (number: any) => {
+  number = Number(number);
+  return number.toFixed(2);
+};
 
 export const magmaStore = defineStore('magma', {
   state: () => ({
@@ -209,7 +213,7 @@ export const magmaStore = defineStore('magma', {
           // If the useCase.attackTechniqueId is valid, update the use case visibility based on the visibility of the attack technique.
           // Handle a possible visibility override.
           if (!useCase.visibilityFromAttackTechniqueOverride) {
-            useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain)??0;
+            useCase.visibility = formatPercentage(tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain))??0;
             useCase.visibilityFromAttackTechnique = true;
           } else {
             useCase.visibilityFromAttackTechnique = false;
@@ -304,7 +308,6 @@ export const magmaStore = defineStore('magma', {
       useCases.forEach((useCase) => {
         const parentUseCases = this.getParentUseCases(useCase);
         const childUseCases = this.getChildUseCasesById(useCase.id);
-        // const meanVisibility = this.calculateMeanVisibility(childUseCases);
 
         // Only recompute the visibility for a use case on L1 or L2.
         if (useCase.level != 3) {
@@ -342,7 +345,7 @@ export const magmaStore = defineStore('magma', {
           } else {
             if (!useCase.visibilityFromAttackTechniqueOverride) {
               const attackTechniqueId = updatedFields.attackTechniqueId;
-              useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueId, domain)??0;
+              useCase.visibility = formatPercentage(tactics.getDomainTechniqueVisibilityPercentageById(attackTechniqueId, domain))??0;
             }
             useCase.visibilityFromAttackTechnique = true;
           }
@@ -370,7 +373,7 @@ export const magmaStore = defineStore('magma', {
     updateAllL3UseCasesVisibility() {
       this.L3UseCases().forEach((useCase) => {
         if (useCase.visibilityFromAttackTechnique === true && useCase.visibilityFromAttackTechniqueOverride === false) {
-          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain)??0;
+          useCase.visibility = formatPercentage(tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain))??0;
           const parentUseCases = this.getParentUseCases(useCase, useCase.domain);
           this.recomputeUseCases(parentUseCases);
         }
