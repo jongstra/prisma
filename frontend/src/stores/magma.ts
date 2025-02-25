@@ -382,21 +382,32 @@ export const magmaStore = defineStore('magma', {
 
 
     exportUseCases() {
-      const exportedUseCases = this.useCases.map(useCase => ({
-        id: useCase.id,
-        parentIds: useCase.parentIds,
-        name: useCase.name,
-        level: useCase.level,
-        attackTechniqueId: useCase.attackTechniqueId,
-        visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
-        visibility: useCase.visibility,
-        implementation: useCase.implementation,
-        effectiveness: useCase.effectiveness,
-        domain: useCase.domain
-      }));
+      const exportedUseCases = this.useCases.map(useCase => {
+        const baseAttributes = {
+          domain: useCase.domain,
+          level: useCase.level,
+          id: useCase.id,
+          parentIds: useCase.parentIds,
+          name: useCase.name,
+        };
+    
+        // Conditionally add additional attributes for Level 3 use cases
+        if (useCase.level === 3) {
+          return {
+            ...baseAttributes,
+            attackTechniqueId: useCase.attackTechniqueId,
+            visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
+            visibility: useCase.visibility,
+            implementation: useCase.implementation,
+            effectiveness: useCase.effectiveness,
+          };
+        }
+    
+        return baseAttributes;
+      });
     
       return yaml.stringify(exportedUseCases);
-    },
+    },    
 
 
     importUseCases(yamlData: string) {
