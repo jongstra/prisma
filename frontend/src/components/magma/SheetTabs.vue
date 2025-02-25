@@ -245,14 +245,14 @@ const validateAndFormat = (event: Event) => {
   let value = inputElement.value;
 
   // Regular expression to match numbers with up to two decimal places
-  const regex = /^\d*\.?\d{0,2}$/;
+  // const regex = /^\d*\.?\d{0,2}$/;
 
   // Check if the value matches the regex
-  if (!regex.test(value)) {
-    // Remove the last character (that caused the invalid input)
-    inputElement.value = value.slice(0, -1);
-    return;
-  }
+  // if (!regex.test(value)) {
+  //   // Remove the last character (that caused the invalid input)
+  //   inputElement.value = value.slice(0, -1);
+  //   return;
+  // }
 
   // Parse the value to a float
   const parsedValue = parseFloat(value);
@@ -263,9 +263,12 @@ const validateAndFormat = (event: Event) => {
       inputElement.value = '0';
     } else if (parsedValue > 100) {
       inputElement.value = '100';
-    } else {
+
+    // Code below is turned off because it resets the cursor to the start of the number when writing float numbers.
+    // } else {
       // Set the input element to the parsed value (this prevents the user from inputting numbers with leading zeroes in the input field).
-      inputElement.value = parsedValue;
+      // inputElement.value = parsedValue;
+      
     }
   }
 };

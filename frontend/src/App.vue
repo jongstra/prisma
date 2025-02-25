@@ -22,7 +22,7 @@
   <div id='app'>
 
     <div class='navigation'>
-      <RouterLink class='nav' to='/' exact-active-class='selected'>ATT&CK</RouterLink>
+      <RouterLink class='nav' to='/' exact-active-class='selected'>DeTT&CT</RouterLink>
       <RouterLink class='nav' to='/insights' exact-active-class='selected'>Insights</RouterLink>
       <RouterLink class='nav' to='/magma' exact-active-class='selected'>MaGMa</RouterLink>
     </div>
