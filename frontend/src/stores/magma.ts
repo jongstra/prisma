@@ -171,7 +171,7 @@ export const magmaStore = defineStore('magma', {
 
     addExistingUseCase(useCase: UseCase) {
 
-      // Skip permanent use cases, since they should always be the same (L1-1: IN and L1-2: THR).
+      // Skip permanent use cases, since they should always be present already (L1-1: IN & L1-2: THR).
       if (useCase.permanent) {
         return
       }
