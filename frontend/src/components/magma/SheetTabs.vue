@@ -270,10 +270,10 @@ const validateAndFormat = (event: Event) => {
   }
 };
 
-magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, visibilityFromAttackTechniqueOverride: true, attackTechniqueId: 'T1595', implementation: 80, effectiveness: 60, domain: 'enterprise-attack'});
-magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 85,  implementation: 80, effectiveness: 95, domain: 'enterprise-attack'});
-magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case', domain: 'enterprise-attack'});
-magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', domain: 'enterprise-attack'});
+// magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, visibilityFromAttackTechniqueOverride: true, attackTechniqueId: 'T1595', implementation: 80, effectiveness: 60, domain: 'enterprise-attack'});
+// magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 85,  implementation: 80, effectiveness: 95, domain: 'enterprise-attack'});
+// magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case', domain: 'enterprise-attack'});
+// magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', domain: 'enterprise-attack'});
 
 </script>
 
