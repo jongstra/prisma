@@ -1,0 +1,42 @@
+- id: L3-1
+  parentIds:
+    - L2-1
+  name: Sample L3 Use Case
+  level: 3
+  attackTechniqueId: T1595
+  visibilityFromAttackTechniqueOverride: true
+  visibility: 58
+  implementation: 80
+  effectiveness: 60
+  domain: enterprise-attack
+- id: L3-2
+  parentIds:
+    - L2-1
+  name: "Sample L3 Use Case #2"
+  level: 3
+  attackTechniqueId: none
+  visibilityFromAttackTechniqueOverride: false
+  visibility: 85
+  implementation: 80
+  effectiveness: 95
+  domain: enterprise-attack
+- id: L2-1
+  parentIds:
+    - L1-1
+  name: Sample L2 Use Case
+  level: 2
+  attackTechniqueId: none
+  visibilityFromAttackTechniqueOverride: false
+  visibility: 71.5
+  implementation: 80
+  effectiveness: 77.5
+  domain: enterprise-attack
+- id: L1-1
+  name: Sample L1 Use Case
+  level: 1
+  attackTechniqueId: none
+  visibilityFromAttackTechniqueOverride: false
+  visibility: 71.5
+  implementation: 80
+  effectiveness: 77.5
+  domain: enterprise-attack
