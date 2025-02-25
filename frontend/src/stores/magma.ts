@@ -7,22 +7,23 @@ import Swal from 'sweetalert2';
 const tactics = tacticsStore();
 
 interface UseCase {
+  domain: string;
   id: string;
   uid: string;
   parentIds: Array<string>;
   name: string;
   level: number;
-  attackTechniqueId: string;
-  visibilityFromAttackTechnique: boolean;
-  visibilityFromAttackTechniqueOverride: boolean;
-  visibility: number | null;
-  implementation: number | null;
-  effectiveness: number | null;
-  weight: number | null;
-  invalidVisibility: boolean;
-  invalidId: boolean;
-  invalidParentIds: boolean;
-  domain: string;
+  attackTechniqueId?: string;
+  visibilityFromAttackTechnique?: boolean;
+  visibilityFromAttackTechniqueOverride?: boolean;
+  visibility?: number | null;
+  implementation?: number | null;
+  effectiveness?: number | null;
+  weight?: number | null;
+  potential?: number | null;
+  invalidVisibility?: boolean;
+  invalidId?: boolean;
+  invalidParentIds?: boolean;
 }
 
 interface UpdatedFields {
@@ -141,6 +142,7 @@ export const magmaStore = defineStore('magma', {
         implementation: null,
         effectiveness: null,
         weight: null,
+        potential: null,
         uid: uid,
         invalidVisibility: false,
         invalidId: false,
@@ -152,7 +154,7 @@ export const magmaStore = defineStore('magma', {
     },
     
 
-    addExistingUseCase(useCase: any) {
+    addExistingUseCase(useCase: UseCase) {
   
       // Check that the domain is set to a valid value.
       if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
@@ -185,13 +187,13 @@ export const magmaStore = defineStore('magma', {
       }
 
       // Check that the visibility, implementation and effectiveness values are valid (between 0 and 100).
-      if (useCase.visibility < 0 || useCase.visibility > 100) {
+      if (useCase.visibility && (useCase.visibility < 0 || useCase.visibility > 100)) {
         throw new Error(`Use case visibility "${useCase.visibility}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
-      if (useCase.implementation < 0 || useCase.implementation > 100) {
+      if (useCase.implementation && (useCase.implementation < 0 || useCase.implementation > 100)) {
         throw new Error(`Use case implementation "${useCase.implementation}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
-      if (useCase.effectiveness < 0 || useCase.effectiveness > 100) {
+      if (useCase.effectiveness && (useCase.effectiveness < 0 || useCase.effectiveness > 100)) {
         throw new Error(`Use case effectiveness "${useCase.effectiveness}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
 
@@ -227,8 +229,9 @@ export const magmaStore = defineStore('magma', {
         useCase.visibilityFromAttackTechnique = false;
       }
 
-      // Compute the weight.
-      useCase.weight = (useCase.visibility / 100) * (useCase.implementation / 100) * (useCase.effectiveness / 100) * 100;
+      // Compute the weight and the potential.
+      useCase.weight = ((useCase.visibility??0)/100) * ((useCase.implementation??0)/100) * ((useCase.effectiveness??0)/100) * 100;
+      useCase.potential = 100 - useCase.weight;
 
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
       useCase.uid = uuidv4();
@@ -319,6 +322,7 @@ export const magmaStore = defineStore('magma', {
           useCase['implementation'] = meanImplementation;
           useCase['effectiveness'] = meanEffectiveness;
           useCase['weight'] = meanWeight;
+          useCase['potential'] = 100 - meanWeight;
         }
 
         // If this use case has parents, check if they also need to be updated based on the new values of this use case.
@@ -354,8 +358,9 @@ export const magmaStore = defineStore('magma', {
         // Update the use case.
         Object.assign(useCase, updatedFields);
 
-        // Recompute the weight (strictly only necessary if at least one of the following updatedFields was changed: [attackTechniqueId, visibilityFromAttackTechniqueOverride, visibility, implementation, effectiveness]).
+        // Recompute the weight and the potential (strictly only necessary if at least one of the following updatedFields was changed: [attackTechniqueId, visibilityFromAttackTechniqueOverride, visibility, implementation, effectiveness]).
         useCase.weight = ((useCase.visibility??0)/100) * ((useCase.implementation??0)/100) * ((useCase.effectiveness??0)/100) * 100;
+        useCase.potential = 100 - useCase.weight;
 
         if (domain) {
           useCase.domain = domain;

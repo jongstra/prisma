@@ -29,4 +29,12 @@
 - domain: enterprise-attack
   level: 1
   id: L1-1
-  name: Sample L1 Use Case
+  name: IN
+- domain: enterprise-attack
+  level: 1
+  id: L1-2
+  name: THR
+- domain: enterprise-attack
+  level: 1
+  id: L1-3
+  name: OUT

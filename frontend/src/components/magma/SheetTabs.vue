@@ -19,6 +19,7 @@ const L1Headers = {
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
   weight: "Weight %",
+  potential: "Potential %",
 };
 
 const L2Headers = {
@@ -29,6 +30,7 @@ const L2Headers = {
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
   weight: "Weight %",
+  potential: "Potential %",
 };
 
 const L3Headers = {
@@ -41,6 +43,7 @@ const L3Headers = {
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
   weight: "Weight %",
+  potential: "Potential %",
 };
 
 // Define editable fields for each tab
@@ -300,7 +303,8 @@ const validateAndFormat = (event: Event) => {
                                                                                     visibility: columnName === 'Visibility %',
                                                                                     implementation: columnName === 'Implementation %',
                                                                                     effectiveness: columnName === 'Effectiveness %',
-                                                                                    weight: columnName === 'Weight %',}">
+                                                                                    weight: columnName === 'Weight %',
+                                                                                    potential: columnName === 'Potential %',}">
             {{ columnName }}
           </th>
         </tr>
@@ -441,6 +445,12 @@ const validateAndFormat = (event: Event) => {
                 {{ formatPercentage(useCase[columnKey]) }}
               </div>
             </template>
+
+            <template v-else-if="columnKey === 'potential'">
+              <div class="uneditable">
+                {{ formatPercentage(useCase[columnKey]) }}
+              </div>
+            </template>
             
             <template v-else>
               {{ useCase[columnKey] }}
@@ -526,7 +536,7 @@ th, td, input {
 }
 
 th {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   padding: 7px;
   background-color: rgb(196, 213, 234);
@@ -593,11 +603,11 @@ select {
 }
 
 th.name {
-  width: 175px;
+  width: 155px;
 }
 
 th.id {
-  width: 100px;
+  width: 90px;
 }
 
 th.parent {
@@ -615,23 +625,27 @@ select.attack-technique {
 }
 
 th.override {
-  width: 85px;
+  width: 75px;
 }
 
 th.visibility {
-  width: 105px;
+  width: 95px;
 }
 
 th.implementation {
-  width: 155px;
-}
-
-th.effectiveness {
   width: 140px;
 }
 
+th.effectiveness {
+  width: 125px;
+}
+
 th.weight {
-  width: 90px;
+  width: 85px;
+}
+
+th.potential {
+  width: 95px;
 }
 
 input, .uneditable {
@@ -650,17 +664,18 @@ input[type=checkbox] {
 }
 
 .load-button, .save-button {
+  font-size: 14px;
   background-color: #d61b1b;
   border: 2px solid black;
   border-radius: 4px;
   color: rgb(255, 255, 255);
-  padding: 5px 10px;
+  padding: 7.5px 10px;
   margin-bottom: 1px;
   cursor: pointer;
 }
 
 .load-button {
-  margin-left: 67px;
+  margin-left: 102px;
 }
 
 .save-button {
