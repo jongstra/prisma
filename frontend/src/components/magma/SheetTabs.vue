@@ -62,8 +62,19 @@ const activeTabData = computed(() => {
     case 'L3':
       return magma.L3UseCases(tactics.domain);
     default:
-      const averageVisibility = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / magma.L1UseCases(tactics.domain).length;
-      return [{ TotalVisibility: averageVisibility.toFixed(2) }]; // Format to 2 decimal places
+      const numberDomainUsecases = magma.L1UseCases(tactics.domain).length;
+      const averageVisibility = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / numberDomainUsecases;
+      const averageImplementation = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.implementation || 0), 0) / numberDomainUsecases;
+      const averageEffectiveness = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.effectiveness || 0), 0) / numberDomainUsecases;
+      const averageWeight = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.weight || 0), 0) / numberDomainUsecases;
+      const averagePotential = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.potential || 0), 0) / numberDomainUsecases;
+      return [{
+        TotalVisibility: averageVisibility.toFixed(2),
+        TotalImplementation: averageImplementation.toFixed(2),
+        TotalEffectiveness: averageEffectiveness.toFixed(2),
+        TotalWeight: averageWeight.toFixed(2),
+        TotalPotential: averagePotential.toFixed(2),
+      }]; // Format to 2 decimal places
   }
 });
 
@@ -89,7 +100,7 @@ const editableFields = computed(() => {
     case 'L3':
       return editableFieldsMap.L3;
     default:
-      return { TotalVisibility: false };
+      return { };
   }
 });
 
@@ -476,6 +487,10 @@ const validateAndFormat = (event: Event) => {
 
     <div v-else>
       <p>Average L1 UC Visibility: {{ activeTabData[0].TotalVisibility }}%</p>
+      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalImplementation }}%</p>
+      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalEffectiveness }}%</p>
+      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalWeight }}%</p>
+      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalPotential }}%</p>
     </div>
   </div>
 </template>
