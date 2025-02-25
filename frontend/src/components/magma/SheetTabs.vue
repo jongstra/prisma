@@ -244,31 +244,15 @@ const validateAndFormat = (event: Event) => {
   const inputElement = event.target as HTMLInputElement;
   let value = inputElement.value;
 
-  // Regular expression to match numbers with up to two decimal places
-  // const regex = /^\d*\.?\d{0,2}$/;
-
-  // Check if the value matches the regex
-  // if (!regex.test(value)) {
-  //   // Remove the last character (that caused the invalid input)
-  //   inputElement.value = value.slice(0, -1);
-  //   return;
-  // }
-
   // Parse the value to a float
   const parsedValue = parseFloat(value);
 
-  // Check if the parsed value is within the range [0, 100]
+  // Check if the parsed value is within the range [0, 100], and otherwise force it to be within this value.
   if (!isNaN(parsedValue)) {
     if (parsedValue < 0) {
       inputElement.value = '0';
     } else if (parsedValue > 100) {
       inputElement.value = '100';
-
-    // Code below is turned off because it resets the cursor to the start of the number when writing float numbers.
-    // } else {
-      // Set the input element to the parsed value (this prevents the user from inputting numbers with leading zeroes in the input field).
-      // inputElement.value = parsedValue;
-      
     }
   }
 };
