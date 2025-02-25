@@ -10,9 +10,9 @@ interface UseCase {
   domain: string;
   id: string;
   uid: string;
-  parentIds: Array<string>;
   name: string;
   level: number;
+  parentIds?: Array<string>;
   attackTechniqueId?: string;
   visibilityFromAttackTechnique?: boolean;
   visibilityFromAttackTechniqueOverride?: boolean;
@@ -24,6 +24,10 @@ interface UseCase {
   invalidVisibility?: boolean;
   invalidId?: boolean;
   invalidParentIds?: boolean;
+  permanent?: boolean;
+  inWeightImpact?: number;
+  throughWeightImpact?: number;
+  outWeightImpact?: number;
 }
 
 interface UpdatedFields {
@@ -77,6 +81,17 @@ export const magmaStore = defineStore('magma', {
         }
         return []; // Default case
       };
+    },
+    domainSortedUseCases(state) {
+      const domainOrder = {
+        'enterprise-attack': 1,
+        'mobile-attack': 2,
+        'ics-attack': 3,
+      };
+  
+      return state.useCases.slice().sort((a, b) => {
+        return domainOrder[a.domain] - domainOrder[b.domain] || a.id.localeCompare(b.id);
+      });
     },
     getAllIds(state) {
       return (domain?: string) => state.useCases
@@ -141,8 +156,8 @@ export const magmaStore = defineStore('magma', {
         visibility: null,
         implementation: null,
         effectiveness: null,
-        weight: null,
-        potential: null,
+        weight: 0,
+        potential: 100,
         uid: uid,
         invalidVisibility: false,
         invalidId: false,
@@ -155,7 +170,12 @@ export const magmaStore = defineStore('magma', {
     
 
     addExistingUseCase(useCase: UseCase) {
-  
+
+      // Skip permanent use cases, since they should always be the same (L1-1: IN and L1-2: THR).
+      if (useCase.permanent) {
+        return
+      }
+
       // Check that the domain is set to a valid value.
       if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
         throw new Error(`Use case domain "${useCase.domain}" is not supported. Please use one of: 'enterprise-attack', 'mobile-attack', 'ics-attack'. Use case: ${JSON.stringify(useCase)}`);
@@ -195,6 +215,17 @@ export const magmaStore = defineStore('magma', {
       }
       if (useCase.effectiveness && (useCase.effectiveness < 0 || useCase.effectiveness > 100)) {
         throw new Error(`Use case effectiveness "${useCase.effectiveness}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
+      }
+      
+      // Check that the inWeightImpact, throughWeightImpact and outWeightImpact values are valid (between 0 and 100).
+      if (useCase.inWeightImpact && (useCase.inWeightImpact < 0 || useCase.inWeightImpact > 100)) {
+        throw new Error(`Use case inWeightImpact "${useCase.inWeightImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
+      }
+      if (useCase.throughWeightImpact && (useCase.throughWeightImpact < 0 || useCase.throughWeightImpact > 100)) {
+        throw new Error(`Use case throughWeightImpact "${useCase.throughWeightImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
+      }
+      if (useCase.outWeightImpact && (useCase.outWeightImpact < 0 || useCase.outWeightImpact > 100)) {
+        throw new Error(`Use case outWeightImpact "${useCase.outWeightImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
 
       // If visibilityFromAttackTechniqueOverride is not set, use the default value 'false'.
@@ -281,28 +312,36 @@ export const magmaStore = defineStore('magma', {
 
     removeActiveTabUseCases(domain?: string) {
       this.activeTabUseCases(domain).forEach(useCase => {
-        this.removeUseCaseByUid(useCase.uid);
+        if (!useCase.permanent) {
+          this.removeUseCaseByUid(useCase.uid);
+        }
       });
     },
 
 
     removeL1UseCases(domain?: string) {
       this.L1UseCases(domain).forEach(useCase => {
-        this.removeUseCaseByUid(useCase.uid);
+        if (!useCase.permanent) {
+          this.removeUseCaseByUid(useCase.uid);
+        }
       })
     },
 
 
     removeL2UseCases(domain?: string) {
       this.L2UseCases(domain).forEach(useCase => {
-        this.removeUseCaseByUid(useCase.uid);
+        if (!useCase.permanent) {
+          this.removeUseCaseByUid(useCase.uid);
+        }
       })
     },
 
 
     removeL3UseCases(domain?: string) {
       this.L3UseCases(domain).forEach(useCase => {
-        this.removeUseCaseByUid(useCase.uid);
+        if (!useCase.permanent) {
+          this.removeUseCaseByUid(useCase.uid);
+        }
       })
     },
 
@@ -318,11 +357,11 @@ export const magmaStore = defineStore('magma', {
           const meanImplementation = childUseCases.reduce((sum, obj) => sum + (Number(obj['implementation']) || 0), 0) / childUseCases.length;
           const meanEffectiveness = childUseCases.reduce((sum, obj) => sum + (Number(obj['effectiveness']) || 0), 0) / childUseCases.length;
           const meanWeight = childUseCases.reduce((sum, obj) => sum + (Number(obj['weight']) || 0), 0) / childUseCases.length;
-          useCase['visibility'] = meanVisibility;
-          useCase['implementation'] = meanImplementation;
-          useCase['effectiveness'] = meanEffectiveness;
-          useCase['weight'] = meanWeight;
-          useCase['potential'] = 100 - meanWeight;
+          useCase['visibility'] = ~~meanVisibility;
+          useCase['implementation'] = ~~meanImplementation;
+          useCase['effectiveness'] = ~~meanEffectiveness;
+          useCase['weight'] = ~~meanWeight;
+          useCase['potential'] = 100 - ~~meanWeight;
         }
 
         // If this use case has parents, check if they also need to be updated based on the new values of this use case.
@@ -358,7 +397,7 @@ export const magmaStore = defineStore('magma', {
         // Update the use case.
         Object.assign(useCase, updatedFields);
 
-        // Recompute the weight and the potential (strictly only necessary if at least one of the following updatedFields was changed: [attackTechniqueId, visibilityFromAttackTechniqueOverride, visibility, implementation, effectiveness]).
+        // Recompute the weight and the potential (strictly only necessary if at least one of the following updatedFields was changed: [ID, attackTechniqueId, visibilityFromAttackTechniqueOverride, visibility, implementation, effectiveness]).
         useCase.weight = ((useCase.visibility??0)/100) * ((useCase.implementation??0)/100) * ((useCase.effectiveness??0)/100) * 100;
         useCase.potential = 100 - useCase.weight;
 
@@ -387,13 +426,17 @@ export const magmaStore = defineStore('magma', {
 
 
     exportUseCases() {
-      const exportedUseCases = this.useCases.map(useCase => {
+      const exportedUseCases = this.domainSortedUseCases.map(useCase => {
         const baseAttributes = {
           domain: useCase.domain,
           level: useCase.level,
           id: useCase.id,
-          parentIds: useCase.parentIds,
           name: useCase.name,
+          parentIds: useCase?.parentIds,
+          permanent: useCase?.permanent,
+          inWeightImpact: useCase?.inWeightImpact,
+          throughWeightImpact: useCase?.throughWeightImpact,
+          outWeightImpact: useCase?.outWeightImpact,
         };
     
         // Conditionally add additional attributes for Level 3 use cases
@@ -460,7 +503,93 @@ export const magmaStore = defineStore('magma', {
           confirmButtonText: 'OK'
         });
       }
-    },    
+    },
+
+
+    initializeDefaultUseCases() {
+      if (this.useCases.length === 0) {
+        this.useCases = [
+          {
+            domain: 'enterprise-attack',
+            id: 'L1-1',
+            uid: uuidv4(),
+            name: 'IN',
+            level: 1,
+            visibility: 0,
+            implementation: 0,
+            effectiveness: 0,
+            weight: 0,
+            potential: 100,
+            permanent: true,
+          },
+          {
+            domain: 'enterprise-attack',
+            id: 'L1-2',
+            uid: uuidv4(),
+            name: 'THR',
+            level: 1,
+            visibility: 0,
+            implementation: 0,
+            effectiveness: 0,
+            weight: 0,
+            potential: 100,
+            permanent: true,
+          },
+          {
+            domain: 'mobile-attack',
+            id: 'L1-1',
+            uid: uuidv4(),
+            name: 'IN',
+            level: 1,
+            visibility: 0,
+            implementation: 0,
+            effectiveness: 0,
+            weight: 0,
+            potential: 100,
+            permanent: true,
+          },
+          {
+            domain: 'mobile-attack',
+            id: 'L1-2',
+            uid: uuidv4(),
+            name: 'THR',
+            level: 1,
+            visibility: 0,
+            implementation: 0,
+            effectiveness: 0,
+            weight: 0,
+            potential: 100,
+            permanent: true,
+          },
+          {
+            domain: 'ics-attack',
+            id: 'L1-1',
+            uid: uuidv4(),
+            name: 'IN',
+            level: 1,
+            visibility: 0,
+            implementation: 0,
+            effectiveness: 0,
+            weight: 0,
+            potential: 100,
+            permanent: true,
+          },
+          {
+            domain: 'ics-attack',
+            id: 'L1-2',
+            uid: uuidv4(),
+            name: 'THR',
+            level: 1,
+            visibility: 0,
+            implementation: 0,
+            effectiveness: 0,
+            weight: 0,
+            potential: 100,
+            permanent: true,
+          },
+        ];
+      }
+    },
 
 
   }

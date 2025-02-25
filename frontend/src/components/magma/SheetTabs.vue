@@ -8,6 +8,9 @@ const magma = magmaStore();
 const tactics = tacticsStore();
 const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Results']);
 
+// Initialize the default use cases.
+magma.initializeDefaultUseCases();
+
 // Always update the L3 use cases visibility when switching to the MaGMa page.
 magma.updateAllL3UseCasesVisibility()
 
@@ -130,6 +133,7 @@ const importYaml = (event: Event) => {
     reader.onload = (e) => {
       const yamlContent = e.target?.result as string;
       magma.removeAllUseCases(); // Clear any existing use cases before importing new ones.
+      magma.initializeDefaultUseCases();
       magma.importUseCases(yamlContent);
       fileInput.value = ''; // Reset the file input value (if the user uploads the same file again to 'reset', we want to register a change so the file gets processed).
     };
@@ -179,8 +183,12 @@ const updateObjectField = (uid: string, field: string, value: any) => {
   magma.updateUseCase(uid, {[field]: value}, tactics.domain);
 };
 
-const getBackgroundColor = (uid: string, field: string) => {
-  const useCase = magma.getUseCaseByUid(uid, tactics.domain);
+const getBackgroundColor = (useCase: any, field: string) => {
+  // const useCase = magma.getUseCaseByUid(uid, tactics.domain);
+
+  if (useCase.permanent) {
+      return 'lightgoldenrodyellow'
+  }
 
   if (field === 'visibility') {
     // Check the validity of the number and return a backgroundcolor based on the validity of the number.
@@ -194,6 +202,7 @@ const getBackgroundColor = (uid: string, field: string) => {
   }
 
   if (field === 'id') {
+
     const id = useCase.id;
     const allIds = magma.getAllIds(tactics.domain);
     const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
@@ -325,10 +334,16 @@ const validateAndFormat = (event: Event) => {
 
           <!-- Remove-use-case buttons -->
           <td class="remove-col">
-            <button class='remove-button' @click="confirmRemoveUseCase(useCase)" style="background-color: #e73030; color: white; border: none; cursor: pointer;">
+            <button 
+              v-if="!useCase.permanent"
+              class='remove-button'
+              @click="confirmRemoveUseCase(useCase)" 
+              style="background-color: #e73030; color: white; border: none; cursor: pointer;"
+            >
               &times;
             </button>
           </td>
+
 
           <td v-for="(columnName, columnKey) in headers" :key="columnKey">
             <!-- Editable fields -->
@@ -340,7 +355,7 @@ const validateAndFormat = (event: Event) => {
                 type="number"
                 :value="useCase[columnKey]"
                 @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
-                :style="{backgroundColor: (useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride) ? 'lightgoldenrodyellow' : getBackgroundColor(useCase.uid, columnKey)}"
+                :style="{backgroundColor: (useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride) ? 'lightgoldenrodyellow' : getBackgroundColor(useCase, columnKey)}"
                 :disabled="useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride"
               />
 
@@ -367,9 +382,9 @@ const validateAndFormat = (event: Event) => {
                 <div
                   class="use-case-name-editable"
                   v-if="columnKey === 'name'"
-                  contenteditable="true"
+                  :contenteditable="!useCase.permanent"
                   @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
-                  :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
+                  :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                 >
                   {{ useCase[columnKey] }}
                 </div>
@@ -378,9 +393,9 @@ const validateAndFormat = (event: Event) => {
                 <div
                   class="use-case-id-editable"
                   v-if="columnKey === 'id'"
-                  contenteditable="true"
+                  :contenteditable="!useCase.permanent"
                   @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
-                  :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
+                  :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                 >
                   {{ useCase[columnKey] }}
                 </div>
@@ -391,7 +406,7 @@ const validateAndFormat = (event: Event) => {
                     class="parent-ids select-with-wrap"
                     :value="useCase[columnKey]"
                     @change="(event) => {updateObjectField(useCase.uid, columnKey, Array.from(event.target.selectedOptions).map(option => option.value));}"
-                    :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
+                    :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                   >
                     <option value="none">None</option>
                     <option v-for="useCase in parentLevelUseCases" :key="useCase.id" :value="useCase.id">{{ useCase.id }}: {{ useCase.name }}</option>
@@ -404,7 +419,7 @@ const validateAndFormat = (event: Event) => {
                     class="attack-technique select-with-wrap"
                     :value="useCase[columnKey] || 'none'"
                     @change="(event) => {updateObjectField(useCase.uid, columnKey, event.target.value);}"
-                    :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
+                    :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                   >
                     <option value="none">None</option>
                     <option v-for="technique in tactics.allTechniquesIdsAndNames" :key="technique.id" :value="technique.id">{{ technique.id }}: {{ technique.name }}</option>
@@ -423,7 +438,7 @@ const validateAndFormat = (event: Event) => {
                         updateObjectField(useCase.uid, 'attackTechniqueId', useCase.attackTechniqueId);
                       }
                     }"
-                    :style="{backgroundColor: getBackgroundColor(useCase.uid, columnKey)}"
+                    :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                   />
                 </template>
 
