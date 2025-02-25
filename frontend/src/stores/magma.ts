@@ -367,11 +367,11 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-    updateAllL3UseCasesVisibility(domain?: string) {
-      this.L3UseCases(domain).forEach((useCase) => {
+    updateAllL3UseCasesVisibility() {
+      this.L3UseCases().forEach((useCase) => {
         if (useCase.visibilityFromAttackTechnique === true && useCase.visibilityFromAttackTechniqueOverride === false) {
-          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, domain)??0;
-          const parentUseCases = this.getParentUseCases(useCase, domain);
+          useCase.visibility = tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain)??0;
+          const parentUseCases = this.getParentUseCases(useCase, useCase.domain);
           this.recomputeUseCases(parentUseCases);
         }
       });
