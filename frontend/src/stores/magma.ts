@@ -25,9 +25,10 @@ interface UseCase {
   invalidId?: boolean;
   invalidParentIds?: boolean;
   permanent?: boolean;
-  inWeightImpact?: number;
-  throughWeightImpact?: number;
-  outWeightImpact?: number;
+  inImpact?: number;
+  thrImpact?: number;
+  outImpact?: number;
+  risk?: number;
 }
 
 interface UpdatedFields {
@@ -212,15 +213,15 @@ export const magmaStore = defineStore('magma', {
         throw new Error(`Use case effectiveness "${useCase.effectiveness}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
       
-      // Check that the inWeightImpact, throughWeightImpact and outWeightImpact values are valid (between 0 and 100).
-      if (useCase.inWeightImpact && (useCase.inWeightImpact < 0 || useCase.inWeightImpact > 100)) {
-        throw new Error(`Use case inWeightImpact "${useCase.inWeightImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
+      // Check that the inImpact, thrImpact and outImpact values are valid (between 0 and 100).
+      if (useCase.inImpact && (useCase.inImpact < 0 || useCase.inImpact > 100)) {
+        throw new Error(`Use case inImpact "${useCase.inImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
-      if (useCase.throughWeightImpact && (useCase.throughWeightImpact < 0 || useCase.throughWeightImpact > 100)) {
-        throw new Error(`Use case throughWeightImpact "${useCase.throughWeightImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
+      if (useCase.thrImpact && (useCase.thrImpact < 0 || useCase.thrImpact > 100)) {
+        throw new Error(`Use case thrImpact "${useCase.thrImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
-      if (useCase.outWeightImpact && (useCase.outWeightImpact < 0 || useCase.outWeightImpact > 100)) {
-        throw new Error(`Use case outWeightImpact "${useCase.outWeightImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
+      if (useCase.outImpact && (useCase.outImpact < 0 || useCase.outImpact > 100)) {
+        throw new Error(`Use case outImpact "${useCase.outImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
       }
 
       // If visibilityFromAttackTechniqueOverride is not set, use the default value 'false'.
@@ -352,11 +353,21 @@ export const magmaStore = defineStore('magma', {
           const meanImplementation = childUseCases.reduce((sum, obj) => sum + (Number(obj['implementation']) || 0), 0) / childUseCases.length;
           const meanEffectiveness = childUseCases.reduce((sum, obj) => sum + (Number(obj['effectiveness']) || 0), 0) / childUseCases.length;
           const meanWeight = childUseCases.reduce((sum, obj) => sum + (Number(obj['weight']) || 0), 0) / childUseCases.length;
-          useCase['visibility'] = ~~meanVisibility;
-          useCase['implementation'] = ~~meanImplementation;
-          useCase['effectiveness'] = ~~meanEffectiveness;
-          useCase['weight'] = ~~meanWeight;
-          useCase['potential'] = 100 - ~~meanWeight;
+          useCase['visibility'] = meanVisibility || 0;
+          useCase['implementation'] = meanImplementation || 0;
+          useCase['effectiveness'] = meanEffectiveness || 0;
+          useCase['weight'] = meanWeight || 0;
+          useCase['potential'] = 100 - (meanWeight || 0);
+        }
+        
+        // Compute Risk on level 1.
+        if (useCase.level === 1 && !useCase.permanent) {
+          const inWeight = this.getUseCaseByUid('IN', useCase.domain).weight;
+          const thrWeight = this.getUseCaseByUid('THR', useCase.domain).weight;
+          const inRisk = ((useCase.inImpact??0)/100) * ((inWeight??0)/100);
+          const thrRisk = ((useCase.thrImpact??0)/100)*((thrWeight??0)/100);
+          const outRisk = ((useCase.outImpact??0)/100)*((useCase.weight??0)/100);
+          useCase.risk = Math.max(0, (1-(inRisk+thrRisk+outRisk))) * 100;
         }
 
         // If this use case has parents, check if they also need to be updated based on the new values of this use case.
@@ -429,9 +440,9 @@ export const magmaStore = defineStore('magma', {
           name: useCase.name,
           parentIds: useCase?.parentIds,
           permanent: useCase?.permanent,
-          inWeightImpact: useCase?.inWeightImpact,
-          throughWeightImpact: useCase?.throughWeightImpact,
-          outWeightImpact: useCase?.outWeightImpact,
+          inImpact: useCase?.inImpact,
+          thrImpact: useCase?.thrImpact,
+          outImpact: useCase?.outImpact,
         };
     
         // Conditionally add additional attributes for Level 3 use cases
@@ -450,7 +461,7 @@ export const magmaStore = defineStore('magma', {
       });
     
       return yaml.stringify(exportedUseCases);
-    },    
+    },
 
 
     importUseCases(yamlData: string) {
@@ -477,7 +488,10 @@ export const magmaStore = defineStore('magma', {
             errorMessages.push(error.message);
           }
         });
-    
+        
+        // Recompute all level 1 use cases
+        this.recomputeUseCases(this.useCases.filter(useCase => useCase['level'] === 1));
+
         // Prepare the summary message
         let summary = `Successful imports: ${successCount}. Failed imports: ${failCount}.`;
     
@@ -510,8 +524,9 @@ export const magmaStore = defineStore('magma', {
         this.useCases = [
           {
             domain: 'enterprise-attack',
+            uid: 'IN',
             id: 'L1-1',
-            uid: uuidv4(),
+            // uid: uuidv4(),
             name: 'IN',
             level: 1,
             visibility: 0,
@@ -523,8 +538,9 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'enterprise-attack',
+            uid: 'THR',
             id: 'L1-2',
-            uid: uuidv4(),
+            // uid: uuidv4(),
             name: 'THR',
             level: 1,
             visibility: 0,
@@ -536,8 +552,9 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'mobile-attack',
+            uid: 'IN',
             id: 'L1-1',
-            uid: uuidv4(),
+            // uid: uuidv4(),
             name: 'IN',
             level: 1,
             visibility: 0,
@@ -549,8 +566,9 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'mobile-attack',
+            uid: 'THR',
             id: 'L1-2',
-            uid: uuidv4(),
+            // uid: uuidv4(),
             name: 'THR',
             level: 1,
             visibility: 0,
@@ -562,8 +580,9 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'ics-attack',
+            uid: 'IN',
             id: 'L1-1',
-            uid: uuidv4(),
+            // uid: uuidv4(),
             name: 'IN',
             level: 1,
             visibility: 0,
@@ -575,8 +594,9 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'ics-attack',
+            uid: 'THR',
             id: 'L1-2',
-            uid: uuidv4(),
+            // uid: uuidv4(),
             name: 'THR',
             level: 1,
             visibility: 0,

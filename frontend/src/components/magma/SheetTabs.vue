@@ -23,6 +23,10 @@ const L1Headers = {
   effectiveness: "Effectiveness %",
   weight: "Weight %",
   potential: "Potential %",
+  inImpact: "IN Impact %",
+  thrImpact: "THR Impact %",
+  outImpact: "OUT Impact %",
+  risk: "Risk",
 };
 
 const L2Headers = {
@@ -51,7 +55,7 @@ const L3Headers = {
 
 // Define editable fields for each tab
 const editableFieldsMap = {
-  L1: { name: true, id: true, },
+  L1: { name: true, id: true, inImpact: true, thrImpact: true, outImpact: true},
   L2: { name: true, id: true, parentIds: true, },
   L3: { name: true, id: true, parentIds: true, attackTechniqueId: true, visibilityFromAttackTechniqueOverride: true, visibility: true, implementation: true, effectiveness: true }
 };
@@ -324,7 +328,11 @@ const validateAndFormat = (event: Event) => {
                                                                                     implementation: columnName === 'Implementation %',
                                                                                     effectiveness: columnName === 'Effectiveness %',
                                                                                     weight: columnName === 'Weight %',
-                                                                                    potential: columnName === 'Potential %',}">
+                                                                                    potential: columnName === 'Potential %',
+                                                                                    inImpact: columnName === 'IN Impact %',
+                                                                                    thrImpact: columnName === 'THR Impact %',
+                                                                                    outImpact: columnName === 'OUT Impact %',
+                                                                                    risk: columnName === 'Risk',}">
             {{ columnName }}
           </th>
         </tr>
@@ -374,6 +382,37 @@ const validateAndFormat = (event: Event) => {
                 :value="useCase[columnKey]"
                 @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
               />
+
+              <!-- Editable L1 inImpact fields -->
+              <input
+                v-if="columnKey === 'inImpact'"
+                type="number"
+                :value="useCase[columnKey]"
+                @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                :disabled="useCase.permanent"
+                :style="{backgroundColor: useCase.permanent ? 'black': 'white'}"
+              />
+
+              <!-- Editable L1 thrImpact fields -->
+              <input
+                v-if="columnKey === 'thrImpact'"
+                type="number"
+                :value="useCase[columnKey]"
+                @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                :disabled="useCase.permanent"
+                :style="{backgroundColor: useCase.permanent ? 'black': 'white'}"
+              />
+
+              <!-- Editable L1 outImpact fields -->
+              <input
+                v-if="columnKey === 'outImpact'"
+                type="number"
+                :value="useCase[columnKey]"
+                @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                :disabled="useCase.permanent"
+                :style="{backgroundColor: useCase.permanent ? 'black': 'white'}"
+              />
+
 
               <!-- Editable ID fields -->
               <template v-else>
@@ -477,6 +516,15 @@ const validateAndFormat = (event: Event) => {
                 {{ formatPercentage(useCase[columnKey]) }}
               </div>
             </template>
+
+            <template v-else-if="columnKey === 'risk'">
+              <input
+                :value="useCase.permanent ? '' : formatPercentage(useCase[columnKey] || 0)"
+                :style="{backgroundColor: useCase.permanent ? 'black': 'lightgoldenrodyellow'}"
+                disabled="true"
+              >
+              </input>
+            </template>
             
             <template v-else>
               {{ useCase[columnKey] }}
@@ -502,10 +550,10 @@ const validateAndFormat = (event: Event) => {
 
     <div v-else>
       <p>Average L1 UC Visibility: {{ activeTabData[0].TotalVisibility }}%</p>
-      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalImplementation }}%</p>
-      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalEffectiveness }}%</p>
-      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalWeight }}%</p>
-      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalPotential }}%</p>
+      <p>Average L1 UC Implementation: {{ activeTabData[0].TotalImplementation }}%</p>
+      <p>Average L1 UC Effectiveness: {{ activeTabData[0].TotalEffectiveness }}%</p>
+      <p>Average L1 UC Weight: {{ activeTabData[0].TotalWeight }}%</p>
+      <p>Average L1 UC Potential: {{ activeTabData[0].TotalPotential }}%</p>
     </div>
   </div>
 </template>
@@ -676,6 +724,22 @@ th.weight {
 
 th.potential {
   width: 95px;
+}
+
+th.inImpact {
+  width: 100px;
+}
+
+th.thrImpact {
+  width: 120px;
+}
+
+th.outImpact {
+  width: 120px;
+}
+
+th.risk {
+  width: 50px;
 }
 
 input, .uneditable {

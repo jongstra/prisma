@@ -1,40 +1,123 @@
 - domain: enterprise-attack
-  level: 3
-  id: L3-1
-  parentIds:
-    - L2-1
-  name: Sample L3 Use Case
-  attackTechniqueId: T1595
-  visibilityFromAttackTechniqueOverride: true
-  visibility: 58
-  implementation: 80
-  effectiveness: 60
-- domain: enterprise-attack
-  level: 3
-  id: L3-2
-  parentIds:
-    - L2-1
-  name: "Sample L3 Use Case #2"
-  attackTechniqueId: none
-  visibilityFromAttackTechniqueOverride: false
-  visibility: 85
-  implementation: 80
-  effectiveness: 95
-- domain: enterprise-attack
-  level: 2
-  id: L2-1
-  parentIds:
-    - L1-1
-  name: Sample L2 Use Case
-- domain: enterprise-attack
   level: 1
   id: L1-1
   name: IN
+  permanent: true
 - domain: enterprise-attack
   level: 1
   id: L1-2
   name: THR
+  permanent: true
 - domain: enterprise-attack
   level: 1
   id: L1-3
-  name: OUT
+  name: FIN
+  inImpact: "78"
+  thrImpact: "56"
+  outImpact: "34"
+- domain: enterprise-attack
+  level: 1
+  id: L1-4
+  name: DOS
+  inImpact: "50"
+  thrImpact: "77"
+  outImpact: "23"
+- domain: enterprise-attack
+  level: 2
+  id: L2-1
+  name: L2 IN UC
+  parentIds:
+    - L1-1
+- domain: enterprise-attack
+  level: 2
+  id: L2-2
+  name: L2 THR UC
+  parentIds:
+    - L1-2
+- domain: enterprise-attack
+  level: 2
+  id: L2-3
+  name: L2 OUT UC FIN
+  parentIds:
+    - L1-3
+- domain: enterprise-attack
+  level: 2
+  id: L2-4
+  name: L2 OUT UC DOS
+  parentIds:
+    - L1-4
+- domain: enterprise-attack
+  level: 3
+  id: L3-1
+  name: L3 IN UC
+  parentIds:
+    - L2-1
+  attackTechniqueId: none
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "78"
+  implementation: "78"
+  effectiveness: "78"
+- domain: enterprise-attack
+  level: 3
+  id: L3-2
+  name: L3 THR UC
+  parentIds:
+    - L2-2
+  attackTechniqueId: none
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "66"
+  implementation: "54"
+  effectiveness: "45"
+- domain: enterprise-attack
+  level: 3
+  id: L3-3
+  name: L3 OUT UC FIN
+  parentIds:
+    - L2-3
+  attackTechniqueId: none
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "54"
+  implementation: "77"
+  effectiveness: "88"
+- domain: enterprise-attack
+  level: 3
+  id: L3-4
+  name: L3 OUT UC DOS
+  parentIds:
+    - L2-4
+  attackTechniqueId: none
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "100"
+  implementation: "65"
+  effectiveness: "44"
+- domain: enterprise-attack
+  level: 3
+  id: L3-5
+  name: L3 OUT UC DOS 2
+  parentIds:
+    - L2-4
+  attackTechniqueId: none
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "55"
+  implementation: "23"
+  effectiveness: "23"
+- domain: mobile-attack
+  level: 1
+  id: L1-1
+  name: IN
+  permanent: true
+- domain: mobile-attack
+  level: 1
+  id: L1-2
+  name: THR
+  permanent: true
+- domain: ics-attack
+  level: 1
+  id: L1-1
+  name: IN
+  permanent: true
+- domain: ics-attack
+  level: 1
+  id: L1-2
+  name: THR
+  permanent: true
