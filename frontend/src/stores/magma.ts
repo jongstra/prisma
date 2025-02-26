@@ -147,7 +147,7 @@ export const magmaStore = defineStore('magma', {
       const uid = uuidv4();
       const useCase: UseCase = {
         id: `L${level}-${newSuffix.toString()}`,
-        parentIds: ['none'],
+        // parentIds: ['none'],
         name: '',
         level,
         attackTechniqueId: 'none',
@@ -170,11 +170,6 @@ export const magmaStore = defineStore('magma', {
     
 
     addExistingUseCase(useCase: UseCase) {
-
-      // Skip permanent use cases, since they should always be present already (L1-1: IN & L1-2: THR).
-      if (useCase.permanent) {
-        return
-      }
 
       // Check that the domain is set to a valid value.
       if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
@@ -468,8 +463,12 @@ export const magmaStore = defineStore('magma', {
         let failCount = 0;
         const errorMessages: string[] = [];
     
-        // Iterate over each use case and try to add it
+        // Iterate over each use case and try to add it.
         useCases.forEach((useCase: any) => {
+          // Skip permanent use cases, since they should always be present already (L1-1: IN & L1-2: THR, for all 3 domains).
+          if (useCase.permanent) {
+            return
+          }
           try {
             this.addExistingUseCase(useCase);
             successCount++;
