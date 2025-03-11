@@ -6,7 +6,7 @@ import { tacticsStore } from '@/stores/tactics';
 
 const magma = magmaStore();
 const tactics = tacticsStore();
-const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Results']);
+const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Heatmap']);
 
 // Initialize the default use cases.
 magma.initializeDefaultUseCases();
@@ -314,7 +314,7 @@ const validateAndFormat = (event: Event) => {
 
   <!-- Scrolling container -->
   <div class="scroll-container">
-    <table v-if="magma.activeTab !== 'Results'" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Results tab is active, we show another div element. -->
+    <table v-if="magma.activeTab !== 'Heatmap'" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Heatmap tab is active, we show another div element. -->
       <thead>
         <tr>
           <!-- Render column headers. -->
@@ -739,7 +739,7 @@ th.outImpact {
 }
 
 th.risk {
-  width: 50px;
+  width: 55px;
 }
 
 input, .uneditable {
