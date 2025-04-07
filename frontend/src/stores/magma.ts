@@ -11,6 +11,7 @@ interface UseCase {
   id: string;
   uid: string;
   name: string;
+  description: string;
   level: number;
   parentIds?: Array<string>;
   attackTechniqueId?: string;
@@ -34,6 +35,7 @@ interface UseCase {
 interface UpdatedFields {
   name?: string;
   id?: string;
+  description?: string;
   parentIds?: Array<string>;
   attackTechniqueId?: string;
   visibilityFromAttackTechniqueOverride?: boolean;
@@ -147,10 +149,12 @@ export const magmaStore = defineStore('magma', {
       // Generate the new use case ID
       const uid = uuidv4();
       const useCase: UseCase = {
+        domain: domain,
+        level,
         id: `L${level}-${newSuffix.toString()}`,
         // parentIds: ['none'],
         name: '',
-        level,
+        description: '',
         attackTechniqueId: 'none',
         visibilityFromAttackTechnique: false,
         visibilityFromAttackTechniqueOverride: false,
@@ -163,7 +167,6 @@ export const magmaStore = defineStore('magma', {
         invalidVisibility: false,
         invalidId: false,
         invalidParentIds: false,
-        domain: domain,
       };
       
       this.useCases.push(useCase);
@@ -438,6 +441,7 @@ export const magmaStore = defineStore('magma', {
           level: useCase.level,
           id: useCase.id,
           name: useCase.name,
+          description: useCase.description,
           parentIds: useCase?.parentIds,
           permanent: useCase?.permanent,
           inImpact: useCase?.inImpact,
@@ -524,11 +528,12 @@ export const magmaStore = defineStore('magma', {
         this.useCases = [
           {
             domain: 'enterprise-attack',
+            level: 1,
             uid: 'IN',
             id: 'L1-1',
             // uid: uuidv4(),
             name: 'IN',
-            level: 1,
+            description: '',
             visibility: 0,
             implementation: 0,
             effectiveness: 0,
@@ -538,11 +543,12 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'enterprise-attack',
+            level: 1,
             uid: 'THR',
             id: 'L1-2',
             // uid: uuidv4(),
             name: 'THR',
-            level: 1,
+            description: '',
             visibility: 0,
             implementation: 0,
             effectiveness: 0,
@@ -552,11 +558,12 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'mobile-attack',
+            level: 1,
             uid: 'IN',
             id: 'L1-1',
             // uid: uuidv4(),
             name: 'IN',
-            level: 1,
+            description: '',
             visibility: 0,
             implementation: 0,
             effectiveness: 0,
@@ -566,11 +573,12 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'mobile-attack',
+            level: 1,
             uid: 'THR',
             id: 'L1-2',
             // uid: uuidv4(),
             name: 'THR',
-            level: 1,
+            description: '',
             visibility: 0,
             implementation: 0,
             effectiveness: 0,
@@ -580,11 +588,12 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'ics-attack',
+            level: 1,
             uid: 'IN',
             id: 'L1-1',
             // uid: uuidv4(),
             name: 'IN',
-            level: 1,
+            description: '',
             visibility: 0,
             implementation: 0,
             effectiveness: 0,
@@ -594,11 +603,12 @@ export const magmaStore = defineStore('magma', {
           },
           {
             domain: 'ics-attack',
+            level: 1,
             uid: 'THR',
             id: 'L1-2',
             // uid: uuidv4(),
             name: 'THR',
-            level: 1,
+            description: '',
             visibility: 0,
             implementation: 0,
             effectiveness: 0,

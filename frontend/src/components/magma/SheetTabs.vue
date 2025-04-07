@@ -18,6 +18,7 @@ magma.updateAllL3UseCasesVisibility()
 const L1Headers = {
   name: 'Use Case Name',
   id: 'ID',
+  description: 'Description',
   visibility: 'Visibility %',
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
@@ -32,6 +33,7 @@ const L1Headers = {
 const L2Headers = {
   name: 'Use Case Name',
   id: 'ID',
+  description: 'Description',
   parentIds: 'Parent Use Case',
   visibility: 'Visibility %',
   implementation: 'Implementation %',
@@ -43,6 +45,7 @@ const L2Headers = {
 const L3Headers = {
   name: 'Use Case Name',
   id: 'ID',
+  description: 'Description',
   parentIds: 'Parent Use Case',
   attackTechniqueId: 'ATT&CK Technique',
   visibilityFromAttackTechniqueOverride: 'Override',
@@ -55,9 +58,9 @@ const L3Headers = {
 
 // Define editable fields for each tab
 const editableFieldsMap = {
-  L1: { name: true, id: true, inImpact: true, thrImpact: true, outImpact: true},
-  L2: { name: true, id: true, parentIds: true, },
-  L3: { name: true, id: true, parentIds: true, attackTechniqueId: true, visibilityFromAttackTechniqueOverride: true, visibility: true, implementation: true, effectiveness: true }
+  L1: { name: true, id: true, description: true, inImpact: true, thrImpact: true, outImpact: true},
+  L2: { name: true, id: true, description: true, parentIds: true, },
+  L3: { name: true, id: true, description: true, parentIds: true, attackTechniqueId: true, visibilityFromAttackTechniqueOverride: true, visibility: true, implementation: true, effectiveness: true }
 };
 
 const activeTabData = computed(() => {
@@ -321,6 +324,7 @@ const validateAndFormat = (event: Event) => {
           <th class="remove-col" @click="confirmRemoveUseCaseLevel()" style="background-color: #e73030; color: white; cursor: pointer;">&#10806;</th>  <!-- Character found in list: https://www.w3schools.com/charsets/ref_utf_math.asp -->
           <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ name: columnName === 'Use Case Name',
                                                                                     id: columnName === 'ID',
+                                                                                    description: columnName === 'Description',
                                                                                     parent: columnName === 'Parent Use Case',
                                                                                     attack: columnName === 'ATT&CK Technique',
                                                                                     override: columnName === 'Override',
@@ -432,6 +436,17 @@ const validateAndFormat = (event: Event) => {
                 <div
                   class="use-case-id-editable"
                   v-if="columnKey === 'id'"
+                  :contenteditable="!useCase.permanent"
+                  @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
+                  :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
+                >
+                  {{ useCase[columnKey] }}
+                </div>
+
+                <!-- Editable Description div -->
+                <div
+                  class="use-case-description-editable"
+                  v-if="columnKey === 'description'"
                   :contenteditable="!useCase.permanent"
                   @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
                   :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
@@ -624,7 +639,7 @@ tr {
   font-size: 14px;
 }
 
-input, .use-case-name-editable, .use-case-id-editable {
+input, .use-case-name-editable, .use-case-id-editable, .use-case-description-editable {
   display: flex;
   align-items: center;
   justify-content: center;
