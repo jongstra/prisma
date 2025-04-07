@@ -193,33 +193,32 @@ const updateObjectField = (uid: string, field: string, value: any) => {
 const getBackgroundColor = (useCase: any, field: string) => {
   // const useCase = magma.getUseCaseByUid(uid, tactics.domain);
 
+  if (['inImpact', 'thrImpact', 'outImpact'].includes(field)) {
+    return useCase.permanent ? 'black': 'white';
+  }
+
+  if (field === 'risk') {
+    return useCase.permanent ? 'black': 'lightgoldenrodyellow';
+  }
+
   if (useCase.permanent) {
       return 'lightgoldenrodyellow'
   }
 
   if (field === 'visibility') {
-    // Check the validity of the number and return a backgroundcolor based on the validity of the number.
-    const visibility = useCase.visibility;
-    const validVisibility = !isNaN(visibility) && visibility >= 0 && visibility <= 100;
-    if (validVisibility) {
+    if (useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride) {
+      return 'lightgoldenrodyellow'
+    }
+    else {
       return 'white'; //'rgb(246, 246, 246)';
-    } else {
-      return 'Crimson';
     }
   }
 
   if (field === 'id') {
-
     const id = useCase.id;
     const allIds = magma.getAllIds(tactics.domain);
     const noDuplicateId = (allIds.filter(item => item === id).length <= 1);
-
-    // Regular expression to check if the format is 'prefix-numeric'
-    const correctFormat = new RegExp(`^${magma.activeTab}-\\d+$`).test(id);
-
-    const validId = noDuplicateId && correctFormat;
-
-    if (validId) {
+    if (noDuplicateId) {
       return 'white';
     } else {
       return 'Crimson';
@@ -367,7 +366,7 @@ const validateAndFormat = (event: Event) => {
                 type="number"
                 :value="useCase[columnKey]"
                 @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
-                :style="{backgroundColor: (useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride) ? 'lightgoldenrodyellow' : getBackgroundColor(useCase, columnKey)}"
+                :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                 :disabled="useCase.visibilityFromAttackTechnique && !useCase.visibilityFromAttackTechniqueOverride"
               />
 
@@ -394,7 +393,7 @@ const validateAndFormat = (event: Event) => {
                 :value="useCase[columnKey]"
                 @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
                 :disabled="useCase.permanent"
-                :style="{backgroundColor: useCase.permanent ? 'black': 'white'}"
+                :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
               />
 
               <!-- Editable L1 thrImpact fields -->
@@ -404,7 +403,7 @@ const validateAndFormat = (event: Event) => {
                 :value="useCase[columnKey]"
                 @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
                 :disabled="useCase.permanent"
-                :style="{backgroundColor: useCase.permanent ? 'black': 'white'}"
+                :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
               />
 
               <!-- Editable L1 outImpact fields -->
@@ -414,7 +413,7 @@ const validateAndFormat = (event: Event) => {
                 :value="useCase[columnKey]"
                 @input="(event) => { validateAndFormat(event); updateObjectField(useCase.uid, columnKey, event.target.value); }"
                 :disabled="useCase.permanent"
-                :style="{backgroundColor: useCase.permanent ? 'black': 'white'}"
+                :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
               />
 
 
@@ -535,7 +534,7 @@ const validateAndFormat = (event: Event) => {
             <template v-else-if="columnKey === 'risk'">
               <input
                 :value="useCase.permanent ? '' : formatPercentage(useCase[columnKey] || 0)"
-                :style="{backgroundColor: useCase.permanent ? 'black': 'lightgoldenrodyellow'}"
+                :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                 disabled="true"
               >
               </input>
@@ -623,6 +622,7 @@ const validateAndFormat = (event: Event) => {
 /* Default cell settings, will be overwritten later. But gives more consistent feel. */
 th, td, input {
   width: 140px;
+  height: 30px;
   border: 2px solid rgb(42, 42, 42);
   border-radius: 4px;
   background-color: white;
@@ -700,7 +700,11 @@ th.name {
 }
 
 th.id {
-  width: 90px;
+  width: 100px;
+}
+
+th.description {
+  width: 250px;
 }
 
 th.parent {
@@ -761,7 +765,7 @@ input, .uneditable {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 100%;
 }
 
 .uneditable {
@@ -794,6 +798,10 @@ input[type=checkbox] {
 .load-button:hover, .save-button:hover {
   background-color: rgb(214, 133, 27);
   color: rgb(255, 255, 255);
+}
+
+textarea {
+  resize: none;
 }
 
 </style>

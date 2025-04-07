@@ -1,51 +1,54 @@
 - domain: enterprise-attack
   level: 1
-  id: L1-1
-  name: IN
-  permanent: true
+  id: DOS
+  name: Denial of Service
+  description: "Any Denial of Service attack, optionally distributed with the goal
+    of causing outages. IN: reconnaissance & scanning THROUGH: not applicable
+    OUT: DDoS attack impact"
+  inImpact: "50"
+  thrImpact: "77"
+  outImpact: "23"
 - domain: enterprise-attack
   level: 1
-  id: L1-2
-  name: THR
-  permanent: true
-- domain: enterprise-attack
-  level: 1
-  id: L1-3
-  name: FIN
+  id: FIN
+  name: Financial Loss
+  description: Any tampering of critical business systems which causes or further
+    enables theft of virtual or physical assets via existing or current
+    channels.
   inImpact: "78"
   thrImpact: "56"
   outImpact: "34"
 - domain: enterprise-attack
   level: 1
-  id: L1-4
-  name: DOS
-  inImpact: "50"
-  thrImpact: "77"
-  outImpact: "23"
+  id: IN
+  name: Cumulative IN risk
+  description: Cumulative risk of IN stages and techniques, serving as a risk
+    amplifier for the business risks.
+  permanent: true
 - domain: enterprise-attack
   level: 2
   id: L2-1
   name: L2 IN UC
   parentIds:
-    - L1-1
+    - IN
 - domain: enterprise-attack
   level: 2
   id: L2-2
   name: L2 THR UC
   parentIds:
-    - L1-2
+    - THR
 - domain: enterprise-attack
   level: 2
   id: L2-3
   name: L2 OUT UC FIN
   parentIds:
-    - L1-3
+    - FIN
 - domain: enterprise-attack
   level: 2
   id: L2-4
   name: L2 OUT UC DOS
   parentIds:
-    - L1-4
+    - DOS
 - domain: enterprise-attack
   level: 3
   id: L3-1
@@ -101,23 +104,38 @@
   visibility: "55"
   implementation: "23"
   effectiveness: "23"
-- domain: mobile-attack
+- domain: enterprise-attack
   level: 1
-  id: L1-1
-  name: IN
+  id: THR
+  name: Cumulative THROUGH risk
+  description: Cumulative risk of THROUGH stages and techniques, serving as a risk
+    amplifier for the business risks.
   permanent: true
 - domain: mobile-attack
   level: 1
-  id: L1-2
-  name: THR
+  id: IN
+  name: Cumulative IN risk
+  description: Cumulative risk of IN stages and techniques, serving as a risk
+    amplifier for the business risks.
+  permanent: true
+- domain: mobile-attack
+  level: 1
+  id: THR
+  name: Cumulative THROUGH risk
+  description: Cumulative risk of THROUGH stages and techniques, serving as a risk
+    amplifier for the business risks.
   permanent: true
 - domain: ics-attack
   level: 1
-  id: L1-1
-  name: IN
+  id: IN
+  name: Cumulative IN risk
+  description: Cumulative risk of IN stages and techniques, serving as a risk
+    amplifier for the business risks.
   permanent: true
 - domain: ics-attack
   level: 1
-  id: L1-2
-  name: THR
+  id: THR
+  name: Cumulative THROUGH risk
+  description: Cumulative risk of THROUGH stages and techniques, serving as a risk
+    amplifier for the business risks.
   permanent: true
