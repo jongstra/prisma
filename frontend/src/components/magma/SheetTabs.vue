@@ -73,22 +73,33 @@ const activeTabData = computed(() => {
       return magma.L2UseCases(tactics.domain);
     case 'L3':
       return magma.L3UseCases(tactics.domain);
-    default:
-      const numberDomainUsecases = magma.L1UseCases(tactics.domain).length;
-      const averageVisibility = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / numberDomainUsecases;
-      const averageImplementation = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.implementation || 0), 0) / numberDomainUsecases;
-      const averageEffectiveness = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.effectiveness || 0), 0) / numberDomainUsecases;
-      const averageWeight = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.weight || 0), 0) / numberDomainUsecases;
-      const averagePotential = magma.L1UseCases(tactics.domain).reduce((acc, useCase) => acc + (useCase.potential || 0), 0) / numberDomainUsecases;
-      return [{
-        TotalVisibility: averageVisibility.toFixed(2),
-        TotalImplementation: averageImplementation.toFixed(2),
-        TotalEffectiveness: averageEffectiveness.toFixed(2),
-        TotalWeight: averageWeight.toFixed(2),
-        TotalPotential: averagePotential.toFixed(2),
-      }]; // Format to 2 decimal places
   }
 });
+
+const getAverages = () => {
+  const data = activeTabData.value; // Access the value of the computed property.
+  
+  if (!Array.isArray(data) || data.length === 0) {
+    return []; // Return an empty array if there's no valid data.
+  }
+
+  const numberDomainUsecases = data.length;
+  const averageVisibility = data.reduce((acc, useCase) => acc + (useCase.visibility || 0), 0) / numberDomainUsecases;
+  const averageImplementation = data.reduce((acc, useCase) => acc + (useCase.implementation || 0), 0) / numberDomainUsecases;
+  const averageEffectiveness = data.reduce((acc, useCase) => acc + (useCase.effectiveness || 0), 0) / numberDomainUsecases;
+  const averageWeight = data.reduce((acc, useCase) => acc + (useCase.weight || 0), 0) / numberDomainUsecases;
+  const averagePotential = data.reduce((acc, useCase) => acc + (useCase.potential || 0), 0) / numberDomainUsecases;
+
+  return {
+    AverageVisibility: averageVisibility.toFixed(2),
+    AverageImplementation: averageImplementation.toFixed(2),
+    AverageEffectiveness: averageEffectiveness.toFixed(2),
+    AverageWeight: averageWeight.toFixed(2),
+    AveragePotential: averagePotential.toFixed(2),
+  }; // Format to 2 decimal places
+};
+
+console.log(getAverages()['AveragePotential']);
 
 const headers = computed(() => {
   switch (magma.activeTab) {
@@ -195,7 +206,6 @@ const updateObjectField = (uid: string, field: string, value: any) => {
 const getBackgroundColor = (useCase: any, field: string) => {
 
   if (['inImpact', 'thrImpact', 'outImpact'].includes(field)) {
-    console.log (useCase.inImpact, useCase.thrImpact, useCase.outImpact, (useCase.inImpact + useCase.thrImpact + useCase.outImpact))
     if (useCase.permanent) {
       return 'black'
     } else if ((Number(useCase.inImpact) + Number(useCase.thrImpact) + Number(useCase.outImpact)) == 100) {
@@ -351,6 +361,8 @@ const validateAndFormat = (event: Event) => {
         </tr>
       </thead>
       <tbody>
+
+        <!-- Rows for all use cases. -->
         <tr v-for="(useCase, index) in activeTabData" :key="index">
 
           <!-- Remove-use-case buttons -->
@@ -570,6 +582,20 @@ const validateAndFormat = (event: Event) => {
 
         </tr>
 
+        <!-- "Hard coded" row with averages for L1 sheet. -->
+        <tr></tr>
+        <tr v-if="magma.activeTab =='L1'">
+          <!-- <td style="background-color: #e73030"></td> -->
+          <td style="border: none"></td>
+          <td style="background-color: #eee">Averages &rarr;</td>
+          <td style="border: none"></td>
+          <td style="background-color: #eee">{{getAverages()['AverageVisibility']}}</td>
+          <td style="background-color: #eee">{{getAverages()['AverageImplementation']}}</td>
+          <td style="background-color: #eee">{{getAverages()['AverageEffectiveness']}}</td>
+          <td style="background-color: #eee">{{getAverages()['AverageWeight']}}</td>
+          <td style="background-color: #eee">{{getAverages()['AveragePotential']}}</td>
+        </tr>
+        <tr></tr>
 
       </tbody>
       <tfoot>
@@ -585,11 +611,11 @@ const validateAndFormat = (event: Event) => {
     </table>
 
     <div v-else>
-      <p>Average L1 UC Visibility: {{ activeTabData[0].TotalVisibility }}%</p>
-      <p>Average L1 UC Implementation: {{ activeTabData[0].TotalImplementation }}%</p>
-      <p>Average L1 UC Effectiveness: {{ activeTabData[0].TotalEffectiveness }}%</p>
-      <p>Average L1 UC Weight: {{ activeTabData[0].TotalWeight }}%</p>
-      <p>Average L1 UC Potential: {{ activeTabData[0].TotalPotential }}%</p>
+      <!-- <p>Average L1 UC Visibility: {{ getAverages()['AverageVisibility'] }}%</p>
+      <p>Average L1 UC Implementation: {{ getAverages().AverageImplementation }}%</p>
+      <p>Average L1 UC Effectiveness: {{ getAverages().AverageEffectiveness }}%</p>
+      <p>Average L1 UC Weight: {{ getAverages().AverageWeight }}%</p>
+      <p>Average L1 UC Potential: {{ getAverages().AveragePotential }}%</p> -->
     </div>
   </div>
 </template>
