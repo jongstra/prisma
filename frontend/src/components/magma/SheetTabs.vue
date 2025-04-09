@@ -585,7 +585,6 @@ const validateAndFormat = (event: Event) => {
         <!-- "Hard coded" row with averages for L1 sheet. -->
         <tr></tr>
         <tr v-if="magma.activeTab =='L1'">
-          <!-- <td style="background-color: #e73030"></td> -->
           <td style="border: none"></td>
           <td style="background-color: #eee">Averages &rarr;</td>
           <td style="border: none"></td>
