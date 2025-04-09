@@ -107,23 +107,28 @@ export const magmaStore = defineStore('magma', {
         .map(useCase => useCase['uid']);
     },
     getParentUseCases(state) {
-      return (useCase: UseCase, domain?: string) => {
+      return (useCase: UseCase) => {
         if (useCase && Array.isArray(useCase.parentIds)) {
-          const parentUseCases = state.useCases.filter(childUseCase => useCase.parentIds.includes(childUseCase['id']) && (!domain || childUseCase.domain === domain));
+          const parentUseCases = state.useCases.filter(parentUseCase => useCase.parentIds.includes(parentUseCase['id']) && (parentUseCase.domain === useCase.domain));
           return parentUseCases;
         } else {
-          // console.log('useCase or useCase.parentIds is undefined:', useCase);
           return [];
         }
       };
     },
-    getChildUseCasesById(state) {
-      return (id: string, domain?: string) => {
-        const childUseCases = state.useCases.filter(useCase => Array.isArray(useCase['parentIds']) && useCase['parentIds'].includes(id) && (!domain || useCase.domain === domain));
-        // console.log(`Found ${childUseCases.length} child use cases for id: "${id}".`);
+    getChildUseCases(state) {
+      return (useCase: UseCase) => {
+        const childUseCases = state.useCases.filter(childUseCase => Array.isArray(childUseCase['parentIds']) && childUseCase['parentIds'].includes(useCase.id) && (childUseCase.domain === useCase.domain));
         return childUseCases;
       };
-    }
+    },
+    getGrandChildUseCases(state) {
+      return (useCase: UseCase) => {
+        const childUseCases = this.getChildUseCases(useCase);
+        const grandChildUseCases = childUseCases.map(childUseCase => this.getChildUseCases(childUseCase)).flat();
+        return grandChildUseCases
+      };
+    },
   },
 
   actions: {
@@ -343,7 +348,7 @@ export const magmaStore = defineStore('magma', {
     recomputeUseCases(useCases: Array<UseCase>) {
       useCases.forEach((useCase) => {
         const parentUseCases = this.getParentUseCases(useCase);
-        const childUseCases = this.getChildUseCasesById(useCase.id);
+        const childUseCases = this.getChildUseCases(useCase);
 
         // Only recompute the visibility for a use case on L1 or L2.
         if (useCase.level != 3) {
@@ -475,7 +480,7 @@ export const magmaStore = defineStore('magma', {
     
         // Iterate over each use case and try to add it.
         useCases.forEach((useCase: any) => {
-          // Skip permanent use cases, since they should always be present already (L1-1: IN & L1-2: THR, for all 3 domains).
+          // Skip permanent use cases, since they should always be present already for all 3 domains).
           if (useCase.permanent) {
             return
           }
@@ -524,9 +529,22 @@ export const magmaStore = defineStore('magma', {
           {
             domain: 'enterprise-attack',
             level: 1,
+            uid: 'AVG',
+            id: 'AVG',
+            name: 'Averages',
+            description: '',
+            visibility: 0,
+            implementation: 0,
+            effectiveness: 0,
+            weight: 0,
+            potential: 100,
+            permanent: true,
+          },
+          {
+            domain: 'enterprise-attack',
+            level: 1,
             uid: 'IN',
             id: 'IN',
-            // uid: uuidv4(),
             name: 'Cumulative IN risk',
             description: 'Cumulative risk of IN stages and techniques, serving as a risk amplifier for the business risks.',
             visibility: 0,
@@ -541,7 +559,6 @@ export const magmaStore = defineStore('magma', {
             level: 1,
             uid: 'THR',
             id: 'THR',
-            // uid: uuidv4(),
             name: 'Cumulative THROUGH risk',
             description: 'Cumulative risk of THROUGH stages and techniques, serving as a risk amplifier for the business risks.',
             visibility: 0,
@@ -556,7 +573,6 @@ export const magmaStore = defineStore('magma', {
             level: 1,
             uid: 'IN',
             id: 'IN',
-            // uid: uuidv4(),
             name: 'Cumulative IN risk',
             description: 'Cumulative risk of IN stages and techniques, serving as a risk amplifier for the business risks.',
             visibility: 0,
@@ -571,7 +587,6 @@ export const magmaStore = defineStore('magma', {
             level: 1,
             uid: 'THR',
             id: 'THR',
-            // uid: uuidv4(),
             name: 'Cumulative THROUGH risk',
             description: 'Cumulative risk of THROUGH stages and techniques, serving as a risk amplifier for the business risks.',
             visibility: 0,
@@ -586,7 +601,6 @@ export const magmaStore = defineStore('magma', {
             level: 1,
             uid: 'IN',
             id: 'IN',
-            // uid: uuidv4(),
             name: 'Cumulative IN risk',
             description: 'Cumulative risk of IN stages and techniques, serving as a risk amplifier for the business risks.',
             visibility: 0,
@@ -601,7 +615,6 @@ export const magmaStore = defineStore('magma', {
             level: 1,
             uid: 'THR',
             id: 'THR',
-            // uid: uuidv4(),
             name: 'Cumulative THROUGH risk',
             description: 'Cumulative risk of THROUGH stages and techniques, serving as a risk amplifier for the business risks.',
             visibility: 0,

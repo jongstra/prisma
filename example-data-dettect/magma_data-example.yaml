@@ -5,9 +5,9 @@
   description: "Any Denial of Service attack, optionally distributed with the goal
     of causing outages. IN: reconnaissance & scanning THROUGH: not applicable
     OUT: DDoS attack impact"
-  inImpact: "50"
-  thrImpact: "77"
-  outImpact: "23"
+  inImpact: "33"
+  thrImpact: "33"
+  outImpact: "34"
 - domain: enterprise-attack
   level: 1
   id: FIN
@@ -15,8 +15,8 @@
   description: Any tampering of critical business systems which causes or further
     enables theft of virtual or physical assets via existing or current
     channels.
-  inImpact: "78"
-  thrImpact: "56"
+  inImpact: "33"
+  thrImpact: "33"
   outImpact: "34"
 - domain: enterprise-attack
   level: 1

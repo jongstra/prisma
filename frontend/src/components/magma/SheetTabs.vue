@@ -19,6 +19,8 @@ const L1Headers = {
   name: 'Use Case Name',
   id: 'ID',
   description: 'Description',
+  nrChildren: 'L2 UC Related',
+  nrGrandChildren: 'L3 UC Related',
   visibility: 'Visibility %',
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
@@ -324,6 +326,8 @@ const validateAndFormat = (event: Event) => {
           <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ name: columnName === 'Use Case Name',
                                                                                     id: columnName === 'ID',
                                                                                     description: columnName === 'Description',
+                                                                                    nrChildren: columnName === 'L2 UC Related',
+                                                                                    nrGrandChildren: columnName === 'L3 UC Related',
                                                                                     parent: columnName === 'Parent Use Case',
                                                                                     attack: columnName === 'ATT&CK Technique',
                                                                                     override: columnName === 'Override',
@@ -501,6 +505,18 @@ const validateAndFormat = (event: Event) => {
 
 
             <!-- Uneditable fields -->
+            <template v-else-if="columnKey === 'nrChildren'">
+              <div class="uneditable">
+                {{ magma.getChildUseCases(useCase).length }}
+              </div>
+            </template>
+
+            <template v-else-if="columnKey === 'nrGrandChildren'">
+              <div class="uneditable">
+                {{ magma.getGrandChildUseCases(useCase).length }}
+              </div>
+            </template>
+
             <template v-else-if="columnKey === 'visibility'">
               <div class="uneditable">
                 {{ formatPercentage(useCase[columnKey]) }}
@@ -705,6 +721,10 @@ th.id {
 
 th.description {
   width: 250px;
+}
+
+th.nrChildren, th.nrGrandChildren {
+  width: 115px;
 }
 
 th.parent {
