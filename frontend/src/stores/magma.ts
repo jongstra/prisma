@@ -526,20 +526,20 @@ export const magmaStore = defineStore('magma', {
     initializeDefaultUseCases() {
       if (this.useCases.length === 0) {
         this.useCases = [
-          {
-            domain: 'enterprise-attack',
-            level: 1,
-            uid: 'AVG',
-            id: 'AVG',
-            name: 'Averages',
-            description: '',
-            visibility: 0,
-            implementation: 0,
-            effectiveness: 0,
-            weight: 0,
-            potential: 100,
-            permanent: true,
-          },
+          // {
+          //   domain: 'enterprise-attack',
+          //   level: 1,
+          //   uid: 'AVG',
+          //   id: 'AVG',
+          //   name: 'Averages',
+          //   description: '',
+          //   visibility: 0,
+          //   implementation: 0,
+          //   effectiveness: 0,
+          //   weight: 0,
+          //   potential: 100,
+          //   permanent: true,
+          // },
           {
             domain: 'enterprise-attack',
             level: 1,

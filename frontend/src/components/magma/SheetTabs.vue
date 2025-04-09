@@ -18,9 +18,9 @@ magma.updateAllL3UseCasesVisibility()
 const L1Headers = {
   name: 'Use Case Name',
   id: 'ID',
-  description: 'Description',
-  nrChildren: 'L2 UC Related',
-  nrGrandChildren: 'L3 UC Related',
+  // description: 'Description',
+  // nrChildren: 'L2 UC Related',
+  // nrGrandChildren: 'L3 UC Related',
   visibility: 'Visibility %',
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
@@ -193,10 +193,16 @@ const updateObjectField = (uid: string, field: string, value: any) => {
 };
 
 const getBackgroundColor = (useCase: any, field: string) => {
-  // const useCase = magma.getUseCaseByUid(uid, tactics.domain);
 
   if (['inImpact', 'thrImpact', 'outImpact'].includes(field)) {
-    return useCase.permanent ? 'black': 'white';
+    console.log (useCase.inImpact, useCase.thrImpact, useCase.outImpact, (useCase.inImpact + useCase.thrImpact + useCase.outImpact))
+    if (useCase.permanent) {
+      return 'black'
+    } else if ((Number(useCase.inImpact) + Number(useCase.thrImpact) + Number(useCase.outImpact)) == 100) {
+      return 'white'
+    } else {
+      return 'red'
+    }
   }
 
   if (field === 'risk') {
