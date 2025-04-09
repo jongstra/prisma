@@ -176,11 +176,9 @@ export const magmaStore = defineStore('magma', {
         invalidParentIds: false,
       };
 
-      // inImpact, thrImpact and outImpact are only present for level 1 use cases.
+      // Default value of 100 (to prevent the IN/THR/OUT Impact % cells from becoming red). Only present for level 1 use cases.
       if (level === 1) {
         useCase.inImpact = 100;
-        useCase.thrImpact = 0;
-        useCase.outImpact = 0;
       }
       
       // Add the new use case to the store.
@@ -536,20 +534,6 @@ export const magmaStore = defineStore('magma', {
     initializeDefaultUseCases() {
       if (this.useCases.length === 0) {
         this.useCases = [
-          // {
-          //   domain: 'enterprise-attack',
-          //   level: 1,
-          //   uid: 'AVG',
-          //   id: 'AVG',
-          //   name: 'Averages',
-          //   description: '',
-          //   visibility: 0,
-          //   implementation: 0,
-          //   effectiveness: 0,
-          //   weight: 0,
-          //   potential: 100,
-          //   permanent: true,
-          // },
           {
             domain: 'enterprise-attack',
             level: 1,

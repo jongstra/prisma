@@ -208,10 +208,10 @@ const getBackgroundColor = (useCase: any, field: string) => {
   if (['inImpact', 'thrImpact', 'outImpact'].includes(field)) {
     if (useCase.permanent) {
       return 'black'
-    } else if ((Number(useCase.inImpact) + Number(useCase.thrImpact) + Number(useCase.outImpact)) == 100) {
+    } else if ((Number(useCase.inImpact ?? 0) + Number(useCase.thrImpact ?? 0) + Number(useCase.outImpact ?? 0)) == 100) {
       return 'white'
     } else {
-      return 'red'
+      return 'crimson'
     }
   }
 
@@ -239,7 +239,7 @@ const getBackgroundColor = (useCase: any, field: string) => {
     if (noDuplicateId) {
       return 'white';
     } else {
-      return 'Crimson';
+      return 'crimson';
     }
   }
 
@@ -249,7 +249,7 @@ const getBackgroundColor = (useCase: any, field: string) => {
     if (validParentIds) {
       return 'white';
     } else {
-      return 'Crimson';
+      return 'crimson';
     }
   }
 
