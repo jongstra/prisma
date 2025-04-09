@@ -151,8 +151,10 @@ export const magmaStore = defineStore('magma', {
       // Increment the highest numeric suffix to generate a new unique ID
       const newSuffix = maxSuffix + 1;
     
-      // Generate the new use case ID
+      // Generate the new use case ID.
       const uid = uuidv4();
+
+      // Create new UseCase object.
       const useCase: UseCase = {
         domain: domain,
         level,
@@ -172,11 +174,16 @@ export const magmaStore = defineStore('magma', {
         invalidVisibility: false,
         invalidId: false,
         invalidParentIds: false,
-        inImpact: 100,
-        thrImpact: 0,
-        outImpact: 0,
       };
+
+      // inImpact, thrImpact and outImpact are only present for level 1 use cases.
+      if (level === 1) {
+        useCase.inImpact = 100;
+        useCase.thrImpact = 0;
+        useCase.outImpact = 0;
+      }
       
+      // Add the new use case to the store.
       this.useCases.push(useCase);
     },
     
