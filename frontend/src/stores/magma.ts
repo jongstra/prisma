@@ -172,6 +172,9 @@ export const magmaStore = defineStore('magma', {
         invalidVisibility: false,
         invalidId: false,
         invalidParentIds: false,
+        inImpact: 100,
+        thrImpact: 0,
+        outImpact: 0,
       };
       
       this.useCases.push(useCase);
