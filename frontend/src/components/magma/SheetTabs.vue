@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { ref, computed } from 'vue';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
+import Heatmap from './Heatmap.vue';
 
 const magma = magmaStore();
 const tactics = tacticsStore();
@@ -98,8 +99,6 @@ const getAverages = () => {
     AveragePotential: averagePotential.toFixed(2),
   }; // Format to 2 decimal places
 };
-
-console.log(getAverages()['AveragePotential']);
 
 const headers = computed(() => {
   switch (magma.activeTab) {
@@ -610,6 +609,7 @@ const validateAndFormat = (event: Event) => {
     </table>
 
     <div v-else>
+      <Heatmap/>
       <!-- <p>Average L1 UC Visibility: {{ getAverages()['AverageVisibility'] }}%</p>
       <p>Average L1 UC Implementation: {{ getAverages().AverageImplementation }}%</p>
       <p>Average L1 UC Effectiveness: {{ getAverages().AverageEffectiveness }}%</p>

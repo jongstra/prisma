@@ -129,6 +129,11 @@ export const magmaStore = defineStore('magma', {
         return grandChildUseCases
       };
     },
+    getUseCasesByAttackTechniqueId(state) {
+      return (attackTechniqueId: string) => {
+        return state.useCases.filter(useCase => useCase['level'] === 3 && useCase.attackTechniqueId === attackTechniqueId);
+      }
+    },
   },
 
   actions: {

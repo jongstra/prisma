@@ -9,6 +9,34 @@
   thrImpact: "33"
   outImpact: "34"
 - domain: enterprise-attack
+  level: 2
+  id: DOS-1
+  name: L2 OUT UC DOS
+  parentIds:
+    - DOS
+- domain: enterprise-attack
+  level: 3
+  id: DOS-1-1
+  name: L3 OUT UC DOS
+  parentIds:
+    - DOS-1
+  attackTechniqueId: T1030
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "50.00"
+  implementation: "65"
+  effectiveness: "44"
+- domain: enterprise-attack
+  level: 3
+  id: DOS-1-2
+  name: L3 OUT UC DOS 2
+  parentIds:
+    - DOS-1
+  attackTechniqueId: T1104
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "50.00"
+  implementation: "80"
+  effectiveness: "80"
+- domain: enterprise-attack
   level: 1
   id: FIN
   name: Financial Loss
@@ -19,6 +47,23 @@
   thrImpact: "33"
   outImpact: "34"
 - domain: enterprise-attack
+  level: 2
+  id: FIN-1
+  name: L2 OUT UC FIN
+  parentIds:
+    - FIN
+- domain: enterprise-attack
+  level: 3
+  id: FIN-1-1
+  name: L3 OUT UC FIN
+  parentIds:
+    - FIN-1
+  attackTechniqueId: T1189
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "20.00"
+  implementation: "77"
+  effectiveness: "88"
+- domain: enterprise-attack
   level: 1
   id: IN
   name: Cumulative IN risk
@@ -27,83 +72,21 @@
   permanent: true
 - domain: enterprise-attack
   level: 2
-  id: L2-1
+  id: IN-1
   name: L2 IN UC
   parentIds:
     - IN
 - domain: enterprise-attack
-  level: 2
-  id: L2-2
-  name: L2 THR UC
-  parentIds:
-    - THR
-- domain: enterprise-attack
-  level: 2
-  id: L2-3
-  name: L2 OUT UC FIN
-  parentIds:
-    - FIN
-- domain: enterprise-attack
-  level: 2
-  id: L2-4
-  name: L2 OUT UC DOS
-  parentIds:
-    - DOS
-- domain: enterprise-attack
   level: 3
-  id: L3-1
+  id: IN-1-1
   name: L3 IN UC
   parentIds:
-    - L2-1
-  attackTechniqueId: none
+    - IN-1
+  attackTechniqueId: T1572
   visibilityFromAttackTechniqueOverride: false
-  visibility: "78"
+  visibility: "33.33"
   implementation: "78"
   effectiveness: "78"
-- domain: enterprise-attack
-  level: 3
-  id: L3-2
-  name: L3 THR UC
-  parentIds:
-    - L2-2
-  attackTechniqueId: none
-  visibilityFromAttackTechniqueOverride: false
-  visibility: "66"
-  implementation: "54"
-  effectiveness: "45"
-- domain: enterprise-attack
-  level: 3
-  id: L3-3
-  name: L3 OUT UC FIN
-  parentIds:
-    - L2-3
-  attackTechniqueId: none
-  visibilityFromAttackTechniqueOverride: false
-  visibility: "54"
-  implementation: "77"
-  effectiveness: "88"
-- domain: enterprise-attack
-  level: 3
-  id: L3-4
-  name: L3 OUT UC DOS
-  parentIds:
-    - L2-4
-  attackTechniqueId: none
-  visibilityFromAttackTechniqueOverride: false
-  visibility: "100"
-  implementation: "65"
-  effectiveness: "44"
-- domain: enterprise-attack
-  level: 3
-  id: L3-5
-  name: L3 OUT UC DOS 2
-  parentIds:
-    - L2-4
-  attackTechniqueId: none
-  visibilityFromAttackTechniqueOverride: false
-  visibility: "55"
-  implementation: "23"
-  effectiveness: "23"
 - domain: enterprise-attack
   level: 1
   id: THR
@@ -111,6 +94,23 @@
   description: Cumulative risk of THROUGH stages and techniques, serving as a risk
     amplifier for the business risks.
   permanent: true
+- domain: enterprise-attack
+  level: 2
+  id: THR-1
+  name: L2 THR UC
+  parentIds:
+    - THR
+- domain: enterprise-attack
+  level: 3
+  id: THR-1-1
+  name: L3 THR UC
+  parentIds:
+    - THR-1
+  attackTechniqueId: T1029
+  visibilityFromAttackTechniqueOverride: false
+  visibility: "50.00"
+  implementation: "54"
+  effectiveness: "45"
 - domain: mobile-attack
   level: 1
   id: IN
