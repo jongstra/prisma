@@ -10,16 +10,24 @@ const magma = magmaStore();
 const id = uuidv4();
 
 const heatmapStyle = 'weight'
+// const heatmapStyle = 'potential'
 
 
 function getBackgroundColor() {
   const relatedTechniques = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
-  // if(relatedTechniques.length > 0) {console.log(relatedTechniques[0].weight)};
   switch (heatmapStyle) {
     case 'weight':
       const averageWeight = relatedTechniques.reduce((sum, item) => sum + item.weight, 0) / relatedTechniques.length;
       console.log(averageWeight);
-      return `rgba(0, 255, 0, ${averageWeight/100})`
+      return `rgba(0, 255, 0, ${averageWeight/100})`;
+    case 'potential':
+      if (relatedTechniques.length == 0) {
+        const potential = 1 - props.technique.visibility_ratio;
+        return `rgba(255, 0, 0, ${potential})`;
+      } else {
+        const averagePotential = relatedTechniques.reduce((sum, item) => sum + item.potential, 0) / relatedTechniques.length;
+        return `rgba(255, 0, 0, ${averagePotential})`;
+      }
   }
 }
 

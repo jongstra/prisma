@@ -25,7 +25,7 @@ const uploadFile = async () => {
       return
     }
 
-    if (file.type !== "text/yaml" && file.type !== "application/x-yaml") {
+    if (file.type !== "text/yaml" && !(file.type == "application/x-yaml" || file.type == "application/yaml") ) {
       Swal.fire({
         icon: 'error',
         title: 'Invalid file type',

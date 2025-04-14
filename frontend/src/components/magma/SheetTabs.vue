@@ -147,6 +147,16 @@ const exportYaml = () => {
 const importYaml = (event: Event) => {
   const fileInput = event.target as HTMLInputElement;
   const file = fileInput.files?.[0];
+
+  if (file.type !== "text/yaml" && !(file.type == "application/x-yaml" || file.type == "application/yaml") ) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid file type',
+      text: 'Please select a valid MaGMa YAML file.'
+    })
+    return
+  }
+
   if (file) {
     const reader = new FileReader();
     reader.onload = (e) => {
