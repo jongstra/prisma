@@ -380,7 +380,7 @@ const validateAndFormat = (event: Event) => {
               v-if="!useCase.permanent"
               class='remove-button'
               @click="confirmRemoveUseCase(useCase)" 
-              style="background-color: #e73030; color: white; border: none; cursor: pointer;"
+              style="background-color: #e73030; color: white; border: none; cursor: pointer; width: 100%; height: 100%"
             >
               &times;
             </button>
