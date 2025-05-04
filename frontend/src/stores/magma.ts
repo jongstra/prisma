@@ -435,11 +435,13 @@ export const magmaStore = defineStore('magma', {
       }
     },
 
-
-    updateAllL3UseCasesVisibility() {
+  // Update the L3 use cases visibility based on the dettect visibility value, and update the depending weight/potential values. Also update any parent use cases.
+    updateAllL3UseCasesBasedOnDettectVisibility() {
       this.L3UseCases().forEach((useCase) => {
         if (useCase.visibilityFromAttackTechnique === true && useCase.visibilityFromAttackTechniqueOverride === false) {
           useCase.visibility = formatPercentage(tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain))??0;
+          useCase.weight = ((useCase.visibility??0)/100) * ((useCase.implementation??0)/100) * ((useCase.effectiveness??0)/100) * 100;
+          useCase.potential = 100 - useCase.weight;
           const parentUseCases = this.getParentUseCases(useCase, useCase.domain);
           this.recomputeUseCases(parentUseCases);
         }

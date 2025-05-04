@@ -12,8 +12,9 @@ const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Heatmap']);
 // Initialize the default use cases.
 magma.initializeDefaultUseCases();
 
-// Always update the L3 use cases visibility when switching to the MaGMa page.
-magma.updateAllL3UseCasesVisibility()
+// Always update the L3 use cases visibility based on the dettect visibility value, when switching to the MaGMa page.
+// Also update any parent use cases.
+magma.updateAllL3UseCasesBasedOnDettectVisibility()
 
 // Define header maps for each tab.
 const L1Headers = {
