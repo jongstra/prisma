@@ -1,34 +1,66 @@
 <script setup lang="ts">
-import { computed, ref, watch, reactive } from 'vue';
-import { tacticsStore } from '@/stores/tactics';
 import { magmaStore } from '@/stores/magma';
-import { v4 as uuidv4 } from 'uuid';
 
 const props = defineProps(['technique']);
-const tactics = tacticsStore();
 const magma = magmaStore();
-const id = uuidv4();
-
-const heatmapStyle = 'weight'
-// const heatmapStyle = 'potential'
 
 
 function getBackgroundColor() {
-  const relatedTechniques = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
-  switch (heatmapStyle) {
-    case 'weight':
-      const averageWeight = relatedTechniques.reduce((sum, item) => sum + item.weight, 0) / relatedTechniques.length;
-      console.log(averageWeight);
-      return `rgba(0, 255, 0, ${averageWeight/100})`;
-    case 'potential':
-      if (relatedTechniques.length == 0) {
-        const potential = 1 - props.technique.visibility_ratio;
-        return `rgba(255, 0, 0, ${potential})`;
-      } else {
-        const averagePotential = relatedTechniques.reduce((sum, item) => sum + item.potential, 0) / relatedTechniques.length;
-        return `rgba(255, 0, 0, ${averagePotential})`;
-      }
+  const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
+
+  console.log(relatedUseCases);
+  // Heatmap style: weight
+  if (magma.heatmapVisibility && magma.heatmapImplementation && magma.heatmapEffectiveness) {
+    const averageWeight = relatedUseCases.reduce((sum, usecase) => sum + usecase.weight/100, 0) / relatedUseCases.length;
+      return `rgba(0, 255, 0, ${averageWeight})`;
   }
+
+  // Heatmap style: visibility * implementation
+  if (magma.heatmapVisibility && magma.heatmapImplementation) {
+    const averageVisImp = relatedUseCases.reduce((sum, usecase) => sum + (usecase.visibility/100 * usecase.implementation/100), 0) / relatedUseCases.length;
+    return `rgba(0, 255, 0, ${averageVisImp})`;
+  }
+
+  // Heatmap style: implementation * effectiveness
+  if (magma.heatmapImplementation && magma.heatmapEffectiveness) {
+    const averageImpEff = relatedUseCases.reduce((sum, usecase) => sum + (usecase.implementation/100 * usecase.effectiveness/100), 0) / relatedUseCases.length;
+    return `rgba(0, 255, 0, ${averageImpEff})`;
+  }
+
+  // Heatmap style: visibility
+  if (magma.heatmapVisibility) {
+    const averageVisibility = relatedUseCases.reduce((sum, usecase) => sum + usecase.visibility/100, 0) / relatedUseCases.length;
+    return `rgba(0, 255, 0, ${averageVisibility})`;
+  }
+
+  // Heatmap style: implementation
+  if (magma.heatmapImplementation) {
+    const averageImplementation = relatedUseCases.reduce((sum, usecase) => sum + usecase.implementation/100, 0) / relatedUseCases.length;
+    return `rgba(0, 255, 0, ${averageImplementation})`;
+  }
+
+  // Heatmap style: effectiveness
+  if (magma.heatmapEffectiveness) {
+    const averageEffectiveness = relatedUseCases.reduce((sum, usecase) => sum + usecase.effectiveness/100, 0) / relatedUseCases.length;
+    return `rgba(0, 255, 0, ${averageEffectiveness})`;
+  }
+
+
+
+  // switch (heatmapStyle) {
+  //   case 'weight':
+  //     const averageWeight = relatedTechniques.reduce((sum, item) => sum + item.weight, 0) / relatedTechniques.length;
+  //     console.log(averageWeight);
+  //     return `rgba(0, 255, 0, ${averageWeight/100})`;
+  //   case 'potential':
+  //     if (relatedTechniques.length == 0) {
+  //       const potential = 1 - props.technique.visibility_ratio;
+  //       return `rgba(255, 0, 0, ${potential})`;
+  //     } else {
+  //       const averagePotential = relatedTechniques.reduce((sum, item) => sum + item.potential, 0) / relatedTechniques.length;
+  //       return `rgba(255, 0, 0, ${averagePotential})`;
+  //     }
+  // }
 }
 
 </script>

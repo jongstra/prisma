@@ -639,11 +639,7 @@ const validateAndFormat = (event: Event) => {
 
     <!-- Insights Tab -->
     <div v-if="magma.activeTab === 'Insights'">
-      <p>Average L1 UC Visibility: {{ getAverages()['AverageVisibility'] }}%</p>
-      <p>Average L1 UC Implementation: {{ getAverages().AverageImplementation }}%</p>
-      <p>Average L1 UC Effectiveness: {{ getAverages().AverageEffectiveness }}%</p>
-      <p>Average L1 UC Weight: {{ getAverages().AverageWeight }}%</p>
-      <p>Average L1 UC Potential: {{ getAverages().AveragePotential }}%</p>
+      <p>UNDER CONSTRUCTION</p>
     </div>
 
 

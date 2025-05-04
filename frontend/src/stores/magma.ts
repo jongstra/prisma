@@ -53,6 +53,9 @@ export const magmaStore = defineStore('magma', {
   state: () => ({
     useCases: [] as UseCase[],
     activeTab: 'L1',
+    heatmapVisibility: true,
+    heatmapImplementation: true,
+    heatmapEffectiveness: true,
   }),
 
   getters: {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { tacticsStore } from '@/stores/tactics';
 import HeatmapButtonColumn from './HeatmapButtonColumn.vue';
+import HeatmapSettings from './HeatmapSettings.vue';
 const store = tacticsStore();
 </script>
 
@@ -8,8 +9,11 @@ const store = tacticsStore();
 <template>
 
 <div>
+  <div class="heatmap-settings">
+      <HeatmapSettings/>
+    </div>
   <div class="heatmap-container">
-    <div class='heatmap'>
+    <div class="heatmap">
       <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
         <HeatmapButtonColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
