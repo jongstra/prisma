@@ -19,9 +19,9 @@ magma.updateAllL3UseCasesVisibility()
 const L1Headers = {
   name: 'Use Case Name',
   id: 'ID',
-  // description: 'Description',
-  // nrChildren: 'L2 UC Related',
-  // nrGrandChildren: 'L3 UC Related',
+  description: 'Description',
+  nrChildren: 'L2 UC Related',
+  nrGrandChildren: 'L3 UC Related',
   visibility: 'Visibility %',
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
@@ -595,7 +595,10 @@ const validateAndFormat = (event: Event) => {
         <tr></tr>
         <tr v-if="magma.activeTab =='L1'">
           <td style="border: none"></td>
+          <td style="border: none"></td>
+          <td style="border: none"></td>
           <td style="background-color: #eee">Averages &rarr;</td>
+          <td style="border: none"></td>
           <td style="border: none"></td>
           <td style="background-color: #eee">{{getAverages()['AverageVisibility']}}</td>
           <td style="background-color: #eee">{{getAverages()['AverageImplementation']}}</td>

@@ -5,37 +5,51 @@
   description: "Any Denial of Service attack, optionally distributed with the goal
     of causing outages. IN: reconnaissance & scanning THROUGH: not applicable
     OUT: DDoS attack impact"
-  inImpact: "33"
-  thrImpact: "33"
-  outImpact: "34"
+  visibility: 0
+  implementation: 72.5
+  effectiveness: 62
+  weight: 0
+  impact: 0
+  inImpact: 33
+  thrImpact: 33
+  outImpact: 34
 - domain: enterprise-attack
   level: 2
   id: DOS-1
   name: L2 OUT UC DOS
   parentIds:
     - DOS
+  visibility: 0
+  implementation: 72.5
+  effectiveness: 62
+  weight: 0
+  impact: 0
 - domain: enterprise-attack
   level: 3
   id: DOS-1-1
   name: L3 OUT UC DOS
   parentIds:
     - DOS-1
+  visibility: 0
+  implementation: 65
+  effectiveness: 44
+  weight: 0
+  impact: 0
   attackTechniqueId: T1030
   visibilityFromAttackTechniqueOverride: false
-  visibility: "50.00"
-  implementation: "65"
-  effectiveness: "44"
 - domain: enterprise-attack
   level: 3
   id: DOS-1-2
   name: L3 OUT UC DOS 2
   parentIds:
     - DOS-1
+  visibility: 0
+  implementation: 80
+  effectiveness: 80
+  weight: 0
+  impact: 0
   attackTechniqueId: T1104
   visibilityFromAttackTechniqueOverride: false
-  visibility: "50.00"
-  implementation: "80"
-  effectiveness: "80"
 - domain: enterprise-attack
   level: 1
   id: FIN
@@ -43,26 +57,38 @@
   description: Any tampering of critical business systems which causes or further
     enables theft of virtual or physical assets via existing or current
     channels.
-  inImpact: "33"
-  thrImpact: "33"
-  outImpact: "34"
+  visibility: 0
+  implementation: 77
+  effectiveness: 88
+  weight: 0
+  impact: 0
+  inImpact: 33
+  thrImpact: 33
+  outImpact: 34
 - domain: enterprise-attack
   level: 2
   id: FIN-1
   name: L2 OUT UC FIN
   parentIds:
     - FIN
+  visibility: 0
+  implementation: 77
+  effectiveness: 88
+  weight: 0
+  impact: 0
 - domain: enterprise-attack
   level: 3
   id: FIN-1-1
   name: L3 OUT UC FIN
   parentIds:
     - FIN-1
+  visibility: 0
+  implementation: 77
+  effectiveness: 88
+  weight: 0
+  impact: 0
   attackTechniqueId: T1189
   visibilityFromAttackTechniqueOverride: false
-  visibility: "20.00"
-  implementation: "77"
-  effectiveness: "88"
 - domain: enterprise-attack
   level: 1
   id: IN
@@ -70,23 +96,35 @@
   description: Cumulative risk of IN stages and techniques, serving as a risk
     amplifier for the business risks.
   permanent: true
+  visibility: 0
+  implementation: 78
+  effectiveness: 78
+  weight: 0
+  impact: 0
 - domain: enterprise-attack
   level: 2
   id: IN-1
   name: L2 IN UC
   parentIds:
     - IN
+  visibility: 0
+  implementation: 78
+  effectiveness: 78
+  weight: 0
+  impact: 0
 - domain: enterprise-attack
   level: 3
   id: IN-1-1
   name: L3 IN UC
   parentIds:
     - IN-1
+  visibility: 0
+  implementation: 78
+  effectiveness: 78
+  weight: 0
+  impact: 0
   attackTechniqueId: T1572
   visibilityFromAttackTechniqueOverride: false
-  visibility: "33.33"
-  implementation: "78"
-  effectiveness: "78"
 - domain: enterprise-attack
   level: 1
   id: THR
@@ -94,23 +132,35 @@
   description: Cumulative risk of THROUGH stages and techniques, serving as a risk
     amplifier for the business risks.
   permanent: true
+  visibility: 0
+  implementation: 54
+  effectiveness: 45
+  weight: 0
+  impact: 0
 - domain: enterprise-attack
   level: 2
   id: THR-1
   name: L2 THR UC
   parentIds:
     - THR
+  visibility: 0
+  implementation: 54
+  effectiveness: 45
+  weight: 0
+  impact: 0
 - domain: enterprise-attack
   level: 3
   id: THR-1-1
   name: L3 THR UC
   parentIds:
     - THR-1
+  visibility: 0
+  implementation: 54
+  effectiveness: 45
+  weight: 0
+  impact: 0
   attackTechniqueId: T1029
   visibilityFromAttackTechniqueOverride: false
-  visibility: "50.00"
-  implementation: "54"
-  effectiveness: "45"
 - domain: mobile-attack
   level: 1
   id: IN
@@ -118,6 +168,11 @@
   description: Cumulative risk of IN stages and techniques, serving as a risk
     amplifier for the business risks.
   permanent: true
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
 - domain: mobile-attack
   level: 1
   id: THR
@@ -125,6 +180,11 @@
   description: Cumulative risk of THROUGH stages and techniques, serving as a risk
     amplifier for the business risks.
   permanent: true
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
 - domain: ics-attack
   level: 1
   id: IN
@@ -132,6 +192,11 @@
   description: Cumulative risk of IN stages and techniques, serving as a risk
     amplifier for the business risks.
   permanent: true
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
 - domain: ics-attack
   level: 1
   id: THR
@@ -139,3 +204,8 @@
   description: Cumulative risk of THROUGH stages and techniques, serving as a risk
     amplifier for the business risks.
   permanent: true
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0

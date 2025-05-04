@@ -455,26 +455,37 @@ export const magmaStore = defineStore('magma', {
           id: useCase.id,
           name: useCase.name,
           description: useCase.description,
-          parentIds: useCase?.parentIds,
-          permanent: useCase?.permanent,
-          inImpact: useCase?.inImpact,
-          thrImpact: useCase?.thrImpact,
-          outImpact: useCase?.outImpact,
+          parentIds: useCase.parentIds,
+          permanent: useCase.permanent,
+          visibility: Number(useCase.visibility),
+          implementation: Number(useCase.implementation),
+          effectiveness: Number(useCase.effectiveness),
+          weight: Number(useCase.weight),
+          impact: Number(useCase.weight),
         };
-    
-        // Conditionally add additional attributes for Level 3 use cases
+        
+        // For the non-permanent level 1 use cases with inImpact/thrImpact/outImpact, add these attributes.
+        if (useCase.level === 1 && !useCase.permanent) {
+          return {
+            ...baseAttributes,
+            inImpact: Number(useCase?.inImpact),
+            thrImpact: Number(useCase?.thrImpact),
+            outImpact: Number(useCase?.outImpact),
+          };
+        }
+
+        // Add the attackTechniqueId visibilityFromAttackTechniqueOverride attributes for all Level 3 use cases.
         if (useCase.level === 3) {
           return {
             ...baseAttributes,
             attackTechniqueId: useCase.attackTechniqueId,
             visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
-            visibility: useCase.visibility,
-            implementation: useCase.implementation,
-            effectiveness: useCase.effectiveness,
           };
         }
-    
+
+        // All other use cases 
         return baseAttributes;
+    
       });
     
       return yaml.stringify(exportedUseCases);
