@@ -7,7 +7,7 @@ import Heatmap from './Heatmap.vue';
 
 const magma = magmaStore();
 const tactics = tacticsStore();
-const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Heatmap']);
+const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Heatmap', 'Insights']);
 
 // Initialize the default use cases.
 magma.initializeDefaultUseCases();
@@ -345,7 +345,7 @@ const validateAndFormat = (event: Event) => {
 
   <!-- Scrolling container -->
   <div class="scroll-container">
-    <table v-if="magma.activeTab !== 'Heatmap'" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Heatmap tab is active, we show another div element. -->
+    <table v-if="['L1', 'L2', 'L3'].includes(magma.activeTab)" border="1" class="fixed-table">  <!-- Show a table when L1, L2 or L3 is the active tab. When the Heatmap or Insights tab is active, we show another div element. -->
       <thead>
         <tr>
           <!-- Render column headers. -->
@@ -630,14 +630,23 @@ const validateAndFormat = (event: Event) => {
       </tfoot>
     </table>
 
-    <div v-else>
+
+    <!-- Heatmap Tab -->
+    <div v-if="magma.activeTab === 'Heatmap'">
       <Heatmap/>
-      <!-- <p>Average L1 UC Visibility: {{ getAverages()['AverageVisibility'] }}%</p>
+    </div>
+
+
+    <!-- Insights Tab -->
+    <div v-if="magma.activeTab === 'Insights'">
+      <p>Average L1 UC Visibility: {{ getAverages()['AverageVisibility'] }}%</p>
       <p>Average L1 UC Implementation: {{ getAverages().AverageImplementation }}%</p>
       <p>Average L1 UC Effectiveness: {{ getAverages().AverageEffectiveness }}%</p>
       <p>Average L1 UC Weight: {{ getAverages().AverageWeight }}%</p>
-      <p>Average L1 UC Potential: {{ getAverages().AveragePotential }}%</p> -->
+      <p>Average L1 UC Potential: {{ getAverages().AveragePotential }}%</p>
     </div>
+
+
   </div>
 </template>
 
