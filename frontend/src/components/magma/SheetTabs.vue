@@ -21,8 +21,8 @@ const L1Headers = {
   name: 'Use Case Name',
   id: 'ID',
   description: 'Description',
-  nrChildren: 'L2 UC Related',
-  nrGrandChildren: 'L3 UC Related',
+  L1nrChildren: 'L2 UC Related',
+  L1nrGrandChildren: 'L3 UC Related',
   visibility: 'Visibility %',
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
@@ -39,6 +39,7 @@ const L2Headers = {
   id: 'ID',
   description: 'Description',
   parentIds: 'Parent Use Case',
+  L2nrChildren: 'L3 UC Related',
   visibility: 'Visibility %',
   implementation: 'Implementation %',
   effectiveness: "Effectiveness %",
@@ -352,8 +353,9 @@ const validateAndFormat = (event: Event) => {
           <th v-for="(columnName, columnKey) in headers" :key="columnKey" :class="{ name: columnName === 'Use Case Name',
                                                                                     id: columnName === 'ID',
                                                                                     description: columnName === 'Description',
-                                                                                    nrChildren: columnName === 'L2 UC Related',
-                                                                                    nrGrandChildren: columnName === 'L3 UC Related',
+                                                                                    L1nrChildren: columnName === 'L2 UC Related',
+                                                                                    L1nrGrandChildren: columnName === 'L3 UC Related',
+                                                                                    L2nrChildren: columnName === 'L3 UC Related',
                                                                                     parent: columnName === 'Parent Use Case',
                                                                                     attack: columnName === 'ATT&CK Technique',
                                                                                     override: columnName === 'Override',
@@ -533,15 +535,21 @@ const validateAndFormat = (event: Event) => {
 
 
             <!-- Uneditable fields -->
-            <template v-else-if="columnKey === 'nrChildren'">
+            <template v-else-if="columnKey === 'L1nrChildren'">
               <div class="uneditable">
                 {{ magma.getChildUseCases(useCase).length }}
               </div>
             </template>
 
-            <template v-else-if="columnKey === 'nrGrandChildren'">
+            <template v-else-if="columnKey === 'L1nrGrandChildren'">
               <div class="uneditable">
                 {{ magma.getGrandChildUseCases(useCase).length }}
+              </div>
+            </template>
+
+            <template v-else-if="columnKey === 'L2nrChildren'">
+              <div class="uneditable">
+                {{ magma.getChildUseCases(useCase).length }}
               </div>
             </template>
 
@@ -768,7 +776,7 @@ th.description {
   width: 250px;
 }
 
-th.nrChildren, th.nrGrandChildren {
+th.L1nrChildren, th.L1nrGrandChildren, th.L2nrChildren {
   width: 115px;
 }
 
