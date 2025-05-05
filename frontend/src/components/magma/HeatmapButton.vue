@@ -87,15 +87,24 @@ function getBackgroundColor() {
 
 function getTooltipText() {
   const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
+  const parentUseCases = relatedUseCases.map(x => magma.getParentUseCases(x));
+  const grandParentUseCases = parentUseCases.map(x => magma.getParentUseCases(x));
   const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
   const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
   const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
   const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
-  const tooltipText = `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})\n
+  
+  const tooltipText = `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})\n\n<hr/>
   Weight: ${((averageWeight || 0) * 100).toFixed(0)}%
   Visibility: ${((averageVisibility || 0) * 100).toFixed(0)}%
   Implementation: ${((averageImplementation || 0) * 100).toFixed(0)}%
-  Effectiveness: ${((averageEffectiveness || 0) * 100).toFixed(0)}%`
+  Effectiveness: ${((averageEffectiveness || 0) * 100).toFixed(0)}%
+
+  <hr/>
+  Related L3 Use Cases: ${relatedUseCases.length}
+  Related L2 Use Cases: ${parentUseCases.length}
+  Related L1 Use Cases: ${grandParentUseCases.length}
+  `
   return tooltipText
 };
 
