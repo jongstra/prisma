@@ -114,7 +114,6 @@ function getTooltipText() {
        :style="{ top: `${tooltipPosition.top}px`, left: `${tooltipPosition.left}px` }"
     >
       <div v-html="getTooltipText()"></div>
-      <!-- Tooltip Test -->
     </div>
     
   </button>
@@ -131,6 +130,11 @@ button {
   border-radius: 4px; /* Slightly rounded corners */
   transition: transform 0.1s ease, box-shadow 0.1s ease; /* Smooth transition for hover effects */
   position: relative; /* Ensure the button's stacking context is isolated */
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px, rgb(51, 51, 51) 0px 0px 0px 2.5px; /* On hover, add a thick black 'outline' to the button. */
+  z-index: 1001;
 }
 
 .buttontext {
