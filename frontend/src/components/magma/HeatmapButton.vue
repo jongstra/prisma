@@ -10,37 +10,6 @@ let showTooltipBool = ref(false);
 const buttonRef = ref<HTMLElement | null>(null);
 let tooltipPosition = ref({ top: 0, left: 0 });
 
-// // Gather the use cases that are related to the technique.
-// const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
-
-// // Compute some values using the related use cases.
-// const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
-// const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
-// const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
-// const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
-// const averageVisImp = relatedUseCases.reduce((sum, useCase) => sum + (useCase.visibility/100 * useCase.implementation/100), 0) / relatedUseCases.length;
-// const averageImpEff = relatedUseCases.reduce((sum, useCase) => sum + (useCase.implementation/100 * useCase.effectiveness/100), 0) / relatedUseCases.length;
-
-// const averageWeight = ref(0);
-// const averageVisibility = ref(0);
-// const averageImplementation = ref(0);
-// const averageEffectiveness = ref(0);
-// const averageVisImp = ref(0);
-// const averageImpEff = ref(0);
-
-// onMounted(() => {
-//   if (props.technique && props.technique.external_id) {
-//     const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
-
-//     averageWeight.value = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight / 100, 0) / relatedUseCases.length;
-//     averageVisibility.value = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility / 100, 0) / relatedUseCases.length;
-//     averageImplementation.value = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation / 100, 0) / relatedUseCases.length;
-//     averageEffectiveness.value = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness / 100, 0) / relatedUseCases.length;
-//     averageVisImp.value = relatedUseCases.reduce((sum, useCase) => sum + (useCase.visibility / 100 * useCase.implementation / 100), 0) / relatedUseCases.length;
-//     averageImpEff.value = relatedUseCases.reduce((sum, useCase) => sum + (useCase.implementation / 100 * useCase.effectiveness / 100), 0) / relatedUseCases.length;
-//   }
-// });
-
 // Function to calculate the cumulative scroll positions of all ancestors.
 function calculateScroll(e) {
   if (e && e.parentNode) {
@@ -57,7 +26,7 @@ function updateTooltipPosition() {
   const [scrollTop, scrollLeft] = calculateScroll(buttonRef.value);
 
   // Adjust tooltip position to be relative to the document
-  tooltipPosition.value.top = buttonRect.bottom + scrollTop - 192; // Position below the button
+  tooltipPosition.value.top = buttonRect.bottom + scrollTop - 222; // Position below the button
   tooltipPosition.value.left = buttonRect.left + scrollLeft + 5; // Position the tooltip horizontally
 };
 
