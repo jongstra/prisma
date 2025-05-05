@@ -33,7 +33,7 @@ function getHighestPotentialL3UseCases() {
           <div 
             class="bar" 
             :style="{ 
-                width: (useCase.potential??100 * 5) + 'px', 
+                width: (useCase.potential??100) * 2.7 + 'px', 
                 backgroundColor: 'red'
               }"
           >

@@ -126,6 +126,48 @@
   attackTechniqueId: T1572
   visibilityFromAttackTechniqueOverride: false
 - domain: enterprise-attack
+  level: 3
+  id: L3-2
+  name: Test 1
+  description: ""
+  parentIds:
+    - THR-1
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1001
+  visibilityFromAttackTechniqueOverride: false
+- domain: enterprise-attack
+  level: 3
+  id: L3-3
+  name: Test 2
+  description: ""
+  parentIds:
+    - THR-1
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1001
+  visibilityFromAttackTechniqueOverride: false
+- domain: enterprise-attack
+  level: 3
+  id: L3-4
+  name: Test 3
+  description: ""
+  parentIds:
+    - THR-1
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1001
+  visibilityFromAttackTechniqueOverride: false
+- domain: enterprise-attack
   level: 1
   id: THR
   name: Cumulative THROUGH risk
@@ -133,8 +175,8 @@
     amplifier for the business risks.
   permanent: true
   visibility: 0
-  implementation: 54
-  effectiveness: 45
+  implementation: 13.5
+  effectiveness: 11.25
   weight: 0
   impact: 0
 - domain: enterprise-attack
@@ -144,8 +186,8 @@
   parentIds:
     - THR
   visibility: 0
-  implementation: 54
-  effectiveness: 45
+  implementation: 13.5
+  effectiveness: 11.25
   weight: 0
   impact: 0
 - domain: enterprise-attack
