@@ -37,7 +37,7 @@ function updateTooltipPosition() {
 
   // Adjust tooltip position to be relative to the document
   tooltipPosition.value.top = buttonRect.bottom + scrollTop - 192; // Position below the button
-  tooltipPosition.value.left = buttonRect.left + scrollLeft + 10; // Position the tooltip horizontally
+  tooltipPosition.value.left = buttonRect.left + scrollLeft + 5; // Position the tooltip horizontally
 };
 
 
@@ -152,7 +152,7 @@ button {
   border-radius: 4px;
   font-size: 11px;
   z-index: 1002; /* Ensure tooltip is always on top */
-  width: 240px;
+  width: 200px;
   text-align: left;
   white-space: pre-line;
 }
