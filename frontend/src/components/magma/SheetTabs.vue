@@ -18,8 +18,8 @@ magma.updateAllL3UseCasesBasedOnDettectVisibility()
 
 // Define header maps for each tab.
 const L1Headers = {
-  name: 'Use Case Name',
   id: 'ID',
+  name: 'Use Case Name',
   description: 'Description',
   L1nrChildren: 'L2 UC Related',
   L1nrGrandChildren: 'L3 UC Related',
@@ -35,8 +35,8 @@ const L1Headers = {
 };
 
 const L2Headers = {
-  name: 'Use Case Name',
   id: 'ID',
+  name: 'Use Case Name',
   description: 'Description',
   parentIds: 'Parent Use Case',
   L2nrChildren: 'L3 UC Related',
@@ -48,8 +48,8 @@ const L2Headers = {
 };
 
 const L3Headers = {
-  name: 'Use Case Name',
   id: 'ID',
+  name: 'Use Case Name',
   description: 'Description',
   parentIds: 'Parent Use Case',
   attackTechniqueId: 'ATT&CK Technique',
@@ -454,38 +454,33 @@ const validateAndFormat = (event: Event) => {
               <!-- Editable ID fields -->
               <template v-else>
 
-                <!-- Editable Use Case Name div -->
-                <div
-                  class="use-case-name-editable"
-                  v-if="columnKey === 'name'"
-                  :contenteditable="!useCase.permanent"
-                  @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
-                  :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
-                >
-                  {{ useCase[columnKey] }}
-                </div>
-
-                <!-- Editable ID div -->
-                <div
-                  class="use-case-id-editable"
+                <!-- Editable ID input -->
+                <input
                   v-if="columnKey === 'id'"
-                  :contenteditable="!useCase.permanent"
-                  @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
+                  :value="useCase[columnKey]"
+                  @input="(event) => { updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                  :disabled="useCase.permanent"
                   :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
-                >
-                  {{ useCase[columnKey] }}
-                </div>
+                  class="use-case-id-input"
+                />
 
-                <!-- Editable Description div -->
-                <div
-                  class="use-case-description-editable"
-                  v-if="columnKey === 'description'"
-                  :contenteditable="!useCase.permanent"
-                  @input="(event) => {updateObjectField(useCase.uid, columnKey, event.target.innerText);}"
+                <textarea
+                  v-if="columnKey === 'name'"
+                  :value="useCase[columnKey]"
+                  @input="(event) => { updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                  :disabled="useCase.permanent"
                   :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
-                >
-                  {{ useCase[columnKey] }}
-                </div>
+                  class="use-case-name-input"
+                ></textarea>
+
+                <textarea
+                  v-if="columnKey === 'description'"
+                  :value="useCase[columnKey]"
+                  @input="(event) => { updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                  :disabled="useCase.permanent"
+                  :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
+                  class="use-case-description-textarea"
+                ></textarea>
 
                 <!-- Editable Parent Use Case selector -->
                 <template v-if="columnKey === 'parentIds'">
@@ -713,7 +708,7 @@ tr {
   font-size: 14px;
 }
 
-input, .use-case-name-editable, .use-case-id-editable, .use-case-description-editable {
+input {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -721,7 +716,7 @@ input, .use-case-name-editable, .use-case-id-editable, .use-case-description-edi
   font-size: 14px;
   width: 100%;
   border: 0px;
-  min-height: 50px;
+  min-height: 55px;
 }
 
 th.remove-col {
@@ -755,8 +750,7 @@ button.remove-button {
 }
 
 .remove-col {
-  min-width: 40px;
-  width: 40px
+  width: 40px;
 }
 
 select {
@@ -767,10 +761,11 @@ select {
 .select-with-wrap {
   white-space: normal; 
   overflow-wrap: break-word;
+  border: 0px;
 }
 
 th.name {
-  width: 155px;
+  width: 180px;
 }
 
 th.id {
@@ -778,7 +773,7 @@ th.id {
 }
 
 th.description {
-  width: 250px;
+  width: 300px;
 }
 
 th.L1nrChildren, th.L1nrGrandChildren, th.L2nrChildren {
@@ -880,6 +875,12 @@ input[type=checkbox] {
 
 textarea {
   resize: none;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 4px;
 }
 
 </style>
