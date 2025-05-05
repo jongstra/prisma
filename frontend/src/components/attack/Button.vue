@@ -169,7 +169,11 @@ const showButton = computed(() => {
 
   let platformFilterResult = (
     (platforms.some(platform => store.activeAttributes('platforms').includes(platform))) && 
-    (!store.searchQuery || props.technique.name.toLowerCase().includes(store.searchQuery.toLowerCase()))
+    (
+      !store.searchQuery ||  // There is no search query.
+      props.technique.name.toLowerCase().includes(store.searchQuery.toLowerCase()) ||  // The search query matches on the technique name.
+      props.technique.external_id.toLowerCase().includes(store.searchQuery.toLowerCase())  // The search query matches on the technique ID.
+    )
   );
 
   let techniqueVisibilityPercentageFilterResult = (
