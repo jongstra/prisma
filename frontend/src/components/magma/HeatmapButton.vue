@@ -105,61 +105,51 @@ const showButton = computed(() => {
   // Gather the use cases that are related to the technique.
   const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
 
+  let currentValue = 0;
+
   // Heatmap style: weight
   if (magma.heatmapVisibility && magma.heatmapImplementation && magma.heatmapEffectiveness) {
     const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
-    if ((averageWeight||0)*100 >= magma.heatmapFilterValue) {
-      return true;
-    };
-  }
+    currentValue = (averageWeight||0)*100;
+  } 
 
   // Heatmap style: visibility * implementation
-  if (magma.heatmapVisibility && magma.heatmapImplementation) {
+   else if (magma.heatmapVisibility && magma.heatmapImplementation) {
     const averageVisImp = relatedUseCases.reduce((sum, useCase) => sum + (useCase.visibility/100 * useCase.implementation/100), 0) / relatedUseCases.length;
-    if ((averageVisImp||0)*100 >= magma.heatmapFilterValue) {
-      return true;
-    };
+    currentValue = (averageVisImp||0)*100;
   }
 
   // Heatmap style: implementation * effectiveness
-  if (magma.heatmapImplementation && magma.heatmapEffectiveness) {
+  else if (magma.heatmapImplementation && magma.heatmapEffectiveness) {
     const averageImpEff = relatedUseCases.reduce((sum, useCase) => sum + (useCase.implementation/100 * useCase.effectiveness/100), 0) / relatedUseCases.length;
-    if ((averageImpEff||0)*100 >= magma.heatmapFilterValue) {
-      return true;
-    };
+    currentValue = (averageImpEff||0)*100;
   }
 
   // Heatmap style: visibility
-  if (magma.heatmapVisibility) {
+  else if (magma.heatmapVisibility) {
     const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
-    if ((averageVisibility||0)*100 >= magma.heatmapFilterValue) {
-      return true;
-    };
+    currentValue = (averageVisibility||0)*100;
   }
 
   // Heatmap style: implementation
-  if (magma.heatmapImplementation) {
+  else if (magma.heatmapImplementation) {
     const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
-    if ((averageImplementation||0)*100 >= magma.heatmapFilterValue) {
-      return true;
-    };
+    currentValue = (averageImplementation||0)*100;
   }
 
   // Heatmap style: effectiveness
-  if (magma.heatmapEffectiveness) {
+  else if (magma.heatmapEffectiveness) {
     const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
-    if ((averageEffectiveness||0)*100 >= magma.heatmapFilterValue) {
-      return true;
-    };
+    currentValue = (averageEffectiveness||0)*100;
   }
 
-  // When no previous check succeeded, but at least one of the variables (visibility, implementation, effectiveness) is active in the heatmap, return false
-  if (magma.heatmapVisibility || magma.heatmapImplementation || magma.heatmapEffectiveness) {
+  // Compute whether the button should be shown based on its current value (based on the heatmap style checkmarks) and the heatmapFilterValue.
+  if (currentValue >= magma.heatmapFilterValue) {
+    return true;
+  } else {
     return false;
   }
 
-  // Otherwise, when no heatmap variables are activated, the filter should be ignored (since the buttons have no value to be filtered on) and we return true.
-  return true;
 });
 
 
