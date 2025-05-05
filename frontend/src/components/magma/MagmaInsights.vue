@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import InsightNUmberUseCasesPerLayer from './InsightNUmberUseCasesPerLayer.vue';
+import InsightHighestPontentialL3UseCases from './InsightHighestPontentialL3UseCases.vue';
 </script>
 
 
@@ -7,6 +8,7 @@ import InsightNUmberUseCasesPerLayer from './InsightNUmberUseCasesPerLayer.vue';
 
 <div class="magma-insights">
   <InsightNUmberUseCasesPerLayer/>
+  <InsightHighestPontentialL3UseCases/>
 </div>
 
 </template>

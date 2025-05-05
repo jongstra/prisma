@@ -22,7 +22,7 @@ const magma = magmaStore();
             class="bar" 
             :style="{ 
               width: (magma.L1UseCases(store.domain).length * 2) + 'px', 
-              backgroundColor: 'red'
+              backgroundColor: 'green'
             }"
           >
             <span class="item-count">{{ magma.L1UseCases(store.domain).length }}</span>
@@ -38,7 +38,7 @@ const magma = magmaStore();
             class="bar" 
             :style="{ 
               width: (magma.L2UseCases(store.domain).length * 2) + 'px', 
-              backgroundColor: 'red'
+              backgroundColor: 'green'
             }"
           >
             <span class="item-count">{{ magma.L2UseCases(store.domain).length }}</span>
@@ -54,7 +54,7 @@ const magma = magmaStore();
             class="bar" 
             :style="{ 
               width: (magma.L3UseCases(store.domain).length * 2) + 'px', 
-              backgroundColor: 'red'
+              backgroundColor: 'green'
             }"
           >
             <span class="item-count">{{ magma.L3UseCases(store.domain).length }}</span>
@@ -91,7 +91,7 @@ const magma = magmaStore();
 }
 
 .item-name {
-  min-width: 70px;
+  min-width: 100px;
   text-align: right;
   padding-right: 10px;
   font-size: 13px;
