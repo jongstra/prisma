@@ -4,6 +4,7 @@ import { ref, computed } from 'vue';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 import Heatmap from './Heatmap.vue';
+import MagmaInsights from './MagmaInsights.vue';
 
 const magma = magmaStore();
 const tactics = tacticsStore();
@@ -634,7 +635,7 @@ const validateAndFormat = (event: Event) => {
 
     <!-- Insights Tab -->
     <div v-if="magma.activeTab === 'Insights'">
-      <p>UNDER CONSTRUCTION</p>
+      <MagmaInsights/>
     </div>
 
 

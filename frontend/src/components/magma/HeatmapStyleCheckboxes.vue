@@ -35,8 +35,6 @@ const magma = magmaStore();
 
   </div>
 
-  
-
 </template>
 
 
