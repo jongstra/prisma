@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { magmaStore } from '@/stores/magma';
-import { ref } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 
 const props = defineProps(['technique']);
 const magma = magmaStore();
@@ -10,15 +10,36 @@ let showTooltipBool = ref(false);
 const buttonRef = ref<HTMLElement | null>(null);
 let tooltipPosition = ref({ top: 0, left: 0 });
 
-// Gather the use cases that are related to the technique.
-const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
+// // Gather the use cases that are related to the technique.
+// const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
 
-// Pre-compute some values using the related use cases.
-const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
-const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
-const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
-const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
+// // Compute some values using the related use cases.
+// const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
+// const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
+// const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
+// const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
+// const averageVisImp = relatedUseCases.reduce((sum, useCase) => sum + (useCase.visibility/100 * useCase.implementation/100), 0) / relatedUseCases.length;
+// const averageImpEff = relatedUseCases.reduce((sum, useCase) => sum + (useCase.implementation/100 * useCase.effectiveness/100), 0) / relatedUseCases.length;
 
+// const averageWeight = ref(0);
+// const averageVisibility = ref(0);
+// const averageImplementation = ref(0);
+// const averageEffectiveness = ref(0);
+// const averageVisImp = ref(0);
+// const averageImpEff = ref(0);
+
+// onMounted(() => {
+//   if (props.technique && props.technique.external_id) {
+//     const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
+
+//     averageWeight.value = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight / 100, 0) / relatedUseCases.length;
+//     averageVisibility.value = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility / 100, 0) / relatedUseCases.length;
+//     averageImplementation.value = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation / 100, 0) / relatedUseCases.length;
+//     averageEffectiveness.value = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness / 100, 0) / relatedUseCases.length;
+//     averageVisImp.value = relatedUseCases.reduce((sum, useCase) => sum + (useCase.visibility / 100 * useCase.implementation / 100), 0) / relatedUseCases.length;
+//     averageImpEff.value = relatedUseCases.reduce((sum, useCase) => sum + (useCase.implementation / 100 * useCase.effectiveness / 100), 0) / relatedUseCases.length;
+//   }
+// });
 
 // Function to calculate the cumulative scroll positions of all ancestors.
 function calculateScroll(e) {
@@ -53,9 +74,13 @@ function hideTooltip() {
 
 function getBackgroundColor() {
 
+  // Gather the use cases that are related to the technique.
+  const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
+
   // Heatmap style: weight
   if (magma.heatmapVisibility && magma.heatmapImplementation && magma.heatmapEffectiveness) {
-      return `rgba(0, 255, 0, ${averageWeight})`;
+    const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
+    return `rgba(0, 255, 0, ${averageWeight})`;
   }
 
   // Heatmap style: visibility * implementation
@@ -72,37 +97,107 @@ function getBackgroundColor() {
 
   // Heatmap style: visibility
   if (magma.heatmapVisibility) {
+    const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
     return `rgba(0, 255, 0, ${averageVisibility})`;
   }
 
   // Heatmap style: implementation
   if (magma.heatmapImplementation) {
+    const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
     return `rgba(0, 255, 0, ${averageImplementation})`;
   }
 
   // Heatmap style: effectiveness
   if (magma.heatmapEffectiveness) {
+    const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
     return `rgba(0, 255, 0, ${averageEffectiveness})`;
   }
+
 }
 
 
-
 function getTooltipText() {
-
+  const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
+  const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
+  const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
+  const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
+  const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
   const tooltipText = `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})\n
   Weight: ${((averageWeight || 0) * 100).toFixed(0)}%
   Visibility: ${((averageVisibility || 0) * 100).toFixed(0)}%
   Implementation: ${((averageImplementation || 0) * 100).toFixed(0)}%
   Effectiveness: ${((averageEffectiveness || 0) * 100).toFixed(0)}%`
-
   return tooltipText
 };
+
+
+const showButton = computed(() => {
+
+  // Gather the use cases that are related to the technique.
+  const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
+
+  // Heatmap style: weight
+  if (magma.heatmapVisibility && magma.heatmapImplementation && magma.heatmapEffectiveness) {
+    const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
+    if ((averageWeight||0)*100 >= magma.heatmapFilterValue) {
+      return true;
+    };
+  }
+
+  // Heatmap style: visibility * implementation
+  if (magma.heatmapVisibility && magma.heatmapImplementation) {
+    const averageVisImp = relatedUseCases.reduce((sum, useCase) => sum + (useCase.visibility/100 * useCase.implementation/100), 0) / relatedUseCases.length;
+    if ((averageVisImp||0)*100 >= magma.heatmapFilterValue) {
+      return true;
+    };
+  }
+
+  // Heatmap style: implementation * effectiveness
+  if (magma.heatmapImplementation && magma.heatmapEffectiveness) {
+    const averageImpEff = relatedUseCases.reduce((sum, useCase) => sum + (useCase.implementation/100 * useCase.effectiveness/100), 0) / relatedUseCases.length;
+    if ((averageImpEff||0)*100 >= magma.heatmapFilterValue) {
+      return true;
+    };
+  }
+
+  // Heatmap style: visibility
+  if (magma.heatmapVisibility) {
+    const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
+    if ((averageVisibility||0)*100 >= magma.heatmapFilterValue) {
+      return true;
+    };
+  }
+
+  // Heatmap style: implementation
+  if (magma.heatmapImplementation) {
+    const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
+    if ((averageImplementation||0)*100 >= magma.heatmapFilterValue) {
+      return true;
+    };
+  }
+
+  // Heatmap style: effectiveness
+  if (magma.heatmapEffectiveness) {
+    const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
+    if ((averageEffectiveness||0)*100 >= magma.heatmapFilterValue) {
+      return true;
+    };
+  }
+
+  // When no previous check succeeded, but at least one of the variables (visibility, implementation, effectiveness) is active in the heatmap, return false
+  if (magma.heatmapVisibility || magma.heatmapImplementation || magma.heatmapEffectiveness) {
+    return false;
+  }
+
+  // Otherwise, when no heatmap variables are activated, the filter should be ignored (since the buttons have no value to be filtered on) and we return true.
+  return true;
+});
+
 
 </script>
 
 <template>
-  <button
+  <button v-if="showButton"
     ref="buttonRef"
     :style="{'background-color': getBackgroundColor()}"
     @mouseover="showTooltip"

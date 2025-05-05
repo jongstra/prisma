@@ -1,24 +1,16 @@
 <script setup lang="ts">
-import { ref, computed , watch} from 'vue'
+import { ref, watch } from 'vue'
 import '@vueform/slider/themes/default.css'
 import Slider from '@vueform/slider'
-import { tacticsStore } from '@/stores/tactics';
+import { magmaStore } from '@/stores/magma';
 
-const store = tacticsStore();
+const magma = magmaStore();
 const value = ref(0) // Default knob position: 0
 
 // Watch the 'value' ref and update the store when it changes
 watch(value, (newValue) => {
-  store.minTotalOccurrencesBinned = newValue;
+  magma.heatmapFilterValue = newValue;
 });
-
-const formatTooltip = computed(() => (value: number) => {
-  if (value <= 0) return 'Low';
-  if (value === 1) return 'Medium';
-  if (value === 2) return 'High';
-  if (value >= 3) return 'Very High';
-});
-
 </script>
 
 <template>
@@ -26,22 +18,22 @@ const formatTooltip = computed(() => (value: number) => {
     <Slider
       v-model="value"
       :min="0"
-      :max="3"
+      :max="100"
       :interval="1"
       :showTooltip="'always'"
-      :format="formatTooltip"
     />
-    <p class="slider-title">Minimum Total Occurrence</p>
+    <p class="slider-title">Filter Percentage</p>
   </div>
 </template>
+
 
 <style scoped>
 .slider-container {
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 36px;
-  padding-left: 20px;
-  padding-right: 33px;
+  padding-left: 13px;
+  padding-right: 17px;
   padding-bottom: 3px;
   border: 2px solid #555;
   border-radius: 5px;

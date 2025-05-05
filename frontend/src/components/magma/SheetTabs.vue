@@ -655,7 +655,7 @@ const validateAndFormat = (event: Event) => {
 }
 
 .sheet-tab {
-  width: 120px; /* Set the width of each tab */
+  width: 100px; /* Set the width of each tab */
   padding: 8px;
   margin-right: 2px;
   background-color: #ddd;
@@ -860,17 +860,17 @@ input[type=checkbox] {
   border: 2px solid black;
   border-radius: 4px;
   color: rgb(255, 255, 255);
-  padding: 7.5px 10px;
+  padding: 7.5px 7.5px;
   margin-bottom: 1px;
   cursor: pointer;
 }
 
 .load-button {
-  margin-left: 102px;
+  margin-left: 95px;
 }
 
 .save-button {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .load-button:hover, .save-button:hover {

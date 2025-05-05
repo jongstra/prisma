@@ -48,7 +48,7 @@ watch(value, (newValue) => {
   /* Customizing tooltip colors */
   --slider-tooltip-bg: #333; /* Background color */
   --slider-tooltip-color: #fff; /* Text color */
-  --slider-tooltip-border-radius: 4px; /* Optional: Border radius */
+  --slider-tooltip-border-radius: 4px; /* Border radius */
 }
 
 .slider-title {

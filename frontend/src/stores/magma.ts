@@ -56,6 +56,7 @@ export const magmaStore = defineStore('magma', {
     heatmapVisibility: true,
     heatmapImplementation: true,
     heatmapEffectiveness: true,
+    heatmapFilterValue: 0
   }),
 
   getters: {

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { tacticsStore } from '@/stores/tactics';
 import HeatmapButtonColumn from './HeatmapButtonColumn.vue';
-import HeatmapSettings from './HeatmapSettings.vue';
+import HeatmapStyleCheckboxes from './HeatmapStyleCheckboxes.vue';
+import HeamapSliderFilter from './HeamapSliderFilter.vue';
 const store = tacticsStore();
 </script>
 
@@ -10,8 +11,9 @@ const store = tacticsStore();
 
 <div>
   <div class="heatmap-settings">
-      <HeatmapSettings/>
-    </div>
+    <HeatmapStyleCheckboxes/>
+    <HeamapSliderFilter/>
+  </div>
   <div class="heatmap-container">
     <div class="heatmap">
       <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
@@ -33,6 +35,14 @@ const store = tacticsStore();
 
 
 <style scoped>
+
+div.heatmap-settings {
+  display: flex;
+  direction: row;
+  justify-content: start;
+  margin-top: 3px;
+  margin-bottom: 2px;
+}
 
 .heatmap-container {
   overflow-x: auto; /* Enable horizontal scrollbar */
