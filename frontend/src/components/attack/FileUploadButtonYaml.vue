@@ -25,14 +25,16 @@ const uploadFile = async () => {
       return
     }
 
-    if (file.type !== "text/yaml" && !(file.type == "application/x-yaml" || file.type == "application/yaml") ) {
+    const allowedMimeTypes = ["text/yaml", "text/x-yaml", "text/yml", "text/x-yml", "application/yaml", "application/x-yaml", "application/yml", "application/x-yml"];
+    const allowedExtensions = [".yaml", ".yml"];
+    if (!allowedMimeTypes.includes(file.type) && !allowedExtensions.some(ext => file.name.toLowerCase().endsWith(ext))) {
       Swal.fire({
         icon: 'error',
         title: 'Invalid file type',
         text: 'Please select a valid DeTT&CT YAML file.'
-      })
-      isLoading.value = false // End loading
-      return
+      });
+      isLoading.value = false; // End loading
+      return;
     }
 
     const fileContent = await file.text() // Reading file content asynchronously
