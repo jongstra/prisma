@@ -21,26 +21,59 @@ function getHighestPotentialL3UseCases() {
 
 <template>
   <div class="item-visualization">
+    <!-- Existing content -->
     <div class="title">
       Highest Potential L3 Use Cases
       <span v-if="getHighestPotentialL3UseCases().length >= 15"> (Top 15)</span>
     </div>
     <hr>
 
-    <div v-for="useCase in getHighestPotentialL3UseCases().slice(0, 15)" class="item-row">
-      <div class="item-name">{{ useCase.id }}</div>
-        <div class="bar-container">
-          <div 
-            class="bar" 
-            :style="{ 
-                width: (useCase.potential??100) * 2.7 + 'px', 
-                backgroundColor: 'red'
-              }"
-          >
-          <span class="item-count">{{ (useCase.potential??100).toFixed(2) }}%</span>
-        </div>
+    <!-- Legend -->
+    <div class="legend">
+      <div class="legend-item">
+        <div class="sub-bar red"></div>
+        <span>Visibility Potential</span>
+      </div>
+      <div class="legend-item">
+        <div class="sub-bar green"></div>
+        <span>Implementation Potential</span>
+      </div>
+      <div class="legend-item">
+        <div class="sub-bar blue"></div>
+        <span>Effectiveness Potential</span>
       </div>
     </div>
+
+    <!-- Loop through the top 15 use cases -->
+    <div v-for="useCase in getHighestPotentialL3UseCases().slice(0, 15)" class="item-row">
+      <div class="item-name">{{ useCase.id }}</div>
+      
+      <!-- Bar container with three sub-bars -->
+      <div class="bar-container">
+        
+        <!-- Red bar for visibility -->
+        <div 
+          class="sub-bar red"
+          :style="{ width: (((100 - Number(useCase.visibility)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
+        ></div>
+        
+        <!-- Green bar for implementation -->
+        <div 
+          class="sub-bar green"
+          :style="{ width: (((100 - Number(useCase.implementation)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
+        ></div>
+        
+        <!-- Blue bar for effectiveness -->
+        <div 
+          class="sub-bar blue"
+          :style="{ width: (((100 - Number(useCase.effectiveness)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
+        ></div>
+      </div>
+
+      <!-- Item count label -->
+      <span class="item-count">{{ (useCase.potential ?? 100).toFixed(2) }}%</span>
+    </div>
+
 
 
   </div>
@@ -84,15 +117,48 @@ function getHighestPotentialL3UseCases() {
   align-items: center;
 }
 
-.bar {
+.sub-bar {
   height: 14px;
   position: relative;
 }
 
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
 .item-count {
-  position: absolute;
+  /* position: absolute; */
   left: 100%;
   margin-left: 4px;
   font-size: 12px;
 }
+
+.legend {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 5px; /* Add some spacing above the legend */
+  margin-bottom: 5px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between the bar and label */
+  font-size: 11px;
+}
+
+.legend-item .sub-bar {
+  width: 20px; /* Fixed size for legend bars */
+  height: 14px;
+}
+
 </style>
