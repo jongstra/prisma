@@ -16,7 +16,6 @@ function getMostFrequentlyLinkedAttackTechniques() {
 
   // Sort the frequencyDict by values from high to low and convert back to an object.
   const sortedFrequencyDict = Object.fromEntries(Object.entries(frequencyDict).sort(([, a], [, b]) => b - a));
-  console.log(sortedFrequencyDict);
   return sortedFrequencyDict
 }
 
@@ -28,7 +27,7 @@ function getMostFrequentlyLinkedAttackTechniques() {
   <div class="item-visualization">
     <div class="title">
       Most Frequently Linked ATT&CK Techniques
-      <span v-if="getMostFrequentlyLinkedAttackTechniques().length >= 15"> (Top 15)</span>
+      <span v-if="Object.keys(getMostFrequentlyLinkedAttackTechniques()).length >= 15"> (Top 15)</span>
     </div>
     <hr>
 
