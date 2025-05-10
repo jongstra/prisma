@@ -27,7 +27,7 @@ function getHighestPotentialL3UseCases() {
     </div>
     <hr>
 
-    <div v-for="useCase in getHighestPotentialL3UseCases()" class="item-row">
+    <div v-for="useCase in getHighestPotentialL3UseCases().slice(0, 15)" class="item-row">
       <div class="item-name">{{ useCase.id }}</div>
         <div class="bar-container">
           <div 

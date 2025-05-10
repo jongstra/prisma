@@ -4,7 +4,7 @@ const store = tacticsStore();
 
 function getTopTechniquesBySoftware() {
   const sortedTechniques = [...store.techniquesOccurrences].sort((a, b) => b.software_occurrence - a.software_occurrence);
-  return sortedTechniques.slice(0, 15);
+  return sortedTechniques;
 }
 </script>
 
@@ -16,7 +16,7 @@ function getTopTechniquesBySoftware() {
       - Occurrence by Software
     </div>
     <hr>
-    <div v-for="(technique, index) in getTopTechniquesBySoftware()" :key="index" class="technique-row">
+    <div v-for="(technique, index) in getTopTechniquesBySoftware().slice(0, 15)" :key="index" class="technique-row">
       <div class="technique-name">{{ technique.name }}</div>
       <div class="bar-container">
         <div 

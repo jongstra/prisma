@@ -32,7 +32,7 @@ function getMostFrequentlyLinkedAttackTechniques() {
     </div>
     <hr>
 
-    <div v-for="[techniqueId, frequency] in Object.entries(getMostFrequentlyLinkedAttackTechniques())" class="item-row">
+    <div v-for="[techniqueId, frequency] in Object.entries(getMostFrequentlyLinkedAttackTechniques()).slice(0, 15)" class="item-row">
       <div class="item-name">
         <a :href="'https://attack.mitre.org/techniques/' + techniqueId" target="_blank">{{ techniqueId }}</a>
       </div>  
