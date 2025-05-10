@@ -662,7 +662,7 @@ const validateAndFormat = (event: Event) => {
 }
 
 .sheet-tab {
-  width: 100px; /* Set the width of each tab */
+  width: 90px; /* Set the width of each tab */
   padding: 8px;
   margin-right: 2px;
   background-color: #ddd;
@@ -877,7 +877,7 @@ input[type=checkbox] {
 }
 
 .load-button {
-  margin-left: 95px;
+  margin-left: 53px;
 }
 
 .save-button {
