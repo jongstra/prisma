@@ -6,16 +6,16 @@ const store = tacticsStore();
 const magma = magmaStore();
 
 
-function getMostFrequentlyLinkedAttackTechniques() {
+function getMostFrequentDataSources() {
   const useCases = magma.L3UseCases(store.domain);
 
   const frequencyDict  = {};
   useCases.forEach(useCase => {
-    frequencyDict[useCase.attackTechniqueId] = (frequencyDict[useCase.attackTechniqueId] || 0) + 1;
+    frequencyDict[useCase.dataSource] = (frequencyDict[useCase.dataSource] || 0) + 1;
   })
 
-  // Remove the 'none' entry.
-  delete frequencyDict.none;
+  // Remove the 'undefined' entry.
+  delete frequencyDict.undefined;
 
   // Sort the frequencyDict by values from high to low and convert back to an object.
   const sortedFrequencyDict = Object.fromEntries(Object.entries(frequencyDict).sort(([, a], [, b]) => b - a));
@@ -29,17 +29,13 @@ function getMostFrequentlyLinkedAttackTechniques() {
 <template>
   <div class="item-visualization">
     <div class="title">
-      Most Frequently Linked ATT&CK Techniques
-      <span v-if="Object.keys(getMostFrequentlyLinkedAttackTechniques()).length >= 15"> (Top 15)</span>
+      Most Frequent Data Sources
+      <span v-if="Object.keys(getMostFrequentDataSources()).length >= 15"> (Top 15)</span>
     </div>
     <hr>
 
-    <div v-for="[techniqueId, frequency] in Object.entries(getMostFrequentlyLinkedAttackTechniques()).slice(0, 15)" class="item-row">
-
-      <div class="item-name">
-        <a :href="'https://attack.mitre.org/techniques/' + techniqueId" target="_blank">{{ techniqueId }}</a>
-      </div>  
-
+    <div v-for="[dataSource, frequency] in Object.entries(getMostFrequentDataSources()).slice(0, 15)" class="item-row">
+      <div class="item-name"> {{ dataSource }} </div>  
       <div class="bar-container">
         <div
           class="bar" 
