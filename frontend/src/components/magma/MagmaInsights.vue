@@ -2,7 +2,8 @@
 import InsightNumberUseCasesPerLayer from './InsightNumberUseCasesPerLayer.vue';
 import InsightHighestPontentialL3UseCases from './InsightHighestPontentialL3UseCases.vue';
 import InsightMostFrequentlyLinkedAttackTechniques from './InsightMostFrequentlyLinkedAttackTechniques.vue';
-import InsightMostFrequentDataSources from './InsightMostFrequentDataSources.vue';
+import InsightNumberOfUseCasesPerDataSource from './InsightNumberOfUseCasesPerDataSource.vue';
+import InsightNumberOfUniqueAttackTechniquesPerDataSource from './InsightNumberOfUniqueAttackTechniquesPerDataSource.vue';
 </script>
 
 
@@ -12,7 +13,8 @@ import InsightMostFrequentDataSources from './InsightMostFrequentDataSources.vue
   <InsightNumberUseCasesPerLayer/>
   <InsightHighestPontentialL3UseCases/>
   <InsightMostFrequentlyLinkedAttackTechniques/>
-  <InsightMostFrequentDataSources/>
+  <InsightNumberOfUseCasesPerDataSource/>
+  <InsightNumberOfUniqueAttackTechniquesPerDataSource/>
 </div>
 
 </template>

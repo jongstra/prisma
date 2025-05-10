@@ -6,21 +6,33 @@ const store = tacticsStore();
 const magma = magmaStore();
 
 
-function getMostFrequentDataSources() {
+function getAttackTechniquesPerDataSource() {
   const useCases = magma.L3UseCases(store.domain);
 
-  const frequencyDict  = {};
+  // Initialize frequencyDict as an object where each key is a dataSource and the value is a Set of attackTechniqueIds.
+  const frequencyDict = {};
   useCases.forEach(useCase => {
-    frequencyDict[useCase.dataSource] = (frequencyDict[useCase.dataSource] || 0) + 1;
-  })
+    const dataSource = useCase.dataSource;
+    if (!frequencyDict[dataSource]) {
+      frequencyDict[dataSource] = new Set(); // Initialize as a set if not already present.
+    }
+    frequencyDict[dataSource].add(useCase.attackTechniqueId); // Add techniqueId to the set.
+  });
 
-  // Remove the 'undefined' entry.
+  // Remove any 'undefined' entry from frequencyDict, if present.
   delete frequencyDict.undefined;
 
-  // Sort the frequencyDict by values from high to low and convert back to an object.
-  const sortedFrequencyDict = Object.fromEntries(Object.entries(frequencyDict).sort(([, a], [, b]) => b - a));
-  return sortedFrequencyDict
+  // Sort the frequencyDict by the size of each Set (number of items) in descending order.
+  const sortedFrequencyDict = Object.fromEntries(
+    Object.entries(frequencyDict).sort(([, a], [, b]) => {
+      // Compare the sizes of the Sets in descending order.
+      return b.size - a.size;
+    })
+  );
+
+  return sortedFrequencyDict;
 }
+
 
 
 </script>
@@ -29,22 +41,22 @@ function getMostFrequentDataSources() {
 <template>
   <div class="item-visualization">
     <div class="title">
-      Most Frequent Data Sources
-      <span v-if="Object.keys(getMostFrequentDataSources()).length >= 15"> (Top 15)</span>
+      Number of Unique Attack Techniques per Data Source
+      <span v-if="Object.keys(getAttackTechniquesPerDataSource()).length >= 15"> (Top 15)</span>
     </div>
     <hr>
 
-    <div v-for="[dataSource, frequency] in Object.entries(getMostFrequentDataSources()).slice(0, 15)" class="item-row">
+    <div v-for="[dataSource, techniques] in Object.entries(getAttackTechniquesPerDataSource()).slice(0, 15)" class="item-row">
       <div class="item-name"> {{ dataSource }} </div>  
       <div class="bar-container">
         <div
           class="bar" 
           :style="{ 
-              width: (frequency??0) * 3 + 'px',
+              width: (techniques.size??0) * 3 + 'px',
               backgroundColor: 'red'
             }"
         >
-          <span class="item-count">{{ (frequency??0) }}</span>
+          <span class="item-count">{{ (techniques.size??0) }}</span>
         </div>
       </div>
     </div>
