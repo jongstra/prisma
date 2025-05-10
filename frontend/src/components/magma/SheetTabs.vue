@@ -5,10 +5,11 @@ import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 import Heatmap from './Heatmap.vue';
 import MagmaInsights from './MagmaInsights.vue';
+import MagmaSummary from './MagmaSummary.vue';
 
 const magma = magmaStore();
 const tactics = tacticsStore();
-const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Heatmap', 'Insights']);
+const tabs = ref<string[]>(['L1', 'L2', 'L3', 'Heatmap', 'Insights', 'Summary']);
 
 // Initialize the default use cases.
 magma.initializeDefaultUseCases();
@@ -641,6 +642,12 @@ const validateAndFormat = (event: Event) => {
     <div v-if="magma.activeTab === 'Insights'">
       <MagmaInsights/>
     </div>
+
+    <!-- Summary Tab -->
+    <div v-if="magma.activeTab === 'Summary'">
+      <MagmaSummary/>
+    </div>
+
 
 
   </div>

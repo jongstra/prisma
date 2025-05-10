@@ -26,7 +26,7 @@ const magma = magmaStore();
 </div>
 
 </template>
-L1UseCase
+
 
 <style scoped>
 .magma-insights {
