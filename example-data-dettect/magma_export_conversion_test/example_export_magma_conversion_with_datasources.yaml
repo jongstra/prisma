@@ -6,7 +6,31 @@
     amplifier for the business risks.
   permanent: true
   visibility: 0
-  implementation: 0
+  implementation: 64
+  effectiveness: 0
+  weight: 0
+  impact: 0
+- domain: enterprise-attack
+  level: 2
+  id: L2-1
+  name: Test
+  description: ""
+  parentIds:
+    - IN
+  visibility: 0
+  implementation: 64
+  effectiveness: 0
+  weight: 0
+  impact: 0
+- domain: enterprise-attack
+  level: 2
+  id: L2-2
+  name: Test2
+  description: ""
+  parentIds:
+    - THR
+  visibility: 0
+  implementation: 66.66666666666667
   effectiveness: 0
   weight: 0
   impact: 0
@@ -18,7 +42,7 @@
     amplifier for the business risks.
   permanent: true
   visibility: 0
-  implementation: 0
+  implementation: 66.66666666666667
   effectiveness: 0
   weight: 0
   impact: 0
@@ -26,7 +50,8 @@
   level: 3
   id: UC1
   name: UC1
-  parentIds: ""
+  parentIds:
+    - L2-1
   visibility: 0
   implementation: 100
   effectiveness: 0
@@ -39,7 +64,8 @@
   level: 3
   id: UC10
   name: UC10
-  parentIds: ""
+  parentIds:
+    - L2-1
   visibility: 0
   implementation: 92
   effectiveness: 0
@@ -51,7 +77,8 @@
   level: 3
   id: UC11
   name: UC11
-  parentIds: ""
+  parentIds:
+    - L2-1
   visibility: 0
   implementation: 0
   effectiveness: 0
@@ -63,7 +90,8 @@
   level: 3
   id: UC12
   name: UC12
-  parentIds: ""
+  parentIds:
+    - L2-2
   visibility: 0
   implementation: 100
   effectiveness: 0
@@ -75,7 +103,8 @@
   level: 3
   id: UC13
   name: UC13
-  parentIds: ""
+  parentIds:
+    - L2-2
   visibility: 0
   implementation: 100
   effectiveness: 0
@@ -87,7 +116,8 @@
   level: 3
   id: UC14
   name: UC14
-  parentIds: ""
+  parentIds:
+    - L2-2
   visibility: 0
   implementation: 0
   effectiveness: 0

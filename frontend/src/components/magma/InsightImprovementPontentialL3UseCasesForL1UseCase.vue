@@ -1,30 +1,17 @@
 <script setup lang="ts">
-import { magmaStore } from '@/stores/magma';
-import { tacticsStore } from '@/stores/tactics';
-
-const store = tacticsStore();
-const magma = magmaStore();
-
-
-function getHighestPotentialL3UseCases() {
-  const useCases = magma.L3UseCases(store.domain);
-
-  // Sort use cases on their potential in descending order.
-  useCases.sort((a, b) => (b.potential??100) - (a.potential??100));
-
-  return useCases
-}
-
-
+defineProps(['L1UseCase', 'relatedL3UseCases']);
 </script>
 
 
 <template>
   <div class="item-visualization">
-    <!-- Existing content -->
+
     <div class="title">
-      Highest Potential L3 Use Cases
-      <span v-if="getHighestPotentialL3UseCases().length >= 15"> (Top 15)</span>
+      Improvement Potential for L3 Use Cases relating to:
+      <br>
+      <!-- [L1] {{ L1UseCase.id }}: {{ L1UseCase.name }} -->
+      <span style="color: salmon;">[L1] {{ L1UseCase.id }}: {{ L1UseCase.name }}</span>
+      <span v-if="relatedL3UseCases.length >= 15"> (Top 15)</span>
     </div>
     <hr>
 
@@ -45,25 +32,25 @@ function getHighestPotentialL3UseCases() {
     </div>
 
     <!-- Loop through the top 15 use cases -->
-    <div v-for="useCase in getHighestPotentialL3UseCases().slice(0, 15)" class="item-row">
+    <div v-for="useCase in relatedL3UseCases.sort((a, b) => (b.potential??100) - (a.potential??100)).slice(0, 15)" class="item-row">
       <div class="item-name">{{ useCase.id }}</div>
       
       <!-- Bar container with three sub-bars -->
       <div class="bar-container">
         
-        <!-- Red bar for visibility -->
+        <!-- Red bar for visibility potential -->
         <div 
           class="sub-bar red"
           :style="{ width: (((100 - Number(useCase.visibility)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
         ></div>
         
-        <!-- Green bar for implementation -->
+        <!-- Green bar for implementation potential -->
         <div 
           class="sub-bar green"
           :style="{ width: (((100 - Number(useCase.implementation)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
         ></div>
         
-        <!-- Blue bar for effectiveness -->
+        <!-- Blue bar for effectiveness potential -->
         <div 
           class="sub-bar blue"
           :style="{ width: (((100 - Number(useCase.effectiveness)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
@@ -73,8 +60,6 @@ function getHighestPotentialL3UseCases() {
       <!-- Item count label -->
       <span class="item-count">{{ (useCase.potential ?? 100).toFixed(2) }}%</span>
     </div>
-
-
 
   </div>
 </template>
