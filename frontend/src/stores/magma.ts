@@ -15,6 +15,7 @@ interface UseCase {
   level: number;
   parentIds?: Array<string>;
   attackTechniqueId?: string;
+  dataSource?: string;  // Self-defined data source by user.
   visibilityFromAttackTechnique?: boolean;
   visibilityFromAttackTechniqueOverride?: boolean;
   visibility?: number | null;
@@ -484,6 +485,7 @@ export const magmaStore = defineStore('magma', {
         if (useCase.level === 3) {
           return {
             ...baseAttributes,
+            dataSource: useCase.dataSource,
             attackTechniqueId: useCase.attackTechniqueId,
             visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
           };

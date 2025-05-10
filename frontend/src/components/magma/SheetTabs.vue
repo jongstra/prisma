@@ -53,6 +53,7 @@ const L3Headers = {
   name: 'Use Case Name',
   description: 'Description',
   parentIds: 'Parent Use Case',
+  dataSource: 'Data Source',
   attackTechniqueId: 'ATT&CK Technique',
   visibilityFromAttackTechniqueOverride: 'Override',
   visibility: 'Visibility %',
@@ -66,7 +67,7 @@ const L3Headers = {
 const editableFieldsMap = {
   L1: { name: true, id: true, description: true, inImpact: true, thrImpact: true, outImpact: true},
   L2: { name: true, id: true, description: true, parentIds: true, },
-  L3: { name: true, id: true, description: true, parentIds: true, attackTechniqueId: true, visibilityFromAttackTechniqueOverride: true, visibility: true, implementation: true, effectiveness: true }
+  L3: { name: true, id: true, description: true, parentIds: true, dataSource: true, attackTechniqueId: true, visibilityFromAttackTechniqueOverride: true, visibility: true, implementation: true, effectiveness: true }
 };
 
 const activeTabData = computed(() => {
@@ -318,11 +319,6 @@ const validateAndFormat = (event: Event) => {
   }
 };
 
-// magma.addExistingUseCase({id: 'L3-1', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case', visibility: 58, visibilityFromAttackTechniqueOverride: true, attackTechniqueId: 'T1595', implementation: 80, effectiveness: 60, domain: 'enterprise-attack'});
-// magma.addExistingUseCase({id: 'L3-2', level: 3, parentIds: ['L2-1'], name: 'Sample L3 Use Case #2', visibility: 85,  implementation: 80, effectiveness: 95, domain: 'enterprise-attack'});
-// magma.addExistingUseCase({id: 'L2-1', level: 2, parentIds: ['L1-1'], name: 'Sample L2 Use Case', domain: 'enterprise-attack'});
-// magma.addExistingUseCase({id: 'L1-1', level: 1, name: 'Sample L1 Use Case', domain: 'enterprise-attack'});
-
 </script>
 
 <template>
@@ -360,6 +356,7 @@ const validateAndFormat = (event: Event) => {
                                                                                     L1nrGrandChildren: columnName === 'L3 UC Related',
                                                                                     L2nrChildren: columnName === 'L3 UC Related',
                                                                                     parent: columnName === 'Parent Use Case',
+                                                                                    dataSource: columnName === 'Data Source',
                                                                                     attack: columnName === 'ATT&CK Technique',
                                                                                     override: columnName === 'Override',
                                                                                     visibility: columnName === 'Visibility %',
@@ -464,7 +461,6 @@ const validateAndFormat = (event: Event) => {
                   @input="(event) => { updateObjectField(useCase.uid, columnKey, event.target.value); }"
                   :disabled="useCase.permanent"
                   :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
-                  class="use-case-id-input"
                 />
 
                 <textarea
@@ -473,7 +469,6 @@ const validateAndFormat = (event: Event) => {
                   @input="(event) => { updateObjectField(useCase.uid, columnKey, event.target.value); }"
                   :disabled="useCase.permanent"
                   :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
-                  class="use-case-name-input"
                 ></textarea>
 
                 <textarea
@@ -482,7 +477,14 @@ const validateAndFormat = (event: Event) => {
                   @input="(event) => { updateObjectField(useCase.uid, columnKey, event.target.value); }"
                   :disabled="useCase.permanent"
                   :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
-                  class="use-case-description-textarea"
+                ></textarea>
+
+                <textarea
+                  v-if="columnKey === 'dataSource'"
+                  :value="useCase[columnKey]"
+                  @input="(event) => { updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                  :disabled="useCase.permanent"
+                  :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                 ></textarea>
 
                 <!-- Editable Parent Use Case selector -->
@@ -788,6 +790,10 @@ th.parent {
 }
 select.parent-ids {
   width: 144px;
+}
+
+th.dataSource {
+  width: 140px;
 }
 
 th.attack {
