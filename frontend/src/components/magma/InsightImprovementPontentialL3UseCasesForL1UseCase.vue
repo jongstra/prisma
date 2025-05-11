@@ -10,7 +10,7 @@ defineProps(['L1UseCase', 'relatedL3UseCases']);
       Improvement Potential for L3 Use Cases relating to:
       <br>
       <!-- [L1] {{ L1UseCase.id }}: {{ L1UseCase.name }} -->
-      <span style="color: salmon;">[L1] {{ L1UseCase.id }}: {{ L1UseCase.name }}</span>
+      <span style="color: red;">[L1] {{ L1UseCase.id }}: {{ L1UseCase.name }}</span>
       <span v-if="relatedL3UseCases.length >= 15"> (Top 15)</span>
     </div>
     <hr>
@@ -72,6 +72,7 @@ defineProps(['L1UseCase', 'relatedL3UseCases']);
   border: 2px solid black;
   border-radius: 5px;
   width: 450px;
+  height: calc(100% - 10px);  /* Somewhat of an ugly fix, but it works well. */
   margin-top: 10px;
   margin-right: 10px;
 }
@@ -120,7 +121,6 @@ defineProps(['L1UseCase', 'relatedL3UseCases']);
 }
 
 .item-count {
-  /* position: absolute; */
   left: 100%;
   margin-left: 4px;
   font-size: 12px;
@@ -130,7 +130,7 @@ defineProps(['L1UseCase', 'relatedL3UseCases']);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 5px; /* Add some spacing above the legend */
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 
@@ -143,7 +143,6 @@ defineProps(['L1UseCase', 'relatedL3UseCases']);
 
 .legend-item .sub-bar {
   width: 20px; /* Fixed size for legend bars */
-  height: 14px;
 }
 
 </style>
