@@ -67,6 +67,9 @@ export const magmaStore = defineStore('magma', {
     getUseCaseByUid(state) {
       return (uid: string, domain?: string) => state.useCases.find(useCase => useCase['uid'] === uid && (!domain || useCase.domain === domain));
     },
+    getAllUseCases(state) {
+      return (domain?: string) => state.useCases.filter(useCase => useCase['level'] === 1 && (!domain || useCase.domain === domain));
+    },
     L1UseCases(state) {
       return (domain?: string) => state.useCases.filter(useCase => useCase['level'] === 1 && (!domain || useCase.domain === domain));
     },
