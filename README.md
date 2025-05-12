@@ -3,7 +3,7 @@
 ## Installation Instructions
 
 ### Install Node.js
-If you do not have Node.js installed, please [download](https://nodejs.org/en/download) and install it. After this step, we assume you have Node.js installed with npm as the package manager.
+If you do not have Node.js installed, please [download](https://nodejs.org/en/download) and install it. After this step, it is assumed that you have Node.js installed with npm as the package manager.
 
 ### Clone this Repository
 ```sh
@@ -15,7 +15,7 @@ git clone git@github.com:jongstra/dettect-visualizer.git
 cd dettect-visualizer/frontend
 ```
 
-### Install Application
+### Install Application and Dependencies
 ```sh
 npm install
 ```
@@ -25,7 +25,7 @@ npm install
 npm run dev
 ```
 
-- To use the application, open the local link shown in your terminal (similar to localhost:5173) in your browser.
+- To use the application, open the link shown in your terminal (something like localhost:5173) in your browser.
 - To try out the application, you can load one of the example DeTT&CT YAML files (from the project's example-data-dettect folder) into the application using the big red button.
 - Alternatively, you can create an example DETT&CT Data Sources YAML file using the [DeTT&CT Editor](https://rabobank-cdc.github.io/dettect-editor/#/datasources). The resulting YAML file can be saved to your computer, and loaded into the application using the big red button.
 
