@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { tacticsStore } from '@/stores/tactics';
-  const store = tacticsStore()
   import SheetTabs from '@/components/magma/SheetTabs.vue';
 </script>
 
