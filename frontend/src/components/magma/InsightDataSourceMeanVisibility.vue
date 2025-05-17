@@ -52,11 +52,11 @@ function getDataSourceVisibility() {
         <div
           class="bar" 
           :style="{ 
-              width: (val.mean??0) * 2.7 + 'px',
+              width: (val.mean??0) * 2.5 + 'px',
               backgroundColor: 'red'
             }"
         >
-          <span class="item-val">{{ (val.mean??0).toFixed(2) }}% ({{ val.count }}) </span>
+          <span class="item-val">{{ (val.mean??0).toFixed(2) }}% ({{ val.count }} UC)</span>
         </div>
       </div>
     </div>
@@ -116,6 +116,6 @@ a {
   position: absolute;
   left: 100%;
   font-size: 12px;
-  width: 70px;
+  width: 90px;
 }
 </style>
