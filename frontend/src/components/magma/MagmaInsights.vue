@@ -5,6 +5,9 @@ import InsightImprovementPontentialL3UseCasesForL1UseCase from './InsightImprove
 import InsightMostFrequentlyLinkedAttackTechniques from './InsightMostFrequentlyLinkedAttackTechniques.vue';
 import InsightNumberOfUseCasesPerDataSource from './InsightNumberOfUseCasesPerDataSource.vue';
 import InsightNumberOfUniqueAttackTechniquesPerDataSource from './InsightNumberOfUniqueAttackTechniquesPerDataSource.vue';
+import InsightDataSourceMeanVisibility from './InsightDataSourceMeanVisibility.vue';
+import InsightDataSourceMeanImplementation from './InsightDataSourceMeanImplementation.vue';
+import InsightDataSourceMeanEffectiveness from './InsightDataSourceMeanEffectiveness.vue';
 import { tacticsStore } from '@/stores/tactics';
 import { magmaStore } from '@/stores/magma';
 const store = tacticsStore();
@@ -19,6 +22,9 @@ const magma = magmaStore();
   <InsightMostFrequentlyLinkedAttackTechniques/>
   <InsightNumberOfUseCasesPerDataSource/>
   <InsightNumberOfUniqueAttackTechniquesPerDataSource/>
+  <InsightDataSourceMeanVisibility/>
+  <InsightDataSourceMeanImplementation/>
+  <InsightDataSourceMeanEffectiveness/>
   <InsightImprovementPontentialForL3UseCases/>
   <div v-for="L1UseCase in magma.L1UseCases(store.domain)"> 
     <InsightImprovementPontentialL3UseCasesForL1UseCase :L1UseCase=L1UseCase :relatedL3UseCases=magma.getGrandChildUseCases(L1UseCase) />

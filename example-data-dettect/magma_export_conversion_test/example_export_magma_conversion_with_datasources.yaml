@@ -7,7 +7,7 @@
   permanent: true
   visibility: 0
   implementation: 64
-  effectiveness: 0
+  effectiveness: 16.666666666666668
   weight: 0
   impact: 0
 - domain: enterprise-attack
@@ -19,7 +19,7 @@
     - IN
   visibility: 0
   implementation: 64
-  effectiveness: 0
+  effectiveness: 16.666666666666668
   weight: 0
   impact: 0
 - domain: enterprise-attack
@@ -29,7 +29,7 @@
   description: ""
   parentIds:
     - THR
-  visibility: 0
+  visibility: 6.666666666666667
   implementation: 66.66666666666667
   effectiveness: 0
   weight: 0
@@ -41,7 +41,7 @@
   description: Cumulative risk of THROUGH stages and techniques, serving as a risk
     amplifier for the business risks.
   permanent: true
-  visibility: 0
+  visibility: 6.666666666666667
   implementation: 66.66666666666667
   effectiveness: 0
   weight: 0
@@ -54,7 +54,7 @@
     - L2-1
   visibility: 0
   implementation: 100
-  effectiveness: 0
+  effectiveness: 50
   weight: 0
   impact: 0
   dataSource: Test
@@ -92,7 +92,7 @@
   name: UC12
   parentIds:
     - L2-2
-  visibility: 0
+  visibility: 20
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -178,7 +178,7 @@
   id: UC19
   name: UC19
   parentIds: ""
-  visibility: 0
+  visibility: 17.14
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -192,7 +192,7 @@
   parentIds: ""
   visibility: 0
   implementation: 100
-  effectiveness: 0
+  effectiveness: 43
   weight: 0
   impact: 0
   dataSource: Test
@@ -203,7 +203,7 @@
   id: UC20
   name: UC20
   parentIds: ""
-  visibility: 0
+  visibility: 6.67
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -215,7 +215,7 @@
   id: UC21
   name: UC21
   parentIds: ""
-  visibility: 0
+  visibility: 6.67
   implementation: 87
   effectiveness: 0
   weight: 0
@@ -227,7 +227,7 @@
   id: UC22
   name: UC22
   parentIds: ""
-  visibility: 0
+  visibility: 5
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -251,7 +251,7 @@
   id: UC24A
   name: UC24A
   parentIds: ""
-  visibility: 0
+  visibility: 7.33
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -263,7 +263,7 @@
   id: UC24B
   name: UC24B
   parentIds: ""
-  visibility: 0
+  visibility: 7.33
   implementation: 57
   effectiveness: 0
   weight: 0
@@ -311,7 +311,7 @@
   id: UC28A
   name: UC28A
   parentIds: ""
-  visibility: 0
+  visibility: 6.67
   implementation: 99
   effectiveness: 0
   weight: 0
@@ -347,11 +347,11 @@
   id: UC3
   name: UC3
   parentIds: ""
-  visibility: 0
+  visibility: 6.67
   implementation: 97
-  effectiveness: 0
-  weight: 0
-  impact: 0
+  effectiveness: 88
+  weight: 5.693511999999999
+  impact: 5.693511999999999
   dataSource: Test
   attackTechniqueId: T1078
   visibilityFromAttackTechniqueOverride: false
@@ -384,7 +384,7 @@
   id: UC32
   name: UC32
   parentIds: ""
-  visibility: 0
+  visibility: 5
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -408,7 +408,7 @@
   id: UC34
   name: UC34
   parentIds: ""
-  visibility: 0
+  visibility: 16.5
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -420,7 +420,7 @@
   id: UC35A
   name: UC35A
   parentIds: ""
-  visibility: 0
+  visibility: 14.14
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -456,7 +456,7 @@
   id: UC37A
   name: UC37A
   parentIds: ""
-  visibility: 0
+  visibility: 14.14
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -468,7 +468,7 @@
   id: UC37B
   name: UC37B
   parentIds: ""
-  visibility: 0
+  visibility: 14.14
   implementation: 100
   effectiveness: 0
   weight: 0
@@ -492,7 +492,7 @@
   id: UC4A
   name: UC4A
   parentIds: ""
-  visibility: 0
+  visibility: 11.25
   implementation: 95
   effectiveness: 0
   weight: 0
@@ -505,7 +505,7 @@
   id: UC4B
   name: UC4B
   parentIds: ""
-  visibility: 0
+  visibility: 33.33
   implementation: 95
   effectiveness: 0
   weight: 0
@@ -520,7 +520,7 @@
   parentIds: ""
   visibility: 0
   implementation: 100
-  effectiveness: 0
+  effectiveness: 32
   weight: 0
   impact: 0
   dataSource: DS
@@ -531,11 +531,11 @@
   id: UC6
   name: UC6
   parentIds: ""
-  visibility: 0
+  visibility: 25
   implementation: 100
-  effectiveness: 0
-  weight: 0
-  impact: 0
+  effectiveness: 59
+  weight: 14.75
+  impact: 14.75
   dataSource: DS
   attackTechniqueId: T1047
   visibilityFromAttackTechniqueOverride: false
@@ -544,11 +544,11 @@
   id: UC7A
   name: UC7A
   parentIds: ""
-  visibility: 0
+  visibility: 14.14
   implementation: 100
-  effectiveness: 0
-  weight: 0
-  impact: 0
+  effectiveness: 55
+  weight: 7.777000000000001
+  impact: 7.777000000000001
   dataSource: DS
   attackTechniqueId: T1204
   visibilityFromAttackTechniqueOverride: false
@@ -557,11 +557,11 @@
   id: UC8
   name: UC8
   parentIds: ""
-  visibility: 0
+  visibility: 14.14
   implementation: 89
-  effectiveness: 0
-  weight: 0
-  impact: 0
+  effectiveness: 23
+  weight: 2.8944580000000006
+  impact: 2.8944580000000006
   dataSource: DS2
   attackTechniqueId: T1204
   visibilityFromAttackTechniqueOverride: false
@@ -570,11 +570,11 @@
   id: UC9
   name: UC9
   parentIds: ""
-  visibility: 0
+  visibility: 14.14
   implementation: 100
-  effectiveness: 0
-  weight: 0
-  impact: 0
+  effectiveness: 12
+  weight: 1.6968
+  impact: 1.6968
   dataSource: DS2
   attackTechniqueId: T1204
   visibilityFromAttackTechniqueOverride: false
