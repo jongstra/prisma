@@ -56,7 +56,7 @@ function getDataSourceImplementation() {
               backgroundColor: 'green'
             }"
         >
-          <span class="item-count">{{ (val.mean||0).toFixed(2) }}%</span>
+        <span class="item-val">{{ (val.mean??0).toFixed(2) }}%  ({{ val.count }}) </span>
         </div>
       </div>
     </div>
@@ -111,10 +111,11 @@ a {
   position: relative;
 }
 
-.item-count {
+.item-val {
+  display: inline-block;
   position: absolute;
   left: 100%;
-  margin-left: 4px;
   font-size: 12px;
+  width: 70px;
 }
 </style>
