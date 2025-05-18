@@ -19,12 +19,12 @@ const magma = magmaStore();
 
 <div class="magma-insights">
   <InsightNumberUseCasesPerLayer/>
-  <InsightMostFrequentlyLinkedAttackTechniques/>
   <InsightNumberOfUseCasesPerDataSource/>
   <InsightNumberOfUniqueAttackTechniquesPerDataSource/>
   <InsightDataSourceMeanVisibility/>
   <InsightDataSourceMeanImplementation/>
   <InsightDataSourceMeanEffectiveness/>
+  <InsightMostFrequentlyLinkedAttackTechniques/>
   <InsightImprovementPontentialForL3UseCases/>
   <div v-for="L1UseCase in magma.L1UseCases(store.domain)"> 
     <InsightImprovementPontentialL3UseCasesForL1UseCase :L1UseCase=L1UseCase :relatedL3UseCases=magma.getGrandChildUseCases(L1UseCase) />
