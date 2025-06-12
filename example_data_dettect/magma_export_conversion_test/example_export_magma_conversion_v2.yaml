@@ -1,0 +1,545 @@
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 1
+  id: UC1
+  parentIds: ""
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: ""
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 2 - DefenseEvasion T1562
+  id: UC2A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1562
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 3 - InitialAccess T1078
+  id: UC3A
+  parentIds: ""
+  visibility: 0
+  implementation: 97
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1078
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 4 - Collection T1114
+  id: UC4A
+  parentIds: ""
+  visibility: 0
+  implementation: 95
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1114
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 4 - Exfiltration T1020
+  id: UC4B
+  parentIds: ""
+  visibility: 0
+  implementation: 95
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1020
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 5
+  id: UC5
+  parentIds: ""
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: ""
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 6 - Execution T1047
+  id: UC6A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1047
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 7 - Execution T1204
+  id: UC7A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1204
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 7 - Execution T1623
+  id: UC7B
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1623
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 8 - Execution T1204
+  id: UC8A
+  parentIds: ""
+  visibility: 0
+  implementation: 89
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1204
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 9 - Execution T1204
+  id: UC9A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1204
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 10 - Execution T1059
+  id: UC10A
+  parentIds: ""
+  visibility: 0
+  implementation: 92
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1059
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 11 - DefenseEvasion T1562
+  id: UC11A
+  parentIds: ""
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1562
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 12 - CommandAndControl T1105
+  id: UC12A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1105
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 13 - CommandAndControl T1071
+  id: UC13A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1071
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 14 - CommandAndControl T1071
+  id: UC14A
+  parentIds: ""
+  visibility: 0
+  implementation: 0
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1071
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 15 - Impact T1486
+  id: UC15A
+  parentIds: ""
+  visibility: 0
+  implementation: 97
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1486
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 16 - Persistence T1053
+  id: UC16A
+  parentIds: ""
+  visibility: 0
+  implementation: 71
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1053
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 17 - CommandAndControl T1071
+  id: UC17A
+  parentIds: ""
+  visibility: 0
+  implementation: 56
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1071
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 18 - Reconnaissance T1590
+  id: UC18A
+  parentIds: ""
+  visibility: 0
+  implementation: 71
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1590
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 19 - Exfiltration T1048
+  id: UC19A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1048
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 20 - InitialAccess T1078
+  id: UC20A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1078
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 21 - InitialAccess T1078
+  id: UC21A
+  parentIds: ""
+  visibility: 0
+  implementation: 87
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1078
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 22 - CredentialAccess T1621
+  id: UC22A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1621
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 23 - Reconnaissance T1590
+  id: UC23A
+  parentIds: ""
+  visibility: 0
+  implementation: 79
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1590
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 24 - Exfiltration T1567
+  id: UC24A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1567
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 25 - Exfiltration T1567
+  id: UC25A
+  parentIds: ""
+  visibility: 0
+  implementation: 57
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1567
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 26 - Discovery T1046
+  id: UC26A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1046
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 27 - CommandAndControl T1071
+  id: UC27A
+  parentIds: ""
+  visibility: 0
+  implementation: 6
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1071
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 28 - CommandAndControl T1071
+  id: UC28A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1071
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 29 - DefenseEvasion T1078
+  id: UC29A
+  parentIds: ""
+  visibility: 0
+  implementation: 99
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1078
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 30 - CommandAndControl T1071
+  id: UC30A
+  parentIds: ""
+  visibility: 0
+  implementation: 38
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1071
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 31 - DefenseEvasion T1600
+  id: UC31A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1600
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 32
+  id: UC32
+  parentIds: ""
+  visibility: 0
+  implementation: 96
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: ""
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 33 - Persistence T1136
+  id: UC33A
+  parentIds: ""
+  visibility: 0
+  implementation: 97
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1136
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 34 - CredentialAccess T1187
+  id: UC34A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1187
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 35 - LateralMovement T1021
+  id: UC35A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1021
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 36 - Execution T1204
+  id: UC36A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1204
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 37 - Persistence T1136
+  id: UC37A
+  parentIds: ""
+  visibility: 0
+  implementation: 25
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1136
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 38
+  id: UC38
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: ""
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 39 - Execution T1204
+  id: UC39A
+  parentIds: ""
+  visibility: 0
+  implementation: 100
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1204
+  visibilityFromAttackTechniqueOverride: false
+
+- domain: enterprise-attack
+  level: 3
+  name: Use case example 40 - PrivilegeEscalation T1548
+  id: UC40A
+  parentIds: ""
+  visibility: 0
+  implementation: 98
+  effectiveness: 0
+  weight: 0
+  impact: 0
+  attackTechniqueId: T1548
+  visibilityFromAttackTechniqueOverride: false
