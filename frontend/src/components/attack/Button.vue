@@ -135,8 +135,7 @@ const getTooltipText = () => {
       Nr groups using: ${props.technique.occurrence_groups}
       Nr software using: ${props.technique.occurrence_software}
       Total occurrence: ${props.technique.occurrence_total}
-      
-      <hr>
+
   `
 };
 
@@ -277,7 +276,11 @@ const occursInSelectedComponents = () => {
        :style="{ top: `${tooltipPosition.top}px`, left: `${tooltipPosition.left}px` }"
   >
     <div v-html="getTooltipText()"></div>
+
+    <!-- Show which groups use this technique. -->
     <div v-if="props.technique.groups.length > 0">
+      <hr>
+      <br>
       Groups:<br>
       <!-- Group buttons -->
       <label v-for="group in props.technique.groups" :key="group" for="${group}-${Math.random()}" style="display: inline-flex; align-items: center; margin-right: 5px;">

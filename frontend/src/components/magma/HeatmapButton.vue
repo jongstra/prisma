@@ -1,9 +1,20 @@
 <script setup lang="ts">
+import { tacticsStore } from '@/stores/tactics';
 import { magmaStore } from '@/stores/magma';
-import { ref, onMounted, computed } from 'vue';
+import { ref, computed, reactive } from 'vue';
 
+const store = tacticsStore();
 const props = defineProps(['technique']);
 const magma = magmaStore();
+
+let domain;
+if (store.domain === 'enterprise-attack') {
+  domain = reactive(store.enterprise);
+} else if (store.domain === 'mobile-attack') {
+  domain = reactive(store.mobile);
+} else if (store.domain === 'ics-attack') {
+  domain = reactive(store.ics);
+}
 
 // Tooltip variables.
 let showTooltipBool = ref(false);
@@ -104,6 +115,12 @@ function getTooltipText() {
   Related L3 Use Cases: ${relatedUseCases.length}
   Related L2 Use Cases: ${parentUseCases.length}
   Related L1 Use Cases: ${grandParentUseCases.length}
+
+  <hr>
+  Nr groups using: ${props.technique.occurrence_groups}
+  Nr software using: ${props.technique.occurrence_software}
+  Total occurrence: ${props.technique.occurrence_total}
+  
   `
   return tooltipText
 };
@@ -177,6 +194,36 @@ const showButton = computed(() => {
        :style="{ top: `${tooltipPosition.top}px`, left: `${tooltipPosition.left}px` }"
     >
       <div v-html="getTooltipText()"></div>
+
+      <!-- Show which groups use this technique. -->
+      <div v-if="props.technique.groups.length > 0">
+        <hr>
+        <br>
+        Groups:
+        <br>
+        <!-- Group buttons -->
+        <label v-for="group in props.technique.groups" :key="group" for="${group}-${Math.random()}" style="display: inline-flex; align-items: center; margin-right: 5px;">
+          <span
+            class="group-box"
+            :style="{
+              display: 'inline-block',
+              padding: '5px 5px',
+              marginLeft: '1px',
+              marginTop: '2px',
+              marginBottom: '2px',
+              backgroundColor: 'gray',
+              borderColor: domain.groups.find(g => g.name === group)?.selected ? 'rgb(230, 0, 0)' : '#ccc',
+              borderWidth: '1.5px',
+              borderStyle: 'solid',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              transition: 'background-color 0.2s, border-color 0.2s',
+              fontSize: '11px'
+            }">
+            {{ group }}
+          </span>
+        </label>
+      </div>
     </div>
     
   </button>
