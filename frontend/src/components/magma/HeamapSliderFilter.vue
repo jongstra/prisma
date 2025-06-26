@@ -5,7 +5,7 @@ import Slider from '@vueform/slider'
 import { magmaStore } from '@/stores/magma';
 
 const magma = magmaStore();
-const value = ref(0) // Default knob position: 0
+const value = ref(magma.heatmapFilterValue)
 
 // Watch the 'value' ref and update the store when it changes
 watch(value, (newValue) => {
