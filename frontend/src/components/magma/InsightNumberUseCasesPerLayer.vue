@@ -21,7 +21,7 @@ const magma = magmaStore();
           <div 
             class="bar" 
             :style="{ 
-              width: (magma.L1UseCases(store.domain).length * 2) + 'px', 
+              width: (magma.L1UseCases(store.domain).length * 0.5) + 'px', 
               backgroundColor: 'green'
             }"
           >
@@ -37,7 +37,7 @@ const magma = magmaStore();
           <div 
             class="bar" 
             :style="{ 
-              width: (magma.L2UseCases(store.domain).length * 2) + 'px', 
+              width: (magma.L2UseCases(store.domain).length * 0.5) + 'px', 
               backgroundColor: 'green'
             }"
           >
@@ -53,7 +53,7 @@ const magma = magmaStore();
           <div 
             class="bar" 
             :style="{ 
-              width: (magma.L3UseCases(store.domain).length * 2) + 'px', 
+              width: (magma.L3UseCases(store.domain).length * 0.5) + 'px', 
               backgroundColor: 'green'
             }"
           >
