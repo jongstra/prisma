@@ -171,7 +171,13 @@ const showButton = computed(() => {
 
   // Compute whether the button should be shown based on its current value (based on the heatmap style checkmarks) and the heatmapFilterValue.
   if (currentValue >= magma.heatmapFilterValue) {
-    return true;
+    if (
+        !magma.heatmapSearchQuery ||  // There is no search query.
+        props.technique.name.toLowerCase().includes(magma.heatmapSearchQuery.toLowerCase()) ||  // The search query matches on the technique name.
+        props.technique.external_id.toLowerCase().includes(magma.heatmapSearchQuery.toLowerCase())  // The search query matches on the technique ID.
+       ) {
+        return true;
+       }
   } else {
     return false;
   }

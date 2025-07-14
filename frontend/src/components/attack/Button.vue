@@ -167,12 +167,13 @@ const showButton = computed(() => {
   const platforms = props.technique?.platforms || [];
 
   let platformFilterResult = (
-    (platforms.some(platform => store.activeAttributes('platforms').includes(platform))) && 
-    (
-      !store.searchQuery ||  // There is no search query.
-      props.technique.name.toLowerCase().includes(store.searchQuery.toLowerCase()) ||  // The search query matches on the technique name.
-      props.technique.external_id.toLowerCase().includes(store.searchQuery.toLowerCase())  // The search query matches on the technique ID.
-    )
+    platforms.some(platform => store.activeAttributes('platforms').includes(platform))
+  );
+    
+  let searchQueryFilterResult = (
+    !store.searchQuery ||  // There is no search query.
+    props.technique.name.toLowerCase().includes(store.searchQuery.toLowerCase()) ||  // The search query matches on the technique name.
+    props.technique.external_id.toLowerCase().includes(store.searchQuery.toLowerCase())  // The search query matches on the technique ID.
   );
 
   let techniqueVisibilityPercentageFilterResult = (
@@ -215,7 +216,7 @@ const showButton = computed(() => {
     !(domain.only_show_selected_components && !store.selectedComponentsTechniquesSet.has(props.technique.name))
   );
 
-  return platformFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult && techniqueTotalOccurrencesFilterBinnedResult && groupMaskFilterResult && componentMaskFilterResult;
+  return platformFilterResult && searchQueryFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult && techniqueTotalOccurrencesFilterBinnedResult && groupMaskFilterResult && componentMaskFilterResult;
 });
 
 const occursInHoveredGroups = () => {

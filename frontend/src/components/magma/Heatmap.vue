@@ -2,7 +2,8 @@
 import { tacticsStore } from '@/stores/tactics';
 import HeatmapButtonColumn from './HeatmapButtonColumn.vue';
 import HeatmapStyleCheckboxes from './HeatmapStyleCheckboxes.vue';
-import HeamapSliderFilter from './HeamapSliderFilter.vue';
+import HeatmapSliderFilter from './HeatmapSliderFilter.vue';
+import HeatmapSearchBar from './HeatmapSearchBar.vue';
 const store = tacticsStore();
 </script>
 
@@ -12,7 +13,8 @@ const store = tacticsStore();
 <div>
   <div class="heatmap-settings">
     <HeatmapStyleCheckboxes/>
-    <HeamapSliderFilter/>
+    <HeatmapSliderFilter/>
+    <HeatmapSearchBar/>
   </div>
   <div class="heatmap-container">
     <div class="heatmap">
