@@ -205,7 +205,7 @@ const showButton = computed(() => {
   techniqueTotalOccurrencesFilterBinnedResult = (props.technique.occurrence_total_order_normalized > 0.75)
   }
 
-
+  
   // When the group tool mask toggle (domain.only_show_selected_groups) is switch to 'true', we want to hide all techniques that are not covered by the selected groups.
   let groupMaskFilterResult = (
     !(domain.only_show_selected_groups && !store.selectedGroupsTechniquesSet.has(props.technique.name))

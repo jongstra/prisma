@@ -59,6 +59,7 @@ interface Domain {
   softwares: Attributes;
   only_show_selected_groups: boolean;
   only_show_selected_components: boolean;
+  only_show_selected_groups_magma_heatmap: boolean;
 }
 
 interface TacticStats {
@@ -249,6 +250,32 @@ export const tacticsStore = defineStore('tactics', {
       const groupsTechniquesSet = new Set(groupsTechniques);
       return groupsTechniquesSet;
     },
+
+
+    selectedGroupsTechniquesSetMagmaHeatmap: (state) => {
+      let groups;
+
+      if (state.domain === 'enterprise-attack') {
+        groups = state.enterprise?.groups;
+      } else if (state.domain === 'mobile-attack') {
+        groups = state.mobile?.groups;
+      } else if (state.domain === 'ics-attack') {
+        groups = state.ics?.groups;
+      }
+      
+      // Add all techniques of selected groups to a list.
+      let groupsTechniques = [];
+      groups.forEach(group => {
+        if (group?.selectedInMagmaHeatmap) {
+          groupsTechniques.push(...group.techniques)
+        }
+      });
+      
+      // Remove duplicates in the techniques list, and return it.
+      const groupsTechniquesSet = new Set(groupsTechniques);
+      return groupsTechniquesSet;
+    },
+
 
 
     hoveredComponentsTechniquesSet: (state) => {

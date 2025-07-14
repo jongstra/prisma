@@ -20,17 +20,17 @@ const domain = computed(() => {
 // Computed property to get only the selected groups
 const selectedGroups = computed(() => {
   if (!domain.value.groups) return [];
-  return domain.value.groups.filter(group => group.selected === true);
+  return domain.value.groups.filter(group => group.selectedInMagmaHeatmap === true);
 });
 
 // Function to remove the 'selected' property from a group
 const removeSelection = (group: { id: string, selected: boolean }) => {
-  delete group.selected;
+  delete group.selectedInMagmaHeatmap;
 };
 
 // Function to clear all selections
 const clearAllSelections = () => {
-  domain.value.groups.forEach(group => delete group.selected);
+  domain.value.groups.forEach(group => delete group.selectedInMagmaHeatmap);
 };
 
 // Function to clear selections with confirmation.
@@ -73,7 +73,7 @@ const filteredGroups = computed(() => {
 
 // Function to add a new selected group
 const selectGroup = (group: { id: string, name: string }) => {
-  group.selected = true;
+  group.selectedInMagmaHeatmap = true;
   searchQuery.value = ''; // Clear the search query after selection
 };
 
@@ -89,14 +89,14 @@ const addGroupFromSearch = () => {
 
 // Computed property to get and set the only_show_selected_groups value
 const onlyShowSelectedGroups = computed({
-  get: () => domain.value.only_show_selected_groups,
+  get: () => domain.value.only_show_selected_groups_magma_heatmap,
   set: (value) => {
     if (store.domain === 'enterprise-attack') {
-      store.enterprise.only_show_selected_groups = value;
+      store.enterprise.only_show_selected_groups_magma_heatmap = value;
     } else if (store.domain === 'mobile-attack') {
-      store.mobile.only_show_selected_groups = value;
+      store.mobile.only_show_selected_groups_magma_heatmap = value;
     } else if (store.domain === 'ics-attack') {
-      store.ics.only_show_selected_groups = value;
+      store.ics.only_show_selected_groups_magma_heatmap = value;
     }
   },
 });
@@ -136,6 +136,7 @@ const onlyShowSelectedGroups = computed({
 
 <style scoped>
 .group-container {
+  margin: 0px 5px;
   padding: 2px;
   font-size: 14px;
   border: 2px solid #555;

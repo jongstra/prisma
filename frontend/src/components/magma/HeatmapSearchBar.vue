@@ -22,7 +22,7 @@ const searchQuery = computed({
 <style scoped>
 
 input[type="text"] {
-  margin: 15px 5px;
+  margin: 15px 0px;
   padding: 9px;
   font-size: 13.3px;
   border: 2px solid #555;

@@ -170,22 +170,34 @@ const showButton = computed(() => {
   }
 
   // Compute whether the button should be shown based on its current value (based on the heatmap style checkmarks) and the heatmapFilterValue.
-  if (currentValue >= magma.heatmapFilterValue) {
-    if (
-        !magma.heatmapSearchQuery ||  // There is no search query.
-        props.technique.name.toLowerCase().includes(magma.heatmapSearchQuery.toLowerCase()) ||  // The search query matches on the technique name.
-        props.technique.external_id.toLowerCase().includes(magma.heatmapSearchQuery.toLowerCase())  // The search query matches on the technique ID.
-       ) {
-        return true;
-       }
-  } else {
-    return false;
-  }
+  let valueFilterResult = (currentValue >= magma.heatmapFilterValue)
+
+  let searchQueryFilterResult = (
+    !magma.heatmapSearchQuery ||  // There is no search query.
+    props.technique.name.toLowerCase().includes(magma.heatmapSearchQuery.toLowerCase()) ||  // The search query matches on the technique name.
+    props.technique.external_id.toLowerCase().includes(magma.heatmapSearchQuery.toLowerCase())  // The search query matches on the technique ID.
+  )
+
+  // When the group tool mask toggle (domain.only_show_selected_groups_magma_heatmap) is switch to 'true', we want to hide all techniques that are not covered by the selected groups.
+  let groupMaskFilterResult = (
+    !(domain.only_show_selected_groups_magma_heatmap && !store.selectedGroupsTechniquesSetMagmaHeatmap.has(props.technique.name))
+  );
+
+    return valueFilterResult && searchQueryFilterResult && groupMaskFilterResult
 
 });
 
 
+const occursInSelectedGroups = () => {
+  if (store.selectedGroupsTechniquesSetMagmaHeatmap.has(props.technique.name)) {
+    return true
+  } else {
+    return false
+  }
+};
+
 </script>
+
 
 <template>
   <button v-if="showButton"
@@ -193,6 +205,9 @@ const showButton = computed(() => {
     :style="{'background-color': getBackgroundColor()}"
     @mouseover="showTooltip"
     @mouseleave="hideTooltip"
+    :class="{ pinned: store.pinnedTooltipId === id,
+      'occurs-in-selected-groups': occursInSelectedGroups(),
+      }"
   >
     <span class="buttontext">{{ technique.name }}</span>
 
@@ -251,6 +266,10 @@ button {
 button:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px, rgb(51, 51, 51) 0px 0px 0px 2.5px; /* On hover, add a thick black 'outline' to the button. */
   z-index: 1001;
+}
+
+button.occurs-in-selected-groups {
+  border: 2px solid red;  /* Change the border color on group select */
 }
 
 .buttontext {
