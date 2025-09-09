@@ -17,7 +17,7 @@ cd dettect-visualizer/frontend
 
 ### Install Application and Dependencies
 ```sh
-npm install
+npm ci
 ```
 
 ### Run Application (for Development & Testing)
