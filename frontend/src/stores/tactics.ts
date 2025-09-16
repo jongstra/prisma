@@ -454,8 +454,10 @@ export const tacticsStore = defineStore('tactics', {
 
     processDettectYaml(data: any) {
 
-      // Switch to relevant domain.
+      // Switch to relevant domain based on the uploaded file.
       this.domain = data.domain;
+      // Reset any previous component visibility settings for this domain (set visibility=false as the default for each component).
+      this.resetDomainVisibility(data.domain);
 
       // Access data of the current domain from the store.
       let tactics;
