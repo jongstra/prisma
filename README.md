@@ -33,7 +33,7 @@ npm run dev
 This project is currently in development. You may run into unusual behavior and/or bugs.
 - ATT&CK view: works mostly as intended.
 - Insights view: works mostly as intended.
-- MaGMa view: in active development.
+- MaGMa view: works mostly as intended.
 
 ## Development
 - Software Development: Thomas Jongstra
