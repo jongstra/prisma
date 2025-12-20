@@ -4,16 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "serve-backend": "cd ../backend && source venv/bin/activate && python3 app.py",
-    "serve": "vite",
-    "dev": "npm run serve",
-    "dev-old": "concurrently \"npm:serve\" \"npm:serve-backend\"",
-    "build": "run-p build-vue build-backend",
+    "dev": "vite",
+    "dev-lean": "OMIT_VUE_DEVTOOLS=true vite",
+    "build": "vite build",
     "preview": "vite preview",
     "test-unit": "vitest",
-    "type-check": "vue-tsc --build --force",
-    "build-vue": "vite build",
-    "build-backend": "cd ../backend && source venv/bin/activate && python3 setup.py sdist bdist_wheel"
+    "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
     "@vueform/slider": "^2.1.10",
@@ -32,15 +28,15 @@
     "@types/jsdom": "^21.1.6",
     "@types/node": "^20.12.5",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vitejs/plugin-vue-jsx": "^5.1.2",
     "@vue/test-utils": "^2.4.5",
     "@vue/tsconfig": "^0.5.1",
     "jsdom": "^24.0.0",
     "npm-run-all2": "^6.1.2",
     "typescript": "~5.4.0",
-    "vite": "^5.2.8",
+    "vite": "^7.3.0",
     "vite-plugin-vue-devtools": "^7.0.25",
-    "vitest": "^1.4.0",
+    "vitest": "^4.0.16",
     "vue-tsc": "^2.0.11"
   },
   "overrides": {
