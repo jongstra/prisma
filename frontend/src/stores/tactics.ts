@@ -513,8 +513,10 @@ export const tacticsStore = defineStore('tactics', {
           if (technique.data_components.length === 0) {technique.visibility_ratio = 0;}
           else {
             technique.visibility_ratio = 0
+            // Use unique data component names to avoid double-counting duplicates in the ATT&CK definitions
+            const uniqueDataComponents = [...new Set(technique.data_components)];
             for (const component of matchingComponents) {
-              technique.visibility_ratio += (component.device_completeness / 5) /  technique.data_components.length;
+              technique.visibility_ratio += (component.device_completeness / 5) / uniqueDataComponents.length;
             }
           }
           // else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
@@ -530,10 +532,12 @@ export const tacticsStore = defineStore('tactics', {
               if (subtechnique.data_components.length === 0) {subtechnique.visibility_ratio = 0;}
               else {
                 subtechnique.visibility_ratio = 0
+                // Use unique data component names to avoid double-counting duplicates in the ATT&CK definitions
+                const uniqueDataComponents = [...new Set(subtechnique.data_components)];
                 for (const component of matchingComponents) {
-                  subtechnique.visibility_ratio += (component.device_completeness / 5) /  subtechnique.data_components.length;
-                  technique.visibility_ratio += (subtechnique.visibility_ratio / (technique.sub_techniques.length+1)) // With each subtechnique, update technique visibility_ratio using the same normalization factor as above.
+                  subtechnique.visibility_ratio += (component.device_completeness / 5) / uniqueDataComponents.length;
                 }
+                technique.visibility_ratio += (subtechnique.visibility_ratio / (technique.sub_techniques.length+1)) // For each subtechnique, update technique visibility_ratio using the same normalization factor as above.
               }
             })
           }

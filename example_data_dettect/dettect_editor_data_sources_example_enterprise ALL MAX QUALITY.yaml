@@ -1,0 +1,1659 @@
+version: 1.1
+file_type: data-source-administration
+name: example-all-max-quality
+domain: enterprise-attack
+systems:
+  - applicable_to: default
+    platform:
+      - all
+data_sources:
+  - data_source_name: Active DNS
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Active Directory Credential Request
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Active Directory Object Access
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Active Directory Object Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Active Directory Object Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Active Directory Object Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Application Log Content
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Certificate Registration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Service Disable
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Service Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Service Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Service Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Storage Access
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Storage Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Storage Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Storage Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Storage Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Cloud Storage Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Command Execution
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Container Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Container Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Container Start
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: DHCP [DeTT&CT data source]
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Domain Registration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Drive Access
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Drive Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Drive Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Driver Load
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Driver Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Email [DeTT&CT data source]
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: File Access
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: File Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: File Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: File Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: File Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Firewall Disable
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Firewall Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Firewall Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Firewall Rule Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Firmware Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Group Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Group Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Group Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Host Status
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Image Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Image Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Image Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Image Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Instance Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Instance Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Instance Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Instance Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Instance Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Instance Start
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Instance Stop
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Internal DNS [DeTT&CT data source]
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Kernel Module Load
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Logon Session Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Logon Session Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Malware Content
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Malware Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Module Load
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Named Pipe Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Network Connection Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Network Share Access
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Network Traffic Content
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Network Traffic Flow
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: OS API Execution
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Passive DNS
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Pod Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Pod Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Pod Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Process Access
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Process Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Process Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Process Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Process Termination
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Response Content
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Response Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Scheduled Job Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Scheduled Job Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Scheduled Job Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Script Execution
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Service Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Service Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Service Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Snapshot Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Snapshot Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Snapshot Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Snapshot Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Snapshot Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Social Media
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: User Account Authentication
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: User Account Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: User Account Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: User Account Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: User Account Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Volume Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Volume Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Volume Enumeration
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Volume Metadata
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Volume Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: WMI Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Web Credential Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Web Credential Usage
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Web [DeTT&CT data source]
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Windows Registry Key Access
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Windows Registry Key Creation
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Windows Registry Key Deletion
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
+  - data_source_name: Windows Registry Key Modification
+    data_source:
+      - applicable_to:
+          - all
+        date_registered: null
+        date_connected: null
+        products: []
+        available_for_data_analytics: true
+        comment: ''
+        data_quality:
+          device_completeness: 5
+          data_field_completeness: 5
+          timeliness: 5
+          consistency: 5
+          retention: 5
