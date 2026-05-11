@@ -455,17 +455,20 @@ export const tacticsStore = defineStore('tactics', {
     processDettectYaml(data: any) {
 
       // Check for duplicate data source names in the YAML.
-      const dataSourceNames = data.data_sources.map((ds: any) => ds.data_source_name);
       const seen = new Set<string>();
-      const duplicates: string[] = [];
-      for (const name of dataSourceNames) {
+      const duplicates = new Set<string>();
+      for (const ds of data.data_sources) {
+        const name = ds.data_source_name;
         if (seen.has(name)) {
-          if (!duplicates.includes(name)) duplicates.push(name);
+          duplicates.add(name);
+        } else {
+          seen.add(name);
         }
-        seen.add(name);
       }
-      if (duplicates.length > 0) {
-        throw new Error(`Duplicate data sources found in YAML: ${duplicates.join(', ')}. Please remove the duplicates before loading.`);
+      if (duplicates.size > 0) {
+        throw new Error(
+          `Duplicate data sources found in YAML: ${[...duplicates].join(', ')}. Please remove the duplicates before loading.`
+        );
       }
 
       // Switch to relevant domain based on the uploaded file.
