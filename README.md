@@ -1,5 +1,11 @@
 # PRISMA: Prioritized Risk Indicator for Security Monitoring & Analysis
 
+> **Note for current collaborators: the repo has been renamed from `dettect-visualizer` to `prisma`.**
+> If you already have a local clone, you can update your remote URL (the old remote URL will keep working, but updating is recommended):
+> ```sh
+> git remote set-url origin git@github.com:jongstra/prisma.git
+> ```
+
 This is the PRISMA tool. Providing insight and guidance to detection engineers and management. The PRISMA tool currently supports MITRE ATT&CK v17.1.
 
 ## Installation Instructions
@@ -9,12 +15,12 @@ If you do not have Node.js installed, please [download](https://nodejs.org/en/do
 
 ### Clone this Repository
 ```sh
-git clone git@github.com:jongstra/dettect-visualizer.git
+git clone git@github.com:jongstra/prisma.git
 ```
 
 ### Enter Project Frontend Directory
 ```sh
-cd dettect-visualizer/frontend
+cd prisma/frontend
 ```
 
 ### Install Application and Dependencies
