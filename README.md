@@ -1,4 +1,6 @@
-# MaGMa-DeTT&CT Visualizer
+# PRISMA: Prioritized Risk Indicator for Security Monitoring & Analysis
+
+This is the PRISMA tool. Providing insight and guidance to detection engineers and management. The PRISMA tool currently supports MITRE ATT&CK v17.1.
 
 ## Installation Instructions
 
@@ -52,7 +54,6 @@ This project is currently in development. You may run into unusual behavior and/
 
 ## Future
 - When ready, the aim is to distribute this project under an open source license (AGPL-3).
-- The name of the project 'MaGMa-DeTT&CT Visualizer' is still subject to change.
 - This project has a strong focus on pragmatism and simplicity for the benefit of the end user. Its design is sometimes strongly opinionated and limited with this goal in mind. New features may be added based on common user needs, but should not undermine this philosphy.
 
 ## Thanks
