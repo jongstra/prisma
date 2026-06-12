@@ -13,9 +13,15 @@ This is the PRISMA tool. Providing insight and guidance to detection engineers a
 ### Install Node.js
 If you do not have Node.js installed, please [download](https://nodejs.org/en/download) and install it. After this step, it is assumed that you have Node.js installed with npm as the package manager.
 
+**Note:** Last tested with Node.js v26.3.0 (June 2026). Newer versions are expected to work. You can check your installed version with `node -v`.
+
 ### Clone this Repository
 ```sh
 git clone git@github.com:jongstra/prisma.git
+```
+If you don't have SSH keys set up for GitHub, clone via HTTPS instead:
+```sh
+git clone https://github.com/jongstra/prisma.git
 ```
 
 ### Enter Project Frontend Directory
@@ -27,13 +33,18 @@ cd prisma/frontend
 ```sh
 npm ci
 ```
+This performs a clean install of all dependencies, exactly as pinned in `package-lock.json` (any existing `node_modules` folder is removed automatically).
+
+**Troubleshooting `npm ci` errors:**
+- Most errors mean `package.json` and `package-lock.json` are out of sync. Run `npm install` to regenerate the lockfile and try again.
+- Make sure your Node.js version is recent enough — see the note under *Install Node.js*.
 
 ### Run Application (for Development & Testing)
 ```sh
 npm run dev
 ```
 
-- To use the application, open the link shown in your terminal (something like localhost:5173) in your browser.
+- To use the application, open the link shown in your terminal (something like `localhost:5173`) in your browser.
 - To try out the application, you can load one of the example DeTT&CT YAML files (from the project's example-data-dettect folder) into the application using the big red button.
 - Alternatively, you can create an example DETT&CT Data Sources YAML file using the [DeTT&CT Editor](https://rabobank-cdc.github.io/dettect-editor/#/datasources). The resulting YAML file can be saved to your computer, and loaded into the application using the big red button.
 
