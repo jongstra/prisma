@@ -1,6 +1,8 @@
 # PRISMA: Prioritized Risk Indicator for Security Monitoring & Analysis
 
-This is the PRISMA tool. Providing insight and guidance to detection engineers and management. The PRISMA tool currently supports MITRE ATT&CK v17.1.
+This is the repository for the PRISMA tool. The PRISMA tool supports MaGMA use case framework v2.0 with automation and implementation. Additionally, the tool acts as a visualisation and summarization layer on top of DeTT&CT. Functional documentation of the MaGMa use case framework v2.0 can be found in the folder [functional documentation](/jongstra/prisma/functional_documentation).
+
+The tool provides insight and guidance to detection engineers and management. The PRISMA tool currently supports MITRE ATT&CK v17.1.
 
 ## Installation Instructions
 
@@ -54,7 +56,7 @@ This project is currently in development. You may run into unusual behavior and/
 - Overarching Project (Inventarisatie (inter-)departementale capaciteiten cyberweerbaarheid): Rob van Os, Raymond Bierens & Tony van der Togt
 
 ## Project Goals
-- Helping organizations manage their cyber security use cases (using the [MaGMa](https://www.betaalvereniging.nl/en/safety/magma/) framework).
+- Helping organizations manage their cyber security use cases (using the MaGMa framework).
 - Visualizing the visibility organizations have on their digital infractructure (using [DeTT&CT](https://github.com/rabobank-cdc/DeTTECT)/[dettectinator](https://github.com/siriussecurity/dettectinator)).
 - Integrating DeTT&CT visibility with MaGMa use case management.
 - Providing high-level insights and suggestions regarding visibility and use case management.
