@@ -4,7 +4,7 @@ This is the repository for the PRISMA tool. The PRISMA tool supports MaGMA use c
 
 The figure below shows the overview of how MaGMa 2.0 and DeTT&CT are combined to determine detection quality and improvement potential.
 
-![MaGMa overview](functional_documentation/magma_2.0_overview.png)
+![MaGMa overview](functional_documentation/MaGMa_2.0_overview.png)
 
 The tool provides insight and guidance to detection engineers and management. The PRISMA tool currently supports MITRE ATT&CK v17.1.
 
