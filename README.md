@@ -70,7 +70,6 @@ This project is currently in development. You may run into unusual behavior and/
 - Backend: Python
 
 ## Future
-- When ready, the aim is to distribute this project under an open source license (AGPL-3).
 - This project has a strong focus on pragmatism and simplicity for the benefit of the end user. Its design is sometimes strongly opinionated and limited with this goal in mind. New features may be added based on common user needs, but should not undermine this philosphy.
 
 ## Thanks
