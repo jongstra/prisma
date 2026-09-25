@@ -2,6 +2,10 @@
 
 This is the repository for the PRISMA tool. The PRISMA tool supports MaGMA use case framework v2.0 with automation and implementation. Additionally, the tool acts as a visualisation and summarization layer on top of DeTT&CT. Functional documentation of the MaGMa use case framework v2.0 can be found in the folder [functional documentation](functional_documentation/).
 
+The figure below shows the overview of how MaGMa 2.0 and DeTT&CT are combined to determine detection quality and improvement potential.
+
+![MaGMa overview](functional_documentation/magma_2.0_overview.png)
+
 The tool provides insight and guidance to detection engineers and management. The PRISMA tool currently supports MITRE ATT&CK v17.1.
 
 ## Installation Instructions
