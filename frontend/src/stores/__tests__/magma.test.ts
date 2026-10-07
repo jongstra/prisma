@@ -233,3 +233,19 @@ describe('magma store: loading a MaGMa file', () => {
     expect(ids()).toEqual(before);
   });
 });
+
+describe('magma store: L3 use cases per technique (heatmap)', () => {
+  it('counts use cases on sub-techniques for the parent technique, within the given domain only', async () => {
+    const { magma } = await setUpStores();
+    magma.importUseCases(stringify([
+      { domain: 'enterprise-attack', level: 3, id: 'PARENT', name: 'p', attackTechniqueId: 'T1566' },
+      { domain: 'enterprise-attack', level: 3, id: 'SUB', name: 's', attackTechniqueId: 'T1566.001' },
+      { domain: 'enterprise-attack', level: 3, id: 'OTHER', name: 'o', attackTechniqueId: 'T1059' },
+      { domain: 'mobile-attack', level: 3, id: 'MOBILE', name: 'm', attackTechniqueId: 'T1660' },
+    ]));
+    const ids = (techniqueId: string, domain: string) => magma.l3UseCasesForTechnique(techniqueId, domain).map((u: any) => u.id).sort();
+    expect(ids('T1566', 'enterprise-attack')).toEqual(['PARENT', 'SUB']);
+    expect(ids('T1660', 'enterprise-attack')).toEqual([]);
+    expect(ids('T1660', 'mobile-attack')).toEqual(['MOBILE']);
+  });
+});

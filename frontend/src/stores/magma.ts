@@ -152,10 +152,11 @@ export const magmaStore = defineStore('magma', {
         return grandChildUseCases
       };
     },
-    getUseCasesByAttackTechniqueId(state) {
-      return (attackTechniqueId: string) => {
-        return state.useCases.filter(useCase => useCase['level'] === 3 && useCase.attackTechniqueId === attackTechniqueId);
-      }
+    // The L3 use cases in a domain that detect a technique or one of its sub-techniques (e.g. T1566 and T1566.001).
+    l3UseCasesForTechnique(state) {
+      return (techniqueId: string, domain: string) => state.useCases.filter(useCase =>
+        useCase.level === 3 && useCase.domain === domain &&
+        (useCase.attackTechniqueId === techniqueId || useCase.attackTechniqueId?.startsWith(`${techniqueId}.`)));
     },
   },
 

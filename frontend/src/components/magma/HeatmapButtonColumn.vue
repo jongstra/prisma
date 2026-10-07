@@ -81,7 +81,7 @@ if (store.domain === 'enterprise-attack') {
   </div>
 
   <!-- Techniques column -->
-  <div v-for="(technique, index) in techniques" :key="index">
+  <div v-for="technique in techniques" :key="technique.external_id">
     <HeatmapButton :technique="technique"/>
   </div>
 

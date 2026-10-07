@@ -2,6 +2,7 @@
 import { tacticsStore } from '@/stores/tactics';
 import { magmaStore } from '@/stores/magma';
 import { ref, computed, reactive } from 'vue';
+import { ancestorCounts, heatmapValue } from '@/domain/magma/heatmap';
 
 const store = tacticsStore();
 const props = defineProps(['technique']);
@@ -52,69 +53,38 @@ function hideTooltip() {
 }
 
 
+// The L3 use cases in the current domain that detect this technique or one of its sub-techniques.
+const relatedUseCases = computed(() => magma.l3UseCasesForTechnique(props.technique.external_id, store.domain));
+
+// The heatmap value (0-100) for the metrics selected with the checkboxes, or null when there is nothing to show.
+const value = computed(() => heatmapValue(relatedUseCases.value, {
+  visibility: magma.heatmapVisibility,
+  implementation: magma.heatmapImplementation,
+  effectiveness: magma.heatmapEffectiveness,
+}));
+
 function getBackgroundColor() {
-
-  // Gather the use cases that are related to the technique.
-  const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
-
-  // Heatmap style: weight
-  if (magma.heatmapVisibility && magma.heatmapImplementation && magma.heatmapEffectiveness) {
-    const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
-    return `rgba(0, 255, 0, ${averageWeight})`;
-  }
-
-  // Heatmap style: visibility * implementation
-  if (magma.heatmapVisibility && magma.heatmapImplementation) {
-    const averageVisImp = relatedUseCases.reduce((sum, useCase) => sum + (useCase.visibility/100 * useCase.implementation/100), 0) / relatedUseCases.length;
-    return `rgba(0, 255, 0, ${averageVisImp})`;
-  }
-
-  // Heatmap style: implementation * effectiveness
-  if (magma.heatmapImplementation && magma.heatmapEffectiveness) {
-    const averageImpEff = relatedUseCases.reduce((sum, useCase) => sum + (useCase.implementation/100 * useCase.effectiveness/100), 0) / relatedUseCases.length;
-    return `rgba(0, 255, 0, ${averageImpEff})`;
-  }
-
-  // Heatmap style: visibility
-  if (magma.heatmapVisibility) {
-    const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
-    return `rgba(0, 255, 0, ${averageVisibility})`;
-  }
-
-  // Heatmap style: implementation
-  if (magma.heatmapImplementation) {
-    const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
-    return `rgba(0, 255, 0, ${averageImplementation})`;
-  }
-
-  // Heatmap style: effectiveness
-  if (magma.heatmapEffectiveness) {
-    const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
-    return `rgba(0, 255, 0, ${averageEffectiveness})`;
-  }
-
+  return value.value === null ? undefined : `rgba(0, 255, 0, ${value.value / 100})`;
 }
 
 
 function getTooltipText() {
-  const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
-  const parentUseCases = relatedUseCases.map(x => magma.getParentUseCases(x));
-  const grandParentUseCases = parentUseCases.map(x => magma.getParentUseCases(x));
-  const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
-  const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
-  const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
-  const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
-  
+  const useCases = relatedUseCases.value;
+  const onSubTechniques = useCases.filter(useCase => useCase.attackTechniqueId !== props.technique.external_id).length;
+  const { l2, l1 } = ancestorCounts(useCases, magma.useCases);
+  const percentage = (metrics: { visibility: boolean, implementation: boolean, effectiveness: boolean }) =>
+    `${(heatmapValue(useCases, metrics) ?? 0).toFixed(0)}%`;
+
   const tooltipText = `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})\n\n<hr/>
-  Weight: ${((averageWeight || 0) * 100).toFixed(0)}%
-  Visibility: ${((averageVisibility || 0) * 100).toFixed(0)}%
-  Implementation: ${((averageImplementation || 0) * 100).toFixed(0)}%
-  Effectiveness: ${((averageEffectiveness || 0) * 100).toFixed(0)}%
+  Weight: ${percentage({ visibility: true, implementation: true, effectiveness: true })}
+  Visibility: ${percentage({ visibility: true, implementation: false, effectiveness: false })}
+  Implementation: ${percentage({ visibility: false, implementation: true, effectiveness: false })}
+  Effectiveness: ${percentage({ visibility: false, implementation: false, effectiveness: true })}
 
   <hr/>
-  Related L3 Use Cases: ${relatedUseCases.length}
-  Related L2 Use Cases: ${parentUseCases.length}
-  Related L1 Use Cases: ${grandParentUseCases.length}
+  Related L3 Use Cases: ${useCases.length}${onSubTechniques > 0 ? ` (${onSubTechniques} on sub-techniques)` : ''}
+  Related L2 Use Cases: ${l2}
+  Related L1 Use Cases: ${l1}
 
   <hr>
   Nr groups using: ${props.technique.occurrence_groups}
@@ -128,46 +98,8 @@ function getTooltipText() {
 
 const showButton = computed(() => {
 
-  // Gather the use cases that are related to the technique.
-  const relatedUseCases = magma.getUseCasesByAttackTechniqueId(props.technique.external_id);
-
-  let currentValue = 0;
-
-  // Heatmap style: weight
-  if (magma.heatmapVisibility && magma.heatmapImplementation && magma.heatmapEffectiveness) {
-    const averageWeight = relatedUseCases.reduce((sum, useCase) => sum + useCase.weight/100, 0) / relatedUseCases.length;
-    currentValue = (averageWeight||0)*100;
-  } 
-
-  // Heatmap style: visibility * implementation
-   else if (magma.heatmapVisibility && magma.heatmapImplementation) {
-    const averageVisImp = relatedUseCases.reduce((sum, useCase) => sum + (useCase.visibility/100 * useCase.implementation/100), 0) / relatedUseCases.length;
-    currentValue = (averageVisImp||0)*100;
-  }
-
-  // Heatmap style: implementation * effectiveness
-  else if (magma.heatmapImplementation && magma.heatmapEffectiveness) {
-    const averageImpEff = relatedUseCases.reduce((sum, useCase) => sum + (useCase.implementation/100 * useCase.effectiveness/100), 0) / relatedUseCases.length;
-    currentValue = (averageImpEff||0)*100;
-  }
-
-  // Heatmap style: visibility
-  else if (magma.heatmapVisibility) {
-    const averageVisibility = relatedUseCases.reduce((sum, useCase) => sum + useCase.visibility/100, 0) / relatedUseCases.length;
-    currentValue = (averageVisibility||0)*100;
-  }
-
-  // Heatmap style: implementation
-  else if (magma.heatmapImplementation) {
-    const averageImplementation = relatedUseCases.reduce((sum, useCase) => sum + useCase.implementation/100, 0) / relatedUseCases.length;
-    currentValue = (averageImplementation||0)*100;
-  }
-
-  // Heatmap style: effectiveness
-  else if (magma.heatmapEffectiveness) {
-    const averageEffectiveness = relatedUseCases.reduce((sum, useCase) => sum + useCase.effectiveness/100, 0) / relatedUseCases.length;
-    currentValue = (averageEffectiveness||0)*100;
-  }
+  // The heatmap value of the technique (based on the heatmap style checkmarks); 0 when there are no related use cases.
+  const currentValue = value.value ?? 0;
 
   // Compute whether the button should be shown based on its current value (based on the heatmap style checkmarks) and the heatmapFilterValue.
   let valueFilterResult = (currentValue >= magma.heatmapFilterValue)
@@ -205,9 +137,7 @@ const occursInSelectedGroups = () => {
     :style="{'background-color': getBackgroundColor()}"
     @mouseover="showTooltip"
     @mouseleave="hideTooltip"
-    :class="{ pinned: store.pinnedTooltipId === id,
-      'occurs-in-selected-groups': occursInSelectedGroups(),
-      }"
+    :class="{ 'occurs-in-selected-groups': occursInSelectedGroups() }"
   >
     <span class="buttontext">{{ technique.name }}</span>
 
