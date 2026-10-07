@@ -3,7 +3,7 @@ import { setActivePinia, createPinia } from 'pinia';
 import fs from 'node:fs';
 import { parse, stringify } from 'yaml';
 
-vi.mock('sweetalert2', () => ({ default: { fire: () => Promise.resolve({}) } }));
+vi.mock('sweetalert2', () => ({ default: { fire: vi.fn(() => Promise.resolve({})) } }));
 
 const catalog = JSON.parse(fs.readFileSync('public/tactics_and_techniques_by_domain.json', 'utf8'));
 const readExample = (name: string) => fs.readFileSync(`../example_data_dettect/${name}`, 'utf8');
@@ -19,7 +19,10 @@ async function setUpStores() {
   tactics.ics = copy.ics;
   const magma = (await import('../magma')).magmaStore();
   magma.initializeDefaultUseCases();
-  return { tactics, magma };
+  // The pop-up messages (the import summary), from the same module instance as the store uses.
+  const fire = (await import('sweetalert2')).default.fire as unknown as ReturnType<typeof vi.fn>;
+  const lastMessage = () => String(fire.mock.calls.at(-1)?.[0]?.text ?? '');
+  return { tactics, magma, lastMessage };
 }
 
 describe('magma store with the example files', () => {
@@ -88,5 +91,68 @@ describe('magma store performance', () => {
     magma.updateAllL3UseCasesBasedOnDettectVisibility();
     expect(magma.useCases.length).toBe(1126);
     expect(performance.now() - start).toBeLessThan(500); // Was about 3.7 seconds.
+  });
+});
+
+describe('magma store: invalid data is rejected on import, with the reason', () => {
+  it('rejects use cases that are their own (indirect) parent, and non-numeric or out-of-range percentages', async () => {
+    const { magma, lastMessage } = await setUpStores();
+    const domain = 'enterprise-attack';
+    magma.importUseCases(stringify([
+      { domain, level: 1, id: 'BIZ', name: 'b', inImpact: 0, thrImpact: 0, outImpact: 100 },
+      { domain, level: 2, id: 'BIZ-1', name: 'ok', parentIds: ['BIZ'] },
+      { domain, level: 2, id: 'SELF', name: 'self', parentIds: ['SELF'] },
+      { domain, level: 2, id: 'A', name: 'a', parentIds: ['B'] },
+      { domain, level: 2, id: 'B', name: 'b', parentIds: ['A'] },
+      { domain, level: 3, id: 'TEXT', name: 't', parentIds: ['BIZ-1'], implementation: 'abc' },
+      { domain, level: 3, id: 'NEGATIVE', name: 'n', parentIds: ['BIZ-1'], effectiveness: -5 },
+      { domain, level: 3, id: 'TOO-HIGH', name: 'h', parentIds: ['BIZ-1'], visibility: 150 },
+      { domain, level: 3, id: 'AS-TEXT', name: 'ok', parentIds: ['BIZ-1'], visibility: '50', implementation: 100, effectiveness: 100, visibilityFromAttackTechniqueOverride: true },
+    ]));
+    const imported = magma.useCases.filter((u: any) => !u.permanent).map((u: any) => u.id).sort();
+    expect(imported).toEqual(['AS-TEXT', 'BIZ', 'BIZ-1']);
+    const message = lastMessage();
+    expect(message).toContain('Successful imports: 3. Failed imports: 6.');
+    expect(message).toContain('"SELF" in domain "enterprise-attack" is its own (indirect) parent: SELF → SELF');
+    expect(message).toContain('A → B → A');
+    expect(message).toContain('implementation "abc" is not valid');
+    expect(message).toContain('effectiveness "-5" is not valid');
+    expect(magma.getUseCaseById('BIZ', domain)?.risk).toBeCloseTo(50); // Only AS-TEXT counts: 50% × 100% × 100%.
+  });
+
+  it('keeps use cases with an unknown parent ID, and warns about them', async () => {
+    const { magma, lastMessage } = await setUpStores();
+    magma.importUseCases(stringify([
+      { domain: 'enterprise-attack', level: 2, id: 'DOS-1', name: 'd', parentIds: ['DOS'] },
+      { domain: 'enterprise-attack', level: 3, id: 'DOS-1-1', name: 'typo', parentIds: ['DOS-l'] },
+    ]));
+    expect(magma.getUseCaseById('DOS-1-1', 'enterprise-attack')).toBeDefined();
+    expect(lastMessage()).toContain('Successful imports: 2. Failed imports: 0.');
+    expect(lastMessage()).toContain('"DOS-1-1" in domain "enterprise-attack" has parent "DOS-l", which does not exist');
+    expect(lastMessage()).toContain('"DOS-1" in domain "enterprise-attack" has parent "DOS", which does not exist');
+  });
+});
+
+describe('magma store: saving and loading', () => {
+  it('saves a new L1 use case without NaN values, and loads it back with the same risk', async () => {
+    const first = await setUpStores();
+    first.magma.addNewUseCase(1, 'enterprise-attack');
+    const created = first.magma.L1UseCases('enterprise-attack').at(-1)!;
+    expect([created.inImpact, created.thrImpact, created.outImpact]).toEqual([100, 0, 0]);
+    const saved = first.magma.exportUseCases();
+    expect(saved).not.toMatch(/nan/i);
+
+    const second = await setUpStores();
+    second.magma.importUseCases(saved);
+    const loaded = second.magma.getUseCaseById(created.id, 'enterprise-attack');
+    expect(loaded?.risk).toBeCloseTo(created.risk!);
+  });
+
+  it('loads files saved by older versions, which could contain .nan for empty impacts', async () => {
+    const { magma, lastMessage } = await setUpStores();
+    magma.importUseCases('- domain: enterprise-attack\n  level: 1\n  id: L1-1\n  name: old\n  inImpact: 100\n  thrImpact: .nan\n  outImpact: .nan\n');
+    expect(lastMessage()).toContain('Successful imports: 1. Failed imports: 0.');
+    expect(magma.getUseCaseById('L1-1', 'enterprise-attack')?.risk).toBeCloseTo(100);
+    expect(magma.exportUseCases()).not.toMatch(/nan/i);
   });
 });

@@ -4,6 +4,7 @@ import { tacticsStore } from '@/stores/tactics';
 import * as yaml from 'yaml';
 import Swal from 'sweetalert2';
 import { recalculateUseCases } from '@/domain/magma/calculations';
+import { findParentCycles, findUnknownParents, percentageProblem } from '@/domain/magma/validation';
 
 const tactics = tacticsStore();
 
@@ -45,6 +46,15 @@ interface UpdatedFields {
   implementation?: number | null;
   effectiveness?: number | null;
 }
+
+// The percentages of a use case that are entered by the user or imported.
+const PERCENTAGE_FIELDS = ['visibility', 'implementation', 'effectiveness', 'inImpact', 'thrImpact', 'outImpact'] as const;
+
+// A number for the YAML export; values that are not a valid number are left out instead of being saved as NaN.
+const exportNumber = (value: unknown) => {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : undefined;
+};
 
 const formatPercentage = (number: any) => {
   number = Number(number);
@@ -191,9 +201,11 @@ export const magmaStore = defineStore('magma', {
         invalidParentIds: false,
       };
 
-      // Default value of 100 (to prevent the IN/THR/OUT Impact % cells from becoming red). Only present for level 1 use cases.
+      // Default IN/THR/OUT impacts of 100/0/0, which add up to 100% (so the cells do not turn red). Only for level 1 use cases.
       if (level === 1) {
         useCase.inImpact = 100;
+        useCase.thrImpact = 0;
+        useCase.outImpact = 0;
       }
       
       // Add the new use case to the store, and recalculate (a new L1 use case gets a risk straight away).
@@ -229,26 +241,16 @@ export const magmaStore = defineStore('magma', {
         throw new Error(`Use case level is incorrect. Use case: ${JSON.stringify(useCase)}`);
       }
 
-      // Check that the visibility, implementation and effectiveness values are valid (between 0 and 100).
-      if (useCase.visibility && (useCase.visibility < 0 || useCase.visibility > 100)) {
-        throw new Error(`Use case visibility "${useCase.visibility}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
-      }
-      if (useCase.implementation && (useCase.implementation < 0 || useCase.implementation > 100)) {
-        throw new Error(`Use case implementation "${useCase.implementation}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
-      }
-      if (useCase.effectiveness && (useCase.effectiveness < 0 || useCase.effectiveness > 100)) {
-        throw new Error(`Use case effectiveness "${useCase.effectiveness}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
-      }
-      
-      // Check that the inImpact, thrImpact and outImpact values are valid (between 0 and 100).
-      if (useCase.inImpact && (useCase.inImpact < 0 || useCase.inImpact > 100)) {
-        throw new Error(`Use case inImpact "${useCase.inImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
-      }
-      if (useCase.thrImpact && (useCase.thrImpact < 0 || useCase.thrImpact > 100)) {
-        throw new Error(`Use case thrImpact "${useCase.thrImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
-      }
-      if (useCase.outImpact && (useCase.outImpact < 0 || useCase.outImpact > 100)) {
-        throw new Error(`Use case outImpact "${useCase.outImpact}" is not valid. It must be between 0 and 100. Use case: ${JSON.stringify(useCase)}`);
+      // Check that the visibility, implementation, effectiveness and IN/THR/OUT impact are empty or a number from 0 to 100.
+      // Older versions of PRISMA could save empty impacts as NaN (.nan); those are read as empty.
+      for (const field of PERCENTAGE_FIELDS) {
+        if (Number.isNaN(useCase[field])) {
+          delete useCase[field];
+        }
+        const problem = percentageProblem(useCase[field]);
+        if (problem) {
+          throw new Error(`Use case "${useCase.id}" in domain "${useCase.domain}": ${field} "${useCase[field]}" is not valid; ${problem}.`);
+        }
       }
 
       // If visibilityFromAttackTechniqueOverride is not set, use the default value 'false'.
@@ -409,20 +411,20 @@ export const magmaStore = defineStore('magma', {
           description: useCase.description,
           parentIds: useCase.parentIds,
           permanent: useCase.permanent,
-          visibility: Number(useCase.visibility),
-          implementation: Number(useCase.implementation),
-          effectiveness: Number(useCase.effectiveness),
-          weight: Number(useCase.weight),
-          impact: Number(useCase.weight),
+          visibility: exportNumber(useCase.visibility),
+          implementation: exportNumber(useCase.implementation),
+          effectiveness: exportNumber(useCase.effectiveness),
+          weight: exportNumber(useCase.weight),
+          impact: exportNumber(useCase.weight),
         };
         
         // For the non-permanent level 1 use cases with inImpact/thrImpact/outImpact, add these attributes.
         if (useCase.level === 1 && !useCase.permanent) {
           return {
             ...baseAttributes,
-            inImpact: Number(useCase?.inImpact),
-            thrImpact: Number(useCase?.thrImpact),
-            outImpact: Number(useCase?.outImpact),
+            inImpact: exportNumber(useCase.inImpact),
+            thrImpact: exportNumber(useCase.thrImpact),
+            outImpact: exportNumber(useCase.outImpact),
           };
         }
 
@@ -454,6 +456,9 @@ export const magmaStore = defineStore('magma', {
         let successCount = 0;
         let failCount = 0;
         const errorMessages: string[] = [];
+
+        // Use cases that are their own (indirect) parent cannot be calculated, so they are not imported.
+        const parentCycles = findParentCycles(useCases.filter((useCase: any) => !useCase.permanent));
     
         // Iterate over each use case and try to add it.
         useCases.forEach((useCase: any) => {
@@ -462,6 +467,10 @@ export const magmaStore = defineStore('magma', {
             return
           }
           try {
+            const cycle = parentCycles.get(useCase);
+            if (cycle) {
+              throw new Error(`Use case "${useCase.id}" in domain "${useCase.domain}" is its own (indirect) parent: ${cycle.join(' → ')}.`);
+            }
             this.addExistingUseCase(useCase, false);
             successCount++;
           } catch (error) {
@@ -480,12 +489,19 @@ export const magmaStore = defineStore('magma', {
         if (errorMessages.length > 0) {
           summary += " _________________________________________________ FAILED USE CASES _________________________________________________ " + errorMessages.join("• ");
         }
+
+        // Use cases with a parent ID that does not exist are imported, but listed as a warning (the ID may contain a typo).
+        const unknownParents = findUnknownParents(this.useCases).map(({ useCase, parentId }) =>
+          `Use case "${useCase.id}" in domain "${useCase.domain}" has parent "${parentId}", which does not exist.`);
+        if (unknownParents.length > 0) {
+          summary += " _________________________________________________ WARNINGS _________________________________________________ " + unknownParents.join("• ");
+        }
     
         // Show the summary message
         Swal.fire({
           title: 'Import Summary',
           text: summary,
-          icon: failCount > 0 ? 'warning' : 'success',
+          icon: failCount > 0 || unknownParents.length > 0 ? 'warning' : 'success',
           confirmButtonText: 'OK'
         });
       } catch (error) {
