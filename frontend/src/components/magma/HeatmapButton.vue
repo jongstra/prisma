@@ -3,6 +3,8 @@ import { tacticsStore } from '@/stores/tactics';
 import { magmaStore } from '@/stores/magma';
 import { ref, computed, reactive } from 'vue';
 import { ancestorCounts, heatmapValue } from '@/domain/magma/heatmap';
+import { isDetectable } from '@/domain/attack/visibility';
+import { NOT_DETECTABLE_STYLE } from '../attack/notDetectableStyle';
 
 const store = tacticsStore();
 const props = defineProps(['technique']);
@@ -67,6 +69,15 @@ function getBackgroundColor() {
   return value.value === null ? undefined : `rgba(0, 255, 0, ${value.value / 100})`;
 }
 
+// Techniques without use cases that ATT&CK lists no data components for are striped, as in the DeTT&CT matrix: a known
+// blind spot. Techniques with use cases are coloured by their heatmap value (and marked with a green ring).
+function getButtonStyle() {
+  if (relatedUseCases.value.length === 0 && !isDetectable(props.technique)) {
+    return NOT_DETECTABLE_STYLE;
+  }
+  return { backgroundColor: getBackgroundColor() };
+}
+
 
 function getTooltipText() {
   const useCases = relatedUseCases.value;
@@ -75,7 +86,8 @@ function getTooltipText() {
   const percentage = (metrics: { visibility: boolean, implementation: boolean, effectiveness: boolean }) =>
     `${(heatmapValue(useCases, metrics) ?? 0).toFixed(0)}%`;
 
-  const tooltipText = `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})\n\n<hr/>
+  const notDetectable = isDetectable(props.technique) ? '' : 'Not detectable via data sources: ATT&CK lists no data components for this technique.\n\n';
+  const tooltipText = `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})\n\n${notDetectable}<hr/>
   Weight: ${percentage({ visibility: true, implementation: true, effectiveness: true })}
   Visibility: ${percentage({ visibility: true, implementation: false, effectiveness: false })}
   Implementation: ${percentage({ visibility: false, implementation: true, effectiveness: false })}
@@ -134,10 +146,10 @@ const occursInSelectedGroups = () => {
 <template>
   <button v-if="showButton"
     ref="buttonRef"
-    :style="{'background-color': getBackgroundColor()}"
+    :style="getButtonStyle()"
     @mouseover="showTooltip"
     @mouseleave="hideTooltip"
-    :class="{ 'occurs-in-selected-groups': occursInSelectedGroups() }"
+    :class="{ 'occurs-in-selected-groups': occursInSelectedGroups(), 'has-use-cases': relatedUseCases.length > 0 }"
   >
     <span class="buttontext">{{ technique.name }}</span>
 
@@ -196,6 +208,13 @@ button {
 button:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px, rgb(51, 51, 51) 0px 0px 0px 2.5px; /* On hover, add a thick black 'outline' to the button. */
   z-index: 1001;
+}
+
+/* Techniques with L3 use cases get a thicker (4px) dark border, so a technique with use cases at 0% still stands out from
+   techniques without use cases. The extra 2px is drawn outside the normal border, so the button keeps its size, and the
+   red border of a selected group (below) stays visible inside it. */
+button.has-use-cases {
+  box-shadow: 0 0 0 2px rgb(42, 42, 42);
 }
 
 button.occurs-in-selected-groups {
