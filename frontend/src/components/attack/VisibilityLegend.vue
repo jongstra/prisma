@@ -6,7 +6,8 @@
     <div class="legend-items">
       <div v-for="item in legendItems" :key="item.range" class="legend-item">
         <button
-          :style="{ backgroundColor: item.color, color: item.textColor }"
+          :style="[{ backgroundColor: item.color, color: item.textColor }, item.style]"
+          :title="item.title"
           class="legend-button"
         >
           {{ item.range }}
@@ -18,8 +19,16 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { NOT_DETECTABLE_STYLE, NOT_DETECTABLE_TEXT } from './notDetectableStyle';
 
 const legendItems = ref([
+  {
+    range: 'n/a',
+    color: '',
+    textColor: '#666666',
+    style: NOT_DETECTABLE_STYLE,
+    title: NOT_DETECTABLE_TEXT,
+  },
   {
     range: '<= 1%',
     color: '',
@@ -91,7 +100,7 @@ const legendItems = ref([
 .legend-item {
   display: flex;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 4px;
 }
 
 .legend-item:last-child {
@@ -99,7 +108,7 @@ const legendItems = ref([
 }
 
 .legend-button {
-  width: 31px;
+  width: 29px;
   height: 35px;
   border: 2px solid rgb(50, 50, 50);
   display: flex;

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { barWidth } from '@/components/common/barWidth';
+import { computed } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
+import { averageVisibilityPercentage, isDetectable } from '@/domain/attack/visibility';
 const store = tacticsStore();
 
 function getDomain(): any {
@@ -30,55 +32,40 @@ function getPlatforms(): string[] {
   return Array.from(platformsSet);
 }
 
+// Visibility per platform: the average over the platform's techniques that can be detected via data sources.
 function calculatePlatformVisibility(): { name: string; percentage: number }[] {
-  const platformCounts: { [key: string]: number } = {};
-  const techniqueCounts: { [key: string]: number } = {};
-
-  // Initialize the platform counts and technique counts with zero
+  const techniquesByPlatform: { [key: string]: any[] } = {};
   getPlatforms().forEach(platform => {
-    platformCounts[platform] = 0;
-    techniqueCounts[platform] = 0;
+    techniquesByPlatform[platform] = [];
   });
 
   let domain = getDomain();
 
   if (domain.tactics) {
-    // Iterate through all tactics and techniques to count the platforms with visibility
     domain.tactics.forEach(tactic => {
       tactic.techniques.forEach(technique => {
-        if (technique.visibility) {
-          if (store.domain === 'ics-attack') {
-            platformCounts['None'] += technique.visibility_ratio;
-          } else {
-            technique.platforms.forEach(platform => {
-              if (platform in platformCounts) {
-                platformCounts[platform] += technique.visibility_ratio;
-              }
-            });
+        // ICS techniques have no platforms; they are all counted under the 'None' platform.
+        const platforms = store.domain === 'ics-attack' ? ['None'] : technique.platforms;
+        platforms.forEach(platform => {
+          if (platform in techniquesByPlatform) {
+            techniquesByPlatform[platform].push(technique);
           }
-        }
-
-        if (store.domain === 'ics-attack') {
-          techniqueCounts['None']++;
-        } else {
-          technique.platforms.forEach(platform => {
-            if (platform in techniqueCounts) {
-              techniqueCounts[platform]++;
-            }
-          });
-        }
+        });
       });
     });
   }
 
   // Calculate the visibility percentage for each platform and sort by percentage
-  const result = Object.keys(platformCounts).map(platform => ({
+  return Object.keys(techniquesByPlatform).map(platform => ({
     name: platform,
-    percentage: Math.round((platformCounts[platform] / techniqueCounts[platform]) * 100),
+    percentage: Math.round(averageVisibilityPercentage(techniquesByPlatform[platform]) ?? 0),
   })).sort((a, b) => a.percentage - b.percentage);
-
-  return result;
 }
+
+// Number of (unique) techniques in the domain that cannot be detected via data sources; these are left out of the averages.
+const notDetectableCount = computed(() => new Set(
+  (getDomain().tactics ?? []).flatMap((tactic: any) => tactic.techniques).filter((technique: any) => !isDetectable(technique)).map((technique: any) => technique.external_id)
+).size);
 
 function getBarColor(percentage: number): string {
   const red = Math.max(0, 255 - (255 * percentage) / 100);
@@ -106,6 +93,9 @@ function getBarColor(percentage: number): string {
           <span class="item-count">{{ platform.percentage }}</span>
         </div>
       </div>
+    </div>
+    <div v-if="notDetectableCount > 0" class="footnote">
+      Not counted: {{ notDetectableCount }} technique(s) for which ATT&CK lists no data components (not detectable via data sources).
     </div>
   </div>
 </template>
@@ -158,5 +148,12 @@ function getBarColor(percentage: number): string {
   left: 100%;
   margin-left: 4px;
   font-size: 12px;
+}
+
+.footnote {
+  margin: 2px 8px 6px;
+  font-size: 11px;
+  color: #555555;
+  text-align: center;
 }
 </style>

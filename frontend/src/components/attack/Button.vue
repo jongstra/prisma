@@ -2,6 +2,8 @@
 import { computed, ref, watch, reactive } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 import { v4 as uuidv4 } from 'uuid';
+import { hasDataComponents, isDetectable } from '@/domain/attack/visibility';
+import { NOT_DETECTABLE_STYLE, NOT_DETECTABLE_TEXT } from './notDetectableStyle';
 
 const store = tacticsStore();
 const props = defineProps(['technique']);
@@ -120,13 +122,13 @@ window.toggleComponentSelected = toggleComponentSelected;
 const getTooltipText = () => {
   const subtechniques_string = props.technique.sub_techniques 
     ? `Subtechniques:\n${props.technique.sub_techniques.map(
-      sub => `<a href='https://attack.mitre.org/techniques/${sub.external_id.split('.')[0]}/${sub.external_id.split('.')[1]}/' target="_blank">• ${sub.name}</a> - Vis: ${(sub.visibility_ratio*100).toFixed(0)}%`
+      sub => `<a href='https://attack.mitre.org/techniques/${sub.external_id.split('.')[0]}/${sub.external_id.split('.')[1]}/' target="_blank">• ${sub.name}</a> - Vis: ${hasDataComponents(sub) ? `${(sub.visibility_ratio*100).toFixed(0)}%` : 'n/a'}`
     ).join('\n')}`
     : 'No Subtechniques';
 
   return `<a href='https://attack.mitre.org/techniques/${props.technique.external_id}/' target="_blank">${props.technique.name}</a> (${props.technique.external_id})
 
-      Visibility: ${(props.technique.visibility_ratio*100).toFixed(0)}%
+      Visibility: ${isDetectable(props.technique) ? `${(props.technique.visibility_ratio*100).toFixed(0)}%` : NOT_DETECTABLE_TEXT}
 
       <hr>
       ${subtechniques_string}
@@ -140,7 +142,11 @@ const getTooltipText = () => {
 };
 
 
-function getButtonStyles(visibility_ratio: number) {
+function getButtonStyles(visibility_ratio: number, detectable = true) {
+  if (!detectable) {
+    return NOT_DETECTABLE_STYLE;
+  }
+
   let backgroundColor = '';
   let color = 'black'; // Default text color
 
@@ -258,7 +264,7 @@ const occursInSelectedComponents = () => {
 <template>
   <button v-if="showButton"
     ref="buttonRef"
-    :style="getButtonStyles(technique.visibility_ratio)"
+    :style="getButtonStyles(technique.visibility_ratio, isDetectable(technique))"
     @click="toggleTooltipPinning"
     @mouseover="showTooltip"
     @mouseleave="hideTooltip"

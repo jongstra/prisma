@@ -2,9 +2,16 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import Button from './Button.vue';
 import { tacticsStore } from '@/stores/tactics';
+import { averageVisibilityPercentage } from '@/domain/attack/visibility';
 const store = tacticsStore();
 
 defineProps(['tactic', 'techniques']);
+
+// Visibility of a tactic: the average over its techniques that can be detected via data sources.
+const tacticVisibility = (tactic: any) => {
+  const percentage = averageVisibilityPercentage(tactic.techniques);
+  return percentage === null ? 'n/a' : `${Math.round(percentage)}%`;
+};
 
 let domain;
 if (store.domain === 'enterprise-attack') {
@@ -80,7 +87,7 @@ onUnmounted(() => {
     <!-- <p class="button-column-stats2"> {{ Math.round(tactic.techniques.filter(technique => technique.visibility).length / tactic.techniques.length * 100) }}% visibility </p> -->
     
     <!-- Compute the tactic-visibility based on the technique visibility_ratio value. -->
-    <p class="button-column-stat-2">{{ Math.round(tactic.techniques.reduce((sum, technique) => sum + (technique.visibility ? technique.visibility_ratio : 0), 0) / tactic.techniques.length * 100) }}% visibility</p>
+    <p class="button-column-stat-2">{{ tacticVisibility(tactic) }} visibility</p>
   </div>
 
   <!-- Techniques column -->

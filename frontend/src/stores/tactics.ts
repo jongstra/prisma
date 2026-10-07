@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { ownVisibility, techniqueVisibility, type Completeness } from '@/domain/attack/visibility';
 
 
 // Define interfaces
@@ -507,58 +508,28 @@ export const tacticsStore = defineStore('tactics', {
       });
 
 
-      // Get all DeTT&CT data sources that are administerd in the YAML file, and make an array of Objects (name, device_completeness) for them.
-      let dettect_data_sources = data.data_sources.map(
-        (data_source) => ({
-          name: data_source.data_source_name,
-          device_completeness: data_source.data_source[0]['data_quality']['device_completeness']
-        })
+      // Device completeness (0-5 in DeTT&CT, here as a fraction 0-1) of every data source in the YAML file.
+      // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
+      const completeness: Completeness = new Map(
+        data.data_sources.map((data_source) => [
+          data_source.data_source_name,
+          data_source.data_source[0]['data_quality']['device_completeness'] / 5,
+        ])
       );
 
-      // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
-      let active_data_components = dettect_data_sources;
-
-      // Loop over all tactics/techniques/subtechniques in the Pinia store to update their visibility and alpha.
-      tactics.forEach((tactic: object) => {
-
-        // Update the visibility properties of techniques.
-        tactic.techniques.forEach((technique: object) => {
-          // const matchingComponents = technique.data_components.filter(component => active_data_components.includes(component));
-          const matchingComponents = active_data_components.filter(component => technique.data_components.includes(component.name));
-          technique.visibility = matchingComponents.length > 0;
-          if (technique.data_components.length === 0) {technique.visibility_ratio = 0;}
-          else {
-            technique.visibility_ratio = 0
-            // Use unique data component names to avoid double-counting duplicates in the ATT&CK definitions
-            const uniqueDataComponents = [...new Set(technique.data_components)];
-            for (const component of matchingComponents) {
-              technique.visibility_ratio += (component.device_completeness / 5) / uniqueDataComponents.length;
-            }
-          }
-          // else {technique.visibility_ratio = matchingComponents.length / technique.data_components.length;}
-        })
-
-        // Update the visibility properties of subtechniques. And update the technique visibility_ratio as well when it has such subtechniques.
-        tactic.techniques.forEach((technique: object) => {
-          if (typeof technique.sub_techniques !== "undefined") {
-            technique.visibility_ratio = technique.visibility_ratio / (technique.sub_techniques.length+1)  // Normalize technique visibility_ratio based on amount of subtechniques plus the technique itsself as the normalization factor.
-            technique.sub_techniques.forEach((subtechnique: object) => {
-              const matchingComponents = active_data_components.filter(component => subtechnique.data_components.includes(component.name));
-              subtechnique.visibility = matchingComponents.length > 0;
-              if (subtechnique.data_components.length === 0) {subtechnique.visibility_ratio = 0;}
-              else {
-                subtechnique.visibility_ratio = 0
-                // Use unique data component names to avoid double-counting duplicates in the ATT&CK definitions
-                const uniqueDataComponents = [...new Set(subtechnique.data_components)];
-                for (const component of matchingComponents) {
-                  subtechnique.visibility_ratio += (component.device_completeness / 5) / uniqueDataComponents.length;
-                }
-                technique.visibility_ratio += (subtechnique.visibility_ratio / (technique.sub_techniques.length+1)) // For each subtechnique, update technique visibility_ratio using the same normalization factor as above.
-              }
-            })
-          }
-        })
-      })
+      // Update the visibility of all techniques and sub-techniques of the domain. Techniques and sub-techniques for which
+      // ATT&CK lists no data components cannot be detected via data sources; they get visibility_ratio 0 and are left
+      // out of the visibility averages (see domain/attack/visibility.ts).
+      tactics.forEach((tactic: any) => {
+        tactic.techniques.forEach((technique: any) => {
+          technique.visibility = technique.data_components.some((component: string) => completeness.has(component));
+          technique.visibility_ratio = techniqueVisibility(technique, completeness) ?? 0;
+          technique.sub_techniques?.forEach((subtechnique: any) => {
+            subtechnique.visibility = subtechnique.data_components.some((component: string) => completeness.has(component));
+            subtechnique.visibility_ratio = ownVisibility(subtechnique, completeness) ?? 0;
+          });
+        });
+      });
     },
 
 

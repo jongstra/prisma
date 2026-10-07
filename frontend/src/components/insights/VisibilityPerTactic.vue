@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { barWidth } from '@/components/common/barWidth';
+import { computed } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
+import { averageVisibilityPercentage, isDetectable } from '@/domain/attack/visibility';
 const store = tacticsStore();
 
 function getTactics(): any {
@@ -23,13 +25,15 @@ function getTactics(): any {
   // return tactics.sort((a, b) => getVisibilityPercentage(a) - getVisibilityPercentage(b));
 }
 
+// Visibility of a tactic: the average over its techniques that can be detected via data sources.
 function getVisibilityPercentage(tactic) {
-  const percentage = Math.round(
-    tactic.techniques.reduce((sum, technique) => sum + (technique.visibility ? technique.visibility_ratio : 0), 0) / 
-    tactic.techniques.length * 100
-  );
-  return percentage;
+  return Math.round(averageVisibilityPercentage(tactic.techniques) ?? 0);
 }
+
+// Number of (unique) techniques in the domain that cannot be detected via data sources; these are left out of the averages.
+const notDetectableCount = computed(() => new Set(
+  (getTactics()).flatMap((tactic: any) => tactic.techniques).filter((technique: any) => !isDetectable(technique)).map((technique: any) => technique.external_id)
+).size);
 
 function getBarColor(percentage) {
   const red = Math.max(0, 255 - (255 * percentage) / 100);
@@ -57,6 +61,9 @@ function getBarColor(percentage) {
           <span class="item-count">{{ getVisibilityPercentage(tactic) }}</span>
         </div>
       </div>
+    </div>
+    <div v-if="notDetectableCount > 0" class="footnote">
+      Not counted: {{ notDetectableCount }} technique(s) for which ATT&CK lists no data components (not detectable via data sources).
     </div>
   </div>
 </template>
@@ -108,5 +115,12 @@ function getBarColor(percentage) {
   left: 100%;
   margin-left: 4px;
   font-size: 12px;
+}
+
+.footnote {
+  margin: 2px 8px 6px;
+  font-size: 11px;
+  color: #555555;
+  text-align: center;
 }
 </style>
