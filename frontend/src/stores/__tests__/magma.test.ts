@@ -197,3 +197,39 @@ describe('magma store: renaming and deleting use cases', () => {
     expect(magma.getUseCaseById('DOS', domain).weight).toBe(0);
   });
 });
+
+describe('magma store: loading a MaGMa file (decision D1)', () => {
+  let magma: any;
+  const ids = () => magma.useCases.filter((u: any) => !u.permanent).map((u: any) => `${u.domain.split('-')[0]}:${u.id}`).sort();
+
+  beforeEach(async () => {
+    magma = (await setUpStores()).magma;
+    magma.importUseCases(readExample('magma_data_example.yaml'));
+    magma.importUseCases(stringify([{ domain: 'mobile-attack', level: 3, id: 'M-1', name: 'm' }]));
+  });
+
+  it('replaces only the domains that are in the file, and keeps the others', () => {
+    magma.loadUseCaseFile(stringify([{ domain: 'mobile-attack', level: 3, id: 'M-2', name: 'new' }]));
+    expect(ids()).toContain('enterprise:DOS');
+    expect(ids()).toContain('mobile:M-2');
+    expect(ids()).not.toContain('mobile:M-1');
+  });
+
+  it('restores the saved domains from a file saved by PRISMA, and keeps domains the file has no use cases for', () => {
+    const saved = magma.exportUseCases(); // Contains IN/THR for every domain, and use cases for Enterprise and Mobile.
+    const before = ids();
+    magma.addNewUseCase(3, 'enterprise-attack');
+    magma.addNewUseCase(3, 'ics-attack');
+    magma.loadUseCaseFile(saved);
+    expect(magma.useCaseFileDomains(saved)).toEqual(['enterprise-attack', 'mobile-attack']);
+    expect(ids()).toEqual([...before, 'ics:L3-1'].sort());
+  });
+
+  it('changes nothing when the file cannot be read as MaGMa use cases', () => {
+    const before = ids();
+    expect(() => magma.loadUseCaseFile('- domain: enterprise-attack\n  id: [oops')).toThrow('not valid YAML');
+    expect(() => magma.loadUseCaseFile(readExample('dettect_editor_data_sources_example_enterprise.yaml'))).toThrow('does not contain a list of MaGMa use cases');
+    expect(() => magma.loadUseCaseFile(stringify([{ domain: 'unknown', id: 'X' }]))).toThrow('no use cases for a supported domain');
+    expect(ids()).toEqual(before);
+  });
+});

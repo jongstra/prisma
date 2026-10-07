@@ -149,9 +149,19 @@ const exportYaml = () => {
   a.remove();
 };
 
+// Display names of the ATT&CK domains, for messages.
+const domainNames: Record<string, string> = { 'enterprise-attack': 'Enterprise', 'mobile-attack': 'Mobile', 'ics-attack': 'ICS' };
+
+// Load a MaGMa YAML file. Its use cases replace the current use cases of the domains in the file; the other domains stay
+// as they are (decision D1). A dialog asks for confirmation when current use cases will be replaced, and nothing changes
+// when the file cannot be read.
 const importYaml = (event: Event) => {
   const fileInput = event.target as HTMLInputElement;
   const file = fileInput.files?.[0];
+  fileInput.value = ''; // Reset the input, so selecting the same file again is registered as a change.
+  if (!file) {
+    return;
+  }
 
   const allowedMimeTypes = ["text/yaml", "text/x-yaml", "text/yml", "text/x-yml", "application/yaml", "application/x-yaml", "application/yml", "application/x-yml"];
   const allowedExtensions = [".yaml", ".yml"];
@@ -164,17 +174,44 @@ const importYaml = (event: Event) => {
     return
   }
 
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const yamlContent = e.target?.result as string;
-      magma.removeAllUseCases(); // Clear any existing use cases before importing new ones.
-      magma.initializeDefaultUseCases();
-      magma.importUseCases(yamlContent);
-      fileInput.value = ''; // Reset the file input value (if the user uploads the same file again to 'reset', we want to register a change so the file gets processed).
-    };
-    reader.readAsText(file);
-  }
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const yamlContent = e.target?.result as string;
+
+    let domains: string[];
+    try {
+      domains = magma.useCaseFileDomains(yamlContent);
+    } catch (error) {
+      Swal.fire({ icon: 'error', titleText: 'The file was not loaded', text: `${(error as Error).message} Nothing was changed.` });
+      return;
+    }
+
+    // Ask for confirmation when current use cases will be replaced.
+    const currentCount = (domain: string) => magma.useCases.filter((useCase: any) => !useCase.permanent && useCase.domain === domain).length;
+    const replaced = domains.filter(domain => currentCount(domain) > 0);
+    if (replaced.length > 0) {
+      const kept = Object.keys(domainNames).filter(domain => !domains.includes(domain));
+      const replacedText = replaced.map(domain => `${domainNames[domain]} (${currentCount(domain)} use cases)`).join(' and ');
+      const keptText = kept.length > 0 ? ` ${kept.map(domain => domainNames[domain]).join(' and ')} will stay as they are.` : '';
+      const result = await Swal.fire({
+        icon: 'warning',
+        titleText: 'Replace the current use cases?',
+        text: `The file contains use cases for ${domains.map(domain => domainNames[domain]).join(', ')}. It replaces the current use cases of ${replacedText}.${keptText}`,
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: 'green',
+        confirmButtonText: 'Yes, load the file',
+        cancelButtonText: 'No, cancel',
+        reverseButtons: true,
+      });
+      if (!result.isConfirmed) {
+        return;
+      }
+    }
+
+    magma.loadUseCaseFile(yamlContent);
+  };
+  reader.readAsText(file);
 };
 
 // A short list of use case IDs for a message, e.g. "DOS-1-1, DOS-1-2 and 3 more".

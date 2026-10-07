@@ -47,6 +47,9 @@ interface UpdatedFields {
   effectiveness?: number | null;
 }
 
+// The ATT&CK domains that use cases can belong to.
+const SUPPORTED_DOMAINS = ['enterprise-attack', 'mobile-attack', 'ics-attack'];
+
 // The percentages of a use case that are entered by the user or imported.
 const PERCENTAGE_FIELDS = ['visibility', 'implementation', 'effectiveness', 'inImpact', 'thrImpact', 'outImpact'] as const;
 
@@ -483,10 +486,48 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-    importUseCases(yamlData: string) {
+    // Read a MaGMa file as a list of use cases. Throws an error with an explanation when the file cannot be read as MaGMa
+    // use cases, so callers can refuse the file before changing anything.
+    parseUseCaseFile(yamlData: string): any[] {
+      let useCases;
+      try {
+        useCases = yaml.parse(yamlData);
+      } catch (error) {
+        throw new Error(`The file is not valid YAML: ${(error as Error).message}`);
+      }
+      if (!Array.isArray(useCases) || !useCases.every((useCase) => useCase && typeof useCase === 'object' && !Array.isArray(useCase))) {
+        throw new Error('The file does not contain a list of MaGMa use cases.');
+      }
+      if (!useCases.some((useCase) => !useCase.permanent && SUPPORTED_DOMAINS.includes(useCase.domain))) {
+        throw new Error(`The file contains no use cases for a supported domain (${SUPPORTED_DOMAINS.join(', ')}).`);
+      }
+      return useCases;
+    },
+
+
+    // The supported domains that a MaGMa file contains use cases for, in the usual domain order. The permanent IN/THR use
+    // cases do not count: every file saved by PRISMA contains them for all domains.
+    useCaseFileDomains(yamlData: string): string[] {
+      const domains = new Set(this.parseUseCaseFile(yamlData).filter((useCase) => !useCase.permanent).map((useCase) => useCase.domain));
+      return SUPPORTED_DOMAINS.filter((domain) => domains.has(domain));
+    },
+
+
+    // Load a MaGMa file: its use cases replace the current use cases of the domains in the file, and the other domains
+    // stay as they are (decision D1). Nothing changes when the file cannot be read.
+    loadUseCaseFile(yamlData: string) {
+      const useCases = this.parseUseCaseFile(yamlData);
+      const domains = this.useCaseFileDomains(yamlData);
+      this.useCases = this.useCases.filter((useCase) => useCase.permanent || !domains.includes(useCase.domain));
+      this.importUseCases(useCases);
+    },
+
+
+    // Add use cases from a MaGMa file (as YAML text, or already read as a list) to the current use cases.
+    importUseCases(yamlData: string | any[]) {
       try {
         // Parse the YAML data
-        const useCases = yaml.parse(yamlData);
+        const useCases = typeof yamlData === 'string' ? yaml.parse(yamlData) : yamlData;
     
         // Initialize counters and an array for error messages
         let successCount = 0;
