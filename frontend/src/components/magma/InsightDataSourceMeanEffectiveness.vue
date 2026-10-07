@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { barWidth } from '@/components/common/barWidth';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 
@@ -52,7 +53,7 @@ function getDataSourceEffectiveness() {
         <div
           class="bar" 
           :style="{ 
-              width: (val.mean||0) * 2.5 + 'px',
+              width: barWidth(val.mean, 100, '100px'),
               backgroundColor: 'blue'
             }"
         >

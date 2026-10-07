@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { barWidth } from '@/components/common/barWidth';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 
 const store = tacticsStore();
 const magma = magmaStore();
+
+// The longest bar in this chart fills the box.
+const maxCount = computed(() => Math.max(0, magma.L1UseCases(store.domain).length, magma.L2UseCases(store.domain).length, magma.L3UseCases(store.domain).length));
 </script>
 
 
@@ -21,7 +26,7 @@ const magma = magmaStore();
           <div 
             class="bar" 
             :style="{ 
-              width: (magma.L1UseCases(store.domain).length * 0.5) + 'px', 
+              width: barWidth(magma.L1UseCases(store.domain).length, maxCount), 
               backgroundColor: 'green'
             }"
           >
@@ -37,7 +42,7 @@ const magma = magmaStore();
           <div 
             class="bar" 
             :style="{ 
-              width: (magma.L2UseCases(store.domain).length * 0.5) + 'px', 
+              width: barWidth(magma.L2UseCases(store.domain).length, maxCount), 
               backgroundColor: 'green'
             }"
           >
@@ -53,7 +58,7 @@ const magma = magmaStore();
           <div 
             class="bar" 
             :style="{ 
-              width: (magma.L3UseCases(store.domain).length * 0.5) + 'px', 
+              width: barWidth(magma.L3UseCases(store.domain).length, maxCount), 
               backgroundColor: 'green'
             }"
           >

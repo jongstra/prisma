@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { barWidth } from '@/components/common/barWidth';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 
@@ -9,7 +11,7 @@ const magma = magmaStore();
 function getMostFrequentlyLinkedAttackTechniques() {
   const useCases = magma.L3UseCases(store.domain);
 
-  const frequencyDict  = {};
+  const frequencyDict: Record<string, number> = {};
   useCases.forEach(useCase => {
     frequencyDict[useCase.attackTechniqueId] = (frequencyDict[useCase.attackTechniqueId] || 0) + 1;
   })
@@ -23,6 +25,9 @@ function getMostFrequentlyLinkedAttackTechniques() {
 }
 
 
+
+// The longest bar in this chart fills the box.
+const maxCount = computed(() => Math.max(0, ...Object.values(getMostFrequentlyLinkedAttackTechniques())));
 </script>
 
 
@@ -44,7 +49,7 @@ function getMostFrequentlyLinkedAttackTechniques() {
         <div
           class="bar" 
           :style="{ 
-              width: (frequency??0) * 3 + 'px',
+              width: barWidth(frequency ?? 0, maxCount),
               backgroundColor: 'red'
             }"
         >

@@ -341,7 +341,7 @@ export const tacticsStore = defineStore('tactics', {
         return [];
       }
 
-      const techniquesMap = {};
+      const techniquesMap: Record<string, { name: string, group_occurrence: number, software_occurrence: number, total_occurrence: number }> = {};
 
       // Aggregate occurrences
       tactics.forEach(tactic => {

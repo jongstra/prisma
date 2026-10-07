@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { barWidth } from '@/components/common/barWidth';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -49,7 +50,7 @@ function getBarColor(percentage) {
         <div 
           class="bar" 
           :style="{ 
-            width: (getVisibilityPercentage(tactic) * 2.3) + 'px', 
+            width: barWidth(getVisibilityPercentage(tactic), 100), 
             backgroundColor: getBarColor(getVisibilityPercentage(tactic)) 
           }"
         >

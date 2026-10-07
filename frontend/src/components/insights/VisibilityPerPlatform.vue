@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { barWidth } from '@/components/common/barWidth';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -98,7 +99,7 @@ function getBarColor(percentage: number): string {
         <div 
           class="bar" 
           :style="{ 
-            width: (platform.percentage * 2.3) + 'px', 
+            width: barWidth(platform.percentage, 100), 
             backgroundColor: getBarColor(platform.percentage) 
           }"
         >

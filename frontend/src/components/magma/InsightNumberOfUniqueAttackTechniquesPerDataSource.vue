@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { barWidth } from '@/components/common/barWidth';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 
@@ -10,7 +12,7 @@ function getAttackTechniquesPerDataSource() {
   const useCases = magma.L3UseCases(store.domain);
 
   // Initialize frequencyDict as an object where each key is a dataSource and the value is a Set of attackTechniqueIds.
-  const frequencyDict = {};
+  const frequencyDict: Record<string, Set<string>> = {};
   useCases.forEach(useCase => {
     const dataSource = useCase.dataSource;
     if (!frequencyDict[dataSource]) {
@@ -35,6 +37,9 @@ function getAttackTechniquesPerDataSource() {
 
 
 
+
+// The longest bar in this chart fills the box.
+const maxCount = computed(() => Math.max(0, ...Object.values(getAttackTechniquesPerDataSource()).map((x) => x.size)));
 </script>
 
 
@@ -52,7 +57,7 @@ function getAttackTechniquesPerDataSource() {
         <div
           class="bar" 
           :style="{ 
-              width: (techniques.size??0) * 3 + 'px',
+              width: barWidth(techniques.size ?? 0, maxCount),
               backgroundColor: 'red'
             }"
         >

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { barWidth } from '@/components/common/barWidth';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -34,6 +36,9 @@ function getTechniqueCountPerGroup(): Group[] {
       subtechnique_count: group.subtechnique_count,
     }));
 }
+
+// The longest bar in this chart fills the box.
+const maxCount = computed(() => Math.max(0, ...getTechniqueCountPerGroup().map((x) => x.technique_count + x.subtechnique_count)));
 </script>
 
 <template>
@@ -49,11 +54,11 @@ function getTechniqueCountPerGroup(): Group[] {
       <div class="bar-container">
         <div 
           class="bar blue-bar" 
-          :style="{ width: group.technique_count * 2 + 'px' }"
+          :style="{ width: barWidth(group.technique_count, maxCount) }"
         ></div>
         <div 
           class="bar lightblue-bar" 
-          :style="{ width: group.subtechnique_count * 2 + 'px' }"
+          :style="{ width: barWidth(group.subtechnique_count, maxCount) }"
         ></div>
         <span class="item-count">{{ group.technique_count + group.subtechnique_count }}</span>
       </div>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { barWidth } from '@/components/common/barWidth';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -31,6 +33,9 @@ function getTechniqueCountPerPlatform(): Platform[] {
     subtechnique_count: platform.subtechnique_count ?? 0,
   }));
 }
+
+// The longest bar in this chart fills the box.
+const maxCount = computed(() => Math.max(0, ...getTechniqueCountPerPlatform().map((x) => x.technique_count + x.subtechnique_count)));
 </script>
 
 
@@ -45,11 +50,11 @@ function getTechniqueCountPerPlatform(): Platform[] {
       <div class="bar-container">
         <div 
           class="bar blue-bar" 
-          :style="{ width: platform.technique_count * 0.52 + 'px' }"
+          :style="{ width: barWidth(platform.technique_count, maxCount) }"
         ></div>
         <div 
           class="bar lightblue-bar" 
-          :style="{ width: platform.subtechnique_count * 0.52 + 'px' }"
+          :style="{ width: barWidth(platform.subtechnique_count, maxCount) }"
         ></div>
         <span class="item-count">{{ platform.technique_count + platform.subtechnique_count }}</span>
       </div>

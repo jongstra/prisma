@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { barWidth } from '@/components/common/barWidth';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -6,6 +8,9 @@ function getTopTechniquesBySoftware() {
   const sortedTechniques = [...store.techniquesOccurrences].sort((a, b) => b.software_occurrence - a.software_occurrence);
   return sortedTechniques;
 }
+
+// The longest bar in this chart fills the box.
+const maxCount = computed(() => Math.max(0, ...getTopTechniquesBySoftware().map((x) => x.software_occurrence)));
 </script>
 
 <template>
@@ -21,7 +26,7 @@ function getTopTechniquesBySoftware() {
       <div class="bar-container">
         <div 
           class="bar green-bar" 
-          :style="{ width: technique.software_occurrence * 0.65 + 'px' }"
+          :style="{ width: barWidth(technique.software_occurrence, maxCount) }"
         ></div>
         <span class="item-count">{{ technique.software_occurrence }}</span>
       </div>

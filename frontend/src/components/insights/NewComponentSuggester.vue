@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { barWidth } from '@/components/common/barWidth';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -38,6 +40,9 @@ function getTopNewComponents(): Component[] {
     }));
 }
 
+
+// The longest bar in this chart fills the box.
+const maxCount = computed(() => Math.max(0, ...getTopNewComponents().map((x) => x.technique_count + x.subtechnique_count)));
 </script>
 
 
@@ -54,11 +59,11 @@ function getTopNewComponents(): Component[] {
       <div class="bar-container">
         <div 
           class="bar blue-bar" 
-          :style="{ width: component.technique_count * 0.8 + 'px' }"
+          :style="{ width: barWidth(component.technique_count, maxCount) }"
         ></div>
         <div 
           class="bar lightblue-bar" 
-          :style="{ width: component.subtechnique_count * 0.8 + 'px' }"
+          :style="{ width: barWidth(component.subtechnique_count, maxCount) }"
         ></div>
         <span class="item-count">{{ component.technique_count + component.subtechnique_count }}</span>
       </div>

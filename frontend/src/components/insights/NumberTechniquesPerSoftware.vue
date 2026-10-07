@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { barWidth } from '@/components/common/barWidth';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -34,6 +36,9 @@ function getTechniqueCountPerSoftware(): Software[] {
       subtechnique_count: software.subtechnique_count,
     }));
 }
+
+// The longest bar in this chart fills the box.
+const maxCount = computed(() => Math.max(0, ...getTechniqueCountPerSoftware().map((x) => x.technique_count + x.subtechnique_count)));
 </script>
 
 
@@ -50,11 +55,11 @@ function getTechniqueCountPerSoftware(): Software[] {
       <div class="bar-container">
         <div 
           class="bar blue-bar" 
-          :style="{ width: software.technique_count * 3.25 + 'px' }"
+          :style="{ width: barWidth(software.technique_count, maxCount) }"
         ></div>
         <div 
           class="bar lightblue-bar" 
-          :style="{ width: software.subtechnique_count * 3.25 + 'px' }"
+          :style="{ width: barWidth(software.subtechnique_count, maxCount) }"
         ></div>
         <span class="item-count">{{ software.technique_count + software.subtechnique_count }}</span>
       </div>

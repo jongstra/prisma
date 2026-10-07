@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { barWidth } from '@/components/common/barWidth';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 
@@ -53,19 +54,19 @@ function getHighestPotentialL3UseCases() {
         <!-- Red bar for visibility potential -->
         <div 
           class="sub-bar red"
-          :style="{ width: (((100 - Number(useCase.visibility)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
+          :style="{ width: barWidth(((100 - Number(useCase.visibility)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * Number(useCase.potential), 100, '0px') }"
         ></div>
         
         <!-- Green bar for implementation potential -->
         <div 
           class="sub-bar green"
-          :style="{ width: (((100 - Number(useCase.implementation)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
+          :style="{ width: barWidth(((100 - Number(useCase.implementation)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * Number(useCase.potential), 100, '0px') }"
         ></div>
         
         <!-- Blue bar for effectiveness potential -->
         <div 
           class="sub-bar blue"
-          :style="{ width: (((100 - Number(useCase.effectiveness)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * (Number(useCase.potential)) * 2.7) + 'px' }"
+          :style="{ width: barWidth(((100 - Number(useCase.effectiveness)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * Number(useCase.potential), 100, '0px') }"
         ></div>
       </div>
 
