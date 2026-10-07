@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { tacticsStore } from '@/stores/tactics';
 import * as yaml from 'yaml';
 import Swal from 'sweetalert2';
+import { recalculateUseCases } from '@/domain/magma/calculations';
 
 const tactics = tacticsStore();
 
@@ -195,12 +196,13 @@ export const magmaStore = defineStore('magma', {
         useCase.inImpact = 100;
       }
       
-      // Add the new use case to the store.
+      // Add the new use case to the store, and recalculate (a new L1 use case gets a risk straight away).
       this.useCases.push(useCase);
+      this.recalculateAll();
     },
     
 
-    addExistingUseCase(useCase: UseCase) {
+    addExistingUseCase(useCase: UseCase, recalculate = true) {
 
       // Check that the domain is set to a valid value.
       if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
@@ -281,10 +283,6 @@ export const magmaStore = defineStore('magma', {
         useCase.visibilityFromAttackTechnique = false;
       }
 
-      // Compute the weight and the potential.
-      useCase.weight = ((useCase.visibility??0)/100) * ((useCase.implementation??0)/100) * ((useCase.effectiveness??0)/100) * 100;
-      useCase.potential = 100 - useCase.weight;
-
       // Add a unique ID and some organizational parameters to the use case, and add it to the store.
       useCase.uid = uuidv4();
       useCase.invalidVisibility = false;
@@ -293,19 +291,10 @@ export const magmaStore = defineStore('magma', {
       useCase.domain = useCase.domain;
       this.useCases.push(useCase);
 
-      // If a L1 or L2 use case was added, recompute its values after adding.
-      if (useCase.level < 3) {
-        this.recomputeUseCases([this.getUseCaseById(useCase.id)!]);
+      // Recalculate the derived values (an import recalculates once, after adding all use cases).
+      if (recalculate) {
+        this.recalculateAll();
       }
-
-      // If a L3 use case was added, recompute the values of any parents.
-      if (useCase.level > 1) {
-        if (useCase.parentIds) {
-          const parentUseCases = this.getParentUseCases(useCase);
-          this.recomputeUseCases(parentUseCases);
-        }
-      }
-
     },
 
     
@@ -313,16 +302,9 @@ export const magmaStore = defineStore('magma', {
       const useCase = this.getUseCaseByUid(uid);
       if (!useCase) { throw new Error(`No use case with uid "${uid}" exists.`);}
 
-      // Find parent use cases.
-      const parentUseCases = this.getParentUseCases(useCase);
-
-      // remove the use case.
+      // Remove the use case, and recalculate the values that depended on it.
       this.useCases = this.useCases.filter(x => x['uid'] !== uid);
-      
-      // Recompute values of any use cases that were parents of this one.
-      if (useCase.level > 1) {
-        this.recomputeUseCases(parentUseCases);
-      }
+      this.recalculateAll();
     },
 
 
@@ -367,39 +349,11 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-    recomputeUseCases(useCases: Array<UseCase>) {
-      useCases.forEach((useCase) => {
-        const parentUseCases = this.getParentUseCases(useCase);
-        const childUseCases = this.getChildUseCases(useCase);
-
-        // Only recompute the visibility for a use case on L1 or L2.
-        if (useCase.level != 3) {
-          const meanVisibility = childUseCases.reduce((sum, obj) => sum + (Number(obj['visibility']) || 0), 0) / childUseCases.length;
-          const meanImplementation = childUseCases.reduce((sum, obj) => sum + (Number(obj['implementation']) || 0), 0) / childUseCases.length;
-          const meanEffectiveness = childUseCases.reduce((sum, obj) => sum + (Number(obj['effectiveness']) || 0), 0) / childUseCases.length;
-          const meanWeight = childUseCases.reduce((sum, obj) => sum + (Number(obj['weight']) || 0), 0) / childUseCases.length;
-          useCase['visibility'] = meanVisibility || 0;
-          useCase['implementation'] = meanImplementation || 0;
-          useCase['effectiveness'] = meanEffectiveness || 0;
-          useCase['weight'] = meanWeight || 0;
-          useCase['potential'] = 100 - (meanWeight || 0);
-        }
-        
-        // Compute Risk on level 1.
-        if (useCase.level === 1 && !useCase.permanent) {
-          const inWeight = this.getUseCaseByUid('IN', useCase.domain).weight;
-          const thrWeight = this.getUseCaseByUid('THR', useCase.domain).weight;
-          const inRisk = ((useCase.inImpact??0)/100) * ((inWeight??0)/100);
-          const thrRisk = ((useCase.thrImpact??0)/100)*((thrWeight??0)/100);
-          const outRisk = ((useCase.outImpact??0)/100)*((useCase.weight??0)/100);
-          useCase.risk = Math.max(0, (1-(inRisk+thrRisk+outRisk))) * 100;
-        }
-
-        // If this use case has parents, check if they also need to be updated based on the new values of this use case.
-        if (useCase.level > 1) {
-          this.recomputeUseCases(parentUseCases);
-        }
-      });
+    // Recalculate the derived values (weight, potential, L1/L2 averages and L1 risks) of all use cases in all domains,
+    // children before parents (see domain/magma/calculations.ts). Recalculating everything after each change ensures
+    // that no dependent value can stay outdated, for example a business risk after a change under cumulative IN.
+    recalculateAll() {
+      recalculateUseCases(this.useCases);
     },
 
     
@@ -408,9 +362,6 @@ export const magmaStore = defineStore('magma', {
 
       if (useCase) {
 
-        // Get old parent use cases.
-        const parentUseCases = this.getParentUseCases(useCase);
-        
         // If the attackTechniqueId field was updated, do the following.
         if (updatedFields.attackTechniqueId) {
           // Set visibility based on the visibility ratio of the selected ATT&CK technique (if one is selected).
@@ -428,19 +379,12 @@ export const magmaStore = defineStore('magma', {
         // Update the use case.
         Object.assign(useCase, updatedFields);
 
-        // Recompute the weight and the potential (strictly only necessary if at least one of the following updatedFields was changed: [ID, attackTechniqueId, visibilityFromAttackTechniqueOverride, visibility, implementation, effectiveness]).
-        useCase.weight = ((useCase.visibility??0)/100) * ((useCase.implementation??0)/100) * ((useCase.effectiveness??0)/100) * 100;
-        useCase.potential = 100 - useCase.weight;
-
         if (domain) {
           useCase.domain = domain;
         }
-        this.recomputeUseCases([useCase]);
 
-        // Update old parent use cases, if use case is L2 or L3.
-        if (useCase.level > 1) {
-          this.recomputeUseCases(parentUseCases);
-        }
+        // Recalculate the derived values; this also covers the old and new parents when the parents were changed.
+        this.recalculateAll();
       }
     },
 
@@ -449,12 +393,9 @@ export const magmaStore = defineStore('magma', {
       this.L3UseCases().forEach((useCase) => {
         if (useCase.visibilityFromAttackTechnique === true && useCase.visibilityFromAttackTechniqueOverride === false) {
           useCase.visibility = formatPercentage(tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain))??0;
-          useCase.weight = ((useCase.visibility??0)/100) * ((useCase.implementation??0)/100) * ((useCase.effectiveness??0)/100) * 100;
-          useCase.potential = 100 - useCase.weight;
-          const parentUseCases = this.getParentUseCases(useCase, useCase.domain);
-          this.recomputeUseCases(parentUseCases);
         }
       });
+      this.recalculateAll();
     },
 
 
@@ -521,7 +462,7 @@ export const magmaStore = defineStore('magma', {
             return
           }
           try {
-            this.addExistingUseCase(useCase);
+            this.addExistingUseCase(useCase, false);
             successCount++;
           } catch (error) {
             failCount++;
@@ -529,8 +470,8 @@ export const magmaStore = defineStore('magma', {
           }
         });
         
-        // Recompute all level 1 use cases
-        this.recomputeUseCases(this.useCases.filter(useCase => useCase['level'] === 1));
+        // Recalculate all use cases once, now that the whole file has been added.
+        this.recalculateAll();
 
         // Prepare the summary message
         let summary = `Successful imports: ${successCount}. Failed imports: ${failCount}.`;
