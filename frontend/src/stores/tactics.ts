@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
-import { ownVisibility, techniqueVisibility, type Completeness } from '@/domain/attack/visibility';
+import Swal from 'sweetalert2';
+import { ownVisibility, techniqueVisibility } from '@/domain/attack/visibility';
+import { readDettectFile } from '@/domain/attack/dettect';
 
 
 // Define interfaces
@@ -446,6 +448,11 @@ export const tacticsStore = defineStore('tactics', {
         this.ics = data.ics;
       } catch (error) {
         console.error('Failed to fetch tactics:', error);
+        Swal.fire({
+          icon: 'error',
+          titleText: 'The ATT&CK data was not loaded',
+          text: `Could not load the ATT&CK data (tactics_and_techniques_by_domain.json): ${(error as Error).message}. Please reload the page.`,
+        });
       } finally {
         this.dataLoaded = true;
       }
@@ -456,66 +463,32 @@ export const tacticsStore = defineStore('tactics', {
     },
 
 
-    processDettectYaml(data: any) {
-
-      // Check for duplicate data source names in the YAML.
-      const seen = new Set<string>();
-      const duplicates = new Set<string>();
-      for (const ds of data.data_sources) {
-        const name = ds.data_source_name;
-        if (seen.has(name)) {
-          duplicates.add(name);
-        } else {
-          seen.add(name);
-        }
+    // Load a DeTT&CT data source administration file. The whole file is checked first (see domain/attack/dettect.ts):
+    // when it has a problem, an error explains it and nothing changes. Data sources that ATT&CK does not know are ignored
+    // and returned, so they can be reported.
+    processDettectYaml(data: any): { unknownDataSources: string[] } {
+      const domainData = (domain: string): any =>
+        ({ 'enterprise-attack': this.enterprise, 'mobile-attack': this.mobile, 'ics-attack': this.ics } as any)[domain];
+      if (!this.enterprise?.tactics) {
+        throw new Error('The ATT&CK data is not loaded (yet). Please reload the page.');
       }
-      if (duplicates.size > 0) {
-        throw new Error(
-          `Duplicate data sources found in YAML: ${[...duplicates].join(', ')}. Please remove the duplicates before loading.`
-        );
-      }
+      const file = readDettectFile(data, (domain) => (domainData(domain)?.data_components ?? []).map((component: any) => component.name));
 
-      // Switch to relevant domain based on the uploaded file.
-      this.domain = data.domain;
-      // Reset any previous component visibility settings for this domain (set visibility=false as the default for each component).
-      this.resetDomainVisibility(data.domain);
+      // Switch to the domain of the file, and start from a clean state for that domain.
+      this.domain = file.domain;
+      this.resetDomainVisibility(file.domain);
+      const tactics = domainData(file.domain).tactics;
+      const dataComponents = domainData(file.domain).data_components;
 
-      // Access data of the current domain from the store.
-      let tactics;
-      let data_components_list: Attributes[];
-      if (data.domain == 'enterprise-attack') {
-        tactics = this.enterprise.tactics;
-        data_components_list = this.enterprise.data_components;
-      } else if (data.domain == 'mobile-attack') {
-        tactics = this.mobile.tactics;
-        data_components_list = this.mobile.data_components;
-      } else if (data.domain == 'ics-attack') {
-        tactics = this.ics.tactics;
-        data_components_list = this.ics.data_components;
-      } else {
-        return [];
-      }
-
-      // Apply the quality settings of the active data sources (DETT&CT) to the data components (ATT&CK) in the Pinia store.
-      data.data_sources.forEach((data_source) => {
-        let component = data_components_list.find((component) => component.name === data_source.data_source_name)
-
-        for (const quality_indicator in data_source.data_source[0]['data_quality']) {
-          component['quality'][quality_indicator] = data_source.data_source[0]['data_quality'][quality_indicator]
-        }
-
+      // Apply the quality scores of the data sources (DeTT&CT) to the data components (ATT&CK).
+      for (const [name, entry] of file.dataSources) {
+        const component = dataComponents.find((component: any) => component.name === name);
+        Object.assign(component.quality, entry.data_quality);
         component.visibility = true;
-      });
+      }
 
-
-      // Device completeness (0-5 in DeTT&CT, here as a fraction 0-1) of every data source in the YAML file.
-      // Data sources in DeTT&CT are the same as data components in MITRE ATT&CK.
-      const completeness: Completeness = new Map(
-        data.data_sources.map((data_source) => [
-          data_source.data_source_name,
-          data_source.data_source[0]['data_quality']['device_completeness'] / 5,
-        ])
-      );
+      // Device completeness of every known data source in the file (0-5 in DeTT&CT, here as a fraction 0-1).
+      const completeness = file.completeness;
 
       // Update the visibility of all techniques and sub-techniques of the domain. Techniques and sub-techniques for which
       // ATT&CK lists no data components cannot be detected via data sources; they get visibility_ratio 0 and are left
@@ -530,6 +503,8 @@ export const tacticsStore = defineStore('tactics', {
           });
         });
       });
+
+      return { unknownDataSources: file.unknownDataSources };
     },
 
 

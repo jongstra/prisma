@@ -8,58 +8,52 @@ const input = ref<HTMLInputElement>()
 const isLoading = ref(false)
 const store = tacticsStore()
 
+// Load a DeTT&CT data source administration file. When the file has a problem, a message explains it and nothing
+// changes (the previously loaded visibility stays). Data sources that ATT&CK does not know are ignored, with a warning.
 const uploadFile = async () => {
-
-  let yamlData: any = null; //
-
-  // Try to load the data from the uploaded file.
-  try {
-    isLoading.value = true // Start loading
-    const file = input.value?.files?.[0]
-    if (!file) {
-      Swal.fire({
-        icon: 'error',
-        title: 'No file selected',
-        text: 'Please select a YAML file to upload.'
-      })
-      return
-    }
-
-    const allowedMimeTypes = ["text/yaml", "text/x-yaml", "text/yml", "text/x-yml", "application/yaml", "application/x-yaml", "application/yml", "application/x-yml"];
-    const allowedExtensions = [".yaml", ".yml"];
-    if (!allowedMimeTypes.includes(file.type) && !allowedExtensions.some(ext => file.name.toLowerCase().endsWith(ext))) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Invalid file type',
-        text: 'Please select a valid DeTT&CT YAML file.'
-      });
-      isLoading.value = false; // End loading
-      return;
-    }
-
-    const fileContent = await file.text() // Reading file content asynchronously
-    yamlData = yaml.parse(fileContent) // Parsing YAML content
-  } catch (error) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error uploading YAML file',
-      text: `An error occurred while processing the uploaded file. Error details: ${error.message}`
-    })
+  const file = input.value?.files?.[0]
+  if (input.value) {
+    input.value.value = '' // Reset the input, so selecting the same file again is registered as a change.
   }
-  
-  // Try to process the file data.
-  try {
-    store.processDettectYaml(yamlData) // Updating the tactics store with YAML data
-    console.log("YAML file successfully uploaded and store updated!")
-  } catch (error) {
-    store.resetDomainVisibility(yamlData.domain);
+  if (!file) {
+    return
+  }
+
+  const allowedMimeTypes = ["text/yaml", "text/x-yaml", "text/yml", "text/x-yml", "application/yaml", "application/x-yaml", "application/yml", "application/x-yml"];
+  const allowedExtensions = [".yaml", ".yml"];
+  if (!allowedMimeTypes.includes(file.type) && !allowedExtensions.some(ext => file.name.toLowerCase().endsWith(ext))) {
     Swal.fire({
       icon: 'error',
-      title: 'Error uploading YAML file',
-      text: `An error occurred while processing the uploaded file. Please check that all content of your file is valid. The visibility for the domain has been reset. Error details: ${error.message}`
+      title: 'Invalid file type',
+      text: 'Please select a valid DeTT&CT YAML file.'
+    });
+    return;
+  }
+
+  isLoading.value = true
+  try {
+    let yamlData: unknown
+    try {
+      yamlData = yaml.parse(await file.text())
+    } catch (error) {
+      throw new Error(`The file is not valid YAML: ${(error as Error).message}`)
+    }
+    const { unknownDataSources } = store.processDettectYaml(yamlData)
+    if (unknownDataSources.length > 0) {
+      Swal.fire({
+        icon: 'warning',
+        titleText: 'DeTT&CT file loaded, with unknown data sources',
+        text: `These data sources are not data components in MITRE ATT&CK v17.1, so they were ignored: ${unknownDataSources.join(', ')}.`,
+      })
+    }
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      titleText: 'The DeTT&CT file was not loaded',
+      text: `${(error as Error).message} Nothing was changed.`,
     })
   } finally {
-    isLoading.value = false // End loading
+    isLoading.value = false
   }
 }
 

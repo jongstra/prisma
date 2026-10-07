@@ -1,9 +1,12 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import fs from 'node:fs';
 import { parse } from 'yaml';
 import { tacticsStore } from '../tactics';
 import { isDetectable } from '@/domain/attack/visibility';
+import Swal from 'sweetalert2';
+
+vi.mock('sweetalert2', () => ({ default: { fire: vi.fn(() => Promise.resolve({})) } }));
 
 const catalog = JSON.parse(fs.readFileSync('public/tactics_and_techniques_by_domain.json', 'utf8'));
 const readExample = (name: string) => parse(fs.readFileSync(`../example_data_dettect/${name}`, 'utf8'));
@@ -36,5 +39,47 @@ describe('tactics store: processDettectYaml', () => {
         }
       }
     }
+  });
+});
+
+describe('tactics store: loading a DeTT&CT file safely', () => {
+  let store: ReturnType<typeof tacticsStore>;
+  const ratio = (id: string) => (store.enterprise as any).tactics.flatMap((t: any) => t.techniques).find((t: any) => t.external_id === id).visibility_ratio;
+  const dettect = (dataSources: unknown[]) => ({ version: 1.1, file_type: 'data-source-administration', domain: 'enterprise-attack', data_sources: dataSources });
+  const dataSource = (name: string, deviceCompleteness: unknown) => ({ data_source_name: name, data_source: [{ applicable_to: ['all'], data_quality: { device_completeness: deviceCompleteness } }] });
+
+  beforeEach(() => {
+    setActivePinia(createPinia());
+    store = tacticsStore();
+    const copy = structuredClone(catalog);
+    store.enterprise = copy.enterprise;
+    store.mobile = copy.mobile;
+    store.ics = copy.ics;
+    store.processDettectYaml(readExample('dettect_editor_data_sources_example_enterprise_LARGE.yaml'));
+  });
+
+  it('changes nothing when a file has a problem', () => {
+    const before = ratio('T1595');
+    expect(before).toBeGreaterThan(0);
+    expect(() => store.processDettectYaml(dettect([dataSource('Process Creation', 50)]))).toThrow('device_completeness "50" is not valid');
+    expect(() => store.processDettectYaml(readExample('magma_data_example.yaml'))).toThrow('not a DeTT&CT data source administration file');
+    expect(() => store.processDettectYaml(null)).toThrow('not a DeTT&CT data source administration file');
+    expect(ratio('T1595')).toBe(before);
+    expect(store.domain).toBe('enterprise-attack');
+  });
+
+  it('ignores data sources that ATT&CK does not know, and reports them', () => {
+    const result = store.processDettectYaml(dettect([dataSource('Network Traffic Content', 5), dataSource('Typo Source', 5)]));
+    expect(result.unknownDataSources).toEqual(['Typo Source']);
+    expect(ratio('T1595')).toBeGreaterThan(0); // Active Scanning is visible through Network Traffic Content.
+  });
+
+  it('shows a message when the ATT&CK data cannot be loaded', async () => {
+    vi.stubGlobal('fetch', vi.fn(() => Promise.resolve({ ok: false, status: 404, statusText: 'Not Found' })));
+    await store.fetchTactics();
+    vi.unstubAllGlobals();
+    const message = (Swal.fire as any).mock.calls.at(-1)?.[0];
+    expect(message?.text).toContain('Could not load the ATT&CK data');
+    expect(message?.text).toContain('404');
   });
 });
