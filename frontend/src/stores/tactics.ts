@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import axios from 'axios';
 
 
 // Define interfaces
@@ -436,10 +435,14 @@ export const tacticsStore = defineStore('tactics', {
     async fetchTactics() {
       try {
         this.dataLoaded = false;
-        const response = await axios.get('tactics_and_techniques_by_domain.json');
-        this.enterprise = response.data.enterprise;
-        this.mobile = response.data.mobile;
-        this.ics = response.data.ics;
+        const response = await fetch('tactics_and_techniques_by_domain.json');
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        this.enterprise = data.enterprise;
+        this.mobile = data.mobile;
+        this.ics = data.ics;
       } catch (error) {
         console.error('Failed to fetch tactics:', error);
       } finally {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { tacticsStore } from '@/stores/tactics';
-import * as YAML from 'js-yaml';
+import * as yaml from 'yaml';
 import Swal from 'sweetalert2';
 
 const input = ref<HTMLInputElement>()
@@ -38,7 +38,7 @@ const uploadFile = async () => {
     }
 
     const fileContent = await file.text() // Reading file content asynchronously
-    yamlData = YAML.load(fileContent) // Parsing JSON content
+    yamlData = yaml.parse(fileContent) // Parsing YAML content
   } catch (error) {
     Swal.fire({
       icon: 'error',
