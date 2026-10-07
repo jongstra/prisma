@@ -177,10 +177,20 @@ const importYaml = (event: Event) => {
   }
 };
 
+// A short list of use case IDs for a message, e.g. "DOS-1-1, DOS-1-2 and 3 more".
+const listIds = (useCases: any[], max = 5) => {
+  const ids = useCases.slice(0, max).map(useCase => useCase.id).join(', ');
+  return useCases.length > max ? `${ids} and ${useCases.length - max} more` : ids;
+};
+
+// Child use cases are kept when their parent is deleted, but lose their parent (decision D2), so the dialog warns about them.
 const confirmRemoveUseCase = (useCase: any) => {
+  const children = magma.getChildUseCases(useCase);
+  const childrenWarning = children.length === 0 ? '' :
+    `"${useCase.id}" still has ${children.length} child use case(s): ${listIds(children)}. They will lose their parent (and turn red), so you can move them to another parent.\n\n`;
   Swal.fire({
-    title: `Delete use case '${useCase.id}'?`,
-    text: "You won't be able to revert this.",
+    titleText: `Delete use case '${useCase.id}'?`,
+    text: childrenWarning + "You won't be able to revert this.",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#d33',
@@ -197,9 +207,13 @@ const confirmRemoveUseCase = (useCase: any) => {
 
 const confirmRemoveUseCaseLevel = () => {
   if (magma.activeTabUseCases(tactics.domain).length > 0) {
+    // The use cases on the level below are kept, but lose their parent (decision D2).
+    const deleted = magma.activeTabUseCases(tactics.domain).filter((useCase: any) => !useCase.permanent);
+    const orphans = new Set(deleted.flatMap((useCase: any) => magma.getChildUseCases(useCase)));
+    const orphansWarning = orphans.size === 0 ? '' : `\n\n${orphans.size} use case(s) on the level below will lose their parent.`;
     Swal.fire({
       title: `Warning! You are about to delete ALL ${magma.activeTab} use cases.`,
-      text: `This is a permanent and irreversible action.\n\nDo you wish to proceed?`,
+      text: `This is a permanent and irreversible action.${orphansWarning}\n\nDo you wish to proceed?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
@@ -212,6 +226,17 @@ const confirmRemoveUseCaseLevel = () => {
         magma.removeActiveTabUseCases(tactics.domain);
       }
     });
+  }
+};
+
+// Rename a use case when its ID field is committed (Enter, or leaving the field). Its children move along to the new ID.
+// A refused rename (empty, or an ID that already exists) is explained, and the field shows the current ID again.
+const renameUseCase = (useCase: any, event: Event) => {
+  const input = event.target as HTMLInputElement;
+  const problem = magma.renameUseCase(useCase.uid, input.value);
+  if (problem) {
+    input.value = useCase.id;
+    Swal.fire({ icon: 'error', titleText: 'ID not changed', text: problem });
   }
 };
 
@@ -459,7 +484,7 @@ const validateAndFormat = (event: Event) => {
                 <input
                   v-if="columnKey === 'id'"
                   :value="useCase[columnKey]"
-                  @input="(event) => { updateObjectField(useCase.uid, columnKey, event.target.value); }"
+                  @change="(event) => renameUseCase(useCase, event)"
                   :disabled="useCase.permanent"
                   :style="{backgroundColor: getBackgroundColor(useCase, columnKey)}"
                 />

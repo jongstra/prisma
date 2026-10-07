@@ -304,9 +304,45 @@ export const magmaStore = defineStore('magma', {
       const useCase = this.getUseCaseByUid(uid);
       if (!useCase) { throw new Error(`No use case with uid "${uid}" exists.`);}
 
-      // Remove the use case, and recalculate the values that depended on it.
+      // Remove the use case, and recalculate the values that depended on it. Its child use cases are kept and lose
+      // their parent (decision D2); the editor warns about this before deleting.
       this.useCases = this.useCases.filter(x => x['uid'] !== uid);
       this.recalculateAll();
+    },
+
+
+    // Rename a use case. Its child use cases (in the same domain) move along to the new ID. Returns a message explaining
+    // why the rename is refused, or null when the use case was renamed.
+    renameUseCase(uid: string, newId: string): string | null {
+      const useCase = this.getUseCaseByUid(uid);
+      if (!useCase) {
+        return `No use case with uid "${uid}" exists.`;
+      }
+      if (useCase.permanent) {
+        return `Use case "${useCase.id}" cannot be renamed.`;
+      }
+      const id = newId.trim();
+      if (id === '') {
+        return 'The ID of a use case cannot be empty.';
+      }
+      if (id === useCase.id) {
+        return null;
+      }
+      if (id === 'none' || this.getUseCaseById(id, useCase.domain)) {
+        return `A use case with ID "${id}" already exists in this domain. Choose another ID.`;
+      }
+
+      // Move the children along, unless another use case still has the old ID (then they keep that parent).
+      const oldId = useCase.id;
+      const oldIdStillUsed = this.useCases.some(other => other !== useCase && other.domain === useCase.domain && other.id === oldId);
+      useCase.id = id;
+      if (!oldIdStillUsed) {
+        for (const child of this.getChildUseCases({ ...useCase, id: oldId })) {
+          child.parentIds = child.parentIds!.map(parentId => parentId === oldId ? id : parentId);
+        }
+      }
+      this.recalculateAll();
+      return null;
     },
 
 

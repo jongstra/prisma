@@ -156,3 +156,44 @@ describe('magma store: saving and loading', () => {
     expect(magma.exportUseCases()).not.toMatch(/nan/i);
   });
 });
+
+describe('magma store: renaming and deleting use cases', () => {
+  let magma: any;
+  const domain = 'enterprise-attack';
+  const parentsOf = (id: string, inDomain = domain) => magma.getUseCaseById(id, inDomain)?.parentIds;
+
+  beforeEach(async () => {
+    magma = (await setUpStores()).magma;
+    magma.importUseCases(readExample('magma_data_example.yaml'));
+    magma.importUseCases(stringify([{ domain: 'mobile-attack', level: 3, id: 'M-1', name: 'm', parentIds: ['DOS-1'] }]));
+  });
+
+  it('moves the children along when an ID is renamed, within the same domain only', () => {
+    const weightBefore = magma.getUseCaseById('DOS', domain).weight;
+    expect(magma.renameUseCase(magma.getUseCaseById('DOS-1', domain).uid, 'DOS-A')).toBeNull();
+    expect(parentsOf('DOS-1-1')).toEqual(['DOS-A']);
+    expect(parentsOf('DOS-1-2')).toEqual(['DOS-A']);
+    expect(magma.getUseCaseById('DOS', domain).weight).toBe(weightBefore);
+    expect(parentsOf('M-1', 'mobile-attack')).toEqual(['DOS-1']);
+  });
+
+  it('refuses an empty ID, an ID that already exists, and renaming IN/THR, without changing anything', () => {
+    const uid = magma.getUseCaseById('DOS-1', domain).uid;
+    expect(magma.renameUseCase(uid, 'FIN-1')).toContain('already exists');
+    expect(magma.renameUseCase(uid, '  ')).toContain('cannot be empty');
+    expect(magma.renameUseCase(magma.getUseCaseById('IN', domain).uid, 'IN2')).toContain('cannot be renamed');
+    expect(magma.getUseCaseById('DOS-1', domain)).toBeDefined();
+    expect(parentsOf('DOS-1-1')).toEqual(['DOS-1']);
+  });
+
+  it('trims spaces around a new ID', () => {
+    expect(magma.renameUseCase(magma.getUseCaseById('DOS-1', domain).uid, '  DOS-B ')).toBeNull();
+    expect(parentsOf('DOS-1-1')).toEqual(['DOS-B']);
+  });
+
+  it('keeps the children when their parent is deleted (they lose their parent, decision D2)', () => {
+    magma.removeUseCaseByUid(magma.getUseCaseById('DOS-1', domain).uid);
+    expect(parentsOf('DOS-1-1')).toEqual(['DOS-1']);
+    expect(magma.getUseCaseById('DOS', domain).weight).toBe(0);
+  });
+});
