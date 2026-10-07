@@ -47,8 +47,8 @@ const confirmClearAllSelections = () => {
     showCancelButton: true,
     confirmButtonColor: '#d33',
     cancelButtonColor: 'green',
-    confirmButtonText: 'Yes, clear all group selections!',
-    cancelButtonText: 'No, cancel!',
+    confirmButtonText: 'Yes, clear all component selections',
+    cancelButtonText: 'No, cancel',
     reverseButtons: true,
     customClass: {
       confirmButton: 'swal2-confirm-custom',

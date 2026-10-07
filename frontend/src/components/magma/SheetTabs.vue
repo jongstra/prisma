@@ -195,8 +195,8 @@ const confirmRemoveUseCase = (useCase: any) => {
     showCancelButton: true,
     confirmButtonColor: '#d33',
     cancelButtonColor: 'green',
-    confirmButtonText: 'Yes, delete this use case!',
-    cancelButtonText: 'No, cancel!',
+    confirmButtonText: 'Yes, delete this use case',
+    cancelButtonText: 'No, cancel',
     reverseButtons: true,
   }).then((result) => {
     if (result.isConfirmed) {
@@ -212,14 +212,14 @@ const confirmRemoveUseCaseLevel = () => {
     const orphans = new Set(deleted.flatMap((useCase: any) => magma.getChildUseCases(useCase)));
     const orphansWarning = orphans.size === 0 ? '' : `\n\n${orphans.size} use case(s) on the level below will lose their parent.`;
     Swal.fire({
-      title: `Warning! You are about to delete ALL ${magma.activeTab} use cases.`,
+      title: `You are about to delete all ${magma.activeTab} use cases`,
       text: `This is a permanent and irreversible action.${orphansWarning}\n\nDo you wish to proceed?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: 'green',
-      confirmButtonText: `Yes, delete all ${magma.activeTab} use cases!`,
-      cancelButtonText: 'No, cancel!',
+      confirmButtonText: `Yes, delete all ${magma.activeTab} use cases`,
+      cancelButtonText: 'No, cancel',
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {

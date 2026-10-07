@@ -543,7 +543,7 @@ export const magmaStore = defineStore('magma', {
       } catch (error) {
         console.error('Failed to parse YAML data:', error);
         Swal.fire({
-          title: 'Error!',
+          title: 'Error',
           text: 'Failed to parse YAML data. Please check the file.',
           icon: 'error',
           confirmButtonText: 'OK'
