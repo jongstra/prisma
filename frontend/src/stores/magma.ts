@@ -4,7 +4,7 @@ import { tacticsStore } from '@/stores/tactics';
 import * as yaml from 'yaml';
 import Swal from 'sweetalert2';
 import { recalculateUseCases } from '@/domain/magma/calculations';
-import { findParentCycles, findUnknownParents, percentageProblem } from '@/domain/magma/validation';
+import { findMultipleParents, findParentCycles, findUnknownParents, percentageProblem } from '@/domain/magma/validation';
 
 const tactics = tacticsStore();
 
@@ -568,18 +568,23 @@ export const magmaStore = defineStore('magma', {
           summary += " _________________________________________________ FAILED USE CASES _________________________________________________ " + errorMessages.join("• ");
         }
 
-        // Use cases with a parent ID that does not exist are imported, but listed as a warning (the ID may contain a typo).
-        const unknownParents = findUnknownParents(this.useCases).map(({ useCase, parentId }) =>
-          `Use case "${useCase.id}" in domain "${useCase.domain}" has parent "${parentId}", which does not exist.`);
-        if (unknownParents.length > 0) {
-          summary += " _________________________________________________ WARNINGS _________________________________________________ " + unknownParents.join("• ");
+        // Use cases with a parent ID that does not exist, or with more than one parent, are imported, but listed as a warning
+        // (probably a typo, e.g. a comma in the parent column of the Excel file).
+        const warnings = [
+          ...findUnknownParents(this.useCases).map(({ useCase, parentId }) =>
+            `Use case "${useCase.id}" in domain "${useCase.domain}" has parent "${parentId}", which does not exist.`),
+          ...findMultipleParents(this.useCases.filter((useCase) => !useCase.permanent)).map(({ useCase, parentIds }) =>
+            `Use case "${useCase.id}" in domain "${useCase.domain}" has ${parentIds.length} parents (${parentIds.join(', ')}); PRISMA expects one parent per use case, and counts it under each of them.`),
+        ];
+        if (warnings.length > 0) {
+          summary += " _________________________________________________ WARNINGS _________________________________________________ " + warnings.join("• ");
         }
     
         // Show the summary message
         Swal.fire({
           title: 'Import Summary',
           text: summary,
-          icon: failCount > 0 || unknownParents.length > 0 ? 'warning' : 'success',
+          icon: failCount > 0 || warnings.length > 0 ? 'warning' : 'success',
           confirmButtonText: 'OK'
         });
       } catch (error) {

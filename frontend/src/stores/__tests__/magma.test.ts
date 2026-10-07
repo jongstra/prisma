@@ -120,6 +120,19 @@ describe('magma store: invalid data is rejected on import, with the reason', () 
     expect(magma.getUseCaseById('BIZ', domain)?.risk).toBeCloseTo(50); // Only AS-TEXT counts: 50% × 100% × 100%.
   });
 
+  it('warns about use cases with more than one parent', async () => {
+    const { magma, lastMessage } = await setUpStores();
+    magma.importUseCases(stringify([
+      { domain: 'enterprise-attack', level: 2, id: 'DOS-1', name: 'd' },
+      { domain: 'enterprise-attack', level: 2, id: 'FIN-1', name: 'f' },
+      { domain: 'enterprise-attack', level: 3, id: 'DOS-1-1', name: 'comma typo', parentIds: ['DOS-1', 'FIN-1'] },
+      { domain: 'enterprise-attack', level: 3, id: 'DOS-1-2', name: 'fine', parentIds: ['DOS-1'] },
+    ]));
+    expect(lastMessage()).toContain('Successful imports: 4. Failed imports: 0.');
+    expect(lastMessage()).toContain('"DOS-1-1" in domain "enterprise-attack" has 2 parents (DOS-1, FIN-1)');
+    expect(lastMessage()).not.toContain('"DOS-1-2"');
+  });
+
   it('keeps use cases with an unknown parent ID, and warns about them', async () => {
     const { magma, lastMessage } = await setUpStores();
     magma.importUseCases(stringify([

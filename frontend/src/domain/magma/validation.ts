@@ -76,3 +76,13 @@ export function findUnknownParents<T extends UseCaseReference>(useCases: T[]): {
       .map((parentId) => ({ useCase, parentId })),
   );
 }
+
+/**
+ * Lists the use cases with more than one parent. PRISMA expects one parent per use case (the MaGMa documentation splits
+ * a detection rule into separate use cases instead); such a use case is counted under each of its parents.
+ */
+export function findMultipleParents<T extends UseCaseReference>(useCases: T[]): { useCase: T; parentIds: string[] }[] {
+  return useCases
+    .map((useCase) => ({ useCase, parentIds: parentIdsOf(useCase) }))
+    .filter(({ parentIds }) => parentIds.length > 1);
+}

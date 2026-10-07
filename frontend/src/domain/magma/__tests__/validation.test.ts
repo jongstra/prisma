@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { findParentCycles, findUnknownParents, percentageProblem } from '../validation';
+import { findMultipleParents, findParentCycles, findUnknownParents, percentageProblem } from '../validation';
 
 const DOMAIN = 'enterprise-attack';
 const useCase = (id: string, parentIds: unknown = [], domain = DOMAIN) => ({ domain, id, parentIds });
@@ -52,5 +52,13 @@ describe('findUnknownParents', () => {
       { useCase: typo, parentId: 'DOS-l' },
       { useCase: otherDomain, parentId: 'DOS' },
     ]);
+  });
+});
+
+describe('findMultipleParents', () => {
+  it('lists use cases with more than one parent, ignoring "none"', () => {
+    const two = useCase('DOS-1-1', ['DOS-1', 'FIN-1']);
+    const result = findMultipleParents([useCase('A', ['DOS-1']), two, useCase('B', ['DOS-1', 'none']), useCase('C')]);
+    expect(result).toEqual([{ useCase: two, parentIds: ['DOS-1', 'FIN-1'] }]);
   });
 });
