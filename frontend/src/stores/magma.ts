@@ -308,7 +308,7 @@ export const magmaStore = defineStore('magma', {
       if (!useCase) { throw new Error(`No use case with uid "${uid}" exists.`);}
 
       // Remove the use case, and recalculate the values that depended on it. Its child use cases are kept and lose
-      // their parent (decision D2); the editor warns about this before deleting.
+      // their parent; the editor warns about this before deleting.
       this.useCases = this.useCases.filter(x => x['uid'] !== uid);
       this.recalculateAll();
     },
@@ -514,7 +514,7 @@ export const magmaStore = defineStore('magma', {
 
 
     // Load a MaGMa file: its use cases replace the current use cases of the domains in the file, and the other domains
-    // stay as they are (decision D1). Nothing changes when the file cannot be read.
+    // stay as they are. Nothing changes when the file cannot be read.
     loadUseCaseFile(yamlData: string) {
       const useCases = this.parseUseCaseFile(yamlData);
       const domains = this.useCaseFileDomains(yamlData);

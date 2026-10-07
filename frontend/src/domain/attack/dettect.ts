@@ -50,7 +50,8 @@ export function readDettectFile(data: unknown, dataComponents: (domain: string) 
     if (typeof name !== 'string' || name.trim() === '') {
       throw new Error('The file contains a data source without a name (data_source_name).');
     }
-    // DeTT&CT can register a data source per group of systems; PRISMA uses the first entry (see decision D6).
+    // DeTT&CT can register a data source per group of systems; PRISMA uses the first entry (using the other entries is
+    // still an open question).
     const entry = Array.isArray(dataSource.data_source) ? dataSource.data_source[0] : undefined;
     if (!isObject(entry) || !isObject(entry.data_quality)) {
       throw new Error(`Data source "${name}" has no data quality scores (data_source / data_quality).`);

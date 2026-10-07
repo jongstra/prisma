@@ -153,7 +153,7 @@ const exportYaml = () => {
 const domainNames: Record<string, string> = { 'enterprise-attack': 'Enterprise', 'mobile-attack': 'Mobile', 'ics-attack': 'ICS' };
 
 // Load a MaGMa YAML file. Its use cases replace the current use cases of the domains in the file; the other domains stay
-// as they are (decision D1). A dialog asks for confirmation when current use cases will be replaced, and nothing changes
+// as they are. A dialog asks for confirmation when current use cases will be replaced, and nothing changes
 // when the file cannot be read.
 const importYaml = (event: Event) => {
   const fileInput = event.target as HTMLInputElement;
@@ -220,7 +220,7 @@ const listIds = (useCases: any[], max = 5) => {
   return useCases.length > max ? `${ids} and ${useCases.length - max} more` : ids;
 };
 
-// Child use cases are kept when their parent is deleted, but lose their parent (decision D2), so the dialog warns about them.
+// Child use cases are kept when their parent is deleted, but lose their parent, so the dialog warns about them.
 const confirmRemoveUseCase = (useCase: any) => {
   const children = magma.getChildUseCases(useCase);
   const childrenWarning = children.length === 0 ? '' :
@@ -244,7 +244,7 @@ const confirmRemoveUseCase = (useCase: any) => {
 
 const confirmRemoveUseCaseLevel = () => {
   if (magma.activeTabUseCases(tactics.domain).length > 0) {
-    // The use cases on the level below are kept, but lose their parent (decision D2).
+    // The use cases on the level below are kept, but lose their parent.
     const deleted = magma.activeTabUseCases(tactics.domain).filter((useCase: any) => !useCase.permanent);
     const orphans = new Set(deleted.flatMap((useCase: any) => magma.getChildUseCases(useCase)));
     const orphansWarning = orphans.size === 0 ? '' : `\n\n${orphans.size} use case(s) on the level below will lose their parent.`;

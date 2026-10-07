@@ -191,14 +191,14 @@ describe('magma store: renaming and deleting use cases', () => {
     expect(parentsOf('DOS-1-1')).toEqual(['DOS-B']);
   });
 
-  it('keeps the children when their parent is deleted (they lose their parent, decision D2)', () => {
+  it('keeps the children when their parent is deleted (they lose their parent)', () => {
     magma.removeUseCaseByUid(magma.getUseCaseById('DOS-1', domain).uid);
     expect(parentsOf('DOS-1-1')).toEqual(['DOS-1']);
     expect(magma.getUseCaseById('DOS', domain).weight).toBe(0);
   });
 });
 
-describe('magma store: loading a MaGMa file (decision D1)', () => {
+describe('magma store: loading a MaGMa file', () => {
   let magma: any;
   const ids = () => magma.useCases.filter((u: any) => !u.permanent).map((u: any) => `${u.domain.split('-')[0]}:${u.id}`).sort();
 

@@ -2,7 +2,7 @@
 //
 // ATT&CK lists no data components for some (sub-)techniques, for example reconnaissance that happens outside the
 // defender's environment. Those cannot be detected via data sources, so they are left out of visibility averages
-// and shown as a known blind spot instead (decision D7). A score of 100% therefore means: all data components that
+// and shown as a known blind spot instead. A score of 100% therefore means: all data components that
 // ATT&CK lists are available.
 
 export interface TechniqueLike {
