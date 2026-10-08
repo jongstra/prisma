@@ -2,7 +2,7 @@
 import { barWidth } from '@/components/common/barWidth';
 import { computed } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
-import { averageVisibilityPercentage, isDetectable } from '@/domain/attack/visibility';
+import { isDetectable, platformVisibility } from '@/domain/attack/visibility';
 const store = tacticsStore();
 
 function getDomain(): any {
@@ -32,33 +32,16 @@ function getPlatforms(): string[] {
   return Array.from(platformsSet);
 }
 
-// Visibility per platform: the average over the platform's techniques that can be detected via data sources.
+// Visibility per platform (see platformVisibility). ICS techniques have no platforms; they all count under 'None'.
 function calculatePlatformVisibility(): { name: string; percentage: number }[] {
-  const techniquesByPlatform: { [key: string]: any[] } = {};
-  getPlatforms().forEach(platform => {
-    techniquesByPlatform[platform] = [];
-  });
-
-  let domain = getDomain();
-
-  if (domain.tactics) {
-    domain.tactics.forEach(tactic => {
-      tactic.techniques.forEach(technique => {
-        // ICS techniques have no platforms; they are all counted under the 'None' platform.
-        const platforms = store.domain === 'ics-attack' ? ['None'] : technique.platforms;
-        platforms.forEach(platform => {
-          if (platform in techniquesByPlatform) {
-            techniquesByPlatform[platform].push(technique);
-          }
-        });
-      });
-    });
-  }
+  const domain = getDomain();
+  const platformsOf = store.domain === 'ics-attack' ? () => ['None'] : undefined;
+  const visibility = platformVisibility(domain.tactics ?? [], platformsOf);
 
   // Calculate the visibility percentage for each platform and sort by percentage
-  return Object.keys(techniquesByPlatform).map(platform => ({
+  return getPlatforms().map(platform => ({
     name: platform,
-    percentage: Math.round(averageVisibilityPercentage(techniquesByPlatform[platform]) ?? 0),
+    percentage: Math.round(visibility.get(platform) ?? 0),
   })).sort((a, b) => a.percentage - b.percentage);
 }
 

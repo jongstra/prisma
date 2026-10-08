@@ -5,6 +5,7 @@ import {
   averageVisibilityPercentage,
   isDetectable,
   ownVisibility,
+  platformVisibility,
   techniqueVisibility,
   type Completeness,
   type TechniqueLike,
@@ -89,5 +90,21 @@ describe('with the real ATT&CK catalog and the maximum-quality DeTT&CT example',
       }
     }
     expect([...notDetectable].sort()).toEqual(['T1590', 'T1591', 'T1593', 'T1596', 'T1597', 'T1650']);
+  });
+});
+
+describe('platformVisibility', () => {
+  const technique = (id: string, visibility: number, platforms = ['Windows']) =>
+    ({ external_id: id, platforms, data_components: ['Process Creation'], visibility_ratio: visibility });
+
+  it('counts a technique that belongs to several tactics once', () => {
+    const shared = technique('T1', 0.2);
+    const tactics = [{ techniques: [shared] }, { techniques: [shared, technique('T2', 0.8)] }];
+    expect(platformVisibility(tactics).get('Windows')).toBeCloseTo(50); // (20% + 80%) / 2, not (20% + 20% + 80%) / 3
+  });
+
+  it('can count all techniques under one platform, as for ICS', () => {
+    const tactics = [{ techniques: [technique('T1', 0.2, []), technique('T2', 0.4, [])] }];
+    expect(platformVisibility(tactics, () => ['None']).get('None')).toBeCloseTo(30);
   });
 });

@@ -58,3 +58,26 @@ export function averageVisibilityPercentage(techniques: TechniqueLike[]): number
   }
   return (detectable.reduce((sum, technique) => sum + (technique.visibility_ratio ?? 0), 0) / detectable.length) * 100;
 }
+
+export interface PlatformTechnique extends TechniqueLike {
+  external_id: string;
+  platforms?: string[];
+}
+
+/**
+ * Visibility (0-100) per platform: the average over the platform's techniques that can be detected via data sources.
+ * A technique that belongs to several tactics counts once. Null for a platform without detectable techniques.
+ */
+export function platformVisibility(
+  tactics: { techniques: PlatformTechnique[] }[],
+  platformsOf: (technique: PlatformTechnique) => string[] = (technique) => technique.platforms ?? [],
+): Map<string, number | null> {
+  const techniques = new Map(tactics.flatMap((tactic) => tactic.techniques).map((technique) => [technique.external_id, technique]));
+  const techniquesByPlatform = new Map<string, PlatformTechnique[]>();
+  for (const technique of techniques.values()) {
+    for (const platform of platformsOf(technique)) {
+      techniquesByPlatform.set(platform, [...(techniquesByPlatform.get(platform) ?? []), technique]);
+    }
+  }
+  return new Map([...techniquesByPlatform].map(([platform, techniques]) => [platform, averageVisibilityPercentage(techniques)]));
+}
