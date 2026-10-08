@@ -382,13 +382,13 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-EXE-1
+  id: IN-PER-1
   impact: 0
   implementation: 90.0
   level: 3
   name: Use of Scheduled Scripts
   parentIds:
-  - THR-EXE
+  - IN-PER
   visibility: 90.0
   visibilityFromAttackTechniqueOverride: true
   weight: 0
@@ -410,7 +410,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: IN-PER-1
+  id: IN-PER-2
   impact: 0
   implementation: 90.0
   level: 3
@@ -438,7 +438,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: IN-PER-2
+  id: IN-PER-3
   impact: 0
   implementation: 90.0
   level: 3
@@ -452,7 +452,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-EXE-2
+  id: THR-EXE-1
   impact: 0
   implementation: 40.0
   level: 3
@@ -494,13 +494,13 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-CRE-2
+  id: THR-DIS-1
   impact: 0
   implementation: 90.0
   level: 3
   name: Network Sniffing
   parentIds:
-  - THR-CRE
+  - THR-DIS
   visibility: 90.0
   visibilityFromAttackTechniqueOverride: true
   weight: 0
@@ -550,13 +550,13 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: IN-DEF-4
+  id: IN-EXP-2
   impact: 0
   implementation: 90.0
   level: 3
   name: Use of Valid Accounts for Defence Evasion
   parentIds:
-  - IN-DEF
+  - IN-EXP
   visibility: 90.0
   visibilityFromAttackTechniqueOverride: true
   weight: 0
@@ -564,7 +564,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: IN-DEF-5
+  id: IN-DEF-4
   impact: 0
   implementation: 90.0
   level: 3
@@ -578,7 +578,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-EXE-3
+  id: THR-EXE-2
   impact: 0
   implementation: 20.0
   level: 3
@@ -592,7 +592,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-DIS-1
+  id: THR-DIS-2
   impact: 0
   implementation: 90.0
   level: 3
@@ -606,13 +606,13 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: THR-CRE-3
+  id: THR-DIS-3
   impact: 0
   implementation: 30.0
   level: 3
   name: Use of Network Sniffing to Harvest Credentials
   parentIds:
-  - THR-CRE
+  - THR-DIS
   visibility: 100.0
   visibilityFromAttackTechniqueOverride: true
   weight: 0
@@ -620,7 +620,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: IN-DEF-6
+  id: IN-DEF-5
   impact: 0
   implementation: 40.0
   level: 3
@@ -634,7 +634,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: IN-EXP-2
+  id: IN-EXP-3
   impact: 0
   implementation: 60.0
   level: 3
@@ -648,7 +648,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: IN-DEF-7
+  id: IN-DEF-6
   impact: 0
   implementation: 80.0
   level: 3
@@ -662,7 +662,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: IN-DEF-8
+  id: IN-DEF-7
   impact: 0
   implementation: 10.0
   level: 3
@@ -690,7 +690,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: THR-EXE-4
+  id: THR-EXE-3
   impact: 0
   implementation: 100.0
   level: 3
@@ -718,7 +718,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: THR-DIS-2
+  id: THR-DIS-4
   impact: 0
   implementation: 100.0
   level: 3
@@ -732,13 +732,13 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: ESP-COL-4
+  id: THR-CRE-2
   impact: 0
   implementation: 100.0
   level: 3
   name: Use of Input Capture to Harvest Credentials
   parentIds:
-  - ESP-COL
+  - THR-CRE
   visibility: 100.0
   visibilityFromAttackTechniqueOverride: true
   weight: 0
@@ -746,13 +746,13 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: ESP-COL-5
+  id: THR-CRE-3
   impact: 0
   implementation: 100.0
   level: 3
   name: Use of Man-in-the-Middle Attack
   parentIds:
-  - ESP-COL
+  - THR-CRE
   visibility: 100.0
   visibilityFromAttackTechniqueOverride: true
   weight: 0
@@ -760,7 +760,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: IN-DEF-9
+  id: IN-DEF-8
   impact: 0
   implementation: 100.0
   level: 3
@@ -774,7 +774,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-DIS-3
+  id: THR-DIS-5
   impact: 0
   implementation: 90.0
   level: 3
@@ -788,7 +788,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: IN-DEF-10
+  id: IN-DEF-9
   impact: 0
   implementation: 90.0
   level: 3
@@ -802,7 +802,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-DIS-4
+  id: THR-DIS-6
   impact: 0
   implementation: 90.0
   level: 3
@@ -830,13 +830,13 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: IN-DEF-11
+  id: IN-EXP-4
   impact: 0
   implementation: 90.0
   level: 3
   name: Use of Valid Accounts for Initial Access
   parentIds:
-  - IN-DEF
+  - IN-EXP
   visibility: 90.0
   visibilityFromAttackTechniqueOverride: true
   weight: 0
@@ -844,7 +844,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: IN-DEF-12
+  id: IN-DEF-10
   impact: 0
   implementation: 40.0
   level: 3
@@ -858,7 +858,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-EXE-5
+  id: THR-EXE-4
   impact: 0
   implementation: 40.0
   level: 3
@@ -872,7 +872,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: IN-PER-3
+  id: IN-PER-4
   impact: 0
   implementation: 90.0
   level: 3
@@ -886,13 +886,13 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 70.0
-  id: THR-EXE-6
+  id: IN-PER-5
   impact: 0
   implementation: 90.0
   level: 3
   name: Use of Windows Scheduled Task for Execution
   parentIds:
-  - THR-EXE
+  - IN-PER
   visibility: 90.0
   visibilityFromAttackTechniqueOverride: true
   weight: 0
@@ -900,7 +900,7 @@
   description: ''
   domain: enterprise-attack
   effectiveness: 90.0
-  id: IN-DEF-13
+  id: IN-DEF-11
   impact: 0
   implementation: 100.0
   level: 3
