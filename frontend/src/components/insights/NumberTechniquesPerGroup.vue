@@ -11,15 +11,7 @@ interface Group {
 }
 
 function getTechniqueCountPerGroup(): Group[] {
-  let groups;
-
-  if (store.domain === 'enterprise-attack') {
-    groups = store.enterprise?.groups;
-  } else if (store.domain === 'mobile-attack') {
-    groups = store.mobile?.groups;
-  } else if (store.domain === 'ics-attack') {
-    groups = store.ics?.groups;
-  }
+  const groups = store.currentDomain?.groups;
 
   // Check if groups is defined and is an array
   if (!Array.isArray(groups)) {

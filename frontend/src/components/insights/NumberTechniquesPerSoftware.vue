@@ -11,15 +11,7 @@ interface Software {
 }
 
 function getTechniqueCountPerSoftware(): Software[] {
-  let softwares;
-
-  if (store.domain === 'enterprise-attack') {
-    softwares = store.enterprise?.softwares;
-  } else if (store.domain === 'mobile-attack') {
-    softwares = store.mobile?.softwares;
-  } else if (store.domain === 'ics-attack') {
-    softwares = store.ics?.softwares;
-  }
+  const softwares = store.currentDomain?.softwares;
 
   // Check if softwares is defined and is an array
   if (!Array.isArray(softwares)) {

@@ -13,15 +13,7 @@ interface Component {
 }
 
 function getTopNewComponents(): Component[] {
-  let components;
-
-  if (store.domain === 'enterprise-attack') {
-    components = store.enterprise?.data_components;
-  } else if (store.domain === 'mobile-attack') {
-    components = store.mobile?.data_components;
-  } else if (store.domain === 'ics-attack') {
-    components = store.ics?.data_components;
-  }
+  const components = store.currentDomain?.data_components;
 
   // Check if components is defined and is an array
   if (!Array.isArray(components)) {

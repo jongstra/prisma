@@ -6,6 +6,7 @@ import { readDettectFile } from '@/domain/attack/dettect';
 
 // Define interfaces
 interface SubTechnique {
+  name: string;
   technique: string;
   external_id: string;
   platforms: string[];
@@ -39,18 +40,21 @@ interface Technique {
 
 interface Tactic {
   name: string;
+  external_id: string;
   techniques: Technique[];
+  technique_count: number;
+  subtechnique_count: number;
+  all_technique_count: number;
 }
 
+/** A platform, data source, data component, group or software of a domain; the fields differ per kind. */
 interface Attribute {
   name: string;
-  active_in_filter: boolean;
+  active_in_filter?: boolean;
+  [field: string]: any;
 }
 
-interface Attributes {
-  name: string;
-  attributes: Attribute[];
-}
+type Attributes = Attribute[];
 
 interface Domain {
   tactics: Tactic[];
@@ -73,6 +77,19 @@ interface TacticStats {
 
 
 
+/** The store key of each ATT&CK domain ('enterprise-attack' → 'enterprise'). */
+const DOMAIN_KEYS: Record<string, 'enterprise' | 'mobile' | 'ics'> = {
+  'enterprise-attack': 'enterprise',
+  'mobile-attack': 'mobile',
+  'ics-attack': 'ics',
+};
+
+/** The catalog data of a domain ('enterprise-attack', 'mobile-attack' or 'ics-attack'), or undefined for another value. */
+function domainOf(state: { enterprise: unknown; mobile: unknown; ics: unknown }, domain: string): Domain | undefined {
+  const key = DOMAIN_KEYS[domain];
+  return key ? (state[key] as Domain) : undefined;
+}
+
 export const tacticsStore = defineStore('tactics', {
   state: () => ({
     domain: 'enterprise-attack',  // Alternative initial value: 'none'.
@@ -90,18 +107,11 @@ export const tacticsStore = defineStore('tactics', {
 
   getters: {
 
-    allTechniquesIdsAndNames: (state) => {
-      let tactics;
+    /** The catalog data of the selected domain. */
+    currentDomain: (state) => domainOf(state, state.domain),
 
-      if (state.domain === 'enterprise-attack') {
-        tactics = state.enterprise?.tactics || [];
-      } else if (state.domain === 'mobile-attack') {
-        tactics = state.mobile?.tactics || [];
-      } else if (state.domain === 'ics-attack') {
-        tactics = state.ics?.tactics || [];
-      } else {
-        tactics = [];
-      }
+    allTechniquesIdsAndNames: (state) => {
+      const tactics = domainOf(state, state.domain)?.tactics || [];
 
       let allTechniquesIdsAndNames = tactics.flatMap(tactic => {
         return tactic.techniques.map(technique => ({
@@ -121,17 +131,7 @@ export const tacticsStore = defineStore('tactics', {
 
 
     allTechniquesAndSubtechniquesIdsAndNames: (state) => {
-      let tactics;
-
-      if (state.domain === 'enterprise-attack') {
-        tactics = state.enterprise?.tactics || [];
-      } else if (state.domain === 'mobile-attack') {
-        tactics = state.mobile?.tactics || [];
-      } else if (state.domain === 'ics-attack') {
-        tactics = state.ics?.tactics || [];
-      } else {
-        tactics = [];
-      }
+      const tactics = domainOf(state, state.domain)?.tactics || [];
 
       let allTechniquesAndSubtechniquesIdsAndNames = tactics.flatMap(tactic => {
         return tactic.techniques.flatMap(technique => {
@@ -164,16 +164,9 @@ export const tacticsStore = defineStore('tactics', {
 
 
     domainTechniqueByIdMap: (state) => (domain) => {
-      let tactics;
-      if (domain === 'enterprise-attack') {
-        tactics = state.enterprise?.tactics;
-      } else if (domain === 'mobile-attack') {
-        tactics = state.mobile?.tactics;
-      } else if (domain === 'ics-attack') {
-        tactics = state.ics?.tactics;
-      }
+      const tactics = domainOf(state, domain)?.tactics;
 
-      let domainTechniqueByIdMap = {};
+      const domainTechniqueByIdMap: Record<string, Technique | SubTechnique> = {};
 
       if (tactics) {
         tactics.forEach(tactic => {
@@ -204,15 +197,7 @@ export const tacticsStore = defineStore('tactics', {
 
 
     hoveredGroupsTechniquesSet: (state) => {
-      let groups;
-
-      if (state.domain === 'enterprise-attack') {
-        groups = state.enterprise?.groups;
-      } else if (state.domain === 'mobile-attack') {
-        groups = state.mobile?.groups;
-      } else if (state.domain === 'ics-attack') {
-        groups = state.ics?.groups;
-      }
+      const groups = domainOf(state, state.domain)?.groups ?? [];
 
       // Add all techniques of hovered groups to a list.
       let groupsTechniques = [];
@@ -229,15 +214,7 @@ export const tacticsStore = defineStore('tactics', {
 
 
     selectedGroupsTechniquesSet: (state) => {
-      let groups;
-
-      if (state.domain === 'enterprise-attack') {
-        groups = state.enterprise?.groups;
-      } else if (state.domain === 'mobile-attack') {
-        groups = state.mobile?.groups;
-      } else if (state.domain === 'ics-attack') {
-        groups = state.ics?.groups;
-      }
+      const groups = domainOf(state, state.domain)?.groups ?? [];
 
       // Add all techniques of selected groups to a list.
       let groupsTechniques = [];
@@ -254,15 +231,7 @@ export const tacticsStore = defineStore('tactics', {
 
 
     selectedGroupsTechniquesSetMagmaHeatmap: (state) => {
-      let groups;
-
-      if (state.domain === 'enterprise-attack') {
-        groups = state.enterprise?.groups;
-      } else if (state.domain === 'mobile-attack') {
-        groups = state.mobile?.groups;
-      } else if (state.domain === 'ics-attack') {
-        groups = state.ics?.groups;
-      }
+      const groups = domainOf(state, state.domain)?.groups ?? [];
 
       // Add all techniques of selected groups to a list.
       let groupsTechniques = [];
@@ -280,15 +249,7 @@ export const tacticsStore = defineStore('tactics', {
 
 
     hoveredComponentsTechniquesSet: (state) => {
-      let components;
-
-      if (state.domain === 'enterprise-attack') {
-        components = state.enterprise?.data_components;
-      } else if (state.domain === 'mobile-attack') {
-        components = state.mobile?.data_components;
-      } else if (state.domain === 'ics-attack') {
-        components = state.ics?.data_components;
-      }
+      const components = domainOf(state, state.domain)?.data_components ?? [];
 
       // Add all techniques of hovered data_components to a list.
       let componentsTechniques = [];
@@ -304,15 +265,7 @@ export const tacticsStore = defineStore('tactics', {
     },
 
     selectedComponentsTechniquesSet: (state) => {
-      let components;
-
-      if (state.domain === 'enterprise-attack') {
-        components = state.enterprise?.data_components;
-      } else if (state.domain === 'mobile-attack') {
-        components = state.mobile?.data_components;
-      } else if (state.domain === 'ics-attack') {
-        components = state.ics?.data_components;
-      }
+      const components = domainOf(state, state.domain)?.data_components ?? [];
 
       // Add all techniques of selected data_components to a list.
       let componentsTechniques = [];
@@ -329,15 +282,7 @@ export const tacticsStore = defineStore('tactics', {
 
 
     techniquesOccurrences: (state) => {
-      let tactics;
-
-      if (state.domain === 'enterprise-attack') {
-        tactics = state.enterprise?.tactics;
-      } else if (state.domain === 'mobile-attack') {
-        tactics = state.mobile?.tactics;
-      } else if (state.domain === 'ics-attack') {
-        tactics = state.ics?.tactics;
-      }
+      const tactics = domainOf(state, state.domain)?.tactics;
 
       if (!tactics) {
         return [];
@@ -367,21 +312,7 @@ export const tacticsStore = defineStore('tactics', {
 
     // Generalized getter function (attribute_type examples: platform/data_sources/data_components)
     activeAttributes: (state) => (attribute_type: string) => {
-      // Determine the correct data source based on the domain
-      let data;
-      switch (state.domain) {
-        case 'enterprise-attack':
-          data = state.enterprise[attribute_type];
-          break;
-        case 'mobile-attack':
-          data = state.mobile[attribute_type];
-          break;
-        case 'ics-attack':
-          data = state.ics[attribute_type];
-          break;
-        default:
-          data = {}; // Default to an empty object if domain doesn't match
-      }
+      const data = domainOf(state, state.domain)?.[attribute_type as keyof Domain] as Attribute[] | undefined;
 
       // Check if the attributeType exists in the data
       if (!data) {
@@ -391,39 +322,6 @@ export const tacticsStore = defineStore('tactics', {
       // Filter and map the active items based on the attributeType
       const active_attributes = data
         .filter(item => item.active_in_filter) // Filter the array to include only active items.
-        .map(item => item.name);
-
-      return active_attributes;
-    },
-
-
-    // TODO: possibly merge this code with the function above (by adding an extra parameter to the function call).
-    // Generalized getter function (attribute_type examples: platform/data_sources/data_components)
-    visibleAttributes: (state) => (attribute_type: string) => {
-      // Determine the correct data source based on the domain
-      let data;
-      switch (state.domain) {
-        case 'enterprise-attack':
-          data = state.enterprise[attribute_type];
-          break;
-        case 'mobile-attack':
-          data = state.mobile[attribute_type];
-          break;
-        case 'ics-attack':
-          data = state.ics[attribute_type];
-          break;
-        default:
-          data = {}; // Default to an empty object if domain doesn't match
-      }
-
-      // Check if the attributeType exists in the data
-      if (!data) {
-        return []; // Return an empty array if attributeType is not found in the data
-      }
-
-      // Filter and map the visible items based on the attributeType
-      const active_attributes = data
-        .filter(item => item.visibility) // Filter the array to include only items with visibility
         .map(item => item.name);
 
       return active_attributes;
@@ -466,8 +364,7 @@ export const tacticsStore = defineStore('tactics', {
     // when it has a problem, an error explains it and nothing changes. Data sources that ATT&CK does not know are ignored
     // and returned, so they can be reported.
     processDettectYaml(data: any): { unknownDataSources: string[] } {
-      const domainData = (domain: string): any =>
-        ({ 'enterprise-attack': this.enterprise, 'mobile-attack': this.mobile, 'ics-attack': this.ics } as any)[domain];
+      const domainData = (domain: string): any => domainOf(this, domain);
       if (!this.enterprise?.tactics) {
         throw new Error('The ATT&CK data is not loaded (yet). Please reload the page.');
       }
@@ -508,20 +405,12 @@ export const tacticsStore = defineStore('tactics', {
 
 
     resetDomainVisibility(domain: string) {
-      let tactics;
-      let data_components: Attributes[];
-      if (domain == 'enterprise-attack') {
-        tactics = this.enterprise.tactics;
-        data_components = this.enterprise.data_components;
-      } else if (domain == 'mobile-attack') {
-        tactics = this.mobile.tactics;
-        data_components = this.mobile.data_components;
-      } else if (domain == 'ics-attack') {
-        tactics = this.ics.tactics;
-        data_components = this.ics.data_components;
-      } else {
+      const domainEntry: any = domainOf(this, domain);
+      if (!domainEntry) {
         return;
       }
+      const tactics = domainEntry.tactics;
+      const data_components: Attributes[] = domainEntry.data_components;
 
       // Reset all components to visibility = false
       data_components.forEach(component => {

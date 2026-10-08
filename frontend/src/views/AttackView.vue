@@ -35,6 +35,9 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown);
 });
+
+// The matrix columns are keyed by domain and tactic, so switching domains creates new columns: each column and
+// technique button keeps the domain it was created for.
 </script>
 
 <template>
@@ -63,15 +66,7 @@ onUnmounted(() => {
 
   <div class="matrix-container">
     <div class='attack-matrix'>
-      <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
-        <TacticColumn :tactic=tactic :techniques=tactic.techniques />
-      </div>
-
-      <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile.tactics" class="button-columns">
-        <TacticColumn :tactic=tactic :techniques=tactic.techniques />
-      </div>
-
-      <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
+      <div v-for="tactic in store.currentDomain?.tactics" :key="`${store.domain}|${tactic.name}`" class="button-columns">
         <TacticColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
     </div>

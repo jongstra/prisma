@@ -11,15 +11,7 @@ interface Tactic {
 }
 
 function getTechniqueCountPerTactic(): Tactic[] {
-  let tactics;
-
-  if (store.domain === 'enterprise-attack') {
-    tactics = store.enterprise?.tactics;
-  } else if (store.domain === 'mobile-attack') {
-    tactics = store.mobile?.tactics;
-  } else if (store.domain === 'ics-attack') {
-    tactics = store.ics?.tactics;
-  }
+  const tactics = store.currentDomain?.tactics;
 
   // Check if tactics is defined and is an array
   if (!Array.isArray(tactics)) {

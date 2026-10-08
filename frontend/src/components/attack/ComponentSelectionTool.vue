@@ -6,16 +6,7 @@ import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
 // Computed property to determine the domain based on the store state
-const domain = computed(() => {
-  if (store.domain === 'enterprise-attack') {
-    return store.enterprise;
-  } else if (store.domain === 'mobile-attack') {
-    return store.mobile;
-  } else if (store.domain === 'ics-attack') {
-    return store.ics;
-  }
-  return { groups: [] }; // Default value if no domain matches
-});
+const domain = computed<any>(() => store.currentDomain ?? { groups: [] }); // The default applies before the data is loaded
 
 // Computed property to get only the selected components
 const selectedComponents = computed(() => {
@@ -91,12 +82,8 @@ const addComponentFromSearch = () => {
 const onlyShowSelectedComponents = computed({
   get: () => domain.value.only_show_selected_components,
   set: (value) => {
-    if (store.domain === 'enterprise-attack') {
-      store.enterprise.only_show_selected_components = value;
-    } else if (store.domain === 'mobile-attack') {
-      store.mobile.only_show_selected_components = value;
-    } else if (store.domain === 'ics-attack') {
-      store.ics.only_show_selected_components = value;
+    if (store.currentDomain) {
+      store.currentDomain.only_show_selected_components = value;
     }
   },
 });

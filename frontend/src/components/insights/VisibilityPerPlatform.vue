@@ -6,17 +6,7 @@ import { isDetectable, platformVisibility } from '@/domain/attack/visibility';
 const store = tacticsStore();
 
 function getDomain(): any {
-  let domain;
-  
-  if (store.domain === 'enterprise-attack' && store.enterprise) {
-    domain = store.enterprise;
-  } else if (store.domain === 'mobile-attack' && store.mobile) {
-    domain = store.mobile;
-  } else if (store.domain === 'ics-attack' && store.ics) {
-    domain = store.ics;
-  }
-
-  return domain || {};
+  return store.currentDomain || {};
 }
 
 function getPlatforms(): string[] {

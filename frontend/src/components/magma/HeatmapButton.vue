@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { tacticsStore } from '@/stores/tactics';
 import { magmaStore } from '@/stores/magma';
-import { ref, computed, reactive } from 'vue';
+import { ref, computed } from 'vue';
 import { ancestorCounts, heatmapValue } from '@/domain/magma/heatmap';
 import { isDetectable } from '@/domain/attack/visibility';
 import { NOT_DETECTABLE_STYLE } from '../common/notDetectableStyle';
@@ -10,14 +10,7 @@ const store = tacticsStore();
 const props = defineProps(['technique']);
 const magma = magmaStore();
 
-let domain;
-if (store.domain === 'enterprise-attack') {
-  domain = reactive(store.enterprise);
-} else if (store.domain === 'mobile-attack') {
-  domain = reactive(store.mobile);
-} else if (store.domain === 'ics-attack') {
-  domain = reactive(store.ics);
-}
+const domain: any = store.currentDomain;
 
 // Tooltip variables.
 let showTooltipBool = ref(false);

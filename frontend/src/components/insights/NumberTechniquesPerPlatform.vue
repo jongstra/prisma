@@ -11,15 +11,7 @@ interface Platform {
 }
 
 function getTechniqueCountPerPlatform(): Platform[] {
-  let platforms;
-
-  if (store.domain === 'enterprise-attack') {
-    platforms = store.enterprise?.platforms;
-  } else if (store.domain === 'mobile-attack') {
-    platforms = store.mobile?.platforms;
-  } else if (store.domain === 'ics-attack') {
-    platforms = store.ics?.platforms;
-  }
+  const platforms = store.currentDomain?.platforms;
 
   // Check if platforms is defined and is an array
   if (!Array.isArray(platforms)) {

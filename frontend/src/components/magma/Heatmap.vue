@@ -6,6 +6,9 @@ import HeatmapSliderFilter from './HeatmapSliderFilter.vue';
 import HeatmapSearchBar from './HeatmapSearchBar.vue';
 import HeatmapGroupSelectionTool from './HeatmapGroupSelectionTool.vue';
 const store = tacticsStore();
+
+// The matrix columns are keyed by domain and tactic, so switching domains creates new columns: each column and
+// technique button keeps the domain it was created for.
 </script>
 
 
@@ -20,15 +23,7 @@ const store = tacticsStore();
   </div>
   <div class="heatmap-container">
     <div class="heatmap">
-      <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
-        <HeatmapButtonColumn :tactic=tactic :techniques=tactic.techniques />
-      </div>
-
-      <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile.tactics" class="button-columns">
-        <HeatmapButtonColumn :tactic=tactic :techniques=tactic.techniques />
-      </div>
-
-      <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
+      <div v-for="tactic in store.currentDomain?.tactics" :key="`${store.domain}|${tactic.name}`" class="button-columns">
         <HeatmapButtonColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
     </div>

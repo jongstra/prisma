@@ -32,16 +32,7 @@ function toggleAttribute(attribute: any) {
 
 // Compute attributes based on the current domain and attribute type
 const attributes = computed(() => {
-  switch (store.domain) {
-    case 'enterprise-attack':
-      return store.enterprise[props.attribute_type];
-    case 'mobile-attack':
-      return store.mobile[props.attribute_type];
-    case 'ics-attack':
-      return store.ics[props.attribute_type];
-    default:
-      return [];
-  }
+  return store.currentDomain ? (store.currentDomain as any)[props.attribute_type] : [];
 });
 
 // Compute the state of the main checkbox

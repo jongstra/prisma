@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch, reactive } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 import { v4 as uuidv4 } from 'uuid';
 import { hasDataComponents, isDetectable } from '@/domain/attack/visibility';
@@ -11,14 +11,7 @@ const id = uuidv4();
 
 let showTooltipBool = ref(false);
 
-let domain;
-if (store.domain === 'enterprise-attack') {
-  domain = reactive(store.enterprise);
-} else if (store.domain === 'mobile-attack') {
-  domain = reactive(store.mobile);
-} else if (store.domain === 'ics-attack') {
-  domain = reactive(store.ics);
-}
+const domain: any = store.currentDomain;
 
 // Calculate the tooltip position, and update it when the button location would be modified.
 const buttonRef = ref<HTMLElement | null>(null);

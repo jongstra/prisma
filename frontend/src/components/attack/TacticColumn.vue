@@ -13,14 +13,7 @@ const tacticVisibility = (tactic: any) => {
   return percentage === null ? 'n/a' : `${Math.round(percentage)}%`;
 };
 
-let domain;
-if (store.domain === 'enterprise-attack') {
-  domain = store.enterprise;
-} else if (store.domain === 'mobile-attack') {
-  domain = store.mobile;
-} else if (store.domain === 'ics-attack') {
-  domain = store.ics;
-}
+const domain: any = store.currentDomain;
 
 // Method to handle clicks outside of buttons and their tooltips, to close button tooltips.
 const handleClickOutsideToCloseTooltips = (event: MouseEvent) => {

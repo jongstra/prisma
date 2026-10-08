@@ -6,15 +6,7 @@ import { averageVisibilityPercentage, isDetectable } from '@/domain/attack/visib
 const store = tacticsStore();
 
 function getTactics(): any {
-  let tactics;
-
-  if (store.domain === 'enterprise-attack' && store.enterprise?.tactics) {
-    tactics = store.enterprise.tactics.slice(); // Create a shallow copy
-  } else if (store.domain === 'mobile-attack' && store.mobile?.tactics) {
-    tactics = store.mobile.tactics.slice(); // Create a shallow copy
-  } else if (store.domain === 'ics-attack' && store.ics?.tactics) {
-    tactics = store.ics.tactics.slice(); // Create a shallow copy
-  }
+  const tactics = store.currentDomain?.tactics?.slice(); // A shallow copy
 
   if (!tactics) {
     return []; // Return an empty array if no tactics are found
