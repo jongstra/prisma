@@ -7,7 +7,6 @@ The MaGMa page: the use case sheets, the heatmap, the insights and the summary.
 | [`Heatmap.vue`](Heatmap.vue) | Heatmap tab: the ATT&CK matrix coloured by use case scores |
 | [`HeatmapButton.vue`](HeatmapButton.vue) | One technique in the heatmap, with its tooltip |
 | [`HeatmapButtonColumn.vue`](HeatmapButtonColumn.vue) | One tactic column of the heatmap |
-| [`HeatmapGroupSelectionTool.vue`](HeatmapGroupSelectionTool.vue) | Shows the techniques used by selected groups |
 | [`HeatmapSearchBar.vue`](HeatmapSearchBar.vue) | Searches techniques in the heatmap |
 | [`HeatmapSliderFilter.vue`](HeatmapSliderFilter.vue) | Filters the heatmap by percentage |
 | [`HeatmapStyleCheckboxes.vue`](HeatmapStyleCheckboxes.vue) | Chooses the scores the heatmap colours use |

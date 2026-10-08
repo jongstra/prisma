@@ -1,44 +1,47 @@
 <script setup lang="ts">
+// Selects groups or data components of the current domain, to highlight (or only show) the techniques they use or
+// cover. Used on the DeTT&CT page (groups and data components) and on the MaGMa heatmap (groups).
 import Swal from 'sweetalert2';
 import { computed, ref } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 
+const props = defineProps<{
+  list: 'groups' | 'data_components'; // the list of the domain to select from
+  selectedField: string; // the field that marks an item as selected
+  onlyShowField: string; // the domain field that says: only show the techniques of the selected items
+  noun: string; // 'group' or 'component', for the texts
+  toggleTitle: string;
+  color: 'red' | 'green'; // colour of the selected items
+}>();
+
 const store = tacticsStore();
 
-// Computed property to determine the domain based on the store state
-const domain = computed<any>(() => store.currentDomain ?? { none: [] }); // The default applies before the data is loaded
+const items = computed<any[]>(() => (store.currentDomain as any)?.[props.list] ?? []);
 
-// Computed property to get only the selected groups
-const selectedGroups = computed(() => {
-  if (!domain.value.groups) return [];
-  return domain.value.groups.filter(group => group.selected === true);
-});
+const selectedItems = computed(() => items.value.filter((item) => item[props.selectedField] === true));
 
-// Function to remove the 'selected' property from a group
-const removeSelection = (group: { id: string, selected: boolean }) => {
-  delete group.selected;
+const removeSelection = (item: any) => {
+  delete item[props.selectedField];
 };
 
-// Function to clear all selections
 const clearAllSelections = () => {
-  domain.value.groups.forEach(group => delete group.selected);
+  items.value.forEach((item) => delete item[props.selectedField]);
 };
 
-// Function to clear selections with confirmation.
+// Clear all selections, after confirmation.
 const confirmClearAllSelections = () => {
-  if (selectedGroups.value.length === 0) {
-    // No selected groups, do nothing
+  if (selectedItems.value.length === 0) {
     return;
   }
 
   Swal.fire({
-    title: 'Clear all group selections?',
+    title: `Clear all ${props.noun} selections?`,
     text: "You won't be able to revert this.",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#d33',
     cancelButtonColor: 'green',
-    confirmButtonText: 'Yes, clear all group selections',
+    confirmButtonText: `Yes, clear all ${props.noun} selections`,
     cancelButtonText: 'No, cancel',
     reverseButtons: true,
     customClass: {
@@ -50,79 +53,73 @@ const confirmClearAllSelections = () => {
       clearAllSelections();
     }
   });
-
 };
 
-// Search field functionality
+// Search field: suggestions while typing; Enter selects an item with exactly that name.
 const searchQuery = ref('');
-const filteredGroups = computed(() => {
+const filteredItems = computed(() => {
   if (!searchQuery.value) return [];
-  return domain.value.groups.filter(group =>
-    group.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-  );
+  return items.value.filter((item) => item.name.toLowerCase().includes(searchQuery.value.toLowerCase()));
 });
 
-// Function to add a new selected group
-const selectGroup = (group: { id: string, name: string }) => {
-  group.selected = true;
-  searchQuery.value = ''; // Clear the search query after selection
+const selectItem = (item: any) => {
+  item[props.selectedField] = true;
+  searchQuery.value = '';
 };
 
-// Function to add a group from search (only if it exists)
-const addGroupFromSearch = () => {
-  const existingGroup = domain.value.groups.find(group =>
-    group.name.toLowerCase() === searchQuery.value.toLowerCase()
-  );
-  if (existingGroup) {
-    selectGroup(existingGroup);
+const addItemFromSearch = () => {
+  const existingItem = items.value.find((item) => item.name.toLowerCase() === searchQuery.value.toLowerCase());
+  if (existingItem) {
+    selectItem(existingItem);
   }
 };
 
-// Computed property to get and set the only_show_selected_groups value
-const onlyShowSelectedGroups = computed({
-  get: () => domain.value.only_show_selected_groups,
+const onlyShowSelected = computed({
+  get: () => (store.currentDomain as any)?.[props.onlyShowField],
   set: (value) => {
     if (store.currentDomain) {
-      store.currentDomain.only_show_selected_groups = value;
+      (store.currentDomain as any)[props.onlyShowField] = value;
     }
   },
 });
 </script>
 
 <template>
-  <div class="group-container">
+  <div class="selection-container" :class="`items-${color}`">
     <div class="header">
-      <input class='group-search-box' v-model="searchQuery" placeholder="Search groups..." @keydown.enter="addGroupFromSearch" />
+      <input class='search-box' v-model="searchQuery" :placeholder="`Search ${noun}s...`" @keydown.enter="addItemFromSearch" />
       <button class='clear-all-button' @click="confirmClearAllSelections">Clear</button>
       <label class="toggle-label">
-        <input type="checkbox" v-model="onlyShowSelectedGroups" />
-        <span class="toggle-switch" title="Only show techniques used by selected groups."></span>
+        <input type="checkbox" v-model="onlyShowSelected" />
+        <span class="toggle-switch" :title="toggleTitle"></span>
       </label>
     </div>
-    <div v-if="filteredGroups.length && searchQuery" class="suggestions">
-      <div 
-        v-for="group in filteredGroups" 
-        :key="group.id" 
+    <div v-if="filteredItems.length && searchQuery" class="suggestions">
+      <div
+        v-for="item in filteredItems"
+        :key="item.id"
         class="suggestion-item"
-        @click="selectGroup(group)"
+        @click="selectItem(item)"
       >
-        {{ group.name }}
+        {{ item.name }}
       </div>
     </div>
     <div class="buttons-wrapper">
       <button
-        v-for="group in selectedGroups" 
-        :key="group.id" 
-        @click="removeSelection(group)"
+        v-for="item in selectedItems"
+        :key="item.id"
+        @click="removeSelection(item)"
       >
-        {{ group.name }}
+        {{ item.name }}
       </button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.group-container {
+.selection-container {
+  --item-color: rgb(255, 104, 104);
+  --item-hover-color: rgb(225, 52, 52);
   padding: 2px;
   font-size: 14px;
   border: 2px solid #555;
@@ -131,6 +128,11 @@ const onlyShowSelectedGroups = computed({
   width: 265px;
   height: 70px;
   position: relative; /* Ensure absolute positioning is relative to this container */
+}
+
+.selection-container.items-green {
+  --item-color: rgb(110, 220, 110);
+  --item-hover-color: rgb(55, 190, 55);
 }
 
 .header {
@@ -156,7 +158,7 @@ button {
   padding: 0px 3px;
   margin-right: 2px;
   margin-bottom: 2px;
-  background-color: rgb(255, 104, 104);
+  background-color: var(--item-color);
   border-width: 1.5px;
   border-style: solid;
   border-color: #000;
@@ -168,7 +170,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(225, 52, 52);
+  background-color: var(--item-hover-color);
 }
 
 button::before {
@@ -195,7 +197,7 @@ button::before {
 }
 
 .suggestions {
-  position: absolute; /* Position absolutely within the group-container */
+  position: absolute; /* Position absolutely within the selection-container */
   left: 5px;
   right: 5px;
   background-color: white;

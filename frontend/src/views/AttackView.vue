@@ -8,8 +8,7 @@ import TechniqueVisibilityPercentageFilter from '@/components/attack/TechniqueVi
 import TechniqueTotalOccurrenceFilterBinned from '@/components/attack/TechniqueTotalOccurrenceFilterBinned.vue';
 import VisibilityLegend from '@/components/attack/VisibilityLegend.vue';
 import SearchBar from '@/components/attack/SearchBar.vue';
-import GroupSelectionTool from '@/components/attack/GroupSelectionTool.vue';
-import ComponentSelectionTool from '@/components/attack/ComponentSelectionTool.vue';
+import SelectionTool from '@/components/common/SelectionTool.vue';
 const store = tacticsStore();
 
 // When the domain is changed, we want to unpin any pinned tooltips for cleanliness,
@@ -58,8 +57,14 @@ onUnmounted(() => {
     <div class="controls-row">
       <div class='filter'><TechniqueAttributeFilter attribute_type="platforms"/></div>
       <div class='search'><SearchBar/></div>
-      <div class='group-selection-tool'><GroupSelectionTool/></div>
-      <div class='component-selection-tool'><ComponentSelectionTool/></div>
+      <div class='group-selection-tool'>
+        <SelectionTool list="groups" selected-field="selected" only-show-field="only_show_selected_groups" noun="group"
+          toggle-title="Only show techniques used by selected groups." color="red"/>
+      </div>
+      <div class='component-selection-tool'>
+        <SelectionTool list="data_components" selected-field="selected" only-show-field="only_show_selected_components" noun="component"
+          toggle-title="Only show techniques covered by selected components." color="green"/>
+      </div>
     </div>
 
   </div>

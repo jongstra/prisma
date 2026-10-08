@@ -4,7 +4,7 @@ import HeatmapButtonColumn from './HeatmapButtonColumn.vue';
 import HeatmapStyleCheckboxes from './HeatmapStyleCheckboxes.vue';
 import HeatmapSliderFilter from './HeatmapSliderFilter.vue';
 import HeatmapSearchBar from './HeatmapSearchBar.vue';
-import HeatmapGroupSelectionTool from './HeatmapGroupSelectionTool.vue';
+import SelectionTool from '@/components/common/SelectionTool.vue';
 const store = tacticsStore();
 
 // The matrix columns are keyed by domain and tactic, so switching domains creates new columns: each column and
@@ -18,7 +18,9 @@ const store = tacticsStore();
   <div class="heatmap-settings">
     <HeatmapStyleCheckboxes/>
     <HeatmapSliderFilter/>
-    <HeatmapGroupSelectionTool/>
+    <SelectionTool class="heatmap-selection" list="groups" selected-field="selectedInMagmaHeatmap"
+      only-show-field="only_show_selected_groups_magma_heatmap" noun="group"
+      toggle-title="Only show techniques used by selected groups." color="red"/>
     <HeatmapSearchBar/>
   </div>
   <div class="heatmap-container">
@@ -34,6 +36,10 @@ const store = tacticsStore();
 
 
 <style scoped>
+.heatmap-selection {
+  margin: 0px 5px;
+}
+
 
 div.heatmap-settings {
   display: flex;
