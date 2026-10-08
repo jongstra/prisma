@@ -398,7 +398,7 @@ export const tacticsStore = defineStore('tactics', {
     },
 
 
-    // TODO: mogelijk deze code met de functie hierboven samenvoegen (extra parameter toevoegen aan function call).
+    // TODO: possibly merge this code with the function above (by adding an extra parameter to the function call).
     // Generalized getter function (attribute_type examples: platform/data_sources/data_components)
     visibleAttributes: (state) => (attribute_type: string) => {
       // Determine the correct data source based on the domain
