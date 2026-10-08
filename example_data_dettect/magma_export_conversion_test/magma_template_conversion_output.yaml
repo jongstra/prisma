@@ -1,0 +1,912 @@
+- description: Any tampering of critical business systems which causes or further
+    enables theft of virtual or physical assets via existing or current channels.
+  domain: enterprise-attack
+  id: FIN
+  level: 1
+  name: Financial Loss
+- description: 'Any Denial of Service attack, optionally distributed with the goal
+    of causing outages.
+
+    IN: reconnaissance & scanning
+
+    THROUGH: not applicable
+
+    OUT: DDoS attack impact'
+  domain: enterprise-attack
+  id: DOS
+  inImpact: 5.0
+  level: 1
+  name: Denial of Service
+  outImpact: 95.0
+  thrImpact: 0.0
+- description: 'Corporate espionage aimed at stealing proprietary intellectual property
+
+    IN: intial compromise and foothold
+
+    THROUGH: lateral movement, privilege elevation, identifying intellectual property,
+    collection & staging
+
+    OUT: exfiltration'
+  domain: enterprise-attack
+  id: ESP
+  inImpact: 10.0
+  level: 1
+  name: Espionage / Data Theft
+  outImpact: 50.0
+  thrImpact: 40.0
+- description: "Attempts by criminals to impersonate the organization's CEO or other\
+    \ board-level executive and to have the victim transfer large amounts of money.\
+    \ \nIN: intial compromise and foothold\nTHROUGH: lateral movement, privilege elevation,\
+    \ identifying C-level mailboxes, obtaining credentials and/or compromising email\
+    \ server\nOUT: sending email"
+  domain: enterprise-attack
+  id: CEO
+  inImpact: 25.0
+  level: 1
+  name: CEO Fraud
+  outImpact: 20.0
+  thrImpact: 55.0
+- description: ''
+  domain: enterprise-attack
+  id: EXT
+  level: 1
+  name: Extortion / Ransomware
+- description: 'Any action to destroy/damage organizational and personal asset, information
+    or reputation with the goal of causing financial damage or service outages e.g.:
+    social media data posting, doxing, etc.'
+  domain: enterprise-attack
+  id: SAB
+  level: 1
+  name: Sabotage / Destruction
+- description: ''
+  domain: enterprise-attack
+  id: INS
+  level: 1
+  name: Insider Threat
+- description: Illegal sites, service account usage, presence of vulnerabilities,
+    Unauthorized process launched, etc..
+  domain: enterprise-attack
+  id: POL
+  level: 1
+  name: Policy Violations
+- description: ''
+  domain: enterprise-attack
+  id: IN-REC
+  level: 2
+  name: Reconnaissance
+  parentIds:
+  - IN
+- description: ''
+  domain: enterprise-attack
+  id: IN-RES
+  level: 2
+  name: Resource development
+  parentIds:
+  - IN
+- description: ''
+  domain: enterprise-attack
+  id: IN-DEL
+  level: 2
+  name: Delivery
+  parentIds:
+  - IN
+- description: ''
+  domain: enterprise-attack
+  id: IN-SOC
+  level: 2
+  name: Social Engineering
+  parentIds:
+  - IN
+- description: ''
+  domain: enterprise-attack
+  id: IN-EXP
+  level: 2
+  name: Exploitation
+  parentIds:
+  - IN
+- description: ''
+  domain: enterprise-attack
+  id: IN-PER
+  level: 2
+  name: Persistence
+  parentIds:
+  - IN
+- description: ''
+  domain: enterprise-attack
+  id: IN-DEF
+  level: 2
+  name: Defense Evasion
+  parentIds:
+  - IN
+- description: ''
+  domain: enterprise-attack
+  id: IN-CNC
+  level: 2
+  name: Command & Control
+  parentIds:
+  - IN
+- description: ''
+  domain: enterprise-attack
+  id: IN-PHY
+  level: 2
+  name: Physical compromise
+  parentIds:
+  - IN
+- description: Tunneling traffic through a controlled system to other systems that
+    are not directly accessible
+  domain: enterprise-attack
+  id: THR-PIV
+  level: 2
+  name: Pivoting
+  parentIds:
+  - THR
+- description: Techniques that allow an attacker to gain knowledge about a system
+    and its network environment.
+  domain: enterprise-attack
+  id: THR-DIS
+  level: 2
+  name: Discovery
+  parentIds:
+  - THR
+- description: The result of techniques that provide an attacker with higher permissions
+    on a system or network.
+  domain: enterprise-attack
+  id: THR-PRI
+  level: 2
+  name: Privilege Escalation
+  parentIds:
+  - THR
+- description: Techniques that result in execution of attacker-controlled code on
+    a local or remote system
+  domain: enterprise-attack
+  id: THR-EXE
+  level: 2
+  name: Execution
+  parentIds:
+  - THR
+- description: Techniques resulting in the access of, or control over, system, service
+    or domain credentials.
+  domain: enterprise-attack
+  id: THR-CRE
+  level: 2
+  name: Credential Access
+  parentIds:
+  - THR
+- description: Techniques that enable an adversary to horizontally access and control
+    other remote systems.
+  domain: enterprise-attack
+  id: THR-LAT
+  level: 2
+  name: Lateral Movement
+  parentIds:
+  - THR
+- description: Any attempts by attackers to gain financial compensation from the organization
+    by not taking action. Such action may include DDoS attacks or sensitive information
+    disclosure
+  domain: enterprise-attack
+  id: EXT-EXT
+  level: 2
+  name: Extortion attempts
+  parentIds:
+  - EXT
+- description: Compromise of the email server for purposes of fraud
+  domain: enterprise-attack
+  id: CEO-BEC
+  level: 2
+  name: Business Email Compromise
+  parentIds:
+  - CEO
+- description: Spoofing mail from high-level executives for purposes of fraud
+  domain: enterprise-attack
+  id: CEO-SPF
+  level: 2
+  name: CEO spoofing attack
+  parentIds:
+  - CEO
+- description: "DDoS attack conducted by directing high volumes of (spoofed) traffic\
+    \ to out organization\u2019s network"
+  domain: enterprise-attack
+  id: DOS-VOL
+  level: 2
+  name: Volume DDoS
+  parentIds:
+  - DOS
+- description: DDoS attack using protocol anomalies. Some network equipment or firewalls
+    cannot effectively deal with some types of protocol attacks. Most commonly, this
+    results in resource exhaustion
+  domain: enterprise-attack
+  id: DOS-PRO
+  level: 2
+  name: Protocol (D)Dos
+  parentIds:
+  - DOS
+- description: (D)Dos attack conducted by mimicking high volumes of legitimate traffic
+    to our web application servers
+  domain: enterprise-attack
+  id: DOS-APP
+  level: 2
+  name: Application (D)DoS
+  parentIds:
+  - DOS
+- description: ''
+  domain: enterprise-attack
+  id: ESP-END
+  level: 2
+  name: Espionage from endpoint
+  parentIds:
+  - ESP
+- description: ''
+  domain: enterprise-attack
+  id: ESP-SRV
+  level: 2
+  name: Espionage from servers / storage
+  parentIds:
+  - ESP
+- description: ''
+  domain: enterprise-attack
+  id: ESP-TRA
+  level: 2
+  name: Espionage from data in transit
+  parentIds:
+  - ESP
+- description: Collection of information from various sources for espionage purposes
+  domain: enterprise-attack
+  id: ESP-COL
+  level: 2
+  name: Collection
+  parentIds:
+  - ESP
+- description: Exfiltration of collected information through various channels for
+    espionsage purposes
+  domain: enterprise-attack
+  id: ESP-EXF
+  level: 2
+  name: Exfiltration in espionage attack
+  parentIds:
+  - ESP
+- description: 'Sabotage or destruction of a system through means of computer. This
+    can be done as part of a cover-up strategy or simply to disrupt business. '
+  domain: enterprise-attack
+  id: SAB-ICS
+  level: 2
+  name: ICS sabotage
+  parentIds:
+  - SAB
+- description: Sabotage or an IT asset
+  domain: enterprise-attack
+  id: SAB-ITA
+  level: 2
+  name: IT Asset sabotage
+  parentIds:
+  - SAB
+- description: Physical sabotage of an asset. This is physical damage directly from
+    the attacker, or physical damage as a result of industrial sabotage. In case of
+    ICS, sabotage can lead to physical destruction and thus have safety impact as
+    well.
+  domain: enterprise-attack
+  id: SAB-PHS
+  level: 2
+  name: Physical sabotage
+  parentIds:
+  - SAB
+- description: Defacement of (most likely) organizational websites. Usually conducted
+    by hacktivist actors
+  domain: enterprise-attack
+  id: SAB-WEB
+  level: 2
+  name: Defacement
+  parentIds:
+  - SAB
+- description: This could be copyrighted material, but also includes other illegal
+    categories
+  domain: enterprise-attack
+  id: POL-ICS
+  level: 2
+  name: Illegal content streaming or usage of disallowed web service
+  parentIds:
+  - POL
+- description: Usage of protocols that are outdated and unsecure. Examples of such
+    protocols are FTP and telnet
+  domain: enterprise-attack
+  id: POL-COM
+  level: 2
+  name: Insecure communication protocol
+  parentIds:
+  - POL
+- description: Any vulnerable systems or applications / services that leave the system
+    vulnerable for compromise
+  domain: enterprise-attack
+  id: POL-VUL
+  level: 2
+  name: Vulnerable system or service
+  parentIds:
+  - POL
+- description: Launch of an unauthorized process. Examples of such processes are psexec,
+    powershell and the command prompt. Also covers unauthorized processes running
+    as a service
+  domain: enterprise-attack
+  id: POL-PRC
+  level: 2
+  name: Unauthorized process launched
+  parentIds:
+  - POL
+- description: Any application present on hosts that are not allowed by policy or
+    are quite simply illegal. Examples of such applications are hacking tools and
+    pirated software
+  domain: enterprise-attack
+  id: POL-APP
+  level: 2
+  name: Illegal or aberrant application found on host
+  parentIds:
+  - POL
+- description: This use case is reserved for situations where systems are being abused,
+    for example for bitcoin mining
+  domain: enterprise-attack
+  id: POL-RES
+  level: 2
+  name: Resource abuse
+  parentIds:
+  - POL
+- description: Any unauthorized use of accounts with high privileges, such as root
+    accounts on Linux / UNIX and administrator accounts on Windows
+  domain: enterprise-attack
+  id: POL-ACC
+  level: 2
+  name: Unauthorized use of high-privileged account
+  parentIds:
+  - POL
+- description: Unauthorized modification of configuration settings. This can be a
+    compliance issue, where the configuration may result in a hardening baseline deviation.
+    It can also be part of malicious activity
+  domain: enterprise-attack
+  id: POL-POL
+  level: 2
+  name: Unauthorized modification of technical policy
+  parentIds:
+  - POL
+- attackTechniqueId: T1110
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-CRE-1
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Brute Force Attack on Accounts
+  parentIds:
+  - THR-CRE
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1053
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-EXE-1
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Scheduled Scripts
+  parentIds:
+  - THR-EXE
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1190
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-EXP-1
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Exploitation of Public-Facing Application
+  parentIds:
+  - IN-EXP
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1136
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-PER-1
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Creation of New User Accounts
+  parentIds:
+  - IN-PER
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1036
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-DEF-1
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Masquerading of Files or Processes
+  parentIds:
+  - IN-DEF
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1547
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-PER-2
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Registry Run Keys / Startup Folder
+  parentIds:
+  - IN-PER
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1203
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-EXE-2
+  impact: 0
+  implementation: 40.0
+  level: 3
+  name: Exploitation of Software Vulnerabilities
+  parentIds:
+  - THR-EXE
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1014
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-DEF-2
+  impact: 0
+  implementation: 50.0
+  level: 3
+  name: Rootkit Installation
+  parentIds:
+  - IN-DEF
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1113
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: ESP-COL-1
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Input Capture via Screen Capture
+  parentIds:
+  - ESP-COL
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1040
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-CRE-2
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Network Sniffing
+  parentIds:
+  - THR-CRE
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1021
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-LAT-1
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Remote Services for Lateral Movement
+  parentIds:
+  - THR-LAT
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1218
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-DEF-3
+  impact: 0
+  implementation: 30.0
+  level: 3
+  name: Use of Signed Binary Proxy Execution
+  parentIds:
+  - IN-DEF
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1114
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: ESP-COL-2
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Email Collection
+  parentIds:
+  - ESP-COL
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1078
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-DEF-4
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Valid Accounts for Defence Evasion
+  parentIds:
+  - IN-DEF
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1601
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-DEF-5
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Modify System Image
+  parentIds:
+  - IN-DEF
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1059
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-EXE-3
+  impact: 0
+  implementation: 20.0
+  level: 3
+  name: Command-Line Interface Usage
+  parentIds:
+  - THR-EXE
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1082
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-DIS-1
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Automated Collection of System Information
+  parentIds:
+  - THR-DIS
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1040
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: THR-CRE-3
+  impact: 0
+  implementation: 30.0
+  level: 3
+  name: Use of Network Sniffing to Harvest Credentials
+  parentIds:
+  - THR-CRE
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1055
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: IN-DEF-6
+  impact: 0
+  implementation: 40.0
+  level: 3
+  name: Use of Process Injection for Defence Evasion
+  parentIds:
+  - IN-DEF
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1091
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: IN-EXP-2
+  impact: 0
+  implementation: 60.0
+  level: 3
+  name: Use of USB Devices for Execution
+  parentIds:
+  - IN-EXP
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1564
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: IN-DEF-7
+  impact: 0
+  implementation: 80.0
+  level: 3
+  name: Use of Hidden Files for Defence Evasion
+  parentIds:
+  - IN-DEF
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1134
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: IN-DEF-8
+  impact: 0
+  implementation: 10.0
+  level: 3
+  name: Use of Token Impersonation for Privilege Escalation
+  parentIds:
+  - IN-DEF
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1021
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: THR-LAT-2
+  impact: 0
+  implementation: 100.0
+  level: 3
+  name: Use of Remote Services for Persistence
+  parentIds:
+  - THR-LAT
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1203
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: THR-EXE-4
+  impact: 0
+  implementation: 100.0
+  level: 3
+  name: Use of Browser Exploits
+  parentIds:
+  - THR-EXE
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1005
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: ESP-COL-3
+  impact: 0
+  implementation: 100.0
+  level: 3
+  name: Use of Data from Local System for Collection
+  parentIds:
+  - ESP-COL
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1083
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: THR-DIS-2
+  impact: 0
+  implementation: 100.0
+  level: 3
+  name: Use of File and Directory Discovery
+  parentIds:
+  - THR-DIS
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1056
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: ESP-COL-4
+  impact: 0
+  implementation: 100.0
+  level: 3
+  name: Use of Input Capture to Harvest Credentials
+  parentIds:
+  - ESP-COL
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1557
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: ESP-COL-5
+  impact: 0
+  implementation: 100.0
+  level: 3
+  name: Use of Man-in-the-Middle Attack
+  parentIds:
+  - ESP-COL
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1055
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: IN-DEF-9
+  impact: 0
+  implementation: 100.0
+  level: 3
+  name: Use of Process Injection for Privilege Escalation
+  parentIds:
+  - IN-DEF
+  visibility: 100.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1518
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-DIS-3
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Security Software Discovery
+  parentIds:
+  - THR-DIS
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1218
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-DEF-10
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Signed Script Proxy Execution
+  parentIds:
+  - IN-DEF
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1049
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-DIS-4
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of System Network Connections Discovery
+  parentIds:
+  - THR-DIS
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1552
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-CRE-4
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Unsecured Credentials on Network
+  parentIds:
+  - THR-CRE
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1078
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-DEF-11
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Valid Accounts for Initial Access
+  parentIds:
+  - IN-DEF
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1497
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-DEF-12
+  impact: 0
+  implementation: 40.0
+  level: 3
+  name: Use of Virtualisation/Sandbox Evasion
+  parentIds:
+  - IN-DEF
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1047
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-EXE-5
+  impact: 0
+  implementation: 40.0
+  level: 3
+  name: Use of Windows Management Instrumentation for Discovery
+  parentIds:
+  - THR-EXE
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1547
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: IN-PER-3
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Windows Registry for Persistence
+  parentIds:
+  - IN-PER
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1053
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 70.0
+  id: THR-EXE-6
+  impact: 0
+  implementation: 90.0
+  level: 3
+  name: Use of Windows Scheduled Task for Execution
+  parentIds:
+  - THR-EXE
+  visibility: 90.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
+- attackTechniqueId: T1220
+  description: ''
+  domain: enterprise-attack
+  effectiveness: 90.0
+  id: IN-DEF-13
+  impact: 0
+  implementation: 100.0
+  level: 3
+  name: Use of XSL Script Processing for Execution
+  parentIds:
+  - IN-DEF
+  visibility: 80.0
+  visibilityFromAttackTechniqueOverride: true
+  weight: 0
