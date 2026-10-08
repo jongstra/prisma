@@ -6,7 +6,7 @@ import { parse, stringify } from 'yaml';
 vi.mock('sweetalert2', () => ({ default: { fire: vi.fn(() => Promise.resolve({})) } }));
 
 const catalog = JSON.parse(fs.readFileSync('public/tactics_and_techniques_by_domain.json', 'utf8'));
-const readExample = (name: string) => fs.readFileSync(`../example_data_dettect/${name}`, 'utf8');
+const readExample = (name: string) => fs.readFileSync(`../examples/${name}`, 'utf8');
 
 // The magma store creates the tactics store when its module loads, so both are imported after Pinia is active.
 async function setUpStores() {
@@ -30,9 +30,9 @@ describe('magma store with the example files', () => {
 
   beforeEach(async () => {
     const stores = await setUpStores();
-    stores.tactics.processDettectYaml(parse(readExample('dettect_editor_data_sources_example_enterprise_LARGE.yaml')));
+    stores.tactics.processDettectYaml(parse(readExample('dettect/enterprise_large.yaml')));
     magma = stores.magma;
-    magma.importUseCases(readExample('magma_data_example.yaml'));
+    magma.importUseCases(readExample('magma/example.yaml'));
     magma.updateAllL3UseCasesBasedOnDettectVisibility();
   });
 
@@ -177,7 +177,7 @@ describe('magma store: renaming and deleting use cases', () => {
 
   beforeEach(async () => {
     magma = (await setUpStores()).magma;
-    magma.importUseCases(readExample('magma_data_example.yaml'));
+    magma.importUseCases(readExample('magma/example.yaml'));
     magma.importUseCases(stringify([{ domain: 'mobile-attack', level: 3, id: 'M-1', name: 'm', parentIds: ['DOS-1'] }]));
   });
 
@@ -217,7 +217,7 @@ describe('magma store: loading a MaGMa file', () => {
 
   beforeEach(async () => {
     magma = (await setUpStores()).magma;
-    magma.importUseCases(readExample('magma_data_example.yaml'));
+    magma.importUseCases(readExample('magma/example.yaml'));
     magma.importUseCases(stringify([{ domain: 'mobile-attack', level: 3, id: 'M-1', name: 'm' }]));
   });
 
@@ -241,7 +241,7 @@ describe('magma store: loading a MaGMa file', () => {
   it('changes nothing when the file cannot be read as MaGMa use cases', () => {
     const before = ids();
     expect(() => magma.loadUseCaseFile('- domain: enterprise-attack\n  id: [oops')).toThrow('not valid YAML');
-    expect(() => magma.loadUseCaseFile(readExample('dettect_editor_data_sources_example_enterprise.yaml'))).toThrow('does not contain a list of MaGMa use cases');
+    expect(() => magma.loadUseCaseFile(readExample('dettect/enterprise.yaml'))).toThrow('does not contain a list of MaGMa use cases');
     expect(() => magma.loadUseCaseFile(stringify([{ domain: 'unknown', id: 'X' }]))).toThrow('no use cases for a supported domain');
     expect(ids()).toEqual(before);
   });

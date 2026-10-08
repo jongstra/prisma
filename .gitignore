@@ -32,6 +32,6 @@ coverage
 
 
 # Python stuff
-backend/venv/
-backend/__pycache__/
-backend/.ipynb_checkpoints/
+tools/venv/
+tools/__pycache__/
+tools/.ipynb_checkpoints/

@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 vi.mock('sweetalert2', () => ({ default: { fire: vi.fn(() => Promise.resolve({})) } }));
 
 const catalog = JSON.parse(fs.readFileSync('public/tactics_and_techniques_by_domain.json', 'utf8'));
-const readExample = (name: string) => parse(fs.readFileSync(`../example_data_dettect/${name}`, 'utf8'));
+const readExample = (name: string) => parse(fs.readFileSync(`../examples/${name}`, 'utf8'));
 
 describe('tactics store: processDettectYaml', () => {
   let store: ReturnType<typeof tacticsStore>;
@@ -24,7 +24,7 @@ describe('tactics store: processDettectYaml', () => {
   });
 
   it('gives every detectable technique and sub-technique exactly 100% with the maximum-quality file', () => {
-    store.processDettectYaml(readExample('dettect_editor_data_sources_example_enterprise ALL MAX QUALITY.yaml'));
+    store.processDettectYaml(readExample('dettect/enterprise_max_quality.yaml'));
     // The store types `enterprise` as a list, while it holds one domain object (fixed in the type clean-up).
     const enterprise: any = store.enterprise;
     for (const tactic of enterprise.tactics) {
@@ -55,14 +55,14 @@ describe('tactics store: loading a DeTT&CT file safely', () => {
     store.enterprise = copy.enterprise;
     store.mobile = copy.mobile;
     store.ics = copy.ics;
-    store.processDettectYaml(readExample('dettect_editor_data_sources_example_enterprise_LARGE.yaml'));
+    store.processDettectYaml(readExample('dettect/enterprise_large.yaml'));
   });
 
   it('changes nothing when a file has a problem', () => {
     const before = ratio('T1595');
     expect(before).toBeGreaterThan(0);
     expect(() => store.processDettectYaml(dettect([dataSource('Process Creation', 50)]))).toThrow('device_completeness "50" is not valid');
-    expect(() => store.processDettectYaml(readExample('magma_data_example.yaml'))).toThrow('not a DeTT&CT data source administration file');
+    expect(() => store.processDettectYaml(readExample('magma/example.yaml'))).toThrow('not a DeTT&CT data source administration file');
     expect(() => store.processDettectYaml(null)).toThrow('not a DeTT&CT data source administration file');
     expect(ratio('T1595')).toBe(before);
     expect(store.domain).toBe('enterprise-attack');

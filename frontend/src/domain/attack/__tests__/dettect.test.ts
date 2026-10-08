@@ -6,7 +6,7 @@ import { readDettectFile } from '../dettect';
 const catalog = JSON.parse(fs.readFileSync('public/tactics_and_techniques_by_domain.json', 'utf8'));
 const domainKey: Record<string, string> = { 'enterprise-attack': 'enterprise', 'mobile-attack': 'mobile', 'ics-attack': 'ics' };
 const dataComponents = (domain: string) => catalog[domainKey[domain]].data_components.map((c: { name: string }) => c.name);
-const readExample = (name: string) => parse(fs.readFileSync(`../example_data_dettect/${name}`, 'utf8'));
+const readExample = (name: string) => parse(fs.readFileSync(`../examples/${name}`, 'utf8'));
 
 const file = (dataSources: unknown[], overrides: Record<string, unknown> = {}) => ({
   version: 1.1, file_type: 'data-source-administration', domain: 'enterprise-attack', data_sources: dataSources, ...overrides,
@@ -17,9 +17,9 @@ const dataSource = (name: string, deviceCompleteness: unknown = 5) => ({
 
 describe('readDettectFile', () => {
   it('reads all example files of the repository', () => {
-    for (const name of ['dettect_editor_data_sources_example_enterprise.yaml', 'dettect_editor_data_sources_example_enterprise_LARGE.yaml',
-      'dettect_editor_data_sources_example_enterprise ALL MAX QUALITY.yaml', 'dettect_editor_data_sources_example_mobile.yaml',
-      'dettect_editor_data_sources_example_ics.yaml']) {
+    for (const name of ['dettect/enterprise.yaml', 'dettect/enterprise_large.yaml',
+      'dettect/enterprise_max_quality.yaml', 'dettect/mobile.yaml',
+      'dettect/ics.yaml']) {
       const result = readDettectFile(readExample(name), dataComponents);
       expect(result.unknownDataSources, name).toEqual([]);
       expect(result.completeness.size, name).toBeGreaterThan(0);
@@ -40,12 +40,12 @@ describe('readDettectFile', () => {
 
   it('explains why a file cannot be used', () => {
     const cases: [unknown, string][] = [
-      [parse(fs.readFileSync('../example_data_dettect/magma_data_example.yaml', 'utf8')), 'not a DeTT&CT data source administration file'],
+      [parse(fs.readFileSync('../examples/magma/example.yaml', 'utf8')), 'not a DeTT&CT data source administration file'],
       [file([], { file_type: 'technique-administration' }), 'a DeTT&CT "technique-administration" file'],
       [file([], { file_type: undefined }), 'it has no file_type'],
       [file([], { domain: 'pre-attack' }), 'domain of the file ("pre-attack") is not supported'],
       [file([], { data_sources: undefined }), 'no list of data sources'],
-      [readExample('dettect_editor_data_sources_example_enterprise_DUPLICATE_DS.yaml'), 'Duplicate data sources found'],
+      [readExample('dettect/enterprise_duplicate_data_sources.yaml'), 'Duplicate data sources found'],
       [file([{ data_source_name: 'Process Creation', data_source: [] }]), 'has no data quality scores'],
       [file([dataSource('Process Creation', 50)]), 'device_completeness "50" is not valid'],
       [file([dataSource('Process Creation', 'high')]), 'device_completeness "high" is not valid'],

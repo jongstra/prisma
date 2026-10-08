@@ -2,7 +2,7 @@
   import { onMounted, onBeforeUnmount } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
   const tactics = tacticsStore();
-  onMounted(() => {tactics.fetchTactics();}); // Fetch tactics json from Python backend for Pinia store.
+  onMounted(() => {tactics.fetchTactics();}); // Load the ATT&CK catalog (public/tactics_and_techniques_by_domain.json) into the Pinia store.
 
   // Ask user for confirmation when leaving/refreshing the page.
   const handleBeforeUnload = (event: BeforeUnloadEvent) => {

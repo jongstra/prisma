@@ -1,9 +1,9 @@
 """
 Refresh the technique list in the MaGMa Excel template from PRISMA's ATT&CK catalog.
 
-Run this after a new tactics_and_techniques_by_domain.json has been generated (see the backend notebook):
+Run this after a new tactics_and_techniques_by_domain.json has been generated (see tools/build_attack_catalog.ipynb):
 
-    backend/.venv/bin/python magma_excel/update_template_techniques.py 17.1
+    tools/.venv/bin/python templates/update_template_techniques.py 17.1
 
 It rewrites the 'Mitre Techniques' sheet: every enterprise technique and sub-technique, with its tactics in Unified
 Kill Chain order (the order of the 'ATTACK and Kill Chain mapping' sheet). The L3 sheet uses the first of these tactics
@@ -17,7 +17,7 @@ from openpyxl.styles import Font
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
 ROOT = Path(__file__).resolve().parent.parent
-TEMPLATE = ROOT / 'magma_excel' / 'magma_template.xlsx'
+TEMPLATE = ROOT / 'templates' / 'magma_template.xlsx'
 CATALOG = ROOT / 'frontend' / 'public' / 'tactics_and_techniques_by_domain.json'
 LIBREOFFICE = shutil.which('soffice') or '/Applications/LibreOffice.app/Contents/MacOS/soffice'
 
