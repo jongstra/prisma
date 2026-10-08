@@ -6,6 +6,17 @@ The figure below shows the overview of how MaGMa 2.0 and DeTT&CT are combined to
 
 ![MaGMa overview](docs/MaGMa_2.0_overview.png)
 
+## What's in this repository
+
+| Name | Description |
+|---|---|
+| [`docs/`](docs/) | MaGMa 2.0 functional documentation, in English and Dutch |
+| [`examples/`](examples/) | Example DeTT&CT and MaGMa files to try the app |
+| [`frontend/`](frontend/) | The PRISMA web application |
+| [`templates/`](templates/) | MaGMa Excel template, for preparing many use cases |
+| [`tools/`](tools/) | Notebooks that build the ATT&CK catalog and convert Excel files |
+| [`LICENCE`](LICENCE) | Licence of this project |
+
 The tool provides insight and guidance to detection engineers and management. The PRISMA tool currently supports MITRE ATT&CK v17.1.
 
 ## Installation Instructions
@@ -45,7 +56,7 @@ npm run dev
 ```
 
 - To use the application, open the link shown in your terminal (something like `localhost:5173`) in your browser.
-- To try out the application, you can load one of the example DeTT&CT YAML files (from the project's example-data-dettect folder) into the application using the big red button.
+- To try out the application, you can load one of the example DeTT&CT YAML files (from [`examples/dettect/`](examples/dettect/)) into the application using the big red button.
 - Alternatively, you can create an example DETT&CT Data Sources YAML file using the [DeTT&CT Editor](https://rabobank-cdc.github.io/dettect-editor/#/datasources). The resulting YAML file can be saved to your computer, and loaded into the application using the big red button.
 
 ## Project Status 

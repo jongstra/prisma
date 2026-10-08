@@ -1,5 +1,25 @@
 # Tools
 
-The Jupyter Notebook in this directory can be used to create a new tactics_and_techniques_by_domain.json file (to be placed in the frontend folder). When a new definition of the [MITRE ATT&CK® STIX Data](https://github.com/mitre-attack/attack-stix-data) is released on Github, we can run this notebook with these new files (after updating filenames) in order to get a new pre-processed tactics_and_techniques_by_domain.json file for the frontend.
+Python notebooks that prepare data for PRISMA: the ATT&CK catalog, and conversions from Excel to MaGMa YAML.
 
-This manual process takes a very small amount of time (after installing the requirements in a new environment, and activating this environment). This process could be automated, but currently the choice has been made to regularly update the tactics_and_techniques_by_domain.json in our Github repo so the frontend direcly has access to it after cloning this repository.
+| Name | Description |
+|---|---|
+| [`dettect_files/`](dettect_files/) | Extra DeTT&CT data sources per technique, used by the catalog notebook |
+| [`mitre_attack_files/`](mitre_attack_files/) | ATT&CK v17.1 source data from MITRE |
+| [`build_attack_catalog.ipynb`](build_attack_catalog.ipynb) | Builds the ATT&CK catalog the app loads (`frontend/public/`) |
+| [`convert_magma_excel.ipynb`](convert_magma_excel.ipynb) | Converts a filled-in [MaGMa template](../templates/) to MaGMa YAML |
+| [`convert_manual_excel.ipynb`](convert_manual_excel.ipynb) | Converts a simple list of detection rules to MaGMa YAML |
+| [`requirements.txt`](requirements.txt) | Python packages the notebooks need |
+
+## Setup
+
+```sh
+cd tools
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/jupyter notebook
+```
+
+## New ATT&CK version
+
+Download the new files from [MITRE's ATT&CK STIX data](https://github.com/mitre-attack/attack-stix-data) into `mitre_attack_files/`, update the file names in `build_attack_catalog.ipynb`, and run it. Then refresh the template's technique list (see [`templates/`](../templates/)).
