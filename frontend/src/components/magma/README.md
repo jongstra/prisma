@@ -14,8 +14,8 @@ The MaGMa page: the use case sheets, the heatmap, the insights and the summary.
 | [`InsightDataSourceMeanEffectiveness.vue`](InsightDataSourceMeanEffectiveness.vue) | Mean effectiveness per data source |
 | [`InsightDataSourceMeanImplementation.vue`](InsightDataSourceMeanImplementation.vue) | Mean implementation per data source |
 | [`InsightDataSourceMeanVisibility.vue`](InsightDataSourceMeanVisibility.vue) | Mean visibility per data source |
-| [`InsightImprovementPontentialForL3UseCases.vue`](InsightImprovementPontentialForL3UseCases.vue) | L3 use cases with the most improvement potential |
-| [`InsightImprovementPontentialL3UseCasesForL1UseCase.vue`](InsightImprovementPontentialL3UseCasesForL1UseCase.vue) | The same, for one L1 use case |
+| [`InsightImprovementPotentialForL3UseCases.vue`](InsightImprovementPotentialForL3UseCases.vue) | L3 use cases with the most improvement potential |
+| [`InsightImprovementPotentialL3UseCasesForL1UseCase.vue`](InsightImprovementPotentialL3UseCasesForL1UseCase.vue) | The same, for one L1 use case |
 | [`InsightMostFrequentlyLinkedAttackTechniques.vue`](InsightMostFrequentlyLinkedAttackTechniques.vue) | Techniques with the most L3 use cases |
 | [`InsightNumberOfUniqueAttackTechniquesPerDataSource.vue`](InsightNumberOfUniqueAttackTechniquesPerDataSource.vue) | Number of different techniques per data source |
 | [`InsightNumberOfUseCasesPerDataSource.vue`](InsightNumberOfUseCasesPerDataSource.vue) | Number of use cases per data source |

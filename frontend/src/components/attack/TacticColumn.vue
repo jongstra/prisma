@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
-import Button from './Button.vue';
+import TechniqueButton from './TechniqueButton.vue';
 import { tacticsStore } from '@/stores/tactics';
 import { averageVisibilityPercentage } from '@/domain/attack/visibility';
 const store = tacticsStore();
@@ -92,7 +92,7 @@ onUnmounted(() => {
 
   <!-- Techniques column -->
   <div v-for="(technique, index) in techniques" :key="index">
-    <Button :technique="technique"/>
+    <TechniqueButton :technique="technique"/>
   </div>
 
 </div>

@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch } from 'vue';
-import ButtonColumn from '../components/attack/ButtonColumn.vue';
+import TacticColumn from '../components/attack/TacticColumn.vue';
 import { tacticsStore } from '@/stores/tactics';
 import FileUploadButtonYaml from '@/components/attack/FileUploadButtonYaml.vue';
 import TechniqueAttributeFilter from '@/components/attack/TechniqueAttributeFilter.vue';
 import TechniqueVisibilityPercentageFilter from '@/components/attack/TechniqueVisibilityPercentageFilter.vue';
-// import TechniqueTotalOccurrenceFilter from '@/components/TechniqueTotalOccurrenceFilter.vue';
 import TechniqueTotalOccurrenceFilterBinned from '@/components/attack/TechniqueTotalOccurrenceFilterBinned.vue';
 import VisibilityLegend from '@/components/attack/VisibilityLegend.vue';
 import SearchBar from '@/components/attack/SearchBar.vue';
@@ -65,15 +64,15 @@ onUnmounted(() => {
   <div class="matrix-container">
     <div class='attack-matrix'>
       <div v-if="store.domain === 'enterprise-attack'" v-for="tactic in store.enterprise.tactics" class="button-columns">
-        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+        <TacticColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
 
       <div v-else-if="store.domain === 'mobile-attack'" v-for="tactic in store.mobile.tactics" class="button-columns">
-        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+        <TacticColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
 
       <div v-else-if="store.domain === 'ics-attack'" v-for="tactic in store.ics.tactics" class="button-columns">
-        <ButtonColumn :tactic=tactic :techniques=tactic.techniques />
+        <TacticColumn :tactic=tactic :techniques=tactic.techniques />
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ import { magmaStore } from '@/stores/magma';
 import { ref, computed, reactive } from 'vue';
 import { ancestorCounts, heatmapValue } from '@/domain/magma/heatmap';
 import { isDetectable } from '@/domain/attack/visibility';
-import { NOT_DETECTABLE_STYLE } from '../attack/notDetectableStyle';
+import { NOT_DETECTABLE_STYLE } from '../common/notDetectableStyle';
 
 const store = tacticsStore();
 const props = defineProps(['technique']);

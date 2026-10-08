@@ -83,7 +83,6 @@ export const tacticsStore = defineStore('tactics', {
     searchQuery: '' as string,
     minVisibilityRatio: 0 as number,
     maxVisibilityRatio: 1 as number,
-    minTotalOccurrences: 0 as number,
     minTotalOccurrencesBinned: 0 as number,
     pinnedTooltipId: '' as string,
   }),

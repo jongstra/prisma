@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import InsightNumberUseCasesPerLayer from './InsightNumberUseCasesPerLayer.vue';
-import InsightImprovementPontentialForL3UseCases from './InsightImprovementPontentialForL3UseCases.vue';
-import InsightImprovementPontentialL3UseCasesForL1UseCase from './InsightImprovementPontentialL3UseCasesForL1UseCase.vue';
+import InsightImprovementPotentialForL3UseCases from './InsightImprovementPotentialForL3UseCases.vue';
+import InsightImprovementPotentialL3UseCasesForL1UseCase from './InsightImprovementPotentialL3UseCasesForL1UseCase.vue';
 import InsightMostFrequentlyLinkedAttackTechniques from './InsightMostFrequentlyLinkedAttackTechniques.vue';
 import InsightNumberOfUseCasesPerDataSource from './InsightNumberOfUseCasesPerDataSource.vue';
 import InsightNumberOfUniqueAttackTechniquesPerDataSource from './InsightNumberOfUniqueAttackTechniquesPerDataSource.vue';
@@ -25,9 +25,9 @@ const magma = magmaStore();
   <InsightDataSourceMeanImplementation/>
   <InsightDataSourceMeanEffectiveness/>
   <InsightMostFrequentlyLinkedAttackTechniques/>
-  <InsightImprovementPontentialForL3UseCases/>
+  <InsightImprovementPotentialForL3UseCases/>
   <div v-for="L1UseCase in magma.L1UseCases(store.domain)"> 
-    <InsightImprovementPontentialL3UseCasesForL1UseCase :L1UseCase=L1UseCase :relatedL3UseCases=magma.getGrandChildUseCases(L1UseCase) />
+    <InsightImprovementPotentialL3UseCasesForL1UseCase :L1UseCase=L1UseCase :relatedL3UseCases=magma.getGrandChildUseCases(L1UseCase) />
   </div>
 </div>
 

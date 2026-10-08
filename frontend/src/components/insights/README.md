@@ -7,7 +7,7 @@ The charts and suggestions on the Insights page.
 | [`CoverageComponentSuggester.vue`](CoverageComponentSuggester.vue) | Suggests data components to cover better |
 | [`NewComponentSuggester.vue`](NewComponentSuggester.vue) | Suggests new data components to add |
 | [`NumberTechniquesPerGroup.vue`](NumberTechniquesPerGroup.vue) | Number of techniques per group |
-| [`NumberTechniquesPerPlaftorm.vue`](NumberTechniquesPerPlaftorm.vue) | Number of techniques per platform |
+| [`NumberTechniquesPerPlatform.vue`](NumberTechniquesPerPlatform.vue) | Number of techniques per platform |
 | [`NumberTechniquesPerSoftware.vue`](NumberTechniquesPerSoftware.vue) | Number of techniques per software |
 | [`NumberTechniquesPerTactic.vue`](NumberTechniquesPerTactic.vue) | Number of techniques per tactic |
 | [`TechniquesOccurrenceByGroups.vue`](TechniquesOccurrenceByGroups.vue) | Techniques used by the most groups |

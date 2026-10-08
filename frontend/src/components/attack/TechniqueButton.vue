@@ -3,7 +3,7 @@ import { computed, ref, watch, reactive } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 import { v4 as uuidv4 } from 'uuid';
 import { hasDataComponents, isDetectable } from '@/domain/attack/visibility';
-import { NOT_DETECTABLE_STYLE, NOT_DETECTABLE_TEXT } from './notDetectableStyle';
+import { NOT_DETECTABLE_STYLE, NOT_DETECTABLE_TEXT } from '../common/notDetectableStyle';
 
 const store = tacticsStore();
 const props = defineProps(['technique']);
@@ -187,11 +187,6 @@ const showButton = computed(() => {
     (props.technique.visibility_ratio <= store.maxVisibilityRatio)
   );
 
-  // Filter techniques based on the Minimum Total Occurrence slider.
-  let techniqueTotalOccurrencesFilterResult = (
-    props.technique.occurrence_total >= store.minTotalOccurrences
-  );
-
   // Filter techniques based on the Minimum Total Occurrence BINNED slider.
   let techniqueTotalOccurrencesFilterBinnedResult = false;
   // Minimum Total Occurrence: Low
@@ -222,7 +217,7 @@ const showButton = computed(() => {
     !(domain.only_show_selected_components && !store.selectedComponentsTechniquesSet.has(props.technique.name))
   );
 
-  return platformFilterResult && searchQueryFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterResult && techniqueTotalOccurrencesFilterBinnedResult && groupMaskFilterResult && componentMaskFilterResult;
+  return platformFilterResult && searchQueryFilterResult && techniqueVisibilityPercentageFilterResult && techniqueTotalOccurrencesFilterBinnedResult && groupMaskFilterResult && componentMaskFilterResult;
 });
 
 const occursInHoveredGroups = () => {

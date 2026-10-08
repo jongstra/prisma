@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { NOT_DETECTABLE_STYLE, NOT_DETECTABLE_TEXT } from './notDetectableStyle';
+import { NOT_DETECTABLE_STYLE, NOT_DETECTABLE_TEXT } from '../common/notDetectableStyle';
 
 const legendItems = ref([
   {

@@ -4,7 +4,7 @@
   import NewComponentSuggester from '@/components/insights/NewComponentSuggester.vue';
   import CoverageComponentSuggester from '@/components/insights/CoverageComponentSuggester.vue';
   import NumberTechniquesPerTactic from '@/components/insights/NumberTechniquesPerTactic.vue';
-  import NumberTechniquesPerPlaftorm from '@/components/insights/NumberTechniquesPerPlaftorm.vue';
+  import NumberTechniquesPerPlatform from '@/components/insights/NumberTechniquesPerPlatform.vue';
   import NumberTechniquesPerGroup from '@/components/insights/NumberTechniquesPerGroup.vue';
   import NumberTechniquesPerSoftware from '@/components/insights/NumberTechniquesPerSoftware.vue';
   import TechniquesOccurrenceBySoftware from '@/components/insights/TechniquesOccurrenceBySoftware.vue';
@@ -19,7 +19,7 @@
     <NewComponentSuggester/>
     <CoverageComponentSuggester/>
     <NumberTechniquesPerTactic/>
-    <NumberTechniquesPerPlaftorm/>
+    <NumberTechniquesPerPlatform/>
     <NumberTechniquesPerGroup/>
     <NumberTechniquesPerSoftware/>
     <TechniquesOccurrenceByGroups/>
