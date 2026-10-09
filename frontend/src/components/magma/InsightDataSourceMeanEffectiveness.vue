@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { barWidth } from '@/components/common/barWidth';
+import { computed } from 'vue';
+import BarChart from '@/components/common/BarChart.vue';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 
@@ -35,88 +36,18 @@ function getDataSourceEffectiveness() {
 
   return sortedStats
 }
+
+// One bar per data source, the 15 with the lowest mean, with the mean and the number of use cases.
+const rows = computed(() => Object.entries(getDataSourceEffectiveness()).slice(0, 15).map(([name, stats]: [string, any]) => (
+  { name, segments: [{ value: stats.mean, color: 'blue' }], label: `${(stats.mean ?? 0).toFixed(2)}% (${stats.count} UC)` }
+)));
 </script>
 
-
-
 <template>
-  <div class="item-visualization">
-    <div class="title">
+  <BarChart :rows="rows" :max="100" label-space="100px" :name-width="100" label="inside-wide">
+    <template #title>
       Data Sources - Mean Effectiveness
       <span v-if="Object.keys(getDataSourceEffectiveness()).length >= 15"> (Top 15 Worst)</span>
-    </div>
-    <hr>
-
-    <div v-for="[key, val] in Object.entries(getDataSourceEffectiveness()).slice(0, 15)" class="item-row">
-      <div class="item-name"> {{ key }} </div>  
-      <div class="bar-container">
-        <div
-          class="bar" 
-          :style="{ 
-              width: barWidth(val.mean, 100, '100px'),
-              backgroundColor: 'blue'
-            }"
-        >
-        <span class="item-val">{{ (val.mean??0).toFixed(2) }}% ({{ val.count }} UC)</span>
-        </div>
-      </div>
-    </div>
-  </div>
+    </template>
+  </BarChart>
 </template>
-
-
-
-<style scoped>
-a {
-  color: blue;
-}
-
-.item-visualization {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 450px;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.title {
-  text-align: center;
-  margin: 5px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.item-row {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-}
-
-.item-name {
-  min-width: 100px;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 13px;
-}
-
-.bar-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-
-.bar {
-  height: 14px;
-  position: relative;
-}
-
-.item-val {
-  display: inline-block;
-  position: absolute;
-  left: 100%;
-  font-size: 12px;
-  width: 90px;
-}
-</style>

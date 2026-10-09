@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { barWidth } from '@/components/common/barWidth';
+import BarChart from '@/components/common/BarChart.vue';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -11,86 +11,21 @@ function getTopTechniques() {
 
 // The longest bar in this chart fills the box.
 const maxCount = computed(() => Math.max(0, ...getTopTechniques().map((x) => x.total_occurrence)));
+
+// Red: groups; olive: software.
+const rows = computed(() => getTopTechniques().slice(0, 15).map((technique) => ({
+  name: technique.name,
+  segments: [{ value: technique.group_occurrence, color: 'FireBrick' }, { value: technique.software_occurrence, color: 'Olive' }],
+  label: technique.total_occurrence,
+})));
 </script>
 
 <template>
-  <div class="technique-visualization">
-    <div class="title">
+  <BarChart :rows="rows" :max="maxCount" wrap-long-names>
+    <template #title>
       Techniques
       <span v-if="getTopTechniques().length >= 15"> (Top 15)</span>
       - Total Occurrence
-    </div>
-    <hr>
-    <div v-for="(technique, index) in getTopTechniques().slice(0, 15)" :key="index" class="technique-row">
-      <div class="technique-name">{{ technique.name }}</div>
-      <div class="bar-container">
-        <div 
-          class="bar red-bar" 
-          :style="{ width: barWidth(technique.group_occurrence, maxCount) }"
-        ></div>
-        <div 
-          class="bar green-bar" 
-          :style="{ width: barWidth(technique.software_occurrence, maxCount) }"
-        ></div>
-        <span class="item-count">{{ technique.total_occurrence }}</span>
-      </div>
-    </div>
-  </div>
+    </template>
+  </BarChart>
 </template>
-
-<style scoped>
-.technique-visualization {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 450px;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.title {
-  text-align: center;
-  margin: 5px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.technique-row {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-}
-
-.technique-name {
-  min-width: 170px;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 13px;
-}
-
-.bar-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 14px;
-  width: 100%;
-}
-
-.bar {
-  height: 14px;
-}
-
-.red-bar {
-  background-color: FireBrick;
-}
-
-.green-bar {
-  background-color: Olive;
-}
-
-.item-count {
-  margin-left: 4px;
-  font-size: 12px;
-}
-</style>

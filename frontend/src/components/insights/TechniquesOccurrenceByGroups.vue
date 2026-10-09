@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { barWidth } from '@/components/common/barWidth';
+import BarChart from '@/components/common/BarChart.vue';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -11,78 +11,21 @@ function getTopTechniquesByGroup() {
 
 // The longest bar in this chart fills the box.
 const maxCount = computed(() => Math.max(0, ...getTopTechniquesByGroup().map((x) => x.group_occurrence)));
+
+// Red: the number of groups that use the technique.
+const rows = computed(() => getTopTechniquesByGroup().slice(0, 15).map((technique) => ({
+  name: technique.name,
+  segments: [{ value: technique.group_occurrence, color: 'FireBrick' }],
+  label: technique.group_occurrence,
+})));
 </script>
 
 <template>
-  <div class="technique-visualization">
-    <div class="title">
-     Techniques
+  <BarChart :rows="rows" :max="maxCount" wrap-long-names>
+    <template #title>
+      Techniques
       <span v-if="getTopTechniquesByGroup().length >= 15"> (Top 15)</span>
       - Occurrence by Groups
-    </div>
-    <hr>
-    <div v-for="(technique, index) in getTopTechniquesByGroup().slice(0, 15)" :key="index" class="technique-row">
-      <div class="technique-name">{{ technique.name }}</div>
-      <div class="bar-container">
-        <div 
-          class="bar red-bar" 
-          :style="{ width: barWidth(technique.group_occurrence, maxCount) }"
-        ></div>
-        <span class="item-count">{{ technique.group_occurrence }}</span>
-      </div>
-    </div>
-  </div>
+    </template>
+  </BarChart>
 </template>
-
-<style scoped>
-.technique-visualization {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 450px;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.title {
-  text-align: center;
-  margin: 5px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.technique-row {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-}
-
-.technique-name {
-  min-width: 170px;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 13px;
-}
-
-.bar-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 14px;
-  width: 100%;
-}
-
-.bar {
-  height: 14px;
-}
-
-.red-bar {
-  background-color: FireBrick;
-}
-
-.item-count {
-  margin-left: 4px;
-  font-size: 12px;
-}
-</style>

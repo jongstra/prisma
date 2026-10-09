@@ -1,107 +1,47 @@
 <script setup lang="ts">
-import { barWidth } from '@/components/common/barWidth';
-defineProps(['L1UseCase', 'relatedL3UseCases']);
+import { computed } from 'vue';
+import BarChart from '@/components/common/BarChart.vue';
+import { potentialSegments } from './potentialSegments';
+
+const props = defineProps(['L1UseCase', 'relatedL3UseCases']);
+
+// The 15 L3 use cases below this L1 use case with the most improvement potential.
+const rows = computed(() => [...props.relatedL3UseCases].sort((a, b) => (b.potential ?? 100) - (a.potential ?? 100)).slice(0, 15).map((useCase) => (
+  { name: useCase.id, segments: potentialSegments(useCase), label: `${(useCase.potential ?? 100).toFixed(2)}%` }
+)));
 </script>
 
-
 <template>
-  <div class="item-visualization">
-
-    <div class="title">
+  <BarChart class="full-height" :rows="rows" :max="100" label-space="0px" :name-width="100" label="end">
+    <template #title>
       Improvement Potential for L3 Use Cases relating to:
       <br>
-      <!-- [L1] {{ L1UseCase.id }}: {{ L1UseCase.name }} -->
       <span style="color: red;">[L1] {{ L1UseCase.id }}: {{ L1UseCase.name }}</span>
       <span v-if="relatedL3UseCases.length >= 15"> (Top 15)</span>
-    </div>
-    <hr>
-
-    <!-- Legend -->
-    <div class="legend">
-      <div class="legend-item">
-        <div class="sub-bar red"></div>
-        <span>Visibility Potential</span>
+    </template>
+    <template #legend>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="sub-bar red"></div>
+          <span>Visibility Potential</span>
+        </div>
+        <div class="legend-item">
+          <div class="sub-bar green"></div>
+          <span>Implementation Potential</span>
+        </div>
+        <div class="legend-item">
+          <div class="sub-bar blue"></div>
+          <span>Effectiveness Potential</span>
+        </div>
       </div>
-      <div class="legend-item">
-        <div class="sub-bar green"></div>
-        <span>Implementation Potential</span>
-      </div>
-      <div class="legend-item">
-        <div class="sub-bar blue"></div>
-        <span>Effectiveness Potential</span>
-      </div>
-    </div>
-
-    <!-- Loop through the top 15 use cases -->
-    <div v-for="useCase in relatedL3UseCases.sort((a, b) => (b.potential??100) - (a.potential??100)).slice(0, 15)" class="item-row">
-      <div class="item-name">{{ useCase.id }}</div>
-      
-      <!-- Bar container with three sub-bars -->
-      <div class="bar-container">
-        
-        <!-- Red bar for visibility potential -->
-        <div 
-          class="sub-bar red"
-          :style="{ width: barWidth(((100 - Number(useCase.visibility)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * Number(useCase.potential), 100, '0px') }"
-        ></div>
-        
-        <!-- Green bar for implementation potential -->
-        <div 
-          class="sub-bar green"
-          :style="{ width: barWidth(((100 - Number(useCase.implementation)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * Number(useCase.potential), 100, '0px') }"
-        ></div>
-        
-        <!-- Blue bar for effectiveness potential -->
-        <div 
-          class="sub-bar blue"
-          :style="{ width: barWidth(((100 - Number(useCase.effectiveness)) / (300 - Number(useCase.visibility) - Number(useCase.implementation) - Number(useCase.effectiveness))) * Number(useCase.potential), 100, '0px') }"
-        ></div>
-      </div>
-
-      <!-- Item count label -->
-      <span class="item-count">{{ (useCase.potential ?? 100).toFixed(2) }}%</span>
-    </div>
-
-  </div>
+    </template>
+  </BarChart>
 </template>
 
-
 <style scoped>
-.item-visualization {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 450px;
-  height: calc(100% - 10px);  /* Somewhat of an ugly fix, but it works well. */
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.title {
-  text-align: center;
-  margin: 5px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.item-row {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-}
-
-.item-name {
-  min-width: 100px;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 13px;
-}
-
-.bar-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
+/* The chart takes the height of its row on the Insights tab (minus its top margin), so charts in the same row are equally high. */
+.full-height {
+  height: calc(100% - 10px);
 }
 
 .sub-bar {
@@ -119,12 +59,6 @@ defineProps(['L1UseCase', 'relatedL3UseCases']);
 
 .blue {
   background-color: blue;
-}
-
-.item-count {
-  left: 100%;
-  margin-left: 4px;
-  font-size: 12px;
 }
 
 .legend {
@@ -145,5 +79,4 @@ defineProps(['L1UseCase', 'relatedL3UseCases']);
 .legend-item .sub-bar {
   width: 20px; /* Fixed size for legend bars */
 }
-
 </style>

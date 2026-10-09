@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { barWidth } from '@/components/common/barWidth';
+import BarChart from '@/components/common/BarChart.vue';
 import { tacticsStore } from '@/stores/tactics';
 const store = tacticsStore();
 
@@ -31,86 +31,21 @@ function getTechniqueCountPerGroup(): Group[] {
 
 // The longest bar in this chart fills the box.
 const maxCount = computed(() => Math.max(0, ...getTechniqueCountPerGroup().map((x) => x.technique_count + x.subtechnique_count)));
+
+// Blue: techniques; light blue: sub-techniques.
+const rows = computed(() => getTechniqueCountPerGroup().map((group) => ({
+  name: group.name,
+  segments: [{ value: group.technique_count, color: 'SteelBlue' }, { value: group.subtechnique_count, color: '#89AFCF' }],
+  label: group.technique_count + group.subtechnique_count,
+})));
 </script>
 
 <template>
-  <div class="item-visualization">
-    <div class="title">
+  <BarChart :rows="rows" :max="maxCount">
+    <template #title>
       Groups
       <span v-if="getTechniqueCountPerGroup().length >= 15"> (Top 15)</span>
       - Number (Sub)Techniques
-    </div>
-    <hr>
-    <div v-for="(group, index) in getTechniqueCountPerGroup()" :key="index" class="item-row">
-      <div class="item-name">{{ group.name }}</div>
-      <div class="bar-container">
-        <div 
-          class="bar blue-bar" 
-          :style="{ width: barWidth(group.technique_count, maxCount) }"
-        ></div>
-        <div 
-          class="bar lightblue-bar" 
-          :style="{ width: barWidth(group.subtechnique_count, maxCount) }"
-        ></div>
-        <span class="item-count">{{ group.technique_count + group.subtechnique_count }}</span>
-      </div>
-    </div>
-  </div>
+    </template>
+  </BarChart>
 </template>
-
-<style scoped>
-.item-visualization {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 450px;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.title {
-  text-align: center;
-  margin: 5px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.item-row {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-}
-
-.item-name {
-  min-width: 170px;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 13px;
-}
-
-.bar-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 14px;
-}
-
-.bar {
-  height: 14px;
-}
-
-.blue-bar {
-  background-color: SteelBlue;
-}
-
-.lightblue-bar {
-  background-color: #89AFCF;
-}
-
-.item-count {
-  margin-left: 4px;
-  font-size: 12px;
-}
-</style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { barWidth } from '@/components/common/barWidth';
+import BarChart from '@/components/common/BarChart.vue';
 import { magmaStore } from '@/stores/magma';
 import { tacticsStore } from '@/stores/tactics';
 
@@ -40,87 +40,18 @@ function getAttackTechniquesPerDataSource() {
 
 // The longest bar in this chart fills the box.
 const maxCount = computed(() => Math.max(0, ...Object.values(getAttackTechniquesPerDataSource()).map((x) => x.size)));
+
+// One red bar per item, the top 15.
+const rows = computed(() => Object.entries(getAttackTechniquesPerDataSource()).slice(0, 15).map(([name, techniques]) => (
+  { name, segments: [{ value: techniques.size ?? 0, color: 'red' }], label: techniques.size ?? 0 }
+)));
 </script>
 
-
 <template>
-  <div class="item-visualization">
-    <div class="title">
+  <BarChart :rows="rows" :max="maxCount" :name-width="100" label="inside">
+    <template #title>
       Number of Unique Attack Techniques per Data Source
       <span v-if="Object.keys(getAttackTechniquesPerDataSource()).length >= 15"> (Top 15)</span>
-    </div>
-    <hr>
-
-    <div v-for="[dataSource, techniques] in Object.entries(getAttackTechniquesPerDataSource()).slice(0, 15)" class="item-row">
-      <div class="item-name"> {{ dataSource }} </div>  
-      <div class="bar-container">
-        <div
-          class="bar" 
-          :style="{ 
-              width: barWidth(techniques.size ?? 0, maxCount),
-              backgroundColor: 'red'
-            }"
-        >
-          <span class="item-count">{{ (techniques.size??0) }}</span>
-        </div>
-      </div>
-    </div>
-  </div>
+    </template>
+  </BarChart>
 </template>
-
-
-
-<style scoped>
-
-a {
-  color: blue;
-}
-
-.item-visualization {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 450px;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.title {
-  text-align: center;
-  margin: 5px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.item-row {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-}
-
-.item-name {
-  min-width: 100px;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 13px;
-}
-
-.bar-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-
-.bar {
-  height: 14px;
-  position: relative;
-}
-
-.item-count {
-  position: absolute;
-  left: 100%;
-  margin-left: 4px;
-  font-size: 12px;
-}
-</style>

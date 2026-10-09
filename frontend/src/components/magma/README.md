@@ -21,4 +21,5 @@ The MaGMa page: the use case sheets, the heatmap, the insights and the summary.
 | [`InsightNumberUseCasesPerLayer.vue`](InsightNumberUseCasesPerLayer.vue) | Number of use cases per level (L1, L2, L3) |
 | [`MagmaInsights.vue`](MagmaInsights.vue) | Insights tab: all MaGMa charts |
 | [`MagmaSummary.vue`](MagmaSummary.vue) | Summary tab: averages and counts |
+| [`potentialSegments.ts`](potentialSegments.ts) | Splits an L3 use case's potential over V, I and E, for the charts |
 | [`SheetTabs.vue`](SheetTabs.vue) | The page itself: the L1/L2/L3 sheets, tabs, loading and saving |

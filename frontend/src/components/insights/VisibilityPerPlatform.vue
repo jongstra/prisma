@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { barWidth } from '@/components/common/barWidth';
+import BarChart from '@/components/common/BarChart.vue';
 import { computed } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
 import { isDetectable, platformVisibility } from '@/domain/attack/visibility';
@@ -45,84 +45,27 @@ function getBarColor(percentage: number): string {
   const green = Math.min(255, (255 * percentage) / 100);
   return `rgb(${red}, ${green}, 0)`;
 }
+
+// One bar per platform, from red (0%) to green (100%).
+const rows = computed(() => calculatePlatformVisibility().map((platform) => (
+  { name: platform.name, segments: [{ value: platform.percentage, color: getBarColor(platform.percentage) }], label: platform.percentage }
+)));
 </script>
 
 <template>
-  <div class="item-visualization">
-    <div class="title">
+  <BarChart :rows="rows" :max="100" label="inside">
+    <template #title>
       Platforms - Visibility Percentage
-    </div>
-    <hr>
-    <div v-for="platform in calculatePlatformVisibility()" :key="platform.name" class="item-row">
-      <div class="item-name">{{ platform.name }}</div>
-      <div class="bar-container">
-        <div 
-          class="bar" 
-          :style="{ 
-            width: barWidth(platform.percentage, 100), 
-            backgroundColor: getBarColor(platform.percentage) 
-          }"
-        >
-          <span class="item-count">{{ platform.percentage }}</span>
-        </div>
+    </template>
+    <template #footnote>
+      <div v-if="notDetectableCount > 0" class="footnote">
+        Not counted: {{ notDetectableCount }} technique(s) for which ATT&CK lists no data components (not detectable via data sources).
       </div>
-    </div>
-    <div v-if="notDetectableCount > 0" class="footnote">
-      Not counted: {{ notDetectableCount }} technique(s) for which ATT&CK lists no data components (not detectable via data sources).
-    </div>
-  </div>
+    </template>
+  </BarChart>
 </template>
 
 <style scoped>
-.item-visualization {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 450px;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.title {
-  text-align: center;
-  margin: 5px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.item-row {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-}
-
-.item-name {
-  min-width: 170px;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 13px;
-}
-
-.bar-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-
-.bar {
-  height: 14px;
-  background-color: SteelBlue;
-  position: relative;
-}
-
-.item-count {
-  position: absolute;
-  left: 100%;
-  margin-left: 4px;
-  font-size: 12px;
-}
-
 .footnote {
   margin: 2px 8px 6px;
   font-size: 11px;
