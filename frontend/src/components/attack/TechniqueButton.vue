@@ -1,76 +1,18 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { tacticsStore } from '@/stores/tactics';
-import { v4 as uuidv4 } from 'uuid';
 import { hasDataComponents, isDetectable } from '@/domain/attack/visibility';
 import { NOT_DETECTABLE_STYLE, NOT_DETECTABLE_TEXT } from '../common/notDetectableStyle';
+import TechniqueTooltip from '../common/TechniqueTooltip.vue';
+import { useTechniqueTooltip } from '../common/useTechniqueTooltip';
 
 const store = tacticsStore();
 const props = defineProps(['technique']);
-const id = uuidv4();
-
-let showTooltipBool = ref(false);
 
 const domain: any = store.currentDomain;
 
-// Calculate the tooltip position, and update it when the button location would be modified.
 const buttonRef = ref<HTMLElement | null>(null);
-let tooltipPosition = ref({ top: 0, left: 0 });
-
-// Function to calculate the cumulative scroll positions of all ancestors.
-const calculateScroll = (e) => {
-  if (e && e.parentNode) {
-    const [scrollTop, scrollLeft] = calculateScroll(e.parentNode);
-    return [(e.scrollTop || 0) + scrollTop, (e.scrollLeft || 0) + scrollLeft];
-  } else {
-    return [0, 0];
-  }
-};
-
-// Update the tooltip position relative to the document.
-const updateTooltipPosition = () => {
-  // The !(store.pinnedTooltipId === id) part keeps the tooltip in place after making it visible.
-  // Without this part of the check, the tooltip would move due to the changed location
-  // caused by the hover translate effect.
-  if ((buttonRef.value) && !(store.pinnedTooltipId === id)) {
-    const buttonRect = buttonRef.value.getBoundingClientRect();
-    const [scrollTop, scrollLeft] = calculateScroll(buttonRef.value);
-
-    // Adjust tooltip position to be relative to the document
-    tooltipPosition.value.top = buttonRect.bottom + scrollTop - 265; // Position below the button
-    tooltipPosition.value.left = buttonRect.left + scrollLeft; // Position the tooltip horizontally
-  }
-};
-
-// Watch for changes in store.pinnedTooltipId
-watch(() => store.pinnedTooltipId, (newPinnedTooltipId) => {
-  if (newPinnedTooltipId !== id) {
-    showTooltipBool.value = false;
-  }
-});
-
-const toggleTooltipPinning = () => {
-  if (store.pinnedTooltipId === id) {
-    store.pinnedTooltipId = '';
-  } else {
-    store.pinnedTooltipId = id;
-  }
-};
-
-const showTooltip = () => {
-  if (buttonRef.value) {
-    updateTooltipPosition();
-    if (store.pinnedTooltipId === '') {
-      showTooltipBool.value = true;
-    }
-  }
-};
-
-const hideTooltip = () => {
-  if (store.pinnedTooltipId === '') {
-    showTooltipBool.value = false;
-  }
-};
+const { open: tooltipOpen, pinned, show: showTooltip, hide: hideTooltip, togglePin, unpin } = useTechniqueTooltip();
 
 const hoverGroup = (groupName: string) => {
   domain.groups.forEach(group => {
@@ -104,12 +46,6 @@ const toggleComponentSelected = (componentName: string) => {
     }
   });
 };
-
-// Attach methods to the window object
-window.hoverGroup = hoverGroup;
-window.toggleGroupSelected = toggleGroupSelected;
-window.hoverComponent = hoverComponent;
-window.toggleComponentSelected = toggleComponentSelected;
 
 
 const getTooltipText = () => {
@@ -253,10 +189,10 @@ const occursInSelectedComponents = () => {
   <button v-if="showButton"
     ref="buttonRef"
     :style="getButtonStyles(technique.visibility_ratio, isDetectable(technique))"
-    @click="toggleTooltipPinning"
-    @mouseover="showTooltip"
+    @click="togglePin"
+    @mouseenter="showTooltip"
     @mouseleave="hideTooltip"
-    :class="{ pinned: store.pinnedTooltipId === id,
+    :class="{ pinned,
       'occurs-in-hovered-groups': occursInHoveredGroups(),
       'occurs-in-selected-groups': occursInSelectedGroups(),
       'occurs-in-hovered-components': occursInHoveredComponents(),
@@ -266,10 +202,8 @@ const occursInSelectedComponents = () => {
     <span class="buttontext">{{ technique.name }}</span>
   </button>
 
-  <!-- Tooltip positioned relative to the button -->
-  <div v-if="showTooltipBool || store.pinnedTooltipId === id" class="tooltip"
-       :style="{ top: `${tooltipPosition.top}px`, left: `${tooltipPosition.left}px` }"
-  >
+  <!-- The tooltip, shown next to the button -->
+  <TechniqueTooltip v-if="tooltipOpen" :anchor="buttonRef" :pinned="pinned" @unpin="unpin">
     <div v-html="getTooltipText()"></div>
 
     <!-- Show which groups use this technique. -->
@@ -335,7 +269,7 @@ const occursInSelectedComponents = () => {
     </div>
     <div v-else>No Components</div>
     <br>
-  </div>
+  </TechniqueTooltip>
 </template>
 
 
@@ -383,20 +317,6 @@ button.occurs-in-selected-components {
   display: block;
   text-overflow: ellipsis;
   text-align: center;
-}
-
-.tooltip {
-  position: fixed; /* Use fixed positioning for better control */
-  background-color: rgba(93, 125, 152, 0.9);
-  color: white;
-  border: 1px solid black;
-  padding: 4px 4px;
-  border-radius: 4px;
-  font-size: 11px;
-  z-index: 1002; /* Ensure tooltip is always on top */
-  width: 240px;
-  text-align: left;
-  white-space: pre-line;
 }
 
 </style>

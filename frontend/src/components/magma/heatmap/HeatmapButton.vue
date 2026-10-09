@@ -5,6 +5,8 @@ import { ref, computed } from 'vue';
 import { ancestorCounts, heatmapValue } from '@/domain/magma/heatmap';
 import { isDetectable } from '@/domain/attack/visibility';
 import { NOT_DETECTABLE_STYLE } from '@/components/common/notDetectableStyle';
+import TechniqueTooltip from '@/components/common/TechniqueTooltip.vue';
+import { useTechniqueTooltip } from '@/components/common/useTechniqueTooltip';
 
 const store = tacticsStore();
 const props = defineProps(['technique']);
@@ -12,40 +14,8 @@ const magma = magmaStore();
 
 const domain: any = store.currentDomain;
 
-// Tooltip variables.
-let showTooltipBool = ref(false);
 const buttonRef = ref<HTMLElement | null>(null);
-let tooltipPosition = ref({ top: 0, left: 0 });
-
-// Function to calculate the cumulative scroll positions of all ancestors.
-function calculateScroll(e) {
-  if (e && e.parentNode) {
-    const [scrollTop, scrollLeft] = calculateScroll(e.parentNode);
-    return [(e.scrollTop || 0) + scrollTop, (e.scrollLeft || 0) + scrollLeft];
-  } else {
-    return [0, 0];
-  }
-};
-
-// Update the tooltip position relative to the document.
-function updateTooltipPosition() {
-  const buttonRect = buttonRef.value.getBoundingClientRect();
-  const [scrollTop, scrollLeft] = calculateScroll(buttonRef.value);
-
-  // Adjust tooltip position to be relative to the document
-  tooltipPosition.value.top = buttonRect.bottom + scrollTop - 222; // Position below the button
-  tooltipPosition.value.left = buttonRect.left + scrollLeft + 5; // Position the tooltip horizontally
-};
-
-
-function showTooltip() {
-  updateTooltipPosition();
-  showTooltipBool.value = true;
-}
-
-function hideTooltip() {
-  showTooltipBool.value = false;
-}
+const { open: tooltipOpen, pinned, show: showTooltip, hide: hideTooltip, togglePin, unpin } = useTechniqueTooltip();
 
 
 // The L3 use cases in the current domain that detect this technique or one of its sub-techniques.
@@ -140,49 +110,48 @@ const occursInSelectedGroups = () => {
   <button v-if="showButton"
     ref="buttonRef"
     :style="getButtonStyle()"
-    @mouseover="showTooltip"
+    @click="togglePin"
+    @mouseenter="showTooltip"
     @mouseleave="hideTooltip"
-    :class="{ 'occurs-in-selected-groups': occursInSelectedGroups(), 'has-use-cases': relatedUseCases.length > 0 }"
+    :class="{ pinned, 'occurs-in-selected-groups': occursInSelectedGroups(), 'has-use-cases': relatedUseCases.length > 0 }"
   >
     <span class="buttontext">{{ technique.name }}</span>
-
-    <div v-if="showTooltipBool" class="tooltip"
-       :style="{ top: `${tooltipPosition.top}px`, left: `${tooltipPosition.left}px` }"
-    >
-      <div v-html="getTooltipText()"></div>
-
-      <!-- Show which groups use this technique. -->
-      <div v-if="props.technique.groups.length > 0">
-        <hr>
-        <br>
-        Groups:
-        <br>
-        <!-- Group buttons -->
-        <label v-for="group in props.technique.groups" :key="group" for="${group}-${Math.random()}" style="display: inline-flex; align-items: center; margin-right: 5px;">
-          <span
-            class="group-box"
-            :style="{
-              display: 'inline-block',
-              padding: '5px 5px',
-              marginLeft: '1px',
-              marginTop: '2px',
-              marginBottom: '2px',
-              backgroundColor: 'gray',
-              borderColor: domain.groups.find(g => g.name === group)?.selected ? 'rgb(230, 0, 0)' : '#ccc',
-              borderWidth: '1.5px',
-              borderStyle: 'solid',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              transition: 'background-color 0.2s, border-color 0.2s',
-              fontSize: '11px'
-            }">
-            {{ group }}
-          </span>
-        </label>
-      </div>
-    </div>
-    
   </button>
+
+  <!-- The tooltip, shown next to the button -->
+  <TechniqueTooltip v-if="tooltipOpen" :anchor="buttonRef" :pinned="pinned" @unpin="unpin">
+    <div v-html="getTooltipText()"></div>
+
+    <!-- Show which groups use this technique. -->
+    <div v-if="props.technique.groups.length > 0">
+      <hr>
+      <br>
+      Groups:
+      <br>
+      <!-- Group buttons -->
+      <label v-for="group in props.technique.groups" :key="group" for="${group}-${Math.random()}" style="display: inline-flex; align-items: center; margin-right: 5px;">
+        <span
+          class="group-box"
+          :style="{
+            display: 'inline-block',
+            padding: '5px 5px',
+            marginLeft: '1px',
+            marginTop: '2px',
+            marginBottom: '2px',
+            backgroundColor: 'gray',
+            borderColor: domain.groups.find(g => g.name === group)?.selected ? 'rgb(230, 0, 0)' : '#ccc',
+            borderWidth: '1.5px',
+            borderStyle: 'solid',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            transition: 'background-color 0.2s, border-color 0.2s',
+            fontSize: '11px'
+          }">
+          {{ group }}
+        </span>
+      </label>
+    </div>
+  </TechniqueTooltip>
 </template>
 
 <style scoped>
@@ -197,7 +166,7 @@ button {
   position: relative; /* Ensure the button's stacking context is isolated */
 }
 
-button:hover {
+button:hover, button.pinned {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px, rgb(51, 51, 51) 0px 0px 0px 2.5px; /* On hover, add a thick black 'outline' to the button. */
   z-index: 1001;
 }
@@ -221,20 +190,6 @@ button.occurs-in-selected-groups {
   display: block;
   text-overflow: ellipsis;
   text-align: center;
-}
-
-.tooltip {
-  position: fixed; /* Use fixed positioning for better control */
-  background-color: rgba(93, 125, 152, 0.9);
-  color: white;
-  border: 1px solid black;
-  padding: 4px 4px;
-  border-radius: 4px;
-  font-size: 11px;
-  z-index: 1002; /* Ensure tooltip is always on top */
-  width: 200px;
-  text-align: left;
-  white-space: pre-line;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, watch } from 'vue';
+import { watch } from 'vue';
 import TacticColumn from '../components/attack/TacticColumn.vue';
 import { tacticsStore } from '@/stores/tactics';
 import FileUploadButtonYaml from '@/components/attack/FileUploadButtonYaml.vue';
@@ -16,23 +16,6 @@ const store = tacticsStore();
 watch(() => store.domain, () => {
   store.pinnedTooltipId = '';
   store.searchQuery = '';
-});
-
-// Handle keydown event to unpin tooltips on escape
-const handleKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Escape' || event.key === 'Esc') {
-    store.pinnedTooltipId = '';
-  }
-};
-
-// Add event listener on component mount
-onMounted(() => {
-  window.addEventListener('keydown', handleKeydown);
-});
-
-// Remove event listener on component unmount
-onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeydown);
 });
 
 // The matrix columns are keyed by domain and tactic, so switching domains creates new columns: each column and
@@ -130,6 +113,5 @@ onUnmounted(() => {
   flex: 1; /* Allow components to grow and take up available space */
   width: auto; /* Allow components to take their natural width */
   margin-right: 4px; /* Adjust spacing between components */
-  margin-bottom: 3000px; /* Forces a bottom margin to create space for the Tooltip when hovering Technique Buttons. */
 }
 </style>

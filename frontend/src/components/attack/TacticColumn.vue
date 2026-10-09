@@ -15,18 +15,6 @@ const tacticVisibility = (tactic: any) => {
 
 const domain: any = store.currentDomain;
 
-// Method to handle clicks outside of buttons and their tooltips, to close button tooltips.
-const handleClickOutsideToCloseTooltips = (event: MouseEvent) => {
-  if (
-    !(event.target as HTMLElement).closest('button') &&
-    !(event.target as HTMLElement).closest('.tooltip') &&
-    !(event.target as HTMLElement).closest('.group-box') &&
-    !(event.target as HTMLElement).closest('.component-box')
-  ) {
-    store.pinnedTooltipId = '';
-  }
-};
-
 // Method to handle movements outside of tooltip group buttons, to remove group.hovered properties.
 const handleMoveOutsideToDisableGroupHover = (event: MouseEvent) => {
   if (
@@ -48,16 +36,14 @@ const handleMoveOutsideToDisableComponentHover = (event: MouseEvent) => {
   }
 };
 
-// Add click event listener on mount
+// Add the mouse move listeners on mount
 onMounted(() => {
-  document.addEventListener('click', handleClickOutsideToCloseTooltips);
   document.addEventListener('mousemove', handleMoveOutsideToDisableGroupHover);
   document.addEventListener('mousemove', handleMoveOutsideToDisableComponentHover);
 });
 
-// Remove click event listener on unmount
+// Remove the mouse move listeners on unmount
 onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutsideToCloseTooltips);
   document.removeEventListener('mousemove', handleMoveOutsideToDisableGroupHover);
   document.removeEventListener('mousemove', handleMoveOutsideToDisableComponentHover);
 });
