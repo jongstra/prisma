@@ -3,8 +3,8 @@
 import { magmaStore } from '@/stores/magma';
 import SheetTabs from '@/components/magma/SheetTabs.vue';
 import UseCaseTable from '@/components/magma/UseCaseTable.vue';
-import Heatmap from '@/components/magma/Heatmap.vue';
-import MagmaInsights from '@/components/magma/MagmaInsights.vue';
+import Heatmap from '@/components/magma/heatmap/Heatmap.vue';
+import MagmaInsights from '@/components/magma/insights/MagmaInsights.vue';
 import MagmaSummary from '@/components/magma/MagmaSummary.vue';
 
 const magma = magmaStore();
