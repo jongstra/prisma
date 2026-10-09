@@ -1,64 +1,12 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
 import HeatmapButton from './HeatmapButton.vue';
-import { tacticsStore } from '@/stores/tactics';
-const store = tacticsStore();
 
 defineProps(['tactic', 'techniques']);
-
-const domain: any = store.currentDomain;
-
-// // Method to handle clicks outside of buttons and their tooltips, to close button tooltips.
-// const handleClickOutsideToCloseTooltips = (event: MouseEvent) => {
-//   if (
-//     !(event.target as HTMLElement).closest('button') &&
-//     !(event.target as HTMLElement).closest('.tooltip') &&
-//     !(event.target as HTMLElement).closest('.group-box') &&
-//     !(event.target as HTMLElement).closest('.component-box')
-//   ) {
-//     store.pinnedTooltipId = '';
-//   }
-// };
-
-// // Method to handle movements outside of tooltip group buttons, to remove group.hovered properties.
-// const handleMoveOutsideToDisableGroupHover = (event: MouseEvent) => {
-//   if (
-//     !(event.target as HTMLElement).closest('.group-box')
-//   ) {
-//     domain.groups.forEach(group => {
-//       delete group.hovered;
-//     });
-//   }
-// };
-// // Method to handle movements outside of tooltip component buttons, to remove component.hovered properties.
-// const handleMoveOutsideToDisableComponentHover = (event: MouseEvent) => {
-//   if (
-//     !(event.target as HTMLElement).closest('.component-box')
-//   ) {
-//     domain.data_components.forEach(component => {
-//       delete component.hovered;
-//     });
-//   }
-// };
-
-// // Add click event listener on mount
-// onMounted(() => {
-//   document.addEventListener('click', handleClickOutsideToCloseTooltips);
-//   document.addEventListener('mousemove', handleMoveOutsideToDisableGroupHover);
-//   document.addEventListener('mousemove', handleMoveOutsideToDisableComponentHover);
-// });
-
-// // Remove click event listener on unmount
-// onUnmounted(() => {
-//   document.removeEventListener('click', handleClickOutsideToCloseTooltips);
-//   document.removeEventListener('mousemove', handleMoveOutsideToDisableGroupHover);
-//   document.removeEventListener('mousemove', handleMoveOutsideToDisableComponentHover);
-// });
 </script>
 
 
 <template>
-<div ref="buttonColumnRef" class="button-column">
+<div class="button-column">
   
   <!-- Tactic -->
   <div class="button-column-tactic-name-div">
@@ -68,9 +16,6 @@ const domain: any = store.currentDomain;
   <!-- Technique count statistic -->
   <div class="button-column-stats-div">
     <p class="button-column-stat-1"> {{ tactic.techniques.length }} techniques </p>
-    
-    <!-- Compute the tactic-visibility based on the technique visibility_ratio value. -->
-    <!-- <p class="button-column-stat-2">{{ Math.round(tactic.techniques.reduce((sum, technique) => sum + (technique.visibility ? technique.visibility_ratio : 0), 0) / tactic.techniques.length * 100) }}% visibility</p> -->
   </div>
 
   <!-- Techniques column -->
@@ -105,10 +50,5 @@ const domain: any = store.currentDomain;
 .button-column-stat-1 {
   font-size: 12px;
   margin-bottom: 3px;
-}
-
-.button-column-stat-2 {
-  font-size: 9px;
-  margin-bottom: 4px;
 }
 </style>

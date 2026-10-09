@@ -4,7 +4,7 @@ The source code of the PRISMA web application.
 
 | Name | Description |
 |---|---|
-| [`assets/`](assets/) | Global stylesheets |
+| [`assets/`](assets/) | Global stylesheet |
 | [`components/`](components/) | Vue components, grouped by page |
 | [`domain/`](domain/) | Calculations and checks, without user interface |
 | [`router/`](router/) | The page addresses |

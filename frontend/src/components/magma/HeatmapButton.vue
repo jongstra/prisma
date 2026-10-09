@@ -63,7 +63,7 @@ function getBackgroundColor() {
 }
 
 // Techniques without use cases that ATT&CK lists no data components for are striped, as in the DeTT&CT matrix: a known
-// blind spot. Techniques with use cases are coloured by their heatmap value (and marked with a green ring).
+// blind spot. Techniques with use cases are coloured by their heatmap value (and marked with a thicker border).
 function getButtonStyle() {
   if (relatedUseCases.value.length === 0 && !isDetectable(props.technique)) {
     return NOT_DETECTABLE_STYLE;
@@ -190,7 +190,6 @@ const occursInSelectedGroups = () => {
 button {
   margin-top: 0px;
   margin-bottom: 3px;
-  /* background-color: rgb(246, 246, 246); */
   background-color: rgb(255, 255, 255);
   border: 2px solid rgb(42, 42, 42);
   border-radius: 4px; /* Slightly rounded corners */
