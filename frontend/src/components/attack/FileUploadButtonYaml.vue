@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { tacticsStore } from '@/stores/tactics';
-import * as yaml from 'yaml';
 import Swal from 'sweetalert2';
+import { isYamlFile, readYamlFile } from '@/io/readYamlFile';
 
 const input = ref<HTMLInputElement>()
 const isLoading = ref(false)
@@ -19,9 +19,7 @@ const uploadFile = async () => {
     return
   }
 
-  const allowedMimeTypes = ["text/yaml", "text/x-yaml", "text/yml", "text/x-yml", "application/yaml", "application/x-yaml", "application/yml", "application/x-yml"];
-  const allowedExtensions = [".yaml", ".yml"];
-  if (!allowedMimeTypes.includes(file.type) && !allowedExtensions.some(ext => file.name.toLowerCase().endsWith(ext))) {
+  if (!isYamlFile(file)) {
     Swal.fire({
       icon: 'error',
       title: 'Invalid file type',
@@ -32,13 +30,7 @@ const uploadFile = async () => {
 
   isLoading.value = true
   try {
-    let yamlData: unknown
-    try {
-      yamlData = yaml.parse(await file.text())
-    } catch (error) {
-      throw new Error(`The file is not valid YAML: ${(error as Error).message}`)
-    }
-    const { unknownDataSources } = store.processDettectYaml(yamlData)
+    const { unknownDataSources } = store.processDettectYaml(await readYamlFile(file))
     if (unknownDataSources.length > 0) {
       Swal.fire({
         icon: 'warning',

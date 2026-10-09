@@ -2,25 +2,25 @@ import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { setActivePinia, createPinia } from 'pinia';
 import fs from 'node:fs';
+import { tacticsStore } from '@/stores/tactics';
+import { magmaStore } from '@/stores/magma';
+import UseCaseTable from '../UseCaseTable.vue';
 
 vi.mock('sweetalert2', () => ({ default: { fire: vi.fn(() => Promise.resolve({})) } }));
 
 const catalog = JSON.parse(fs.readFileSync('public/tactics_and_techniques_by_domain.json', 'utf8'));
 const domain = 'enterprise-attack';
 
-// Shows the table of one level, with the default use cases plus one new use case on that level. The magma store creates
-// the tactics store when its module loads, so the stores and the table are imported after Pinia is active.
+// Shows the table of one level, with the default use cases plus one new use case on that level.
 async function showTable(level: 'L1' | 'L2' | 'L3') {
-  vi.resetModules();
   const pinia = createPinia();
   setActivePinia(pinia);
-  const tactics = (await import('@/stores/tactics')).tacticsStore();
+  const tactics = tacticsStore();
   tactics.enterprise = structuredClone(catalog.enterprise);
-  const magma = (await import('@/stores/magma')).magmaStore();
+  const magma = magmaStore();
   magma.initializeDefaultUseCases();
   magma.addNewUseCase(Number(level[1]), domain);
   magma.activeTab = level;
-  const UseCaseTable = (await import('../UseCaseTable.vue')).default;
   const table = mount(UseCaseTable, { global: { plugins: [pinia] } });
   const headers = () => table.findAll('thead th').slice(1).map((th) => th.text()); // without the delete-all column
   const cell = (row: number, header: string) => table.findAll('tbody tr').at(row)!.findAll('td').at(headers().indexOf(header) + 1)!;

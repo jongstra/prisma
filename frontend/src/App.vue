@@ -1,10 +1,21 @@
 <script setup lang="ts">
   import { onMounted, onBeforeUnmount } from 'vue';
+  import Swal from 'sweetalert2';
   import { tacticsStore } from '@/stores/tactics';
   import { magmaStore } from '@/stores/magma';
   const tactics = tacticsStore();
   const magma = magmaStore();
-  onMounted(() => {tactics.fetchTactics();}); // Load the ATT&CK catalog (public/tactics_and_techniques_by_domain.json) into the Pinia store.
+  // Load the ATT&CK catalog (public/tactics_and_techniques_by_domain.json) into the Pinia store.
+  onMounted(() => {
+    tactics.fetchTactics().catch((error) => {
+      console.error('Failed to fetch tactics:', error);
+      Swal.fire({
+        icon: 'error',
+        titleText: 'The ATT&CK data was not loaded',
+        text: `Could not load the ATT&CK data (tactics_and_techniques_by_domain.json): ${(error as Error).message}. Please reload the page.`,
+      });
+    });
+  });
 
   // Ask for confirmation when leaving or refreshing the page would lose MaGMa work: changes since the last load or save.
   const handleBeforeUnload = (event: BeforeUnloadEvent) => {

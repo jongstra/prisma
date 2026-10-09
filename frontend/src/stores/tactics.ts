@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import Swal from 'sweetalert2';
+import { loadCatalog } from '@/io/loadCatalog';
 import { ownVisibility, techniqueVisibility } from '@/domain/attack/visibility';
 import { readDettectFile } from '@/domain/attack/dettect';
 
@@ -332,24 +332,14 @@ export const tacticsStore = defineStore('tactics', {
 
   actions: {
 
+    // Load the ATT&CK catalog. When that fails, the error is passed on to the caller, which shows the message (App.vue).
     async fetchTactics() {
       try {
         this.dataLoaded = false;
-        const response = await fetch('tactics_and_techniques_by_domain.json');
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status} ${response.statusText}`);
-        }
-        const data = await response.json();
+        const data = await loadCatalog();
         this.enterprise = data.enterprise;
         this.mobile = data.mobile;
         this.ics = data.ics;
-      } catch (error) {
-        console.error('Failed to fetch tactics:', error);
-        Swal.fire({
-          icon: 'error',
-          titleText: 'The ATT&CK data was not loaded',
-          text: `Could not load the ATT&CK data (tactics_and_techniques_by_domain.json): ${(error as Error).message}. Please reload the page.`,
-        });
       } finally {
         this.dataLoaded = true;
       }

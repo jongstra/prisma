@@ -4,9 +4,6 @@ import fs from 'node:fs';
 import { parse } from 'yaml';
 import { tacticsStore } from '../tactics';
 import { isDetectable } from '@/domain/attack/visibility';
-import Swal from 'sweetalert2';
-
-vi.mock('sweetalert2', () => ({ default: { fire: vi.fn(() => Promise.resolve({})) } }));
 
 const catalog = JSON.parse(fs.readFileSync('public/tactics_and_techniques_by_domain.json', 'utf8'));
 const readExample = (name: string) => parse(fs.readFileSync(`../examples/${name}`, 'utf8'));
@@ -74,12 +71,10 @@ describe('tactics store: loading a DeTT&CT file safely', () => {
     expect(ratio('T1595')).toBeGreaterThan(0); // Active Scanning is visible through Network Traffic Content.
   });
 
-  it('shows a message when the ATT&CK data cannot be loaded', async () => {
+  it('passes the error on when the ATT&CK data cannot be loaded (App.vue shows the message)', async () => {
     vi.stubGlobal('fetch', vi.fn(() => Promise.resolve({ ok: false, status: 404, statusText: 'Not Found' })));
-    await store.fetchTactics();
+    await expect(store.fetchTactics()).rejects.toThrow('HTTP 404 Not Found');
     vi.unstubAllGlobals();
-    const message = (Swal.fire as any).mock.calls.at(-1)?.[0];
-    expect(message?.text).toContain('Could not load the ATT&CK data');
-    expect(message?.text).toContain('404');
+    expect(store.dataLoaded).toBe(true);
   });
 });

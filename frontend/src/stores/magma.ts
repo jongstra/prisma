@@ -1,12 +1,11 @@
 import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
 import { tacticsStore } from '@/stores/tactics';
-import * as yaml from 'yaml';
-import Swal from 'sweetalert2';
 import { recalculateUseCases } from '@/domain/magma/calculations';
 import { findMultipleParents, findParentCycles, findUnknownParents, percentageProblem } from '@/domain/magma/validation';
+import { exportNumber, magmaFileDomains } from '@/io/magmaFile';
 
-interface UseCase {
+export interface UseCase {
   domain: string;
   id: string;
   uid: string;
@@ -33,6 +32,14 @@ interface UseCase {
   risk?: number;
 }
 
+// The result of adding use cases from a file: how many were added, why the others were not, and warnings about the
+// added ones (see importSummary in io/magmaFile.ts).
+export interface ImportResult {
+  imported: number;
+  failed: string[];
+  warnings: string[];
+}
+
 interface UpdatedFields {
   name?: string;
   id?: string;
@@ -45,17 +52,8 @@ interface UpdatedFields {
   effectiveness?: number | null;
 }
 
-// The ATT&CK domains that use cases can belong to.
-const SUPPORTED_DOMAINS = ['enterprise-attack', 'mobile-attack', 'ics-attack'];
-
 // The percentages of a use case that are entered by the user or imported.
 const PERCENTAGE_FIELDS = ['visibility', 'implementation', 'effectiveness', 'inImpact', 'thrImpact', 'outImpact'] as const;
-
-// A number for the YAML export; values that are not a valid number are left out instead of being saved as NaN.
-const exportNumber = (value: unknown) => {
-  const number = Number(value);
-  return Number.isFinite(number) ? number : undefined;
-};
 
 const formatPercentage = (number: any) => {
   number = Number(number);
@@ -443,87 +441,18 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-    exportUseCases() {
-      const exportedUseCases = this.domainSortedUseCases.map(useCase => {
-        const baseAttributes = {
-          domain: useCase.domain,
-          level: useCase.level,
-          id: useCase.id,
-          name: useCase.name,
-          description: useCase.description,
-          parentIds: useCase.parentIds,
-          permanent: useCase.permanent,
-          visibility: exportNumber(useCase.visibility),
-          implementation: exportNumber(useCase.implementation),
-          effectiveness: exportNumber(useCase.effectiveness),
-          weight: exportNumber(useCase.weight),
-          impact: exportNumber(useCase.weight),
-        };
-        
-        // For the non-permanent level 1 use cases with inImpact/thrImpact/outImpact, add these attributes.
-        if (useCase.level === 1 && !useCase.permanent) {
-          return {
-            ...baseAttributes,
-            inImpact: exportNumber(useCase.inImpact),
-            thrImpact: exportNumber(useCase.thrImpact),
-            outImpact: exportNumber(useCase.outImpact),
-          };
-        }
-
-        // Add the attackTechniqueId visibilityFromAttackTechniqueOverride attributes for all Level 3 use cases.
-        if (useCase.level === 3) {
-          return {
-            ...baseAttributes,
-            dataSource: useCase.dataSource,
-            attackTechniqueId: useCase.attackTechniqueId,
-            visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
-          };
-        }
-
-        // All other use cases 
-        return baseAttributes;
-    
-      });
-    
-      return yaml.stringify(exportedUseCases);
-    },
 
 
-    // Read a MaGMa file as a list of use cases. Throws an error with an explanation when the file cannot be read as MaGMa
-    // use cases, so callers can refuse the file before changing anything.
-    parseUseCaseFile(yamlData: string): any[] {
-      let useCases;
-      try {
-        useCases = yaml.parse(yamlData);
-      } catch (error) {
-        throw new Error(`The file is not valid YAML: ${(error as Error).message}`);
-      }
-      if (!Array.isArray(useCases) || !useCases.every((useCase) => useCase && typeof useCase === 'object' && !Array.isArray(useCase))) {
-        throw new Error('The file does not contain a list of MaGMa use cases.');
-      }
-      if (!useCases.some((useCase) => !useCase.permanent && SUPPORTED_DOMAINS.includes(useCase.domain))) {
-        throw new Error(`The file contains no use cases for a supported domain (${SUPPORTED_DOMAINS.join(', ')}).`);
-      }
-      return useCases;
-    },
 
 
-    // The supported domains that a MaGMa file contains use cases for, in the usual domain order. The permanent IN/THR use
-    // cases do not count: every file saved by PRISMA contains them for all domains.
-    useCaseFileDomains(yamlData: string): string[] {
-      const domains = new Set(this.parseUseCaseFile(yamlData).filter((useCase) => !useCase.permanent).map((useCase) => useCase.domain));
-      return SUPPORTED_DOMAINS.filter((domain) => domains.has(domain));
-    },
-
-
-    // Load a MaGMa file: its use cases replace the current use cases of the domains in the file, and the other domains
-    // stay as they are. Nothing changes when the file cannot be read.
-    loadUseCaseFile(yamlData: string) {
-      const useCases = this.parseUseCaseFile(yamlData);
-      const domains = this.useCaseFileDomains(yamlData);
+    // Load the use cases of a MaGMa file (see readMagmaFile in io/magmaFile.ts): they replace the current use cases of the
+    // domains in the file, and the other domains stay as they are.
+    loadUseCases(useCases: any[]): ImportResult {
+      const domains = magmaFileDomains(useCases);
       this.useCases = this.useCases.filter((useCase) => useCase.permanent || !domains.includes(useCase.domain));
-      this.importUseCases(useCases);
+      const result = this.importUseCases(useCases);
       this.markAsSaved();
+      return result;
     },
 
     // What the user entered, without what PRISMA calculates (such as a visibility taken from the DeTT&CT file, weights
@@ -562,78 +491,46 @@ export const magmaStore = defineStore('magma', {
     },
 
 
-    // Add use cases from a MaGMa file (as YAML text, or already read as a list) to the current use cases.
-    importUseCases(yamlData: string | any[]) {
-      try {
-        // Parse the YAML data
-        const useCases = typeof yamlData === 'string' ? yaml.parse(yamlData) : yamlData;
-    
-        // Initialize counters and an array for error messages
-        let successCount = 0;
-        let failCount = 0;
-        const errorMessages: string[] = [];
+    // Add use cases from a MaGMa file (see readMagmaFile in io/magmaFile.ts) to the current use cases. Use cases that cannot
+    // be added are skipped; the result says why (see importSummary in io/magmaFile.ts).
+    importUseCases(useCases: any[]): ImportResult {
+      const failed: string[] = [];
+      let imported = 0;
 
-        // Use cases that are their own (indirect) parent cannot be calculated, so they are not imported.
-        const parentCycles = findParentCycles(useCases.filter((useCase: any) => !useCase.permanent));
-    
-        // Iterate over each use case and try to add it.
-        useCases.forEach((useCase: any) => {
-          // Skip permanent use cases, since they should always be present already for all 3 domains).
-          if (useCase.permanent) {
-            return
-          }
-          try {
-            const cycle = parentCycles.get(useCase);
-            if (cycle) {
-              throw new Error(`Use case "${useCase.id}" in domain "${useCase.domain}" is its own (indirect) parent: ${cycle.join(' → ')}.`);
-            }
-            this.addExistingUseCase(useCase, false);
-            successCount++;
-          } catch (error) {
-            failCount++;
-            errorMessages.push(error.message);
-          }
-        });
-        
-        // Recalculate all use cases once, now that the whole file has been added.
-        this.recalculateAll();
+      // Use cases that are their own (indirect) parent cannot be calculated, so they are not imported.
+      const parentCycles = findParentCycles(useCases.filter((useCase: any) => !useCase.permanent));
 
-        // Prepare the summary message
-        let summary = `Successful imports: ${successCount}. Failed imports: ${failCount}.`;
-    
-        // If there are any errors, append them to the summary
-        if (errorMessages.length > 0) {
-          summary += " _________________________________________________ FAILED USE CASES _________________________________________________ " + errorMessages.join("• ");
+      // Iterate over each use case and try to add it.
+      useCases.forEach((useCase: any) => {
+        // Skip permanent use cases, since they should always be present already for all 3 domains).
+        if (useCase.permanent) {
+          return
         }
-
-        // Use cases with a parent ID that does not exist, or with more than one parent, are imported, but listed as a warning
-        // (probably a typo, e.g. a comma in the parent column of the Excel file).
-        const warnings = [
-          ...findUnknownParents(this.useCases).map(({ useCase, parentId }) =>
-            `Use case "${useCase.id}" in domain "${useCase.domain}" has parent "${parentId}", which does not exist.`),
-          ...findMultipleParents(this.useCases.filter((useCase) => !useCase.permanent)).map(({ useCase, parentIds }) =>
-            `Use case "${useCase.id}" in domain "${useCase.domain}" has ${parentIds.length} parents (${parentIds.join(', ')}); PRISMA expects one parent per use case, and counts it under each of them.`),
-        ];
-        if (warnings.length > 0) {
-          summary += " _________________________________________________ WARNINGS _________________________________________________ " + warnings.join("• ");
+        try {
+          const cycle = parentCycles.get(useCase);
+          if (cycle) {
+            throw new Error(`Use case "${useCase.id}" in domain "${useCase.domain}" is its own (indirect) parent: ${cycle.join(' → ')}.`);
+          }
+          this.addExistingUseCase(useCase, false);
+          imported++;
+        } catch (error) {
+          failed.push((error as Error).message);
         }
-    
-        // Show the summary message
-        Swal.fire({
-          title: 'Import Summary',
-          text: summary,
-          icon: failCount > 0 || warnings.length > 0 ? 'warning' : 'success',
-          confirmButtonText: 'OK'
-        });
-      } catch (error) {
-        console.error('Failed to parse YAML data:', error);
-        Swal.fire({
-          title: 'Error',
-          text: 'Failed to parse YAML data. Please check the file.',
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
-      }
+      });
+
+      // Recalculate all use cases once, now that the whole file has been added.
+      this.recalculateAll();
+
+      // Use cases with a parent ID that does not exist, or with more than one parent, are imported, but listed as a warning
+      // (probably a typo, e.g. a comma in the parent column of the Excel file).
+      const warnings = [
+        ...findUnknownParents(this.useCases).map(({ useCase, parentId }) =>
+          `Use case "${useCase.id}" in domain "${useCase.domain}" has parent "${parentId}", which does not exist.`),
+        ...findMultipleParents(this.useCases.filter((useCase) => !useCase.permanent)).map(({ useCase, parentIds }) =>
+          `Use case "${useCase.id}" in domain "${useCase.domain}" has ${parentIds.length} parents (${parentIds.join(', ')}); PRISMA expects one parent per use case, and counts it under each of them.`),
+      ];
+
+      return { imported, failed, warnings };
     },
 
 
