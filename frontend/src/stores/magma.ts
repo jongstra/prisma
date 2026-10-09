@@ -6,8 +6,6 @@ import Swal from 'sweetalert2';
 import { recalculateUseCases } from '@/domain/magma/calculations';
 import { findMultipleParents, findParentCycles, findUnknownParents, percentageProblem } from '@/domain/magma/validation';
 
-const tactics = tacticsStore();
-
 interface UseCase {
   domain: string;
   id: string;
@@ -73,6 +71,7 @@ export const magmaStore = defineStore('magma', {
     heatmapEffectiveness: true,
     heatmapFilterValue: 0,
     heatmapSearchQuery: '' as string,
+    savedUseCases: '[]', // what the user had entered at the last load or save, see hasUnsavedChanges
   }),
 
   getters: {
@@ -219,6 +218,7 @@ export const magmaStore = defineStore('magma', {
     
 
     addExistingUseCase(useCase: UseCase, recalculate = true) {
+      const tactics = tacticsStore();
 
       // Check that the domain is set to a valid value.
       if (!['enterprise-attack', 'mobile-attack', 'ics-attack'].includes(useCase.domain)) {
@@ -400,6 +400,7 @@ export const magmaStore = defineStore('magma', {
 
     
     updateUseCase(uid: string, updatedFields: UpdatedFields, domain?: string) {
+      const tactics = tacticsStore();
       const useCase = this.getUseCaseByUid(uid, domain);
 
       if (useCase) {
@@ -432,6 +433,7 @@ export const magmaStore = defineStore('magma', {
 
   // Update the L3 use cases visibility based on the dettect visibility value, and update the depending weight/potential values. Also update any parent use cases.
     updateAllL3UseCasesBasedOnDettectVisibility() {
+      const tactics = tacticsStore();
       this.L3UseCases().forEach((useCase) => {
         if (useCase.visibilityFromAttackTechnique === true && useCase.visibilityFromAttackTechniqueOverride === false) {
           useCase.visibility = formatPercentage(tactics.getDomainTechniqueVisibilityPercentageById(useCase.attackTechniqueId, useCase.domain))??0;
@@ -521,6 +523,42 @@ export const magmaStore = defineStore('magma', {
       const domains = this.useCaseFileDomains(yamlData);
       this.useCases = this.useCases.filter((useCase) => useCase.permanent || !domains.includes(useCase.domain));
       this.importUseCases(useCases);
+      this.markAsSaved();
+    },
+
+    // What the user entered, without what PRISMA calculates (such as a visibility taken from the DeTT&CT file, weights
+    // and the values of L1 and L2), so that loading another DeTT&CT file does not count as an unsaved change.
+    userInput() {
+      return JSON.stringify(this.domainSortedUseCases.filter((useCase) => !useCase.permanent).map((useCase) => {
+        const visibilityEntered = useCase.level === 3 && (!useCase.visibilityFromAttackTechnique || useCase.visibilityFromAttackTechniqueOverride);
+        return {
+          domain: useCase.domain,
+          level: useCase.level,
+          id: useCase.id,
+          name: useCase.name,
+          description: useCase.description,
+          parentIds: useCase.parentIds,
+          dataSource: useCase.dataSource,
+          attackTechniqueId: useCase.attackTechniqueId,
+          visibilityFromAttackTechniqueOverride: useCase.visibilityFromAttackTechniqueOverride,
+          visibility: visibilityEntered ? exportNumber(useCase.visibility) : undefined,
+          implementation: useCase.level === 3 ? exportNumber(useCase.implementation) : undefined,
+          effectiveness: useCase.level === 3 ? exportNumber(useCase.effectiveness) : undefined,
+          inImpact: exportNumber(useCase.inImpact),
+          thrImpact: exportNumber(useCase.thrImpact),
+          outImpact: exportNumber(useCase.outImpact),
+        };
+      }));
+    },
+
+    // Remember what the user had entered at a load or save, so the page can warn before closing with unsaved changes.
+    markAsSaved() {
+      this.savedUseCases = this.userInput();
+    },
+
+    // Whether the user changed the use cases since the last load or save (or, before that, added any).
+    hasUnsavedChanges() {
+      return this.userInput() !== this.savedUseCases;
     },
 
 

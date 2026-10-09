@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- PRISMA: a white P on the dark purple of the selected navigation buttons. -->
+  <rect width="32" height="32" rx="6" fill="rgb(57, 55, 139)"/>
+  <path fill="white" fill-rule="evenodd" d="M10 7H17.5A5.5 5.5 0 0 1 17.5 18H15V25H10ZM15 11V14H17A1.5 1.5 0 0 0 17 11Z"/>
+</svg>

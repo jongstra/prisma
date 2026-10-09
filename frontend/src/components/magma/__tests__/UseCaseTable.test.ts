@@ -68,6 +68,19 @@ describe('UseCaseTable', () => {
     expect(visibility()).toBeUndefined();
   });
 
+  it('keeps each row with its use case when a row above it is deleted', async () => {
+    const { table, magma } = await showTable('L2');
+    magma.addNewUseCase(2, domain);
+    await table.vm.$nextTick();
+    const [first, second] = magma.L2UseCases(domain);
+    const rowOf = (id: string) => table.findAll('tbody tr')
+      .find((row) => row.find('input').exists() && (row.find('input').element as HTMLInputElement).value === id)?.element;
+    const secondRow = rowOf(second.id);
+    magma.removeUseCaseByUid(first.uid);
+    await table.vm.$nextTick();
+    expect(rowOf(second.id)).toBe(secondRow);
+  });
+
   it('shows the averages only on L1', async () => {
     expect((await showTable('L1')).table.text()).toContain('Averages');
     expect((await showTable('L2')).table.text()).not.toContain('Averages');

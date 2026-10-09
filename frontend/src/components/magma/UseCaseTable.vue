@@ -236,7 +236,7 @@ const validateAndFormat = (event: Event) => {
     <tbody>
 
       <!-- Rows for all use cases. -->
-      <tr v-for="(useCase, index) in useCases" :key="index">
+      <tr v-for="useCase in useCases" :key="useCase.uid">
 
         <!-- Remove-use-case buttons -->
         <td class="remove-col">

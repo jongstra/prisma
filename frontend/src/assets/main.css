@@ -18,7 +18,8 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-#app {
+/* The mount point in index.html (#app) and the page frame in App.vue (.app). */
+#app, .app {
   max-width: 100%;
   margin: 0 auto;
   padding: 2rem;

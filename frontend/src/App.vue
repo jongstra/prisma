@@ -1,12 +1,16 @@
 <script setup lang="ts">
   import { onMounted, onBeforeUnmount } from 'vue';
   import { tacticsStore } from '@/stores/tactics';
+  import { magmaStore } from '@/stores/magma';
   const tactics = tacticsStore();
+  const magma = magmaStore();
   onMounted(() => {tactics.fetchTactics();}); // Load the ATT&CK catalog (public/tactics_and_techniques_by_domain.json) into the Pinia store.
 
-  // Ask user for confirmation when leaving/refreshing the page.
+  // Ask for confirmation when leaving or refreshing the page would lose MaGMa work: changes since the last load or save.
   const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-    event.preventDefault();
+    if (magma.hasUnsavedChanges()) {
+      event.preventDefault();
+    }
   };
   onMounted(() => {
     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -17,9 +21,9 @@
 
 </script>
 
-<!-- App.vue gebruikt router routes zoals gedefinieerd in ./router/index.ts -->
+<!-- The page frame: navigation, domain buttons and the current page (the routes are in router/index.ts). -->
 <template>
-  <div id='app'>
+  <div class='app'>
 
     <div class='navigation'>
       <RouterLink class='nav' to='/' exact-active-class='selected'>DeTT&CT</RouterLink>
@@ -45,7 +49,8 @@
 
 <style>
 
-#app {
+/* The mount point in index.html (#app) and the page frame (.app) share this style. */
+#app, .app {
   display: flex;
   flex-direction: column;
   justify-content: center;

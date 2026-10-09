@@ -262,3 +262,36 @@ describe('magma store: L3 use cases per technique (heatmap)', () => {
     expect(ids('T1660', 'mobile-attack')).toEqual(['MOBILE']);
   });
 });
+
+describe('magma store: unsaved changes (for the leave-page prompt)', () => {
+  it('has unsaved changes only when the use cases changed since they were last loaded or saved', async () => {
+    const { magma } = await setUpStores();
+    const domain = 'enterprise-attack';
+    expect(magma.hasUnsavedChanges()).toBe(false); // only the permanent IN and THR use cases
+    magma.addNewUseCase(1, domain);
+    expect(magma.hasUnsavedChanges()).toBe(true);
+
+    magma.loadUseCaseFile(readExample('magma/example.yaml'));
+    expect(magma.hasUnsavedChanges()).toBe(false);
+    const useCase = magma.L3UseCases(domain)[0];
+    const implementation = useCase.implementation;
+    magma.updateUseCase(useCase.uid, { implementation: 12 }, domain);
+    expect(magma.hasUnsavedChanges()).toBe(true);
+    magma.updateUseCase(useCase.uid, { implementation }, domain);
+    expect(magma.hasUnsavedChanges()).toBe(false); // changed back
+
+    magma.updateUseCase(useCase.uid, { implementation: 12 }, domain);
+    magma.markAsSaved();
+    expect(magma.hasUnsavedChanges()).toBe(false);
+  });
+
+  it('does not count values that PRISMA calculates, such as a visibility from another DeTT&CT file', async () => {
+    const { tactics, magma } = await setUpStores();
+    magma.loadUseCaseFile(readExample('magma/example.yaml'));
+    const saved = magma.exportUseCases();
+    tactics.processDettectYaml(parse(readExample('dettect/enterprise_large.yaml')));
+    magma.updateAllL3UseCasesBasedOnDettectVisibility();
+    expect(magma.exportUseCases()).not.toBe(saved); // the calculated values did change
+    expect(magma.hasUnsavedChanges()).toBe(false);
+  });
+});

@@ -16,6 +16,7 @@ const exportYaml = () => {
   document.body.appendChild(a);
   a.click();
   a.remove();
+  magma.markAsSaved();
 };
 
 // Display names of the ATT&CK domains, for messages.
